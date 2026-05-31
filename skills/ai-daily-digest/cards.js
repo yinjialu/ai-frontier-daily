@@ -24,13 +24,20 @@
     // 小红书内容卡
     U.forEach(function(u,i){
       out.push({name:"小红书_"+pad(i+1)+"_"+esc(u.tag), cls:"xhs xhs-item", w:1080, h:1440, inner:`
-        <div class="blob" style="width:300px;height:300px;background:var(--clay-soft);top:-80px;right:-80px;opacity:.5"></div>
+        <div class="blob" style="width:300px;height:300px;background:var(--clay-soft);top:-90px;right:-90px;opacity:.5"></div>
+        <div class="bgnum">${pad(i+1)}</div>
         <div class="inner">
-          <div class="idx">${pad(i+1)}</div>
-          <span class="tag">${esc(u.tag)}</span>
-          <h2>${esc(u.title)}</h2>
-          <div class="sum">${esc(u.summary)}</div>
-          <div class="src"><span>来源 ${esc(u.source)}</span><span>${esc(DATA.edition)}</span></div>
+          <div class="head">
+            <span class="edition">ANTHROPIC DAILY · ${esc(DATA.edition)}</span>
+            <span class="pager"><b>${pad(i+1)}</b> / ${pad(U.length)}</span>
+          </div>
+          <div class="body">
+            <span class="tag">${esc(u.tag)}</span>
+            <h2>${esc(u.title)}</h2>
+            <div class="rule"></div>
+            <div class="sum">${esc(u.summary)}</div>
+          </div>
+          <div class="src"><span>来源 ${esc(u.source)}</span><span>${esc(DATA.brand)}</span></div>
         </div>`});
     });
 

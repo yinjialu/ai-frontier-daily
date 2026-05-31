@@ -25,14 +25,15 @@ jobs:
 
       - name: Install deps
         run: |
-          pip install -r requirements.txt
+          pip install -r skills/ai-daily-digest/requirements.txt
           npm i playwright
           npx playwright install --with-deps chromium
 
       - name: Run pipeline (live)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # 在仓库 Settings → Secrets 配置
-        run: python run.py --live --engine playwright
+          DIGEST_OUT: ${{ github.workspace }}                   # data/ output/ 提交到仓库根
+        run: python skills/ai-daily-digest/run.py --live --engine playwright
 
       - name: Commit & push results
         run: |

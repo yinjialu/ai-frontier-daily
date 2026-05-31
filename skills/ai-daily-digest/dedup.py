@@ -1,9 +1,9 @@
 """去重器：用 SQLite 记录已处理条目，保证每天只推增量。
 指纹 = sha1(归一化标题)，避免同一条动态被不同源/不同措辞重复推送。"""
-import sqlite3, hashlib, re, datetime
+import sqlite3, hashlib, re, datetime, os
 from pathlib import Path
 
-DB = Path(__file__).parent / "seen.db"
+DB = Path(os.environ.get("DIGEST_OUT") or os.getcwd()) / "seen.db"
 
 def _fp(item):
     t = re.sub(r"\s+", "", (item["title"] or "").lower())

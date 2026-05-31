@@ -6,11 +6,12 @@
   python run.py --force    # 忽略去重，强制处理（调试用）
   python run.py --engine playwright   # 用 Playwright 渲染（生产推荐，字体保真）
 """
-import sys, json, subprocess, datetime
+import sys, os, json, subprocess, datetime
 from pathlib import Path
 import collector, dedup, curator
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).parent                                  # 脚本与字体/模板所在目录
+OUT = Path(os.environ.get("DIGEST_OUT") or os.getcwd())        # data/ 与 output/ 写到这里（默认当前目录）
 
 def main():
     mock = "--live" not in sys.argv
@@ -35,25 +36,25 @@ def main():
         print("      策展判定今日不发：", data.get("reason")); return
 
     date = datetime.date.today().isoformat()
-    data_file = ROOT / "data" / f"{date}.json"
-    data_file.parent.mkdir(exist_ok=True)
+    data_file = OUT / "data" / f"{date}.json"
+    data_file.parent.mkdir(parents=True, exist_ok=True)
     data_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), "utf-8")
-    print(f"      写入 {data_file.relative_to(ROOT)}")
+    print(f"      写入 {data_file}")
 
     print("[4/5] 渲染卡片…")
-    out_dir = ROOT / "output" / date
-    subprocess.run(["node", "render.js", str(data_file), str(out_dir), "--engine", engine],
+    out_dir = OUT / "output" / date
+    subprocess.run(["node", str(ROOT / "render.js"), str(data_file), str(out_dir), "--engine", engine],
                    cwd=ROOT, check=True)
 
     print("[5/5] 更新审核页指针…")
-    (ROOT / "output" / "latest.json").write_text(
+    (OUT / "output" / "latest.json").write_text(
         json.dumps({"date": data["date"], "cnDate": data["cnDate"], "dir": date,
                     "files": [c + ".png" for c in
                               [f.stem for f in sorted(out_dir.glob("*.png"))]]},
                    ensure_ascii=False, indent=2), "utf-8")
 
     dedup.mark_seen(fresh)
-    print(f"\n✅ 完成。卡片在 output/{date}/，本地预览：python -m http.server 后打开 index.html")
+    print(f"\n✅ 完成。卡片在 {out_dir}/，本地预览：python -m http.server 后打开 index.html")
 
 if __name__ == "__main__":
     main()

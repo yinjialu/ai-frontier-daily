@@ -6,26 +6,38 @@
   "updates": [
     {
       "tag": "模型发布",
-      "title": "Claude Opus 4.8 正式上线",
-      "summary": "在编码、智能体能力、推理与知识工作上全面超越 Opus 4.7，价格保持不变。claude.ai 新增投入度（effort）调节，API 即日可用。",
+      "title": "Claude Opus 4.8 正式发布",
+      "summary": "在编码、智能体与推理上全面超越 Opus 4.7，claude.ai 新增「投入度」调节，Opus 4.8 的 Fast 模式较上代便宜约 3 倍，API 即日可用。",
       "source": "anthropic.com"
     },
     {
       "tag": "开发者",
-      "title": "Claude Code 接入动态工作流",
-      "summary": "一句话即可让 Claude 在后台编排数十到上百个子智能体协作，承接更大型复杂任务；Fast 模式更快更便宜。research preview。",
-      "source": "code.claude.com"
-    },
-    {
-      "tag": "企业",
-      "title": "托管智能体支持自托管沙箱与 MCP 隧道",
-      "summary": "工具执行可放到你自己的基础设施或 Cloudflare、Vercel 等托管方，编排循环仍在 Anthropic，企业安全边界更可控。",
+      "title": "Claude Code 推出动态工作流",
+      "summary": "一句话即可让 Claude 在后台编排大量子智能体协作，承接更大规模的复杂任务，配合更快更省的 Fast 模式落地。",
       "source": "anthropic.com"
     },
     {
       "tag": "开发者",
       "title": "Anthropic 收购 Stainless",
-      "summary": "补强 SDK 自动生成能力，进一步降低开发者接入 Claude 平台的门槛。",
+      "summary": "Stainless 擅长自动生成高质量多语言 SDK，并入后将进一步降低开发者接入 Claude API 的门槛，SDK 体验有望提升。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "企业",
+      "title": "KPMG 与 Anthropic 达成全球战略联盟",
+      "summary": "四大之一 KPMG 将把 Claude 嵌入核心业务，覆盖超 27.6 万名员工，是 Claude 在专业服务领域的又一标杆落地。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "生态",
+      "title": "Anthropic 完成 650 亿美元 H 轮融资",
+      "summary": "由 Altimeter、Sequoia 等领投，投后估值约 9650 亿美元，资金将投向算力、安全研究与全球扩张。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "企业",
+      "title": "普华永道扩大 Claude 部署",
+      "summary": "PwC 扩大与 Anthropic 合作，向团队推广 Claude Code 与 Cowork，从美国团队起步，逐步覆盖全球数十万名专业人员。",
       "source": "anthropic.com"
     }
   ],
