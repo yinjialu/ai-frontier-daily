@@ -1,0 +1,71 @@
+/* 卡片样式（全分辨率，1:1 输出像素）。浏览器/Playwright 加载 Google Fonts；
+   离线环境自动回退到 Noto CJK + DejaVu。预览页用 transform:scale 缩小显示。 */
+:root{
+  --cream:#F1ECE0; --cream-2:#E9E2D2; --ink:#26221C; --ink-soft:#5A5347;
+  --clay:#C1572E; --clay-deep:#9E3F1E; --clay-soft:#E0A47F;
+  --line:#CFC6B2;
+  --serif:"Fraunces","Noto Serif SC","Noto Serif CJK SC","DejaVu Serif",serif;
+  --serifcn:"Noto Serif SC","Noto Serif CJK SC","Fraunces","DejaVu Serif",serif;
+  --sans:"Noto Sans SC","Noto Sans CJK SC","DejaVu Sans",sans-serif;
+  --mono:"Space Mono","DejaVu Sans Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+
+.card{position:relative;overflow:hidden;background:var(--cream);color:var(--ink);
+  font-family:var(--sans)}
+.card .inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+.blob{position:absolute;border-radius:50%;opacity:.8}
+
+/* ===== 小红书 1080×1440 ===== */
+.xhs{width:1080px;height:1440px}
+.xhs .inner{padding:88px 82px}
+.xhs-cover .topbar{display:flex;justify-content:space-between;align-items:baseline}
+.xhs-cover .edition{font-family:var(--mono);font-size:28px;letter-spacing:3px;color:var(--clay-deep)}
+.xhs-cover .date{font-family:var(--mono);font-size:28px;color:var(--ink-soft)}
+.xhs-cover .kicker{margin-top:120px;font-family:var(--mono);font-size:30px;letter-spacing:8px;color:var(--clay);text-transform:uppercase}
+.xhs-cover h1{font-family:var(--serifcn);font-weight:900;font-size:128px;line-height:1.08;margin-top:24px;letter-spacing:-2px}
+.xhs-cover h1 em{font-family:var(--serif);font-style:italic;color:var(--clay);font-weight:500}
+.xhs-cover .teasers{position:absolute;left:82px;right:82px;bottom:150px;display:flex;flex-direction:column;gap:26px}
+.xhs-cover .teaser{display:flex;gap:26px;align-items:flex-start;font-size:35px;line-height:1.34;color:var(--ink)}
+.xhs-cover .teaser .n{font-family:var(--serif);font-weight:900;color:var(--clay);font-size:46px;line-height:1;min-width:52px}
+.xhs-cover .footer{position:absolute;left:82px;right:82px;bottom:70px;padding-top:36px;border-top:2px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:27px;color:var(--ink-soft)}
+
+.xhs-item .idx{font-family:var(--serif);font-weight:900;font-size:150px;line-height:.9;color:var(--clay-soft)}
+.xhs-item .tag{align-self:flex-start;margin-top:34px;background:var(--clay);color:#fff;font-size:30px;font-weight:500;letter-spacing:2px;padding:13px 30px;border-radius:60px}
+.xhs-item h2{font-family:var(--serifcn);font-weight:700;font-size:76px;line-height:1.18;margin-top:44px;letter-spacing:-1px}
+.xhs-item .sum{margin-top:40px;font-size:38px;line-height:1.62;color:var(--ink-soft);font-weight:300}
+.xhs-item .src{position:absolute;left:82px;right:82px;bottom:80px;padding-top:40px;border-top:2px solid var(--line);font-family:var(--mono);font-size:26px;color:var(--ink-soft);display:flex;justify-content:space-between}
+
+.xhs-outro{background:var(--ink);color:var(--cream)}
+.xhs-outro::after{mix-blend-mode:screen;opacity:.05}
+.xhs-outro .inner{justify-content:center}
+.xhs-outro .mark{font-family:var(--serif);font-style:italic;font-size:54px;color:var(--clay-soft)}
+.xhs-outro h2{font-family:var(--serifcn);font-weight:900;font-size:104px;line-height:1.14;margin-top:40px}
+.xhs-outro p{margin-top:44px;font-size:38px;line-height:1.6;color:#C9C1B0;font-weight:300;max-width:760px}
+.xhs-outro .cta{align-self:flex-start;margin-top:70px;border:3px solid var(--clay-soft);color:var(--clay-soft);padding:24px 50px;border-radius:60px;font-size:35px}
+
+/* ===== 公众号封面 900×383 ===== */
+.gzh-cover{width:900px;height:383px;background:var(--ink);color:var(--cream)}
+.gzh-cover::after{mix-blend-mode:screen;opacity:.05}
+.gzh-cover .inner{padding:52px 60px;justify-content:space-between}
+.gzh-cover .row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:21px;letter-spacing:2px;color:var(--clay-soft)}
+.gzh-cover h1{font-family:var(--serifcn);font-weight:900;font-size:66px;line-height:1.05;letter-spacing:-1px}
+.gzh-cover h1 em{font-family:var(--serif);font-style:italic;color:var(--clay-soft);font-weight:500}
+.gzh-cover .sub{font-size:24px;color:#C9C1B0;font-weight:300}
+
+/* ===== 公众号正文长图 900 宽 ===== */
+.gzh-body{width:900px}
+.gzh-body .inner{padding:60px 70px}
+.gzh-body .head{font-family:var(--mono);font-size:23px;letter-spacing:3px;color:var(--clay);text-transform:uppercase}
+.gzh-body h2{font-family:var(--serifcn);font-weight:900;font-size:58px;margin-top:14px;letter-spacing:-1px}
+.gzh-body .gline{height:2px;background:var(--line);margin:40px 0}
+.gzh-body .e{display:flex;gap:30px;padding:26px 0}
+.gzh-body .e .num{font-family:var(--serif);font-weight:900;font-size:54px;color:var(--clay-soft);line-height:1;min-width:70px}
+.gzh-body .e .bd .tag{display:inline-block;background:var(--clay);color:#fff;font-size:21px;padding:4px 16px;border-radius:40px;letter-spacing:1px}
+.gzh-body .e .bd h3{font-family:var(--serifcn);font-weight:700;font-size:37px;margin-top:10px}
+.gzh-body .e .bd p{font-size:28px;line-height:1.55;color:var(--ink-soft);margin-top:14px;font-weight:300}
+.gzh-body .e .bd .s{font-family:var(--mono);font-size:22px;color:var(--clay-deep);margin-top:14px}
+.gzh-body .foot{margin-top:20px;padding-top:36px;border-top:2px solid var(--line);font-size:23px;color:var(--ink-soft);display:flex;justify-content:space-between}

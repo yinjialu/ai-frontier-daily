@@ -1,0 +1,6 @@
+[
+  {"title":"Claude Opus 4.8 正式上线","url":"https://www.anthropic.com/news/claude-opus-4-8","published":"2026-05-28","source":"Anthropic News","raw":"在编码、智能体能力、推理与知识工作上全面超越 Opus 4.7，价格保持不变。claude.ai 新增投入度（effort）调节，API 即日可用。"},
+  {"title":"Claude Code 接入动态工作流","url":"https://code.claude.com/docs/en/changelog","published":"2026-05-28","source":"Claude Code Changelog","raw":"一句话即可让 Claude 在后台编排数十到上百个子智能体协作，承接更大型复杂任务；Fast 模式更快更便宜。research preview。"},
+  {"title":"托管智能体支持自托管沙箱与 MCP 隧道","url":"https://www.anthropic.com/news/managed-agents-self-hosted","published":"2026-05-27","source":"Anthropic News","raw":"工具执行可放到你自己的基础设施或 Cloudflare、Vercel 等托管方，编排循环仍在 Anthropic，企业安全边界更可控。"},
+  {"title":"Anthropic 收购 Stainless","url":"https://www.anthropic.com/news/anthropic-stainless","published":"2026-05-18","source":"Anthropic News","raw":"补强 SDK 自动生成能力，进一步降低开发者接入 Claude 平台的门槛。"}
+]

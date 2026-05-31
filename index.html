@@ -1,0 +1,51 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日 Anthropic · 审核</title>
+<style>
+  :root{--cream:#F1ECE0;--ink:#26221C;--clay:#C1572E;--soft:#5A5347;--line:#CFC6B2}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--cream);color:var(--ink);
+    font-family:"Noto Sans SC","Noto Sans CJK SC",system-ui,sans-serif;padding:20px;max-width:720px;margin:0 auto}
+  header{padding:14px 4px 22px;border-bottom:2px solid var(--line);margin-bottom:22px}
+  h1{font-family:"Noto Serif SC",serif;font-size:26px;letter-spacing:-.5px}
+  .meta{color:var(--soft);font-size:14px;margin-top:6px}
+  .group{font-family:"DejaVu Sans Mono",monospace;font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--clay);margin:26px 4px 12px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .grid.wide{grid-template-columns:1fr}
+  figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,.06)}
+  figure img{display:block;width:100%;height:auto}
+  figcaption{font-size:12px;color:var(--soft);padding:8px 10px;font-family:"DejaVu Sans Mono",monospace}
+  .empty{color:var(--soft);padding:40px 4px}
+  .tip{margin-top:30px;padding:14px 16px;background:#E9E2D2;border-radius:10px;font-size:13px;color:var(--soft);line-height:1.6}
+</style>
+<header>
+  <h1>每日 Anthropic · 审核</h1>
+  <div class="meta" id="meta">加载中…</div>
+</header>
+<div id="app"></div>
+<div class="tip">审核通过后：长按或下载小红书 6 张竖图直接发笔记；公众号把封面与正文长图手动建草稿（或用 135/壹伴等已授权编辑器贴入草稿箱）。</div>
+
+<script>
+(async function(){
+  const app = document.getElementById("app"), meta = document.getElementById("meta");
+  try{
+    const latest = await (await fetch("output/latest.json?_="+Date.now())).json();
+    meta.textContent = `${latest.cnDate} · ${latest.files.length} 张素材 · 目录 output/${latest.dir}/`;
+    const xhs = latest.files.filter(f=>f.startsWith("小红书"));
+    const gzh = latest.files.filter(f=>f.startsWith("公众号"));
+    const sec = (title, files, wide)=>{
+      if(!files.length) return "";
+      return `<div class="group">${title}</div><div class="grid${wide?" wide":""}">`+
+        files.map(f=>`<figure><img loading="lazy" src="output/${latest.dir}/${encodeURIComponent(f)}"><figcaption>${f}</figcaption></figure>`).join("")+
+        `</div>`;
+    };
+    app.innerHTML = sec("小红书 · 1080×1440", xhs, false) + sec("微信公众号", gzh, true);
+  }catch(e){
+    app.innerHTML = `<div class="empty">还没有可审核的素材。先运行 <code>python run.py</code> 生成，再用 <code>python -m http.server</code> 打开本页。</div>`;
+    meta.textContent = "";
+  }
+})();
+</script>

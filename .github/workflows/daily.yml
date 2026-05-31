@@ -1,0 +1,43 @@
+name: daily-anthropic-watch
+
+on:
+  schedule:
+    - cron: "0 1 * * *"        # UTC 01:00 = 北京时间 09:00
+  workflow_dispatch: {}          # 支持在 Actions 页手动触发
+
+permissions:
+  contents: write                # 提交 data/ 与 output/
+
+concurrency:
+  group: daily-watch
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          npm i playwright
+          npx playwright install --with-deps chromium
+
+      - name: Run pipeline (live)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # 在仓库 Settings → Secrets 配置
+        run: python run.py --live --engine playwright
+
+      - name: Commit & push results
+        run: |
+          git config user.name "watch-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A data output
+          git commit -m "daily: $(date -u +%F)" || { echo "无新内容"; exit 0; }
+          git push

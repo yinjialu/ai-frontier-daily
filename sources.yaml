@@ -1,0 +1,15 @@
+# 信息源配置。live 模式抓取这里的 RSS。
+# 注：anthropic.com/news、/research 是 JS 渲染、无官方 RSS，
+#     建议用 RSSHub 自建实例转成 RSS 后把 url 填到下面；或另写 Playwright 抓取。
+rss:
+  - name: Claude Code Changelog      # 官方 RSS
+    url: https://code.claude.com/docs/en/changelog.rss
+    limit: 10
+  - name: Anthropic Engineering      # 社区镜像 RSS（非官方，可能停更）
+    url: https://raw.githubusercontent.com/conoro/anthropic-engineering-rss-feed/main/anthropic_engineering_rss.xml
+    limit: 10
+  - name: anthropics GitHub Releases
+    url: https://github.com/anthropics/claude-agent-sdk-typescript/releases.atom
+    limit: 10
+  # - name: Anthropic News (via RSSHub)
+  #   url: https://<你的rsshub实例>/anthropic/news
