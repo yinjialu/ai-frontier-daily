@@ -45,7 +45,25 @@ def write_index(out: Path):
     return idx
 
 
+def reindex(out: Path):
+    """仅重建展示页数据：output/latest.json（最新一天）+ output/index.json。
+    供 Claude 驱动路径（自己写 data + 渲染）收尾调用：python run.py --reindex"""
+    dates = sorted(p.stem for p in (out / "data").glob("*.json"))
+    if not dates:
+        print("无 data/*.json，跳过。"); return
+    date = dates[-1]
+    data = json.loads((out / "data" / f"{date}.json").read_text("utf-8"))
+    out_dir = out / "output" / date
+    (out / "output" / "latest.json").write_text(
+        json.dumps({"date": data.get("date", date), "cnDate": data.get("cnDate", ""),
+                    "dir": date, "files": _img_names(out_dir)}, ensure_ascii=False, indent=2), "utf-8")
+    write_index(out)
+    print(f"✓ 已重建 latest.json + index.json（最新 {date}，{len(_img_names(out_dir))} 图）")
+
+
 def main():
+    if "--reindex" in sys.argv:
+        reindex(OUT); return
     mock = "--live" not in sys.argv
     force = "--force" in sys.argv
     engine = "auto"
