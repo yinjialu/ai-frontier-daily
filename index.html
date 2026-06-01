@@ -122,7 +122,7 @@
 
 <div id="tip"></div>
 <div id="box"><div id="boxStage"></div></div>
-<footer>由 ai-daily-digest skill 自动生成 · <a href="https://github.com/yinjialu/ai-frontier-daily">GitHub 仓库</a></footer>
+<footer>由 ai-daily-digest skill 自动生成 · <a href="https://github.com/yinjialu/ai-frontier-daily">GitHub 仓库</a><span id="hits"></span></footer>
 
 <script src="skills/ai-daily-digest/cards.js"></script>
 <script>
@@ -362,6 +362,13 @@ document.addEventListener("keydown", e=>{
   if(e.key==="ArrowRight" && car) goCar(car.active+1);
 });
 window.addEventListener("resize", layoutCarousel);
+
+/* ---- 访问量统计（Abacus 免注册计数 API，失败则静默） ---- */
+fetch("https://abacus.jasoncameron.dev/hit/yinjialu-ai-frontier-daily/home")
+  .then(r => r.json())
+  .then(d => { if (d && typeof d.value === "number")
+    $("#hits").textContent = ` · 累计访问 ${d.value.toLocaleString()} 次`; })
+  .catch(() => {});
 </script>
 </body>
 </html>
