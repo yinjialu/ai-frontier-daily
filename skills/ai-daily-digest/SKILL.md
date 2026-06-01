@@ -106,7 +106,11 @@ GitHub Pages 部署。
 
 ## 发布（人工，符合平台规则）
 
-- 小红书：无合规发布 API，下载竖图手动发笔记。
+- 小红书：无合规发布 API。本机有 `xhs-publisher` skill（浏览器 UI 自动化驱动
+  creator.xiaohongshu.com，需已登录 Chrome + Claude 驱动，且按平台规范【人工点发布】，
+  无法像公众号那样无人值守 cron）。`to_xhs_post.py` 把 data 整理成发布素材包：
+  `python to_xhs_post.py` → 写 `output/<date>/小红书文案.txt`（标题≤20/正文/标签/配图清单）
+  并打印 JSON（title/content/tags/images），供 xhs-publisher 上传当天 6–8 张竖图时直接套用。
 - 公众号个人订阅号：草稿接口权限已回收，手动建草稿贴图，或用 135/壹伴等已授权
   编辑器导入草稿箱。
 - 公众号【已认证服务号】——「云端抓取 → 本机推送」半自动链路（仍由人工群发）：
