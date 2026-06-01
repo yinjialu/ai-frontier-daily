@@ -229,30 +229,63 @@ function initCarousel(deck){
 function goCar(i){
   if(!car) return;
   car.active = Math.max(0, Math.min(car.cards.length-1, i));
-  layoutCarousel();
+  dealIn();
 }
 
-function layoutCarousel(){
-  if(!car) return;
+// 把单张卡片摆到 coverflow 目标位
+function placeCard(el, i){
   const stageW = ($("#carousel")||{}).clientWidth || 600;
   const spread = Math.min(180, stageW*0.28);
-  car.cards.forEach((el,i)=>{
-    const dd = i - car.active, ad = Math.abs(dd);
-    el.classList.toggle("active", dd===0);
-    if(ad>3){
-      el.style.opacity = 0; el.style.pointerEvents = "none";
-      el.style.transform = `translate(-50%,-50%) translateX(${dd*60}px) translateZ(-700px)`;
-      return;
-    }
-    el.style.opacity = 1 - ad*0.16;
-    el.style.pointerEvents = "auto";
-    el.style.zIndex = 20 - ad;
-    el.style.filter = ad ? `brightness(${1-ad*0.08})` : "none";
-    el.style.transform = `translate(-50%,-50%) translateX(${dd*spread}px) `+
-      `translateZ(${-ad*140}px) rotateY(${-dd*44}deg) scale(${1-ad*0.05})`;
-  });
+  const dd = i - car.active, ad = Math.abs(dd);
+  el.classList.toggle("active", dd===0);
+  if(ad>3){
+    el.style.opacity = 0; el.style.pointerEvents = "none";
+    el.style.transform = `translate(-50%,-50%) translateX(${dd*60}px) translateZ(-700px)`;
+    return;
+  }
+  el.style.opacity = 1 - ad*0.16;
+  el.style.pointerEvents = "auto";
+  el.style.zIndex = 20 - ad;
+  el.style.filter = ad ? `brightness(${1-ad*0.08})` : "none";
+  el.style.transform = `translate(-50%,-50%) translateX(${dd*spread}px) `+
+    `translateZ(${-ad*140}px) rotateY(${-dd*44}deg) scale(${1-ad*0.05})`;
+}
+
+function updateDots(){
   document.querySelectorAll("#dots .dot").forEach((el,i)=>
     el.classList.toggle("on", i===car.active));
+}
+
+// 翻看（同一天内）：直接过渡，无错位延迟
+function layoutCarousel(){
+  if(!car) return;
+  car.cards.forEach((el,i)=>{ el.style.transitionDelay = "0ms"; placeCard(el,i); });
+  updateDots();
+}
+
+// 切换日期入场：先叠成一摞「洗牌」，再依次发牌散开
+function dealIn(){
+  if(!car) return;
+  const n = car.cards.length, mid = (n-1)/2;
+  car.cards.forEach((el,i)=>{
+    el.style.transition = "none";
+    el.style.transitionDelay = "0ms";
+    el.style.zIndex = 50 - Math.abs(i-car.active);
+    el.style.opacity = Math.abs(i-car.active) > 3 ? 0 : 1;
+    el.style.filter = "none";
+    el.style.transform = `translate(-50%,-50%) translateY(48px) `+
+      `rotate(${(i-mid)*4}deg) scale(.8)`;            // 叠成一摞微扇形
+  });
+  void $("#stage").offsetWidth;                        // 强制 reflow 固化初始态
+  requestAnimationFrame(()=>{
+    car.cards.forEach((el,i)=>{
+      el.style.transition = "";                        // 恢复 CSS 过渡
+      el.style.transitionDelay = (Math.min(Math.abs(i-car.active),4)*60)+"ms";  // 由中心向外错位发牌
+      placeCard(el,i);
+    });
+    updateDots();
+    setTimeout(()=>{ if(car) car.cards.forEach(el=>el.style.transitionDelay="0ms"); }, 900);
+  });
 }
 
 /* ---- GitHub 风格热力图（过去一年） ---- */
