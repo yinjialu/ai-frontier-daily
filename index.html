@@ -200,7 +200,7 @@ async function selectDay(date){
 function initCarousel(deck){
   const stage = $("#stage");
   car = { cards:[...stage.children], active:0, deck };
-  layoutCarousel();
+  dealIn();                       // 切换日期：洗牌发牌入场
 
   $("#navPrev").onclick = ()=> goCar(car.active-1);
   $("#navNext").onclick = ()=> goCar(car.active+1);
@@ -229,7 +229,7 @@ function initCarousel(deck){
 function goCar(i){
   if(!car) return;
   car.active = Math.max(0, Math.min(car.cards.length-1, i));
-  dealIn();
+  layoutCarousel();               // 左右翻看：平滑 coverflow 过渡
 }
 
 // 把单张卡片摆到 coverflow 目标位
