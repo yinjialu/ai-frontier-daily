@@ -1,0 +1,41 @@
+{
+  "date": "2026.06.01",
+  "cnDate": "6月1日 周一",
+  "edition": "VOL.152",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Opus 4.8 API 新增中途系统消息与拒绝分类",
+      "summary": "随 Opus 4.8 同步上线两项 API 特性：中途系统消息允许在对话中段插入 system 指令且不破坏 Prompt Cache；stop_details 新增拒绝分类字段，方便应用层对拒绝原因分类路由。两项特性均无需 beta 头，即日可用。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "6月15日起：订阅用户程序化调用改为独立额度",
+      "summary": "Agent SDK、Claude Code GitHub Actions 等程序化调用将从独立月度信用额度扣除，不再共享订阅用量：Pro $20/月、Max 5x $100、Max 20x $200，额度不滚存，超出后可按量续费。开发者需于 6 月 8 日前激活额度。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "倒计时：Claude Sonnet 4 与 Opus 4 将于6月15日退役",
+      "summary": "旧版 claude-sonnet-4-20250514 与 claude-opus-4-20250514 将于 6 月 15 日停止响应。官方建议迁移至 Sonnet 4.6 与 Opus 4.7；Opus 4.7 含破坏性接口变更（不支持同时传 temperature 与 top_p），迁移前需查阅升级指南。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "企业",
+      "title": "Claude Managed Agents 全套能力扩展至 AWS 平台",
+      "summary": "Webhooks、多智能体编排与自托管沙箱现已登陆 Claude Platform on AWS，企业可使用 IAM 认证在 AWS 生态内部署完整智能体工作流，新增 AnthropicSelfHostedEnvironmentAccess 托管策略简化权限配置，满足数据主权与合规需求。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "安全",
+      "title": "Project Glasswing 进展：Mythos 已发现逾万个高危漏洞",
+      "summary": "Anthropic 携手 AWS、Apple、Google 等 40+ 机构借助 Claude Mythos Preview 在关键基础设施中识别逾 10,000 个高危漏洞，Cloudflare、Mozilla 已各自修复数百问题。Anthropic 投入 1 亿美元模型算力支持，Mythos 预计近期面向全部用户开放。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
