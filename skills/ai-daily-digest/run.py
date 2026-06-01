@@ -13,6 +13,34 @@ import collector, dedup, curator
 ROOT = Path(__file__).parent                                  # 脚本与字体/模板所在目录
 OUT = Path(os.environ.get("DIGEST_OUT") or os.getcwd())        # data/ 与 output/ 写到这里（默认当前目录）
 
+def write_index(out: Path):
+    """扫描 data/*.json 与 output/<date>/，生成 output/index.json：
+    每天一条 {date, dir, cnDate, edition, count, files}，供展示页浏览与热力图使用。
+    count = 当天采集策展后的动态条数（热力图的“数量”）。"""
+    days = []
+    for df in sorted((out / "data").glob("*.json")):
+        date = df.stem
+        try:
+            d = json.loads(df.read_text("utf-8"))
+        except Exception:
+            continue
+        odir = out / "output" / date
+        files = [f.name for f in sorted(odir.glob("*.png"))] if odir.is_dir() else []
+        days.append({
+            "date": date,
+            "dir": date,
+            "cnDate": d.get("cnDate", ""),
+            "edition": d.get("edition", ""),
+            "count": len(d.get("updates", [])),
+            "files": files,
+        })
+    days.sort(key=lambda x: x["date"])
+    idx = {"updated": days[-1]["date"] if days else "", "days": days}
+    (out / "output" / "index.json").write_text(
+        json.dumps(idx, ensure_ascii=False, indent=2), "utf-8")
+    return idx
+
+
 def main():
     mock = "--live" not in sys.argv
     force = "--force" in sys.argv
@@ -46,12 +74,12 @@ def main():
     subprocess.run(["node", str(ROOT / "render.js"), str(data_file), str(out_dir), "--engine", engine],
                    cwd=ROOT, check=True)
 
-    print("[5/5] 更新审核页指针…")
+    print("[5/5] 更新展示页指针与索引…")
+    files = [f.name for f in sorted(out_dir.glob("*.png"))]
     (OUT / "output" / "latest.json").write_text(
         json.dumps({"date": data["date"], "cnDate": data["cnDate"], "dir": date,
-                    "files": [c + ".png" for c in
-                              [f.stem for f in sorted(out_dir.glob("*.png"))]]},
-                   ensure_ascii=False, indent=2), "utf-8")
+                    "files": files}, ensure_ascii=False, indent=2), "utf-8")
+    write_index(OUT)
 
     dedup.mark_seen(fresh)
     print(f"\n✅ 完成。卡片在 {out_dir}/，本地预览：python -m http.server 后打开 index.html")

@@ -1,51 +1,350 @@
 <!doctype html>
+<html lang="zh-CN">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>每日 Anthropic · 审核</title>
+<title>AI 前哨 · 每日 Anthropic</title>
 <style>
-  :root{--cream:#F1ECE0;--ink:#26221C;--clay:#C1572E;--soft:#5A5347;--line:#CFC6B2}
+  :root{
+    --cream:#F1ECE0;--paper:#FBF8F1;--ink:#26221C;--clay:#C1572E;
+    --soft:#7A7363;--line:#D8CFBC;
+    --h0:#E7DFCD;--h1:#E7C2A6;--h2:#D88E62;--h3:#C1572E;--h4:#9B3E1C;
+  }
   *{box-sizing:border-box;margin:0}
+  html{-webkit-text-size-adjust:100%}
   body{background:var(--cream);color:var(--ink);
-    font-family:"Noto Sans SC","Noto Sans CJK SC",system-ui,sans-serif;padding:20px;max-width:720px;margin:0 auto}
-  header{padding:14px 4px 22px;border-bottom:2px solid var(--line);margin-bottom:22px}
-  h1{font-family:"Noto Serif SC",serif;font-size:26px;letter-spacing:-.5px}
-  .meta{color:var(--soft);font-size:14px;margin-top:6px}
+    font-family:"Noto Sans SC","Noto Sans CJK SC",system-ui,sans-serif;
+    padding:24px 20px 64px;max-width:920px;margin:0 auto;line-height:1.5}
+  a{color:var(--clay)}
+  header{padding:6px 2px 20px;border-bottom:2px solid var(--line);margin-bottom:8px}
+  .brand{font-family:"DejaVu Sans Mono",monospace;font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--clay)}
+  h1{font-family:"Noto Serif SC",serif;font-size:30px;letter-spacing:-.5px;margin-top:4px}
+  .sub{color:var(--soft);font-size:14px;margin-top:8px}
+
+  /* 日期切换 */
+  .days{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
+  .day{font-family:"DejaVu Sans Mono",monospace;font-size:13px;cursor:pointer;
+    padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);
+    color:var(--soft);transition:.15s;user-select:none;white-space:nowrap}
+  .day:hover{border-color:var(--clay);color:var(--clay)}
+  .day.on{background:var(--clay);border-color:var(--clay);color:#fff}
+  .day .n{opacity:.7;margin-left:6px}
+  .day.on .n{opacity:.85}
+
+  .meta{color:var(--soft);font-size:13px;margin:14px 2px 4px;
+    font-family:"DejaVu Sans Mono",monospace}
   .group{font-family:"DejaVu Sans Mono",monospace;font-size:12px;letter-spacing:2px;
-    text-transform:uppercase;color:var(--clay);margin:26px 4px 12px}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .grid.wide{grid-template-columns:1fr}
-  figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,.06)}
-  figure img{display:block;width:100%;height:auto}
-  figcaption{font-size:12px;color:var(--soft);padding:8px 10px;font-family:"DejaVu Sans Mono",monospace}
+    text-transform:uppercase;color:var(--clay);margin:24px 2px 8px;
+    display:flex;align-items:center;gap:10px}
+  .group::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* 3D 轮播 */
+  .carousel{position:relative;height:430px;margin:6px 0 2px;perspective:1500px;
+    perspective-origin:50% 45%;touch-action:pan-y}
+  .stage{position:absolute;inset:0;transform-style:preserve-3d}
+  .card3d{--cw:250px;--ch:333px;position:absolute;top:50%;left:50%;
+    width:var(--cw);height:var(--ch);border-radius:14px;overflow:hidden;background:#fff;
+    border:1px solid var(--line);box-shadow:0 14px 34px rgba(0,0,0,.20);
+    transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .5s;
+    cursor:pointer;backface-visibility:hidden;will-change:transform}
+  .card3d img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .card3d .cap{position:absolute;left:0;right:0;bottom:0;padding:6px 9px;
+    font-family:"DejaVu Sans Mono",monospace;font-size:10px;color:#fff;
+    background:linear-gradient(transparent,rgba(0,0,0,.6));white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .card3d.active{box-shadow:0 22px 50px rgba(0,0,0,.32);cursor:zoom-in}
+  @media(max-width:640px){.card3d{--cw:200px;--ch:267px}.carousel{height:360px}}
+
+  .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:30;
+    width:40px;height:40px;border-radius:999px;border:1px solid var(--line);
+    background:var(--paper);color:var(--clay);font-size:22px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.12);
+    transition:.15s;user-select:none}
+  .nav:hover{background:var(--clay);color:#fff;border-color:var(--clay)}
+  .nav.prev{left:0}.nav.next{right:0}
+  .dots{display:flex;justify-content:center;gap:7px;margin-top:6px}
+  .dot{width:7px;height:7px;border-radius:999px;background:var(--line);cursor:pointer;transition:.15s}
+  .dot.on{background:var(--clay);transform:scale(1.3)}
+
+  /* 公众号 */
+  .gzh{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;margin-top:6px}
+  .gzh figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);cursor:zoom-in;flex:1 1 240px;max-width:380px;
+    transition:transform .15s,box-shadow .15s}
+  .gzh figure:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.12)}
+  .gzh img{display:block;width:100%;height:auto}
+  .gzh figcaption{font-size:11px;color:var(--soft);padding:7px 9px;
+    font-family:"DejaVu Sans Mono",monospace}
   .empty{color:var(--soft);padding:40px 4px}
-  .tip{margin-top:30px;padding:14px 16px;background:#E9E2D2;border-radius:10px;font-size:13px;color:var(--soft);line-height:1.6}
+
+  /* 热力图 */
+  .heat{margin-top:46px;padding-top:26px;border-top:2px solid var(--line)}
+  .heat-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .heat h2{font-family:"Noto Serif SC",serif;font-size:18px}
+  .heat-head .hint{color:var(--soft);font-size:13px}
+  .cal-wrap{overflow-x:auto;padding:16px 2px 4px}
+  .cal{display:inline-grid;grid-auto-flow:column;grid-template-rows:13px repeat(7,11px);
+    grid-auto-columns:11px;gap:3px;font-family:"DejaVu Sans Mono",monospace}
+  .cal .mon{font-size:10px;color:var(--soft);height:13px;line-height:13px;white-space:nowrap}
+  .cal .wd{font-size:9px;color:var(--soft);line-height:11px;text-align:right;
+    padding-right:5px;white-space:nowrap}
+  .cell{width:11px;height:11px;border-radius:2px;background:var(--h0);
+    outline:1px solid rgba(0,0,0,.04);outline-offset:-1px}
+  .cell.l1{background:var(--h1)}.cell.l2{background:var(--h2)}
+  .cell.l3{background:var(--h3)}.cell.l4{background:var(--h4)}
+  .cell.has{cursor:pointer}
+  .cell.sel{outline:2px solid var(--ink);outline-offset:1px}
+  .legend-row{display:flex;justify-content:space-between;align-items:center;
+    margin-top:10px;color:var(--soft);font-size:12px;font-family:"DejaVu Sans Mono",monospace}
+  .legend{display:flex;align-items:center;gap:6px}
+  .legend .cell{width:11px;height:11px}
+
+  #tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:#fff;
+    font-size:12px;padding:6px 9px;border-radius:7px;opacity:0;transform:translate(-50%,-100%);
+    transition:opacity .1s;white-space:nowrap;font-family:"DejaVu Sans Mono",monospace}
+
+  /* 灯箱 */
+  #box{position:fixed;inset:0;z-index:60;background:rgba(20,18,14,.88);
+    display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+  #box img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  footer{margin-top:40px;color:var(--soft);font-size:12px;text-align:center;
+    font-family:"DejaVu Sans Mono",monospace}
 </style>
+</head>
+<body>
 <header>
-  <h1>每日 Anthropic · 审核</h1>
-  <div class="meta" id="meta">加载中…</div>
+  <div class="brand">AI · FRONTIER · DAILY</div>
+  <h1>AI 前哨 · 每日 Anthropic</h1>
+  <div class="sub">每日采集 Anthropic 官方动态，自动生成小红书与公众号卡片。拖动或点击两侧翻看，点中间放大。</div>
 </header>
+
+<div class="days" id="days"></div>
+<div class="meta" id="meta"></div>
 <div id="app"></div>
-<div class="tip">审核通过后：长按或下载小红书 6 张竖图直接发笔记；公众号把封面与正文长图手动建草稿（或用 135/壹伴等已授权编辑器贴入草稿箱）。</div>
+
+<section class="heat" id="heat" hidden>
+  <div class="heat-head"><h2>采集热力图</h2><span class="hint" id="heatHint"></span></div>
+  <div class="cal-wrap"><div class="cal" id="cal"></div></div>
+  <div class="legend-row">
+    <span>点击单元格查看当天卡片</span>
+    <div class="legend">少 <span class="cell"></span><span class="cell l1"></span>
+      <span class="cell l2"></span><span class="cell l3"></span><span class="cell l4"></span> 多</div>
+  </div>
+</section>
+
+<div id="tip"></div>
+<div id="box"><img alt=""></div>
+<footer>由 ai-daily-digest skill 自动生成 · <a href="https://github.com/yinjialu/ai-frontier-daily">GitHub 仓库</a></footer>
 
 <script>
+const DAY_MS = 864e5;
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(2,"0");
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const parseISO = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
+
+let DAYS = [], byDate = {}, curDate = null;
+let car = null;   // 轮播状态 {cards, active, stage}
+
 (async function(){
-  const app = document.getElementById("app"), meta = document.getElementById("meta");
   try{
-    const latest = await (await fetch("output/latest.json?_="+Date.now())).json();
-    meta.textContent = `${latest.cnDate} · ${latest.files.length} 张素材 · 目录 output/${latest.dir}/`;
-    const xhs = latest.files.filter(f=>f.startsWith("小红书"));
-    const gzh = latest.files.filter(f=>f.startsWith("公众号"));
-    const sec = (title, files, wide)=>{
-      if(!files.length) return "";
-      return `<div class="group">${title}</div><div class="grid${wide?" wide":""}">`+
-        files.map(f=>`<figure><img loading="lazy" src="output/${latest.dir}/${encodeURIComponent(f)}"><figcaption>${f}</figcaption></figure>`).join("")+
-        `</div>`;
-    };
-    app.innerHTML = sec("小红书 · 1080×1440", xhs, false) + sec("微信公众号", gzh, true);
+    DAYS = (await fetchJSON("output/index.json")).days || [];
   }catch(e){
-    app.innerHTML = `<div class="empty">还没有可审核的素材。先运行 <code>python run.py</code> 生成，再用 <code>python -m http.server</code> 打开本页。</div>`;
-    meta.textContent = "";
+    try{
+      const l = await fetchJSON("output/latest.json");
+      DAYS = [{date:l.dir,dir:l.dir,cnDate:l.cnDate,count:l.files.length,files:l.files}];
+    }catch(_){ DAYS = []; }
   }
+  if(!DAYS.length){
+    $("#app").innerHTML = `<div class="empty">还没有发布的内容。运行 <code>python run.py</code> 生成后即会出现在这里。</div>`;
+    return;
+  }
+  DAYS.sort((a,b)=>a.date<b.date?-1:1);
+  byDate = Object.fromEntries(DAYS.map(d=>[d.date,d]));
+  renderDayNav();
+  selectDay(DAYS[DAYS.length-1].date);
+  renderHeatmap();
 })();
+
+async function fetchJSON(u){
+  const r = await fetch(u + "?_=" + Date.now());
+  if(!r.ok) throw new Error(u);
+  return r.json();
+}
+
+function renderDayNav(){
+  const wrap = $("#days");
+  wrap.innerHTML = DAYS.slice().reverse().map(d =>
+    `<span class="day" data-d="${d.date}">${d.cnDate||d.date}<span class="n">${d.count}</span></span>`
+  ).join("");
+  wrap.onclick = e => { const el = e.target.closest(".day"); if(el) selectDay(el.dataset.d); };
+}
+
+function selectDay(date){
+  const d = byDate[date]; if(!d) return;
+  curDate = date;
+  document.querySelectorAll(".day").forEach(el => el.classList.toggle("on", el.dataset.d===date));
+  document.querySelectorAll(".cell").forEach(el => el.classList.toggle("sel", el.dataset.d===date));
+  $("#meta").textContent = `${d.cnDate||d.date}${d.edition?" · "+d.edition:""} · 采集 ${d.count} 条 · 素材 ${d.files.length} 张`;
+
+  const src = f => `output/${d.dir}/${encodeURIComponent(f)}`;
+  const xhs = d.files.filter(f=>f.startsWith("小红书"));
+  const gzh = d.files.filter(f=>f.startsWith("公众号"));
+
+  let html = "";
+  if(xhs.length){
+    html += `<div class="group">小红书 · 1080×1440</div>`+
+      `<div class="carousel" id="carousel"><div class="stage" id="stage">`+
+      xhs.map((f,i)=>`<div class="card3d" data-i="${i}" data-src="${src(f)}">`+
+        `<img loading="lazy" src="${src(f)}"><div class="cap">${f}</div></div>`).join("")+
+      `</div><button class="nav prev" id="navPrev">‹</button>`+
+      `<button class="nav next" id="navNext">›</button></div>`+
+      `<div class="dots" id="dots">`+
+      xhs.map((_,i)=>`<span class="dot" data-i="${i}"></span>`).join("")+`</div>`;
+  }
+  if(gzh.length){
+    html += `<div class="group">微信公众号</div><div class="gzh">`+
+      gzh.map(f=>`<figure data-src="${src(f)}"><img loading="lazy" src="${src(f)}">`+
+        `<figcaption>${f}</figcaption></figure>`).join("")+`</div>`;
+  }
+  $("#app").innerHTML = html;
+  if(xhs.length) initCarousel(xhs.map(src));
+}
+
+/* ---- 3D 轮播 ---- */
+function initCarousel(srcs){
+  const stage = $("#stage");
+  car = { cards:[...stage.children], active:0, srcs };
+  layoutCarousel();
+
+  $("#navPrev").onclick = ()=> goCar(car.active-1);
+  $("#navNext").onclick = ()=> goCar(car.active+1);
+  $("#dots").onclick = e => { const t=e.target.closest(".dot"); if(t) goCar(+t.dataset.i); };
+
+  stage.onclick = e => {
+    const c = e.target.closest(".card3d"); if(!c) return;
+    const i = +c.dataset.i;
+    if(i===car.active) openBox(car.srcs[i]);   // 点中间 → 放大
+    else goCar(i);                              // 点两侧 → 转过去
+  };
+
+  // 触摸 / 拖拽滑动
+  let x0=null;
+  const down = e => { x0 = (e.touches?e.touches[0]:e).clientX; };
+  const up = e => {
+    if(x0===null) return;
+    const x1 = (e.changedTouches?e.changedTouches[0]:e).clientX;
+    if(Math.abs(x1-x0) > 40) goCar(car.active + (x1<x0?1:-1));
+    x0=null;
+  };
+  stage.addEventListener("touchstart", down, {passive:true});
+  stage.addEventListener("touchend", up);
+  stage.addEventListener("mousedown", down);
+  window.addEventListener("mouseup", up);
+}
+
+function goCar(i){
+  if(!car) return;
+  car.active = Math.max(0, Math.min(car.cards.length-1, i));
+  layoutCarousel();
+}
+
+function layoutCarousel(){
+  if(!car) return;
+  const stageW = $("#carousel").clientWidth || 600;
+  const spread = Math.min(170, stageW*0.27);
+  car.cards.forEach((el,i)=>{
+    const dd = i - car.active, ad = Math.abs(dd);
+    el.classList.toggle("active", dd===0);
+    if(ad>3){
+      el.style.opacity = 0; el.style.pointerEvents = "none";
+      el.style.transform = `translate(-50%,-50%) translateX(${dd*60}px) translateZ(-700px)`;
+      return;
+    }
+    el.style.opacity = 1 - ad*0.16;
+    el.style.pointerEvents = "auto";
+    el.style.zIndex = 20 - ad;
+    el.style.filter = ad ? `brightness(${1-ad*0.08})` : "none";
+    el.style.transform = `translate(-50%,-50%) translateX(${dd*spread}px) `+
+      `translateZ(${-ad*130}px) rotateY(${-dd*44}deg) scale(${1-ad*0.05})`;
+  });
+  document.querySelectorAll("#dots .dot").forEach((el,i)=>
+    el.classList.toggle("on", i===car.active));
+}
+
+/* ---- GitHub 风格热力图（过去一年） ---- */
+function renderHeatmap(){
+  const heat = $("#heat"), cal = $("#cal");
+  const today = parseISO(iso(new Date()));
+  let start = new Date(today); start.setDate(start.getDate()-364);
+  start.setDate(start.getDate()-start.getDay());           // 对齐到周日
+
+  const max = Math.max(1, ...DAYS.map(d=>d.count));
+  const level = c => c<=0?0 : c>=max?4 : Math.max(1,Math.ceil(c/max*4));
+  const months = "1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月".split(",");
+  const wd = ["","一","","三","","五",""];                 // 周日…周六，标 一/三/五
+
+  // 第一列：周几标签
+  let cols = [{label:true}];
+  let cur = new Date(start), lastMon = -1;
+  while(cur <= today){
+    let col = {mon:"", cells:[]};
+    if(cur.getMonth() !== lastMon){ col.mon = months[cur.getMonth()]; lastMon = cur.getMonth(); }
+    for(let r=0;r<7;r++){
+      const ds = iso(cur);
+      col.cells.push({ds, rec: byDate[ds], inRange: cur <= today});
+      cur.setDate(cur.getDate()+1);
+    }
+    cols.push(col);
+  }
+
+  cal.innerHTML = cols.map(c => {
+    if(c.label) return `<div class="mon"></div>` + wd.map(w=>`<div class="wd">${w}</div>`).join("");
+    return `<div class="mon">${c.mon}</div>` + c.cells.map(cell=>{
+      if(!cell.inRange) return `<div class="cell" style="visibility:hidden"></div>`;
+      const cnt = cell.rec ? cell.rec.count : 0;
+      return `<div class="cell l${level(cnt)}${cell.rec?" has":""}" data-d="${cell.ds}" data-c="${cnt}"></div>`;
+    }).join("");
+  }).join("");
+
+  const total = DAYS.reduce((s,d)=>s+d.count,0);
+  $("#heatHint").textContent = `共 ${DAYS.length} 天发布 · 累计采集 ${total} 条动态`;
+  heat.hidden = false;
+  if(curDate){ const c = cal.querySelector(`.cell[data-d="${curDate}"]`); if(c) c.classList.add("sel"); }
+
+  const tip = $("#tip");
+  cal.addEventListener("mousemove", e=>{
+    const c = e.target.closest(".cell");
+    if(!c || c.style.visibility==="hidden"){ tip.style.opacity=0; return; }
+    const rec = byDate[c.dataset.d];
+    tip.textContent = `${rec?rec.cnDate:c.dataset.d}：${c.dataset.c} 条`;
+    tip.style.left = e.clientX+"px"; tip.style.top = (e.clientY-12)+"px"; tip.style.opacity=1;
+  });
+  cal.addEventListener("mouseleave", ()=> tip.style.opacity=0);
+  cal.addEventListener("click", e=>{
+    const c = e.target.closest(".cell.has"); if(!c) return;
+    selectDay(c.dataset.d);
+    $("#app").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+}
+
+/* ---- 灯箱 + 键盘 ---- */
+const box = $("#box"), boxImg = box.querySelector("img");
+function openBox(src){ boxImg.src = src; box.style.display = "flex"; }
+function closeBox(){ box.style.display = "none"; boxImg.src = ""; }
+document.addEventListener("click", e=>{
+  const fig = e.target.closest(".gzh figure[data-src]");
+  if(fig) openBox(fig.dataset.src);
+});
+box.addEventListener("click", closeBox);
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape") return closeBox();
+  if(box.style.display==="flex") return;
+  if(e.key==="ArrowLeft" && car) goCar(car.active-1);
+  if(e.key==="ArrowRight" && car) goCar(car.active+1);
+});
+window.addEventListener("resize", layoutCarousel);
 </script>
+</body>
+</html>
