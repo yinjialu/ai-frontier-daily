@@ -3,3 +3,8 @@ seen.db
 node_modules/
 __pycache__/
 *.pyc
+
+# 本机推送产物（勿污染工作区，以免影响 git pull --ff-only）
+.tmp/
+.last_published
+output/*/公众号正文.md

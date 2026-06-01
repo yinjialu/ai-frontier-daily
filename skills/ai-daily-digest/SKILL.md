@@ -109,15 +109,25 @@ GitHub Pages 部署。
 - 小红书：无合规发布 API，下载竖图手动发笔记。
 - 公众号个人订阅号：草稿接口权限已回收，手动建草稿贴图，或用 135/壹伴等已授权
   编辑器导入草稿箱。
-- 公众号【已认证服务号】：可半自动推草稿箱（仍由人工群发）：
+- 公众号【已认证服务号】——「云端抓取 → 本机推送」半自动链路（仍由人工群发）：
+
+  云端（GitHub Actions，北京 09:00）只负责抓取+渲染+提交；推送草稿在本机完成，
+  复用本机的 `wechat-official-draft` skill（它管 token / 传图 / 建草稿）。
+
   ```bash
-  python publish_wechat.py                  # 用 output/latest.json 指向的当天
-  python publish_wechat.py data/<date>.json # 指定某天
+  scripts/publish-local.sh --dry-run   # 本地预览，不碰 API、不建草稿
+  scripts/publish-local.sh             # 拉取云端最新 → 转 Markdown → 推草稿箱
   ```
-  前置：`.env` 配 `WECHAT_APPID`/`WECHAT_SECRET`，并把运行机器公网 IP 加入公众平台
-  安全中心 IP 白名单（故须在本机/固定 IP 跑，CI runner 动态 IP 不可用）。脚本拿
-  access_token → 上传封面为永久素材 → 用结构化数据拼内联样式正文（正文长图 9.6MB
-  超过在文图片 1MB 限制，故走原生 HTML 文本）→ 建草稿，打印 media_id 后去后台核对群发。
+
+  链路：`git pull` → `to_wechat_md.py` 把 `data/<date>.json` 转成公众号 Markdown
+  （正文走纯文本，因小红书/正文长图 6–9MB 超在文图片 1MB 上限；封面单独作 cover）
+  → 调 `wechat-official-draft/scripts/push_draft.mjs --file .. --title .. --cover ..`
+  → `.last_published` 去重 → 系统通知。前置：该 skill 已配凭据
+  （`~/.config/wechat-official-draft/config.yaml`），且本机公网 IP 在公众号 IP 白名单。
+
+  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 09:30 跑上面的脚本）。
+  安装：`cp scripts/launchd-publish.plist ~/Library/LaunchAgents/ && launchctl load -w
+  ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist`。
 
 ## 扩展到更多厂商
 
