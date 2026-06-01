@@ -45,8 +45,9 @@ def main():
     out_dir = OUT / "output" / date
 
     title, content, tags = build(data)
-    # 配图：按文件名排序的小红书竖图（00 封面 → 99 结尾）
-    images = [str(p) for p in sorted(out_dir.glob("小红书_*.png"))]
+    # 配图：按文件名排序的小红书竖图（00 封面 → 99 结尾），jpg/png 皆可
+    images = [str(p) for p in sorted(out_dir.glob("小红书_*"))
+              if p.suffix.lower() in (".png", ".jpg", ".jpeg")]
 
     txt = (f"【标题】（≤20 字）\n{title}\n\n"
            f"【正文】\n{content}\n\n"

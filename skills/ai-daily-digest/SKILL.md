@@ -39,6 +39,9 @@ description: >-
    客观中文摘要（说清「变了什么 + 对用户意味着什么」，不夸张不编造），按重要性
    降序，最多 6 条。
 3. **写当天数据**到 `data/<YYYY-MM-DD>.json`，字段见下面 schema。
+   渲染默认输出 **JPEG**（移动端优先：1080×1440、`deviceScaleFactor:1`、质量 86，
+   单张约 100–300KB，低于公众号在文图片 1MB 上限，省去后压缩）。可用环境变量
+   `CARD_FORMAT=png|jpeg`、`CARD_QUALITY`、`CARD_SCALE` 覆盖。
 4. **渲染卡片**：
    ```bash
    node "$SKILL_DIR/render.js" data/<date>.json output/<date> --engine playwright
@@ -132,8 +135,9 @@ GitHub Pages 部署。
   scripts/publish-local.sh             # 拉取云端最新 → 转 Markdown → 推草稿箱
   ```
 
-  链路：`git pull` → `to_wechat_md.py` 把 `data/<date>.json` 转成公众号 Markdown
-  （正文走纯文本，因小红书/正文长图 6–9MB 超在文图片 1MB 上限；封面单独作 cover）
+  链路：`git pull` → `to_wechat_md.py` 把当天**小红书整套竖图**拼成图文 Markdown
+  （正文＝同一套图，不重新排版；卡片已是 JPEG 小图 ~100–300KB，低于在文图片 1MB 上限，
+  push_draft.mjs 逐张 uploadimg；封面缩略图用公众号封面）
   → 调 `wechat-official-draft/scripts/push_draft.mjs --file .. --title .. --cover ..`
   → `.last_published` 去重 → 系统通知。前置：该 skill 已配凭据
   （`~/.config/wechat-official-draft/config.yaml`），且本机公网 IP 在公众号 IP 白名单。

@@ -7,5 +7,5 @@ __pycache__/
 # 本机推送产物（勿污染工作区，以免影响 git pull --ff-only）
 .tmp/
 .last_published
-output/*/公众号正文.md
+output/*/公众号图文.md
 output/*/小红书文案.txt

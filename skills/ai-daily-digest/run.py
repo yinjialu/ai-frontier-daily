@@ -13,6 +13,10 @@ import collector, dedup, curator
 ROOT = Path(__file__).parent                                  # 脚本与字体/模板所在目录
 OUT = Path(os.environ.get("DIGEST_OUT") or os.getcwd())        # data/ 与 output/ 写到这里（默认当前目录）
 
+IMG_EXTS = (".png", ".jpg", ".jpeg")                          # 卡片可能是 png 或 jpg
+def _img_names(d):
+    return [p.name for p in sorted(d.glob("*")) if p.suffix.lower() in IMG_EXTS] if d.is_dir() else []
+
 def write_index(out: Path):
     """扫描 data/*.json 与 output/<date>/，生成 output/index.json：
     每天一条 {date, dir, cnDate, edition, count, files}，供展示页浏览与热力图使用。
@@ -25,7 +29,7 @@ def write_index(out: Path):
         except Exception:
             continue
         odir = out / "output" / date
-        files = [f.name for f in sorted(odir.glob("*.png"))] if odir.is_dir() else []
+        files = _img_names(odir)
         days.append({
             "date": date,
             "dir": date,
@@ -75,7 +79,7 @@ def main():
                    cwd=ROOT, check=True)
 
     print("[5/5] 更新展示页指针与索引…")
-    files = [f.name for f in sorted(out_dir.glob("*.png"))]
+    files = _img_names(out_dir)
     (OUT / "output" / "latest.json").write_text(
         json.dumps({"date": data["date"], "cnDate": data["cnDate"], "dir": date,
                     "files": files}, ensure_ascii=False, indent=2), "utf-8")
