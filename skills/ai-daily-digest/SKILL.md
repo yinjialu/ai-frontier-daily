@@ -109,6 +109,15 @@ GitHub Pages 部署。
 - 小红书：无合规发布 API，下载竖图手动发笔记。
 - 公众号个人订阅号：草稿接口权限已回收，手动建草稿贴图，或用 135/壹伴等已授权
   编辑器导入草稿箱。
+- 公众号【已认证服务号】：可半自动推草稿箱（仍由人工群发）：
+  ```bash
+  python publish_wechat.py                  # 用 output/latest.json 指向的当天
+  python publish_wechat.py data/<date>.json # 指定某天
+  ```
+  前置：`.env` 配 `WECHAT_APPID`/`WECHAT_SECRET`，并把运行机器公网 IP 加入公众平台
+  安全中心 IP 白名单（故须在本机/固定 IP 跑，CI runner 动态 IP 不可用）。脚本拿
+  access_token → 上传封面为永久素材 → 用结构化数据拼内联样式正文（正文长图 9.6MB
+  超过在文图片 1MB 限制，故走原生 HTML 文本）→ 建草稿，打印 media_id 后去后台核对群发。
 
 ## 扩展到更多厂商
 
