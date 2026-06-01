@@ -22,7 +22,11 @@ echo "[1/4] 拉取云端最新…"
 git pull --ff-only --quiet
 
 DATE="$(python3 -c "import json;print(json.load(open('output/latest.json'))['dir'])")"
+TODAY="$(date +%F)"
 MARK="$REPO/.last_published"
+if [ -z "$DRY" ] && [ "$DATE" != "$TODAY" ]; then
+  echo "云端尚未产出今天（$TODAY）的内容（latest=$DATE），跳过；稍后兜底再试。"; exit 0
+fi
 if [ -z "$DRY" ] && [ -f "$MARK" ] && [ "$(cat "$MARK")" = "$DATE" ]; then
   echo "今天（$DATE）已推送过草稿，跳过。"; exit 0
 fi

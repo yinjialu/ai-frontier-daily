@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 每日 09:30（北京时间）本机推送：拉取云端最新 → 公众号草稿箱。
+<!-- 每日 07:30（+08:30 兜底，北京时间）本机推送：拉取云端最新 → 公众号草稿箱。
+     云端 07:00 抓取渲染，本机 07:30 推送；若云端 cron 抖动未及时完成，08:30 再试一次
+     （配合 .last_published 去重，只会成功推一次）。
      安装：见 README / SKILL.md「云端抓取 → 本机推送」一节。
      此文件为参考副本；实际生效的是 ~/Library/LaunchAgents/ 下的同名文件。 -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -23,10 +25,16 @@
   </dict>
 
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key><integer>9</integer>
-    <key>Minute</key><integer>30</integer>
-  </dict>
+  <array>
+    <dict>
+      <key>Hour</key><integer>7</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Hour</key><integer>8</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+  </array>
 
   <key>RunAtLoad</key>
   <false/>

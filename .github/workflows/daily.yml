@@ -2,7 +2,7 @@ name: daily-anthropic-watch
 
 on:
   schedule:
-    - cron: "0 1 * * *"        # UTC 01:00 = 北京时间 09:00
+    - cron: "0 23 * * *"       # UTC 23:00 = 北京时间次日 07:00（中国无夏令时，全年稳定）
   workflow_dispatch: {}          # 支持在 Actions 页手动触发
 
 permissions:
