@@ -18,8 +18,10 @@ vendors:
       - name: anthropics GitHub Releases
         url: https://github.com/anthropics/claude-agent-sdk-typescript/releases.atom
         limit: 10
-    # webfetch（日常 Claude 驱动用，CI feedparser 抓不了）：
-    #   - {name: Anthropic News, url: https://www.anthropic.com/news}
+    webfetch:
+      # 主站 news 页 JS 渲染、CI feedparser 抓不了，但 Claude 驱动（routine）可 WebFetch。
+      - name: Anthropic News
+        url: https://www.anthropic.com/news
 
   openai:
     # 好消息：OpenAI 官方提供可用 RSS（/blog/rss.xml 与 /news/rss.xml 是同一个 feed），

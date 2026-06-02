@@ -98,11 +98,13 @@ python run.py --live                # 真实：抓 sources.yaml 的 RSS + 调 Cl
 python run.py --force               # 忽略去重强制处理
 python run.py --engine playwright   # 字体保真渲染（生产推荐）
 python run.py --reindex             # 仅重建 latest.json + index.json（扫描所有厂商）
+python run.py --vendors             # 打印厂商清单 JSON [{id,name,brand,sources}]（routine/CI 自适应遍历用）
 ```
 
 - 去重 `seen.db`（SQLite，指纹按 `vendor|归一化标题`）写到 `DIGEST_OUT`，各厂商互不干扰，每天只推增量。
 - live 摘要在 `curator.py` 调 Claude API（system prompt 随 vendor 切换）；mock 用离线启发式。
-- CI（`.github/workflows/daily.yml`）每天先后跑 anthropic、openai 两轨，再一次性提交。
+- CI（`.github/workflows/daily.yml`）每天循环跑所有厂商（`for v in $(run.py --vendors …)`），再一次性提交；
+  新增厂商自动覆盖。CCR 每日 routine 同样自适应。
 
 ## 文件结构
 
@@ -180,8 +182,8 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
 
 ## 扩展到更多厂商
 
-**完整步骤见 [`ADD_VENDOR.md`](ADD_VENDOR.md)**（含调研信息源、配色、产出首期、验证、CI 的逐步 runbook，
-附 Gemini / 英伟达候选配置）。速览——改动集中在 5 个文件 + 1 个 CI，渲染器 render.js 无需动：
+**完整步骤见 [`ADD_VENDOR.md`](ADD_VENDOR.md)**（含调研信息源、配色、产出首期、验证的逐步 runbook，
+附 Gemini / 英伟达候选配置）。速览——改动集中在 5 个文件；**云端定时与渲染器无需改**：
 
 1. `sources.yaml`：在 `vendors.<新id>` 下加 `rss`/`webfetch` 源（先 `curl -sI` / WebFetch 实测）。
 2. `cards.js`：在 `VENDORS` 注册表加一项（name/daily/label）。
@@ -190,7 +192,8 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
    （页面强调色 + 热力图梯度）。**易漏**：缺了 Tab 选中态没色、页面 chrome 不换色。
 5. `curator.py`：在 `VENDOR_META` 加品牌名/brand/结尾文案；发布脚本（to_xhs_post/to_wechat_md/
    publish_wechat_newspic）的 `VENDOR_NAME`/标签按需补。
-6. `.github/workflows/daily.yml`：加一条 `--vendor <新id>` 步骤。
+6. **云端定时无需改**：CCR 每日 routine 与 `daily.yml` 都自适应——跑 `run.py --vendors` 读出厂商清单
+   再遍历；只要新厂商在 `curator.py` `VENDOR_META` + `sources.yaml` 登记好即可被自动带上。
 
-展示页 Tab 的**显示名与顺序**仍自动派生（名字取 `cards.js` 的 `VENDORS.name`、顺序按其定义序），
-只有上面第 4 步的**颜色**需手加。
+展示页 Tab 的**显示名与顺序**也自动派生（名字取 `cards.js` 的 `VENDORS.name`、顺序按其定义序）；
+只有上面第 4 步的**颜色**需手加。`run.py --vendors` 可本地自测厂商清单与各家源 URL。

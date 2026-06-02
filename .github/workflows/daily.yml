@@ -29,29 +29,21 @@ jobs:
           npm i playwright
           npx playwright install --with-deps chromium
 
-      - name: Run pipeline (live · anthropic)
+      - name: Run pipeline (live · all vendors)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # 在仓库 Settings → Secrets 配置
           DIGEST_OUT: ${{ github.workspace }}                   # data/ output/ 提交到仓库根
-        run: python skills/ai-daily-digest/run.py --live --vendor anthropic --engine playwright
-
-      - name: Run pipeline (live · openai)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # 摘要策展仍用 Claude；OpenAI 源是官方 RSS
-          DIGEST_OUT: ${{ github.workspace }}
-        run: python skills/ai-daily-digest/run.py --live --vendor openai --engine playwright
-
-      - name: Run pipeline (live · gemini)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          DIGEST_OUT: ${{ github.workspace }}
-        run: python skills/ai-daily-digest/run.py --live --vendor gemini --engine playwright
-
-      - name: Run pipeline (live · nvidia)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          DIGEST_OUT: ${{ github.workspace }}
-        run: python skills/ai-daily-digest/run.py --live --vendor nvidia --engine playwright
+        run: |
+          # 自适应：厂商列表从 run.py --vendors 读取，新增厂商后无需改本文件
+          vendors=$(python skills/ai-daily-digest/run.py --vendors \
+            | python -c "import sys,json;print(' '.join(x['id'] for x in json.load(sys.stdin)))")
+          echo "vendors: $vendors"
+          for v in $vendors; do
+            echo "::group::vendor $v"
+            python skills/ai-daily-digest/run.py --live --vendor "$v" --engine playwright \
+              || echo "vendor $v 失败，跳过继续"
+            echo "::endgroup::"
+          done
 
       - name: Commit & push results
         run: |

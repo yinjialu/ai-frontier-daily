@@ -1,8 +1,9 @@
 # 新增一个厂商（vendor）Runbook
 
-把一个 AI 大厂接进来 = 一条独立轨道。照下面几步走，改动**集中在 5 个文件 + 1 个 CI**
-（`sources.yaml` / `cards.js` / `cards.css` / `index.html` 两处颜色 / `curator.py` + 发布脚本 + `daily.yml`），
-渲染器 render.js 厂商无关、无需动。本文以加 OpenAI 的真实过程提炼；加 Gemini / 英伟达照搬即可（文末附两者候选配置）。
+把一个 AI 大厂接进来 = 一条独立轨道。照下面几步走，改动**集中在 5 个文件**
+（`sources.yaml` / `cards.js` / `cards.css` / `index.html` 两处颜色 / `curator.py`，发布脚本仅发布时需）。
+**云端定时（CCR routine + GitHub Actions）和渲染器 render.js 都无需改**——定时已自适应（读 `run.py --vendors`）。
+本文以加 OpenAI 的真实过程提炼；加 Gemini / 英伟达照搬即可（文末附两者候选配置）。
 
 > 约定：`<id>` = 厂商小写英文 id（`openai`/`gemini`/`nvidia`…），全流程用 `--vendor <id>` 串联。
 > 数据/产物落在 `data/<id>/<date>.json`、`output/<id>/<date>/*.jpg`、`output/<id>/latest.json`。
@@ -175,19 +176,20 @@ python3 -m http.server 8000   # 打开 http://localhost:8000/index.html
 
 ---
 
-## Step 8 · CI（`.github/workflows/daily.yml`）加一条轨道
+## Step 8 · 云端定时：**无需改（自适应）**
 
-在已有 anthropic / openai 后面加：
+两条云端路径都已自适应——它们用 `python3 run.py --vendors` 动态读出厂商清单再遍历，
+**新增厂商后不用动它们**，下次跑自动带上：
 
-```yaml
-      - name: Run pipeline (live · <id>)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          DIGEST_OUT: ${{ github.workspace }}
-        run: python skills/ai-daily-digest/run.py --live --vendor <id> --engine playwright
+- **CCR 每日 routine**（北京 07:00，真正在跑的那条）：prompt 第 2 步跑 `--vendors` 拿清单逐家处理。
+- **GitHub Actions** `daily.yml`：用一个循环步 `for v in $(... --vendors ...)` 跑各家（当前因未配
+  `ANTHROPIC_API_KEY` secret 而不活跃）。
+
+只要保证新厂商在 `curator.py` 的 `VENDOR_META`（决定 `--vendors` 清单）+ `sources.yaml`（决定其源 URL）
+里都登记了即可。`run.py --vendors` 可本地自测：
+```bash
+python3 skills/ai-daily-digest/run.py --vendors   # 应能看到新厂商及其 sources
 ```
-
-（commit & push 那步不用改，`git add -A data output` 已覆盖所有厂商。）
 
 ---
 
@@ -201,8 +203,12 @@ python3 -m http.server 8000   # 打开 http://localhost:8000/index.html
 | `curator.py` | `VENDOR_META` 品牌/结尾文案 |
 | `index.html` | **两处颜色**（Step 3.5）：`.vtab[data-v="<id>"]{--vc}` + `body.v-<id>{--clay/--soft/--line/--h0..h4}`。Tab 名/顺序自动派生不用改 |
 | `to_xhs_post.py` / `to_wechat_md.py` / `publish_wechat_newspic.py` | 显示名/标签（仅发布才需） |
-| `.github/workflows/daily.yml` | 加一条 `--vendor <id>` 步骤 |
+| `.github/workflows/daily.yml` | **无需改**（循环步自适应读 `--vendors`） |
+| 云端 CCR routine | **无需改**（prompt 自适应读 `--vendors`） |
 | `render.js` | **无需改** |
+
+> 自适应关键：`curator.py` 的 `VENDOR_META` 是 `run.py --vendors` 清单的真源，`sources.yaml` 提供各家源 URL。
+> 这俩登记好，routine 与 CI 自动覆盖新厂商，无需碰定时配置。
 
 ---
 

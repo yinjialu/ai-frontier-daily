@@ -67,6 +67,25 @@ def write_index(out: Path):
     return idx
 
 
+def list_vendors():
+    """打印 vendor 清单 JSON（供 routine/CI 自适应遍历，新增厂商后自动出现）：
+    [{id, name, brand, sources:[抓取 URL]}]。清单来源 = curator.VENDOR_META（纯 Python，
+    无依赖必可用）；各家源 URL 来自 sources.yaml（需 pyyaml，缺失则 sources 为空，调用方自行读 yaml）。"""
+    import curator
+    srcmap = {}
+    try:
+        import yaml
+        cfg = yaml.safe_load((ROOT / "sources.yaml").read_text("utf-8"))
+        for vid, vcfg in (cfg.get("vendors") or {}).items():
+            srcmap[vid] = ([s["url"] for s in (vcfg.get("rss") or [])] +
+                           [s["url"] for s in (vcfg.get("webfetch") or [])])
+    except Exception:
+        pass
+    out = [{"id": vid, "name": m["name"], "brand": m["brand"], "sources": srcmap.get(vid, [])}
+           for vid, m in curator.VENDOR_META.items()]
+    print(json.dumps(out, ensure_ascii=False, indent=2))
+
+
 def reindex(out: Path):
     """仅重建展示页数据：各厂商 latest.json + 汇总 index.json（jpg 感知）。
     供 Claude 驱动路径（自己写 data + 渲染）收尾调用：python run.py --reindex"""
@@ -76,6 +95,8 @@ def reindex(out: Path):
 
 
 def main():
+    if "--vendors" in sys.argv:
+        list_vendors(); return
     if "--reindex" in sys.argv:
         reindex(OUT); return
     mock = "--live" not in sys.argv
