@@ -127,22 +127,23 @@ GitHub Pages 部署。
   编辑器导入草稿箱。
 - 公众号【已认证服务号】——「云端抓取 → 本机推送」半自动链路（仍由人工群发）：
 
-  云端（GitHub Actions，北京 09:00）只负责抓取+渲染+提交；推送草稿在本机完成，
-  复用本机的 `wechat-official-draft` skill（它管 token / 传图 / 建草稿）。
+  云端（北京 07:00 routine）只负责抓取+渲染+提交；推送草稿在本机完成。
 
   ```bash
-  scripts/publish-local.sh --dry-run   # 本地预览，不碰 API、不建草稿
-  scripts/publish-local.sh             # 拉取云端最新 → 转 Markdown → 推草稿箱
+  scripts/publish-local.sh --dry-run   # 打印将提交的结构，不碰 API
+  scripts/publish-local.sh             # 拉取云端最新 → 创建贴图草稿
   ```
 
-  链路：`git pull` → `to_wechat_md.py` 把当天**小红书整套竖图**拼成图文 Markdown
-  （正文＝同一套图，不重新排版；卡片已是 JPEG 小图 ~100–300KB，低于在文图片 1MB 上限，
-  push_draft.mjs 逐张 uploadimg；封面缩略图用公众号封面）
-  → 调 `wechat-official-draft/scripts/push_draft.mjs --file .. --title .. --cover ..`
-  → `.last_published` 去重 → 系统通知。前置：该 skill 已配凭据
-  （`~/.config/wechat-official-draft/config.yaml`），且本机公网 IP 在公众号 IP 白名单。
+  **默认形态＝贴图（newspic / 图片消息）**：`git pull` → `publish_wechat_newspic.py`
+  把当天小红书整套卡片传为永久素材 → `draft/add(article_type=newspic, image_info)` 建贴图
+  草稿（公众号原生图片帖，更贴合卡片）→ `.last_published` 去重 → 系统通知。配文由结构化
+  数据自动生成（标题 + 每条摘要）。凭据 `~/.config/wechat-official-draft/config.yaml`，
+  本机公网 IP 须在公众号 IP 白名单，且需已认证服务号。
 
-  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 09:30 跑上面的脚本）。
+  另一形态（可选，手动）＝图文文章（news，内嵌同一套图）：
+  `to_wechat_md.py` → `wechat-official-draft/scripts/push_draft.mjs --file .. --cover ..`。
+
+  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 07:30 + 08:30 跑上面的脚本）。
   安装：`cp scripts/launchd-publish.plist ~/Library/LaunchAgents/ && launchctl load -w
   ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist`。
 
