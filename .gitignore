@@ -13,3 +13,7 @@ output/**/公众号图文.md
 output/**/公众号贴图.md
 # 本机预览辅助（端口/命令因机器而异）
 .claude/launch.json
+
+# macOS 垃圾文件
+.DS_Store
+**/.DS_Store
