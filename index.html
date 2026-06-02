@@ -26,6 +26,7 @@
     --h0:#E8ECDD;--h1:#CFE3A8;--h2:#A4D65E;--h3:#76B900;--h4:#5E9400;
   }
   html{-webkit-text-size-adjust:100%}
+  html,body{overflow-x:hidden;width:100%}
   body{background:var(--cream);color:var(--ink);
     font-family:"Noto Sans SC","Noto Sans CJK SC",system-ui,sans-serif;
     padding:24px 20px 64px;max-width:920px;margin:0 auto;line-height:1.5}
@@ -37,7 +38,7 @@
   .sub{color:var(--soft);font-size:14px;margin-top:8px}
 
   /* 厂商切换 */
-  .vendors{display:flex;gap:10px;margin:18px 0 4px}
+  .vendors{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
   .vtab{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:13px;letter-spacing:1px;
     cursor:pointer;padding:8px 18px;border:1px solid var(--line);border-radius:999px;
     background:var(--paper);color:var(--soft);transition:.15s;user-select:none;display:flex;align-items:center;gap:7px}
@@ -64,7 +65,7 @@
 
   /* 3D 轮播 */
   .carousel{position:relative;height:440px;margin:14px 0 2px;perspective:1600px;
-    perspective-origin:50% 45%;touch-action:pan-y}
+    perspective-origin:50% 45%;touch-action:pan-y;overflow:hidden}
   .stage{position:absolute;inset:0;transform-style:preserve-3d}
   .card3d{--cw:268;position:absolute;top:50%;left:50%;
     width:calc(var(--cw)*1px);height:calc(var(--cw)*1px*4/3);
@@ -75,7 +76,12 @@
   .card3d .deckcard{position:absolute;top:0;left:0;width:1080px;height:1440px;
     transform:scale(calc(var(--cw)/1080));transform-origin:top left;pointer-events:none}
   .card3d.active{box-shadow:0 22px 52px rgba(0,0,0,.34);cursor:zoom-in}
-  @media(max-width:640px){.card3d{--cw:210}.carousel{height:360px}}
+  @media(max-width:640px){
+    body{padding:20px 12px 56px}
+    .card3d{--cw:286}.carousel{height:440px}
+    h1{font-size:26px}
+  }
+  @media(max-width:380px){ .card3d{--cw:260}.carousel{height:404px} }
 
   .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:30;
     width:40px;height:40px;border-radius:999px;border:1px solid var(--line);
