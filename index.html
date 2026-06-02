@@ -177,8 +177,13 @@ const dataCache = {};           // "vendor|date" -> data.json
     return;
   }
   ALL.sort((a,b)=> a.date<b.date?-1:1);
-  const present = idx.vendors && idx.vendors.length ? idx.vendors
-                : [...new Set(ALL.map(d=>d.vendor))];
+  // Tab 顺序跟随 cards.js 的 VENDORS 注册表定义顺序（Anthropic→OpenAI→Gemini→NVIDIA）；
+  // 注册表里没有的厂商按字母序排到最后。
+  const order = Object.keys((window.Cards && window.Cards.VENDORS) || {});
+  const rank = v => { const i = order.indexOf(v); return i < 0 ? 99 : i; };
+  const present = (idx.vendors && idx.vendors.length ? idx.vendors
+                : [...new Set(ALL.map(d=>d.vendor))])
+                .slice().sort((a,b)=> rank(a)-rank(b) || (a<b?-1:1));
   curVendor = ALL[ALL.length-1].vendor;          // 默认选最新一天所属厂商
   renderVendorTabs(present);
   await applyVendor(curVendor);
