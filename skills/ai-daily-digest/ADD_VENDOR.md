@@ -1,8 +1,8 @@
 # 新增一个厂商（vendor）Runbook
 
-把一个 AI 大厂接进来 = 一条独立轨道。照下面 8 步走，全程改动**集中在 4 个文件 + 1 个 CI**，
-其余（渲染器 render.js、展示页 index.html 主体、各发布脚本主体）厂商无关、无需动。
-本文以加 OpenAI 的真实过程提炼；加 Gemini / 英伟达照搬即可（文末附两者候选配置）。
+把一个 AI 大厂接进来 = 一条独立轨道。照下面几步走，改动**集中在 5 个文件 + 1 个 CI**
+（`sources.yaml` / `cards.js` / `cards.css` / `index.html` 两处颜色 / `curator.py` + 发布脚本 + `daily.yml`），
+渲染器 render.js 厂商无关、无需动。本文以加 OpenAI 的真实过程提炼；加 Gemini / 英伟达照搬即可（文末附两者候选配置）。
 
 > 约定：`<id>` = 厂商小写英文 id（`openai`/`gemini`/`nvidia`…），全流程用 `--vendor <id>` 串联。
 > 数据/产物落在 `data/<id>/<date>.json`、`output/<id>/<date>/*.jpg`、`output/<id>/latest.json`。
@@ -92,6 +92,31 @@ curl -sI "https://github.com/<org>/<repo>/releases.atom" | head -1
 
 ---
 
+## Step 3.5 · `index.html`：加页面 chrome 主题 + Tab 强调色（**易漏！**）
+
+cards.css 只管「卡片」配色；**展示页本身（Tab、日期条、热力图）是另一套页面 token，必须在
+`index.html` 的 `<style>` 里单独为新厂商加两处**，否则：Tab 选中态背景取空（无色）、切到该厂商时
+页面强调色/热力图仍是上一家的色。
+
+1. **Tab 强调色** `--vc`（选中态背景、hover 文字色都用它）：
+   ```css
+   .vtab[data-v="<id>"]{--vc:#......}   /* 用品牌色深一档，保证白字在按钮上可读 */
+   ```
+2. **页面 chrome 主题** `body.v-<id>`（页面强调色 `--clay` + 热力图 5 档梯度 `--h0..--h4`）：
+   ```css
+   body.v-<id>{
+     --clay:#......;--soft:#......;--line:#......;
+     --h0:#......;--h1:#......;--h2:#......;--h3:#......;--h4:#......;   /* 浅→深 5 档 */
+   }
+   ```
+   `--clay` 取品牌主色（深底页面仍是浅色 chrome，故用深一档保证对比）；`--h3` ≈ 品牌主色，`--h0` 最浅。
+   Anthropic 是默认 `:root`，无需加 `body.v-anthropic`。
+
+> 显示名（Tab 文案）不在这里：它从 `cards.js` 的 `VENDORS.name` 自动派生；Tab **顺序**也跟 `VENDORS` 定义序。
+> 只有上面这两处**颜色**需要手加。
+
+---
+
 ## Step 4 · `curator.py`：在 `VENDOR_META` 加品牌文案
 
 ```python
@@ -174,9 +199,9 @@ python3 -m http.server 8000   # 打开 http://localhost:8000/index.html
 | `cards.js` | `VENDORS` 加一项（驱动文案 + 展示页 Tab 名） |
 | `cards.css` | `.v-<id>` 主题块（+ 深底加 screen 行） |
 | `curator.py` | `VENDOR_META` 品牌/结尾文案 |
+| `index.html` | **两处颜色**（Step 3.5）：`.vtab[data-v="<id>"]{--vc}` + `body.v-<id>{--clay/--soft/--line/--h0..h4}`。Tab 名/顺序自动派生不用改 |
 | `to_xhs_post.py` / `to_wechat_md.py` / `publish_wechat_newspic.py` | 显示名/标签（仅发布才需） |
 | `.github/workflows/daily.yml` | 加一条 `--vendor <id>` 步骤 |
-| `index.html` | **无需改**（Tab 名从 cards.js 派生） |
 | `render.js` | **无需改** |
 
 ---

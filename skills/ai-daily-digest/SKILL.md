@@ -181,14 +181,16 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
 ## 扩展到更多厂商
 
 **完整步骤见 [`ADD_VENDOR.md`](ADD_VENDOR.md)**（含调研信息源、配色、产出首期、验证、CI 的逐步 runbook，
-附 Gemini / 英伟达候选配置）。速览——改动集中在 4 个文件 + 1 个 CI，渲染器和展示页主体无需动：
+附 Gemini / 英伟达候选配置）。速览——改动集中在 5 个文件 + 1 个 CI，渲染器 render.js 无需动：
 
 1. `sources.yaml`：在 `vendors.<新id>` 下加 `rss`/`webfetch` 源（先 `curl -sI` / WebFetch 实测）。
 2. `cards.js`：在 `VENDORS` 注册表加一项（name/daily/label）。
 3. `cards.css`：加一个 `.v-<新id>` 主题块覆盖语义 token（深底主题记得加 `.v-<id>.card::after{screen}`）。
-4. `curator.py`：在 `VENDOR_META` 加品牌名/brand/结尾文案；发布脚本（to_xhs_post/to_wechat_md/
+4. `index.html`：加**两处颜色**——`.vtab[data-v="<id>"]{--vc}`（Tab 选中色）+ `body.v-<id>{...--clay/--h0..h4}`
+   （页面强调色 + 热力图梯度）。**易漏**：缺了 Tab 选中态没色、页面 chrome 不换色。
+5. `curator.py`：在 `VENDOR_META` 加品牌名/brand/结尾文案；发布脚本（to_xhs_post/to_wechat_md/
    publish_wechat_newspic）的 `VENDOR_NAME`/标签按需补。
-5. `.github/workflows/daily.yml`：加一条 `--vendor <新id>` 步骤。
+6. `.github/workflows/daily.yml`：加一条 `--vendor <新id>` 步骤。
 
-展示页 `index.html` **完全无需改**：Tab 列表从 `output/index.json` 读出、显示名从 `cards.js` 的
-`VENDORS` 自动派生。
+展示页 Tab 的**显示名与顺序**仍自动派生（名字取 `cards.js` 的 `VENDORS.name`、顺序按其定义序），
+只有上面第 4 步的**颜色**需手加。
