@@ -1,0 +1,14 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.03",
+  "cnDate": "6月3日 周三",
+  "edition": "VOL.154",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {"tag": "安全", "title": "Project Glasswing 扩容，联合大厂推进软件安全", "summary": "Anthropic 扩展软件安全计划 Project Glasswing，联合多家大型科技公司推进关键软件的安全。把 AI 用于代码与系统安全审查的协作进一步规模化，面向企业级防护，是其安全方向的落地动作。", "source": "anthropic.com"},
+    {"tag": "企业", "title": "完成 Series H 轮融资，约 650 亿美元", "summary": "Anthropic 完成 Series H 轮融资，募资约 650 亿美元、投后估值约 9650 亿美元。巨额弹药主要用于算力扩张与模型研发，与此前曝光的上市进程形成资金侧呼应。", "source": "anthropic.com"}
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

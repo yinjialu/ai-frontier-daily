@@ -1,0 +1,18 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.03",
+  "cnDate": "6月3日 周三",
+  "edition": "VOL.154",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {"tag": "开发者", "title": "Codex 扩到全角色：新增插件与标注", "summary": "OpenAI 为 Codex 推出插件与标注能力，把代码智能体从工程师扩展到分析、营销、设计、投资等角色。Codex 正从写代码走向通用工作流自动化，覆盖更多岗位的日常任务。", "source": "openai.com"},
+    {"tag": "企业", "title": "Travelers 全美上线 OpenAI 智能理赔助手", "summary": "保险巨头 Travelers 基于 OpenAI 构建 AI 理赔助手，全美铺开、7×24 引导客户在线报案。大型保险公司把对话式 AI 推进到核心理赔流程，是金融保险落地的典型案例。", "source": "openai.com"},
+    {"tag": "研究", "title": "波士顿儿童医院用 OpenAI 攻克 40+ 罕见病诊断", "summary": "Boston Children's 用 OpenAI 技术辅助诊断超 40 例罕见病。展示大模型在医疗推理与文献综合上的价值，把 AI 从辅助问诊推进到疑难病例的诊断支持。", "source": "openai.com"},
+    {"tag": "安全", "title": "推出 Rosalind Biodefense，扩大生物防御合作", "summary": "OpenAI 推出 Rosalind Biodefense，向生物防御合作方扩大 GPT-Rosalind 的访问。在强化前沿模型生物安全管控的同时，定向开放给防御用途，平衡能力释放与风险。", "source": "openai.com"},
+    {"tag": "政策", "title": "倡议全球青少年 AI 安全，提议设国际机构", "summary": "OpenAI 呼吁就青少年 AI 安全采取全球行动，并提议成立一个国际保障机构。把未成年人保护提到全球治理层面，对关注合规与青少年产品的从业者是政策风向信号。", "source": "openai.com"},
+    {"tag": "开发者", "title": "「知识工作新纪元」报告：Codex 重塑生产力", "summary": "OpenAI 发布报告，论述 Codex 如何通过 AI 研究与自动化重塑知识工作的生产力。给出 Codex 在真实岗位中提效的范式与场景，可作为团队评估引入 Codex 的参考。", "source": "openai.com"}
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

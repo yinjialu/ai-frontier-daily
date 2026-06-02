@@ -1,0 +1,17 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.03",
+  "cnDate": "6月3日 周三",
+  "edition": "VOL.154",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {"tag": "模型发布", "title": "Gemini 3.1 Flash-Lite 转正(GA)", "summary": "Google 将 gemini-3.1-flash-lite 转为正式版(GA)，主打速度、规模与成本效率。轻量档稳定可用，适合高并发、低成本的线上场景，给开发者更经济的 Gemini 选项。", "source": "ai.google.dev"},
+    {"tag": "开发者", "title": "Interactions API 结构变更，旧版 6/8 移除", "summary": "Gemini Interactions API 调整 schema（outputs 改为 steps），旧结构将于 6 月 8 日移除。这是破坏性变更，正在调用该接口的开发者需尽快迁移以免服务中断。", "source": "ai.google.dev"},
+    {"tag": "开发者", "title": "File Search 支持多模态，可检索图像", "summary": "Gemini File Search 新增多模态能力，可用 gemini-embedding-2 对图像做嵌入与检索。RAG 从纯文本扩到图像，构建图文混合知识库的开发者可直接受益。", "source": "ai.google.dev"},
+    {"tag": "开发者", "title": "Batch API 与长任务新增事件驱动 webhook", "summary": "Gemini 为 Batch API 与长时运行任务加入事件驱动的 webhook 支持。任务完成可主动回调，省去轮询，便于把大批量/长耗时推理接进事件化的工程流水线。", "source": "ai.google.dev"},
+    {"tag": "生态", "title": "Google 用 Gemini 打造 I/O 2026", "summary": "Google 复盘了如何用 Gemini 制作 I/O 2026 大会内容。作为自家旗舰活动的 AI 生产实践，既是能力展示，也给企业用生成式 AI 做内容生产提供了参考样板。", "source": "blog.google"}
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
