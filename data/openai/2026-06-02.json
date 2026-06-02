@@ -1,0 +1,48 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.02",
+  "cnDate": "6月2日 周二",
+  "edition": "VOL.153",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "OpenAI 前沿模型与 Codex 在 AWS 全面可用",
+      "summary": "OpenAI 宣布前沿模型与代码智能体 Codex 在 AWS 正式 GA，企业无需切换云厂商即可在自有 AWS 环境调用，降低接入与合规门槛，标志其多云分发战略落地。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "生态",
+      "title": "Stargate 扩张：密歇根 1GW 数据中心动工",
+      "summary": "OpenAI 在密歇根破土兴建 1GW 级数据中心，作为 Stargate 算力计划一环。超大规模自建基建意在缓解训练与推理瓶颈，为更大模型与更低 API 价格铺路。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Braintrust 用 Codex + GPT-5.5 加速工程",
+      "summary": "案例显示 Braintrust 工程团队以 Codex 搭配 GPT-5.5 加速实验与编码工作流，透露 GPT-5.5 已用于生产级编码场景，Codex 正从补全走向自动化研发协作。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "安全",
+      "title": "OpenAI 发布前沿治理框架 Frontier Governance Framework",
+      "summary": "框架阐明 OpenAI 的安全、安保与风险实践如何对齐 EU AI 法案与加州新规，把内部风险流程显性化，可作为企业评估其合规能力的参考。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "政策",
+      "title": "OpenAI 系统阐述 AI 政策与政治倡导立场",
+      "summary": "OpenAI 发文说明其监管态度：支持「有思考的监管」、强调透明度与 AI 安全，并公开政治倡导原则。对关注合规的从业者是了解其游说方向的一手信号。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "企业",
+      "title": "MUFG 借 ChatGPT Enterprise 转型 AI-native",
+      "summary": "日本三菱日联金融集团部署 ChatGPT Enterprise，搭建 AI-native 工作流并交付 AI 金融服务，显示大型金融机构正把通用对话模型推进到核心业务流程。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -5,7 +5,11 @@ __pycache__/
 *.pyc
 
 # 本机推送产物（勿污染工作区，以免影响 git pull --ff-only）
+# .last_published* 含按厂商命名的 .last_published.<vendor>
 .tmp/
-.last_published
-output/*/公众号图文.md
-output/*/小红书文案.txt
+.last_published*
+output/**/小红书文案.txt
+output/**/公众号图文.md
+output/**/公众号贴图.md
+# 本机预览辅助（端口/命令因机器而异）
+.claude/launch.json

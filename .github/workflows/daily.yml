@@ -1,4 +1,4 @@
-name: daily-anthropic-watch
+name: daily-ai-watch
 
 on:
   schedule:
@@ -29,11 +29,17 @@ jobs:
           npm i playwright
           npx playwright install --with-deps chromium
 
-      - name: Run pipeline (live)
+      - name: Run pipeline (live · anthropic)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # 在仓库 Settings → Secrets 配置
           DIGEST_OUT: ${{ github.workspace }}                   # data/ output/ 提交到仓库根
-        run: python skills/ai-daily-digest/run.py --live --engine playwright
+        run: python skills/ai-daily-digest/run.py --live --vendor anthropic --engine playwright
+
+      - name: Run pipeline (live · openai)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # 摘要策展仍用 Claude；OpenAI 源是官方 RSS
+          DIGEST_OUT: ${{ github.workspace }}
+        run: python skills/ai-daily-digest/run.py --live --vendor openai --engine playwright
 
       - name: Commit & push results
         run: |

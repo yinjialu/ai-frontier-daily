@@ -4,12 +4,22 @@
 """
 import os, json, datetime, re
 
-SYSTEM_PROMPT = """你是「Anthropic 动态」中文内容编辑。输入是今天抓到的若干条 Anthropic 官方动态原文。
+# 厂商元信息：品牌名 + 结尾文案。新增厂商在此加一项即可。
+VENDOR_META = {
+    "anthropic": {"name": "Anthropic", "brand": "AI 前哨 · 每日 Anthropic",
+                  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。"},
+    "openai":    {"name": "OpenAI", "brand": "AI 前哨 · 每日 OpenAI",
+                  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。"},
+}
+
+def _system_prompt(vendor):
+    name = VENDOR_META.get(vendor, VENDOR_META["anthropic"])["name"]
+    return f"""你是「{name} 动态」中文内容编辑。输入是今天抓到的若干条 {name} 官方动态原文。
 任务：1) 价值筛选：只保留对中文 AI 从业者有价值的条目（模型发布、能力更新、重要研究、重大合作、定价/政策变化），过滤纯招聘/行政/地区办公室开设等低价值信息。
 2) 分类打标签：每条给一个标签，从【模型发布/开发者/企业/研究/生态/政策/安全】中选。
 3) 中文摘要：每条 50~80 字，客观说清「变了什么+对用户意味着什么」，不夸张、不编造数据。
 4) 排序：按重要性降序，最多 6 条。
-5) 严格输出 JSON（无多余文字、无 markdown 代码块），字段见下；今天无值得发的内容则输出 {"skip":true,"reason":"..."}。
+5) 严格输出 JSON（无多余文字、无 markdown 代码块），字段见下；今天无值得发的内容则输出 {{"skip":true,"reason":"..."}}。
 严禁逐字复制英文长句；摘要必须是你自己的中文转写。"""
 
 def _today():
@@ -17,13 +27,15 @@ def _today():
     wd = "一二三四五六日"[d.weekday()]
     return d.strftime("%Y.%m.%d"), f"{d.month}月{d.day}日 周{wd}"
 
-def _wrap(updates):
+def _wrap(updates, vendor="anthropic"):
     date, cn = _today()
+    meta = VENDOR_META.get(vendor, VENDOR_META["anthropic"])
     return {
+        "vendor": vendor,
         "date": date, "cnDate": cn, "edition": "VOL." + datetime.date.today().strftime("%j"),
-        "brand": "AI 前哨 · 每日 Anthropic", "updates": updates[:6],
+        "brand": meta["brand"], "updates": updates[:6],
         "outroTitle": "每天一条\n看懂 AI 大厂动向",
-        "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+        "outroDesc": meta["outroDesc"],
         "outroCta": "关注 · 不错过任何更新",
     }
 
@@ -42,7 +54,7 @@ def _tag(text):
             return tag
     return "生态"
 
-def _mock(items):
+def _mock(items, vendor="anthropic"):
     ups = []
     for it in items:
         raw = re.sub(r"\s+", " ", it["raw"]).strip()
@@ -50,14 +62,14 @@ def _mock(items):
         ups.append({"tag": _tag(it["title"] + " " + raw), "title": it["title"],
                     "summary": summary or "（待补充摘要）",
                     "source": re.sub(r"^https?://(www\.)?", "", it["url"]).split("/")[0] or it["source"]})
-    return _wrap(ups)
+    return _wrap(ups, vendor)
 
 # ---- Claude API（live） ----
-def _live(items):
+def _live(items, vendor="anthropic"):
     import urllib.request
     payload = {
         "model": "claude-opus-4-8", "max_tokens": 2000,
-        "system": SYSTEM_PROMPT,
+        "system": _system_prompt(vendor),
         "messages": [{"role": "user", "content":
             "今天抓到的原文：\n" + json.dumps(items, ensure_ascii=False, indent=2) +
             "\n\n请按要求输出 DATA JSON（含 date/cnDate/edition/brand/updates/outro* 字段）。"}],
@@ -74,15 +86,17 @@ def _live(items):
     if data.get("skip"):
         return data
     # 补齐缺失的固定字段
-    base = _wrap(data.get("updates", []))
+    base = _wrap(data.get("updates", []), vendor)
     base.update({k: v for k, v in data.items() if v})
+    base["vendor"] = vendor                       # vendor 以参数为准，不被模型输出覆盖
     return base
 
-def curate(items, mock=True):
+def curate(items, mock=True, vendor="anthropic"):
     if not items:
         return {"skip": True, "reason": "今日无新动态"}
-    return _mock(items) if mock else _live(items)
+    return _mock(items, vendor) if mock else _live(items, vendor)
 
 if __name__ == "__main__":
-    import collector
-    print(json.dumps(curate(collector.collect(mock=True), mock=True), ensure_ascii=False, indent=2))
+    import sys, collector
+    v = sys.argv[1] if len(sys.argv) > 1 else "anthropic"
+    print(json.dumps(curate(collector.collect(mock=True, vendor=v), mock=True, vendor=v), ensure_ascii=False, indent=2))

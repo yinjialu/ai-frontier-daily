@@ -5,8 +5,9 @@ from pathlib import Path
 
 DB = Path(os.environ.get("DIGEST_OUT") or os.getcwd()) / "seen.db"
 
-def _fp(item):
-    t = re.sub(r"\s+", "", (item["title"] or "").lower())
+def _fp(item, vendor="anthropic"):
+    # 指纹按厂商命名空间，避免两个厂商的同名条目互相误判为重复。
+    t = vendor + "|" + re.sub(r"\s+", "", (item["title"] or "").lower())
     return hashlib.sha1(t.encode("utf-8")).hexdigest()
 
 def _conn():
@@ -14,18 +15,18 @@ def _conn():
     c.execute("CREATE TABLE IF NOT EXISTS seen(fp TEXT PRIMARY KEY, url TEXT, title TEXT, first_seen TEXT)")
     return c
 
-def filter_new(items):
+def filter_new(items, vendor="anthropic"):
     c = _conn()
     seen = {r[0] for r in c.execute("SELECT fp FROM seen")}
-    fresh = [it for it in items if _fp(it) not in seen]
+    fresh = [it for it in items if _fp(it, vendor) not in seen]
     c.close()
     return fresh
 
-def mark_seen(items):
+def mark_seen(items, vendor="anthropic"):
     c = _conn()
     now = datetime.datetime.now().isoformat(timespec="seconds")
     c.executemany("INSERT OR IGNORE INTO seen(fp,url,title,first_seen) VALUES(?,?,?,?)",
-                  [(_fp(it), it["url"], it["title"], now) for it in items])
+                  [(_fp(it, vendor), it["url"], it["title"], now) for it in items])
     c.commit(); c.close()
 
 if __name__ == "__main__":

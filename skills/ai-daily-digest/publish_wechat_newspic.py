@@ -6,9 +6,10 @@
 故这里单独走 newspic：每张卡片传为永久素材拿 image_media_id → draft/add(image_info)。
 
 用法：
-  python publish_wechat_newspic.py                      # output/latest.json 指向的当天
-  python publish_wechat_newspic.py data/2026-06-02.json # 指定某天
-  python publish_wechat_newspic.py --dry-run            # 只打印将提交的结构，不碰 API
+  python publish_wechat_newspic.py                          # 默认 anthropic，output/anthropic/latest.json 当天
+  python publish_wechat_newspic.py --vendor openai          # 指定厂商
+  python publish_wechat_newspic.py data/openai/2026-06-02.json  # 指定某天数据文件
+  python publish_wechat_newspic.py --dry-run                # 只打印将提交的结构，不碰 API
 
 凭据：环境变量 WECHAT_APPID/WECHAT_SECRET，或 ~/.config/wechat-official-draft/config.yaml。
 前置：本机公网 IP 在公众号 IP 白名单；需已认证服务号。
@@ -19,6 +20,22 @@ from pathlib import Path
 API = "https://api.weixin.qq.com/cgi-bin"
 OUT = Path(os.environ.get("DIGEST_OUT") or os.getcwd())
 IMG_EXTS = (".png", ".jpg", ".jpeg")
+VENDOR_NAME = {"anthropic": "Anthropic", "openai": "OpenAI"}
+
+
+def _arg_value(flag, default=None):
+    return sys.argv[sys.argv.index(flag) + 1] if flag in sys.argv else default
+
+
+def _positional():
+    """取非选项的位置参数，跳过 --vendor 及其取值（--dry-run 等无值开关直接略过）。"""
+    out, skip = [], False
+    for a in sys.argv[1:]:
+        if skip: skip = False; continue
+        if a == "--vendor": skip = True; continue
+        if a.startswith("--"): continue
+        out.append(a)
+    return out
 
 
 def load_creds():
@@ -73,23 +90,28 @@ def _check(resp, what):
 
 def build_caption(data):
     U = data.get("updates", [])
-    lines = [f"{data.get('cnDate','')} · Anthropic 今日 {len(U)} 条动态", ""]
+    name = VENDOR_NAME.get(data.get("vendor", "anthropic"), "Anthropic")
+    brand = data.get("brand", f"AI 前哨 · 每日 {name}")
+    lines = [f"{data.get('cnDate','')} · {name} 今日 {len(U)} 条动态", ""]
     for i, u in enumerate(U, 1):
         lines += [f"{i}.【{u.get('tag','')}】{u.get('title','')}", u.get("summary", ""), ""]
-    lines.append("—— AI 前哨 · 每日 Anthropic，点关注不错过")
+    lines.append(f"—— {brand}，点关注不错过")
     return "\n".join(lines).rstrip()
 
 
 def main():
     dry = "--dry-run" in sys.argv
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    vendor = _arg_value("--vendor", "anthropic")
+    args = _positional()
     if args:
         data_file = Path(args[0]); date = data_file.stem
+        vendor = data_file.parent.name if data_file.parent.name in VENDOR_NAME else vendor
     else:
-        latest = json.loads((OUT / "output" / "latest.json").read_text("utf-8"))
-        date = latest["dir"]; data_file = OUT / "data" / f"{date}.json"
+        latest = json.loads((OUT / "output" / vendor / "latest.json").read_text("utf-8"))
+        date = latest["dir"]; data_file = OUT / "data" / vendor / f"{date}.json"
     data = json.loads(data_file.read_text("utf-8"))
-    out_dir = OUT / "output" / date
+    vendor = data.get("vendor", vendor)
+    out_dir = OUT / "output" / vendor / date
 
     cards = [p for p in sorted(out_dir.glob("小红书_*")) if p.suffix.lower() in IMG_EXTS]
     if not cards:
@@ -97,7 +119,8 @@ def main():
     cards = cards[:20]                                   # newspic 最多 20 张
 
     U = data.get("updates", [])
-    title = f"{data.get('cnDate','')}｜Anthropic 今日 {len(U)} 条动态"[:64]
+    name = VENDOR_NAME.get(vendor, "Anthropic")
+    title = f"{data.get('cnDate','')}｜{name} 今日 {len(U)} 条动态"[:64]
     caption = build_caption(data)
 
     if dry:

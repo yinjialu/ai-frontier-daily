@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI 前哨 · 每日 Anthropic</title>
+<title>AI 前哨 · 每日 AI 大厂动态</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,500&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="skills/ai-daily-digest/cards.css">
 <style>
@@ -11,6 +11,11 @@
     --cream:#F1ECE0;--paper:#FBF8F1;--ink:#26221C;--clay:#C1572E;
     --soft:#7A7363;--line:#D8CFBC;
     --h0:#E7DFCD;--h1:#E7C2A6;--h2:#D88E62;--h3:#C1572E;--h4:#9B3E1C;
+  }
+  /* OpenAI 选中时：页面强调色切青绿、热力图换青绿梯度（卡片本身已是深墨黑主题） */
+  body.v-openai{
+    --clay:#0E8C6B;--soft:#6E7B75;--line:#D2DAD6;
+    --h0:#E5EAE7;--h1:#BFE6D7;--h2:#79D0B2;--h3:#10A37F;--h4:#0B7355;
   }
   html{-webkit-text-size-adjust:100%}
   body{background:var(--cream);color:var(--ink);
@@ -22,6 +27,18 @@
     text-transform:uppercase;color:var(--clay)}
   h1{font-family:"Noto Serif SC",serif;font-size:30px;letter-spacing:-.5px;margin-top:4px}
   .sub{color:var(--soft);font-size:14px;margin-top:8px}
+
+  /* 厂商切换 */
+  .vendors{display:flex;gap:10px;margin:18px 0 4px}
+  .vtab{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:13px;letter-spacing:1px;
+    cursor:pointer;padding:8px 18px;border:1px solid var(--line);border-radius:999px;
+    background:var(--paper);color:var(--soft);transition:.15s;user-select:none;display:flex;align-items:center;gap:7px}
+  .vtab .dotv{width:9px;height:9px;border-radius:999px;background:currentColor;opacity:.6}
+  .vtab[data-v="anthropic"]{--vc:#C1572E}
+  .vtab[data-v="openai"]{--vc:#10A37F}
+  .vtab:hover{border-color:var(--vc);color:var(--vc)}
+  .vtab.on{background:var(--vc);border-color:var(--vc);color:#fff}
+  .vtab.on .dotv{opacity:.9;background:#fff}
 
   /* 日期切换 */
   .days{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
@@ -102,10 +119,11 @@
 <body>
 <header>
   <div class="brand">AI · FRONTIER · DAILY</div>
-  <h1>AI 前哨 · 每日 Anthropic</h1>
-  <div class="sub">每日采集 Anthropic 官方动态。</div>
+  <h1>AI 前哨 · 每日 AI 大厂动态</h1>
+  <div class="sub" id="sub">每日采集 AI 大厂官方动态。</div>
 </header>
 
+<div class="vendors" id="vendors"></div>
 <div class="days" id="days"></div>
 <div class="meta" id="meta"></div>
 <div id="app"></div>
@@ -132,23 +150,28 @@ const pad = n => String(n).padStart(2,"0");
 const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const parseISO = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
 
-let DAYS = [], byDate = {}, curDate = null;
+const VENDOR_NAMES = {anthropic:"Anthropic", openai:"OpenAI"};
+let ALL = [];                   // 所有厂商的全部天
+let DAYS = [], byDate = {};     // 当前厂商的天 / 当前厂商按日期索引
+let curVendor = "anthropic", curDate = null;
 let car = null;                 // 轮播状态 {cards, active, deck}
-const dataCache = {};           // date -> data.json
+const dataCache = {};           // "vendor|date" -> data.json
 
 (async function(){
-  try{
-    DAYS = (await fetchJSON("output/index.json")).days || [];
-  }catch(e){ DAYS = []; }
-  if(!DAYS.length){
+  let idx;
+  try{ idx = await fetchJSON("output/index.json"); }catch(e){ idx = {days:[]}; }
+  ALL = (idx.days || []).map(d => ({...d, vendor: d.vendor || "anthropic"}));
+  if(!ALL.length){
+    $("#vendors").innerHTML = "";
     $("#app").innerHTML = `<div class="empty">还没有发布的内容。运行 <code>python run.py</code> 生成后即会出现在这里。</div>`;
     return;
   }
-  DAYS.sort((a,b)=>a.date<b.date?-1:1);
-  byDate = Object.fromEntries(DAYS.map(d=>[d.date,d]));
-  renderDayNav();
-  await selectDay(DAYS[DAYS.length-1].date);
-  renderHeatmap();
+  ALL.sort((a,b)=> a.date<b.date?-1:1);
+  const present = idx.vendors && idx.vendors.length ? idx.vendors
+                : [...new Set(ALL.map(d=>d.vendor))];
+  curVendor = ALL[ALL.length-1].vendor;          // 默认选最新一天所属厂商
+  renderVendorTabs(present);
+  await applyVendor(curVendor);
 })();
 
 async function fetchJSON(u){
@@ -156,9 +179,30 @@ async function fetchJSON(u){
   if(!r.ok) throw new Error(u);
   return r.json();
 }
-async function dayData(date){
-  if(!dataCache[date]) dataCache[date] = await fetchJSON(`data/${date}.json`);
-  return dataCache[date];
+async function dayData(vendor, date){
+  const k = vendor + "|" + date;
+  if(!dataCache[k]) dataCache[k] = await fetchJSON(`data/${vendor}/${date}.json`);
+  return dataCache[k];
+}
+
+function renderVendorTabs(present){
+  const wrap = $("#vendors");
+  wrap.innerHTML = present.map(v =>
+    `<span class="vtab" data-v="${v}"><span class="dotv"></span>${VENDOR_NAMES[v]||v}</span>`
+  ).join("");
+  wrap.onclick = e => { const el = e.target.closest(".vtab"); if(el) applyVendor(el.dataset.v); };
+}
+
+async function applyVendor(vendor){
+  curVendor = vendor;
+  document.body.classList.toggle("v-openai", vendor==="openai");
+  document.querySelectorAll(".vtab").forEach(el => el.classList.toggle("on", el.dataset.v===vendor));
+  DAYS = ALL.filter(d => d.vendor===vendor).sort((a,b)=> a.date<b.date?-1:1);
+  byDate = Object.fromEntries(DAYS.map(d=>[d.date,d]));
+  $("#sub").textContent = `每日采集 ${VENDOR_NAMES[vendor]||vendor} 官方动态。`;
+  renderDayNav();
+  if(DAYS.length) await selectDay(DAYS[DAYS.length-1].date);
+  renderHeatmap();
 }
 
 function renderDayNav(){
@@ -171,6 +215,7 @@ function renderDayNav(){
 
 async function selectDay(date){
   const d = byDate[date]; if(!d) return;
+  const vendor = curVendor;
   curDate = date;
   document.querySelectorAll(".day").forEach(el => el.classList.toggle("on", el.dataset.d===date));
   document.querySelectorAll(".cell").forEach(el => el.classList.toggle("sel", el.dataset.d===date));
@@ -178,12 +223,12 @@ async function selectDay(date){
 
   let deck = [];
   try{
-    const data = await dayData(date);
+    const data = await dayData(vendor, date);
     deck = window.Cards.buildDeck(data).filter(c => /\bxhs\b/.test(c.cls));   // 仅小红书卡
   }catch(e){
-    $("#app").innerHTML = `<div class="empty">读取 data/${date}.json 失败。</div>`; return;
+    $("#app").innerHTML = `<div class="empty">读取 data/${vendor}/${date}.json 失败。</div>`; return;
   }
-  if(date!==curDate) return;     // 期间又切了别的日期，丢弃过期结果
+  if(date!==curDate || vendor!==curVendor) return;     // 期间又切了别的日期/厂商，丢弃过期结果
 
   $("#app").innerHTML =
     `<div class="carousel" id="carousel"><div class="stage" id="stage">`+
@@ -327,19 +372,20 @@ function renderHeatmap(){
   if(curDate){ const c = cal.querySelector(`.cell[data-d="${curDate}"]`); if(c) c.classList.add("sel"); }
 
   const tip = $("#tip");
-  cal.addEventListener("mousemove", e=>{
+  // 用可覆盖的 on* 句柄（每次切厂商都会重渲热力图，避免重复叠加监听）
+  cal.onmousemove = e=>{
     const c = e.target.closest(".cell");
     if(!c || c.style.visibility==="hidden"){ tip.style.opacity=0; return; }
     const rec = byDate[c.dataset.d];
     tip.textContent = `${rec?rec.cnDate:c.dataset.d}：${c.dataset.c} 条`;
     tip.style.left = e.clientX+"px"; tip.style.top = (e.clientY-12)+"px"; tip.style.opacity=1;
-  });
-  cal.addEventListener("mouseleave", ()=> tip.style.opacity=0);
-  cal.addEventListener("click", e=>{
+  };
+  cal.onmouseleave = ()=> tip.style.opacity=0;
+  cal.onclick = e=>{
     const c = e.target.closest(".cell.has"); if(!c) return;
     selectDay(c.dataset.d);
     $("#app").scrollIntoView({behavior:"smooth", block:"start"});
-  });
+  };
 }
 
 /* ---- 灯箱：放大同一张卡片 ---- */

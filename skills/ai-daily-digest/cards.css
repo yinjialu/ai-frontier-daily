@@ -1,17 +1,35 @@
 /* 卡片样式（全分辨率，1:1 输出像素）。浏览器/Playwright 加载 Google Fonts；
-   离线环境自动回退到 Noto CJK + DejaVu。预览页用 transform:scale 缩小显示。 */
+   离线环境自动回退到 Noto CJK + DejaVu。预览页用 transform:scale 缩小显示。
+
+   主题：卡片只引用「语义 token」（--bg/--fg/--accent/--feature-* …），不写死颜色。
+   默认 :root = Anthropic（暖陶土色，与历史版本像素一致）；
+   .v-<vendor> 作用域覆盖这些 token 即换肤，版式厂商无关。新增厂商只加一个 .v-xxx 块。 */
 :root{
-  --cream:#F1ECE0; --cream-2:#E9E2D2; --ink:#26221C; --ink-soft:#5A5347;
-  --clay:#C1572E; --clay-deep:#9E3F1E; --clay-soft:#E0A47F;
-  --line:#CFC6B2;
+  /* 基础面（浅色内容卡） */
+  --bg:#F1ECE0; --bg-2:#E9E2D2; --fg:#26221C; --muted:#5A5347; --line:#CFC6B2;
+  /* 强调色（accent） */
+  --accent:#C1572E; --accent-deep:#9E3F1E; --accent-soft:#E0A47F;
+  /* 特写面（深色封面/结尾卡） */
+  --feature-bg:#26221C; --feature-fg:#F1ECE0; --feature-muted:#C9C1B0;
+
   --serif:"Fraunces","Noto Serif SC","Noto Serif CJK SC","DejaVu Serif",serif;
   --serifcn:"Noto Serif SC","Noto Serif CJK SC","Fraunces","DejaVu Serif",serif;
   --sans:"Noto Sans SC","Noto Sans CJK SC","DejaVu Sans",sans-serif;
   --mono:"Space Mono","DejaVu Sans Mono",monospace;
 }
+
+/* ===== OpenAI 主题：深墨黑底 + 青绿 accent ===== */
+.v-openai{
+  --bg:#0E1211; --bg-2:#141A18; --fg:#E8EEEB; --muted:#94A39C; --line:#28302D;
+  --accent:#10A37F; --accent-deep:#0C8466; --accent-soft:#5FD0B0;
+  --feature-bg:#080C0B; --feature-fg:#E8EEEB; --feature-muted:#8C9B94;
+}
+/* 深底卡片噪点用 screen 叠加（multiply 会糊成一片黑） */
+.v-openai.card::after{mix-blend-mode:screen;opacity:.06}
+
 *{box-sizing:border-box;margin:0;padding:0}
 
-.card{position:relative;overflow:hidden;background:var(--cream);color:var(--ink);
+.card{position:relative;overflow:hidden;background:var(--bg);color:var(--fg);
   font-family:var(--sans)}
 .card .inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;
@@ -23,58 +41,61 @@
 .xhs{width:1080px;height:1440px}
 .xhs .inner{padding:88px 82px}
 .xhs-cover .topbar{display:flex;justify-content:space-between;align-items:baseline}
-.xhs-cover .edition{font-family:var(--mono);font-size:28px;letter-spacing:3px;color:var(--clay-deep)}
-.xhs-cover .date{font-family:var(--mono);font-size:28px;color:var(--ink-soft)}
-.xhs-cover .kicker{margin-top:120px;font-family:var(--mono);font-size:30px;letter-spacing:8px;color:var(--clay);text-transform:uppercase}
+.xhs-cover .edition{font-family:var(--mono);font-size:28px;letter-spacing:3px;color:var(--accent-deep)}
+.xhs-cover .date{font-family:var(--mono);font-size:28px;color:var(--muted)}
+.xhs-cover .kicker{margin-top:120px;font-family:var(--mono);font-size:30px;letter-spacing:8px;color:var(--accent);text-transform:uppercase}
 .xhs-cover h1{font-family:var(--serifcn);font-weight:900;font-size:128px;line-height:1.08;margin-top:24px;letter-spacing:-2px}
-.xhs-cover h1 em{font-family:var(--serif);font-style:italic;color:var(--clay);font-weight:500}
+.xhs-cover h1 em{font-family:var(--serif);font-style:italic;color:var(--accent);font-weight:500}
 .xhs-cover .teasers{position:absolute;left:82px;right:82px;bottom:150px;display:flex;flex-direction:column;gap:26px}
-.xhs-cover .teaser{display:flex;gap:26px;align-items:flex-start;font-size:35px;line-height:1.34;color:var(--ink)}
-.xhs-cover .teaser .n{font-family:var(--serif);font-weight:900;color:var(--clay);font-size:46px;line-height:1;min-width:52px}
-.xhs-cover .footer{position:absolute;left:82px;right:82px;bottom:70px;padding-top:36px;border-top:2px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:27px;color:var(--ink-soft)}
+.xhs-cover .teaser{display:flex;gap:26px;align-items:flex-start;font-size:35px;line-height:1.34;color:var(--fg)}
+.xhs-cover .teaser .n{font-family:var(--serif);font-weight:900;color:var(--accent);font-size:46px;line-height:1;min-width:52px}
+.xhs-cover .footer{position:absolute;left:82px;right:82px;bottom:70px;padding-top:36px;border-top:2px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:27px;color:var(--muted)}
 
 .xhs-item .bgnum{position:absolute;z-index:1;right:-30px;bottom:40px;
   font-family:var(--serif);font-weight:900;font-size:520px;line-height:.7;
-  color:var(--clay);opacity:.06;pointer-events:none}
+  color:var(--accent);opacity:.06;pointer-events:none}
 .xhs-item .head{display:flex;justify-content:space-between;align-items:baseline;
   font-family:var(--mono);font-size:25px;letter-spacing:2px}
-.xhs-item .head .edition{color:var(--clay-deep)}
-.xhs-item .head .pager{color:var(--ink-soft)}
-.xhs-item .head .pager b{color:var(--clay);font-size:31px}
+.xhs-item .head .edition{color:var(--accent-deep)}
+.xhs-item .head .pager{color:var(--muted)}
+.xhs-item .head .pager b{color:var(--accent);font-size:31px}
 .xhs-item .body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:30px 0}
-.xhs-item .tag{align-self:flex-start;background:var(--clay);color:#fff;font-size:30px;font-weight:500;letter-spacing:2px;padding:13px 32px;border-radius:60px}
+.xhs-item .tag{align-self:flex-start;background:var(--accent);color:#fff;font-size:30px;font-weight:500;letter-spacing:2px;padding:13px 32px;border-radius:60px}
 .xhs-item h2{font-family:var(--serifcn);font-weight:700;font-size:82px;line-height:1.16;margin-top:46px;letter-spacing:-1px}
-.xhs-item .rule{width:96px;height:8px;background:var(--clay);border-radius:4px;margin:48px 0}
-.xhs-item .sum{font-size:41px;line-height:1.66;color:var(--ink-soft);font-weight:300}
-.xhs-item .src{padding-top:40px;border-top:2px solid var(--line);font-family:var(--mono);font-size:25px;color:var(--ink-soft);display:flex;justify-content:space-between}
+.xhs-item .rule{width:96px;height:8px;background:var(--accent);border-radius:4px;margin:48px 0}
+.xhs-item .sum{font-size:41px;line-height:1.66;color:var(--muted);font-weight:300}
+.xhs-item .src{padding-top:40px;border-top:2px solid var(--line);font-family:var(--mono);font-size:25px;color:var(--muted);display:flex;justify-content:space-between}
 
-.xhs-outro{background:var(--ink);color:var(--cream)}
+.xhs-outro{background:var(--feature-bg);color:var(--feature-fg)}
 .xhs-outro::after{mix-blend-mode:screen;opacity:.05}
 .xhs-outro .inner{justify-content:center}
-.xhs-outro .mark{font-family:var(--serif);font-style:italic;font-size:54px;color:var(--clay-soft)}
+.xhs-outro .mark{font-family:var(--serif);font-style:italic;font-size:54px;color:var(--accent-soft)}
 .xhs-outro h2{font-family:var(--serifcn);font-weight:900;font-size:104px;line-height:1.14;margin-top:40px}
-.xhs-outro p{margin-top:44px;font-size:38px;line-height:1.6;color:#C9C1B0;font-weight:300;max-width:760px}
-.xhs-outro .cta{align-self:flex-start;margin-top:70px;border:3px solid var(--clay-soft);color:var(--clay-soft);padding:24px 50px;border-radius:60px;font-size:35px}
+.xhs-outro p{margin-top:44px;font-size:38px;line-height:1.6;color:var(--feature-muted);font-weight:300;max-width:760px}
+.xhs-outro .cta{align-self:flex-start;margin-top:70px;border:3px solid var(--accent-soft);color:var(--accent-soft);padding:24px 50px;border-radius:60px;font-size:35px}
 
 /* ===== 公众号封面 900×383 ===== */
-.gzh-cover{width:900px;height:383px;background:var(--ink);color:var(--cream)}
+.gzh-cover{width:900px;height:383px;background:var(--feature-bg);color:var(--feature-fg)}
 .gzh-cover::after{mix-blend-mode:screen;opacity:.05}
 .gzh-cover .inner{padding:52px 60px;justify-content:space-between}
-.gzh-cover .row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:21px;letter-spacing:2px;color:var(--clay-soft)}
+.gzh-cover .row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:21px;letter-spacing:2px;color:var(--accent-soft)}
 .gzh-cover h1{font-family:var(--serifcn);font-weight:900;font-size:66px;line-height:1.05;letter-spacing:-1px}
-.gzh-cover h1 em{font-family:var(--serif);font-style:italic;color:var(--clay-soft);font-weight:500}
-.gzh-cover .sub{font-size:24px;color:#C9C1B0;font-weight:300}
+.gzh-cover h1 em{font-family:var(--serif);font-style:italic;color:var(--accent-soft);font-weight:500}
+.gzh-cover .sub{font-size:24px;color:var(--feature-muted);font-weight:300}
 
 /* ===== 公众号正文长图 900 宽 ===== */
 .gzh-body{width:900px}
 .gzh-body .inner{padding:60px 70px}
-.gzh-body .head{font-family:var(--mono);font-size:23px;letter-spacing:3px;color:var(--clay);text-transform:uppercase}
+.gzh-body .head{font-family:var(--mono);font-size:23px;letter-spacing:3px;color:var(--accent);text-transform:uppercase}
 .gzh-body h2{font-family:var(--serifcn);font-weight:900;font-size:58px;margin-top:14px;letter-spacing:-1px}
 .gzh-body .gline{height:2px;background:var(--line);margin:40px 0}
 .gzh-body .e{display:flex;gap:30px;padding:26px 0}
-.gzh-body .e .num{font-family:var(--serif);font-weight:900;font-size:54px;color:var(--clay-soft);line-height:1;min-width:70px}
-.gzh-body .e .bd .tag{display:inline-block;background:var(--clay);color:#fff;font-size:21px;padding:4px 16px;border-radius:40px;letter-spacing:1px}
+.gzh-body .e .num{font-family:var(--serif);font-weight:900;font-size:54px;color:var(--accent-soft);line-height:1;min-width:70px}
+.gzh-body .e .bd .tag{display:inline-block;background:var(--accent);color:#fff;font-size:21px;padding:4px 16px;border-radius:40px;letter-spacing:1px}
 .gzh-body .e .bd h3{font-family:var(--serifcn);font-weight:700;font-size:37px;margin-top:10px}
-.gzh-body .e .bd p{font-size:28px;line-height:1.55;color:var(--ink-soft);margin-top:14px;font-weight:300}
-.gzh-body .e .bd .s{font-family:var(--mono);font-size:22px;color:var(--clay-deep);margin-top:14px}
-.gzh-body .foot{margin-top:20px;padding-top:36px;border-top:2px solid var(--line);font-size:23px;color:var(--ink-soft);display:flex;justify-content:space-between}
+.gzh-body .e .bd p{font-size:28px;line-height:1.55;color:var(--muted);margin-top:14px;font-weight:300}
+.gzh-body .e .bd .s{font-family:var(--mono);font-size:22px;color:var(--accent-deep);margin-top:14px}
+.gzh-body .foot{margin-top:20px;padding-top:36px;border-top:2px solid var(--line);font-size:23px;color:var(--muted);display:flex;justify-content:space-between}
+
+/* 公众号正文长图为浅底（内容面）：OpenAI 主题下也保持深底一致性 —— gzh-body
+   用 --bg/--fg，已随主题切换，无需特例。 */
