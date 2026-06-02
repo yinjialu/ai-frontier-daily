@@ -23,6 +23,8 @@ KEYCAP = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6�
 VENDOR_META = {
     "anthropic": {"name": "Anthropic", "tags": "#AI #Anthropic #Claude"},
     "openai":    {"name": "OpenAI", "tags": "#AI #OpenAI #ChatGPT"},
+    "gemini":    {"name": "Gemini", "tags": "#AI #Gemini #Google"},
+    "nvidia":    {"name": "NVIDIA", "tags": "#AI #NVIDIA #GPU"},
 }
 
 

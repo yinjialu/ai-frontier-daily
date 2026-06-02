@@ -12,10 +12,18 @@
     --soft:#7A7363;--line:#D8CFBC;
     --h0:#E7DFCD;--h1:#E7C2A6;--h2:#D88E62;--h3:#C1572E;--h4:#9B3E1C;
   }
-  /* OpenAI 选中时：页面强调色切青绿、热力图换青绿梯度（卡片本身已是深墨黑主题） */
+  /* 各厂商选中时：页面强调色 + 热力图梯度切到该厂商品牌色（卡片本身另由 cards.css 的 .v-<id> 换肤） */
   body.v-openai{
     --clay:#0E8C6B;--soft:#6E7B75;--line:#D2DAD6;
     --h0:#E5EAE7;--h1:#BFE6D7;--h2:#79D0B2;--h3:#10A37F;--h4:#0B7355;
+  }
+  body.v-gemini{
+    --clay:#3B5BD0;--soft:#646B7D;--line:#D6DCEC;
+    --h0:#E7E9F3;--h1:#C9D4F7;--h2:#8FA8F0;--h3:#4F7CF7;--h4:#3B5BD0;
+  }
+  body.v-nvidia{
+    --clay:#5E9400;--soft:#6E7568;--line:#D7DCCD;
+    --h0:#E8ECDD;--h1:#CFE3A8;--h2:#A4D65E;--h3:#76B900;--h4:#5E9400;
   }
   html{-webkit-text-size-adjust:100%}
   body{background:var(--cream);color:var(--ink);
@@ -197,7 +205,7 @@ function renderVendorTabs(present){
 
 async function applyVendor(vendor){
   curVendor = vendor;
-  document.body.classList.toggle("v-openai", vendor==="openai");
+  document.body.className = "v-" + vendor;   // 页面 chrome 主题（body.v-<id>）；anthropic 无覆盖=默认
   document.querySelectorAll(".vtab").forEach(el => el.classList.toggle("on", el.dataset.v===vendor));
   DAYS = ALL.filter(d => d.vendor===vendor).sort((a,b)=> a.date<b.date?-1:1);
   byDate = Object.fromEntries(DAYS.map(d=>[d.date,d]));

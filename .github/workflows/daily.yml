@@ -41,6 +41,18 @@ jobs:
           DIGEST_OUT: ${{ github.workspace }}
         run: python skills/ai-daily-digest/run.py --live --vendor openai --engine playwright
 
+      - name: Run pipeline (live · gemini)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DIGEST_OUT: ${{ github.workspace }}
+        run: python skills/ai-daily-digest/run.py --live --vendor gemini --engine playwright
+
+      - name: Run pipeline (live · nvidia)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DIGEST_OUT: ${{ github.workspace }}
+        run: python skills/ai-daily-digest/run.py --live --vendor nvidia --engine playwright
+
       - name: Commit & push results
         run: |
           git config user.name "watch-bot"

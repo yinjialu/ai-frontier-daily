@@ -1,0 +1,48 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.02",
+  "cnDate": "6月2日 周二",
+  "edition": "VOL.153",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Cosmos 3 开源物理 AI 基础模型发布",
+      "summary": "NVIDIA 发布新一代开源物理 AI 基础模型 Cosmos 3，含推理/世界/动作三类模型，面向机器人、自动驾驶等具身场景。开源策略降低物理 AI 的数据与训练门槛，利于生态快速接入。",
+      "source": "nvidianews.nvidia.com"
+    },
+    {
+      "tag": "生态",
+      "title": "NVIDIA 携手台积电，把 AI 引入晶圆厂",
+      "summary": "双方合作将 AI 嵌入半导体设计与制造流程，用于晶圆厂提效。AI 反哺芯片生产意味着先进制程迭代提速，对整个算力供应链是长期利好。",
+      "source": "nvidianews.nvidia.com"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Alpamayo 2：面向 Robotaxi 的开源推理大模型",
+      "summary": "NVIDIA 发布 Robotaxi 专用开源推理模型 Alpamayo 2，强化自动驾驶的场景推理能力。开源 + 车载推理定位，降低自动驾驶厂商自研大模型的成本。",
+      "source": "nvidianews.nvidia.com"
+    },
+    {
+      "tag": "企业",
+      "title": "Vera CPU 为 AI 工厂的智能体负载立标杆",
+      "summary": "NVIDIA Vera CPU 针对 AI 工厂中的智能体(agentic)工作负载优化，搭配 Vera Rubin 平台。面向大规模 agent 推理的专用算力，瞄准企业 AI 工厂的吞吐与能效。",
+      "source": "developer.nvidia.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Jetson + JetPack 7.2：智能体 AI 落到边缘",
+      "summary": "Jetson 平台与 JetPack 7.2 提升边缘设备上智能体 AI 的内存效率部署，让机器人等终端本地跑 agent，把 agentic AI 从云端推向物理世界终端。",
+      "source": "developer.nvidia.com"
+    },
+    {
+      "tag": "生态",
+      "title": "台系厂商联合扩建全球 AI 基础设施",
+      "summary": "COMPUTEX 2026 上台湾产业链联合 NVIDIA 扩建全球 AI 基建，关联新一代 Vera Rubin 平台。供给侧大举扩产，指向算力供应持续放量。",
+      "source": "blogs.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

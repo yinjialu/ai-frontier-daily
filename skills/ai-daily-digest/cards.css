@@ -27,6 +27,21 @@
 /* 深底卡片噪点用 screen 叠加（multiply 会糊成一片黑） */
 .v-openai.card::after{mix-blend-mode:screen;opacity:.06}
 
+/* ===== Gemini 主题：冷调浅底 + 蓝→紫 accent，深藏青特写面 ===== */
+.v-gemini{
+  --bg:#F4F6FB; --bg-2:#E9EDF8; --fg:#1B1F2A; --muted:#5B6273; --line:#D3DAEA;
+  --accent:#4F7CF7; --accent-deep:#3B5BD0; --accent-soft:#A78BFA;
+  --feature-bg:#171A2B; --feature-fg:#F4F6FB; --feature-muted:#AAB2C8;
+}
+
+/* ===== NVIDIA 主题：深墨黑 + 标志荧光绿 #76B900 ===== */
+.v-nvidia{
+  --bg:#0C0F0A; --bg-2:#141A10; --fg:#EAF0E2; --muted:#9BA890; --line:#283022;
+  --accent:#76B900; --accent-deep:#5E9400; --accent-soft:#A4D65E;
+  --feature-bg:#070A05; --feature-fg:#EAF0E2; --feature-muted:#9BA890;
+}
+.v-nvidia.card::after{mix-blend-mode:screen;opacity:.06}
+
 *{box-sizing:border-box;margin:0;padding:0}
 
 .card{position:relative;overflow:hidden;background:var(--bg);color:var(--fg);

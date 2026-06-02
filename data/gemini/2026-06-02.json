@@ -1,0 +1,48 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.02",
+  "cnDate": "6月2日 周二",
+  "edition": "VOL.153",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.5 Flash 转正，Managed Agents 公开预览",
+      "summary": "Gemini 3.5 Flash 正式可用(GA)，同时 Managed Agents(含 Antigravity Agent)进入公开预览。快速档模型落地 + 托管智能体开放，Google 把 agent 能力推向生产。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3 系列影像模型 GA，新增「视频转图」",
+      "summary": "Gemini 3 Pro Image 与 3.1 Flash Image 视觉模型转正(GA)，并新增视频转图生成能力。图像/视频生成进入稳定档，可直接用于生产场景。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "模型发布",
+      "title": "DeepMind 发布 Gemini Omni 与 Antigravity 2.0",
+      "summary": "Google DeepMind 推出多模态模型 Gemini Omni 与开发平台 Google Antigravity 2.0，主打全模态交互与 agent 开发，延续 Gemini 3 的能力扩张。",
+      "source": "deepmind.google"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini 2.0 全系下线，统一迁移至 3.x",
+      "summary": "gemini-2.0-flash、flash-lite 等 2.0 系列全部下线，官方引导迁移到 3.x。老模型停服，仍在调用的 API 用户需尽快切换以免服务中断。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "开发者",
+      "title": "官方 SDK python/js-genai v2.7.0：Computer Use + 强化微调",
+      "summary": "官方 SDK python-genai / js-genai 同步发 v2.7.0，新增 Vertex Computer Use 字段与 SDK 内强化学习微调(reinforcement tuning)。开发者可直接调用电脑操作与 RL 微调。",
+      "source": "github.com/googleapis"
+    },
+    {
+      "tag": "研究",
+      "title": "DeepMind 用 Co-Scientist 找到逆转细胞衰老线索",
+      "summary": "DeepMind 的 AI 协作系统 Co-Scientist 找到逆转细胞衰老的新基因线索，展示大模型在生物医学研究中自动生成可验证假设的价值。",
+      "source": "deepmind.google"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

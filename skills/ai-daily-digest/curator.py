@@ -10,6 +10,10 @@ VENDOR_META = {
                   "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。"},
     "openai":    {"name": "OpenAI", "brand": "AI 前哨 · 每日 OpenAI",
                   "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。"},
+    "gemini":    {"name": "Gemini", "brand": "AI 前哨 · 每日 Gemini",
+                  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。"},
+    "nvidia":    {"name": "NVIDIA", "brand": "AI 前哨 · 每日 NVIDIA",
+                  "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。"},
 }
 
 def _system_prompt(vendor):

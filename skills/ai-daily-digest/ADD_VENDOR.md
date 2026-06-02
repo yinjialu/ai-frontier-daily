@@ -79,11 +79,16 @@ curl -sI "https://github.com/<org>/<repo>/releases.atom" | head -1
 .v-<id>.card::after{mix-blend-mode:screen;opacity:.06}
 ```
 
-配色指南：
-- 与 Anthropic（暖陶土）**一眼区分**为目标；版式/纸感/衬线标题保持一致。
-- `--accent*` 用品牌主色（深/中/浅三档）；`--feature-bg` 比 `--bg` 再深/再浅一档做封面与结尾的「特写面」。
-- **深底主题**（如 OpenAI）：`--bg` 近黑、`--fg` 近白，并保留上面的 `screen` 那行。
-- **浅底主题**：`--bg` 浅、`--fg` 近黑，删掉 `screen` 那行（默认 multiply 即可）。
+配色指南（**第一原则：优先对齐该厂商的品牌主题色,再考虑与其它厂商区分**）：
+- **先定品牌主色**：取厂商官方视觉的标志色做 `--accent`（深/中/浅三档 `--accent-deep/-/-soft`）。
+  例：Anthropic 暖陶土 #C1572E + 米白；OpenAI 黑底 + ChatGPT 青绿 #10A37F；
+  Gemini 蓝→紫渐变（蓝 #4F7CF7 + 紫 #A78BFA）;NVIDIA 黑底 + 标志绿 #76B900。
+  底色(`--bg`)也尽量贴品牌气质：品牌偏深则深底、偏亮则浅底。
+- **再保证区分**：若新厂商主色与已有某家太接近,微调明度/色相或换深浅底,确保四家一眼可分
+  （已有：暖陶土浅底 / 黑底青绿 / 冷调浅底蓝紫 / 黑底绿）。版式/纸感/衬线标题始终保持一致,只换色。
+- `--feature-bg` 比 `--bg` 再深/再浅一档做封面与结尾的「特写面」。
+- **深底主题**（OpenAI/NVIDIA 式）：`--bg` 近黑、`--fg` 近白,并保留上面的 `.v-<id>.card::after{screen}` 那行。
+- **浅底主题**（Anthropic/Gemini 式）：`--bg` 浅、`--fg` 近黑,删掉 `screen` 那行（默认 multiply 即可）。
 
 ---
 

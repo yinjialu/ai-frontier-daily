@@ -20,7 +20,7 @@ from pathlib import Path
 
 OUT = Path(os.environ.get("DIGEST_OUT") or os.getcwd())
 IMG_EXTS = (".png", ".jpg", ".jpeg")
-VENDOR_NAME = {"anthropic": "Anthropic", "openai": "OpenAI"}
+VENDOR_NAME = {"anthropic": "Anthropic", "openai": "OpenAI", "gemini": "Gemini", "nvidia": "NVIDIA"}
 
 
 def _arg_value(flag, default=None):

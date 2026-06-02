@@ -10,6 +10,8 @@
   var VENDORS = {
     anthropic: {id:"anthropic", name:"Anthropic", daily:"Anthropic Daily", label:"ANTHROPIC DAILY"},
     openai:    {id:"openai",    name:"OpenAI",    daily:"OpenAI Daily",    label:"OPENAI DAILY"},
+    gemini:    {id:"gemini",    name:"Gemini",    daily:"Gemini Daily",    label:"GEMINI DAILY"},
+    nvidia:    {id:"nvidia",    name:"NVIDIA",    daily:"NVIDIA Daily",    label:"NVIDIA DAILY"},
   };
   function vendorOf(DATA){ return VENDORS[(DATA && DATA.vendor) || "anthropic"] || VENDORS.anthropic; }
 
