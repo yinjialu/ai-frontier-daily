@@ -109,6 +109,7 @@ python run.py --reindex             # 仅重建 latest.json + index.json（扫�
 ```
 skills/ai-daily-digest/
   SKILL.md          # 本文件
+  ADD_VENDOR.md     # 新增厂商 runbook（加 Gemini/英伟达等照此走）
   run.py            # 编排：采集→去重→摘要→渲染→更新指针（--vendor / --reindex）
   collector.py      # 采集（mock 读 fixtures / live 抓 vendors.<vendor>.rss）
   curator.py        # 策展+摘要（mock 启发式 / live 调 Claude；VENDOR_META 品牌文案）
@@ -179,10 +180,15 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
 
 ## 扩展到更多厂商
 
-加一个厂商通常只需四处改动（均无需动渲染器）：
-1. `sources.yaml`：在 `vendors.<新id>` 下加 `rss`/`webfetch` 源。
+**完整步骤见 [`ADD_VENDOR.md`](ADD_VENDOR.md)**（含调研信息源、配色、产出首期、验证、CI 的逐步 runbook，
+附 Gemini / 英伟达候选配置）。速览——改动集中在 4 个文件 + 1 个 CI，渲染器和展示页主体无需动：
+
+1. `sources.yaml`：在 `vendors.<新id>` 下加 `rss`/`webfetch` 源（先 `curl -sI` / WebFetch 实测）。
 2. `cards.js`：在 `VENDORS` 注册表加一项（name/daily/label）。
-3. `cards.css`：加一个 `.v-<新id>` 主题块覆盖语义 token（配色）。
-4. `curator.py`：在 `VENDOR_META` 加品牌名/brand/结尾文案；发布脚本的 `VENDOR_NAME`/标签按需补。
-然后展示页 `index.html` 会自动从 `output/index.json` 读出新厂商并加 Tab（`VENDOR_NAMES`
-里补个显示名即可）。
+3. `cards.css`：加一个 `.v-<新id>` 主题块覆盖语义 token（深底主题记得加 `.v-<id>.card::after{screen}`）。
+4. `curator.py`：在 `VENDOR_META` 加品牌名/brand/结尾文案；发布脚本（to_xhs_post/to_wechat_md/
+   publish_wechat_newspic）的 `VENDOR_NAME`/标签按需补。
+5. `.github/workflows/daily.yml`：加一条 `--vendor <新id>` 步骤。
+
+展示页 `index.html` **完全无需改**：Tab 列表从 `output/index.json` 读出、显示名从 `cards.js` 的
+`VENDORS` 自动派生。

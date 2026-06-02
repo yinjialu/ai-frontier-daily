@@ -150,7 +150,9 @@ const pad = n => String(n).padStart(2,"0");
 const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const parseISO = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
 
-const VENDOR_NAMES = {anthropic:"Anthropic", openai:"OpenAI"};
+// 厂商显示名直接从 cards.js 的 VENDORS 注册表派生（加厂商只需改 cards.js，这里不用动）
+const VENDOR_NAMES = Object.fromEntries(
+  Object.entries((window.Cards && window.Cards.VENDORS) || {}).map(([k, v]) => [k, v.name]));
 let ALL = [];                   // 所有厂商的全部天
 let DAYS = [], byDate = {};     // 当前厂商的天 / 当前厂商按日期索引
 let curVendor = "anthropic", curDate = null;
