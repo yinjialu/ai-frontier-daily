@@ -1,0 +1,32 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.04",
+  "cnDate": "6月4日 周四",
+  "edition": "VOL.155",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Agent SDK v0.3.162：拒绝请求可程序化检测",
+      "summary": "Agent SDK 新增 `stop_reason: \"refusal\"` 与 `stop_details`，把 Claude 的拒绝行为结构化暴露给调用方，无需文本匹配即可路由处理拒绝场景。同步优化：原生构建的 session 默认切换到内嵌 find/grep 搜索，性能与交互式 CLI 对齐。",
+      "source": "github.com/anthropics",
+      "url": "https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.162"
+    },
+    {
+      "tag": "企业",
+      "title": "Claude 合作伙伴网络升级：Services Track + Partner Hub 上线",
+      "summary": "Anthropic 为 Claude 合作伙伴网络引入 Services Track（服务商专属通道）和 Partner Hub（认证伙伴导航页），帮助企业客户快速找到经认证的实施团队。目前已超 40,000 家企业申请入网、逾 10,000 名顾问通过 Claude 认证。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "tag": "开发者",
+      "title": "Auto 模式扩展至 Bedrock、Vertex 与 Foundry",
+      "summary": "Opus 4.7 与 4.8 的 Auto 模式（自动在扩展思考与标准模式间切换）现已在 Amazon Bedrock、Google Vertex AI 与 Azure AI Foundry 全面可用，企业无需更换推理平台即可使用思考自适应能力，降低部署复杂度。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

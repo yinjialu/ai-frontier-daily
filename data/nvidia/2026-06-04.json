@@ -1,0 +1,40 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.04",
+  "cnDate": "6月4日 周四",
+  "edition": "VOL.155",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Nemotron 3 Ultra 今日正式发布：美国最强开源前沿模型",
+      "summary": "NVIDIA 正式发布 Nemotron 3 Ultra（550B 参数、55B 激活 MoE），推理速度 300+ tok/s，AI 智能指数 48 登顶美国开源权重榜。可通过 Hugging Face、ModelScope、OpenRouter 及 NVIDIA NIM 获取，是首个在性能上能与 OpenAI/Anthropic 闭源 API 正面竞争的美国开源前沿 agent 模型。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-debuts-nemotron-3-family-of-open-models"
+    },
+    {
+      "tag": "模型发布",
+      "title": "RTX Spark 超芯片：AI PC 带来 1 PFLOPS 本地算力",
+      "summary": "RTX Spark 集成最多 6,144 核 Blackwell GPU + 20 颗 Arm 核心 + 最高 128GB 统一内存，提供 1 PFLOPS 算力，今秋将由华硕、戴尔、惠普、微软 Surface 等品牌推出 AI PC。本地运行前沿大模型成为主流消费级体验将从这代产品开始。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://techcrunch.com/2026/06/01/nvidia-chases-200b-cpu-market-with-ai-agent-pcs-from-microsoft-dell-and-hp/"
+    },
+    {
+      "tag": "开发者",
+      "title": "TensorRT-LLM v1.3.0rc17：思考 token 预算控制上线",
+      "summary": "TRT-LLM 新增 thinking token budget 控制（可限制推理深度以调节延迟与成本）、FlashInfer GDN prefill 提速 Qwen3.5、NVFP4 MoE 后端支持最新 GPU 架构。把推理深度变为可调旋钮，对生产部署的成本优化意义重大。",
+      "source": "github.com/NVIDIA",
+      "url": "https://github.com/NVIDIA/TensorRT-LLM/releases/tag/v1.3.0rc17"
+    },
+    {
+      "tag": "开发者",
+      "title": "Dynamo v1.2.0：多模态推理服务里程碑版本",
+      "summary": "Dynamo v1.2.0 新增 TRT-LLM 文本转图像生成、规范音视频流协议、DGD/DGDR 升至 Kubernetes v1beta1 API，并产品化跨 Pod GPU 内存共享 sidecar。共收录 82 位贡献者的 603 个 PR，是迄今最大单版本更新。",
+      "source": "github.com/ai-dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases/tag/v1.2.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

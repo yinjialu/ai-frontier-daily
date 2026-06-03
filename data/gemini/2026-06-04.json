@@ -1,0 +1,40 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.04",
+  "cnDate": "6月4日 周四",
+  "edition": "VOL.155",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "python-genai v2.8.0：Agent Platform MCP 支持上线",
+      "summary": "Gemini 官方 Python SDK v2.8.0 为异步 generate_content 新增 Agent Platform MCP 支持，同时引入 TranslationConfig（实时翻译配置）与 ValidateReward API（强化微调验证）。进一步降低构建多模态 agent 的集成门槛，JS genai SDK 同步对齐。",
+      "source": "github.com/googleapis",
+      "url": "https://github.com/googleapis/python-genai/releases/tag/v2.8.0"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.45.0 稳定版：暴露用量元数据",
+      "summary": "Gemini CLI v0.45.0 正式稳定发布，新增 usage metadata 暴露（token 消耗可观测），修复 PTY resize 崩溃与 Termux 重启循环。v0.46.0 预览版已将默认后端切换为 Gemini 3.5 Flash GA 模型，推理速度与质量显著提升。",
+      "source": "github.com/google-gemini",
+      "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.45.0"
+    },
+    {
+      "tag": "模型发布",
+      "title": "两款影像预览模型 6/25 停服，需迁移至正式版",
+      "summary": "gemini-3.1-flash-image-preview 与 gemini-3-pro-image-preview 将于 6 月 25 日关闭。GA 替代版 Gemini 3.5 Flash Image 与 Gemini 3 Pro Image 已正式可用，建议开发者尽快完成迁移，避免服务中断。",
+      "source": "ai.google.dev",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.5 Pro 确认本月发布，目前内部测试中",
+      "summary": "Google 确认 Gemini 3.5 Pro 正处于内部评测阶段，将于 6 月面向全部用户推出。作为 3.5 Flash 的旗舰伴侣，定位前沿推理与代码能力，将补全 Gemini 3.5 系列产品线并进一步强化对 OpenAI 的竞争态势。",
+      "source": "blog.google",
+      "url": "https://wavespeed.ai/blog/posts/gemini-3-5-pro-flash/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
