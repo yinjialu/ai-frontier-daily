@@ -43,6 +43,7 @@
     cursor:pointer;padding:8px 18px;border:1px solid var(--line);border-radius:999px;
     background:var(--paper);color:var(--soft);transition:.15s;user-select:none;display:flex;align-items:center;gap:7px}
   .vtab .dotv{width:9px;height:9px;border-radius:999px;background:currentColor;opacity:.6}
+  .vtab-daily{--vc:#26221C}
   .vtab[data-v="anthropic"]{--vc:#C1572E}
   .vtab[data-v="openai"]{--vc:#10A37F}
   .vtab[data-v="gemini"]{--vc:#3B5BD0}
@@ -94,6 +95,30 @@
   .dot{width:7px;height:7px;border-radius:999px;background:var(--line);cursor:pointer;transition:.15s}
   .dot.on{background:var(--clay);transform:scale(1.3)}
   .empty{color:var(--soft);padding:40px 4px}
+
+  /* 跨厂商日报：把当天四家拉通，按标签聚合的纵向列表（移动端友好） */
+  .digest{margin:16px 0 2px}
+  .dgroup{margin-bottom:26px}
+  .dtag{font-family:"Noto Serif SC",serif;font-size:17px;color:var(--ink);
+    display:flex;align-items:center;gap:9px;margin:0 2px 8px;
+    padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .dtag .dn{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:12px;color:var(--soft);
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+  .ditem{display:flex;gap:13px;padding:13px 4px;border-bottom:1px solid var(--line)}
+  .ditem:last-child{border-bottom:none}
+  .vbadge{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:fit-content;
+    font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:11px;letter-spacing:.5px;
+    color:var(--vc);border:1px solid var(--vc);border-radius:999px;padding:3px 11px;
+    background:color-mix(in srgb,var(--vc) 9%,transparent);white-space:nowrap}
+  .vbadge .vdot{width:7px;height:7px;border-radius:999px;background:var(--vc)}
+  .dbd{flex:1 1 auto;min-width:0}
+  .dbd h4{font-family:"Noto Serif SC",serif;font-size:17px;line-height:1.42;font-weight:700}
+  .dbd p{font-size:14px;line-height:1.62;color:var(--soft);margin-top:5px}
+  .dsrc{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:12px;color:var(--clay);margin-top:8px}
+  @media(max-width:640px){
+    .ditem{flex-direction:column;gap:8px}
+    .dbd h4{font-size:16px}
+  }
 
   /* 热力图 */
   .heat{margin-top:46px;padding-top:26px;border-top:2px solid var(--line)}
@@ -174,6 +199,9 @@ let DAYS = [], byDate = {};     // 当前厂商的天 / 当前厂商按日期索
 let curVendor = "anthropic", curDate = null;
 let car = null;                 // 轮播状态 {cards, active, deck}
 const dataCache = {};           // "vendor|date" -> data.json
+const DAILY = "__daily__";      // 跨厂商日报的伪厂商 id
+const VC = {anthropic:"#C1572E", openai:"#10A37F", gemini:"#3B5BD0", nvidia:"#5E9400"};
+const TAG_ORDER = ["模型发布","开发者","企业","研究","生态","政策","安全"];  // 日报分组顺序
 
 (async function(){
   let idx;
@@ -192,9 +220,8 @@ const dataCache = {};           // "vendor|date" -> data.json
   const present = (idx.vendors && idx.vendors.length ? idx.vendors
                 : [...new Set(ALL.map(d=>d.vendor))])
                 .slice().sort((a,b)=> rank(a)-rank(b) || (a<b?-1:1));
-  curVendor = ALL[ALL.length-1].vendor;          // 默认选最新一天所属厂商
   renderVendorTabs(present);
-  await applyVendor(curVendor);
+  await applyVendor(DAILY);                       // 默认进「日报」跨厂商总览
 })();
 
 async function fetchJSON(u){
@@ -210,7 +237,9 @@ async function dayData(vendor, date){
 
 function renderVendorTabs(present){
   const wrap = $("#vendors");
-  wrap.innerHTML = present.map(v =>
+  wrap.innerHTML =
+    `<span class="vtab vtab-daily" data-v="${DAILY}"><span class="dotv"></span>日报</span>` +
+    present.map(v =>
     `<span class="vtab" data-v="${v}"><span class="dotv"></span>${VENDOR_NAMES[v]||v}</span>`
   ).join("");
   wrap.onclick = e => { const el = e.target.closest(".vtab"); if(el) applyVendor(el.dataset.v); };
@@ -218,11 +247,24 @@ function renderVendorTabs(present){
 
 async function applyVendor(vendor){
   curVendor = vendor;
-  document.body.className = "v-" + vendor;   // 页面 chrome 主题（body.v-<id>）；anthropic 无覆盖=默认
+  const isDaily = vendor === DAILY;
+  document.body.className = isDaily ? "v-daily" : "v-" + vendor;   // 日报无覆盖=默认主题
   document.querySelectorAll(".vtab").forEach(el => el.classList.toggle("on", el.dataset.v===vendor));
-  DAYS = ALL.filter(d => d.vendor===vendor).sort((a,b)=> a.date<b.date?-1:1);
+  if(isDaily){
+    // 跨厂商：按日期把各厂商当天聚成一条，count 为四家之和
+    const dates = [...new Set(ALL.map(d=>d.date))].sort((a,b)=> a<b?-1:1);
+    DAYS = dates.map(date=>{
+      const recs = ALL.filter(d=>d.date===date);
+      return {vendor:DAILY, date, cnDate:(recs[0]||{}).cnDate||date,
+              count: recs.reduce((s,r)=>s+(r.count||0),0)};
+    });
+  }else{
+    DAYS = ALL.filter(d => d.vendor===vendor).sort((a,b)=> a.date<b.date?-1:1);
+  }
   byDate = Object.fromEntries(DAYS.map(d=>[d.date,d]));
-  $("#sub").textContent = `每日采集 ${VENDOR_NAMES[vendor]||vendor} 官方动态。`;
+  $("#sub").textContent = isDaily
+    ? "每日跨厂商 AI 动态总览 · 一屏看懂今天 AI 圈。"
+    : `每日采集 ${VENDOR_NAMES[vendor]||vendor} 官方动态。`;
   renderDayNav();
   if(DAYS.length) await selectDay(DAYS[DAYS.length-1].date);
   renderHeatmap();
@@ -242,7 +284,9 @@ async function selectDay(date){
   curDate = date;
   document.querySelectorAll(".day").forEach(el => el.classList.toggle("on", el.dataset.d===date));
   document.querySelectorAll(".cell").forEach(el => el.classList.toggle("sel", el.dataset.d===date));
-  $("#meta").textContent = `${d.cnDate||d.date}${d.edition?" · "+d.edition:""} · 采集 ${d.count} 条`;
+  $("#meta").textContent = `${d.cnDate||d.date}${d.edition?" · "+d.edition:""} · ${vendor===DAILY?"全网":"采集"} ${d.count} 条`;
+
+  if(vendor===DAILY){ await renderDigest(date); return; }
 
   let deck = [];
   try{
@@ -262,6 +306,44 @@ async function selectDay(date){
     `<div class="dots" id="dots">`+
     deck.map((_,i)=>`<span class="dot" data-i="${i}"></span>`).join("")+`</div>`;
   initCarousel(deck);
+}
+
+/* ---- 跨厂商日报：拉通当天四家，按标签分组的纵向列表 ---- */
+async function renderDigest(date){
+  car = null;                                      // 退出轮播态，避免 resize 操作已卸载的卡片
+  const vendor = curVendor;
+  const recs = ALL.filter(d => d.date===date);
+  let datas;
+  try{
+    datas = await Promise.all(recs.map(r =>
+      dayData(r.vendor, date).then(dd => ({vendor:r.vendor, dd})).catch(()=>null)));
+  }catch(e){ $("#app").innerHTML = `<div class="empty">读取当天数据失败。</div>`; return; }
+  if(date!==curDate || vendor!==curVendor) return; // 期间又切了日期/厂商，丢弃过期结果
+
+  const order = Object.keys((window.Cards && window.Cards.VENDORS) || {});
+  const vrank = v => { const i = order.indexOf(v); return i<0?99:i; };
+  const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  const src = (window.Cards && window.Cards.srcHTML) || (u => esc(u.source));  // 复用卡片同款来源链接
+
+  let items = [];
+  datas.filter(Boolean).forEach(({vendor:v, dd}) =>
+    (dd.updates||[]).forEach(u => items.push({...u, vendor:v})));
+  if(!items.length){ $("#app").innerHTML = `<div class="empty">这一天还没有动态。</div>`; return; }
+
+  const groups = {};
+  items.forEach(u => { (groups[u.tag] = groups[u.tag] || []).push(u); });
+  const tags = [...TAG_ORDER.filter(t => groups[t]),
+                ...Object.keys(groups).filter(t => !TAG_ORDER.includes(t))];
+
+  $("#app").innerHTML = `<div class="digest">` + tags.map(tag => {
+    const list = groups[tag].slice().sort((a,b) => vrank(a.vendor)-vrank(b.vendor));
+    return `<div class="dgroup"><h3 class="dtag">${esc(tag)}<span class="dn">${list.length}</span></h3>` +
+      list.map(u => `<div class="ditem">`+
+        `<span class="vbadge" style="--vc:${VC[u.vendor]||"#999"}"><span class="vdot"></span>${esc(VENDOR_NAMES[u.vendor]||u.vendor)}</span>`+
+        `<div class="dbd"><h4>${esc(u.title)}</h4><p>${esc(u.summary)}</p>`+
+        `<div class="dsrc">↗ ${src(u)}</div></div>`+
+      `</div>`).join("") + `</div>`;
+  }).join("") + `</div>`;
 }
 
 /* ---- 3D 轮播 ---- */
@@ -346,6 +428,7 @@ function dealIn(){
   });
   void $("#stage").offsetWidth;                        // 强制 reflow 固化初始态
   requestAnimationFrame(()=>{
+    if(!car) return;                                   // 入场动画排队期间已切到日报/别处（car 置空），跳过
     car.cards.forEach((el,i)=>{
       el.style.transition = "";                        // 恢复 CSS 过渡
       el.style.transitionDelay = (Math.min(Math.abs(i-car.active),4)*60)+"ms";  // 由中心向外错位发牌
@@ -393,6 +476,8 @@ function renderHeatmap(){
   $("#heatHint").textContent = `共 ${DAYS.length} 天发布 · 累计采集 ${total} 条动态`;
   heat.hidden = false;
   if(curDate){ const c = cal.querySelector(`.cell[data-d="${curDate}"]`); if(c) c.classList.add("sel"); }
+  // 默认滚到最右（最近一周）：移动端无需手动右滑即可看到当天数据
+  requestAnimationFrame(()=>{ const w = cal.parentElement; if(w) w.scrollLeft = w.scrollWidth; });
 
   const tip = $("#tip");
   // 用可覆盖的 on* 句柄（每次切厂商都会重渲热力图，避免重复叠加监听）

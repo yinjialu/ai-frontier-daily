@@ -107,6 +107,6 @@
     return out;
   }
 
-  root.Cards = { buildDeck: buildDeck, VENDORS: VENDORS };
+  root.Cards = { buildDeck: buildDeck, VENDORS: VENDORS, srcHTML: srcHTML, srcHref: srcHref };
   if (typeof module !== "undefined" && module.exports) module.exports = root.Cards;
 })(typeof window !== "undefined" ? window : globalThis);
