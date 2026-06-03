@@ -87,8 +87,9 @@ vendors:
 
   gemini:
     # 坑：Google 自有 RSS（blog.google / deepmind.google / developers.googleblog.com）内容真实有效，
-    #   但其 CDN 按 UA/指纹拦截裸 curl/requests（实测 curl 返回 000）→ CI 用 feedparser 直抓易失败，
-    #   建议给 feedparser 设浏览器 UA + 重试，或走 Claude 驱动的 WebFetch（已放入下方 webfetch）。
+    #   但其 CDN 按 UA/指纹拦截裸 curl/requests（实测 curl 返回 000）。
+    #   ✓ collector 现已内置「浏览器 UA + 重试退避 + 超时」抓取，这些源 CI 可直抓；
+    #     仍抓不动会被 sources_health.json 标记失败，可再回退到下方 webfetch（Claude 驱动）。
     #   GitHub releases.atom 与 changelog.md.txt 则稳定，CI 安全。
     #   旧 SDK generative-ai-python/js 已归档，勿用，已迁移到 python-genai / js-genai。
     rss:
