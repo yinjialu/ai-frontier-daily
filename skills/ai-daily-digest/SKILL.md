@@ -156,29 +156,36 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
   4. **停在「发布」按钮前**，截图给用户确认，由用户手动点发布（平台反自动化规范，切勿自动发）。
 - 公众号个人订阅号：草稿接口权限已回收，手动建草稿贴图，或用 135/壹伴等已授权
   编辑器导入草稿箱。
-- 公众号【已认证服务号】——「云端抓取 → 本机推送」半自动链路（仍由人工群发）：
+- 公众号【已认证服务号】——「云端抓取 → 本机合并+推送」半自动链路（仍由人工群发）：
 
-  云端（北京 07:00 routine）只负责抓取+渲染+提交；推送草稿在本机完成。
+  **关键约束**：Claude Code on the web 的 GitHub 代理「只允许推当前工作分支、不能直推 main」，
+  所以云端 routine 推的是 **`daily-<DATE>` 分支**（不是 main）。由**本机**把分支合并进 main 并发微信。
+  （云端要能推分支，需在本机先跑一次 `/web-setup` 把 gh 令牌同步到 Claude 账号。）
+
+  一条命令搞定「合并分支 + 各厂商建草稿」：
 
   ```bash
-  scripts/publish-local.sh --dry-run                 # 打印将提交的结构，不碰 API（anthropic）
-  scripts/publish-local.sh                           # 拉取云端最新 → 创建贴图草稿（anthropic）
-  scripts/publish-local.sh --vendor openai           # 指定厂商
+  scripts/watch-and-publish.sh --dry-run   # 演练：照常合并 daily 分支，但微信只打印结构不碰 API
+  scripts/watch-and-publish.sh             # 合并 daily-* → main → 为当天每个厂商建微信贴图草稿
+  VENDORS_PUBLISH="anthropic openai" scripts/watch-and-publish.sh   # 只给指定厂商发微信
   ```
 
-  **默认形态＝贴图（newspic / 图片消息）**：`git pull` → `publish_wechat_newspic.py [--vendor <id>]`
-  把当天小红书整套卡片传为永久素材 → `draft/add(article_type=newspic, image_info)` 建贴图
-  草稿（公众号原生图片帖，更贴合卡片）→ `.last_published.<vendor>` 去重 → 系统通知。配文由结构化
-  数据自动生成（标题 + 每条摘要，随 vendor 切换品牌）。凭据 `~/.config/wechat-official-draft/config.yaml`，
-  本机公网 IP 须在公众号 IP 白名单，且需已认证服务号。
+  它做三件事：① `git fetch`，把未合并的 `origin/daily-<DATE>` 用 `-X theirs` 合并进 main、
+  `run.py --reindex` 重建指针、push main、删远端分支；② 对每个有当天 `data/<vendor>/<DATE>.json`
+  的厂商跑 `publish_wechat_newspic.py --vendor <id>` 建**贴图(newspic)**草稿；③ `.last_published.<vendor>`
+  去重（每家每天只成功一次）。凭据 `~/.config/wechat-official-draft/config.yaml`，本机公网 IP 须在
+  公众号 IP 白名单，且需已认证服务号。
 
-  另一形态（可选，手动）＝图文文章（news，内嵌同一套图）：
-  `to_wechat_md.py [--vendor <id>]` → `wechat-official-draft/scripts/push_draft.mjs --file .. --cover ..`。
+  - 单厂商手动发：`scripts/publish-local.sh [--vendor <id>]`（只发不合并）。
+  - 图文文章形态（可选）：`to_wechat_md.py [--vendor <id>]` → `push_draft.mjs`。
 
-  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 07:30 + 08:30 跑上面的脚本）。
-  安装：`cp scripts/launchd-publish.plist ~/Library/LaunchAgents/ && launchctl load -w
-  ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist`。
-  （如需同时自动推 OpenAI 公众号，在 plist 里加一条 `--vendor openai` 的调用即可。）
+  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 07:15/07:45/08:30 跑 `watch-and-publish.sh`，
+  多次兜底吸收云端 cron 抖动）。安装/更新：
+  ```bash
+  cp scripts/launchd-publish.plist ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist
+  launchctl unload ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist 2>/dev/null
+  launchctl load -w ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist
+  ```
 
 ## 扩展到更多厂商
 

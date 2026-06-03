@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 每日 07:30（+08:30 兜底，北京时间）本机推送：拉取云端最新 → 公众号草稿箱。
-     云端 07:00 抓取渲染，本机 07:30 推送；若云端 cron 抖动未及时完成，08:30 再试一次
-     （配合 .last_published 去重，只会成功推一次）。
+<!-- 本机监听器：把云端 routine 推的 daily-<DATE> 分支合并进 main，再为各厂商建微信贴图草稿。
+     云端 07:00 抓取渲染、推 daily-<DATE> 分支；本机 07:15/07:45/08:30 跑 watch-and-publish.sh
+     （多次兜底吸收云端 cron 抖动，配合 .last_published.<vendor> 去重，每家每天只成功推一次）。
      安装：见 README / SKILL.md「云端抓取 → 本机推送」一节。
-     此文件为参考副本；实际生效的是 ~/Library/LaunchAgents/ 下的同名文件。 -->
+     此文件为参考副本；实际生效的是 ~/Library/LaunchAgents/ 下的同名文件，改后需重新 load。 -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -13,7 +13,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/jialu/Documents/anthropic-daily-repo/scripts/publish-local.sh</string>
+    <string>/Users/jialu/Documents/anthropic-daily-repo/scripts/watch-and-publish.sh</string>
   </array>
 
   <key>EnvironmentVariables</key>
@@ -21,14 +21,18 @@
     <key>HOME</key>
     <string>/Users/jialu</string>
     <key>PATH</key>
-    <string>/Users/jialu/.nvm/versions/node/v24.16.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
+    <string>/Users/jialu/.nvm/versions/node/v24.16.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
   </dict>
 
   <key>StartCalendarInterval</key>
   <array>
     <dict>
       <key>Hour</key><integer>7</integer>
-      <key>Minute</key><integer>30</integer>
+      <key>Minute</key><integer>15</integer>
+    </dict>
+    <dict>
+      <key>Hour</key><integer>7</integer>
+      <key>Minute</key><integer>45</integer>
     </dict>
     <dict>
       <key>Hour</key><integer>8</integer>
