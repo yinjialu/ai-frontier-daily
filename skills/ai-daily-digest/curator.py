@@ -23,7 +23,10 @@ def _system_prompt(vendor):
 2) 分类打标签：每条给一个标签，从【模型发布/开发者/企业/研究/生态/政策/安全】中选。
 3) 中文摘要：每条 50~80 字，客观说清「变了什么+对用户意味着什么」，不夸张、不编造数据。
 4) 排序：按重要性降序，最多 6 条。
-5) 严格输出 JSON（无多余文字、无 markdown 代码块），字段见下；今天无值得发的内容则输出 {{"skip":true,"reason":"..."}}。
+5) 严格输出 JSON（无多余文字、无 markdown 代码块）；今天无值得发的内容则输出 {{"skip":true,"reason":"..."}}。
+   每条 update 含字段：tag（标签）、title（中文标题）、summary（中文摘要）、
+   source（原文域名，如 {name.lower()}.com）、url（该条对应原文的完整链接，
+   必须从输入原文里**原样复制 url 字段**，禁止改写或编造；找不到就留空字符串）。
 严禁逐字复制英文长句；摘要必须是你自己的中文转写。"""
 
 def _today():
@@ -65,7 +68,8 @@ def _mock(items, vendor="anthropic"):
         summary = (raw[:78] + "…") if len(raw) > 80 else raw
         ups.append({"tag": _tag(it["title"] + " " + raw), "title": it["title"],
                     "summary": summary or "（待补充摘要）",
-                    "source": re.sub(r"^https?://(www\.)?", "", it["url"]).split("/")[0] or it["source"]})
+                    "source": re.sub(r"^https?://(www\.)?", "", it["url"]).split("/")[0] or it["source"],
+                    "url": it["url"]})
     return _wrap(ups, vendor)
 
 # ---- Claude API（live） ----
@@ -89,6 +93,13 @@ def _live(items, vendor="anthropic"):
     data = json.loads(text)
     if data.get("skip"):
         return data
+    # 原文链接防幻觉：只信任「在本次抓取的 items 里真实出现过」的 url，否则清空 → 渲染退回域名首页兜底。
+    valid = {it["url"] for it in items if it.get("url")}
+    for u in data.get("updates", []):
+        if u.get("url") not in valid:
+            u["url"] = ""
+        if not u.get("source") and u.get("url"):
+            u["source"] = re.sub(r"^https?://(www\.)?", "", u["url"]).split("/")[0]
     # 补齐缺失的固定字段
     base = _wrap(data.get("updates", []), vendor)
     base.update({k: v for k, v in data.items() if v})
