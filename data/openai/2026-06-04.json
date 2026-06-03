@@ -1,0 +1,42 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.04",
+  "cnDate": "6月4日 周四",
+  "edition": "VOL.155",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.5 Instant 成为 ChatGPT 全局默认模型",
+      "summary": "ChatGPT 默认模型从 GPT-5.3 Instant 升级至 GPT-5.5 Instant，准确性与多模态表现全面提升，Plus/Pro 用户获得更丰富的上下文理解。这是 ChatGPT 历史上部署的最强默认模型，无需手动切换、所有用户立即受益。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 支持 Windows 电脑操作（Computer Use）",
+      "summary": "Codex 上线 Windows Computer Use，符合资格的用户可让 Codex 直接查看、点击和操作 Windows 应用，同时支持从手机/Mac 远程续接会话、新增 Codex Profiles 追踪用量与 token 消耗。开发者的调试与构建效率大幅提升。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Responses/Chat API 新增内容审核端点",
+      "summary": "Python SDK v2.41.0、Node SDK v6.42.0 同步上线 `responses.moderation` 与 `chat_completions.moderation`，开发者可在单次 API 调用中集成内容审核，无需额外调用独立审核接口，降低合规接入成本。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "企业",
+      "title": "ChatGPT 全局集成 Excel 与 Google Sheets",
+      "summary": "ChatGPT 推出 Excel 与 Google Sheets 侧边栏，支持直接在表格中构建追踪器、预算、公式与多 Tab 文件，提供清理建议与场景分析。把 ChatGPT 嵌入办公生产力核心场景，降低电子表格使用门槛。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "安全",
+      "title": "ChatGPT 推出 Active Sessions 会话安全管理",
+      "summary": "ChatGPT 新增 Active Sessions，用户可查看账户下所有活跃登录会话并一键注销可疑设备，支持 Trusted Contact 安全联系人功能。面向个人账号优先推出，提升 ChatGPT 账号的访问安全防护。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
