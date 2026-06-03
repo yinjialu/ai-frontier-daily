@@ -105,7 +105,8 @@ def main():
     engine = _arg_value("--engine", "auto")
 
     print(f"[1/5] 采集（{'mock' if mock else 'live'} · {vendor}）…")
-    items = collector.collect(mock=mock, vendor=vendor)
+    items = collector.collect(mock=mock, vendor=vendor,
+                              health_path=None if mock else OUT / "output" / "sources_health.json")
     print(f"      共 {len(items)} 条")
 
     print("[2/5] 去重…")
