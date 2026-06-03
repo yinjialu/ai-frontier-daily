@@ -4,7 +4,25 @@
    主题色由 cards.css 的 .v-<vendor> 作用域覆盖语义 token 实现，版式厂商无关。*/
 (function (root) {
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+  function escAttr(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");}
   function pad(n){return String(n).padStart(2,"0");}
+
+  // 来源链接：优先用原文 url；缺 url 时退回 https://<域名> 兜底到官网首页；都没有则纯文本。
+  // 渲染成 <a> 时样式继承父级、无下划线（见 cards.css .srclink），导出的图片视觉零变化；
+  // 仅展示页可点，hover 才显下划线。
+  function srcHref(u){
+    var url = (u && u.url || "").trim();
+    if(/^https?:\/\//i.test(url)) return url;
+    var s = (u && u.source || "").trim();
+    if(/^[\w.-]+\.[a-z]{2,}/i.test(s)) return "https://" + s.split("/")[0];
+    return "";
+  }
+  function srcHTML(u){
+    var label = esc(u && u.source), href = srcHref(u);
+    return href
+      ? `<a class="srclink" href="${escAttr(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`
+      : label;
+  }
 
   // 厂商注册表：新增厂商在此加一项 + 在 cards.css 加 .v-<id> 主题即可。
   var VENDORS = {
@@ -48,7 +66,7 @@
             <div class="rule"></div>
             <div class="sum">${esc(u.summary)}</div>
           </div>
-          <div class="src"><span>来源 ${esc(u.source)}</span><span>${esc(DATA.brand)}</span></div>
+          <div class="src"><span>来源 ${srcHTML(u)}</span><span>${esc(DATA.brand)}</span></div>
         </div>`});
     });
 
@@ -81,7 +99,7 @@
           <div class="e">
             <div class="num">${pad(i+1)}</div>
             <div class="bd"><span class="tag">${esc(u.tag)}</span><h3>${esc(u.title)}</h3>
-              <p>${esc(u.summary)}</p><div class="s">↗ ${esc(u.source)}</div></div>
+              <p>${esc(u.summary)}</p><div class="s">↗ ${srcHTML(u)}</div></div>
           </div>`).join("")}
         <div class="foot"><span>${esc(DATA.brand)}</span><span>${esc(DATA.cnDate)}</span></div>
       </div>`});

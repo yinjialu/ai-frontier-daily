@@ -80,6 +80,9 @@
 .xhs-item .rule{width:96px;height:8px;background:var(--accent);border-radius:4px;margin:48px 0}
 .xhs-item .sum{font-size:41px;line-height:1.66;color:var(--muted);font-weight:300}
 .xhs-item .src{padding-top:40px;border-top:2px solid var(--line);font-family:var(--mono);font-size:25px;color:var(--muted);display:flex;justify-content:space-between}
+/* 来源链接：继承父级颜色、默认无下划线 → 导出图片视觉零变化；展示页 hover 才显下划线 */
+.srclink{color:inherit;text-decoration:none}
+.srclink:hover{text-decoration:underline}
 
 .xhs-outro{background:var(--feature-bg);color:var(--feature-fg)}
 .xhs-outro::after{mix-blend-mode:screen;opacity:.05}

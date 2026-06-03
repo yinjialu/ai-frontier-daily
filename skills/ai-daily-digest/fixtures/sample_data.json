@@ -4,10 +4,10 @@
   "edition": "VOL.128",
   "brand": "AI 前哨 · 每日 Anthropic",
   "updates": [
-    {"tag":"模型发布","title":"Claude Opus 4.8 正式上线","summary":"在编码、智能体能力、推理与知识工作上全面超越 4.7，价格保持不变。claude.ai 新增「投入度」调节，API 即日可用。","source":"anthropic.com/news"},
-    {"tag":"开发者","title":"Claude Code 接入动态工作流","summary":"一句话即可让 Claude 在后台编排数十到上百个智能体协作，承接更大型复杂任务；Fast 模式更快更便宜。","source":"code.claude.com/changelog"},
-    {"tag":"企业","title":"托管智能体支持自托管沙箱","summary":"工具执行可放到你自己的基础设施或 Cloudflare、Vercel 等托管方，编排循环仍在 Anthropic，安全边界更可控。","source":"anthropic.com/news"},
-    {"tag":"生态","title":"Anthropic 收购 Stainless","summary":"补强 SDK 自动生成能力，进一步降低开发者接入 Claude 平台的门槛。","source":"anthropic.com/news"}
+    {"tag":"模型发布","title":"Claude Opus 4.8 正式上线","summary":"在编码、智能体能力、推理与知识工作上全面超越 4.7，价格保持不变。claude.ai 新增「投入度」调节，API 即日可用。","source":"anthropic.com","url":"https://www.anthropic.com/news/claude-opus-4-8"},
+    {"tag":"开发者","title":"Claude Code 接入动态工作流","summary":"一句话即可让 Claude 在后台编排数十到上百个智能体协作，承接更大型复杂任务；Fast 模式更快更便宜。","source":"code.claude.com","url":"https://code.claude.com/docs/en/changelog"},
+    {"tag":"企业","title":"托管智能体支持自托管沙箱","summary":"工具执行可放到你自己的基础设施或 Cloudflare、Vercel 等托管方，编排循环仍在 Anthropic，安全边界更可控。","source":"anthropic.com","url":"https://www.anthropic.com/news/managed-agents-self-hosted"},
+    {"tag":"生态","title":"Anthropic 收购 Stainless","summary":"补强 SDK 自动生成能力，进一步降低开发者接入 Claude 平台的门槛。","source":"anthropic.com"}
   ],
   "outroTitle": "每天一条\n看懂 AI 大厂动向",
   "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
