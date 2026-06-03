@@ -5,12 +5,12 @@
   "edition": "VOL.154",
   "brand": "AI 前哨 · 每日 NVIDIA",
   "updates": [
-    {"tag": "生态", "title": "NVIDIA 联手微软：统一智能体 AI 栈", "summary": "NVIDIA 与微软合作，打通 Windows 设备、Azure 云与本地部署的统一智能体 AI 基础设施(软硬一体)。让 agent 应用在端-云-本地一致运行，降低企业落地 agentic AI 的栈复杂度。", "source": "nvidianews.nvidia.com"},
-    {"tag": "开发者", "title": "NemoClaw：构建自主 AI 工程师跑端到端仿真", "summary": "工业软件厂商基于 NVIDIA NemoClaw 打造「自主 AI 工程师」，自动完成端到端仿真工作流。把 agent 用于汽车/航空/半导体的工程仿真，瞄准研发环节的自动化提效。", "source": "nvidianews.nvidia.com"},
-    {"tag": "企业", "title": "工厂运营蓝图 FOX：给工厂装「AI 大脑」", "summary": "NVIDIA 推出 Factory Operations(FOX)参考设计，把机器信号与运营系统接入统一决策层。为制造业提供可复制的工厂自治蓝图，推动产线从自动化走向自主决策。", "source": "nvidianews.nvidia.com"},
-    {"tag": "企业", "title": "金融业转向「交易基础模型」", "summary": "NVIDIA 指出银行正用统一的交易基础模型取代零散的任务专用模型。以 transformer 处理交易数据构建自有金融智能，是金融 AI 从碎片化走向平台化的方向信号。", "source": "blogs.nvidia.com"},
-    {"tag": "生态", "title": "富士康+台湾医疗：物理 AI 进医院", "summary": "NVIDIA 与富士康及台湾医疗机构合作，把智能体与物理 AI 部署到医院，区域投资约 15 亿美元。机器人与 AI 代理协同进入临床与院务，推动医疗机构的具身 AI 落地。", "source": "nvidianews.nvidia.com"},
-    {"tag": "开发者", "title": "开源大批物理 AI 智能体工具与技能", "summary": "NVIDIA 开源面向机器人、自动驾驶、视觉 AI 与数字孪生的成套 agent 技能。开发者可直接复用这些可被 agent 调用的工作流，降低物理 AI 应用的搭建门槛。", "source": "nvidianews.nvidia.com"}
+    {"tag": "生态", "title": "NVIDIA 联手微软：统一智能体 AI 栈", "summary": "NVIDIA 与微软合作，打通 Windows 设备、Azure 云与本地部署的统一智能体 AI 基础设施(软硬一体)。让 agent 应用在端-云-本地一致运行，降低企业落地 agentic AI 的栈复杂度。", "source": "nvidianews.nvidia.com", "url": "https://blogs.nvidia.com/blog/microsoft-build-windows-local-cloud-devices/"},
+    {"tag": "开发者", "title": "NemoClaw：构建自主 AI 工程师跑端到端仿真", "summary": "工业软件厂商基于 NVIDIA NemoClaw 打造「自主 AI 工程师」，自动完成端到端仿真工作流。把 agent 用于汽车/航空/半导体的工程仿真，瞄准研发环节的自动化提效。", "source": "nvidianews.nvidia.com", "url": "https://nvidianews.nvidia.com/news/enterprise-software-leaders-build-ai-agents-with-nvidia"},
+    {"tag": "企业", "title": "工厂运营蓝图 FOX：给工厂装「AI 大脑」", "summary": "NVIDIA 推出 Factory Operations(FOX)参考设计，把机器信号与运营系统接入统一决策层。为制造业提供可复制的工厂自治蓝图，推动产线从自动化走向自主决策。", "source": "nvidianews.nvidia.com", "url": "https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain/"},
+    {"tag": "企业", "title": "金融业转向「交易基础模型」", "summary": "NVIDIA 指出银行正用统一的交易基础模型取代零散的任务专用模型。以 transformer 处理交易数据构建自有金融智能，是金融 AI 从碎片化走向平台化的方向信号。", "source": "blogs.nvidia.com", "url": "https://blogs.nvidia.com/blog/financial-institutions-transaction-foundation-models/"},
+    {"tag": "生态", "title": "富士康+台湾医疗：物理 AI 进医院", "summary": "NVIDIA 与富士康及台湾医疗机构合作，把智能体与物理 AI 部署到医院，区域投资约 15 亿美元。机器人与 AI 代理协同进入临床与院务，推动医疗机构的具身 AI 落地。", "source": "nvidianews.nvidia.com", "url": "https://nvidianews.nvidia.com/news/nvidia-foxconn-and-taiwan-medical-centers-bring-agentic-and-physical-ai-to-healthy-taiwan"},
+    {"tag": "开发者", "title": "开源大批物理 AI 智能体工具与技能", "summary": "NVIDIA 开源面向机器人、自动驾驶、视觉 AI 与数字孪生的成套 agent 技能。开发者可直接复用这些可被 agent 调用的工作流，降低物理 AI 应用的搭建门槛。", "source": "nvidianews.nvidia.com", "url": "https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai"}
   ],
   "outroTitle": "每天一条\n看懂 AI 大厂动向",
   "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。",
