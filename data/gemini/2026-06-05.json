@@ -1,0 +1,26 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.05",
+  "cnDate": "6月5日 周五",
+  "edition": "VOL.156",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "js-genai v2.8.0：与 Python SDK 对齐，上线 Agent Platform MCP",
+      "summary": "官方 JavaScript/TypeScript SDK js-genai v2.8.0 与 Python 版同步：新增 Agent Platform MCP 支持、实时翻译配置（TranslationConfig）和强化微调验证（ValidateReward API）。JS/TS 开发者即可使用与 Python 对等的 agent 构建能力，双端 SDK 生态统一加速多平台 Gemini 应用落地。",
+      "source": "github.com/googleapis",
+      "url": "https://github.com/googleapis/js-genai/releases/tag/v2.8.0"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.45.1 补丁发布，nightly 已迁移至 3.5 Flash GA 后端",
+      "summary": "Gemini CLI v0.45.1 修复稳定版回归问题；v0.47.0-nightly 将默认后端切换至已 GA 的 Gemini 3.5 Flash 并启用 Auto 模式，同步修复 EBUSY fallback 与 TOML 解析崩溃。nightly 版动向预示下一稳定版本将以 Gemini 3.5 Flash 为默认推理后端，推理速度与质量将提升。",
+      "source": "github.com/google-gemini",
+      "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.45.1"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

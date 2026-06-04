@@ -1,0 +1,26 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.05",
+  "cnDate": "6月5日 周五",
+  "edition": "VOL.156",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "订阅计划程序化用量 6/15 起拆分独立额度池",
+      "summary": "从 6 月 15 日起，Agent SDK、claude -p、Claude Code GitHub Actions 等程序化用量从订阅共用池移至独立月度额度（Pro $20、Max 5x $100、Max 20x $200），按标准 API 价格计费，额度用尽即停、无自动溢出。交互式 CLI 终端使用不受影响，重度自动化用户建议改用 API Key 直付。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "tag": "开发者",
+      "title": "Agent SDK v0.3.163：stop_task 幂等 + Hook 非错误上下文",
+      "summary": "v0.3.163 新增三项改进：stop_task 对已消失任务返回成功，消除竞态错误；修复 SDK host 无法通过 setMcpServers 添加 claude-in-chrome 等内置 MCP 服务器的问题；Stop/SubagentStop hook 的 hookSpecificOutput 新增 additionalContext，支持继续当前轮的非错误反馈，使 hook 更灵活地介入 agent 流程。",
+      "source": "github.com/anthropics",
+      "url": "https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.163"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

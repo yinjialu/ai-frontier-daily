@@ -1,0 +1,40 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.05",
+  "cnDate": "6月5日 周五",
+  "edition": "VOL.156",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Dynamo 实验版：Cosmos3 多模态生成服务上线（文生图/视频/图生视频）",
+      "summary": "Dynamo v1.3.0-cosmos3-dev.1 通过 vLLM-Omni 后端支持 Cosmos3 的文生图（t2i）、文生视频（t2v）与图生视频（i2v），含 guardrails 开关与按模态分配 worker。在 Dynamo 分布式推理框架下服务开源多模态世界模型，为企业规模化部署 Cosmos3 生成 workload 提供生产路径。",
+      "source": "github.com/ai-dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases/tag/v1.3.0-cosmos3-dev.1"
+    },
+    {
+      "tag": "开发者",
+      "title": "Dynamo 新增 Kimi K2.6 与 Nemotron Super 120B 部署方案",
+      "summary": "Dynamo 同步发布 Kimi K2.6 与 Nemotron-3-Super-120B-A12B 的 vLLM 部署配方，覆盖 B200（NVFP4）/ H200（INT4/FP8）的对话与 agentic 双 profile，含 Kubernetes 配置与 AIPerf 性能基准作业。全球顶级开源 agent 模型在 NVIDIA 生产集群上的部署从此有了官方参考架构。",
+      "source": "github.com/ai-dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases/tag/v1.3.0-kimi-k2.6-dev.1"
+    },
+    {
+      "tag": "开发者",
+      "title": "TensorRT 11.0 正式发布：AI 专用算子 + Faster Air Top-K 插件",
+      "summary": "TensorRT 迈入 11.0 大版本：引入 Faster Air Top-K 插件提升 token 采样速度，新增对 TRT_Attention、TRT_MoE、TRT_KVCacheUpdate 等 AI 专用自定义算子的支持，清理 batchTile/gelu/nms 等废弃插件。直接提升 MoE 大模型与注意力机制的推理效率，生产级 LLM 部署可从中显著降低延迟。",
+      "source": "github.com/NVIDIA",
+      "url": "https://github.com/NVIDIA/TensorRT/releases/tag/v11.0"
+    },
+    {
+      "tag": "开发者",
+      "title": "Triton Inference Server 2.69.0：Azure 托管身份 + Rust gRPC 客户端",
+      "summary": "Triton 2.69.0 为 Azure Storage 模型仓库新增 Azure Managed Identity 免静态密钥认证，将 Rust 升为第一类 gRPC 客户端语言，vLLM 后端支持 GPU_DEVICE_IDS 多 GPU 加载，并强化 HTTP 请求校验防内存耗尽攻击。企业 Azure 部署安全性提升，多语言推理服务客户端生态进一步完善。",
+      "source": "github.com/triton-inference-server",
+      "url": "https://github.com/triton-inference-server/server/releases/tag/v2.69.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
