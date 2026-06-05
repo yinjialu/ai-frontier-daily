@@ -9,8 +9,8 @@ vendors:
     # 注：anthropic.com/news、/research 是 JS 渲染、无官方 RSS，
     #     建议用 RSSHub 自建实例转成 RSS 后把 url 填到下面；或日常走 Claude 驱动用 WebFetch。
     rss:
-      - name: Claude Code Changelog      # 官方 RSS
-        url: https://code.claude.com/docs/en/changelog.rss
+      - name: Claude Code Releases       # 官方 GitHub Releases Atom（原 changelog.rss 已 404）
+        url: https://github.com/anthropics/claude-code/releases.atom
         limit: 10
       - name: Anthropic Engineering      # 社区镜像 RSS（非官方，可能停更）
         url: https://raw.githubusercontent.com/conoro/anthropic-engineering-rss-feed/main/anthropic_engineering_rss.xml
@@ -90,12 +90,11 @@ vendors:
     #   但其 CDN 按 UA/指纹拦截裸 curl/requests（实测 curl 返回 000）。
     #   ✓ collector 现已内置「浏览器 UA + 重试退避 + 超时」抓取，这些源 CI 可直抓；
     #     仍抓不动会被 sources_health.json 标记失败，可再回退到下方 webfetch（Claude 驱动）。
-    #   GitHub releases.atom 与 changelog.md.txt 则稳定，CI 安全。
+    #   GitHub releases.atom 稳定，CI 安全。
     #   旧 SDK generative-ai-python/js 已归档，勿用，已迁移到 python-genai / js-genai。
+    #   注：官方 API Changelog 只有 HTML / changelog.md.txt（markdown），非 feed，feedparser 无法解析
+    #       且 .md.txt 现已 302 跳转——故不放进 rss，改由下方 webfetch 的 HTML changelog 走 Claude 驱动。
     rss:
-      - name: Gemini API Changelog        # 官方，模型上/下线最权威；纯文本易解析
-        url: https://ai.google.dev/gemini-api/docs/changelog.md.txt
-        limit: 10
       - name: python-genai Releases       # 官方 GitHub Atom，现行 Python SDK，CI 安全
         url: https://github.com/googleapis/python-genai/releases.atom
         limit: 8
