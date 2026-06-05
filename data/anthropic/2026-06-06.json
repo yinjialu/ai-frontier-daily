@@ -1,0 +1,26 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.06",
+  "cnDate": "6月6日 周六",
+  "edition": "VOL.157",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.163：企业版本管控 + 插件列表命令上线",
+      "summary": "新增 requiredMinimumVersion/Max 托管设置字段，企业管理员可在策略中锁定客户端版本范围，防止版本漂移；/plugin list 支持 --enabled/--disabled 过滤，插件状态一览无余；Stop/SubagentStop Hook 新增 additionalContext，可在非错误场景向 Claude 注入上下文，更灵活介入 agent 流程。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.163"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.162：补全优化 + Remote Control 常驻 + 并行容错",
+      "summary": "斜杠命令自动补全改为先填充后确认，降低误触风险；acceptEdits 模式扩展至构建工具配置文件权限确认；Remote Control 升级为会话全局常驻底部 Pill，状态随时可见；并行工具调用中单个 Bash 失败不再取消其他并发任务，agent 稳定性提升。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.162"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

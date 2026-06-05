@@ -1,0 +1,26 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.06",
+  "cnDate": "6月6日 周六",
+  "edition": "VOL.157",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI 6/18 停服，迁移 Antigravity CLI 进入倒计时",
+      "summary": "Google I/O 宣布的品牌整合即将落地：Gemini CLI 将于 6 月 18 日停止向 AI Pro/Ultra 及免费用户提供服务，距截止仅剩 12 天。请尽快切换至 Antigravity CLI（npm i -g @google/antigravity），现有插件架构保持兼容，配置可平滑迁移。",
+      "source": "developers.googleblog.com",
+      "url": "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.46.0-preview.2 + v0.45.2：Flash 3.5 切换补丁发布",
+      "summary": "面向 Antigravity 过渡的 Preview 分支推出 preview.2，Cherry-pick Flash 3.5 GA 后端切换修复，优化 CI 流程与 TOML 解析策略，修复 PTY 调整大小边界异常；稳定版 v0.45.2 同步发布同一关键补丁，建议仍用稳定版的用户尽快升级。",
+      "source": "github.com/google-gemini",
+      "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.46.0-preview.2"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

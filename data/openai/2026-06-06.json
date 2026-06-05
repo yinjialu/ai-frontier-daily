@@ -1,0 +1,33 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.06",
+  "cnDate": "6月6日 周六",
+  "edition": "VOL.157",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "ChatGPT Dreaming V3：长期记忆系统全面升级",
+      "summary": "全新后台记忆合成架构上线，自动从多段对话中提炼持久记忆并随时间动态更新（如行程结束后从「将去新加坡」自动修订为「已去」）；内部事实召回率从 41.5% 提升至 82.8%；6/4 起向美区 Plus/Pro 推送，免费用户将随后开放。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/chatgpt-memory-dreaming/"
+    },
+    {
+      "tag": "安全",
+      "title": "ChatGPT Lockdown Mode + Active Sessions：双重安全防线上线",
+      "summary": "Lockdown Mode 作为可选高安全模式上线，开启后限制 ChatGPT 访问外部网络与服务，有效缓解提示注入导致数据泄露风险；Active Sessions 同步开放，用户可实时审查账号会话并远程登出可疑连接，适合企业与隐私敏感场景。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "tag": "政策",
+      "title": "GPT-5.5-Cyber 向欧盟开放，强化网安合规布局",
+      "summary": "OpenAI 宣布向欧盟提供 GPT-5.5-Cyber，这是专为网络安全应用定制的旗舰模型变体，被解读为配合欧盟 AI 合规框架的战略举措；同时扩大安全研究领域授权访问范围，加速在欧洲市场合规落地。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

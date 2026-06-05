@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.06",
+  "cnDate": "6月6日 周六",
+  "edition": "VOL.157",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Dynamo v1.3.0-nemotron-ultra-dev.1：Nemotron Ultra 全栈推理方案",
+      "summary": "为开源 Nemotron-3 Ultra 提供 Dynamo + vLLM 端到端部署配方（B200 用 NVFP4、H200 用 FP8），引入 Mamba 前缀缓存预填充/解码运行时与混合哈希块 KV 事件，结合多 token 预测卷积状态处理；专为长上下文 Agent 推理优化，可作为私有化高性能部署的强力候选。",
+      "source": "github.com/ai-dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases/tag/v1.3.0-nemotron-ultra-dev.1"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
