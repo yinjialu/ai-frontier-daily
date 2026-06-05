@@ -1,0 +1,87 @@
+name: auto-merge-daily
+
+# 当 routine 把每日内容推到内容分支（直推 main 遇 403 的兜底分支，如 claude/* 或 daily-*）时，
+# 自动把「纯每日内容」的提交合并入 main，触发 Pages 重新部署。
+# 严格门槛（三条全满足才合并），避免误合人工/代码分支：
+#   1) 相对 main 的改动只在 data/ 与 output/ 下（含任何代码改动 → 跳过，留人工 PR）
+#   2) 提交区间里有 routine 的 `daily: YYYY-MM-DD` 提交（区别于人工 data 编辑）
+#   3) data/*.json 内容相对 main 确有新增/不同（避免 rebase 已合并/陈旧分支误合）
+
+on:
+  push:
+    branches:
+      - 'daily-*'
+      - 'claude/**'
+    paths:
+      - 'data/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-merge-daily-main
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    if: github.ref_name != 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 判定是否「纯每日内容」分支
+        id: guard
+        run: |
+          set -euo pipefail
+          git fetch origin main --quiet
+          git config core.quotepath false   # 让含中文(卡片)文件名不被加引号，前缀匹配才准
+          CHANGED="$(git diff --name-only origin/main...HEAD)"
+          if [ -z "$CHANGED" ]; then echo "decision=skip-empty" >>"$GITHUB_OUTPUT"; exit 0; fi
+
+          # 1) 只允许 data/ 与 output/ 下的改动
+          CODE="$(printf '%s\n' "$CHANGED" | grep -vE '^(data|output)/' || true)"
+          if [ -n "$CODE" ]; then
+            echo "含非内容改动，跳过（请走人工 PR）："; printf '%s\n' "$CODE"
+            echo "decision=skip-hascode" >>"$GITHUB_OUTPUT"; exit 0
+          fi
+
+          # 2) 区间内须有 routine 的 daily 提交标记
+          if ! git log --format='%s' origin/main..HEAD | grep -qE '^daily: [0-9]{4}-[0-9]{2}-[0-9]{2}'; then
+            echo "无 daily: 提交标记，跳过"; echo "decision=skip-nomarker" >>"$GITHUB_OUTPUT"; exit 0
+          fi
+
+          # 3) data/*.json 内容是否相对 main 确有新增/不同
+          NEW=0
+          for f in $(printf '%s\n' "$CHANGED" | grep -E '^data/.*\.json$' || true); do
+            bb="$(git rev-parse "HEAD:$f" 2>/dev/null || echo X)"
+            mb="$(git rev-parse "origin/main:$f" 2>/dev/null || echo MISSING)"
+            [ "$bb" != "$mb" ] && NEW=1
+          done
+          if [ "$NEW" -eq 0 ]; then
+            echo "内容已等价在 main，无需合并"; echo "decision=skip-equal" >>"$GITHUB_OUTPUT"; exit 0
+          fi
+
+          echo "decision=merge" >>"$GITHUB_OUTPUT"
+
+      - name: 合并入 main 并重建索引
+        if: steps.guard.outputs.decision == 'merge'
+        run: |
+          set -euo pipefail
+          BR="${{ github.ref_name }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git merge --no-edit -X theirs "origin/$BR" \
+            || { git merge --abort; echo "::error::合并冲突，需人工处理 $BR"; exit 1; }
+          # 以实际文件为准重建 index/latest，避免合并产生的指针错位
+          python3 skills/ai-daily-digest/run.py --reindex || true
+          git add -A
+          git diff --cached --quiet || git commit -m "auto-merge $BR（routine 每日内容）"
+          git push origin main
+          echo "✅ $BR 已自动合并入 main，Pages 将重新部署"
+
+      - name: 跳过说明
+        if: steps.guard.outputs.decision != 'merge'
+        run: echo "未自动合并，原因：${{ steps.guard.outputs.decision }}"
