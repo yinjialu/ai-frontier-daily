@@ -1,0 +1,26 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.05",
+  "cnDate": "6月5日 周五",
+  "edition": "VOL.156",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-Rosalind 重大升级：引入 GPT-5.5 智能体能力与专业插件",
+      "summary": "OpenAI 为生命科学专属模型 GPT-Rosalind 引入 GPT-5.5 的 agentic 编码与工具调用能力，同步上线 Life Sciences Research 与 NGS Analysis 两款插件。新版在药物发现、毒性预测、基因组学准确率全面提升，并扩大受信任访问预览至更多全球研究机构，是制药/生物科技从业者值得关注的模型升级。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 0.137.0：F13-F24 按键支持 + 月度额度可见 + 远程配对 API",
+      "summary": "Codex 0.137.0 稳定版新增 F13-F24 功能键绑定与可搜索菜单粘贴；企业管理员可查看月度额度上限并应用云管配置包（含 EDU 工作区）；远程控制客户端通过 app-server v2 RPC 发起配对与撤销授权；插件工作流新增 --json 机读输出，提升 CI/CD 集成效率。",
+      "source": "github.com/openai",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.137.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
