@@ -1,0 +1,33 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.07",
+  "cnDate": "6月7日 周日",
+  "edition": "VOL.158",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-4.5 与 o3 确定 6/27 退役，ChatGPT 用户将自动迁移至 GPT-5.x",
+      "summary": "OpenAI 宣布 GPT-4.5 与 o3 将于 6 月 27 日同步从 ChatGPT 下线；付费用户届时自动迁移至 GPT-5.5 Instant 等 GPT-5.x 系列，无需手动操作。API 端 GPT-4.5 已于 2025 年 7 月下线，此次退役延续 OpenAI 向 GPT-5 系列全面统一的迁移策略。",
+      "source": "openai.com",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+    },
+    {
+      "tag": "生态",
+      "title": "ChatGPT 广告扩至英国及巴西、日本、韩国、墨西哥五国新市场",
+      "summary": "OpenAI 宣布 6 月 6 日起 ChatGPT 广告投放正式进入英国（首个欧洲市场），并同步向巴西、日本、韩国、墨西哥推进。广告仅对免费与 Go 计划用户展示，Plus/Pro/Enterprise 用户不受影响，「非付费用户看广告」模式进入全球化规模扩张阶段。",
+      "source": "openai.com",
+      "url": "https://ppc.land/chatgpt-ads-go-live-in-the-uk-as-openai-expands-pilot-beyond-us/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 0.138.0-alpha 密集迭代：企业额度管控与云端配置包加速验证",
+      "summary": "Codex 在 6 月 4 至 6 日连续发布 6 个 alpha 版本，重点验证企业月度额度管控、云端托管配置包（含 EDU 工作区）和远程配对 API 等特性，为稳定版上线作准备。这些能力在上周 0.137.0 中已初步落地，alpha 阶段持续采集反馈并打磨稳定性。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

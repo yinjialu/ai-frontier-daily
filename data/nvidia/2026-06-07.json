@@ -1,0 +1,33 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.07",
+  "cnDate": "6月7日 周日",
+  "edition": "VOL.158",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Spectrum-X 光共封装以太网交换全面量产，Vera Rubin AI 工厂规模扩展就绪",
+      "summary": "NVIDIA Spectrum-X 光共封装（CPO）以太网交换机正式全面量产，专为 Vera Rubin 平台设计，支持 AI 工厂横向与跨场景大规模扩展部署。相比传统电缆方案，CPO 显著提升带宽密度与能效，解决超大规模 AI 集群的网络瓶颈，标志着 NVIDIA AI 工厂全栈基础设施进一步完善。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/latest"
+    },
+    {
+      "tag": "安全",
+      "title": "NVIDIA Synthetic Video Detector NIM 发布：22ms 内以 92% 精度识别 AI 合成视频",
+      "summary": "NVIDIA 推出 Synthetic Video Detector，以 NIM 微服务形式提供，可在约 22 毫秒内以约 92% 精度判定视频是否由 AI 生成，通过 NVIDIA API 即开即用。面向媒体平台、内容分发与合规场景，为深度伪造检测与内容真实性验证提供可扩展的产业级解决方案。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/latest"
+    },
+    {
+      "tag": "开发者",
+      "title": "JetPack 7.2 发布：Jetson Orin 获 Agentic AI 技能框架 + CUDA 13 + Yocto 支持",
+      "summary": "NVIDIA JetPack 7.2 为 Jetson Orin 平台引入 Agentic AI 技能框架、CUDA 13 与 Yocto 项目支持，NemoClaw 端到端推理能力同步落地边缘端。开发者可在端侧直接部署智能代理，无需依赖云端推理，显著拓展 Jetson Orin 在机器人与边缘 AI 场景的应用覆盖范围。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/latest"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
