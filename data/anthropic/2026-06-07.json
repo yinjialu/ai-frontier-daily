@@ -1,0 +1,33 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.07",
+  "cnDate": "6月7日 周日",
+  "edition": "VOL.158",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.166：三级备援模型 + deny 规则 glob + 跨会话消息权限隔离",
+      "summary": "新增 fallbackModel 配置，最多设置 3 个备用模型，在主模型超载或不可重试错误时自动切换并重试失败任务；deny 规则工具名位置支持 glob（\"*\" 屏蔽所有工具）；中继消息不再携带用户权限，堵住跨会话权限泄露漏洞；MAX_THINKING_TOKENS=0 及 --thinking disabled 可强制关闭模型默认思考行为。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.166"
+    },
+    {
+      "tag": "研究",
+      "title": "Anthropic 披露：Claude 编写代码已占内部总量 80%，AI 自我迭代加速",
+      "summary": "Anthropic 公开内部数据：Claude 生成的代码已超团队总产出的 80%，较 2025 年 2 月不足 10% 大幅跃升，且当前 AI 代码质量与人工相当。这标志着顶尖 AI 实验室的软件研发模式已发生根本性转变，对行业研发范式具有重要参考意义。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK v0.3.166/167：动态 MCP 资源工具注入缺陷修复",
+      "summary": "修复通过 mcp_set_servers 运行时动态添加的 MCP 资源工具无法被正确注入的 bug；v0.3.167 同步对齐 Claude Code v2.1.167（bug 修复与可靠性改善）。影响所有依赖运行时动态扩展 MCP 能力的 Agent SDK 应用，开发者建议立即升级。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript",
+      "url": "https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.166"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

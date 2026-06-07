@@ -1,0 +1,33 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.07",
+  "cnDate": "6月7日 周日",
+  "edition": "VOL.158",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.5 Pro 本月上市：200 万 token 上下文 + Deep Think 推理模式确认",
+      "summary": "最新披露确认 Gemini 3.5 Pro 将于 6 月底前正式面世，核心亮点包括 200 万 token 超长上下文与「Deep Think」深度推理模式，具备顶级多模态理解能力。相比 3.1 Flash，复杂推理与多轮任务处理大幅跃升，正式发布后将与 Claude Opus 4.8 及 GPT-5.5 系列正面竞争。",
+      "source": "techtimes.com",
+      "url": "https://www.techtimes.com/articles/317919/20260606/google-gemini-35-pro-nears-june-launch-2-million-token-context-deep-think-reasoning.htm"
+    },
+    {
+      "tag": "企业",
+      "title": "Gemini Spark 上线 Google Workspace：24/7 自主 AI 代理主动执行任务",
+      "summary": "面向 Gemini Enterprise 与 Workspace 客户，Gemini Spark 作为全天候个人 AI 代理，可在用户授权下自主接管重复性工作事务，全程无需逐步人工指令。企业团队可在不增人的前提下实现工作流持续自动化，是 Google 在企业 AI 代理赛道的最新重磅布局。",
+      "source": "blog.google",
+      "url": "https://blog.google/products/gemini/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.47.0-nightly：优化 PR 体量标注工作流 + TOML 解析崩溃修复",
+      "summary": "v0.47.0 最新 nightly 新增优化版 PR size labeler 与批量 workflow，fork PR 可通过 pull_request_target 触发器获得写权限；同步修复 EBUSY 回退机制与 TOML 解析崩溃问题，提升 CLI 在复杂环境下的稳定性。相关改进预计随下一稳定版本一并推出。",
+      "source": "github.com/google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
