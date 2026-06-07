@@ -1,0 +1,40 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.08",
+  "cnDate": "6月8日 周一",
+  "edition": "VOL.159",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "ChatGPT 记忆系统大升级：「Dreaming」机制让记忆随时间自动演进",
+      "summary": "OpenAI推出全新ChatGPT记忆后端，引入「dreaming」机制：记忆在用户不活跃时静默更新，自动修正过时信息、融合长期偏好，并按位置和时区提供个性化推荐。新系统专为亿级用户规模设计，解决记忆陈旧与数据一致性难题，将使ChatGPT的长期个性化体验进入全新阶段。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "tag": "研究",
+      "title": "GPT-Rosalind 生命科学模型更新：代理编码、药物发现与基因组学能力全面提升",
+      "summary": "OpenAI更新面向生命科学的专用模型GPT-Rosalind，新版大幅增强代理式编码能力、药物发现及基因组学任务表现，新增证据检索与生物信息学工作流插件，并向全球符合条件机构扩展受信访问预览资格，标志OpenAI在垂直科研AI赛道的持续深耕。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "tag": "企业",
+      "title": "ChatGPT 企业安全新增粒度管控：IT管理员可逐项启停功能，赋能合规治理",
+      "summary": "OpenAI为企业客户推出ChatGPT能力粒度化管控，IT管理员可逐项启用或禁用具体功能，将ChatGPT从需要封堵的安全隐患转变为可纳入合规框架的企业工具。对于有数据治理要求的大型组织，此更新将显著降低IT部门推广ChatGPT的阻力与审批成本。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "tag": "开发者",
+      "title": "openai-python v2.41.0 / openai-node v6.42.0：正式接入 Responses & Chat Completions Moderation API",
+      "summary": "Python SDK v2.41.0与Node.js SDK v6.42.0同步新增对responses.moderation及chat_completions.moderation端点的支持，开发者可在生成流程中直接调用内容审核，无需额外独立请求。合规内容过滤可无缝嵌入现有生产管道，降低构建符合平台规范应用的工程成本。",
+      "source": "github.com/openai",
+      "url": "https://github.com/openai/openai-python/releases/tag/v2.41.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

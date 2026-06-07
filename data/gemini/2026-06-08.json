@@ -1,0 +1,33 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.08",
+  "cnDate": "6月8日 周一",
+  "edition": "VOL.159",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.5 Flash 定价公布：$1.5/$9 每百万token，编码与代理基准全面超越3.1 Pro",
+      "summary": "Gemini 3.5 Flash于5月19日正式GA，现已全平台可用（AI Studio、Antigravity、AI Search Mode）。定价$1.50/$9.00（入/出百万token），Terminal-Bench 2.1得76.2%，MCP Atlas 83.6%，在编码与代理任务上全面超越3.1 Pro，速度比同级旗舰快4倍，支持100万token上下文。",
+      "source": "blog.google/gemini",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Gemini Omni 亮相I/O 2026：任意模态输入→任意输出，率先落地视频生成",
+      "summary": "Google I/O 2026发布Gemini Omni，主打「任意输入→任意输出」全模态理解与创作，视频生成为首发场景。Gemini Omni被定位为多模态理解的重大飞跃，将赋予Gemini App全新视频创作能力，并接入Gemini应用全新「Neural Expressive」设计语言，具体API可用时间表待公布。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/"
+    },
+    {
+      "tag": "开发者",
+      "title": "python-genai / js-genai v2.8.0：Agent Platform MCP + 实时翻译 + 强化调优ValidateReward API",
+      "summary": "Google GenAI SDK两端（Python与JavaScript）同步发布v2.8.0，核心新增：Agent Platform MCP支持（含async generate_content）、TranslationConfig实时语音翻译配置、转录语言代码，以及ReinforcementTuning与ValidateReward API。面向多语言、多Agent管道的开发能力显著扩展。",
+      "source": "github.com/googleapis",
+      "url": "https://github.com/googleapis/python-genai/releases/tag/v2.8.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

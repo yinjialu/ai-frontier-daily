@@ -1,0 +1,40 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.08",
+  "cnDate": "6月8日 周一",
+  "edition": "VOL.159",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Anthropic 递交IPO保密文件：$965B估值、月营收年化$470亿，目标10月上市",
+      "summary": "Anthropic于6月1日向SEC秘密提交上市申请，Series H轮融资650亿美元后估值约965亿美元，超越OpenAI的852亿美元。5月营收年化约470亿美元，同比增近5倍，公司预计6月首次实现季度盈利，计划最早2026年10月正式挂牌，届时估值或突破万亿美元。",
+      "source": "fortune.com / cnbc.com",
+      "url": "https://fortune.com/2026/06/01/anthropic-confidentially-files-ipo-965-billion-valuation/"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Claude Opus 4.1 宣布弃用：8月5日下线，需迁移至Opus 4.8",
+      "summary": "Anthropic宣布claude-opus-4-1-20250805将于2026年8月5日从Claude API退役，与Sonnet 4、Opus 4（6月15日下线）共同完成旧模型淘汰。目标迁移路径为Claude Opus 4.8——支持100万token上下文与128k输出长度，具备更强推理与代理能力。现有Opus 4.1调用者应尽快评估并更新集成。",
+      "source": "platform.claude.com",
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.168 + Agent SDK v0.3.168 密集发布：可靠性持续改善",
+      "summary": "继v2.1.166三级备援模型与安全加固后，v2.1.167与v2.1.168在两天内连续推出，均以bug修复与可靠性改善为主；Agent SDK v0.3.168同步对齐。频繁的小版本迭代显示Claude Code底层稳定性工程处于高速推进期，建议开发者始终保持最新版本。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases"
+    },
+    {
+      "tag": "安全",
+      "title": "Project Glasswing 扩展至约150家新机构，Claude Mythos Preview防御网安能力加速推广",
+      "summary": "Anthropic将Project Glasswing的Claude Mythos Preview邀请资格扩展至约150家新机构，专用于防御性网络安全工作，访问权限依然限于受邀合作方。此举表明Anthropic在AI安全赋能领域的商业布局明显提速，同时维持对开放边界的谨慎把控。",
+      "source": "anthropic.com/glasswing",
+      "url": "https://anthropic.com/glasswing"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

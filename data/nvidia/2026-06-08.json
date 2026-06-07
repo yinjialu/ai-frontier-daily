@@ -1,0 +1,40 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.08",
+  "cnDate": "6月8日 周一",
+  "edition": "VOL.159",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "RTX Spark（N1X）正式发布：Arm+Blackwell+128GB统一内存，挑战Apple Silicon",
+      "summary": "NVIDIA在Computex 2026发布RTX Spark（前代号N1X），首款面向Windows PC的自研处理器：20核Grace Arm CPU（联合MediaTek）+ Blackwell GPU 6144 CUDA核心 + 128GB LPDDR5X统一内存，AI算力达1 petaFLOP，NVLink-C2C带宽600GB/s，TSMC 3nm制程，笔记本版起价1799美元，今秋上市。",
+      "source": "tomshardware.com / gizmochina.com",
+      "url": "https://www.tomshardware.com/laptops/nvidia-unveils-rtx-spark-superchip-at-computex-2026-new-platform-promises-to-turn-windows-into-an-agentic-ai-os-with-arm-cpu-blackwell-gpu-and-128gb-unified-memory"
+    },
+    {
+      "tag": "生态",
+      "title": "Dynamo v1.2.0：推理框架扩展多模态，正式支持文生图与媒体感知KV路由",
+      "summary": "Dynamo v1.2.0于6月7日发布，新增文生图（TensorRT-LLM后端）、媒体感知KV路由、分支分片KV索引器，并将DGD/DGDR接口晋升至v1beta1；GPU Memory Service完成产品化。大规模多模态推理服务正式纳入Dynamo统一调度框架，生产部署复杂度大幅降低。",
+      "source": "github.com/ai-dynamo/dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases/tag/v1.2.0"
+    },
+    {
+      "tag": "生态",
+      "title": "NVIDIA Vera CPU全面量产：Anthropic、OpenAI率先落地数据中心AI Agent基础设施",
+      "summary": "黄仁勋宣布NVIDIA Vera CPU已全面投产，并被定位为「下一个重要增长驱动力」，专为大规模AI Agent部署设计。Anthropic、OpenAI与SpaceXAI是首批早期客户，标志着下一代AI应用基础设施将深度整合NVIDIA自研CPU，进一步拓展NVIDIA在AI全栈的覆盖范围。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/latest"
+    },
+    {
+      "tag": "开发者",
+      "title": "TensorRT-LLM v1.3.0rc17：MoT World Model、FlashInfer GDN内核与LLMAPI LoRA支持",
+      "summary": "最新RC版新增MoT World Model支持、FlashInfer GDN prefill内核（Qwen3.5）、NVFP4 MoE后端（Nemotron），并支持Triton LLMAPI LoRA与KV缓存利用率日志，修复DeepSeek V3及Qwen3等模型精度问题。正在向v1.3.0正式版快速收敛，适合有新模型需求的生产用户跟踪测试。",
+      "source": "github.com/NVIDIA/TensorRT-LLM",
+      "url": "https://github.com/NVIDIA/TensorRT-LLM/releases/tag/v1.3.0rc17"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
