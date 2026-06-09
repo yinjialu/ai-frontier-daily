@@ -1,0 +1,33 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.09",
+  "cnDate": "6月9日 周二",
+  "edition": "VOL.160",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "NVIDIA 深耕韩国：联手 SK、NAVER、LG 共建吉瓦级主权 AI 基础设施",
+      "summary": "6 月 8 日 NVIDIA 一口气签下多项韩国 AI 大单：SK Telecom 将基于 DSX 平台建吉瓦级 AI 云、首座 AI 工厂 2027 年上线；NAVER 从 55 兆瓦起步扩建主权 AI，目标吉瓦级；与 SK hynix 达成多年内存技术合作，并携手 LG 推进人形机器人与数据中心设计。NVIDIA 全栈基建版图加速向亚洲延伸。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/latest"
+    },
+    {
+      "tag": "模型发布",
+      "title": "NVIDIA Isaac GR00T 参考人形机器人发布：首个开放整机参考设计",
+      "summary": "NVIDIA 推出 Isaac GR00T Reference Humanoid Robot，号称首个基于 Jetson Thor 与 Isaac GR00T 开放开发平台的开源人形机器人参考设计。开发者可直接以该整机设计为蓝本开发与训练机器人，大幅降低物理 AI 与人形机器人的研发门槛，加速具身智能生态落地。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/latest"
+    },
+    {
+      "tag": "生态",
+      "title": "Dynamo 密集放出 v1.3.0 开发版：抢先适配 DeepSeek-V4、Kimi K2.6、Nemotron-3",
+      "summary": "继 v1.2.0 稳定版后，Dynamo 在 6 月 4–6 日连发多个 v1.3.0 开发版，分别为 DeepSeek-V4-Pro（TensorRT-LLM 后端）、Kimi K2.6、Nemotron-3 Super/Ultra（vLLM）及 Cosmos3 多模态生成（vLLM-Omni）提供抢先支持。仅供评测试用、暂不建议生产，体现 Dynamo 对前沿开源模型的快速跟进。",
+      "source": "github.com/ai-dynamo/dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

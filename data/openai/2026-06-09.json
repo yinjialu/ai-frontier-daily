@@ -1,0 +1,26 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.09",
+  "cnDate": "6月9日 周二",
+  "edition": "VOL.160",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "OpenAI 确认向 SEC 递交 IPO 保密申请，目标 9 月上市冲击万亿估值",
+      "summary": "OpenAI 于 6 月 8 日确认已向 SEC 秘密递交上市申请，并直言「预料会泄露，索性主动公布」。公司目前估值超 8520 亿美元，正与高盛、摩根士丹利筹备 S-1，分析师预计挂牌后市值或突破万亿美元，目标最快 9 月登陆资本市场。继 Anthropic 6 月 1 日之后，AI 三巨头集体奔赴华尔街。",
+      "source": "cnbc.com / pbs.org",
+      "url": "https://www.pbs.org/newshour/nation/openai-files-preliminary-sec-paperwork-for-ipo-opening-the-door-to-a-wall-street-debut"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex v0.138.0 正式版发布：/app 支持移交桌面端，本地图片暴露文件路径",
+      "summary": "继多个 alpha 迭代后，Codex 稳定版 v0.138.0 落地：/app 命令现支持在 macOS、Windows 上移交给 Codex Desktop；本地图片附件会向模型暴露保存路径以提升可靠性；推理强度选择更灵活（兼容无 Alt 键终端），插件增删与市场命令支持 JSON 输出，应用服务端可读取账号 token 用量。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

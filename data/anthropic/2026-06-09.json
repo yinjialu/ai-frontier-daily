@@ -1,0 +1,26 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.09",
+  "cnDate": "6月9日 周二",
+  "edition": "VOL.160",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.169 发布：新增 --safe-mode、/cd 命令与 disableBundledSkills 设置",
+      "summary": "v2.1.169 带来三项实用能力：--safe-mode 一键禁用 CLAUDE.md、插件、技能、钩子和 MCP 服务器以便排障；/cd 命令可在不打断提示缓存的情况下切换工作目录；disableBundledSkills 设置可对模型隐藏内置技能。另修复历史导航、企业 MCP 策略执行与多项 Windows 问题。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK v0.3.169：新增实验性用量统计 API 与浏览器 SSE 连接选项",
+      "summary": "TypeScript Agent SDK 同步升级 v0.3.169，在 Query 上新增实验性方法可读取单次会话的结构化成本与用量数据，便于精细计费与监控；BrowserQueryOptions 新增 sse 选项，作为 websocket 之外的浏览器端连接方式，提升不同网络环境下的代理稳定性。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript",
+      "url": "https://github.com/anthropics/claude-agent-sdk-typescript/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
