@@ -67,7 +67,11 @@ description: >-
    ```bash
    git add -A data output && git commit -m "daily: <vendor> <date>" && git push
    ```
-7. **推送移动端**：用 `PushNotification` 发一条「今日卡片已生成 · 查看：
+7. **开 GitHub Issue**（每日讨论贴）：用 `mcp__github__issue_write`（method=create）在
+   `yinjialu/ai-frontier-daily` 开一个 Issue，标题 `📰 VOL.NNN · YYYY-MM-DD 每日 AI 动态`，
+   label `daily-digest`，正文按厂商分节列出今日各条目（带超链接表格）+ 末尾邀请讨论。
+   仅在本次有任意厂商产出新内容时执行（与提交步骤同条件）。
+8. **推送移动端**：用 `PushNotification` 发一条「今日卡片已生成 · 查看：
    https://<user>.github.io/<repo>/」，用户手机上打开展示页查看卡片。
 
 ### data JSON schema
