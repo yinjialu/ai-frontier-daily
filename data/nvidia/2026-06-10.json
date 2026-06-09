@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.10",
+  "cnDate": "6月10日 周三",
+  "edition": "VOL.161",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Dynamo v1.3.0-dev.1：统一三大推理后端、新增嵌入向量服务与实时协议端点",
+      "summary": "Dynamo v1.3.0-dev.1 完成架构重构：跨 SGLang、TensorRT-LLM、vLLM 统一路由、指标与健康监控；新增兼容 OpenAI 格式的文本嵌入服务；引入 /v1/realtime 实时协议端点；实验性拓扑感知 KV 传输策略；并对 GLM-4.7、Qwen3-Coder、DeepSeek V4 等十余款主流模型的工具调用解析实现跨后端对齐。",
+      "source": "github.com/ai-dynamo/dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

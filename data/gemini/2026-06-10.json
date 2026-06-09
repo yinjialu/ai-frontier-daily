@@ -1,0 +1,33 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.10",
+  "cnDate": "6月10日 周三",
+  "edition": "VOL.161",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Gemini CLI 将于 6 月 18 日停止服务，正式迁移至 Antigravity CLI（agy）",
+      "summary": "Google 宣布 Gemini CLI 将于 6 月 18 日停止为 AI Pro、Ultra 及免费用户服务，替代品为基于 Go 的 Antigravity CLI（agy），支持多代理并行与后台任务执行，响应更快。Gemini Code Assist Standard/Enterprise 授权用户暂不受影响，仍可继续使用 Gemini CLI。",
+      "source": "developers.googleblog.com",
+      "url": "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.5 Flash 成企业默认模型，旧图像生成预览版 6 月 25 日下线",
+      "summary": "6 月 9 日起，Gemini Enterprise 应用中 Gemini 3.5 Flash 成为不可关闭的默认模型；同时 gemini-3.1-flash-image-preview 与 gemini-3-pro-image-preview 两款图像预览模型宣布于 6 月 25 日下线，使用相关 API 的应用需尽快迁移至最新多模态接口。",
+      "source": "ai.google.dev",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+      "tag": "开发者",
+      "title": "Antigravity Agent 公测：沙箱内自主规划、代码执行与 Web 浏览，File Search 支持图片多模态检索",
+      "summary": "Google 将 antigravity-preview-05-2026 托管代理转入公测，可在沙箱内自主完成规划、代码撰写执行、文件管理及 Web 浏览等复杂任务；File Search 同步支持多模态检索，通过 gemini-embedding-2 模型对图片内容进行嵌入与语义搜索，拓展知识库检索边界。",
+      "source": "ai.google.dev",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

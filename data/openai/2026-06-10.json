@@ -1,0 +1,40 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.10",
+  "cnDate": "6月10日 周三",
+  "edition": "VOL.161",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "ChatGPT Dreaming V3：记忆随时间自动演进，个性化任务成功率升至 82.8%",
+      "summary": "OpenAI 推出 ChatGPT Dreaming V3，背景进程自动随时间更新存储记忆（如旅行结束后将「将去新加坡」改写为「已去新加坡」），个性化任务成功率从 2024 年的 41.5% 大幅升至 82.8%，已向美国 Plus/Pro 用户灰度，后续扩展至全球及 Free 用户。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/chatgpt-memory-dreaming/"
+    },
+    {
+      "tag": "企业",
+      "title": "ChatGPT 企业版 Workspace Agents：团队共享代理，自主接管跨工具复杂工作流",
+      "summary": "ChatGPT Enterprise/EDU 推出 Workspace Agents，企业内可共享自定义 AI 代理，自主执行跨工具工作流、遵循团队规范，插件目录支持团队间共享安装，将成熟业务流程代理化推广给全团队，标志 ChatGPT 从个人助手向团队自动化平台转型。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/company-announcements/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex v0.139.0：Code 模式支持独立 Web 搜索，MCP 工具 Schema 兼容性优化",
+      "summary": "Codex v0.139.0 正式发布，Code 模式新增独立 Web 搜索并以纯文本返回结果；工具 Schema 完整保留 oneOf/allOf 结构提升 MCP 插件兼容性；codex doctor 新增编辑器与分页器环境诊断；插件市场操作支持缓存目录返回，便于自动化集成。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases"
+    },
+    {
+      "tag": "研究",
+      "title": "OpenAI 经济研究交流平台上线：公开征集 AI 对就业与宏观经济影响的外部学术研究",
+      "summary": "OpenAI 上线 Economic Research Exchange，以结构化、隐私保护方式邀外部学者研究 AI 对工人、企业与宏观经济的真实影响；7 月 5 日截止申请，7 月 31 日公布入选者，旨在建立 AI 经济效应的可信证据基础，应对外界对 AI 冲击就业的持续质疑。",
+      "source": "openai.com",
+      "url": "https://openai.com/news/company-announcements/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

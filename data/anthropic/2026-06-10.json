@@ -1,0 +1,33 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.10",
+  "cnDate": "6月10日 周三",
+  "edition": "VOL.161",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Claude Fable 5 正式发布：首个公开 Mythos 级模型，全面超越历代版本，Pro 用户免费至 6 月 22 日",
+      "summary": "Anthropic 发布 Claude Fable 5，首款面向大众的 Mythos 级模型，几乎所有基准均超越历代公开版本，部分项目领先 Opus 4.8 逾 10%。Pro/Max/Team/Enterprise 用户 6 月 22 日前免费体验；API 定价 $10/$50（百万 token），约为 Mythos Preview 的半价。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5"
+    },
+    {
+      "tag": "安全",
+      "title": "Claude Mythos 5 限定发布：专供网络防御机构，部分高风险领域安全限制解除",
+      "summary": "与 Fable 5 同底模的 Claude Mythos 5 向少数网络防御机构与关键基础设施提供商限定发布，在网络安全与生物等高风险领域的部分安全限制已解除，专用于网络攻防研究，不对外公开销售。体现 Anthropic 在能力开放上的差异化安全策略。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.170 & Agent SDK v0.3.170：Fable 5 支持上线，修复 VS Code 终端 session 丢失",
+      "summary": "Claude Code 升级至 v2.1.170，新增 claude-fable-5 模型 ID 与 fable 别名，开发者代理工作流即日可调用最新 Mythos 级能力；TypeScript Agent SDK v0.3.170 同步跟进；同时修复 VS Code 集成终端启动时 session 记录无法保存的已知问题。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
