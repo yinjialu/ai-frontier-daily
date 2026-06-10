@@ -1,0 +1,18 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.11",
+  "cnDate": "6月11日 周四",
+  "edition": "VOL.162",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "TensorRT-LLM v1.3.0rc18：Nemotron-H NVFP4、KVCache 磁盘缓存与每专家 LoRA",
+      "summary": "新增 Nemotron-H NVFP4 在 Hopper GPU 的推理支持、Step-3.7-Flash 与 Cosmos3 变体；引入 KVCacheManagerV2 磁盘缓存与每专家 LoRA（Cutlass 后端）；NIXL 升至 v1.0.1、CUDA IPC 切换为 VMM；新增 logprobs_simple_format 平铺输出选项，方便流式后处理；同步修复 Mamba 回放精度与多模态缓存键碰撞问题。",
+      "source": "github.com/NVIDIA/TensorRT-LLM"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

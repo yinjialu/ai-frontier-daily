@@ -1,0 +1,18 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.11",
+  "cnDate": "6月11日 周四",
+  "edition": "VOL.162",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Workspace Agents 计费细则公布：7 月 6 日起按信用点收费",
+      "summary": "OpenAI 宣布 Workspace Agents 免费预览期延至 7 月 6 日，此后切换信用点计费：GPT-5.5 单次典型运行消耗 5～25 点（示例：2 万 input + 8 万 cached + 5000 output ≈ 7.25 点）；在 Slack 等应用外触发的 Agent 运行暂未宣布计费时间表，给企业 26 天窗口测算成本模型。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

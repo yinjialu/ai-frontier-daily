@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.11",
+  "cnDate": "6月11日 周四",
+  "edition": "VOL.162",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.172：子代理最深嵌套 5 层，Bedrock 自动读取 AWS 区域",
+      "summary": "子代理现可递归生成自己的子代理（最深 5 层），大幅扩展多智能体协作深度；Amazon Bedrock 现可从 ~/.aws 自动读取区域配置，无需手设 AWS_REGION；插件市场新增搜索栏；修复通配符域名规则失效、后台任务卡在「运行中」达 30 秒等多处 Bug，并降低空闲时 CPU 占用。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK TypeScript v0.3.172：skipMcpDiscovery 选项上线",
+      "summary": "Plugin 新增 skipMcpDiscovery: true 选项，宿主程序可自管 MCP 连接，引擎不再重复扫描 .mcp.json，适合自定义插件接入场景；修复「/ 后跟空格」输入被静默丢弃而非当作普通提示处理的 Bug，提升可靠性。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript"
+    },
+    {
+      "tag": "生态",
+      "title": "WWDC 2026：Claude 接入 Apple Foundation Models 框架，iOS/macOS 27 全系可用",
+      "summary": "Anthropic 在 WWDC 2026 发布官方 Swift Package，开发者可通过 Apple Foundation Models 协议直接调用 Claude，处理多步推理、代码生成等复杂任务；应用层无需改动会话逻辑即可在本地模型与 Claude 云端之间切换，覆盖 iOS 27、iPadOS 27、macOS 27、visionOS 27、watchOS 27。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

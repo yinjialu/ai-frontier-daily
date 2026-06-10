@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.11",
+  "cnDate": "6月11日 周四",
+  "edition": "VOL.162",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Gemini 遭遇迄今最大规模服务中断，故障持续约 8 小时",
+      "summary": "北京时间 6 月 10 日下午至深夜，Gemini Flash/Pro 大规模不可用，报错代码 1076/1099，Flash Lite 部分保持服务；谷歌确认根因为后端「上下文溢出」引发 session 冲突，约于次日凌晨 5:30 恢复；为 Gemini 迄今单次规模最大的中断，提醒生产环境需备好降级预案。",
+      "source": "google.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.47.0-preview.0：Antigravity 迁移文档上线，MCP 发现改为原子更新",
+      "summary": "正式加入 Antigravity CLI（agy）迁移指南，帮助开发者在 6 月 18 日停服前完成切换；MCP 工具发现改为原子写入，避免并发竞态；修复 3.5 Flash 后端模型定义被忽略及 Vertex AI 模型映射错误；防止空会话被意外持久化。",
+      "source": "github.com/google-gemini/gemini-cli"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
