@@ -14,7 +14,7 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
-MJS="${WECHAT_DRAFT_MJS:-$HOME/.codex/skills/wechat-official-draft/scripts/push_draft.mjs}"
+MJS="${WECHAT_DRAFT_MJS:-$HOME/.claude/skills/wechat-official-draft/scripts/push_draft.mjs}"
 
 # 解析参数：--dry-run 与 --vendor <id>（缺省 anthropic）
 DRY=""; VENDOR="anthropic"
