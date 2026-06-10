@@ -80,7 +80,9 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "auto-merge $BR（routine 每日内容）"
           git push origin main
-          echo "✅ $BR 已自动合并入 main，Pages 将重新部署"
+          # 合并已成功，删除内容分支防止 claude/* 堆积（删失败不影响结果）
+          git push origin --delete "$BR" || true
+          echo "✅ $BR 已自动合并入 main 并删除分支，Pages 将重新部署"
 
       - name: 跳过说明
         if: steps.guard.outputs.decision != 'merge'
