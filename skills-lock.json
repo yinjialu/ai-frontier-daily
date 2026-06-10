@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "wechat-official-draft": {
+      "source": "yinjialu/wechat-official-draft-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "dfc08a1996689d756ef547ad1a458b574c08edf7aad325e06b8a2e4ea555cb27"
+    }
+  }
+}
