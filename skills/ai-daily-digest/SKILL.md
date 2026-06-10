@@ -162,10 +162,12 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
   编辑器导入草稿箱。
 - 公众号【已认证服务号】——「云端抓取 → 本机合并+推送」半自动链路（仍由人工群发）：
 
-  **推送权限**：Claude Code on the web 的 GitHub 代理默认「只允许推当前工作分支、不能直推 main」。
-  本项目已在 routine 编辑页 → **Permissions 打开「Allow unrestricted git push（含默认分支）」**，并跑过
-  `/web-setup`（同步 gh 令牌到 Claude 账号），故 **routine 直接推 main**。本机负责拉取最新 + 发微信。
-  （若改用受限权限，routine 会改推 `daily-<DATE>` 分支，下面的脚本也能自动合并它——向后兼容。）
+  **推送策略（routine 必读）**：Claude Code on the web 的 GitHub 代理只允许推当前工作分支，
+  直推 main 会得到 403——这是预期行为，**不要把 403 当失败重试，也不要尝试推 main**。
+  routine 只需把 `daily: YYYY-MM-DD` 提交推到自己的工作分支（`claude/*`），
+  `.github/workflows/auto-merge-daily.yml` 会在分支只含 `data/`+`output/` 改动时自动合并入 main
+  并删除分支。**代码 / 文档 / 配置改动不要混进每日内容分支**——guard 会整支跳过；
+  这类改动请单独开分支提 PR 人工合并（纯文档推送不会触发 workflow，混推会滞留在分支上流失）。
 
   一条命令搞定「合并分支 + 各厂商建草稿」：
 
