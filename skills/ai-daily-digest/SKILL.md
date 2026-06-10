@@ -36,43 +36,60 @@ description: >-
 两种方式产出同一套 `data/<date>.json` 与 `output/<date>/*.png`，由同一渲染器
 （`render.js` + `cards.js` + `cards.css`，唯一真源）渲染，风格一致。
 
-## A. Claude 驱动（推荐）
+## A. Claude 驱动（推荐；云端 routine 与交互会话通用的执行细则）
 
-在仓库根目录执行以下步骤（`output/`、`data/` 写到当前工作目录）：
+在仓库根目录执行以下步骤（`output/`、`data/` 写到当前工作目录）。
+**厂商列表动态读取，不要写死数量或名字。**
 
-1. **抓取真实最新动态**（先确定 `<vendor>`）。
-   - **Anthropic**：用 `WebFetch` 拉 `https://www.anthropic.com/news` 取顶部最新条目
-     （标题 + 日期 + 分类），必要时 `WebSearch` 补充细节。主站 JS 渲染、无官方 RSS。
-   - **OpenAI**：有官方 RSS，直接 `WebFetch` 拉 `https://openai.com/news/rss.xml`
-     （`openai.com/news` 网页本身对 WebFetch 返回 403，用 RSS 代替）；API/Codex 细节可补抓
-     `https://developers.openai.com/api/docs/changelog`。
-   - 各厂商的源都登记在 `sources.yaml` 的 `vendors.<vendor>` 下。
-2. **价值筛选 + 中文策展**。只保留对中文 AI 从业者有价值的条目（模型发布、能力
+1. **日期与刊号**：按 Asia/Shanghai(UTC+8) 取 `DATE=YYYY-MM-DD`（云端 runner 多为 UTC，
+   直接 `date` 会差一天，用 `TZ=Asia/Shanghai date +%F`）；`edition` 用年内第几天
+   VOL.NNN（`TZ=Asia/Shanghai date +%j`）。
+2. **取厂商清单**：运行 `python3 skills/ai-daily-digest/run.py --vendors`，得到 JSON 数组，
+   每项含 `{id, name, brand, sources:[抓取URL]}`，遍历其中每一个厂商（数量与名字以输出为准）。
+   若某项 `sources` 为空（环境缺 pyyaml），改读 `sources.yaml` 的 `vendors.<id>` 下
+   rss/webfetch 的 url。
+3. **抓取真实最新动态**（对每个厂商 V）：依次 `WebFetch` V.sources 的 URL——RSS/Atom/网页
+   都可直接 WebFetch，Google 系 RSS 也能抓；需要细节再 `WebSearch`。厂商特例：Anthropic
+   主站 JS 渲染、无官方 RSS（抓 `anthropic.com/news` 顶部条目）；`openai.com/news` 网页对
+   WebFetch 返回 403，用其 RSS `https://openai.com/news/rss.xml`。
+4. **去重（Claude 链路）**：看 `data/<V.id>/` 里最近的 *.json，只挑近 1~3 天的「新」条目，
+   避免与已发布重复；若今天 `data/<V.id>/<DATE>.json` 已存在且已覆盖当日要点，则该厂商
+   跳过、不覆写。（B 链路的 `seen.db` 去重不适用于本链路。）
+5. **价值筛选 + 中文策展**。只保留对中文 AI 从业者有价值的条目（模型发布、能力
    更新、重要研究、重大合作、定价/政策），过滤纯招聘/办公室开设/人事任命等。
    每条：选一个标签【模型发布/开发者/企业/研究/生态/政策/安全】，写 50–80 字
    客观中文摘要（说清「变了什么 + 对用户意味着什么」，不夸张不编造），按重要性
    降序，最多 6 条。
-3. **写当天数据**到 `data/<vendor>/<YYYY-MM-DD>.json`（必含 `"vendor"` 字段），字段见下面 schema。
+6. **写当天数据**到 `data/<vendor>/<YYYY-MM-DD>.json`（必含 `"vendor"` 字段），字段见下面 schema。
+   该厂商今天无值得发的内容则跳过它、不写文件。
    渲染默认输出 **JPEG**（移动端优先：1080×1440、`deviceScaleFactor:1`、质量 86，
    单张约 100–300KB，低于公众号在文图片 1MB 上限，省去后压缩）。可用环境变量
    `CARD_FORMAT=png|jpeg`、`CARD_QUALITY`、`CARD_SCALE` 覆盖。
-4. **渲染卡片**：
+7. **渲染卡片**：
    ```bash
    node "$SKILL_DIR/render.js" data/<vendor>/<date>.json output/<vendor>/<date> --engine playwright
    ```
-   （`$SKILL_DIR` = 本 skill 目录；首次需 `npm i playwright && npx playwright install chromium`）
-5. **更新展示页指针与索引**：直接调 `python "$SKILL_DIR/run.py" --reindex`，
-   它扫描 `data/*/*.json` 重建各厂商 `output/<vendor>/latest.json` + 汇总 `output/index.json`（jpg 感知）。
-6. **提交并推送**（触发 GitHub Pages 重新发布）：
+   （`$SKILL_DIR` = 本 skill 目录；首次缺依赖先 `npm i playwright && npx playwright install --with-deps chromium`）
+8. **更新展示页指针与索引**（所有厂商处理完后执行一次）：调 `python "$SKILL_DIR/run.py" --reindex`，
+   它按实际生成的 *.jpg 重建各厂商 `output/<vendor>/latest.json` + 汇总 `output/index.json`，
+   不要手拼这两个文件。
+9. **提交并推送**（触发 GitHub Pages 重新发布）：若本次有任意厂商产出新内容：
    ```bash
-   git add -A data output && git commit -m "daily: <vendor> <date>" && git push
+   git add -A data output && git commit -m "daily: <DATE>"
    ```
-7. **开 GitHub Issue**（每日讨论贴）：用 `mcp__github__issue_write`（method=create）在
-   `yinjialu/ai-frontier-daily` 开一个 Issue，标题 `📰 VOL.NNN · YYYY-MM-DD 每日 AI 动态`，
-   label `daily-digest`，正文按厂商分节列出今日各条目（带超链接表格）+ 末尾邀请讨论。
-   仅在本次有任意厂商产出新内容时执行（与提交步骤同条件）。
-8. **推送移动端**：用 `PushNotification` 发一条「今日卡片已生成 · 查看：
-   https://<user>.github.io/<repo>/」，用户手机上打开展示页查看卡片。
+   **一次提交涵盖所有厂商；commit 格式必须是 `daily: YYYY-MM-DD`**（auto-merge guard 的
+   正则依赖此标记，写成 `daily: <vendor> <date>` 会被整支跳过）。推送遵循仓库根目录
+   CLAUDE.md 与下文「推送策略（routine 必读）」：云端只推当前工作分支（`claude/*`），
+   本机会话可直推 main。所有厂商今天都无新内容则不提交、直接结束。
+10. **开当天 GitHub Issue**（每日讨论贴，仅当本次有新内容时执行）：在本仓库创建 Issue，
+    标题 `📰 VOL.NNN · YYYY-MM-DD 每日 AI 动态`，label `daily-digest`。正文按厂商分节，
+    每节列出今日各条目（标题加粗 + 一句话摘要 + 源链接），末尾附展示页链接并邀请讨论。
+    优先用 GitHub MCP 的 issue 创建工具（如 `mcp__github__issue_write`，method=create），
+    没有就用 `gh issue create`；若 label 不存在或打 label 失败，就不带 label 创建，
+    确保 Issue 本身建成功。创建前先查当天是否已有同标题 Issue，已有则跳过，每天最多一个。
+11. **推送移动端**：用 `PushNotification` 发一条通知：一句话概括今天各厂商各发了几条 +
+    Issue 链接（若本次创建了）+ 展示页 `https://yinjialu.github.io/ai-frontier-daily/`
+    （工具不可用则写进最终回复）。微信草稿由本机定时任务处理，云端无需管。
 
 ### data JSON schema
 
@@ -88,8 +105,8 @@ description: >-
   "outroDesc": "…", "outroCta": "关注 · 不错过任何更新"
 }
 ```
-`vendor` 取 `anthropic`|`openai`（缺省按 anthropic）。`edition` 用年内第几天（`date +%j`）。
-今天无值得发的内容则不发卡片。
+`vendor` 取 `run.py --vendors` 输出的任一 id（不要写死取值范围）。`brand` 用该 vendor 的 brand 字段。
+`edition` 用年内第几天（`TZ=Asia/Shanghai date +%j`）。今天无值得发的内容则不发卡片。
 
 ## B. 纯 Python（无人值守 / CI）
 
