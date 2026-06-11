@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.12",
+  "cnDate": "6月12日 周五",
+  "edition": "VOL.163",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "OpenAI 收购云执行平台 Ona：赋能 Codex 代理跨设备完成长耗时任务",
+      "summary": "OpenAI 宣布收购 Ona——一家为开发者提供安全、持久云端执行环境的初创平台（已服务 200 万开发者），交易金额未披露。Ona 并入后，Codex 用户可将耗时数小时乃至数天的编码任务委托给代理在无人值守状态下自主完成，无需锁定设备或活跃会话；当前 Codex 周活已超 500 万，较年初增长 400%。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "企业",
+      "title": "OpenAI × Oracle Cloud：企业可凭现有 OCI 承诺额度直接调用 GPT 模型与 Codex",
+      "summary": "OpenAI 与甲骨文宣布合作接入计划：Oracle Cloud 基础设施（OCI）企业客户可将现有 Universal Credits 直接抵扣 OpenAI 模型 API 及 Codex 使用费，数据与推理均运行在 Oracle 基础设施内，无需另行签约；预计数周内正式上线，感兴趣企业可提前联系 Oracle 销售代表排队。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

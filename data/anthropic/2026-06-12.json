@@ -1,0 +1,24 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.12",
+  "cnDate": "6月12日 周五",
+  "edition": "VOL.163",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Claude Corps 正式启动：1.5 亿美元扶持千名公益 AI 专才",
+      "summary": "Anthropic 宣布投入 1.5 亿美元创立 Claude Corps 公益奖学金计划，在美国各地非营利机构全职安置 1000 名早期职业人才：每位研究员获 8.5 万美元年薪 + 1 万美元补助、12 个月驻点培训；首批 100 人将于 2026 年 10 月上岗，申请截至 7 月 17 日，由 CodePath 负责运营。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.173 + Agent SDK v0.3.173：Fable 5 模型名自动规范，修复 Windows 沙箱误报",
+      "summary": "v2.1.173 修复两处 Bug：Fable 5 模型名末尾的 [1m] 后缀现自动剥离（该模型默认含 1M 上下文），避免开发者 API 调用时名称不匹配；Windows 下 sandbox 已启用时不再误报「依赖缺失」启动警告，提升初始化体验。Agent SDK TypeScript v0.3.173 同步发布，无接口变更。",
+      "source": "github.com/anthropics/claude-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

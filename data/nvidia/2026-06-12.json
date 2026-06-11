@@ -1,0 +1,18 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.12",
+  "cnDate": "6月12日 周五",
+  "edition": "VOL.163",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA 加速 DiffusionGemma 本地推理：消费级 RTX 显卡可跑 4 倍速扩散语言模型",
+      "summary": "配合 Google DeepMind 发布 DiffusionGemma，NVIDIA 同步提供专属优化内核：量化后该模型在 18GB VRAM 的 GeForce RTX 及 RTX PRO 上即可本地运行，DGX Spark 单节点达 150 tokens/s、DGX Station 可达 2000 tokens/s；这是大型语言模型扩散范式首次获得 NVIDIA 与 Google 联合优化，标志着非自回归推理路径开始进入主流推理工具链。",
+      "source": "blogs.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

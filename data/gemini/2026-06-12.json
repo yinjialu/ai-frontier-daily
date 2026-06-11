@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.12",
+  "cnDate": "6月12日 周五",
+  "edition": "VOL.163",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "DiffusionGemma 发布：并行扩散式文本生成，H100 单卡达 1000 tokens/秒",
+      "summary": "Google DeepMind 发布 DiffusionGemma——基于 Gemma 4 架构的开源扩散语言模型（26B MoE，单步仅激活 3.8B 参数）：每步并行去噪多达 256 个 token，速度约为同量级自回归模型的 4 倍，H100 达 1000 tokens/s、DGX Station 达 2000 tokens/s；量化后可在 18GB VRAM 的消费级 RTX 显卡本地运行，NVIDIA 同步提供优化内核支持。",
+      "source": "deepmind.google"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.46.0 稳定版：PTY 崩溃防护强化，Flash GA 模型转为默认",
+      "summary": "v0.46.0 正式稳定版聚焦可靠性与配置收敛：针对原生 PTY resize 的崩溃场景实施硬化防护，阻止编辑器配置触发无限刷新循环；基于线上实验数据将 Flash GA 系列模型切换为默认，并优化 fork PR 的 CI 工作流，引入 PR 大小自动打标签。与 v0.47.0-preview.0 同于 6 月 10 日发布，互为稳定与预览双轨。",
+      "source": "github.com/google-gemini/gemini-cli"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
