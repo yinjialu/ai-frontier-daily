@@ -159,22 +159,17 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
 
 ## 发布（人工，符合平台规则）
 
-- 小红书：无合规发布 API。本机有 `xhs-publisher` skill（浏览器 UI 自动化驱动
-  creator.xiaohongshu.com，需已登录 Chrome + Claude 驱动，且按平台规范【人工点发布】，
-  无法像公众号那样无人值守 cron）。`to_xhs_post.py` 把 data 整理成发布素材包：
-  `python to_xhs_post.py [--vendor openai]` → 写 `output/<vendor>/<date>/小红书文案.txt`
-  （标题≤20/正文/标签/配图清单）并打印 JSON（date/vendor/title/content/tags/images），
-  标签随厂商切换（Anthropic `#AI #Anthropic #Claude`／OpenAI `#AI #OpenAI #ChatGPT`），
-  供 xhs-publisher 上传当天 6–8 张竖图时直接套用。
-
-  **小红书半自动发布（Claude + Chrome，用户说「发今天的小红书」时走这套）：**
-  1. `git pull` 取云端最新，`python to_xhs_post.py [--vendor <id>]` 生成素材包（读其 stdout 的
-     JSON：title/content/tags/images）。
-  2. 用 Claude-in-Chrome 打开 `https://creator.xiaohongshu.com/publish/publish?target=image`，
-     点「上传图片」（红色按钮），按 images 顺序（小红书_00 封面 → 99 结尾）上传当天竖图。
-     页面 DOM 选择器与逐步操作参考 `xhs-publisher` skill（已软链到 ~/.claude/skills/）。
-  3. 填标题（title，≤20 字）、正文（content）；正文末尾空两行后接 tags（随厂商，见 stdout 的 `tags`）。
-  4. **停在「发布」按钮前**，截图给用户确认，由用户手动点发布（平台反自动化规范，切勿自动发）。
+- 小红书【全自动，2026-06-11 起】：走本机 [xiaohongshu-mcp](https://github.com/xpzouying/xiaohongshu-mcp)
+  服务（二进制 `~/.local/bin/xiaohongshu-mcp`，cookie/工作目录 `~/.config/xiaohongshu-mcp/`，
+  HTTP MCP 端口 18060，账号 ai-report）。一条命令发一厂商：
+  `python skills/ai-daily-digest/publish_xhs_newspic.py --vendor <id> [--private|--dry-run]`
+  —— 内部先调 `to_xhs_post.py` 组装素材（标题≤20 字/正文≤1000 字/标签数组/竖图清单，
+  标签随厂商切换），再把卡片复制为 ASCII 临时名（服务不接受中文路径）调 `publish_content`。
+  服务未启动会自动拉起；登录态失效时在 `~/.config/xiaohongshu-mcp/` 下重跑
+  `~/.local/bin/xiaohongshu-login` 扫码。`watch-and-publish.sh` 的 [4/4] 步已挂入每日链路
+  （去重标记 `.last_published_xhs.<vendor>`，厂商间隔 45s 防风控连发）。
+  注意：xiaohongshu-mcp 是独立登录态，与浏览器里 creator 后台网页登录可能互踢；
+  `--private` 发「仅自己可见」笔记，用于测试链路。
 - 公众号个人订阅号：草稿接口权限已回收，手动建草稿贴图，或用 135/壹伴等已授权
   编辑器导入草稿箱。
 - 公众号【已认证服务号】——「云端抓取 → 本机合并+推送」半自动链路（仍由人工群发）：

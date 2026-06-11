@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# 本机监听器：把云端 routine 推上来的 daily-<DATE> 分支合并进 main，再为各厂商建微信贴图草稿。
+# 本机监听器：把云端 routine 推上来的 daily-<DATE> 分支合并进 main，再为各厂商建微信贴图草稿
+# 并发布小红书图文笔记（走本地 xiaohongshu-mcp 服务，见 publish_xhs_newspic.py）。
 #
 # 背景：Claude Code on the web 的 GitHub 代理「只允许推当前工作分支」，云端 routine 推不了 main，
 #       只能推 daily-<DATE> 分支（见 SKILL.md）。本脚本在本机（有完整 push 权）做合并 + 微信发布。
@@ -58,7 +59,7 @@ for ref in $(git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/d
   echo "    ✓ 已合并并推送 main，删除 $br"
 done
 
-echo "[3/3] 各厂商建微信贴图草稿…"
+echo "[3/4] 各厂商建微信贴图草稿…"
 TODAY="$(TZ=Asia/Shanghai date +%F)"
 # 自适应：未显式指定厂商时，取当天 data/*/<date>.json 存在的全部厂商（新增厂商自动覆盖）
 if [ -n "$VENDORS_PUBLISH" ]; then
@@ -90,11 +91,38 @@ for v in $vendors; do
   fi
 done
 
+echo "[4/4] 各厂商发布小红书图文笔记…"
+xhs_published=""; xhs_failed=""
+for v in $vendors; do
+  f="data/$v/$TODAY.json"
+  [ -f "$f" ] || continue
+  mark="$REPO/.last_published_xhs.$v"
+  if [ -z "$DRY" ] && [ -f "$mark" ] && [ "$(cat "$mark" 2>/dev/null)" = "$TODAY" ]; then
+    echo "  · $v $TODAY 已发过小红书，跳过"; continue
+  fi
+  echo "  · 小红书笔记：$v $TODAY"
+  if [ -n "$DRY" ]; then
+    python3 skills/ai-daily-digest/publish_xhs_newspic.py --vendor "$v" --dry-run >/dev/null && echo "    (dry-run：素材组装 OK，不发布)"
+    continue
+  fi
+  if python3 skills/ai-daily-digest/publish_xhs_newspic.py --vendor "$v"; then
+    echo "$TODAY" > "$mark"
+    xhs_published="$xhs_published $v"
+    sleep 45   # 厂商间隔，避免连发触发风控
+  else
+    echo "    ⚠ $v 小红书发布失败（登录态看 ~/.config/xiaohongshu-mcp/，服务日志 ~/Library/Logs/xiaohongshu-mcp.log）"
+    xhs_failed="$xhs_failed $v"
+  fi
+done
+
 echo "✓ watch-and-publish 完成（$TODAY）"
 
-# 手机推送：本次真的新建了草稿才提醒去后台核对发布（dry-run 不推）
-if [ -z "$DRY" ] && [ -n "${published// /}" ]; then
-  msg="今日草稿已进箱待发布：${published# }"
-  [ -n "${failed// /}" ] && msg="$msg；失败：${failed# }"
-  "$REPO/scripts/notify.sh" "AI 前哨 · 公众号草稿就绪" "$msg" || true
+# 手机推送：本次真的有动作才提醒（dry-run 不推）
+if [ -z "$DRY" ] && { [ -n "${published// /}" ] || [ -n "${xhs_published// /}" ] || [ -n "${xhs_failed// /}" ]; }; then
+  msg=""
+  [ -n "${published// /}" ] && msg="公众号草稿进箱：${published# }"
+  [ -n "${failed// /}" ] && msg="$msg；公众号失败：${failed# }"
+  [ -n "${xhs_published// /}" ] && msg="$msg；小红书已发：${xhs_published# }"
+  [ -n "${xhs_failed// /}" ] && msg="$msg；小红书失败：${xhs_failed# }"
+  "$REPO/scripts/notify.sh" "AI 前哨 · 今日发布" "${msg#；}" || true
 fi
