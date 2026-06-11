@@ -52,15 +52,6 @@
   .vtab.on{background:var(--vc);border-color:var(--vc);color:#fff}
   .vtab.on .dotv{opacity:.9;background:#fff}
 
-  /* 日期切换 */
-  .days{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
-  .day{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:13px;cursor:pointer;
-    padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);
-    color:var(--soft);transition:.15s;user-select:none;white-space:nowrap}
-  .day:hover{border-color:var(--clay);color:var(--clay)}
-  .day.on{background:var(--clay);border-color:var(--clay);color:#fff}
-  .day .n{opacity:.7;margin-left:6px}
-  .day.on .n{opacity:.85}
   .meta{color:var(--soft);font-size:13px;margin:14px 2px 4px;
     font-family:"Space Mono","DejaVu Sans Mono",monospace}
 
@@ -165,7 +156,6 @@
 </header>
 
 <div class="vendors" id="vendors"></div>
-<div class="days" id="days"></div>
 <div class="meta" id="meta"></div>
 <div id="app"></div>
 
@@ -265,24 +255,14 @@ async function applyVendor(vendor){
   $("#sub").textContent = isDaily
     ? "每日跨厂商 AI 动态总览 · 一屏看懂今天 AI 圈。"
     : `每日采集 ${VENDOR_NAMES[vendor]||vendor} 官方动态。`;
-  renderDayNav();
   if(DAYS.length) await selectDay(DAYS[DAYS.length-1].date);
   renderHeatmap();
-}
-
-function renderDayNav(){
-  const wrap = $("#days");
-  wrap.innerHTML = DAYS.slice().reverse().map(d =>
-    `<span class="day" data-d="${d.date}">${d.cnDate||d.date}<span class="n">${d.count}</span></span>`
-  ).join("");
-  wrap.onclick = e => { const el = e.target.closest(".day"); if(el) selectDay(el.dataset.d); };
 }
 
 async function selectDay(date){
   const d = byDate[date]; if(!d) return;
   const vendor = curVendor;
   curDate = date;
-  document.querySelectorAll(".day").forEach(el => el.classList.toggle("on", el.dataset.d===date));
   document.querySelectorAll(".cell").forEach(el => el.classList.toggle("sel", el.dataset.d===date));
   $("#meta").textContent = `${d.cnDate||d.date}${d.edition?" · "+d.edition:""} · ${vendor===DAILY?"全网":"采集"} ${d.count} 条`;
 
