@@ -1,0 +1,18 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.13",
+  "cnDate": "6月13日 周六",
+  "edition": "VOL.164",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "OpenAI 正式启动就业平台与 Academy 认证：Walmart 为 160 万员工全员免费开放",
+      "summary": "OpenAI 发布「扩大 AI 经济机会」计划，正式上线就业平台（以 AI 技能为核心匹配求职者与企业，对标 LinkedIn）与分级 Academy 认证体系（覆盖初级职场 AI 使用到高级 Prompt Engineering），合作伙伴包括 Walmart、BCG、Accenture；Walmart 向全体 160 万美国员工提供免费认证通道，OpenAI 目标 2030 年前认证 1000 万人，平台同步面向小微企业与地方政府开放。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

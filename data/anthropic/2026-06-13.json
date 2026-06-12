@@ -1,0 +1,24 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.13",
+  "cnDate": "6月13日 周六",
+  "edition": "VOL.164",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.174–v2.1.176：enforceAvailableModels 企业管控 + 多语言会话标题",
+      "summary": "三版集中落地：v2.1.175 新增 enforceAvailableModels 企业管理员设置，MDM 下可锁定默认模型并禁止用户扩大屏蔽名单；v2.1.176 引入会话标题自动适配对话语言、footerLinksRegexes 自定义底部链接白名单，优化 Bedrock 凭证缓存与 GovCloud 区域支持，修复 Remote Control 和后台会话多处稳定性问题；v2.1.174 补充滚轮加速配置与 VSCode 使用归因。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Agent SDK v0.3.174–v0.3.176：model_fallback 全场景覆盖，后台代理恢复 Bug 修复",
+      "summary": "v0.3.174 将 system/model_fallback 消息触发范围扩展至 overloaded、server_error、last_resort 三类场景（原仅限 model_not_found 和 permission_denied），便于宿主应用感知并处理各类模型降级事件；v0.3.176 修复并发多轮完成时 result 消息被丢弃、以及 SDK 恢复会话时后台/远程代理状态未还原两处 Bug，多代理工作流可靠性显著提升。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

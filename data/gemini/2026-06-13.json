@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.13",
+  "cnDate": "6月13日 周六",
+  "edition": "VOL.164",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Gemini for Home 达 350 万测试用户，新款 Gemini 音箱下周开售",
+      "summary": "Google 披露 Gemini for Home 早期访问成绩：350 万用户自去年 10 月起参与测试，推动超 2500 项 Bug 修复与 50 余次重大功能更新，覆盖 20 国 10 语言；Google 同时预告「等待已久的那款音箱」下周开售，外媒报道指搭载 Gemini 的新款 Google Home Speaker 预计 6 月 25 日上市，距上一代智能音箱停更已逾六年。",
+      "source": "blog.google"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini macOS 客户端更新：Neural Expressive 新图标 + 双击 Command 截图快捷键",
+      "summary": "macOS 版 Gemini 应用发布新版本，带来 Neural Expressive 风格新图标，并上线「双击 Command ⌘ 键」快捷方式，可将当前活跃窗口内容自动附加到对话，无需手动截图，方便直接基于屏幕内容提问；完整 Neural Expressive UI 重设计将配合 Gemini Spark 和语音新功能于今夏推出。",
+      "source": "gemini.google"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

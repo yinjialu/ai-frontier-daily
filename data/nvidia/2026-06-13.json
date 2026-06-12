@@ -1,0 +1,18 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.13",
+  "cnDate": "6月13日 周六",
+  "edition": "VOL.164",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "NVIDIA 上线 MiniMax M3 免费端点：1M 上下文开源前沿模型，Dynamo day-0 全后端支持",
+      "summary": "NVIDIA 在 API 目录上线 MiniMax M3 免费 GPU 加速端点，并发布 Dynamo v1.3.0-minimax-m3-dev.1 实现 day-0 支持。MiniMax M3 是首个集 1M token 上下文、200B MoE 架构（推理仅激活约 10B 参数）与图像/视频理解于一体的开源前沿模型，在 SWE-Bench Pro 编程基准据报超越 GPT-5.5 与 Gemini 3.1 Pro；Dynamo 通过 XML tool-call 解析器接入 OpenAI 兼容 API，支持 TRT-LLM、SGLang、vLLM 三大推理后端。",
+      "source": "developer.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
