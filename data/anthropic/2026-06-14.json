@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.14",
+  "cnDate": "6月14日 周日",
+  "edition": "VOL.165",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "美国政府下令停止 Fable 5 与 Mythos 5 对外国人开放，Anthropic 被迫全面暂停访问",
+      "summary": "美国商务部长 Howard Lutnick 于 6 月 13 日下午向 Anthropic 发出指令，要求立即暂停所有非美国公民访问 Fable 5 和 Mythos 5，理由是发现一处「潜在越狱漏洞」威胁国家安全；Anthropic 为确保合规，在 Fable 5 公开发布仅三天后将上述两款模型对全体用户全面下线，并公开表示不同意该指令适用标准，认为若此口径成立将实质阻断整个行业所有前沿模型的上线。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

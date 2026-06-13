@@ -1,0 +1,18 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.14",
+  "cnDate": "6月14日 周日",
+  "edition": "VOL.165",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.48.0-nightly：MCP 工具发现原子化更新，Antigravity 迁移命令正式内置",
+      "summary": "最新 nightly 版进一步巩固 MCP 可靠性：工具发现写入改为原子操作以消除并发竞态；内置 Antigravity CLI（agy）迁移文档与命令，助开发者在原平台 6 月 18 日停服前完成切换；新增「零配额时立即失败」逻辑，终止以往重试循环导致的进程挂起；修复 stripShellWrapper 对多行转义引号的处理，改善 Vertex AI 模型映射配置，并避免空会话被意外持久化。",
+      "source": "github.com/google-gemini/gemini-cli"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

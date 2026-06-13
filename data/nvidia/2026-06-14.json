@@ -1,0 +1,18 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.14",
+  "cnDate": "6月14日 周日",
+  "edition": "VOL.165",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Dynamo v1.2.1：ModelExpress 0.4.0 对象存储支持，AMD ROCm 与 Python 3.10 兼容修复",
+      "summary": "v1.2.1 为稳定版带来多项维护更新：ModelExpress 升至 0.4.0，新增引擎侧模型加载及对象存储支持，修复 vLLM/SGLang 上 ModelExpress 路径的模型加载卡顿；解决 AMD ROCm 与 Python 3.10 导入兼容问题；修复 SGLang 后端路由专家编码导致 MoE 模型崩溃的问题；更新 EFA 容器依赖，升级 libfabric 至 v2.5.1、NIXL GDRCopy 至 v2.5.2。",
+      "source": "github.com/ai-dynamo/dynamo"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

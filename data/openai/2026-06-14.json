@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.14",
+  "cnDate": "6月14日 周日",
+  "edition": "VOL.165",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.2 提前从 ChatGPT 下架，未提前通知直接迁移至 GPT-5.5",
+      "summary": "OpenAI 于 6 月 12 日将 GPT-5.2 Instant、Thinking、Pro 三个版本从 ChatGPT 全部下架，存量对话自动切换至对应 GPT-5.5 版本，未给出提前警告——此前弃用文档注明的下线日期为 8 月 10 日。对普通用户影响透明，但生产环境中硬编码模型名称的开发者需重新测试提示词与输出解析逻辑。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex v0.140.0-alpha.18：Sites 预览上线，图片生成扩展与安全加固",
+      "summary": "Codex 最新 alpha 新增 Sites 预览功能，可在 Codex 应用内直接创建、部署并托管网页/仪表盘/小游戏；同步引入特性开关下的独立图片生成扩展、OSC 8 链接保持终端可点击的 Markdown 渲染优化；安全层面修复 /diff 命令可能执行仓库自定义 Git 钩子的问题，并拒绝来自浏览器源的 WebSocket 握手，防止跨源攻击。",
+      "source": "github.com/openai/codex"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
