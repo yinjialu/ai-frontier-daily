@@ -1,0 +1,18 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.15",
+  "cnDate": "6月15日 周一",
+  "edition": "VOL.166",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Codex 0.140.0-alpha.19：Plugin MCP 去重路由 + exec-server 跨 OS 路径标准化",
+      "summary": "alpha.19 带来三处开发者向改进：Plugin MCP Server 去重路由——当插件同时声明 App 路由与同名 MCP 服务时，ChatGPT/SIWC 会话优先走 App 路由，消除冲突；exec-server 的 cwd 字段统一迁移至 PathUri 格式，仅在进程启动时转换为绝对路径，解决跨 OS 路径不一致问题；Windows ARM64 打包流水线优化，两项打包任务改在 x64 runner 并行执行，发布延迟从 1m43s 缩至近零。",
+      "source": "github.com/openai/codex"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,18 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.15",
+  "cnDate": "6月15日 周一",
+  "edition": "VOL.166",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "Gemini Code Assist 个人版 3 天后停服：须在 6 月 18 日前完成迁移至 Antigravity CLI",
+      "summary": "Google 宣布 6 月 18 日起，Gemini Code Assist IDE 扩展与 Gemini CLI 将对个人免费用户、Google AI Pro 及 AI Ultra 订阅者停止服务；Gemini Code Assist for GitHub 同日起不再接受新安装，后续数周内请求将陆续终止。企业版（Standard/Enterprise 许可证）不受影响。迁移目标为 Antigravity CLI（agy），Google 已在 Gemini CLI 最新 nightly 内置迁移文档与命令，可运行 agy migrate 完成切换；与原版不同，Antigravity CLI 不开源。距截止仅余 3 天，使用相关工具的开发者须尽快行动。",
+      "source": "developers.googleblog.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.15",
+  "cnDate": "6月15日 周一",
+  "edition": "VOL.166",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "Agent SDK 计费分离今日生效：程序化调用独立额度池，耗尽即暂停",
+      "summary": "Anthropic 宣布的计费改革今起正式执行：Agent SDK、claude -p、Claude Code GitHub Actions 及第三方 Agent 应用的用量，从订阅计划剥离，转入独立信用额度池（Pro $20/月、Max 5x $100/月、Max 20x $200/月，均按标准 API 定价扣费）；额度按用户独立计算，每月随账单周期重置且不滚存，耗尽后自动化任务即暂停——可开启溢出计费兜底。Claude.ai 对话与终端/IDE 交互式 Claude Code 不受影响，仍走订阅原有用量限额。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
