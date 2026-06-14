@@ -33,6 +33,17 @@
   };
   function vendorOf(DATA){ return VENDORS[(DATA && DATA.vendor) || "anthropic"] || VENDORS.anthropic; }
 
+  // 小红书内容卡是固定 1080×1440 + overflow:hidden，长文案会被裁切。
+  // 按标题/摘要字数分档，给卡片附加 t1..t4 / s1..s4 class（见 cards.css），
+  // 自适应缩小字号让文字容得下；短文案不附 class，保持原始大字号美观。
+  // 纯字数判定 → 确定性、跨环境（预览页/playwright/wkhtml）一致，无需运行时测量。
+  function fitClass(title, summary){
+    var t = String(title==null?"":title).length, s = String(summary==null?"":summary).length;
+    var tc = t<=22?"" : t<=34?"t1" : t<=48?"t2" : t<=64?"t3" : "t4";
+    var sc = s<=110?"" : s<=165?"s1" : s<=220?"s2" : s<=275?"s3" : "s4";
+    return (tc + " " + sc).trim();
+  }
+
   function buildDeck(DATA){
     var out=[], U=DATA.updates||[], V=vendorOf(DATA), vc="v-"+V.id;
 
@@ -52,7 +63,7 @@
 
     // 小红书内容卡
     U.forEach(function(u,i){
-      out.push({name:"小红书_"+pad(i+1)+"_"+esc(u.tag), cls:vc+" xhs xhs-item", w:1080, h:1440, inner:`
+      out.push({name:"小红书_"+pad(i+1)+"_"+esc(u.tag), cls:(vc+" xhs xhs-item "+fitClass(u.title,u.summary)).trim(), w:1080, h:1440, inner:`
         <div class="blob" style="width:300px;height:300px;background:var(--accent-soft);top:-90px;right:-90px;opacity:.5"></div>
         <div class="bgnum">${pad(i+1)}</div>
         <div class="inner">
