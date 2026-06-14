@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>AI 前哨 · 发布助手</title>
+<style>
+:root{
+  --c-anthropic:#C1572E;--c-openai:#10A37F;--c-gemini:#3B5BD0;--c-nvidia:#76B900;
+  --ink:#26221C;--paper:#FBF8F1;--cream:#F1ECE0;--line:#D8CFBC;--soft:#7A7363;
+  --accent:var(--c-anthropic);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);
+  font-family:"Noto Sans SC",system-ui,-apple-system,sans-serif;min-height:100vh}
+body{padding:0 0 60px}
+
+/* Header */
+header{background:var(--paper);border-bottom:1px solid var(--line);
+  padding:18px 16px 14px;position:sticky;top:0;z-index:100}
+.hrow{display:flex;align-items:baseline;gap:10px}
+.brand{font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+header h1{margin:0;font-size:18px;font-weight:700;color:var(--ink)}
+.hint{margin:4px 0 0;font-size:12px;color:var(--soft)}
+
+/* Tabs */
+.tabs{display:flex;gap:0;overflow-x:auto;border-bottom:1px solid var(--line);
+  background:var(--paper);padding:0 12px;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:10px 14px;font-size:13px;font-weight:500;color:var(--soft);
+  cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;
+  transition:color .15s,border-color .15s;user-select:none}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* Panel */
+.panel{display:none;padding:16px}
+.panel.on{display:block}
+.pdate{font-size:12px;color:var(--soft);margin-bottom:12px;letter-spacing:.5px}
+
+/* Copy block */
+.cblock{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  margin-bottom:14px;overflow:hidden}
+.cblock-head{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-bottom:1px solid var(--line)}
+.cblock-label{font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--accent);opacity:.85}
+.copy-btn{font-size:13px;padding:5px 14px;border-radius:999px;border:1px solid var(--accent);
+  color:var(--accent);background:transparent;cursor:pointer;font-weight:600;
+  transition:background .12s,color .12s;-webkit-appearance:none;white-space:nowrap}
+.copy-btn:active,.copy-btn.done{background:var(--accent);color:#fff}
+.cblock-body{padding:12px 14px;font-size:14px;line-height:1.65;
+  white-space:pre-wrap;word-break:break-word;color:var(--ink);
+  max-height:260px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.cblock-body.tall{max-height:none}
+
+/* Image strip */
+.img-head{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);opacity:.85;margin:4px 0 8px}
+.img-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.img-strip::-webkit-scrollbar{display:none}
+.img-thumb{flex:none;width:108px;height:144px;border-radius:8px;overflow:hidden;
+  border:1px solid var(--line);background:#eee;position:relative;cursor:pointer}
+.img-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.img-label{position:absolute;bottom:0;left:0;right:0;font-size:9px;
+  background:rgba(0,0,0,.45);color:#fff;padding:3px 5px;text-align:center}
+.img-hint{font-size:12px;color:var(--soft);margin-top:8px}
+
+/* Empty */
+.empty{text-align:center;color:var(--soft);padding:40px 16px;font-size:14px}
+.loading{text-align:center;padding:40px;color:var(--soft);font-size:14px}
+.spin{display:inline-block;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Lightbox */
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;
+  align-items:center;justify-content:center;flex-direction:column}
+#lb.on{display:flex}
+#lb img{max-width:92vw;max-height:80vh;border-radius:8px;object-fit:contain}
+#lb .lb-hint{color:rgba(255,255,255,.7);font-size:13px;margin-top:14px}
+#lb .lb-close{position:absolute;top:16px;right:16px;color:#fff;font-size:28px;
+  cursor:pointer;line-height:1;background:none;border:none;padding:4px 10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <span class="brand">AI 前哨</span>
+    <h1>发布助手</h1>
+  </div>
+  <p class="hint">长按图片 → 存照片 · 点「复制」→ 粘贴到小红书</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div id="panels"><div class="loading"><span class="spin">⏳</span> 加载中…</div></div>
+
+<div id="lb" onclick="closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-hint">长按图片 → 存到照片</div>
+</div>
+
+<script>
+// ── 配置（与 to_xhs_post.py 保持同步）──────────────────────────
+const VENDOR_META = {
+  anthropic: {name:'Anthropic', color:'var(--c-anthropic)', base:['#AI','#Anthropic','#Claude']},
+  openai:    {name:'OpenAI',    color:'var(--c-openai)',    base:['#AI','#OpenAI','#ChatGPT']},
+  gemini:    {name:'Gemini',    color:'var(--c-gemini)',    base:['#AI','#Google','#Gemini']},
+  nvidia:    {name:'NVIDIA',    color:'var(--c-nvidia)',    base:['#AI','#NVIDIA','#GPU']},
+};
+const TAG_FIELD_MAP = {
+  '模型发布':'#大模型','开发者':'#AI开发者','研究':'#AI研究',
+  '政策':'#AI政策','安全':'#AI安全','生态':'#AI生态','企业':'#AI应用',
+};
+const KEYWORD_TAGS = [
+  ['Codex','#Codex'],['Sora','#Sora'],['TensorRT','#TensorRT'],
+  ['Dynamo','#Dynamo'],['Gemini CLI','#GeminiCLI'],
+  ['Claude Code','#ClaudeCode'],['Antigravity','#Antigravity'],
+];
+
+// ── 文案构建 ────────────────────────────────────────────────────
+function buildTags(vendor, updates) {
+  const base = [...(VENDOR_META[vendor]?.base || ['#AI'])];
+  const seen = new Set(base), extra = [];
+  for (const u of updates) {
+    const ft = TAG_FIELD_MAP[u.tag];
+    if (ft && !seen.has(ft)) { extra.push(ft); seen.add(ft); }
+    const text = (u.title||'') + ' ' + (u.summary||'');
+    for (const [kw, tag] of KEYWORD_TAGS) {
+      if (text.includes(kw) && !seen.has(tag)) { extra.push(tag); seen.add(tag); }
+    }
+  }
+  return [...base, ...extra.slice(0, Math.max(0, 5 - base.length))].join(' ');
+}
+
+function buildTitle(data) {
+  const name = VENDOR_META[data.vendor]?.name || data.vendor;
+  return `${data.cnDate}｜${name} 今日 ${data.updates.length} 条动态`;
+}
+
+function buildContent(data) {
+  const name = VENDOR_META[data.vendor]?.name || data.vendor;
+  const brand = data.brand || `AI 前哨 · 每日 ${name}`;
+  const tags = buildTags(data.vendor, data.updates);
+  const lines = [];
+  data.updates.forEach((u, i) => {
+    lines.push(`${i+1}.【${u.tag}】${u.title}`);
+    lines.push(u.summary);
+    lines.push('');
+  });
+  lines.push(`—— ${brand}，点关注不错过 🔔 ${tags}`);
+  return lines.join('\n').trim();
+}
+
+// ── 复制按钮 ────────────────────────────────────────────────────
+async function copyText(text, btn) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch(e) {
+    // iOS 14- fallback: textarea trick
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  btn.textContent = '✓ 已复制'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = '📋 复制'; btn.classList.remove('done'); }, 1600);
+}
+
+// ── 图片灯箱 ────────────────────────────────────────────────────
+function openLb(src) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb').classList.add('on');
+}
+function closeLb() {
+  document.getElementById('lb').classList.remove('on');
+  document.getElementById('lb-img').src = '';
+}
+
+// ── 渲染 ────────────────────────────────────────────────────────
+function renderPanel(vendor, data, files) {
+  const color = VENDOR_META[vendor]?.color || 'var(--accent)';
+  const title = buildTitle(data);
+  const content = buildContent(data);
+  // 只取小红书配图
+  const xhsFiles = files.filter(f => f.startsWith('小红书_'));
+  const imgBase = `output/${vendor}/${data.date || data.cnDate.replace(/\s+/g,'_')}/`;
+
+  // 实际 dir 取 latest.json 里的 dir
+  const panelEl = document.createElement('div');
+  panelEl.className = 'panel';
+  panelEl.id = `panel-${vendor}`;
+  panelEl.style.setProperty('--accent', color);
+
+  const titleId = `t-${vendor}`, bodyId = `b-${vendor}`;
+  panelEl.innerHTML = `
+<p class="pdate">${data.cnDate} · ${data.edition || ''}</p>
+
+<div class="cblock">
+  <div class="cblock-head">
+    <span class="cblock-label">标 题</span>
+    <button class="copy-btn" onclick="copyText(document.getElementById('${titleId}').textContent,this)">📋 复制</button>
+  </div>
+  <div class="cblock-body" id="${titleId}">${escHtml(title)}</div>
+</div>
+
+<div class="cblock">
+  <div class="cblock-head">
+    <span class="cblock-label">正文 + 标签</span>
+    <button class="copy-btn" onclick="copyText(document.getElementById('${bodyId}').textContent,this)">📋 复制</button>
+  </div>
+  <div class="cblock-body tall" id="${bodyId}">${escHtml(content)}</div>
+</div>
+
+<div class="img-head">📷 配图（长按存照片）</div>
+<div class="img-strip" id="imgs-${vendor}"></div>
+<p class="img-hint">共 ${xhsFiles.length} 张 · 长按图片 → 存到照片 · 按顺序上传</p>
+`;
+
+  return { panelEl, xhsFiles };
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── 主流程 ──────────────────────────────────────────────────────
+async function init() {
+  // 读厂商列表
+  let vendors;
+  try {
+    const idx = await (await fetch('output/index.json')).json();
+    vendors = idx.vendors || Object.keys(VENDOR_META);
+  } catch(e) {
+    vendors = Object.keys(VENDOR_META);
+  }
+
+  const tabsEl = document.getElementById('tabs');
+  const panelsEl = document.getElementById('panels');
+  panelsEl.innerHTML = '';
+
+  let firstOn = null;
+  const vendorData = [];
+
+  // 并行拉取各厂商最新数据
+  await Promise.all(vendors.map(async (v) => {
+    try {
+      const latest = await (await fetch(`output/${v}/latest.json`)).json();
+      const date = latest.dir || latest.date;
+      const dataJson = await (await fetch(`data/${v}/${date}.json`)).json();
+      const files = latest.files || [];
+      vendorData.push({ v, dataJson, files, date });
+    } catch(e) {
+      // 该厂商今天无数据，跳过
+    }
+  }));
+
+  // 按 vendors 顺序排列
+  vendorData.sort((a,b) => vendors.indexOf(a.v) - vendors.indexOf(b.v));
+
+  if (vendorData.length === 0) {
+    panelsEl.innerHTML = '<div class="empty">今日暂无内容</div>';
+    return;
+  }
+
+  for (const { v, dataJson, files, date } of vendorData) {
+    const name = VENDOR_META[v]?.name || v;
+    const color = VENDOR_META[v]?.color || 'var(--accent)';
+
+    // Tab
+    const tab = document.createElement('div');
+    tab.className = 'tab';
+    tab.textContent = name;
+    tab.dataset.v = v;
+    tab.style.color = 'var(--soft)';
+    tab.onclick = () => switchTo(v);
+    tabsEl.appendChild(tab);
+
+    // Panel
+    const { panelEl, xhsFiles } = renderPanel(v, dataJson, files);
+    panelsEl.appendChild(panelEl);
+
+    // Images（需要知道 dir，取 latest.json 的 dir 字段）
+    const imgStrip = panelEl.querySelector(`#imgs-${v}`);
+    const dirPath = `output/${v}/${date}`;
+    for (const fname of xhsFiles) {
+      const src = `${dirPath}/${fname}`;
+      const thumb = document.createElement('div');
+      thumb.className = 'img-thumb';
+      // 标签取文件名中间部分：小红书_01_开发者.jpg → 开发者
+      const m = fname.match(/小红书_\d+_(.+)\.(jpg|png)$/i);
+      const label = m ? m[1] : fname;
+      thumb.innerHTML = `<img src="${src}" alt="${label}" loading="lazy"><div class="img-label">${label}</div>`;
+      thumb.onclick = () => openLb(src);
+      imgStrip.appendChild(thumb);
+    }
+
+    if (!firstOn) firstOn = v;
+  }
+
+  if (firstOn) switchTo(firstOn);
+}
+
+function switchTo(v) {
+  document.querySelectorAll('.tab').forEach(t => {
+    const on = t.dataset.v === v;
+    t.classList.toggle('on', on);
+    const color = VENDOR_META[v]?.color || 'var(--accent)';
+    if (on) t.style.color = ''; else t.style.color = 'var(--soft)';
+  });
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === `panel-${v}`));
+  // 更新主题色
+  const color = VENDOR_META[v]?.color || 'var(--c-anthropic)';
+  document.documentElement.style.setProperty('--accent', color);
+}
+
+init();
+</script>
+</body>
+</html>
