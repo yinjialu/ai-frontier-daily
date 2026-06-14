@@ -79,6 +79,18 @@
 .xhs-item h2{font-family:var(--serifcn);font-weight:700;font-size:82px;line-height:1.16;margin-top:46px;letter-spacing:-1px}
 .xhs-item .rule{width:96px;height:8px;background:var(--accent);border-radius:4px;margin:48px 0}
 .xhs-item .sum{font-size:41px;line-height:1.66;color:var(--muted);font-weight:300}
+/* 长文案自适应字号（由 cards.js fitClass 按字数附加 t1..t4 / s1..s4），
+   字号越小连带收紧标题上间距与 rule 间距，给正文腾出更多高度，避免裁切 */
+.xhs-item.t1 h2{font-size:68px}
+.xhs-item.t2 h2{font-size:58px;margin-top:40px}
+.xhs-item.t3 h2{font-size:50px;margin-top:36px}
+.xhs-item.t4 h2{font-size:44px;line-height:1.2;margin-top:32px}
+.xhs-item.s1 .sum{font-size:37px}
+.xhs-item.s2 .sum{font-size:33px;line-height:1.62}
+.xhs-item.s3 .sum{font-size:30px;line-height:1.6}
+.xhs-item.s4 .sum{font-size:28px;line-height:1.58}
+.xhs-item.t3 .rule,.xhs-item.t4 .rule{margin:36px 0}
+.xhs-item.s3 .rule,.xhs-item.s4 .rule{margin:34px 0}
 .xhs-item .src{padding-top:40px;border-top:2px solid var(--line);font-family:var(--mono);font-size:25px;color:var(--muted);display:flex;justify-content:space-between}
 /* 来源链接：继承父级颜色、默认无下划线 → 导出图片视觉零变化；展示页 hover 才显下划线 */
 .srclink{color:inherit;text-decoration:none}
