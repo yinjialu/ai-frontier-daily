@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# 本机监听器：把云端 routine 推上来的 daily-<DATE> 分支合并进 main，再为各厂商建微信贴图草稿
-# 并发布小红书图文笔记（走本地 xiaohongshu-mcp 服务，见 publish_xhs_newspic.py）。
+# 本机监听器：把云端 routine 推上来的 daily-<DATE> 分支合并进 main，再为各厂商建微信贴图草稿。
+# 小红书图文笔记（走本地 xiaohongshu-mcp 服务，见 publish_xhs_newspic.py）：平台已警告三方工具/脚本
+# 发布，[4/4] 段默认暂停（XHS_PUBLISH=1 才发），代码与登录态保留以便后续恢复或更换合规方案。
 #
 # 背景：Claude Code on the web 的 GitHub 代理「只允许推当前工作分支」，云端 routine 推不了 main，
 #       只能推 daily-<DATE> 分支（见 SKILL.md）。本脚本在本机（有完整 push 权）做合并 + 微信发布。
@@ -92,7 +93,13 @@ for v in $vendors; do
 done
 
 echo "[4/4] 各厂商发布小红书图文笔记…"
+# 小红书已开始警告「使用三方工具/脚本发布内容」，为规避账号风控，暂停自动发布链路（走 xiaohongshu-mcp）。
+# 发布器代码与登录态均保留；确需手动发布时显式开启：XHS_PUBLISH=1 scripts/watch-and-publish.sh
+XHS_PUBLISH="${XHS_PUBLISH:-0}"
 xhs_published=""; xhs_failed=""
+if [ "$XHS_PUBLISH" != "1" ]; then
+  echo "  · 小红书自动发布已暂停（XHS_PUBLISH≠1，规避三方工具发布风控），跳过"
+else
 for v in $vendors; do
   f="data/$v/$TODAY.json"
   [ -f "$f" ] || continue
@@ -114,6 +121,7 @@ for v in $vendors; do
     xhs_failed="$xhs_failed $v"
   fi
 done
+fi
 
 echo "✓ watch-and-publish 完成（$TODAY）"
 
