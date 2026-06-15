@@ -34,10 +34,17 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
 - **每条 update 多一个 `company` 字段**（来源公司中文名，如 `"DeepSeek"`），渲染成卡片上的公司徽标；
   单品牌轨不带 `company`，徽标自动不显示。
 - **跨公司择优**：每天把各家动态放一起按重要性降序，**最多 10 条**（单品牌轨是 6 条）。
-- **信源以 webfetch 为主**：各家「真正的模型发布」几乎只在官网博客/changelog（无 RSS），
-  `sources.yaml` 的 `vendors.cn.rss` 多为 CLI/SDK 线弱信号，`vendors.cn.webfetch` 才是模型新闻主信号
-  （含各家 HuggingFace org 页）。routine 抓取时**逐个 WebFetch `vendors.cn` 下的 webfetch 源**，rss 作兜底。
-  注意国内站（火山/腾讯云/文心）海外 runner 可能连不通，抓不到就跳过该家、不要编造。
+- **cn 抓取以 WebSearch 为主（重要，与国外四家不同）**：实测国内厂商官网/changelog（火山/腾讯云/
+  文心/智谱/MiniMax/DeepSeek 等）对 `WebFetch` 普遍返回 **403**（反爬 + 海外 IP 限制），不可靠。
+  故 cn 的发现路径**反过来**：
+  1. **首选 `WebSearch`** 逐家查近 1~3 天动态（如「智谱 GLM 发布 2026年6月」「MiniMax 新模型」），
+     这是 cn 唯一稳定可达的路径（国外四家用 WebFetch RSS，cn 用 WebSearch）。
+  2. **`WebFetch` 仅作补充**：搜到具体文章 URL 后可试抓细节，403 就退回用搜索摘要，**不要因抓不到就编造**。
+  3. **`sources.yaml` 的 `vendors.cn.rss`（GitHub releases.atom）**可正常抓，但多为 CLI/SDK 线，
+     作为「有动静」弱信号兜底，不是模型发布主信号。
+- **来源质量（cn 尤其注意）**：WebSearch 命中多为中文科技媒体（二手）。严格按下文「官方 vs 媒体来源区分」：
+  能找到官方原文/官方引述的写实，单一媒体源的加「据报道/据梳理」限定词，**不编造版本号与跑分**。
+  某家今天没有可靠近 1~3 天动态就跳过它（聚合轨满刊靠跨公司汇总，不靠给每家硬凑）。
 
 ## 两种运行方式
 

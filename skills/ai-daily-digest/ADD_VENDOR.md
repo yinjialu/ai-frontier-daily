@@ -224,6 +224,8 @@ python3 skills/ai-daily-digest/run.py --vendors   # 应能看到新厂商及其 
    在 `AGG_VENDORS` 里的 id，`_system_prompt` 会自动切到「跨多家公司择优 + 必填 company」的策展指令。
 3. **`sources.yaml` 把多家源全归到这一个 id 下**，按公司用注释分组；通常 webfetch（官网/博客/HF）才是
    模型发布主信号，GitHub releases.atom 多为 CLI/SDK 弱信号、作 CI 兜底。
+   - **若这些官网对 WebFetch 普遍 403（如 cn 的国内站）**：把发现路径改成 **WebSearch 为主**，
+     webfetch 列表退化为「官方原文 URL 清单」供核对（见 SKILL.md「聚合轨」cn 的处理）。
 4. **配色取「品类气质」而非单一品牌色**：`cn` 用「水墨近黑底 + 朱红 accent + 鎏金 soft」国风组合
    （`.v-cn` in cards.css；`index.html` 的 `.vtab[data-v="cn"]` + `body.v-cn`）。
 5. 展示页 `index.html` 的「日报」跨厂商视图里，聚合轨条目的徽标自动显示 `u.company`（回退到厂商名）。
