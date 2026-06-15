@@ -24,7 +24,20 @@ description: >-
   `output/<vendor>/latest.json`；展示页索引 `output/index.json` 汇总所有厂商（每天一条带 `vendor`）。
 - 主题厂商化：`cards.css` 用语义 token（`--bg/--fg/--accent/--feature-*`），`.v-<vendor>` 作用域换肤；
   默认（Anthropic）暖陶土色，`.v-openai` 深墨黑 + 青绿。`cards.js` 的 `VENDORS` 注册表决定品牌文案。
-- 当前 id：`anthropic`、`openai`。新增厂商见文末「扩展到更多厂商」。
+- 当前 id：`anthropic`、`openai`、`gemini`、`nvidia`（单品牌轨）+ `cn`（**国内大模型聚合轨**）。新增见文末「扩展到更多厂商」。
+
+### 聚合轨（`cn` 国产大模型）
+
+国内厂商分散、单家更新低频，故**合成一条聚合轨**：一条 `cn` 轨汇集 DeepSeek / 通义千问 / 智谱 GLM /
+Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物 / 蚂蚁百灵 等多家。与单品牌轨的差别：
+
+- **每条 update 多一个 `company` 字段**（来源公司中文名，如 `"DeepSeek"`），渲染成卡片上的公司徽标；
+  单品牌轨不带 `company`，徽标自动不显示。
+- **跨公司择优**：每天把各家动态放一起按重要性降序，**最多 10 条**（单品牌轨是 6 条）。
+- **信源以 webfetch 为主**：各家「真正的模型发布」几乎只在官网博客/changelog（无 RSS），
+  `sources.yaml` 的 `vendors.cn.rss` 多为 CLI/SDK 线弱信号，`vendors.cn.webfetch` 才是模型新闻主信号
+  （含各家 HuggingFace org 页）。routine 抓取时**逐个 WebFetch `vendors.cn` 下的 webfetch 源**，rss 作兜底。
+  注意国内站（火山/腾讯云/文心）海外 runner 可能连不通，抓不到就跳过该家、不要编造。
 
 ## 两种运行方式
 
@@ -60,6 +73,9 @@ description: >-
    每条：选一个标签【模型发布/开发者/企业/研究/生态/政策/安全】，写 50–80 字
    客观中文摘要（说清「变了什么 + 对用户意味着什么」，不夸张不编造），按重要性
    降序，最多 6 条。
+   - **聚合轨 `cn`**：跨多家公司统一择优，**最多 10 条**，且每条必须带 `company`
+     字段（来源公司中文名，如「DeepSeek」「通义千问」「智谱」「Kimi」「豆包」「文心」「混元」
+     「MiniMax」「阶跃星辰」「百川」「零一万物」「百灵」），用于渲染公司徽标。
    - **保留来源限定词**：原文含 "may be" / "reportedly" / "appears to" 等限定语时，
      摘要必须保留对应中文限定词（「可能」「据报道」「疑似」），不得改写为断言。
    - **官方 vs 媒体来源区分**：涉及根因分析、「史上最大/最严重」等定性描述，
@@ -105,6 +121,7 @@ description: >-
   "edition": "VOL.151", "brand": "AI 前哨 · 每日 Anthropic",
   "updates": [
     {"tag": "模型发布", "title": "标题", "summary": "50-80字中文摘要", "source": "anthropic.com"}
+    // 聚合轨 cn 每条还需带 "company": "DeepSeek"（来源公司中文名 → 渲染公司徽标）
   ],
   "outroTitle": "每天一条\n看懂 AI 大厂动向",
   "outroDesc": "…", "outroCta": "关注 · 不错过任何更新"

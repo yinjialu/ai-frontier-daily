@@ -212,7 +212,28 @@ python3 skills/ai-daily-digest/run.py --vendors   # 应能看到新厂商及其 
 
 ---
 
-## 附录 · Gemini / 英伟达候选配置（URL 与配色均**需先实测**再落地）
+## 附录 A · 聚合轨（多家公司合一条轨）—— 以 `cn` 国产大模型为例
+
+当一批厂商**各自分散、单家更新低频**（典型：国内大模型），与其每家开一条几乎天天空白的轨，
+不如**合成一条聚合轨**：一条 vendor 汇集多家公司，每天跨公司择优。已落地的 `cn` 轨即此模式，
+照它加新聚合轨（如未来的「海外开源」「Agent 创业公司」等）。与单品牌轨的**唯一额外机制**：
+
+1. **数据 schema 多一个 `company` 字段**：每条 update 带来源公司中文名（如 `"company":"DeepSeek"`）。
+   `cards.js` 的 `orgChip(u)` 据此渲染公司徽标；单品牌轨不带 `company`，徽标自动不渲染（向后兼容）。
+2. **放宽单期条数**：`curator.py` 的 `VENDOR_CAP`（`cn` → 10）+ `AGG_VENDORS` 集合。
+   在 `AGG_VENDORS` 里的 id，`_system_prompt` 会自动切到「跨多家公司择优 + 必填 company」的策展指令。
+3. **`sources.yaml` 把多家源全归到这一个 id 下**，按公司用注释分组；通常 webfetch（官网/博客/HF）才是
+   模型发布主信号，GitHub releases.atom 多为 CLI/SDK 弱信号、作 CI 兜底。
+4. **配色取「品类气质」而非单一品牌色**：`cn` 用「水墨近黑底 + 朱红 accent + 鎏金 soft」国风组合
+   （`.v-cn` in cards.css；`index.html` 的 `.vtab[data-v="cn"]` + `body.v-cn`）。
+5. 展示页 `index.html` 的「日报」跨厂商视图里，聚合轨条目的徽标自动显示 `u.company`（回退到厂商名）。
+
+> 落地清单与单品牌轨相同（见上「改动清单」），只是 `curator.py` 多登记 `VENDOR_CAP`/`AGG_VENDORS`，
+> 数据每条多写 `company`。render.js / 云端定时仍无需改。
+
+---
+
+## 附录 B · Gemini / 英伟达候选配置（URL 与配色均**需先实测**再落地）
 
 > 下面是起点，不是结论。务必先按 Step 0 用 `curl -sI` / WebFetch 验证每个 URL，再写进 `sources.yaml`。
 
