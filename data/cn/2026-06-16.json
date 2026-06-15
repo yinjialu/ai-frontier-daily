@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.16",
+  "cnDate": "6月16日 周二",
+  "edition": "VOL.167",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Kimi Code 0.15.0：全局会话搜索与分页浏览 + SSE MCP 服务器支持",
+      "summary": "Kimi Code 发布 0.15.0，新增「全会话选择器视图」——支持按名称搜索、分页浏览所有历史会话，并可一键复制恢复命令；正式支持遗留 SSE 协议的 MCP 服务器，兼容旧版工具生态；同步改善提示词清晰度、CLI 状态提示与窄终端下的 TUI 渲染，并修复媒体文件类型检测与多语言代码生成一致性问题。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "company": "Kimi"
+    },
+    {
+      "tag": "开发者",
+      "title": "Qwen Code v0.18.1：Computer Use 跨平台驱动 + 持久化 Cron 作业 + Web Shell 重大改进",
+      "summary": "Qwen Code 发布 v0.18.1，三项核心升级：Computer Use 迁移至跨平台驱动，覆盖更多操作系统；引入可在重启后存活的持久化 Cron 作业，支持定时自动化任务；Web Shell 大幅改进，新增执行指标展示、交互模式优化与已完成轮次折叠；同步优化工具调用结果磁盘持久化（防大体积结果阻塞内存）、token 用量追踪与 MCP 服务器集成稳定性。桌面端同步发布 v0.0.4，修复 MCP 服务器删除状态未持久化问题。",
+      "source": "github.com/QwenLM/qwen-code",
+      "company": "通义千问"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 DeepSeek、通义千问、智谱、Kimi、豆包等国产大模型最新进展。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

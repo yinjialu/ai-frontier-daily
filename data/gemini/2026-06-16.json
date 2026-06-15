@@ -1,0 +1,18 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.16",
+  "cnDate": "6月16日 周二",
+  "edition": "VOL.167",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Salesforce Summer '26 集成 Gemini 3.5 Flash：Agentforce 多智能体编排引擎原生接入",
+      "summary": "Salesforce 在 Summer '26 版本（6 月 15 日上线）中正式将 Gemini 3.5 Flash 集成进 Agentforce Atlas 推理引擎，支持多智能体编排、跨工具上下文保持与复杂多轮工具调用，实现企业级自动化工作流；同步上线 Slack 优先工作流与实时数据激活能力。此次集成是 Google Cloud 与 Salesforce 4 月扩大合作协议的首批落地成果，标志着 Gemini 在企业 CRM 与客户服务领域加速渗透。",
+      "source": "salesforce.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

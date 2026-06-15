@@ -1,0 +1,24 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.16",
+  "cnDate": "6月16日 周二",
+  "edition": "VOL.167",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.178：参数级权限语法 + 嵌套 Skill 目录化命名 + Auto 模式前置分类器",
+      "summary": "v2.1.178 带来三项开发者体验升级：新增 Tool(param:value) 语法，permission rules 可按工具输入参数精准匹配；嵌套 .claude/skills 目录下同名 Skill 自动加前缀区分；Auto 模式在派生子代理前先由分类器评估必要性，减少不必要的嵌套调用；/doctor 命令改为扁平树形布局并优化状态图标，工作流关键词触发时以紫色闪烁高亮提示。配套 Agent SDK TypeScript v0.3.178 新增 safetyCheck/asyncAgent 类型化拒绝原因，修复 disallowedTools 中 MCP 服务器级规则被静默忽略的问题。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "政策",
+      "title": "Anthropic 高层飞赴华盛顿，力争撤销 Fable 5/Mythos 5 出口管制",
+      "summary": "Anthropic 已派遣高级技术团队赴华盛顿与白宫官员会面，争取撤销美国政府对 Fable 5 与 Mythos 5 的出口管制指令；Anthropic 声称此次限制源于对一次「范围极窄、非普遍性」越狱案例的误判，若该标准在业界统一适用，将使每一款前沿模型的商业发布陷入停滞。据报双方均希望尽快恢复访问，谈判仍在进行中，全球用户暂时无法使用这两款模型。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

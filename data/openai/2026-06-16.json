@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.16",
+  "cnDate": "6月16日 周二",
+  "edition": "VOL.167",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "OpenAI 正式启动全球合作伙伴网络：1.5 亿美元投入，三级认证体系，目标年底培训 30 万顾问",
+      "summary": "OpenAI 宣布推出正式合作伙伴网络，承诺投入 1.5 亿美元，面向咨询公司、系统集成商与技术专家开放三级认证（Select、Advanced、Elite），认证依据销售业绩、技术能力与实际部署经验。Accenture、BCG、麦肯锡、PwC、Bain 等顶级咨询机构已首批加入，OpenAI 计划在 2026 年底完成 30 万名顾问认证，全面加速企业 AI 落地部署。该计划 7 月起正式运营。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 0.140.0 正式版：/usage 用量视图、会话永久删除、/import 导入与 Amazon Bedrock 原生鉴权",
+      "summary": "Codex 发布 0.140.0 稳定版：新增 /usage 命令，可按日、周、累计查看 token 使用量；/goal 命令现可保留超大文本、大段粘贴内容与图片附件；新增 codex delete、/delete 命令，支持带确认保障的永久会话删除；/import 可选择性导入配置、项目设置与历史对话；@ 提及菜单统一整合文件、插件与 Skill 入口；新增 Amazon Bedrock 托管 API Key 加密存储鉴权，提升企业级部署安全性。",
+      "source": "github.com/openai/codex"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
