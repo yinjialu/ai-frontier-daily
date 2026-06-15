@@ -20,6 +20,7 @@ VENDOR_META = {
     "openai":    {"name": "OpenAI",    "base_tags": ["#AI", "#OpenAI", "#ChatGPT"]},
     "gemini":    {"name": "Gemini",    "base_tags": ["#AI", "#Google", "#Gemini"]},
     "nvidia":    {"name": "NVIDIA",    "base_tags": ["#AI", "#NVIDIA", "#GPU"]},
+    "cn":        {"name": "国产大模型", "base_tags": ["#AI", "#国产大模型", "#大模型"]},
 }
 
 # 更新 tag 字段 → 话题标签

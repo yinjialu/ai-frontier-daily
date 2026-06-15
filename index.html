@@ -25,6 +25,10 @@
     --clay:#5E9400;--soft:#6E7568;--line:#D7DCCD;
     --h0:#E8ECDD;--h1:#CFE3A8;--h2:#A4D65E;--h3:#76B900;--h4:#5E9400;
   }
+  body.v-cn{
+    --clay:#C8281E;--soft:#7A6B62;--line:#E6D8D2;
+    --h0:#F1E3DD;--h1:#F0C3B6;--h2:#E6877A;--h3:#E0392B;--h4:#B5261B;
+  }
   html{-webkit-text-size-adjust:100%}
   html,body{overflow-x:hidden;width:100%}
   body{background:var(--cream);color:var(--ink);
@@ -48,6 +52,7 @@
   .vtab[data-v="openai"]{--vc:#10A37F}
   .vtab[data-v="gemini"]{--vc:#3B5BD0}
   .vtab[data-v="nvidia"]{--vc:#5E9400}
+  .vtab[data-v="cn"]{--vc:#C8281E}
   .vtab:hover{border-color:var(--vc);color:var(--vc)}
   .vtab.on{background:var(--vc);border-color:var(--vc);color:#fff}
   .vtab.on .dotv{opacity:.9;background:#fff}
@@ -190,7 +195,7 @@ let curVendor = "anthropic", curDate = null;
 let car = null;                 // 轮播状态 {cards, active, deck}
 const dataCache = {};           // "vendor|date" -> data.json
 const DAILY = "__daily__";      // 跨厂商日报的伪厂商 id
-const VC = {anthropic:"#C1572E", openai:"#10A37F", gemini:"#3B5BD0", nvidia:"#5E9400"};
+const VC = {anthropic:"#C1572E", openai:"#10A37F", gemini:"#3B5BD0", nvidia:"#5E9400", cn:"#C8281E"};
 const TAG_ORDER = ["模型发布","开发者","企业","研究","生态","政策","安全"];  // 日报分组顺序
 
 (async function(){
@@ -319,7 +324,7 @@ async function renderDigest(date){
     const list = groups[tag].slice().sort((a,b) => vrank(a.vendor)-vrank(b.vendor));
     return `<div class="dgroup"><h3 class="dtag">${esc(tag)}<span class="dn">${list.length}</span></h3>` +
       list.map(u => `<div class="ditem">`+
-        `<span class="vbadge" style="--vc:${VC[u.vendor]||"#999"}"><span class="vdot"></span>${esc(VENDOR_NAMES[u.vendor]||u.vendor)}</span>`+
+        `<span class="vbadge" style="--vc:${VC[u.vendor]||"#999"}"><span class="vdot"></span>${esc(u.company||VENDOR_NAMES[u.vendor]||u.vendor)}</span>`+
         `<div class="dbd"><h4>${esc(u.title)}</h4><p>${esc(u.summary)}</p>`+
         `<div class="dsrc">↗ ${src(u)}</div></div>`+
       `</div>`).join("") + `</div>`;

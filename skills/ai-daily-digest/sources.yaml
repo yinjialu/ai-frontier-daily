@@ -121,3 +121,92 @@ vendors:
         url: https://blog.google/technology/google-deepmind/rss/
       - name: Google for Developers Blog
         url: https://developers.googleblog.com/feed/
+
+  # ===== 国内大模型「聚合轨」cn =====
+  # 国内厂商分散、单家更新低频，故合成一条聚合轨：每天跨多家公司择优 ≤10 条，
+  # 每条 data update 带 company 字段标注来源公司（DeepSeek/通义/智谱/Kimi/豆包/文心/混元/
+  # MiniMax/阶跃星辰/百川/零一万物/百灵），渲染成公司徽标。
+  #
+  # 信源现实（2026-06 实测）：各家「真正的模型发布」几乎都只在官网博客/changelog（无 RSS），
+  # GitHub releases.atom 多为 CLI/SDK/框架线、非模型本体；故本轨**以 webfetch 为主信号**
+  # （Claude 驱动 routine 逐个 WebFetch），rss 仅作 CI 无人值守的弱兜底。
+  # 注意：rss 段为 github.com releases.atom，已 curl 实测 200 + 含真实 entry；
+  #   webfetch 段官网/博客本次沙箱只放行 github 未能实测正文，仅确认为官方 URL，
+  #   CI/本机首次接入时请逐条复测，404/403 的删掉。国内站（火山/腾讯云/文心）海外 IP 可能连不通。
+  cn:
+    rss:
+      # 月之暗面 Kimi：GitHub 信号最好，两条都活跃
+      - name: Kimi Code CLI Releases        # 最新 2026-06-14，极活跃
+        url: https://github.com/MoonshotAI/kimi-code/releases.atom
+        limit: 8
+      - name: Kimi CLI Releases             # 最新 2026-06-05
+        url: https://github.com/MoonshotAI/kimi-cli/releases.atom
+        limit: 8
+      # 阿里 通义千问 Qwen：模型仓无 release，仅 CLI 工具线活跃
+      - name: Qwen Code Releases            # 最新 v0.18.0 2026-06-12，极活跃
+        url: https://github.com/QwenLM/qwen-code/releases.atom
+        limit: 8
+      # MiniMax：cli 活跃；模型发布看官网 news（见 webfetch）
+      - name: MiniMax CLI Releases          # 最新 v1.0.16 2026-06-01
+        url: https://github.com/MiniMax-AI/cli/releases.atom
+        limit: 8
+      # 蚂蚁 百灵 inclusionAI：AWorld 框架活跃；模型 Ling 看官网博客（见 webfetch）
+      - name: inclusionAI AWorld Releases   # 最新 v0.3.2 2026-05-25（agent 框架）
+        url: https://github.com/inclusionAI/AWorld/releases.atom
+        limit: 8
+      # 智谱 Z.ai：SDK 可解析但更新慢（最新仅到 2026-02），作为弱信号
+      - name: Zhipu Z.ai Python SDK Releases
+        url: https://github.com/zai-org/z-ai-sdk-python/releases.atom
+        limit: 5
+      # DeepSeek：底层库有动静信号（DeepGEMM 较活跃）；模型/API 公告看官网 changelog（见 webfetch）
+      - name: DeepSeek DeepGEMM Releases
+        url: https://github.com/deepseek-ai/DeepGEMM/releases.atom
+        limit: 5
+    webfetch:
+      # 各家「真正的模型发布」主信号 —— 无 RSS，Claude 驱动 WebFetch；HuggingFace org 页是模型权重发布信号。
+      # --- DeepSeek ---
+      - name: DeepSeek API Change Log
+        url: https://api-docs.deepseek.com/updates
+      - name: DeepSeek HuggingFace
+        url: https://huggingface.co/deepseek-ai
+      # --- 阿里 通义千问 Qwen ---
+      - name: Qwen Blog
+        url: https://qwen.ai/blog
+      - name: Qwen HuggingFace
+        url: https://huggingface.co/Qwen
+      # --- 智谱 GLM / Z.ai ---
+      - name: Z.ai Blog
+        url: https://z.ai/blog
+      - name: Zhipu 新品发布
+        url: https://docs.bigmodel.cn/cn/update/new-releases
+      # --- 月之暗面 Kimi / Moonshot ---
+      - name: Moonshot Platform Changelog
+        url: https://platform.moonshot.ai/docs/changelog
+      - name: Kimi HuggingFace
+        url: https://huggingface.co/moonshotai
+      # --- 字节 豆包 / 火山方舟 ---
+      - name: Volcengine Ark 产品更新公告
+        url: https://www.volcengine.com/docs/82379/1159177
+      - name: ByteDance Seed Blog
+        url: https://seed.bytedance.com/zh/blog
+      # --- 百度 文心 ERNIE / 千帆 ---
+      - name: 千帆 ModelBuilder 更新动态
+        url: https://cloud.baidu.com/doc/qianfan-docs/index.html
+      # --- 腾讯 混元 Hunyuan ---
+      - name: Tencent Hunyuan 产品动态
+        url: https://cloud.tencent.com/document/product/1729/97765
+      # --- MiniMax ---
+      - name: MiniMax News
+        url: https://www.minimax.io/news
+      # --- 阶跃星辰 StepFun ---
+      - name: StepFun 官网
+        url: https://www.stepfun.com/
+      # --- 百川智能 Baichuan ---
+      - name: Baichuan 官网
+        url: https://www.baichuan-ai.com/
+      # --- 零一万物 Yi / 01.AI ---
+      - name: 01.AI 官网
+        url: https://www.01.ai/cn
+      # --- 蚂蚁 百灵 Ling / inclusionAI ---
+      - name: inclusionAI Blog
+        url: https://inclusionai.github.io/blog/

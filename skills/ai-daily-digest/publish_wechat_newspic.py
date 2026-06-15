@@ -20,7 +20,7 @@ from pathlib import Path
 API = "https://api.weixin.qq.com/cgi-bin"
 OUT = Path(os.environ.get("DIGEST_OUT") or os.getcwd())
 IMG_EXTS = (".png", ".jpg", ".jpeg")
-VENDOR_NAME = {"anthropic": "Anthropic", "openai": "OpenAI", "gemini": "Gemini", "nvidia": "NVIDIA"}
+VENDOR_NAME = {"anthropic": "Anthropic", "openai": "OpenAI", "gemini": "Gemini", "nvidia": "NVIDIA", "cn": "国产大模型"}
 
 
 def _arg_value(flag, default=None):

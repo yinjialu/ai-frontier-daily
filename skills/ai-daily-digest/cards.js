@@ -25,13 +25,19 @@
   }
 
   // 厂商注册表：新增厂商在此加一项 + 在 cards.css 加 .v-<id> 主题即可。
+  // 聚合轨（如 cn 国产大模型）把多家公司汇成一条轨，每条 update 带 company 字段标注来源公司，
+  // 渲染成公司徽标（org chip）；单品牌厂商不带 company，徽标自动不渲染。
   var VENDORS = {
     anthropic: {id:"anthropic", name:"Anthropic", daily:"Anthropic Daily", label:"ANTHROPIC DAILY"},
     openai:    {id:"openai",    name:"OpenAI",    daily:"OpenAI Daily",    label:"OPENAI DAILY"},
     gemini:    {id:"gemini",    name:"Gemini",    daily:"Gemini Daily",    label:"GEMINI DAILY"},
     nvidia:    {id:"nvidia",    name:"NVIDIA",    daily:"NVIDIA Daily",    label:"NVIDIA DAILY"},
+    cn:        {id:"cn",        name:"国产大模型", daily:"China LLM Daily", label:"国产大模型 · 每日"},
   };
   function vendorOf(DATA){ return VENDORS[(DATA && DATA.vendor) || "anthropic"] || VENDORS.anthropic; }
+
+  // 公司徽标：聚合轨里标注该条来自哪家公司（DeepSeek / 通义 …）。无 company 字段则返回空串。
+  function orgChip(u){ var c = u && u.company; return c ? `<span class="org">${esc(c)}</span>` : ""; }
 
   // 小红书内容卡是固定 1080×1440 + overflow:hidden，长文案会被裁切。
   // 按标题/摘要字数分档，给卡片附加 t1..t4 / s1..s4 class（见 cards.css），
@@ -56,7 +62,7 @@
         <div class="kicker">${esc(V.daily)}</div>
         <h1>今天 ${esc(V.name)}<br>又<em>更新</em>了什么</h1>
         <div class="teasers">
-          ${U.slice(0,3).map((u,i)=>`<div class="teaser"><span class="n">${i+1}</span><span>${esc(u.title)}</span></div>`).join("")}
+          ${U.slice(0,3).map((u,i)=>`<div class="teaser"><span class="n">${i+1}</span><span>${u.company?`<b class="tco">${esc(u.company)}</b> `:""}${esc(u.title)}</span></div>`).join("")}
         </div>
         <div class="footer"><span>${esc(DATA.brand)}</span><span>${esc(DATA.cnDate)}</span></div>
       </div>`});
@@ -72,7 +78,7 @@
             <span class="pager"><b>${pad(i+1)}</b> / ${pad(U.length)}</span>
           </div>
           <div class="body">
-            <span class="tag">${esc(u.tag)}</span>
+            <div class="tags"><span class="tag">${esc(u.tag)}</span>${orgChip(u)}</div>
             <h2>${esc(u.title)}</h2>
             <div class="rule"></div>
             <div class="sum">${esc(u.summary)}</div>
@@ -109,7 +115,7 @@
         ${U.map((u,i)=>`
           <div class="e">
             <div class="num">${pad(i+1)}</div>
-            <div class="bd"><span class="tag">${esc(u.tag)}</span><h3>${esc(u.title)}</h3>
+            <div class="bd"><span class="tag">${esc(u.tag)}</span>${orgChip(u)}<h3>${esc(u.title)}</h3>
               <p>${esc(u.summary)}</p><div class="s">↗ ${srcHTML(u)}</div></div>
           </div>`).join("")}
         <div class="foot"><span>${esc(DATA.brand)}</span><span>${esc(DATA.cnDate)}</span></div>

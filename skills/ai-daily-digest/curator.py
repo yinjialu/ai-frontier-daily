@@ -14,17 +14,37 @@ VENDOR_META = {
                   "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。"},
     "nvidia":    {"name": "NVIDIA", "brand": "AI 前哨 · 每日 NVIDIA",
                   "outroDesc": "持续追踪 NVIDIA AI 芯片/平台发布、CUDA 与推理软件、重大合作。点个关注，明天见。"},
+    # 聚合轨：把多家国内大模型公司汇成一条轨，每条 update 带 company 标注来源公司。
+    "cn":        {"name": "国产大模型", "brand": "AI 前哨 · 每日国产大模型",
+                  "outroDesc": "持续追踪 DeepSeek、通义、智谱、Kimi、豆包、文心、混元、MiniMax 等国内大模型官方发布。点个关注，明天见。"},
 }
+
+# 每条轨道单期最多条数：单品牌厂商 6 条；聚合轨（多家公司）放宽到 10 条。
+VENDOR_CAP = {"cn": 10}
+def _cap(vendor): return VENDOR_CAP.get(vendor, 6)
+
+# 聚合轨 id（每条动态需额外标注来源公司 company）。
+AGG_VENDORS = {"cn"}
 
 def _system_prompt(vendor):
     name = VENDOR_META.get(vendor, VENDOR_META["anthropic"])["name"]
-    return f"""你是「{name} 动态」中文内容编辑。输入是今天抓到的若干条 {name} 官方动态原文。
+    cap, agg = _cap(vendor), vendor in AGG_VENDORS
+    if agg:
+        # 聚合轨：输入混合多家国内公司，需逐条标注来源公司，并跨公司择优。
+        company_rule = ("\n   - company（来源公司中文名，如 DeepSeek/通义千问/智谱/Kimi/豆包/文心/混元/"
+                        "MiniMax/阶跃星辰/百川/零一万物/百灵，**聚合轨必填**）；")
+        intro = (f"""你是「{name}」每日动态中文内容编辑。输入是今天抓到的若干条**国内多家大模型公司**官方动态原文，"""
+                 f"""可能来自 DeepSeek、阿里通义、智谱、月之暗面 Kimi、字节豆包、百度文心、腾讯混元、MiniMax、"""
+                 f"""阶跃星辰、百川、零一万物、蚂蚁百灵等。请跨公司统一择优。""")
+    else:
+        company_rule, intro = "", f"你是「{name} 动态」中文内容编辑。输入是今天抓到的若干条 {name} 官方动态原文。"
+    return f"""{intro}
 任务：1) 价值筛选：只保留对中文 AI 从业者有价值的条目（模型发布、能力更新、重要研究、重大合作、定价/政策变化），过滤纯招聘/行政/地区办公室开设等低价值信息。
 2) 分类打标签：每条给一个标签，从【模型发布/开发者/企业/研究/生态/政策/安全】中选。
 3) 中文摘要：每条 50~80 字，客观说清「变了什么+对用户意味着什么」，不夸张、不编造数据。
-4) 排序：按重要性降序，最多 6 条。
+4) 排序：按重要性降序，最多 {cap} 条。
 5) 严格输出 JSON（无多余文字、无 markdown 代码块）；今天无值得发的内容则输出 {{"skip":true,"reason":"..."}}。
-   每条 update 含字段：tag（标签）、title（中文标题）、summary（中文摘要）、
+   每条 update 含字段：tag（标签）、title（中文标题）、summary（中文摘要）、{company_rule}
    source（原文域名，如 {name.lower()}.com）、url（该条对应原文的完整链接，
    必须从输入原文里**原样复制 url 字段**，禁止改写或编造；找不到就留空字符串）。
 严禁逐字复制英文长句；摘要必须是你自己的中文转写。"""
@@ -40,7 +60,7 @@ def _wrap(updates, vendor="anthropic"):
     return {
         "vendor": vendor,
         "date": date, "cnDate": cn, "edition": "VOL." + datetime.date.today().strftime("%j"),
-        "brand": meta["brand"], "updates": updates[:6],
+        "brand": meta["brand"], "updates": updates[:_cap(vendor)],
         "outroTitle": "每天一条\n看懂 AI 大厂动向",
         "outroDesc": meta["outroDesc"],
         "outroCta": "关注 · 不错过任何更新",
