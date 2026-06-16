@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>卡片质感预览 · 经典 vs 液态玻璃</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,500&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cards.css">
+<style>
+  body{margin:0;background:#1a1714;color:#eee;font-family:"Noto Sans SC",system-ui,sans-serif;padding:28px 20px 80px}
+  h1{font-family:"Noto Serif SC",serif;font-size:22px;margin:0 0 4px}
+  .sub{color:#9a9286;font-size:13px;margin-bottom:18px}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  button{font-family:"Space Mono",monospace;font-size:13px;cursor:pointer;padding:8px 16px;
+    border:1px solid #3a3530;border-radius:999px;background:#26221c;color:#cabfae;transition:.15s}
+  button.on{background:#C1572E;border-color:#C1572E;color:#fff}
+  .cols{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start}
+  .col{flex:1 1 380px;min-width:320px}
+  .col h2{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:2px;color:#9a9286;
+    text-transform:uppercase;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid #332e29}
+  .deck{display:flex;flex-direction:column;gap:22px}
+  /* 每张卡片按宽度缩放到列宽 */
+  .frame{position:relative;width:100%;border-radius:14px;overflow:hidden;
+    box-shadow:0 12px 34px rgba(0,0,0,.45)}
+  .frame .scaler{transform-origin:top left}
+</style>
+</head>
+<body>
+<h1>卡片质感预览 · 经典 vs 液态玻璃</h1>
+<div class="sub">同一份数据、同一套主题色，只切换「材质」。液态玻璃用 backdrop-filter 磨砂（浏览器/Playwright 生效）。切换厂商看深底/浅底两种玻璃。</div>
+<div class="bar" id="vbar"></div>
+<div class="cols">
+  <div class="col"><h2>经典 Classic</h2><div class="deck" id="deckA"></div></div>
+  <div class="col"><h2>液态玻璃 Liquid Glass</h2><div class="deck" id="deckB"></div></div>
+</div>
+
+<script src="cards.js"></script>
+<script>
+// 内置样例数据：anthropic（浅底暖陶土）与 openai（深底青绿），覆盖浅/深两种玻璃表现。
+const SAMPLES = {
+  anthropic: {
+    vendor:"anthropic", date:"2026.06.16", cnDate:"6月16日 周二", edition:"VOL.167",
+    brand:"AI 前哨 · 每日 Anthropic",
+    updates:[
+      {tag:"开发者", title:"Claude Code v2.1：参数级权限语法 + 嵌套 Skill 目录化命名",
+       summary:"新增 Tool(param:value) 语法，权限规则可按工具输入参数精准匹配；嵌套 Skill 自动加前缀区分；Auto 模式派生子代理前先由分类器评估必要性，减少不必要的嵌套调用。",
+       source:"github.com/anthropics/claude-code"},
+      {tag:"政策", title:"Anthropic 力争撤销 Fable 5 / Mythos 5 出口管制",
+       summary:"Anthropic 派遣高级技术团队赴华盛顿会面，争取撤销出口管制；称限制源于对一次范围极窄越狱案例的误判，若标准统一适用将使每款前沿模型的商业发布陷入停滞。",
+       source:"anthropic.com"}
+    ],
+    outroTitle:"每天一条\n看懂 AI 大厂动向",
+    outroDesc:"持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+    outroCta:"关注 · 不错过任何更新"
+  },
+  openai: {
+    vendor:"openai", date:"2026.06.16", cnDate:"6月16日 周二", edition:"VOL.167",
+    brand:"AI 前哨 · 每日 OpenAI",
+    updates:[
+      {tag:"模型发布", title:"GPT 新一代多模态模型开放 API",
+       summary:"新模型在长上下文与工具调用稳定性上显著提升，定价较上代下调，开发者可直接通过 API 访问，企业版同步开放。",
+       source:"openai.com"},
+      {tag:"开发者", title:"Responses API 增加结构化输出与并行工具调用",
+       summary:"新增原生结构化输出约束与并行工具调用，减少多轮往返，复杂 Agent 编排的延迟与成本同步下降。",
+       source:"openai.com"}
+    ],
+    outroTitle:"每天一条\n看懂 AI 大厂动向",
+    outroDesc:"持续追踪 OpenAI 官方发布、研究与更新日志。点个关注，明天见。",
+    outroCta:"关注 · 不错过任何更新"
+  }
+};
+
+const $ = s => document.querySelector(s);
+let cur = "anthropic";
+
+function renderDeck(el, data, style){
+  const d = Object.assign({}, data, style ? {style:"glass"} : {});
+  const deck = window.Cards.buildDeck(d).filter(c => /\bxhs\b/.test(c.cls));  // 只看小红书卡
+  el.innerHTML = deck.map(c => {
+    const scale = "calc(100% / " + c.w + ")";   // 用 CSS 缩放：scaler 宽 c.w，再缩到列宽
+    return `<div class="frame" data-w="${c.w}" data-h="${c.h}">`+
+      `<div class="scaler" style="width:${c.w}px;height:${c.h}px">`+
+      `<div class="card ${c.cls}" style="width:${c.w}px;height:${c.h}px">${c.inner}</div>`+
+      `</div></div>`;
+  }).join("");
+  // 缩放每个 frame 到其列宽
+  requestAnimationFrame(()=>{
+    el.querySelectorAll(".frame").forEach(f=>{
+      const w = +f.dataset.w, h = +f.dataset.h;
+      const cw = f.clientWidth, s = cw / w;
+      f.style.height = (h*s)+"px";
+      f.querySelector(".scaler").style.transform = `scale(${s})`;
+    });
+  });
+}
+
+function draw(){
+  renderDeck($("#deckA"), SAMPLES[cur], false);
+  renderDeck($("#deckB"), SAMPLES[cur], true);
+}
+
+$("#vbar").innerHTML = Object.keys(SAMPLES).map(v =>
+  `<button data-v="${v}" class="${v===cur?'on':''}">${(window.Cards.VENDORS[v]||{}).name||v}</button>`).join("");
+$("#vbar").onclick = e => {
+  const b = e.target.closest("button"); if(!b) return;
+  cur = b.dataset.v;
+  document.querySelectorAll("#vbar button").forEach(x=>x.classList.toggle("on", x.dataset.v===cur));
+  draw();
+};
+window.addEventListener("resize", draw);
+draw();
+</script>
+</body>
+</html>
