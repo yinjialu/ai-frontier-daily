@@ -1,0 +1,30 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.17",
+  "cnDate": "6月17日 周三",
+  "edition": "VOL.168",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.2 全系正式下线，GPT-4.5 将于 6 月 27 日退役：ChatGPT 模型阵容加速收敛",
+      "summary": "OpenAI 已于 6 月 12 日正式下线 GPT-5.2 全系列（Instant / Thinking / Pro），现有对话自动迁移至 GPT-5.5 对应版本；GPT-4.5 亦将于 6 月 27 日从 ChatGPT 退役，o3 延至 8 月 26 日落日。此轮连续退役标志着 GPT-5.x 中段代际加速出清，开发者应尽快核查工作流中是否硬编码了具体模型名，并迁移至 GPT-5.5 或最新 API 端点。",
+      "source": "help.openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "ChatGPT 记忆精细化管理：可删除单条记忆 + GPT-5.3 Instant 语气优化",
+      "summary": "ChatGPT 记忆摘要页新增「删除单条记忆」功能，用户可通过三点菜单选择「删除并关闭记忆」，Web 版已全量上线，移动端陆续推送。同期 GPT-5.3 Instant 更新修复跟进式回复中的「悬念体」措辞（如「如果您想了解…」「您绝对想不到…」），让对话语气更自然务实，减少不必要的话术填充。",
+      "source": "help.openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "openai-python v2.42.0：管理员支出告警 API 上线",
+      "summary": "openai-python SDK 发布 v2.42.0，新增 Admin Spend Alerts 功能——企业管理员可通过 API 为组织或项目设置 API 用量支出预警阈值，当月累计消耗触线时自动通知；同步修复发布工作流权限问题，调整 CI 环境的 API Key 配置方式，增强多环境交付稳定性。",
+      "source": "github.com/openai/openai-python"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

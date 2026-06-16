@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.17",
+  "cnDate": "6月17日 周三",
+  "edition": "VOL.168",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Gemini 原生视觉生成模型 GA：gemini-3.1-flash-image 支持视频转高质量缩略图，Pro-Image 同步上线",
+      "summary": "Google 正式发布 Gemini 3.1 Flash Image（Nano Banana 2）与 Gemini 3 Pro Image（Nano Banana Pro）两款原生视觉生成模型 GA 版本；Flash-Image 独家支持视频转图像能力，可将视频帧转化为高质量缩略图、电影海报或摘要信息图，仅 Flash-Image 支持此功能。File Search 同步升级多模态检索，通过 gemini-embedding-2 模型可对图片内容进行原生嵌入与搜索。视频生成模型将于 6 月 30 日下线，开发者需迁移至新视觉模型。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "开发者",
+      "title": "python-genai v2.9.0-rc0：Computer Use API 开放 + presence/frequency_penalty + cached_content 新参数",
+      "summary": "Gemini Python SDK 发布 v2.9.0-rc0 预览版：正式暴露 Computer Use API 字段，开发者可直接调用视觉操作能力；新增 presence_penalty、frequency_penalty、cached_content 参数对齐 OpenAI 生态惯例；UsageMetadata 新增 ServiceTier 字段；StreamMetadata 中 usage 重命名为 total_usage；本地 tokenizer 新增 Gemma 4 支持且依赖项变为可选，降低轻量部署开销。",
+      "source": "github.com/googleapis/python-genai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型发布、API 更新与 DeepMind 研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

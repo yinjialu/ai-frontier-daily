@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.17",
+  "cnDate": "6月17日 周三",
+  "edition": "VOL.168",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "GTC Paris @ VivaTech 2026 开幕：Jensen Huang 主题演讲聚焦欧洲 AI 工厂与物理 AI 新工业革命",
+      "summary": "NVIDIA 在巴黎 VivaTech 2026（6 月 17-20 日）举办 GTC Paris，黄仁勋发表主题演讲，以「新工业革命进度报告」为主轴，聚焦欧洲超 20 座 AI 工厂（含吉瓦级超算中心）建设进展、主权 AI 战略及物理 AI/机器人技术部署。一年前同台，黄仁勋宣布欧洲 AI 工厂计划并力推 Mistral 为欧洲主权计算旗舰；本次为首届落地成果报告，欧洲多国政府及合作伙伴预计公布算力采购与部署进展。",
+      "source": "nvidia.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Dynamo v1.3.0-minimax-m3-dev：MiniMax-M3 推理原生入驻，XML 工具调用解析 + 多精度部署配方",
+      "summary": "NVIDIA Dynamo 推理框架发布 v1.3.0-minimax-m3-dev 实验版，为 MiniMax-M3 提供跨 vLLM、SGLang 与 TensorRT-LLM 三运行时的原生推理支持，含 XML 工具调用格式解析器及 BF16/MXFP8 双精度多架构容器镜像；这是 Dynamo 统一推理接口首次将中国头部大模型纳入官方支持，标志着 NVIDIA 推理基础设施向国产模型生态的主动延伸。",
+      "source": "github.com/ai-dynamo/dynamo"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 模型、硬件、推理基础设施与开发者工具更新。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

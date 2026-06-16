@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.17",
+  "cnDate": "6月17日 周三",
+  "edition": "VOL.168",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "智谱 GLM-5.2 全量开放 + MIT 开源：1M 真正可用上下文，ZCode 3.0 自研 Agent 内核同步发布",
+      "summary": "智谱 GLM-5.2 本周正式对 GLM Coding Plan 全量用户开放，API 与 MIT 协议开源权重同步上线；GLM-5.2 主打「真正可用的 1M 上下文」，定位 Agentic Engineering 基座，在复杂系统工程、长程 Agent 任务、代码生成与多步工具调用上显著提升。配套 ZCode 3.0 自研 Agent 内核同步发布，三个月内完成 GLM-5 / 5.1 / 5.2 三代迭代，是国产编程大模型自主可控路线的集中体现。",
+      "source": "bigmodel.cn",
+      "company": "智谱"
+    },
+    {
+      "tag": "生态",
+      "title": "MiniMax-M3 入驻 NVIDIA Dynamo：获推理框架原生支持，BF16/MXFP8 多精度多架构镜像就绪",
+      "summary": "NVIDIA Dynamo 推理框架发布 v1.3.0-minimax-m3-dev，为 MiniMax-M3 提供跨 vLLM、SGLang、TensorRT-LLM 三运行时的原生推理支持，含 XML 工具调用格式解析器及 BF16/MXFP8 双精度多架构容器镜像；国产大模型首次获 NVIDIA 企业级推理基础设施的官方适配，有助于 MiniMax-M3 在全球数据中心环境中实现低门槛高性能部署。",
+      "source": "github.com/ai-dynamo/dynamo",
+      "company": "MiniMax"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 DeepSeek、通义千问、智谱、Kimi、豆包等国产大模型最新进展。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

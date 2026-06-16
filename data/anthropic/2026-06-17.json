@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.17",
+  "cnDate": "6月17日 周三",
+  "edition": "VOL.168",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.179：流式中断部分响应保留 + WSL2 鼠标修复 + Agent SDK TS v0.3.179 tool_use_meta",
+      "summary": "v2.1.179 专注稳定性：修复流式传输中断时已接收内容丢失的问题（新增部分响应保留），解决 WSL2 下 Windows Terminal/VS Code 鼠标滚轮失效、Linux 沙盒 denyRead/allowRead glob 匹配失效及远端后台任务显示卡顿，提升远端插件加载速度。配套 Agent SDK TypeScript v0.3.179 新增 tool_use_meta 元数据 sidecar，可为工具调用附加展示友好名称；修复 -p 模式在后台代理通知送达前提前退出、远端流式会话后台工作流期间误显忙碌的问题。",
+      "source": "github.com/anthropics/claude-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
