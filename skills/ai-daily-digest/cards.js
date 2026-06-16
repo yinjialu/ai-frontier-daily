@@ -36,6 +36,13 @@
   };
   function vendorOf(DATA){ return VENDORS[(DATA && DATA.vendor) || "anthropic"] || VENDORS.anthropic; }
 
+  // 风格层（正交于 vendor 主题）：DATA.style==="glass"/"liquid-glass" → 追加 style-glass class。
+  // 经典版不带 style 字段 → 返回空串，产出与历史像素一致。渲染器可用 CARD_STYLE 覆盖 DATA.style。
+  function styleClass(DATA){
+    var s = (DATA && DATA.style || "").toLowerCase();
+    return (s === "glass" || s === "liquid-glass" || s === "liquidglass") ? " style-glass" : "";
+  }
+
   // 公司徽标：聚合轨里标注该条来自哪家公司（DeepSeek / 通义 …）。无 company 字段则返回空串。
   function orgChip(u){ var c = u && u.company; return c ? `<span class="org">${esc(c)}</span>` : ""; }
 
@@ -51,7 +58,7 @@
   }
 
   function buildDeck(DATA){
-    var out=[], U=DATA.updates||[], V=vendorOf(DATA), vc="v-"+V.id;
+    var out=[], U=DATA.updates||[], V=vendorOf(DATA), vc="v-"+V.id, sc=styleClass(DATA);
 
     // 小红书封面
     out.push({name:"小红书_00_封面", cls:vc+" xhs xhs-cover", w:1080, h:1440, inner:`
@@ -120,6 +127,9 @@
           </div>`).join("")}
         <div class="foot"><span>${esc(DATA.brand)}</span><span>${esc(DATA.cnDate)}</span></div>
       </div>`});
+
+    // 正交风格层：统一给每张卡片 cls 追加 style class（经典版 sc 为空，无影响）
+    if (sc) out.forEach(function(c){ c.cls += sc; });
 
     return out;
   }

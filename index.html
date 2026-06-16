@@ -57,6 +57,16 @@
   .vtab.on{background:var(--vc);border-color:var(--vc);color:#fff}
   .vtab.on .dotv{opacity:.9;background:#fff}
 
+  /* 质感切换（经典 / 液态玻璃，正交于厂商主题） */
+  .styles{display:flex;align-items:center;gap:8px;margin:12px 0 2px;flex-wrap:wrap}
+  .styles .slab{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:12px;
+    letter-spacing:1px;color:var(--soft)}
+  .stab{font-family:"Space Mono","DejaVu Sans Mono",monospace;font-size:12px;letter-spacing:1px;
+    cursor:pointer;padding:6px 14px;border:1px solid var(--line);border-radius:999px;
+    background:var(--paper);color:var(--soft);transition:.15s;user-select:none}
+  .stab:hover{border-color:var(--clay);color:var(--clay)}
+  .stab.on{background:var(--clay);border-color:var(--clay);color:#fff}
+
   .meta{color:var(--soft);font-size:13px;margin:14px 2px 4px;
     font-family:"Space Mono","DejaVu Sans Mono",monospace}
 
@@ -161,6 +171,11 @@
 </header>
 
 <div class="vendors" id="vendors"></div>
+<div class="styles" id="styles">
+  <span class="slab">质感</span>
+  <span class="stab on" data-s="">经典</span>
+  <span class="stab" data-s="glass">液态玻璃</span>
+</div>
 <div class="meta" id="meta"></div>
 <div id="app"></div>
 
@@ -192,6 +207,7 @@ const VENDOR_NAMES = Object.fromEntries(
 let ALL = [];                   // 所有厂商的全部天
 let DAYS = [], byDate = {};     // 当前厂商的天 / 当前厂商按日期索引
 let curVendor = "anthropic", curDate = null;
+let curStyle = localStorage.getItem("card_style") || "";   // "" 经典 / "glass" 液态玻璃（正交于厂商）
 let car = null;                 // 轮播状态 {cards, active, deck}
 const dataCache = {};           // "vendor|date" -> data.json
 const DAILY = "__daily__";      // 跨厂商日报的伪厂商 id
@@ -244,6 +260,7 @@ async function applyVendor(vendor){
   curVendor = vendor;
   const isDaily = vendor === DAILY;
   document.body.className = isDaily ? "v-daily" : "v-" + vendor;   // 日报无覆盖=默认主题
+  $("#styles").style.display = isDaily ? "none" : "flex";          // 日报是列表，无卡片可换质感
   document.querySelectorAll(".vtab").forEach(el => el.classList.toggle("on", el.dataset.v===vendor));
   if(isDaily){
     // 跨厂商：按日期把各厂商当天聚成一条，count 为四家之和
@@ -275,7 +292,7 @@ async function selectDay(date){
 
   let deck = [];
   try{
-    const data = await dayData(vendor, date);
+    const data = {...(await dayData(vendor, date)), style: curStyle};   // 叠加当前质感（正交）
     deck = window.Cards.buildDeck(data).filter(c => /\bxhs\b/.test(c.cls));   // 仅小红书卡
   }catch(e){
     $("#app").innerHTML = `<div class="empty">读取 data/${vendor}/${date}.json 失败。</div>`; return;
@@ -501,6 +518,19 @@ document.addEventListener("keydown", e=>{
   if(e.key==="ArrowRight" && car) goCar(car.active+1);
 });
 window.addEventListener("resize", layoutCarousel);
+
+/* ---- 质感切换（经典 / 液态玻璃）：正交于厂商，重渲当天卡片 ---- */
+(function(){
+  const bar = $("#styles");
+  bar.querySelectorAll(".stab").forEach(el => el.classList.toggle("on", (el.dataset.s||"")===curStyle));
+  bar.addEventListener("click", e => {
+    const el = e.target.closest(".stab"); if(!el) return;
+    curStyle = el.dataset.s || "";
+    localStorage.setItem("card_style", curStyle);
+    bar.querySelectorAll(".stab").forEach(x => x.classList.toggle("on", (x.dataset.s||"")===curStyle));
+    if(curVendor !== DAILY && curDate) selectDay(curDate);   // 日报是列表无卡片，无需重渲
+  });
+})();
 
 /* ---- 访问量统计（Abacus 免注册计数 API，失败则静默） ---- */
 fetch("https://abacus.jasoncameron.dev/hit/yinjialu-ai-frontier-daily/home")

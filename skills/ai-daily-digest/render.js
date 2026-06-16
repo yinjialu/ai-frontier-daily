@@ -63,6 +63,7 @@ async function renderPlaywright(cards, outDir){
   for (let i=0;i<rest.length;i++){ if(rest[i]==="--engine") engine=rest[++i]; if(rest[i]==="--only") only=parseInt(rest[++i],10); }
 
   const DATA = JSON.parse(fs.readFileSync(dataPath,"utf8"));
+  if (process.env.CARD_STYLE) DATA.style = process.env.CARD_STYLE;   // 覆盖/启用风格层（如 glass）
   let cards = Cards.buildDeck(DATA);
   if (only!=null) cards = [cards[only]];
   fs.mkdirSync(outDir, {recursive:true});

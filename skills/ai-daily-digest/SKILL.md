@@ -93,6 +93,12 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    渲染默认输出 **JPEG**（移动端优先：1080×1440、`deviceScaleFactor:1`、质量 86，
    单张约 100–300KB，低于公众号在文图片 1MB 上限，省去后压缩）。可用环境变量
    `CARD_FORMAT=png|jpeg`、`CARD_QUALITY`、`CARD_SCALE` 覆盖。
+   - **卡片质感（风格层，正交于 vendor 主题）**：默认「经典」（与历史像素一致）。
+     `CARD_STYLE=glass`（或数据里加 `"style":"glass"`）切到「液态玻璃 / Apple Liquid Glass」——
+     彩色渐变底 + 磨砂玻璃面板 + 镜面高光，仅换材质不改主题色，新增厂商自动可用。
+     backdrop-filter 仅 Chromium（Playwright）/浏览器生效，wkhtml 退化为半透明无模糊。
+     本地预览对比：浏览器打开 `skills/ai-daily-digest/glass-preview.html`；
+     展示页 `index.html` 顶部「质感」可一键切换（存 `localStorage`）。
 7. **渲染卡片**：
    ```bash
    node "$SKILL_DIR/render.js" data/<vendor>/<date>.json output/<vendor>/<date> --engine playwright

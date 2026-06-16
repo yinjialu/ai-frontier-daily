@@ -16,6 +16,13 @@
   --serifcn:"Noto Serif SC","Noto Serif CJK SC","Fraunces","DejaVu Serif",serif;
   --sans:"Noto Sans SC","Noto Sans CJK SC","DejaVu Sans",sans-serif;
   --mono:"Space Mono","DejaVu Sans Mono",monospace;
+
+  /* 液态玻璃风格 token（仅 .style-glass 用；浅底默认值，深底主题在下方覆盖）。
+     做成 token：换肤不影响玻璃，新增厂商也自动有玻璃风。 */
+  --glass-bg:rgba(255,255,255,.46);     /* 磨砂面板底色（半透） */
+  --glass-hi:rgba(255,255,255,.62);     /* 顶部高光镜面线 */
+  --glass-border:rgba(255,255,255,.5);  /* 玻璃边缘描边 */
+  --glass-shade:rgba(40,28,16,.14);     /* 底部加深，制造厚度 */
 }
 
 /* ===== OpenAI 主题：深墨黑底 + 青绿 accent ===== */
@@ -145,3 +152,80 @@
 
 /* 公众号正文长图为浅底（内容面）：OpenAI 主题下也保持深底一致性 —— gzh-body
    用 --bg/--fg，已随主题切换，无需特例。 */
+
+/* ============================================================
+   液态玻璃风格（Apple Liquid Glass）—— 正交可选风格层
+   ------------------------------------------------------------
+   用法：给 .card 追加 class `style-glass`（由 cards.js 读 DATA.style 控制，
+   或渲染时 CARD_STYLE=glass 覆盖）。与 .v-<vendor> 主题正交叠加：
+   颜色仍由主题 token 决定，本层只换「材质」——彩色渐变底 + 磨砂玻璃面板 +
+   镜面高光 + 边缘描边 + 厚度阴影。backdrop-filter 仅 Chromium/浏览器生效
+   （Playwright 生产链路与展示页 OK；wkhtml 退化为半透明无模糊，可接受）。
+   ============================================================ */
+
+/* 深底主题（OpenAI / NVIDIA / cn）：玻璃改用深色磨砂 + 收敛的高光描边 */
+.style-glass.v-openai,.style-glass.v-nvidia,.style-glass.v-cn{
+  --glass-bg:rgba(16,16,18,.34);
+  --glass-hi:rgba(255,255,255,.34);
+  --glass-border:rgba(255,255,255,.26);
+  --glass-shade:rgba(0,0,0,.28);
+}
+
+/* 卡片底：用主题强调色铺一层彩色渐变网格，磨砂面板模糊它即得「液态折射」感 */
+.style-glass.card{
+  background:
+    radial-gradient(135% 130% at 10% 6%, var(--accent-soft) 0%, transparent 46%),
+    radial-gradient(120% 120% at 94% 16%, var(--accent) 0%, transparent 44%),
+    radial-gradient(130% 130% at 82% 98%, var(--accent-deep) 0%, transparent 48%),
+    var(--bg);
+}
+/* 深底主题彩色渐变收敛一点，避免过曝（特写面卡另见下方） */
+.style-glass.v-openai.card,.style-glass.v-nvidia.card,.style-glass.v-cn.card{
+  background:
+    radial-gradient(135% 130% at 10% 6%, color-mix(in srgb,var(--accent-soft) 70%,transparent) 0%, transparent 50%),
+    radial-gradient(120% 120% at 94% 16%, color-mix(in srgb,var(--accent) 62%,transparent) 0%, transparent 48%),
+    radial-gradient(130% 130% at 82% 98%, color-mix(in srgb,var(--accent-deep) 70%,transparent) 0%, transparent 52%),
+    var(--bg);
+}
+/* 色斑加大模糊与饱和，作为玻璃后方的流动光晕 */
+.style-glass .blob{filter:blur(8px) saturate(1.35)}
+
+/* 磨砂玻璃面板：满幅 inner 上叠半透磨砂 + 顶部镜面高光线 + 边缘描边 + 底部厚度阴影 */
+.style-glass .inner{
+  background:linear-gradient(160deg,
+    color-mix(in srgb,var(--glass-bg) 100%,transparent) 0%,
+    color-mix(in srgb,var(--glass-bg) 78%,transparent) 100%);
+  -webkit-backdrop-filter:blur(52px) saturate(180%);
+  backdrop-filter:blur(52px) saturate(180%);
+  box-shadow:
+    inset 0 1.6px 0 var(--glass-hi),                 /* 顶部镜面高光 */
+    inset 0 0 0 1.5px var(--glass-border),           /* 玻璃边缘描边 */
+    inset 0 -120px 120px -90px var(--glass-shade);   /* 底部加深=厚度 */
+}
+/* 斜向流光：极淡的对角高光扫过面板，强化玻璃的光泽（不挡正文，pointer 透传） */
+.style-glass .inner::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(125deg,
+    rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 26%,
+    rgba(255,255,255,0) 72%, rgba(255,255,255,.08) 100%);
+}
+
+/* 玻璃风下，标签/CTA/分隔条做成「描边玻璃 chip」，与磨砂面板同语言 */
+.style-glass .xhs-item .tag,.style-glass .gzh-body .e .bd .tag{
+  background:color-mix(in srgb,var(--accent) 88%,transparent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 6px 18px -8px var(--accent-deep)}
+.style-glass .xhs-item .src,.style-glass .gzh-body .foot,
+.style-glass .xhs-item .rule{box-shadow:0 1px 0 var(--glass-hi)}
+
+/* 特写面卡（封面/结尾/公众号封面）本就是深底 feature-bg：玻璃用统一深色磨砂，
+   并用 accent 给底色铺一层光晕，保证磨砂后仍有彩色折射。 */
+.style-glass.xhs-cover,.style-glass.xhs-outro,.style-glass.gzh-cover{
+  background:
+    radial-gradient(130% 130% at 12% 8%, color-mix(in srgb,var(--accent) 55%,transparent) 0%, transparent 50%),
+    radial-gradient(130% 130% at 90% 94%, color-mix(in srgb,var(--accent-deep) 60%,transparent) 0%, transparent 52%),
+    var(--feature-bg);
+}
+.style-glass.xhs-cover .inner,.style-glass.xhs-outro .inner,.style-glass.gzh-cover .inner{
+  --glass-bg:rgba(14,12,12,.32);--glass-hi:rgba(255,255,255,.32);
+  --glass-border:rgba(255,255,255,.24);--glass-shade:rgba(0,0,0,.3);
+}
