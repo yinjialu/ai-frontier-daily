@@ -19,9 +19,9 @@
 
   /* 液态玻璃风格 token（仅 .style-glass 用；浅底默认值，深底主题在下方覆盖）。
      做成 token：换肤不影响玻璃，新增厂商也自动有玻璃风。 */
-  --glass-bg:rgba(255,255,255,.46);     /* 磨砂面板底色（半透） */
-  --glass-hi:rgba(255,255,255,.62);     /* 顶部高光镜面线 */
-  --glass-border:rgba(255,255,255,.5);  /* 玻璃边缘描边 */
+  --glass-bg:rgba(255,255,255,.58);     /* 磨砂面板底色（半透，偏实以保证可读性） */
+  --glass-hi:rgba(255,255,255,.65);     /* 顶部高光镜面线 */
+  --glass-border:rgba(255,255,255,.55); /* 玻璃边缘描边 */
   --glass-shade:rgba(40,28,16,.14);     /* 底部加深，制造厚度 */
 }
 
@@ -165,7 +165,7 @@
 
 /* 深底主题（OpenAI / NVIDIA / cn）：玻璃改用深色磨砂 + 收敛的高光描边 */
 .style-glass.v-openai,.style-glass.v-nvidia,.style-glass.v-cn{
-  --glass-bg:rgba(16,16,18,.34);
+  --glass-bg:rgba(16,16,18,.44);
   --glass-hi:rgba(255,255,255,.34);
   --glass-border:rgba(255,255,255,.26);
   --glass-shade:rgba(0,0,0,.28);
@@ -217,15 +217,17 @@
 .style-glass .xhs-item .src,.style-glass .gzh-body .foot,
 .style-glass .xhs-item .rule{box-shadow:0 1px 0 var(--glass-hi)}
 
-/* 特写面卡（封面/结尾/公众号封面）本就是深底 feature-bg：玻璃用统一深色磨砂，
-   并用 accent 给底色铺一层光晕，保证磨砂后仍有彩色折射。 */
-.style-glass.xhs-cover,.style-glass.xhs-outro,.style-glass.gzh-cover{
+/* 特写面卡（结尾 / 公众号封面）本就是深底 feature-bg：玻璃用统一深色磨砂，
+   并用 accent 给底色铺一层光晕，保证磨砂后仍有彩色折射。
+   注意：小红书封面 xhs-cover 是「浅底深字」（用 --bg/--fg），不属深底组，
+   走上面的默认浅色玻璃，否则深底深字会糊成一片。 */
+.style-glass.xhs-outro,.style-glass.gzh-cover{
   background:
     radial-gradient(130% 130% at 12% 8%, color-mix(in srgb,var(--accent) 55%,transparent) 0%, transparent 50%),
     radial-gradient(130% 130% at 90% 94%, color-mix(in srgb,var(--accent-deep) 60%,transparent) 0%, transparent 52%),
     var(--feature-bg);
 }
-.style-glass.xhs-cover .inner,.style-glass.xhs-outro .inner,.style-glass.gzh-cover .inner{
-  --glass-bg:rgba(14,12,12,.32);--glass-hi:rgba(255,255,255,.32);
+.style-glass.xhs-outro .inner,.style-glass.gzh-cover .inner{
+  --glass-bg:rgba(14,12,12,.36);--glass-hi:rgba(255,255,255,.32);
   --glass-border:rgba(255,255,255,.24);--glass-shade:rgba(0,0,0,.3);
 }
