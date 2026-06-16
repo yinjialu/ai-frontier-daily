@@ -19,3 +19,15 @@
   微信贴图草稿(`publish_wechat_newspic.py` 直调,凭据 `~/.config/wechat-official-draft/config.yaml`)。
 - 贴图(newspic)链路不走 wechat-official-draft skill(其 push_draft.mjs 仅支持图文 news 形态);
   skill 留给交互排版自由文章,已项目内安装于 `.agents/skills/`。
+
+## 小红书发布页 / iPhone 快捷指令(迁移初始化参考)
+
+- 发布页 `publish.html`(GitHub Pages: `/ai-frontier-daily/publish.html`)由 `output/index.json`
+  的 `updated`+`days` 驱动:仅展示 `date===updated` 当日内容,某厂商今日无更新显示「今日暂无内容」,
+  不回退历史日期(避免发错)。每个 Tab 提供「📲 发送到快捷指令 / 🔗 复制链接 / ⬇️ 打包 zip」。
+- 「📲 发送到快捷指令」用 `shortcuts://run-shortcut?name=<指令名>&input=text&text=<链接>` 直接把
+  图片链接作为输入喂给快捷指令(绕开剪贴板,规避 iOS 把 URL 列表识别成单对象 / execCommand 失效)。
+  首次在页面填一次指令名,存 `localStorage.xhs_shortcut_name`,长按按钮可重设。
+- **现成快捷指令(换设备直接装)**:https://www.icloud.com/shortcuts/265f03551e974bac82c2ca8c87031dd4
+  名称「社媒内容下载」(页面默认值)。逻辑:拆分文本(快捷指令输入,按新行)→ 重复 → 获取URL内容 →
+  存储到相簿。
