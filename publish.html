@@ -74,6 +74,31 @@ header h1{margin:0;font-size:18px;font-weight:700;color:var(--ink)}
 .spin{display:inline-block;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* Empty (per vendor today) */
+.empty-today{text-align:center;color:var(--soft);padding:48px 16px}
+.empty-today .et-emoji{font-size:34px;display:block;margin-bottom:10px;opacity:.55}
+.empty-today .et-main{font-size:15px;color:var(--ink);font-weight:600}
+.empty-today .et-sub{font-size:12px;margin-top:6px}
+.tab.muted{opacity:.45}
+
+/* Image actions */
+.img-actions{display:flex;gap:8px;margin:2px 0 10px;flex-wrap:wrap}
+.act-btn{font-size:12px;padding:7px 14px;border-radius:999px;border:1px solid var(--accent);
+  color:var(--accent);background:transparent;cursor:pointer;font-weight:600;
+  -webkit-appearance:none;white-space:nowrap;transition:background .12s,color .12s}
+.act-btn:active,.act-btn.done{background:var(--accent);color:#fff}
+.act-btn.solid{background:var(--accent);color:#fff}
+.act-btn[disabled]{opacity:.6}
+
+/* Shortcut help */
+details.sc-help{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  margin:12px 16px 0;font-size:12.5px;color:var(--soft)}
+details.sc-help summary{padding:10px 14px;cursor:pointer;font-weight:600;color:var(--accent);
+  list-style:none;font-size:12px;letter-spacing:.3px}
+details.sc-help summary::-webkit-details-marker{display:none}
+details.sc-help .sc-body{padding:0 14px 12px;line-height:1.75}
+details.sc-help code{background:var(--cream);padding:1px 5px;border-radius:4px;font-size:11.5px}
+
 /* Lightbox */
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;
   align-items:center;justify-content:center;flex-direction:column}
@@ -91,10 +116,21 @@ header h1{margin:0;font-size:18px;font-weight:700;color:var(--ink)}
     <span class="brand">AI 前哨</span>
     <h1>发布助手</h1>
   </div>
-  <p class="hint">长按图片 → 存照片 · 点「复制」→ 粘贴到小红书</p>
+  <p class="hint">「一键下载全部」存图 · 点「复制」→ 粘贴到小红书</p>
 </header>
 
 <div class="tabs" id="tabs"></div>
+
+<details class="sc-help">
+  <summary>📲 iPhone 快捷指令：批量存到「照片」（点开看一次性设置）</summary>
+  <div class="sc-body">
+    想直接存进「照片」而不是「文件」？新建一个快捷指令，依次添加：<br>
+    ① 「<code>从剪贴板获取</code>」← 先在本页点某个 Tab 的「🔗 复制图片链接」；<br>
+    ② 「<code>拆分文本</code>」，按<code>新行</code>拆分；<br>
+    ③ 「<code>重复</code>」每一项 →「<code>获取URL内容</code>」→「<code>存储到相簿</code>」。<br>
+    之后每天：本页点「🔗 复制图片链接」→ 运行该快捷指令，整组图自动入相册，无需逐张长按。
+  </div>
+</details>
 <div id="panels"><div class="loading"><span class="spin">⏳</span> 加载中…</div></div>
 
 <div id="lb" onclick="closeLb()">
@@ -156,8 +192,8 @@ function buildContent(data) {
   return lines.join('\n').trim();
 }
 
-// ── 复制按钮 ────────────────────────────────────────────────────
-async function copyText(text, btn) {
+// ── 剪贴板 / 复制按钮 ──────────────────────────────────────────
+async function clipboardWrite(text) {
   try {
     await navigator.clipboard.writeText(text);
   } catch(e) {
@@ -168,8 +204,51 @@ async function copyText(text, btn) {
     document.execCommand('copy');
     document.body.removeChild(ta);
   }
+}
+async function copyText(text, btn) {
+  await clipboardWrite(text);
   btn.textContent = '✓ 已复制'; btn.classList.add('done');
   setTimeout(() => { btn.textContent = '📋 复制'; btn.classList.remove('done'); }, 1600);
+}
+
+// ── 配图下载 ────────────────────────────────────────────────────
+// vendor → { dirPath, files }（仅含小红书配图，按上传顺序）
+const PANEL_FILES = {};
+
+// 顺序拉取每张图为 blob 并触发下载（iOS 存「文件」，桌面存下载目录）
+async function downloadAll(vendor, btn) {
+  const info = PANEL_FILES[vendor];
+  if (!info || !info.files.length) return;
+  const orig = btn.textContent;
+  btn.disabled = true;
+  for (let i = 0; i < info.files.length; i++) {
+    const fname = info.files[i];
+    btn.textContent = `下载中 ${i+1}/${info.files.length}`;
+    try {
+      const blob = await (await fetch(`${info.dirPath}/${fname}`)).blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = fname;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    } catch(e) { /* 单张失败不阻断后续 */ }
+    await new Promise(r => setTimeout(r, 450));
+  }
+  btn.disabled = false;
+  btn.textContent = '✓ 已触发下载'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2400);
+}
+
+// 复制全部图片的绝对链接（每行一条，喂给 iPhone 快捷指令批量存相册）
+async function copyLinks(vendor, btn) {
+  const info = PANEL_FILES[vendor];
+  if (!info || !info.files.length) return;
+  const urls = info.files
+    .map(f => new URL(`${info.dirPath}/${f}`, location.href).href)
+    .join('\n');
+  await clipboardWrite(urls);
+  btn.textContent = '✓ 链接已复制'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = '🔗 复制图片链接'; btn.classList.remove('done'); }, 2000);
 }
 
 // ── 图片灯箱 ────────────────────────────────────────────────────
@@ -183,20 +262,9 @@ function closeLb() {
 }
 
 // ── 渲染 ────────────────────────────────────────────────────────
-function renderPanel(vendor, data, files) {
-  const color = VENDOR_META[vendor]?.color || 'var(--accent)';
+function renderPanelInto(panelEl, vendor, data, dirPath, xhsFiles) {
   const title = buildTitle(data);
   const content = buildContent(data);
-  // 只取小红书配图
-  const xhsFiles = files.filter(f => f.startsWith('小红书_'));
-  const imgBase = `output/${vendor}/${data.date || data.cnDate.replace(/\s+/g,'_')}/`;
-
-  // 实际 dir 取 latest.json 里的 dir
-  const panelEl = document.createElement('div');
-  panelEl.className = 'panel';
-  panelEl.id = `panel-${vendor}`;
-  panelEl.style.setProperty('--accent', color);
-
   const titleId = `t-${vendor}`, bodyId = `b-${vendor}`;
   panelEl.innerHTML = `
 <p class="pdate">${data.cnDate} · ${data.edition || ''}</p>
@@ -217,12 +285,28 @@ function renderPanel(vendor, data, files) {
   <div class="cblock-body tall" id="${bodyId}">${escHtml(content)}</div>
 </div>
 
-<div class="img-head">📷 配图（长按存照片）</div>
+<div class="img-head">📷 配图 · 共 ${xhsFiles.length} 张</div>
+<div class="img-actions">
+  <button class="act-btn solid" onclick="downloadAll('${vendor}',this)">⬇️ 一键下载全部</button>
+  <button class="act-btn" onclick="copyLinks('${vendor}',this)">🔗 复制图片链接</button>
+</div>
 <div class="img-strip" id="imgs-${vendor}"></div>
-<p class="img-hint">共 ${xhsFiles.length} 张 · 长按图片 → 存到照片 · 按顺序上传</p>
+<p class="img-hint">「一键下载」存到「文件」可再存相册；或单张点开长按存照片 · 按顺序上传</p>
 `;
 
-  return { panelEl, xhsFiles };
+  // 缩略图
+  const imgStrip = panelEl.querySelector(`#imgs-${vendor}`);
+  for (const fname of xhsFiles) {
+    const src = `${dirPath}/${fname}`;
+    const thumb = document.createElement('div');
+    thumb.className = 'img-thumb';
+    // 标签取文件名中间部分：小红书_01_开发者.jpg → 开发者
+    const m = fname.match(/小红书_\d+_(.+)\.(jpg|png)$/i);
+    const label = m ? m[1] : fname;
+    thumb.innerHTML = `<img src="${src}" alt="${label}" loading="lazy"><div class="img-label">${label}</div>`;
+    thumb.onclick = () => openLb(src);
+    imgStrip.appendChild(thumb);
+  }
 }
 
 function escHtml(s) {
@@ -231,50 +315,52 @@ function escHtml(s) {
 
 // ── 主流程 ──────────────────────────────────────────────────────
 async function init() {
-  // 读厂商列表
-  let vendors;
-  try {
-    const idx = await (await fetch('output/index.json')).json();
-    vendors = idx.vendors || Object.keys(VENDOR_META);
-  } catch(e) {
-    vendors = Object.keys(VENDOR_META);
-  }
-
   const tabsEl = document.getElementById('tabs');
   const panelsEl = document.getElementById('panels');
-  panelsEl.innerHTML = '';
 
-  let firstOn = null;
-  const vendorData = [];
-
-  // 并行拉取各厂商最新数据
-  await Promise.all(vendors.map(async (v) => {
-    try {
-      const latest = await (await fetch(`output/${v}/latest.json`)).json();
-      const date = latest.dir || latest.date;
-      const dataJson = await (await fetch(`data/${v}/${date}.json`)).json();
-      const files = latest.files || [];
-      vendorData.push({ v, dataJson, files, date });
-    } catch(e) {
-      // 该厂商今天无数据，跳过
-    }
-  }));
-
-  // 按 vendors 顺序排列
-  vendorData.sort((a,b) => vendors.indexOf(a.v) - vendors.indexOf(b.v));
-
-  if (vendorData.length === 0) {
-    panelsEl.innerHTML = '<div class="empty">今日暂无内容</div>';
+  let idx;
+  try {
+    idx = await (await fetch('output/index.json')).json();
+  } catch(e) {
+    panelsEl.innerHTML = '<div class="empty">索引加载失败，请稍后重试</div>';
     return;
   }
 
-  for (const { v, dataJson, files, date } of vendorData) {
+  const vendors = idx.vendors || Object.keys(VENDOR_META);
+  const today   = idx.updated;          // 发布基准日（今天）
+  const days    = idx.days || [];
+
+  // 各厂商「今天」的条目；没有 → 今日无内容（不回退到历史，避免发错）
+  const todayByVendor = {};
+  for (const d of days) {
+    if (d.date === today) todayByVendor[d.vendor] = d;
+  }
+
+  // 仅为有内容的厂商拉取正文数据
+  const dataByVendor = {};
+  await Promise.all(vendors.map(async (v) => {
+    const d = todayByVendor[v];
+    if (!d) return;
+    try {
+      dataByVendor[v] = await (await fetch(`data/${v}/${d.date}.json`)).json();
+    } catch(e) { /* 数据缺失，按无内容处理 */ }
+  }));
+
+  tabsEl.innerHTML = '';
+  panelsEl.innerHTML = '';
+
+  let firstWithContent = null, firstAny = null;
+
+  for (const v of vendors) {
     const name = VENDOR_META[v]?.name || v;
     const color = VENDOR_META[v]?.color || 'var(--accent)';
+    const day = todayByVendor[v];
+    const dataJson = dataByVendor[v];
+    const hasContent = !!(day && dataJson);
 
-    // Tab
+    // Tab（始终展示；无内容置灰提示）
     const tab = document.createElement('div');
-    tab.className = 'tab';
+    tab.className = 'tab' + (hasContent ? '' : ' muted');
     tab.textContent = name;
     tab.dataset.v = v;
     tab.style.color = 'var(--soft)';
@@ -282,28 +368,35 @@ async function init() {
     tabsEl.appendChild(tab);
 
     // Panel
-    const { panelEl, xhsFiles } = renderPanel(v, dataJson, files);
+    const panelEl = document.createElement('div');
+    panelEl.className = 'panel';
+    panelEl.id = `panel-${v}`;
+    panelEl.style.setProperty('--accent', color);
     panelsEl.appendChild(panelEl);
 
-    // Images（需要知道 dir，取 latest.json 的 dir 字段）
-    const imgStrip = panelEl.querySelector(`#imgs-${v}`);
-    const dirPath = `output/${v}/${date}`;
-    for (const fname of xhsFiles) {
-      const src = `${dirPath}/${fname}`;
-      const thumb = document.createElement('div');
-      thumb.className = 'img-thumb';
-      // 标签取文件名中间部分：小红书_01_开发者.jpg → 开发者
-      const m = fname.match(/小红书_\d+_(.+)\.(jpg|png)$/i);
-      const label = m ? m[1] : fname;
-      thumb.innerHTML = `<img src="${src}" alt="${label}" loading="lazy"><div class="img-label">${label}</div>`;
-      thumb.onclick = () => openLb(src);
-      imgStrip.appendChild(thumb);
+    if (!hasContent) {
+      panelEl.innerHTML =
+        `<div class="empty-today">` +
+        `<span class="et-emoji">🗓️</span>` +
+        `<div class="et-main">${name} 今日暂无内容</div>` +
+        `<div class="et-sub">${today} · 该厂商今天没有更新，无需发布</div>` +
+        `</div>`;
+      if (!firstAny) firstAny = v;
+      continue;
     }
 
-    if (!firstOn) firstOn = v;
+    const dirPath  = `output/${day.dir}`;   // 例：output/anthropic/2026-06-16
+    const xhsFiles = (day.files || []).filter(f => f.startsWith('小红书_'));
+    PANEL_FILES[v] = { dirPath, files: xhsFiles };
+
+    renderPanelInto(panelEl, v, dataJson, dirPath, xhsFiles);
+
+    if (!firstWithContent) firstWithContent = v;
+    if (!firstAny) firstAny = v;
   }
 
-  if (firstOn) switchTo(firstOn);
+  const open = firstWithContent || firstAny;
+  if (open) switchTo(open);
 }
 
 function switchTo(v) {
