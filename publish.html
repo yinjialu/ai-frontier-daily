@@ -215,28 +215,104 @@ async function copyText(text, btn) {
 // vendor → { dirPath, files }（仅含小红书配图，按上传顺序）
 const PANEL_FILES = {};
 
-// 顺序拉取每张图为 blob 并触发下载（iOS 存「文件」，桌面存下载目录）
+// ── 极简 ZIP（STORE 无压缩）打包 ────────────────────────────────
+// iOS Safari 会丢弃连续多次的程序化下载（实测 4 张只存下 2 张且无报错），
+// 因此把整组图打成一个 zip，只触发一次下载，保证全部拿到。JPEG 已是压缩格式，
+// 用 STORE 即可，无需引入第三方压缩库（避免 CDN 在国内不稳定）。
+function crc32(bytes) {
+  if (!crc32.t) {
+    crc32.t = [];
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      crc32.t[n] = c >>> 0;
+    }
+  }
+  let crc = 0xFFFFFFFF;
+  for (let i = 0; i < bytes.length; i++) crc = crc32.t[(crc ^ bytes[i]) & 0xFF] ^ (crc >>> 8);
+  return (crc ^ 0xFFFFFFFF) >>> 0;
+}
+function buildZip(entries) {
+  const enc = new TextEncoder();
+  const u16 = n => [n & 0xFF, (n >>> 8) & 0xFF];
+  const u32 = n => [n & 0xFF, (n >>> 8) & 0xFF, (n >>> 16) & 0xFF, (n >>> 24) & 0xFF];
+  const parts = [], central = [];
+  let offset = 0;
+  for (const e of entries) {
+    const nb = enc.encode(e.name), crc = crc32(e.data), sz = e.data.length;
+    const lfh = [...u32(0x04034b50), ...u16(20), ...u16(0x0800), ...u16(0),
+      ...u16(0), ...u16(0), ...u32(crc), ...u32(sz), ...u32(sz),
+      ...u16(nb.length), ...u16(0)];
+    const lfhArr = new Uint8Array(lfh.length + nb.length);
+    lfhArr.set(lfh, 0); lfhArr.set(nb, lfh.length);
+    parts.push(lfhArr, e.data);
+    const cdh = [...u32(0x02014b50), ...u16(20), ...u16(20), ...u16(0x0800), ...u16(0),
+      ...u16(0), ...u16(0), ...u32(crc), ...u32(sz), ...u32(sz),
+      ...u16(nb.length), ...u16(0), ...u16(0), ...u16(0), ...u16(0),
+      ...u32(0), ...u32(offset)];
+    const cdhArr = new Uint8Array(cdh.length + nb.length);
+    cdhArr.set(cdh, 0); cdhArr.set(nb, cdh.length);
+    central.push(cdhArr);
+    offset += lfhArr.length + sz;
+  }
+  let cdSize = 0;
+  for (const c of central) cdSize += c.length;
+  const eocd = new Uint8Array([...u32(0x06054b50), ...u16(0), ...u16(0),
+    ...u16(entries.length), ...u16(entries.length), ...u32(cdSize), ...u32(offset), ...u16(0)]);
+  return new Blob([...parts, ...central, eocd], { type: 'application/zip' });
+}
+
+// 把整组配图打成一个 zip，单次下载（iOS 存「文件」，长按可解压）
 async function downloadAll(vendor, btn) {
   const info = PANEL_FILES[vendor];
   if (!info || !info.files.length) return;
   const orig = btn.textContent;
   btn.disabled = true;
-  for (let i = 0; i < info.files.length; i++) {
-    const fname = info.files[i];
-    btn.textContent = `下载中 ${i+1}/${info.files.length}`;
-    try {
-      const blob = await (await fetch(`${info.dirPath}/${fname}`)).blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = fname;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
-    } catch(e) { /* 单张失败不阻断后续 */ }
-    await new Promise(r => setTimeout(r, 450));
+  try {
+    const entries = [];
+    for (let i = 0; i < info.files.length; i++) {
+      btn.textContent = `打包中 ${i+1}/${info.files.length}`;
+      const buf = await (await fetch(`${info.dirPath}/${info.files[i]}`)).arrayBuffer();
+      entries.push({ name: info.files[i], data: new Uint8Array(buf) });
+    }
+    btn.textContent = '生成压缩包…';
+    const zip = buildZip(entries);
+    const url = URL.createObjectURL(zip);
+    const day = info.dirPath.split('/').slice(-2).join('_'); // 例：cn_2026-06-16
+    const a = document.createElement('a');
+    a.href = url; a.download = `${day}_小红书配图.zip`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 8000);
+    btn.textContent = `✓ 已打包 ${entries.length} 张`;
+  } catch(e) {
+    btn.textContent = '✗ 下载失败，重试';
   }
   btn.disabled = false;
-  btn.textContent = '✓ 已触发下载'; btn.classList.add('done');
-  setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2400);
+  btn.classList.add('done');
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2600);
+}
+
+// 强制以「纯文本」写入剪贴板（execCommand），避免 iOS Safari 在
+// navigator.clipboard.writeText 时把 URL 列表识别成单个 public.url 对象——
+// 那会把真实换行折成字面量 %0A 并整体二次百分号编码，导致快捷指令「按新行拆分」失效。
+function clipboardWritePlain(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.readOnly = false;
+  ta.contentEditable = 'true';
+  ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px';
+  document.body.appendChild(ta);
+  const range = document.createRange();
+  range.selectNodeContents(ta);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  ta.setSelectionRange(0, text.length);
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch(e) {}
+  sel.removeAllRanges();
+  document.body.removeChild(ta);
+  return ok;
 }
 
 // 复制全部图片的绝对链接（每行一条，喂给 iPhone 快捷指令批量存相册）
@@ -246,7 +322,8 @@ async function copyLinks(vendor, btn) {
   const urls = info.files
     .map(f => new URL(`${info.dirPath}/${f}`, location.href).href)
     .join('\n');
-  await clipboardWrite(urls);
+  // 优先纯文本写入；失败再退回异步剪贴板 API
+  if (!clipboardWritePlain(urls)) await clipboardWrite(urls);
   btn.textContent = '✓ 链接已复制'; btn.classList.add('done');
   setTimeout(() => { btn.textContent = '🔗 复制图片链接'; btn.classList.remove('done'); }, 2000);
 }
@@ -287,11 +364,11 @@ function renderPanelInto(panelEl, vendor, data, dirPath, xhsFiles) {
 
 <div class="img-head">📷 配图 · 共 ${xhsFiles.length} 张</div>
 <div class="img-actions">
-  <button class="act-btn solid" onclick="downloadAll('${vendor}',this)">⬇️ 一键下载全部</button>
-  <button class="act-btn" onclick="copyLinks('${vendor}',this)">🔗 复制图片链接</button>
+  <button class="act-btn solid" onclick="copyLinks('${vendor}',this)">🔗 复制图片链接</button>
+  <button class="act-btn" onclick="downloadAll('${vendor}',this)">⬇️ 打包下载 (.zip)</button>
 </div>
 <div class="img-strip" id="imgs-${vendor}"></div>
-<p class="img-hint">「一键下载」存到「文件」可再存相册；或单张点开长按存照片 · 按顺序上传</p>
+<p class="img-hint">推荐「复制图片链接」+ 快捷指令直接存相册；「打包下载」得到 zip（文件 App 内长按解压）· 按顺序上传</p>
 `;
 
   // 缩略图
