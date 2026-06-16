@@ -122,13 +122,15 @@ details.sc-help code{background:var(--cream);padding:1px 5px;border-radius:4px;f
 <div class="tabs" id="tabs"></div>
 
 <details class="sc-help">
-  <summary>📲 iPhone 快捷指令：批量存到「照片」（点开看一次性设置）</summary>
+  <summary>📲 iPhone 快捷指令：一键存到「照片」（点开看一次性设置）</summary>
   <div class="sc-body">
-    想直接存进「照片」而不是「文件」？新建一个快捷指令，依次添加：<br>
-    ① 「<code>从剪贴板获取</code>」← 先在本页点某个 Tab 的「🔗 复制图片链接」；<br>
-    ② 「<code>拆分文本</code>」，按<code>新行</code>拆分；<br>
-    ③ 「<code>重复</code>」每一项 →「<code>获取URL内容</code>」→「<code>存储到相簿</code>」。<br>
-    之后每天：本页点「🔗 复制图片链接」→ 运行该快捷指令，整组图自动入相册，无需逐张长按。
+    新建一个快捷指令(建议在「快捷指令详情」里勾选<code>在共享表单中显示</code>关掉、不需要)，依次添加：<br>
+    ① 「<code>拆分文本</code>」，输入选「<code>快捷指令输入</code>」，按<code>新行</code>拆分；<br>
+    ② 「<code>重复</code>」每一项 →「<code>获取URL内容</code>」→「<code>存储到相簿</code>」。<br>
+    记住这个快捷指令的<b>名称</b>。之后每天：本页点某个 Tab 的「📲 发送到快捷指令」，
+    首次会让你填一次指令名(要和 iPhone 上完全一致)，链接就会作为输入直接喂给它、整组图自动入相册。<br>
+    <small>· 名称填错了？长按「📲 发送到快捷指令」按钮可重设。<br>
+    · 不想配快捷指令：用「🔗 复制链接」手动粘贴，或「⬇️ 打包」下载 zip 再解压。</small>
   </div>
 </details>
 <div id="panels"><div class="loading"><span class="spin">⏳</span> 加载中…</div></div>
@@ -292,40 +294,43 @@ async function downloadAll(vendor, btn) {
   setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2600);
 }
 
-// 强制以「纯文本」写入剪贴板（execCommand），避免 iOS Safari 在
-// navigator.clipboard.writeText 时把 URL 列表识别成单个 public.url 对象——
-// 那会把真实换行折成字面量 %0A 并整体二次百分号编码，导致快捷指令「按新行拆分」失效。
-function clipboardWritePlain(text) {
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.readOnly = false;
-  ta.contentEditable = 'true';
-  ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px';
-  document.body.appendChild(ta);
-  const range = document.createRange();
-  range.selectNodeContents(ta);
-  const sel = window.getSelection();
-  sel.removeAllRanges();
-  sel.addRange(range);
-  ta.setSelectionRange(0, text.length);
-  let ok = false;
-  try { ok = document.execCommand('copy'); } catch(e) {}
-  sel.removeAllRanges();
-  document.body.removeChild(ta);
-  return ok;
-}
-
-// 复制全部图片的绝对链接（每行一条，喂给 iPhone 快捷指令批量存相册）
+// 复制全部图片的绝对链接（每行一条）——桌面/手动用；iOS 上推荐用「发送到快捷指令」
 async function copyLinks(vendor, btn) {
   const info = PANEL_FILES[vendor];
   if (!info || !info.files.length) return;
-  const urls = info.files
+  await clipboardWrite(buildUrls(info));
+  btn.textContent = '✓ 链接已复制'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = '🔗 复制链接'; btn.classList.remove('done'); }, 2000);
+}
+
+function buildUrls(info) {
+  return info.files
     .map(f => new URL(`${info.dirPath}/${f}`, location.href).href)
     .join('\n');
-  // 优先纯文本写入；失败再退回异步剪贴板 API
-  if (!clipboardWritePlain(urls)) await clipboardWrite(urls);
-  btn.textContent = '✓ 链接已复制'; btn.classList.add('done');
-  setTimeout(() => { btn.textContent = '🔗 复制图片链接'; btn.classList.remove('done'); }, 2000);
+}
+
+// 直接把链接作为「输入」交给快捷指令运行——完全绕开剪贴板，
+// 规避 iOS 把 URL 列表识别成单个对象、以及 execCommand 在新版 iOS 失效的问题。
+function runShortcut(vendor, btn) {
+  const info = PANEL_FILES[vendor];
+  if (!info || !info.files.length) return;
+  let name = localStorage.getItem('xhs_shortcut_name') || '';
+  if (!name) {
+    name = (prompt('输入你 iPhone 上「存图快捷指令」的名称（要完全一致）', '社媒内容下载') || '').trim();
+    if (!name) return;
+    localStorage.setItem('xhs_shortcut_name', name);
+  }
+  const text = buildUrls(info);
+  // 文档化的 URL Scheme：input=text 配合 text 参数,把链接列表作为快捷指令输入
+  location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(name)}`
+    + `&input=text&text=${encodeURIComponent(text)}`;
+}
+
+// 长按按钮可重设快捷指令名称
+function resetShortcutName() {
+  const cur = localStorage.getItem('xhs_shortcut_name') || '';
+  const name = (prompt('重设快捷指令名称', cur) || '').trim();
+  if (name) localStorage.setItem('xhs_shortcut_name', name);
 }
 
 // ── 图片灯箱 ────────────────────────────────────────────────────
@@ -364,11 +369,12 @@ function renderPanelInto(panelEl, vendor, data, dirPath, xhsFiles) {
 
 <div class="img-head">📷 配图 · 共 ${xhsFiles.length} 张</div>
 <div class="img-actions">
-  <button class="act-btn solid" onclick="copyLinks('${vendor}',this)">🔗 复制图片链接</button>
-  <button class="act-btn" onclick="downloadAll('${vendor}',this)">⬇️ 打包下载 (.zip)</button>
+  <button class="act-btn solid" onclick="runShortcut('${vendor}',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
+  <button class="act-btn" onclick="copyLinks('${vendor}',this)">🔗 复制链接</button>
+  <button class="act-btn" onclick="downloadAll('${vendor}',this)">⬇️ 打包 (.zip)</button>
 </div>
 <div class="img-strip" id="imgs-${vendor}"></div>
-<p class="img-hint">推荐「复制图片链接」+ 快捷指令直接存相册；「打包下载」得到 zip（文件 App 内长按解压）· 按顺序上传</p>
+<p class="img-hint">「发送到快捷指令」直接存相册（首次填一次指令名）；「打包」得到 zip（文件 App 内长按解压）· 按顺序上传</p>
 `;
 
   // 缩略图
