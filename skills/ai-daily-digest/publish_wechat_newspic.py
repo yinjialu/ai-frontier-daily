@@ -10,9 +10,13 @@
   python publish_wechat_newspic.py --vendor openai          # 指定厂商
   python publish_wechat_newspic.py data/openai/2026-06-02.json  # 指定某天数据文件
   python publish_wechat_newspic.py --dry-run                # 只打印将提交的结构，不碰 API
+  python publish_wechat_newspic.py --no-comment             # 本次不开留言（默认开）
+  python publish_wechat_newspic.py --fans-only              # 留言仅限粉丝（默认所有人）
 
 凭据：环境变量 WECHAT_APPID/WECHAT_SECRET，或 ~/.config/wechat-official-draft/config.yaml。
 前置：本机公网 IP 在公众号 IP 白名单；需已认证服务号。
+留言：默认 need_open_comment=1（开启、所有人可评论）。仅当公众号已「开通留言功能」时
+      草稿/群发才会真正展示留言区；未开通则该参数被忽略，需到公众号后台申请开通。
 """
 import sys, os, re, json, mimetypes, urllib.request
 from pathlib import Path
@@ -101,6 +105,10 @@ def build_caption(data):
 
 def main():
     dry = "--dry-run" in sys.argv
+    # 留言：默认开启、所有人可评论；--no-comment 关闭，--fans-only 仅粉丝
+    # 注意：草稿层置 1 即请求开启，但能否真正显示留言取决于公众号是否已开通「留言功能」。
+    open_comment = 0 if "--no-comment" in sys.argv else 1
+    fans_only = 1 if "--fans-only" in sys.argv else 0
     vendor = _arg_value("--vendor", "anthropic")
     args = _positional()
     if args:
@@ -125,7 +133,8 @@ def main():
 
     if dry:
         print(json.dumps({"article_type": "newspic", "title": title,
-                          "images": [c.name for c in cards], "content": caption},
+                          "images": [c.name for c in cards], "content": caption,
+                          "need_open_comment": open_comment, "only_fans_can_comment": fans_only},
                          ensure_ascii=False, indent=2))
         return
 
@@ -148,8 +157,8 @@ def main():
         "title": title,
         "content": caption,
         "image_info": {"image_list": [{"image_media_id": m} for m in media_ids]},
-        "need_open_comment": 0,
-        "only_fans_can_comment": 0,
+        "need_open_comment": open_comment,
+        "only_fans_can_comment": fans_only,
     }
     res = _check(_post_json(f"{API}/draft/add?access_token={token}", {"articles": [article]}),
                  "创建贴图草稿")
