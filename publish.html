@@ -6,7 +6,7 @@
 <title>AI 前哨 · 发布助手</title>
 <style>
 :root{
-  --c-anthropic:#C1572E;--c-openai:#10A37F;--c-gemini:#3B5BD0;--c-nvidia:#76B900;
+  --c-anthropic:#C1572E;--c-openai:#10A37F;--c-gemini:#3B5BD0;--c-nvidia:#76B900;--c-cn:#D7392F;
   --ink:#26221C;--paper:#FBF8F1;--cream:#F1ECE0;--line:#D8CFBC;--soft:#7A7363;
   --accent:var(--c-anthropic);
 }
@@ -110,6 +110,7 @@ const VENDOR_META = {
   openai:    {name:'OpenAI',    color:'var(--c-openai)',    base:['#AI','#OpenAI','#ChatGPT']},
   gemini:    {name:'Gemini',    color:'var(--c-gemini)',    base:['#AI','#Google','#Gemini']},
   nvidia:    {name:'NVIDIA',    color:'var(--c-nvidia)',    base:['#AI','#NVIDIA','#GPU']},
+  cn:        {name:'国产模型',  color:'var(--c-cn)',        base:['#AI','#国产大模型','#国产AI']},
 };
 const TAG_FIELD_MAP = {
   '模型发布':'#大模型','开发者':'#AI开发者','研究':'#AI研究',
