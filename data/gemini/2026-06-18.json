@@ -1,0 +1,30 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.18",
+  "cnDate": "6月18日 周四",
+  "edition": "VOL.169",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI 今日正式停服：Pro/Ultra 与免费用户须切换至 Antigravity CLI",
+      "summary": "6 月 18 日起，Gemini CLI 及 Gemini Code Assist IDE 插件对 Google AI Pro/Ultra 及免费用户停止服务，接替者为基于 Go 的闭源 Antigravity CLI（agy 命令），支持多 Agent 后台并发任务、原生 Skills/Hooks/子 Agent 能力；企业 Gemini Code Assist Standard/Enterprise 不受影响，GitHub Code Assist 同日停止新安装。",
+      "source": "developers.googleblog.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "python-genai v2.9.0-rc1：实时音频语言自动检测 + 中间转录 + audioOffset",
+      "summary": "AudioTranscriptionConfig 新增语言自动检测与适配短语；VoiceActivity 增加 audioOffset 时间戳字段；LiveServerContent 支持 interimInputTranscription 中间实时转录；扩展 gemini-3-flash-preview 分词器覆盖；放宽模型发布路径验证，为实时语音 AI 应用提供更细粒度的音频控制能力。",
+      "source": "github.com/googleapis/python-genai"
+    },
+    {
+      "tag": "安全",
+      "title": "Gemini CLI v0.48.0-preview.0：修复路径遍历漏洞 + GDC 气隔环境认证",
+      "summary": "修复 Skill 安装时存在的路径遍历（path traversal）安全漏洞；新增 GDC 气隔（air-gapped）Service Identity 认证支持；零配额限制触发时提前快速失败防止重试循环挂起；统一工具输出格式化；改善多行转义引号处理与 tmux 后台误检测，这也是 Gemini CLI 停服前的最后一个安全补丁版本。",
+      "source": "github.com/google-gemini/gemini-cli"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 官方发布、API 更新与开发者生态动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

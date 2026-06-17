@@ -1,0 +1,33 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.18",
+  "cnDate": "6月18日 周四",
+  "edition": "VOL.169",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Kimi Code v0.17.0：本地 Web UI 正式上线，kimi server + kimi web 双命令",
+      "summary": "Kimi Code 推出本地化 Web UI 方案：kimi server 命令管理本地服务进程，kimi web 一键在浏览器打开会话界面；配套 REST 与 WebSocket API 支持完整 Web 客户端功能（会话列表、自动滚动、OAuth 刷新）；修复本地服务器目录锁死、原生二进制启动失败等稳定性问题，Web 设置页按 Provider 分组默认模型选择。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "company": "Kimi"
+    },
+    {
+      "tag": "开发者",
+      "title": "Kimi Code v0.16.0：kimi vis 会话可视化工具 + 安全访问控制增强",
+      "summary": "新增 kimi vis 命令启动会话可视化工具，支持深链接直接跳转至指定会话；屏蔽 Anthropic 兼容 Provider 访问环境凭据（ambient credentials），防止意外跨 Provider 凭据泄露；优化 Banner 显示频率、上下文压缩处理逻辑，提升大型代码库长会话的管理体验。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "company": "Kimi"
+    },
+    {
+      "tag": "开发者",
+      "title": "Qwen Code v0.18.2：40 项改进，Daemon 状态 API + 可折叠思考块 + 工作流元数据",
+      "summary": "阿里千问代码助手迎来大版本更新：新增 Daemon 状态 API 与工作流元数据支持；思考块（Thinking Block）可折叠并显示耗时计时器；Web Shell 获自定义页脚渲染与命令式 Composer API；上下文指令警告提示上线；修复权限管理、图片处理与国际化等多个问题，是近两周内最全面的一次功能迭代。",
+      "source": "github.com/QwenLM/qwen-code",
+      "company": "通义千问"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 DeepSeek、通义千问、智谱、Kimi、豆包等国产大模型最新进展。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

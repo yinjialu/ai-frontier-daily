@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.18",
+  "cnDate": "6月18日 周四",
+  "edition": "VOL.169",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "Sam Altman 出席 G7 峰会：前沿 AI 安全与主权基础设施进入核心议程",
+      "summary": "Sam Altman 在法国埃维昂与 G7 国家领导人会面，背景是 GPT-5.5 Cyber 等高级网络攻防模型引发的安全关切；峰会讨论前沿模型访问规范、主权 AI 及基础设施互操作性框架，全球 AI 治理规则制定进入实质推进阶段，对未来模型发布与出口政策有深远影响。",
+      "source": "cnbc.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "openai-python v2.43.0 / openai-node v6.44.0 双端同步跟进 API 规范",
+      "summary": "Python 与 Node.js 官方 SDK 同日更新，跟进最新 OpenAPI 规范变更；Node 端完成仓库基础设施迁移至 pnpm 并修复 TypeScript 配置，使用 openai-node v6.43.0 以下版本的开发者建议升级以获得最新 API 能力对齐与稳定性改善。",
+      "source": "github.com/openai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、API 更新、研究与产品动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.18",
+  "cnDate": "6月18日 周四",
+  "edition": "VOL.169",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.181：/config 快捷设置 + 在场检测抑制手机推送 + 25 项修复",
+      "summary": "新增 /config key=value 语法，可在对话中直接设置任意配置项；CLAUDE_CLIENT_PRESENCE_FILE 环境变量让本机在线时自动抑制移动端推送通知；sandbox.allowAppleEvents 开放 macOS 自动化；Bun 运行时升至 1.4；修复 Write/Edit 在网络盘写出零字节文件、macOS TUI 冻结、子 Agent 嵌套无限递归等 25 个关键 bug。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Agent SDK TypeScript v0.3.181：限速错误码精细化，可检测额度耗尽场景",
+      "summary": "SDKRateLimitInfo 新增 errorCode、canUserPurchaseCredits、hasChargeableSavedPaymentMethod 三字段，让 AI 应用能精准识别「额度耗尽」类限速并引导用户充值；MCP 工具拉取失败时状态由误报「已连接」改为精确错误详情；Remote Control 会话丢失文件附件问题一并修复。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript"
+    },
+    {
+      "tag": "政策",
+      "title": "Dario Amodei 出席 G7 峰会：AI 实验室首次进入最高级别外交对话",
+      "summary": "Anthropic CEO Dario Amodei 与 Sam Altman（OpenAI）、Demis Hassabis（Google DeepMind）等共同出席法国埃维昂 G7 峰会，与七国领导人讨论前沿 AI 风险、基础设施主权及访问权限治理框架。这是 AI 实验室首次作为正式参与方进入 G7 最高级别政策对话。",
+      "source": "bloomberg.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

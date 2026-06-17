@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.18",
+  "cnDate": "6月18日 周四",
+  "edition": "VOL.169",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "HPE AI Factory 全面升级：Vera CPU 服务器 + RTX PRO Blackwell 正式上市",
+      "summary": "HPE Discover 大会（拉斯维加斯，截至 6 月 18 日）宣布 HPE Private Cloud AI Factory 重大扩展：首款基于 NVIDIA Vera CPU 的 ProLiant 服务器与 NVIDIA Agent Toolkit 正式上市；配套 RTX PRO Blackwell Server Edition GPU + Spectrum-X 以太网 + BlueField-3 DPU 组合全面可购；新增 26 家生态合作伙伴，累计超 70 种打包 AI 工作负载，助力企业级 Agent AI 落地生产。",
+      "source": "blogs.nvidia.com"
+    },
+    {
+      "tag": "生态",
+      "title": "Vultr 选用 HPE + NVIDIA 扩建 AI 数据中心，中型云加速向 AI 工厂转型",
+      "summary": "云服务商 Vultr 宣布采用 HPE 与 NVIDIA 联合解决方案扩张 AI 数据中心基础设施，是 HPE Discover 期间 NVIDIA 生态扩展的组成部分。表明中型云服务商也在加速向 NVIDIA AI 工厂架构迁移，NVIDIA 算力生态持续向企业私有云与中小云厂商下沉。",
+      "source": "investing.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
