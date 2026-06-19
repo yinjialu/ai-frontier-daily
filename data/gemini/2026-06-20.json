@@ -1,0 +1,18 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.20",
+  "cnDate": "6月20日 周六",
+  "edition": "VOL.171",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Google Gen AI SDK v2.9.0 正式版（Python + JS 同步）：交互模块重写 + 实时音频增强 + Computer Use API",
+      "summary": "Python 与 JavaScript 版 Google Gen AI SDK 同步发布 v2.9.0 正式版：交互（interactions）模块完全重写并保持 API 兼容；新增 audioOffset VoiceActivity 时间戳与实时中间转录（interimInputTranscription）；AudioTranscriptionConfig 支持语言提示（LanguageHints）与适配短语；正式暴露 Computer Use API 字段；本地 Gemma 4 分词器支持；JS 端新增频率/存在惩罚参数与缓存内容支持，为实时语音与 Agentic 应用提供更完整的 SDK 基础。",
+      "source": "github.com/googleapis/python-genai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 官方发布、API 更新与开发者生态动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

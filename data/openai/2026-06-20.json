@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.20",
+  "cnDate": "6月20日 周六",
+  "edition": "VOL.171",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "ChatGPT 定时任务大升级：专属管理页 + 弹性时段 + 三类任务全面开放",
+      "summary": "OpenAI 对 ChatGPT 定时任务（Scheduled Tasks）进行重大升级：新增专属 Scheduled 侧边栏管理页，可一览所有任务的下次执行时间并随时暂停、恢复或删除；支持一次性、循环与监控三类任务，时间窗口改为弹性时段（晨间/下午/傍晚）而非固定时刻，速度与稳定性同步提升。全球面向 Plus、Pro、Business 和 Enterprise 用户推送（Web/移动端）。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "生态",
+      "title": "ChatGPT 多项体验更新：发音帮助 + World Cup 场景 + iOS 拍照提速",
+      "summary": "ChatGPT 推出多项用户体验更新：新增 Pronunciation Help 发音辅助功能，帮助用户获取单词发音指导；引入世界杯专属对话场景，为球迷提供赛事资讯；提供更细粒度的已连接应用权限管理；iOS 拍照上传流程重构，图片加入对话的速度与流畅度显著提升；聊天整理、分享及便签创建体验同步优化。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

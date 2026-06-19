@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.20",
+  "cnDate": "6月20日 周六",
+  "edition": "VOL.171",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Claude MCP 企业管控授权（EMA）稳定版发布：Okta 统一配置，员工零操作继承",
+      "summary": "Anthropic 推出 MCP 企业管控授权（EMA）正式稳定版，首发合作伙伴为 Okta。管理员在 IdP 侧配置一次，员工首次登录 Claude 即自动继承指定 Connector 授权，覆盖 Claude Chat、Claude Code 与 Cowork，适用 Team 和 Enterprise 方案。首批支持 Asana、Atlassian、Canva、Figma、Granola、Linear、Supabase 七家服务，这也是 MCP 规范企业授权扩展稳定后的首个生产级实现。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.183：Auto 模式阻断破坏性命令 + 弃用模型警告",
+      "summary": "v2.1.183 在 Auto 模式下新增安全护栏：若未明确请求丢弃工作，git reset --hard、git checkout --、git clean -fd 及 terraform/pulumi/cdk destroy 等命令将被阻断；新增弃用模型警告（stderr 输出）；attribution.sessionUrl 配置可省略提交与 PR 中的会话链接；修复 thinking.disabled 验证错误、WebSearch 子代理、TUI 光标多项 bug。配套 Agent SDK TypeScript v0.3.183 同步更新。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Managed Agents Webhooks + Multiagent Outcomes 进入公测",
+      "summary": "Claude Managed Agents 新增 Webhook 支持，可订阅 session 与 vault 生命周期事件，实现自动化流程回调；Multiagent Sessions 与 Outcomes 正式进入公测（managed-agents-2026-04-01 beta 头）；Vault 凭证后台刷新新增 mcp_oauth 类型支持，意味着多 Agent 协作与结果追踪已具备生产级可用性。",
+      "source": "platform.claude.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
