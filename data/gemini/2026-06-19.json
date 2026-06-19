@@ -1,0 +1,18 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.19",
+  "cnDate": "6月19日 周五",
+  "edition": "VOL.170",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.47.0 正式版：Gemini 3.5 Flash 后端集成 + 内置 Antigravity 迁移命令",
+      "summary": "Gemini CLI 6月18日（CLI 正式停服当日）发布 v0.47.0 正式版，内置 Antigravity CLI 文档与迁移命令作为「告别礼」，同步加入 Gemini 3.5 Flash 后端支持并更新 auto 模式策略（在 Antigravity 内速度据称提升最高 12 倍），MCP 工具发现改用原子更新，为存量脚本和自动化流程提供过渡方案。",
+      "source": "github.com/google-gemini/gemini-cli"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递 Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

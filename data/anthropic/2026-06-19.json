@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.19",
+  "cnDate": "6月19日 周五",
+  "edition": "VOL.170",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Anthropic 首尔办公室正式开幕，与韩国政府签署 AI 安全 MOU",
+      "summary": "Anthropic 于 6月17日正式开设首尔办公室，这是其在东亚的首个据点。与韩国科学技术信息通信部签署 AI 安全合作 MOU，并宣布与韩国本土 AI 生态伙伴的多项合作，表明 Anthropic 在亚太区的商业与政策布局同步提速。",
+      "source": "anthropic.com/news"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Design Beta 大更新：导入设计系统 + Code Sync + 直接编辑画布",
+      "summary": "Claude Design 已向 Pro/Max/Team/Enterprise 用户推出 Beta 大版本：新增从 Figma 等工具导入设计系统、与 Claude Code 深度集成实现设计与代码双向同步、支持在画布上直接编辑内容，同时扩展了导出格式，覆盖从概念到代码的完整创作链路。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "企业",
+      "title": "Claude Managed Agents 支持企业自控沙箱与私有 MCP 服务器",
+      "summary": "Claude Managed Agents 现可在企业自行控制的沙箱环境内运行，工具执行环境与私有 MCP 服务均限定在企业既有安全边界内，意味着企业无需将敏感数据发送到外部——满足金融、医疗等对数据主权有严格要求的合规场景。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

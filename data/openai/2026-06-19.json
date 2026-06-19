@@ -1,0 +1,30 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.19",
+  "cnDate": "6月19日 周五",
+  "edition": "VOL.170",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "ChatGPT 健康智能升级：GPT-5.5 Instant 专项优化急诊识别与医学解释",
+      "summary": "OpenAI 6月18日宣布 ChatGPT 健康功能升级，由 GPT-5.5 Instant 驱动，在 HealthBench Professional 综合评测中较前代大幅提升：新版能更准确识别需要急诊的信号、主动追问关键上下文、解释不确定性并将复杂医学信息转化为易懂语言，服务每周超 2.3 亿健康咨询用户。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "生态",
+      "title": "OpenAI Partner Network 正式发布：构建经官方认证的企业 AI 合作生态",
+      "summary": "OpenAI 6月18日推出 Partner Network，建立面向企业的官方认证合作伙伴体系，将具备 OpenAI 技术能力的系统集成商和服务商纳入统一认证网络，为企业客户提供经验证的 ChatGPT 及前沿模型实施与集成支持，加速各行业的 AI 落地部署。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex v0.141.0：Noise 协议端到端加密中继 + 「我创建的」插件市场目录",
+      "summary": "OpenAI Codex 6月18日发布 v0.141.0，远程执行器改用经认证的 Noise 协议端到端加密中继通道，跨系统边界时原生工作目录与 Shell 环境完整保留；同时新增「我创建的」插件市场策展目录，App-server 客户端获得子线程列表与限速额度管理能力，并加入实时语音追加控制与会话条目管理。",
+      "source": "github.com/openai/codex"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递 OpenAI 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
