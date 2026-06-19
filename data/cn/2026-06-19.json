@@ -1,0 +1,40 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.19",
+  "cnDate": "6月19日 周五",
+  "edition": "VOL.170",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Kimi Code v0.18.0：AgentSwarm 并发控制 + Web UI 实时会话搜索",
+      "summary": "Kimi Code 6月18日发布 v0.18.0，新增环境变量控制 AgentSwarm 初始并发上限，防止大型任务触发提供商限速；Web 侧边栏加入实时会话搜索（按标题和用户提示过滤），并修复会话计数错位、分页访问历史会话及 OAuth 登录弹窗等多项问题。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "company": "Kimi"
+    },
+    {
+      "tag": "开发者",
+      "title": "Qwen Code v0.18.3：取消提问后立即终止 + CLI 多项体验优化",
+      "summary": "通义千问 Qwen Code 6月17日发布 v0.18.3，新增「取消 ask_user_question 后立即停止」能力，避免用户取消交互后 Agent 继续执行；同步优化 CLI 单行截断的斜杠建议渲染、Web Shell 自定义页脚支持，以及 Plan 模式退出一致性修复，提升多工具协作场景的稳定性。",
+      "source": "github.com/QwenLM/qwen-code",
+      "company": "通义千问"
+    },
+    {
+      "tag": "生态",
+      "title": "字节跳动火山引擎（Volcano Ark）接入 MiniMax-M3 与 DeepSeek-V4 系列",
+      "summary": "据报道，截至 6月18日字节跳动旗下 Volcano Ark API 平台已新增对 MiniMax-M3 及 DeepSeek-V4 系列模型的接入支持，用户可通过 Volcano Ark 统一调用上述第三方旗舰模型，进一步丰富企业 AI 应用的模型选型与切换灵活性。",
+      "source": "volcengine.com",
+      "company": "豆包"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Kimi 会员服务全面切换至 K2.7 Code，编程能力大幅跃升",
+      "summary": "据报道，截至 6月18日 Kimi 订阅会员服务已将底层模型全面升级至 Kimi K2.7 Code——这一于 6月12日开源的编程专项模型在代码生成与复杂工程任务上较 K2.6 有显著提升——意味着全量付费用户无需切换入口即可享受最新旗舰编程能力。",
+      "source": "kimi.com",
+      "company": "Kimi"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
