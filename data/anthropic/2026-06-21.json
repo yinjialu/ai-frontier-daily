@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.21",
+  "cnDate": "6月21日 周日",
+  "edition": "VOL.172",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.185：API 等待提示措辞优化 + 静默触发阈值翻倍",
+      "summary": "v2.1.185 修复流式停顿时的用户体验：提示语由「No response from API · Retrying in …」改为「Waiting for API response · will retry in …」——措辞更准确，避免让用户误解为重试；触发阈值从 10 秒延长至 20 秒，减少短暂延迟下的误报干扰。配套 Agent SDK TypeScript v0.3.185 同步更新至同等功能。",
+      "source": "github.com/anthropics/claude-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

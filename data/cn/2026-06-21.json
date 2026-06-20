@@ -1,0 +1,19 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.21",
+  "cnDate": "6月21日 周日",
+  "edition": "VOL.172",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Qwen Code v0.18.4：127 PR 重磅更新，QQ Bot 接入 + Web Shell UI + Token 成本可视化",
+      "summary": "通义千问 Qwen Code 6月20日发布 v0.18.4，合并 127 个 PR。新增 QQ Bot 频道适配器（拓展发行渠道）、`qwen serve` 内置 Web Shell UI 及插件管理、Token 用量成本可视化；macOS 26 Liquid Glass 资产编译支持；ACP 权限超时时间可配；扩展 displayName/description 国际化；工具调用循环熔断器；MCP 服务器 IDE 会话隔离，修复多项图片格式解析、OAuth 元数据和 Cron 调度器 bug。",
+      "source": "github.com/QwenLM/qwen-code",
+      "company": "通义千问"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
