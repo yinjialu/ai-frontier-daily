@@ -6,6 +6,18 @@
   "brand": "AI 前哨 · 每日 Anthropic",
   "updates": [
     {
+      "tag": "产品",
+      "title": "Claude Code Artifacts：会话变可分享的实时协作页面",
+      "summary": "Anthropic 6月18日宣布 Claude Code 支持 Artifacts——将编码会话转为可分享的实时可视化页面：PR 走查、自动更新仪表盘、发布清单等均可一键生成。支持实时协作（队友打开页面即自动刷新）、版本历史（同一链接随时回溯），并内置 Gallery 管理所有 Artifact。默认私有，仅组织内认证用户可访问，无需代码审查即可安全共享。",
+      "source": "claude.com/blog/artifacts-in-claude-code"
+    },
+    {
+      "tag": "安全",
+      "title": "Workload Identity Federation 正式上线：API Key 替换为短期 OIDC 凭据",
+      "summary": "Anthropic 6月17日宣布 Workload Identity Federation（WIF）正式发布，以 OIDC 短期令牌替代静态 API Key，消除密钥泄露风险。兼容 AWS IAM 角色、GCP/Kubernetes 服务账户、Azure 托管身份、GitHub Actions Token 及 Okta；新增「Service Account」概念，每个工作负载拥有独立身份、角色和审计日志，实现最小权限隔离。",
+      "source": "claude.com/blog/workload-identity-federation"
+    },
+    {
       "tag": "开发者",
       "title": "Claude Code v2.1.185：API 等待提示措辞优化 + 静默触发阈值翻倍",
       "summary": "v2.1.185 修复流式停顿时的用户体验：提示语由「No response from API · Retrying in …」改为「Waiting for API response · will retry in …」——措辞更准确，避免让用户误解为重试；触发阈值从 10 秒延长至 20 秒，减少短暂延迟下的误报干扰。配套 Agent SDK TypeScript v0.3.185 同步更新至同等功能。",
