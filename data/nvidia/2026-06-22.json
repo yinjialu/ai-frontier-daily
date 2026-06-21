@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.22",
+  "cnDate": "6月22日 周一",
+  "edition": "VOL.173",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Automate 2026 开幕：NVIDIA 赞助人形机器人展区 + 扩展 Doosan 物理 AI 合作",
+      "summary": "全球最大自动化展 Automate 2026（芝加哥，6 月 22–25 日）今日开幕，NVIDIA 主办人形机器人展区（Humanoid Robot Pavilion），覆盖十余家机器人企业现场演示。同期 NVIDIA 宣布深化与斗山集团（Doosan）合作：聚焦物理 AI 与 AI 工厂基础设施，集成 NVIDIA 技术帮助机器人在复杂动态环境中自主感知与行动，推动制造业向自适应生产转型。",
+      "source": "nvidia.com"
+    },
+    {
+      "tag": "生态",
+      "title": "Cannes Lions 2026：NVIDIA AI 合作伙伴展示广告营销自动化，Criteo 模型训练提速 2 倍",
+      "summary": "坎城创意节（Cannes Lions，6 月 22–26 日）同期开幕，NVIDIA 合作伙伴展示 AI 广告技术落地：Criteo 基于 Blackwell GPU 实现模型训练 2 倍提速，每年节省 17,000 GPU 小时；KERV.ai 使用 Nemotron 3 Nano Omni 处理速度提升逾 10 倍；Higgsfield 通过 NVIDIA Agent Toolkit 将广告创意从生成到投放全流程自动化。",
+      "source": "blogs.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

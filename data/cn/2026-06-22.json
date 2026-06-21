@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.22",
+  "cnDate": "6月22日 周一",
+  "edition": "VOL.173",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Qwen Code v0.18.5：安全加固 + 工作区边界强制执行 + 新增 Requesty 集成",
+      "company": "通义千问",
+      "summary": "通义千问 Qwen Code 6 月 21 日发布 v0.18.5，聚焦安全与稳定性：强制 Plan 模式提示需用户确认才可执行、严格限制 Shell 操作在工作区边界内、校验 LSP Socket 端口合法性；CLI 修复 FORCE_HYPERLINK 严格解析与会话大小值校验；新增 Requesty 提供商集成；改为直接读取 .git 内容获取当前分支，避免产生子进程。",
+      "source": "github.com/QwenLM/qwen-code"
+    },
+    {
+      "tag": "模型发布",
+      "title": "DeepSeek V4.1 灰度扩散：代码能力大幅提升，全模态版本正式发布在即",
+      "company": "DeepSeek",
+      "summary": "据多位用户（6 月 15 日起）灰度体验反馈，DeepSeek V4.1 代码能力相比 V4 「天差地别」，知识截止日期已更新至 2026 年初；据报道 V4.1 将补齐图像与音频输入（保持文本输出），并原生支持 MCP 协议与企业工具链集成。官方尚未宣布正式发布日期，但灰度范围持续扩大，预期本月内正式上线。",
+      "source": "finance.sina.com.cn"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

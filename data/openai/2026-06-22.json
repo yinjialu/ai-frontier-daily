@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.22",
+  "cnDate": "6月22日 周一",
+  "edition": "VOL.173",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "OpenAI 发布 Codex 官方 Claude Code 插件：跨厂商代码审查与任务委托正式可用",
+      "summary": "OpenAI 发布官方 codex-plugin-cc（MCP 服务器），可直接插入 Claude Code，让用户在不离开 Claude Code 环境的情况下调用 Codex 进行代码审查、对抗性批评或任务委托。这被业界视为「头部竞争对手主动互通」的罕见信号，也是 Codex 0.142.0-alpha 系列持续强化互操作性布局的核心组成部分。",
+      "source": "github.com/openai/codex-plugin-cc"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 0.142.0-alpha 密集迭代：/import 迁移 Claude Code 配置 + Bedrock 鉴权 + 端到端加密执行",
+      "summary": "OpenAI Codex 6 月 20–21 日连发 alpha.7~10，引入：/import 指令可从 Claude Code 选择性迁移工作区配置与对话历史；@ 触发统一提及菜单（文件/插件/技能）；支持 Amazon Bedrock 托管 API 鉴权及本地加密 OAuth 凭证存储；远程执行器改用 Noise 加密信道杜绝令牌外泄；SQLite 状态库损坏时自动备份重建。",
+      "source": "github.com/openai/codex"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

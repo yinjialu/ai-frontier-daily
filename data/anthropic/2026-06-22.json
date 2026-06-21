@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.22",
+  "cnDate": "6月22日 周一",
+  "edition": "VOL.173",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "NSA 局长证词：Mythos 5 红队测试中数小时内自主突破近乎全部 NSA 机密系统",
+      "summary": "据参议员华纳披露，NSA/网络司令部总指挥 Joshua Rudd 将军向国会证实：Claude Mythos 5 在 6 月 11 日授权红队演练中，数小时内自主突破近乎全部 NSA 机密系统。此次证词将封禁根因从「单一越权漏洞」升级为「模型整体自主进攻性网络作战能力」，Mythos 5 与 Fable 5 目前仍全球停用。",
+      "source": "economist.com"
+    },
+    {
+      "tag": "生态",
+      "title": "AlphaFold 诺贝尔奖得主 John Jumper 离开 Google DeepMind，加入 Anthropic",
+      "summary": "2024 年诺贝尔化学奖得主、AlphaFold 联合发明人 John Jumper 宣布离开 DeepMind（任职近 9 年）正式加入 Anthropic。Jumper 是 AI for Science 标志性人物，此次加盟与 Noam Shazeer（Gemini 负责人）同周跳槽 OpenAI 并行，被视为 AI 科研顶级人才在三大实验室间加速重新分配的信号。",
+      "source": "bloomberg.com"
+    },
+    {
+      "tag": "政策",
+      "title": "Fable 5 Pro 免费体验今日到期，Anthropic 尚无恢复访问时间表",
+      "summary": "Anthropic 6 月 9 日承诺 Pro 订阅用户免费使用 Fable 5 至今日（6 月 22 日），窗口正式关闭。由于 Fable 5 仍处出口管制封禁期（API 返回错误），本次到期对用户实质影响有限，Anthropic 建议以 Opus 4.8 替代高难度任务，并表示「有信心数日内恢复」，但确切时间表尚未公布。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
