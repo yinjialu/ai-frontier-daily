@@ -22,6 +22,10 @@ vendors:
       # 主站 news 页 JS 渲染、CI feedparser 抓不了，但 Claude 驱动（routine）可 WebFetch。
       - name: Anthropic News
         url: https://www.anthropic.com/news
+      # claude.com/blog：Claude 产品博客（独立域名，无 RSS，云端 IP WebFetch 返回 403）。
+      # routine 请以 WebSearch "site:claude.com/blog" 补充发现——2026-06-21 因未注册漏掉 Artifacts & WIF。
+      - name: Claude Blog
+        url: https://claude.com/blog
 
   openai:
     # 好消息：OpenAI 官方提供可用 RSS（/blog/rss.xml 与 /news/rss.xml 是同一个 feed），
