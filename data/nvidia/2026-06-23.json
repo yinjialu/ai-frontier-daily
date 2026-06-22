@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.23",
+  "cnDate": "6月23日 周二",
+  "edition": "VOL.174",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "ISC 高性能计算 2026：欧洲一次性宣布 35 台 NVIDIA AI 超算，史上最大单年扩张",
+      "summary": "在汉堡 ISC High Performance 2026 大会（6月22–26日）开幕式上，NVIDIA 宣布欧洲正在建设 35 台 NVIDIA AI 超算——年内最大单次扩张，覆盖超 300 万研究人员；自去年起欧洲已累计部署或公布 800 AI exaflops；巴塞罗那超算中心、CINECA、弗劳恩霍夫、于利希超算中心同期宣布将 CUDA-Q 量子-GPU 混合计算接入新系统，欧洲量子-GPU 超算布局持续扩大。",
+      "source": "nvidianews.nvidia.com"
+    },
+    {
+      "tag": "生态",
+      "title": "NVIDIA 与 IREN 达成战略合作：可再生能源 AI 数据中心规模扩至 5 GW",
+      "summary": "NVIDIA 宣布与 AI 云服务商 IREN 签署战略合作协议，目标在北美、欧洲和亚太可再生能源丰富地区加速部署最多 5 GW AI 推理与训练 GPU 集群。IREN 为垂直整合的 AI 云提供商，拥有自有电网接入土地与电力资源；合作聚焦绿色算力底座，契合 NVIDIA 对低碳 AI 基础设施的长期布局。",
+      "source": "nvidianews.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

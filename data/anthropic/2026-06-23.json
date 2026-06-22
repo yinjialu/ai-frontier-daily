@@ -1,0 +1,36 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.23",
+  "cnDate": "6月23日 周二",
+  "edition": "VOL.174",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "Fable 5 正式进入用量积分制：订阅限额不再覆盖，API 价格为 Opus 4.8 两倍",
+      "summary": "6月23日起，Fable 5 从 Pro/Max/Team/企业订阅配额中移除，继续使用需消耗用量积分，价格为 $10/百万输入 Token、$50/百万输出 Token（含 90% 缓存折扣），是当前所有正式可用前沿模型中最高定价，亦是 Opus 4.8 的两倍。Anthropic 表示将尽快恢复订阅覆盖，但未给出具体日期。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "安全",
+      "title": "30 天数据留存政策强制上线：企业零留存协议对 Fable 5 / Mythos 5 不再适用",
+      "summary": "随 Fable 5 与 Mythos 5 上线，Anthropic 启用强制 30 天流量留存要求，即便企业此前已签署零留存协议亦不例外。官方声明留存数据仅用于防御复杂新型攻击和识别误报，不用于训练，但此举已引发部分高合规企业客户的数据主权顾虑。与此同时，Mythos 5 已向新一批 Project Glasswing 审批机构正式开放。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.186：MCP 鉴权 CLI + iTerm2 支持 + Bash 命令自动触发 Claude 响应",
+      "summary": "新增 `claude mcp login/logout` 命令（支持 `--no-browser` SSH 场景）管理 MCP 服务器鉴权；`!` 前缀 Bash 命令现可自动触发 Claude 响应（可通过 `respondToBashCommands: false` 关闭）；新增 `teammateMode: \"iterm2\"` 配置与 AWS 凭据刷新入口；修复机器睡眠后恢复时的流式失败（Content block not found 错误）及 Workflow schema 验证死循环（现最多 5 次后终止）等多项问题。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK v0.3.186：后台 Agent 权限转发 + MCP 目录工具 + 会话回溯锚点",
+      "summary": "控制请求 `can_use_tool` 新增 `agent_id` 字段，后台 Agent 运行时的权限提示现转发至宿主 `canUseTool` 处理，而非自动拒绝；新增 `ReadMcpResourceDirTool` 独立工具类型（原为 `ReadMcpResourceTool` 的降级路径）；`rewind_conversation` 控制请求支持将会话回溯至指定位置并创建持久化恢复锚点，适合复杂 Agentic 工作流调试与重试场景。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

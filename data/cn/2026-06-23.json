@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.23",
+  "cnDate": "6月23日 周二",
+  "edition": "VOL.174",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "阿里发布 Qwen-Robot Suite：首款具身智能基础模型三件套，打通操作-导航-世界模型闭环",
+      "company": "通义千问",
+      "summary": "阿里通义实验室 6月16日正式发布首个具身智能基础模型系列，包含三款专项模型：Qwen-RobotManip（通用视觉-语言-动作，支持跨硬件统一 80 维动作表示）、Qwen-RobotNav（视觉-语言导航，整合语言指令导航、目标搜索等五大任务族）、Qwen-RobotWorld（物理世界模型，可生成训练视频并预演动作轨迹）。这是千问从对话 AI 向物理世界 AI 和具身智能体的战略性转向，标志国产大模型开始正式布局机器人基础设施。",
+      "source": "qbitai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Kimi Code v0.19.0：/add-dir 多目录扩展 + 快照加载提速 + Provider 稳定性修复",
+      "company": "Kimi",
+      "summary": "Kimi Code 6月22日发布 v0.19.0，新增 `/add-dir <path>` 命令支持将额外工作区目录纳入 Agent 上下文，突破单目录限制；优化会话快照加载性能（改用直接磁盘读取）；修复 Provider 请求因空文本内容块失败的问题；增强图片格式自动检测能力；改进 Web 客户端状态管理与长分支名 UI 展示。",
+      "source": "github.com/MoonshotAI/kimi-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

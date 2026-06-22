@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.23",
+  "cnDate": "6月23日 周二",
+  "edition": "VOL.174",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Patch the Planet：OpenAI 联合 Trail of Bits / HackerOne 用 GPT-5.5-Cyber 修复开源漏洞",
+      "summary": "OpenAI Daybreak 计划推出「Patch the Planet」，与 Trail of Bits、HackerOne、Calif 合作，以 GPT-5.5-Cyber（CyberGym 85.6%，高于 GPT-5.5 的 81.8%）全程驱动开源安全漏洞的发现→验证→补丁→合并完整闭环。30 余个项目已承诺参与，包括 cURL、Go、Python、Sigstore 等基础软件；Trail of Bits 已识别数百个问题并合并数十个补丁，更多正处协调披露中。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex rust-v0.142.0：用量积分兑换 + 多 Agent 委托配置 + 索引式网络搜索模式",
+      "summary": "Codex 发布 v0.142.0 正式版：/usage 命令新增已赚取积分的展示与兑换确认流程；/plugins 重组为 Curated / Workspace / Shared 三区并提供插件推荐；可配置按 Agent 线程追踪 Token 预算并在超限时中止；多 Agent 委托支持三级模式（禁用 / 仅显式请求 / 主动）；新增索引式网络搜索（允许实时搜索但限定页面直接访问至白名单 URL）；DNS 延迟加载 + 模型缓存预热 + 技能并行读取显著缩短启动延迟。",
+      "source": "github.com/openai/codex"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
