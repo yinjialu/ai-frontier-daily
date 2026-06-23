@@ -51,13 +51,16 @@ def run_once(sources_path, okf_root, state_file, now,
         st["last_checked"] = now
         ingested = ingested_urls(okf_root, sid)
         open_pr = set(st.get("open_pr_urls", []))
-        first_run = not ingested and not open_pr and "total_articles_seen" not in st
+        # 去重唯一真相 = OKF 文件。有 OKF 文件永远不是首刊；
+        # 否则看显式 initialized flag（与 open_pr / known_urls_count 解耦，
+        # 避免 state 部分损坏时误开历史全量 PR）。
+        first_run = not ingested and not st.get("initialized")
         new_articles = diff_new_articles(fetched, ingested, open_pr)
         if first_run:
             st["open_pr_urls"] = [a["url"] for a in fetched]
-            st["total_articles_seen"] = len(fetched)
+            st["initialized"] = True
             continue
-        st["total_articles_seen"] = len(ingested) + len(open_pr)
+        st["known_urls_count"] = len(ingested) + len(open_pr)
         for art in new_articles:
             all_new.append((source, art))
 
@@ -92,30 +95,33 @@ def run_once(sources_path, okf_root, state_file, now,
 
 
 def _real_open_pr(branch, articles):
-    """建分支、提交 OKF 文件、开 PR。"""
-    subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
-    # 只提 OKF 文件——state.json 走 main 单独提交，避免两头写同一文件 merge 时回退
-    subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
-    subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
-                   cwd=REPO, check=True)
-    subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
-    by_source = {}
-    for a in articles:
-        by_source.setdefault(a["source"], []).append(a)
-    counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
-    title = f"📡 内参新动态 | {branch[-10:]} ({counts})"
-    body_lines = []
-    for sid, arts in by_source.items():
-        body_lines.append(f"## {sid}")
-        for a in arts:
-            body_lines.append(f"- [{a['title']}]({a['url']})")
-            body_lines.append(f"  > {a['summary']}")
-    subprocess.run(
-        ["gh", "pr", "create", "--title", title, "--body", "\n".join(body_lines),
-         "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
-        cwd=REPO, check=True,
-    )
-    subprocess.run(["git", "checkout", "main"], cwd=REPO, check=True)
+    """建分支、提交 OKF 文件、开 PR。无论中途是否抛异常都切回 main，
+    避免无人值守循环卡在 firsthand 分支。"""
+    try:
+        subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
+        # 只提 OKF 文件——state.json 走 main 单独提交，避免两头写同一文件 merge 时回退
+        subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
+        subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
+                       cwd=REPO, check=True)
+        subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
+        by_source = {}
+        for a in articles:
+            by_source.setdefault(a["source"], []).append(a)
+        counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
+        title = f"📡 内参新动态 | {branch[-10:]} ({counts})"
+        body_lines = []
+        for sid, arts in by_source.items():
+            body_lines.append(f"## {sid}")
+            for a in arts:
+                body_lines.append(f"- [{a['title']}]({a['url']})")
+                body_lines.append(f"  > {a['summary']}")
+        subprocess.run(
+            ["gh", "pr", "create", "--title", title, "--body", "\n".join(body_lines),
+             "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
+            cwd=REPO, check=True,
+        )
+    finally:
+        subprocess.run(["git", "checkout", "main"], cwd=REPO, check=False)
 
 
 def _real_commit_state():

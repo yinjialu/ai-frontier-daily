@@ -1,3 +1,4 @@
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -32,7 +33,16 @@ def write_okf(root: Path, article: dict) -> Path:
     d = _source_dir(root, article["source"])
     d.mkdir(parents=True, exist_ok=True)
     date = article["timestamp"][:10]
-    path = d / f"{date}-{slugify(article['url'])}.md"
+    url = article["url"]
+    slug = slugify(url)
+    path = d / f"{date}-{slug}.md"
+    # 防覆盖：若目标已存在且其 resource 与当前 url 不同（真冲突），改用带短哈希文件名。
+    # 重复写同一篇 URL（resource 相同）时仍用原名，幂等覆盖自身。
+    if path.exists():
+        m = _FM_RESOURCE_RE.search(path.read_text(encoding="utf-8"))
+        if m and m.group(1) != url:
+            h6 = hashlib.sha1(url.encode()).hexdigest()[:6]
+            path = d / f"{date}-{slug}-{h6}.md"
     tags = ", ".join(article.get("tags") or [])
     body = article.get("summary") or ""
     content = (
