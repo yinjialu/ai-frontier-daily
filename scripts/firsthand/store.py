@@ -8,8 +8,13 @@ _SEQ_PREFIX_RE = re.compile(r"^(\d+)-")
 
 
 def slugify(url: str) -> str:
-    """取 URL 最后一段作为 slug。"""
-    return url.rstrip("/").rsplit("/", 1)[-1]
+    """取 URL 最后一段作为 slug。末段是 index.html/index 等无意义时，退用父段
+    （如 .../2026/may-update/index.html → may-update）。"""
+    parts = url.rstrip("/").rsplit("/", 2)
+    last = parts[-1]
+    if last.lower() in ("index.html", "index.htm", "index") and len(parts) >= 2:
+        return parts[-2]
+    return last
 
 
 def _source_dir(root: Path, source_id: str) -> Path:

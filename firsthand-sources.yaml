@@ -19,3 +19,45 @@ sources:
     type: html-links
     link_prefix: /research/
     base_url: https://www.anthropic.com
+
+  - id: anthropic-news
+    name: Anthropic Newsroom
+    url: https://www.anthropic.com/news
+    type: html-links
+    link_prefix: /news/
+    base_url: https://www.anthropic.com
+
+  - id: transformer-circuits
+    name: Transformer Circuits
+    url: https://transformer-circuits.pub/feed.xml
+    type: rss
+
+  - id: openai-news
+    name: OpenAI News
+    url: https://openai.com/news/rss.xml
+    type: rss
+
+  - id: deepmind-blog
+    name: Google DeepMind Blog
+    url: https://deepmind.google/blog/rss.xml
+    type: rss
+
+  - id: google-models-research
+    name: Google Keyword — Models & Research
+    url: https://blog.google/innovation-and-ai/models-and-research/rss/
+    type: rss
+
+  - id: google-gemini
+    name: Google Keyword — Gemini
+    url: https://blog.google/products/gemini/rss/
+    type: rss
+
+  - id: qwen-blog
+    name: Qwen Blog (通义千问)
+    url: https://qwenlm.github.io/blog/index.xml
+    type: rss
+
+  - id: inclusionai-ling
+    name: 蚂蚁百灵 inclusionAI Blog
+    url: https://inclusionai.github.io/blog/atom.xml
+    type: rss
