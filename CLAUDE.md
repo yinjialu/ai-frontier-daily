@@ -15,9 +15,10 @@
 
 ## 一手信源内参监控(独立于每日日报)
 
-- launchd `com.jialu.monitor-firsthand` 每小时跑 `scripts/monitor_firsthand.py`:抓
-  `firsthand-sources.yaml` 信源 → 新文章 `claude -p` 出中文摘要 → 写 `data/firsthand/<id>/*.md`(OKF)
-  → 开 `firsthand/<date>` 分支 PR(reviewer=yinjialu)。装/触发见 `scripts/install-monitor-launchd.sh`。
+- launchd `com.yinjialu.ai-frontier-daily.firsthand` 每小时 + 开机自启跑 `scripts/monitor_firsthand.py`:
+  抓 `firsthand-sources.yaml` 信源 → 新文章 `claude -p` 出中文摘要 → 写 `data/firsthand/<id>/*.md`(OKF)
+  → 开 `firsthand/<date>` 分支 PR(reviewer=yinjialu)。装/触发见 `scripts/install-firsthand-launchd.sh`;
+  与每日发布任务(`com.yinjialu.ai-frontier-daily.publish`)独立。新机迁移见 `scripts/SETUP-NEW-MACHINE.md`。
 - **去重唯一真相 = `data/firsthand/<id>/` 实际文件**(扫 frontmatter `resource`),不是独立账本;
   `data/firsthand-state.json`(健康统计 + 防重复 open_pr_urls)直接提交 main,本机无 403。
 - **内参 PR 分支必须 `firsthand/` 前缀、commit 不带 `daily:`**——否则触发/误触发 auto-merge-daily。

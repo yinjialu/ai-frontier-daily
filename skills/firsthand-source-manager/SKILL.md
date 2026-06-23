@@ -9,7 +9,7 @@ description: 维护 ai-frontier-daily 的一手信源清单 firsthand-sources.ya
 
 1. 调 firsthand-source-subscriber 探测订阅方式（rss / html-links）。
 2. 生成 source 条目（id 用域名+路径推导的 kebab-case），追加到 `firsthand-sources.yaml`。
-3. 提示用户：下一轮 launchd（每小时）或手动 `launchctl start com.jialu.monitor-firsthand` 生效；该源首刊静默（只记录不开 PR）。
+3. 提示用户：下一轮 launchd（每小时）或手动 `launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.firsthand` 生效；该源首刊静默（只记录不开 PR）。
 
 ## list
 
