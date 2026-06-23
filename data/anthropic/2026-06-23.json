@@ -7,8 +7,8 @@
   "updates": [
     {
       "tag": "政策",
-      "title": "Fable 5 正式进入用量积分制：订阅限额不再覆盖，API 价格为 Opus 4.8 两倍",
-      "summary": "6月23日起，Fable 5 从 Pro/Max/Team/企业订阅配额中移除，继续使用需消耗用量积分，价格为 $10/百万输入 Token、$50/百万输出 Token（含 90% 缓存折扣），是当前所有正式可用前沿模型中最高定价，亦是 Opus 4.8 的两倍。Anthropic 表示将尽快恢复订阅覆盖，但未给出具体日期。",
+      "title": "Fable 5 / Mythos 5 仍处全球停用状态，订阅免费窗口关闭后续改走积分制",
+      "summary": "Fable 5 与 Mythos 5 目前仍处全球停用状态（API 返回错误，受出口管制封禁），用户实际无法访问。6月23日起，此前 Pro/Max/Team/企业订阅的免费使用窗口正式关闭；Anthropic 表示恢复后将改走用量积分制（$10/$50 per M token），不再计入订阅限额。Anthropic 与美国政府的磋商仍在进行，「数日内恢复」的预期尚未兑现，仍无具体时间表。",
       "source": "anthropic.com"
     },
     {
