@@ -103,12 +103,33 @@ def probe(out: Path) -> int:
     for v in curator.VENDOR_META:
         collector.collect(mock=False, vendor=v, health_path=health)
 
+    # 当前 sources.yaml 在册的 rss 源；health 文件只增不删，需据此剔除已下线源的陈旧残留，
+    # 否则会对早已移除/改名的源虚假告警（如旧的 changelog.rss）。
+    import yaml
+    registered = set()
+    try:
+        cfg = yaml.safe_load((ROOT / "sources.yaml").read_text("utf-8"))
+        for vid, vcfg in (cfg.get("vendors") or {}).items():
+            for feed in (vcfg.get("rss") or []):
+                registered.add(f"{vid}/{feed['name']}")
+    except Exception:
+        pass
+
     try:
         hdata = json.loads(health.read_text("utf-8"))
     except Exception:
         hdata = {}
-    stale = [(k, s.get("error") or "长期零产出") for k, s in sorted(hdata.items()) if s.get("stale")]
-    failed = [(k, s.get("error") or "本次零产出") for k, s in sorted(hdata.items())
+
+    # 清理已下线信源的陈旧记录（registered 为空说明 yaml 没读到，保守不清理）。
+    obsolete = [k for k in hdata if registered and k not in registered]
+    if obsolete:
+        for k in obsolete:
+            hdata.pop(k, None)
+        health.write_text(json.dumps(hdata, ensure_ascii=False, indent=2, sort_keys=True), "utf-8")
+
+    live = {k: s for k, s in hdata.items() if (not registered) or k in registered}
+    stale = [(k, s.get("error") or "长期零产出") for k, s in sorted(live.items()) if s.get("stale")]
+    failed = [(k, s.get("error") or "本次零产出") for k, s in sorted(live.items())
               if not s.get("ok") and not s.get("stale")]
 
     today = datetime.date.today().isoformat()        # CI 设 TZ=Asia/Shanghai，故为北京日期
@@ -123,6 +144,8 @@ def probe(out: Path) -> int:
     print("routine 产出：" + ("✓ index.json 已更新到今天"
           if routine_ok else f"✗ index.json updated={idx_updated or '空'}，今天未见产出"))
     print(f"信源：停更 {len(stale)} / 临时失败 {len(failed)}")
+    if obsolete:
+        print(f"已清理下线源陈旧记录 {len(obsolete)} 条：{', '.join(obsolete)}")
     for k, err in stale:
         print(f"  ⚠ 停更  {k} — {err}")
     for k, err in failed:
