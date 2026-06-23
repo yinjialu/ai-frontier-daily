@@ -63,5 +63,27 @@
     ],
     "initialized": true,
     "known_urls_count": 50
+  },
+  "anthropic-research": {
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
+    "open_pr_urls": [
+      "https://www.anthropic.com/research/team/alignment",
+      "https://www.anthropic.com/research/team/economic-research",
+      "https://www.anthropic.com/research/team/interpretability",
+      "https://www.anthropic.com/research/team/societal-impacts",
+      "https://www.anthropic.com/research/natural-language-autoencoders",
+      "https://www.anthropic.com/research/claude-code-expertise",
+      "https://www.anthropic.com/research/teaching-claude-why",
+      "https://www.anthropic.com/research/project-fetch-phase-two",
+      "https://www.anthropic.com/research/agents-in-biology",
+      "https://www.anthropic.com/research/n-days",
+      "https://www.anthropic.com/research/making-claude-a-chemist",
+      "https://www.anthropic.com/research/attack-navigator",
+      "https://www.anthropic.com/research/coding-agents-social-sciences",
+      "https://www.anthropic.com/research/glasswing-initial-update",
+      "https://www.anthropic.com/research/exploit-evals"
+    ],
+    "initialized": true
   }
 }
