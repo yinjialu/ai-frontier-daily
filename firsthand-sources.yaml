@@ -12,3 +12,10 @@ sources:
     type: html-links
     link_prefix: /engineering/
     base_url: https://www.anthropic.com
+
+  - id: anthropic-research
+    name: Anthropic Research
+    url: https://www.anthropic.com/research
+    type: html-links
+    link_prefix: /research/
+    base_url: https://www.anthropic.com
