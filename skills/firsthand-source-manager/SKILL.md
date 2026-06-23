@@ -13,7 +13,8 @@ description: 维护 ai-frontier-daily 的一手信源清单 firsthand-sources.ya
 
 ## list
 
-读 `data/firsthand-state.json`，每个源输出：id、last_checked、last_fetch_ok（失败显示 last_fetch_error）、last_new_article、已入库篇数（扫 `data/firsthand/<id>/` 的 .md 文件数）。
+读 `data/firsthand-state.json`，每个源输出：id、last_fetch_ok（失败显示 last_fetch_error）、last_new_article、已入库篇数（扫 `data/firsthand/<id>/` 的 .md 文件数）。
+`last_checked`（上次运行时间，每小时变）在本地 `data/.firsthand-heartbeat.json`（gitignore，不提交），需要看「是否还在跑」时读它。
 
 ## 阶段二
 
