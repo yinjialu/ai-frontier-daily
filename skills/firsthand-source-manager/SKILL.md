@@ -9,7 +9,13 @@ description: 维护 ai-frontier-daily 的一手信源清单 firsthand-sources.ya
 
 1. 调 firsthand-source-subscriber 探测订阅方式（rss / html-links）。
 2. 生成 source 条目（id 用域名+路径推导的 kebab-case），追加到 `firsthand-sources.yaml`。
-3. 提示用户：下一轮 launchd（每小时）或手动 `launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.firsthand` 生效；该源首刊静默（只记录不开 PR）。
+3. 提示用户：下一轮 launchd（每小时）或手动 `launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.firsthand` 生效；该源**首刊静默**（只把当前文章标记已见，**不开 PR、不备份历史内容**）。
+
+**首刊不自动备份历史内容**——这是刻意的默认行为。是否备份历史是**可选项**，仅当用户**显式要求**时才做（见下方 backup）。
+
+## backup <id>（可选，仅用户显式要求时）
+
+把某个源**当前列表的历史文章**全部抓取+摘要+写 OKF，开一个备份 PR 入库。做法：用一份临时 state（`{<id>: {"initialized": true}}`，无 open_pr_urls）跑 `run_once`，使该源当前文章全部当「新文章」走 OKF+PR 流程；OKF 写真实 `data/firsthand/<id>/`，再单独提 `firsthand/<date>` 分支 PR。**不要在 add 时自动触发。**
 
 ## list
 

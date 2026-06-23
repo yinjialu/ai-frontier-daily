@@ -127,7 +127,7 @@ git pull --rebase（确保 data/firsthand/ 是最新真相）
 所有源汇总「真·新文章」：
   为空 → 仅 commit+push state.json（健康统计）到 main，结束
   非空 → 逐篇抓全文 → claude -p 生成 {summary, tags}
-         → 写 OKF 文件到 data/firsthand/<id>/<date>-<slug>.md
+         → 写 OKF 文件到 data/firsthand/<id>/<NN>-<slug>.md（NN=发布序，published 真实发布日期，detected 探测时间）
          → 把这些 URL 加入 state.open_pr_urls
          → 在 firsthand/<date> 分支提交 OKF 文件 + state.json
          → gh pr create（reviewer=yinjialu）
@@ -168,25 +168,29 @@ git pull --rebase（确保 data/firsthand/ 是最新真相）
 
 ### 4. OKF 文章文件格式
 
-路径：`data/firsthand/<source-id>/<YYYY-MM-DD>-<slug>.md`
+路径：`data/firsthand/<source-id>/<NN>-<slug>.md`。`<NN>` 是 2 位序号，**按真实发布时间升序**（01=最早发布），确保 `ls` 列出顺序 = 发布顺序。**不放探测日期**——探测日期不是发布日期，放文件名会误导。新文章总是最新 → 取「现有最大序号+1」接末尾，无需重编号；`renumber_source` 可一次性整理。
 
 ```markdown
 ---
 type: Article
-title: Artifacts in Claude Code
+title: Claude Code now supports artifacts
 source: claude-blog
 resource: https://claude.com/blog/artifacts-in-claude-code
+published: 2026-06-18
 tags: [claude-code, artifacts]
-timestamp: 2026-06-23T15:30:00+08:00
+detected: 2026-06-23T15:30:00+08:00
 ---
 
-Claude Code 现支持直接在对话中生成并预览 Web artifacts，
-开发者可实时看到 HTML/React 组件渲染效果，无需离开终端...
+Claude Code 现支持直接在对话中生成并预览 Web artifacts...
 ```
 
 - `resource` 字段是去重判定读取的锚点，必须是干净的完整 URL（去 query/trailing slash）。
 - `source` 字段 = `firsthand-sources.yaml` 的 `id`。
+- `published` = 文章**真实发布日期**（ISO `YYYY-MM-DD`）。提取路径按源而异：engineering 列表页链接文本带 `Apr 23, 2026`；claude-blog 取文章页 JSON-LD `datePublished` / `article:published_time`。**取不到就不写该字段，绝不用探测日期冒充。**
+- `detected` = 内参监控**发现该文的时间**（诚实标注，非发布时间）。替代旧的误导字段 `timestamp`。
+- `title` 取文章页 `<h1>`（回退清理后的 `<title>`）。
 - `summary`（正文）与 `tags` 由同一次 `claude -p` 结构化输出（prompt 要求返回 JSON `{summary, tags}`），summary 100 字以内。
+- 文件名冲突（不同 URL 末段相同）时追加短哈希 `<slug>-<h6>.md`。
 
 ### 5. PR 通知
 

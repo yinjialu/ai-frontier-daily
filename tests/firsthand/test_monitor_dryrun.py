@@ -46,7 +46,7 @@ def test_run_once_second_run_opens_pr(tmp_path):
     okf_root = tmp_path / "firsthand"
     state_file = tmp_path / "state.json"
     (okf_root / "demo").mkdir(parents=True)
-    (okf_root / "demo" / "2026-06-22-a.md").write_text(
+    (okf_root / "demo" / "01-a.md").write_text(
         "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
 
     fetched = [{"url": "https://demo/blog/a", "title": "A"},
@@ -57,13 +57,19 @@ def test_run_once_second_run_opens_pr(tmp_path):
         now="2026-06-23T15:30:00+08:00",
         fetch_fn=lambda s: fetched,
         article_text_fn=lambda u: "body",
+        article_published_fn=lambda u: "2026-05-01",
         summarize_fn=lambda t, b: {"summary": "摘要", "tags": ["x"]},
         open_pr_fn=lambda branch, articles: captured.update(branch=branch, articles=articles),
         commit_state_fn=lambda: None,
     )
     assert captured["branch"].startswith("firsthand/")
     assert [a["url"] for a in captured["articles"]] == ["https://demo/blog/b"]
-    assert (okf_root / "demo" / "2026-06-23-b.md").exists()
+    # 文件名只用 slug（无探测日期）；frontmatter 记真实发布日期 + 探测时间
+    okf = okf_root / "demo" / "02-b.md"
+    assert okf.exists()
+    txt = okf.read_text(encoding="utf-8")
+    assert "published: 2026-05-01" in txt
+    assert "detected: 2026-06-23T15:30:00+08:00" in txt
 
 
 def test_run_once_heartbeat_separate_and_state_stable(tmp_path):
@@ -78,7 +84,7 @@ def test_run_once_heartbeat_separate_and_state_stable(tmp_path):
     okf_root = tmp_path / "firsthand"
     state_file = tmp_path / "state.json"
     (okf_root / "demo").mkdir(parents=True)
-    (okf_root / "demo" / "2026-06-22-a.md").write_text(
+    (okf_root / "demo" / "01-a.md").write_text(
         "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
 
     fetched = [{"url": "https://demo/blog/a", "title": "A"}]  # 已入库 → 无新文章
@@ -110,7 +116,7 @@ def test_run_once_fetches_title_when_missing(tmp_path):
     okf_root = tmp_path / "firsthand"
     state_file = tmp_path / "state.json"
     (okf_root / "demo").mkdir(parents=True)
-    (okf_root / "demo" / "2026-06-22-a.md").write_text(
+    (okf_root / "demo" / "01-a.md").write_text(
         "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
 
     fetched = [{"url": "https://demo/blog/a", "title": None},
@@ -122,13 +128,14 @@ def test_run_once_fetches_title_when_missing(tmp_path):
         fetch_fn=lambda s: fetched,
         article_text_fn=lambda u: "body",
         article_title_fn=lambda u: "真实标题 B",
+        article_published_fn=lambda u: None,
         summarize_fn=lambda t, b: {"summary": "摘要", "tags": ["x"]},
         open_pr_fn=lambda branch, articles: captured.update(articles=articles),
         commit_state_fn=lambda: None,
     )
     # 新文章 b 的标题来自 article_title_fn，不是 URL
     assert captured["articles"][0]["title"] == "真实标题 B"
-    assert (okf_root / "demo" / "2026-06-23-b.md").exists()
+    assert (okf_root / "demo" / "02-b.md").exists()
 
 
 def test_run_once_corrupt_state_open_pr_without_initialized_is_first_run(tmp_path):
@@ -202,7 +209,7 @@ def test_run_once_second_run_records_known_urls_count(tmp_path):
     okf_root = tmp_path / "firsthand"
     state_file = tmp_path / "state.json"
     (okf_root / "demo").mkdir(parents=True)
-    (okf_root / "demo" / "2026-06-22-a.md").write_text(
+    (okf_root / "demo" / "01-a.md").write_text(
         "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
 
     fetched = [{"url": "https://demo/blog/a", "title": "A"}]

@@ -7,6 +7,27 @@ from .urls import canonical_url, make_absolute
 _HREF_RE = re.compile(r'href="([^"]+)"')
 _UA = {"User-Agent": "Mozilla/5.0 (firsthand-monitor)"}
 
+_MONTHS = {m: i for i, m in enumerate(
+    ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], start=1)}
+# "Apr 23, 2026" / "Jan 6, 2025"
+_HUMAN_DATE_RE = re.compile(
+    r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2}),?\s+(\d{4})")
+# ISO 日期前缀（article:published_time / time datetime）
+_ISO_DATE_RE = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
+_JSONLD_DATE_RE = re.compile(r'"datePublished"\s*:\s*"([^"]+)"')
+_META_PUBLISHED_RE = re.compile(
+    r'article:published_time"[^>]*content="([^"]+)"')
+
+
+def parse_human_date(text: str) -> str | None:
+    """把 'Apr 23, 2026' 解析成 ISO 'YYYY-MM-DD'；无匹配返回 None。"""
+    m = _HUMAN_DATE_RE.search(text or "")
+    if not m:
+        return None
+    mon = _MONTHS[m.group(1)]
+    return f"{int(m.group(3)):04d}-{mon:02d}-{int(m.group(2)):02d}"
+
 
 def _http_get(url: str) -> str:
     resp = requests.get(url, timeout=20, headers=_UA)
@@ -14,9 +35,24 @@ def _http_get(url: str) -> str:
     return resp.text
 
 
+def _listing_dates(html: str, prefix: str, base: str) -> dict:
+    """从 <a href="prefix...">...文本...</a> 块里提取每个 URL 的发布日期（若有）。
+    engineering 列表把日期写在链接文本内；claude-blog 链接文本是 'Read more'（无日期）。"""
+    block_re = re.compile(
+        r'<a[^>]*href="(' + re.escape(prefix) + r'[^"]+)"[^>]*>(.*?)</a>',
+        re.DOTALL | re.IGNORECASE)
+    out = {}
+    for href, inner in block_re.findall(html):
+        d = parse_human_date(re.sub(r"<[^>]+>", " ", inner))
+        if d:
+            out[canonical_url(make_absolute(href, base))] = d
+    return out
+
+
 def extract_html_links(html: str, source: dict) -> list[dict]:
     prefix = source["link_prefix"]
     base = source["base_url"]
+    dates = _listing_dates(html, prefix, base)
     seen, out = set(), []
     for href in _HREF_RE.findall(html):
         if not href.startswith(prefix):
@@ -25,8 +61,30 @@ def extract_html_links(html: str, source: dict) -> list[dict]:
         if url in seen:
             continue
         seen.add(url)
-        out.append({"url": url, "title": None})
+        out.append({"url": url, "title": None, "published": dates.get(url)})
     return out
+
+
+def extract_published(html: str) -> str | None:
+    """从文章页 HTML 提取真实发布日期 → ISO 'YYYY-MM-DD'。
+    依次尝试 JSON-LD datePublished、article:published_time、首个 ISO 日期。"""
+    m = _JSONLD_DATE_RE.search(html)
+    if m:
+        v = m.group(1)
+        iso = _ISO_DATE_RE.search(v)
+        if iso:
+            return iso.group(0)
+        return parse_human_date(v)
+    m = _META_PUBLISHED_RE.search(html)
+    if m:
+        iso = _ISO_DATE_RE.search(m.group(1))
+        if iso:
+            return iso.group(0)
+    return None
+
+
+def fetch_article_published(url: str, fetcher=_http_get) -> str | None:
+    return extract_published(fetcher(url))
 
 
 def _fetch_html_links(source: dict, fetcher) -> list[dict]:
