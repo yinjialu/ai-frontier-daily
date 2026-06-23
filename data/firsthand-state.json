@@ -84,6 +84,7 @@
       "https://www.anthropic.com/research/glasswing-initial-update",
       "https://www.anthropic.com/research/exploit-evals"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 15
   }
 }
