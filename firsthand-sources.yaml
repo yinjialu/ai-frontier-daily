@@ -5,3 +5,10 @@ sources:
     type: html-links
     link_prefix: /blog/
     base_url: https://claude.com
+
+  - id: anthropic-engineering
+    name: Anthropic Engineering
+    url: https://www.anthropic.com/engineering
+    type: html-links
+    link_prefix: /engineering/
+    base_url: https://www.anthropic.com
