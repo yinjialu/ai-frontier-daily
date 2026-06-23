@@ -14,7 +14,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scripts.firsthand.config import load_sources
-from scripts.firsthand.adapters import fetch_source, fetch_article_text, fetch_article_title
+from scripts.firsthand.adapters import (
+    fetch_source, fetch_article_text, fetch_article_title, fetch_article_published,
+)
 from scripts.firsthand.summarize import summarize
 from scripts.firsthand.store import ingested_urls, write_okf, load_state, save_state
 from scripts.firsthand.pipeline import diff_new_articles, render_pr_body
@@ -29,6 +31,7 @@ def run_once(sources_path, okf_root, state_file, now,
              fetch_fn=fetch_source,
              article_text_fn=fetch_article_text,
              article_title_fn=fetch_article_title,
+             article_published_fn=fetch_article_published,
              summarize_fn=summarize,
              open_pr_fn=None,
              commit_state_fn=None):
@@ -71,6 +74,18 @@ def run_once(sources_path, okf_root, state_file, now,
 
     new_count = 0
     if all_new:
+        # 先为每篇定真实发布日期，再按 published 升序写 → OKF 序号前缀 = 发布序。
+        # 真实发布日期：优先列表页带的（engineering），否则去文章页取（claude-blog JSON-LD）。
+        for source, art in all_new:
+            published = art.get("published")
+            if not published:
+                try:
+                    published = article_published_fn(art["url"])
+                except Exception:
+                    published = None
+            art["published"] = published
+        all_new.sort(key=lambda sa: sa[1].get("published") or "9999-99-99")
+
         pr_articles = []
         for source, art in all_new:
             text = article_text_fn(art["url"])
@@ -82,6 +97,7 @@ def run_once(sources_path, okf_root, state_file, now,
                 except Exception:
                     title = None
             title = title or art["url"]
+            published = art.get("published")
             s = summarize_fn(title, text)
             article = {
                 "title": title,
@@ -89,7 +105,8 @@ def run_once(sources_path, okf_root, state_file, now,
                 "url": art["url"],
                 "summary": s["summary"],
                 "tags": s["tags"],
-                "timestamp": now,
+                "published": published,     # 真实发布日期（取不到则 None，不写入文件）
+                "detected": now,            # 探测时间（诚实标注）
             }
             write_okf(okf_root, article)
             state[source["id"]].setdefault("open_pr_urls", [])
