@@ -1,6 +1,7 @@
 import re
 import requests
 import feedparser
+from html.parser import HTMLParser
 from .urls import canonical_url, make_absolute
 
 _HREF_RE = re.compile(r'href="([^"]+)"')
@@ -52,3 +53,32 @@ def fetch_source(source: dict, fetcher=_http_get) -> list[dict]:
     if adapter is None:
         raise ValueError(f"未知 source type: {source['type']}")
     return adapter(source, fetcher)
+
+
+class _TextExtractor(HTMLParser):
+    _SKIP = {"script", "style", "noscript"}
+
+    def __init__(self):
+        super().__init__()
+        self._skip_depth = 0
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self._SKIP:
+            self._skip_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag in self._SKIP and self._skip_depth:
+            self._skip_depth -= 1
+
+    def handle_data(self, data):
+        if self._skip_depth == 0:
+            t = data.strip()
+            if t:
+                self.parts.append(t)
+
+
+def fetch_article_text(url: str, fetcher=_http_get) -> str:
+    parser = _TextExtractor()
+    parser.feed(fetcher(url))
+    return "\n".join(parser.parts)
