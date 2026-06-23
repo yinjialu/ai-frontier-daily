@@ -1,0 +1,35 @@
+{
+  "claude-blog": {
+    "initialized": true,
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
+    "last_checked": "2026-06-23T20:53:57+08:00",
+    "known_urls_count": 0,
+    "open_pr_urls": [
+      "https://claude.com/blog/artifacts-in-claude-code",
+      "https://claude.com/blog/claude-for-foundation-models",
+      "https://claude.com/blog/claude-managed-agents-updates",
+      "https://claude.com/blog/new-in-claude-managed-agents",
+      "https://claude.com/blog/connectors-for-everyday-life",
+      "https://claude.com/blog/claude-managed-agents-memory",
+      "https://claude.com/blog/claude-code-desktop-redesign",
+      "https://claude.com/blog/preparing-your-security-program-for-ai-accelerated-offense",
+      "https://claude.com/blog/claude-managed-agents",
+      "https://claude.com/blog/harnessing-claudes-intelligence",
+      "https://claude.com/blog/the-full-claude-desktop-experience-on-aws-google-cloud-and-microsoft-foundry",
+      "https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more",
+      "https://claude.com/blog/enterprise-managed-auth",
+      "https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon",
+      "https://claude.com/blog/claude-design-stays-on-brand-for-daily-work",
+      "https://claude.com/blog/workload-identity-federation",
+      "https://claude.com/blog/meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon",
+      "https://claude.com/blog/building-with-claude-managed-agents",
+      "https://claude.com/blog/whats-new-in-claude-managed-agents",
+      "https://claude.com/blog/observability-for-developers-building-connectors",
+      "https://claude.com/blog/the-claude-cowork-product-guide",
+      "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
+      "https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude"
+    ],
+    "last_new_article": "2026-06-23T20:53:57+08:00"
+  }
+}
