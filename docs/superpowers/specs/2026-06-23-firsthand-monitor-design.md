@@ -154,7 +154,8 @@ git pull --rebase（确保 data/firsthand/ 是最新真相）
     "last_fetch_ok": true,
     "last_fetch_error": null,
     "last_new_article": "2026-06-23T15:30:00+08:00",
-    "total_articles_seen": 23
+    "initialized": true,
+    "known_urls_count": 23
   }
 }
 ```
