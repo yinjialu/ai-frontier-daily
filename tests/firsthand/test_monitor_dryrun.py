@@ -66,6 +66,38 @@ def test_run_once_second_run_opens_pr(tmp_path):
     assert (okf_root / "demo" / "2026-06-23-b.md").exists()
 
 
+def test_run_once_heartbeat_separate_and_state_stable(tmp_path):
+    """无新文章时连续两轮，state.json 应完全一致（last_checked 不进 state，
+    避免每小时心跳把 main 刷屏）；last_checked 写入独立 heartbeat 文件并随时间更新。"""
+    yaml_file = tmp_path / "sources.yaml"
+    yaml_file.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo/blog\n"
+        "    type: html-links\n    link_prefix: /blog/\n    base_url: https://demo\n",
+        encoding="utf-8",
+    )
+    okf_root = tmp_path / "firsthand"
+    state_file = tmp_path / "state.json"
+    (okf_root / "demo").mkdir(parents=True)
+    (okf_root / "demo" / "2026-06-22-a.md").write_text(
+        "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
+
+    fetched = [{"url": "https://demo/blog/a", "title": "A"}]  # 已入库 → 无新文章
+    common = dict(
+        sources_path=yaml_file, okf_root=okf_root, state_file=state_file,
+        fetch_fn=lambda s: fetched, article_text_fn=lambda u: "body",
+        summarize_fn=lambda t, b: {"summary": "x", "tags": []},
+        open_pr_fn=lambda b, a: None, commit_state_fn=lambda: None,
+    )
+    run_once(now="2026-06-23T10:00:00+08:00", **common)
+    s1 = state_file.read_text(encoding="utf-8")
+    run_once(now="2026-06-23T11:00:00+08:00", **common)
+    s2 = state_file.read_text(encoding="utf-8")
+    assert s1 == s2, "无新文章时 state.json 不应变（否则每小时 commit 刷屏）"
+    assert "last_checked" not in json.loads(s2)["demo"]
+    hb = json.loads((tmp_path / ".firsthand-heartbeat.json").read_text(encoding="utf-8"))
+    assert hb["demo"] == "2026-06-23T11:00:00+08:00"
+
+
 def test_run_once_fetches_title_when_missing(tmp_path):
     """html-links 抓到的条目 title=None 时，应调 article_title_fn 取文章页标题，
     而非回退成 URL。"""

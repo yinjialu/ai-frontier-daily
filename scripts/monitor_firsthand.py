@@ -36,10 +36,16 @@ def run_once(sources_path, okf_root, state_file, now,
     okf_root = Path(okf_root)
     sources = load_sources(sources_path)
     state = load_state(state_file)
+    # last_checked 是每轮都变的心跳，单独写本地 heartbeat 文件（gitignore），
+    # 不进提交的 state.json —— 否则每小时一次 commit 刷屏 main。
+    heartbeat_file = Path(state_file).parent / ".firsthand-heartbeat.json"
+    heartbeat = load_state(heartbeat_file)
     all_new = []
     for source in sources:
         sid = source["id"]
         st = state.setdefault(sid, {})
+        st.pop("last_checked", None)  # 迁移：旧版把 last_checked 存这里，现移到 heartbeat
+        heartbeat[sid] = now
         try:
             fetched = fetch_fn(source)
             st["last_fetch_ok"] = True
@@ -47,9 +53,7 @@ def run_once(sources_path, okf_root, state_file, now,
         except Exception as e:
             st["last_fetch_ok"] = False
             st["last_fetch_error"] = str(e)
-            st["last_checked"] = now
             continue
-        st["last_checked"] = now
         ingested = ingested_urls(okf_root, sid)
         open_pr = set(st.get("open_pr_urls", []))
         # 去重唯一真相 = OKF 文件。有 OKF 文件永远不是首刊；
@@ -98,6 +102,7 @@ def run_once(sources_path, okf_root, state_file, now,
             open_pr_fn(branch, pr_articles)
 
     save_state(state_file, state)
+    save_state(heartbeat_file, heartbeat)  # 本地心跳，不提交
     if commit_state_fn:
         commit_state_fn()
     return {"new_count": new_count}
