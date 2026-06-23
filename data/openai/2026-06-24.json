@@ -1,0 +1,36 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.24",
+  "cnDate": "6月24日 周三",
+  "edition": "VOL.175",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Daybreak 全栈安全平台正式发布：GPT-5.5-Cyber 达 85.6% CyberGym + Codex Security 已修复 50 万漏洞",
+      "summary": "OpenAI 全面发布 Daybreak 网络安全体系：GPT-5.5-Cyber 在 CyberGym 评测中达到 85.6%（行业顶级水准）；Codex Security 插件已分析 3000 万次 commit 并自动修复超 50 万个漏洞；新建 Cyber Partner Program，接入 20 家以上安全厂商。此前推出的「Patch the Planet」（Trail of Bits、HackerOne 合作）是本次发布的一个子项目，涵盖 cURL、Go、Python、Sigstore 等 30 余个关键开源项目。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 长任务白皮书：GPT-5.1-Codex-Max 如何跨多轮上下文自主完成大型工程任务",
+      "summary": "OpenAI 发布 Jason Liu 撰写的 Codex 长任务实践白皮书，介绍将大目标分解为可验证子步骤、通过「压缩（compaction）」在数百万 token 间保持上下文连贯、配置多 Agent 委托及人工监督介入点的方法论。GPT-5.1-Codex-Max 经过原生长任务训练，可在单个任务中跨多轮上下文持续工作。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "企业",
+      "title": "三星电子全员接入 ChatGPT Enterprise + Codex：韩国 Codex 周活用户三个月增长 800%",
+      "summary": "OpenAI 宣布三星电子将 ChatGPT Enterprise 与 Codex 向韩国及全球 DX 事业部全体员工开放，是迄今最大规模企业级落地之一。自 2026 年 2 月至今，韩国员工 Codex 周活跃用户增幅达 800%。此前三星于 2023 年因代码泄露事件全面封禁生成式 AI，此次开放得益于企业级数据治理机制的完善。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "生态",
+      "title": "Omio 接入 OpenAI 模型：用对话式 AI 重构欧洲旅行预订体验",
+      "summary": "欧洲跨境出行平台 Omio 与 OpenAI 达成合作，将 OpenAI 模型整合进行程规划与机票/火车票预订流程，用自然语言交互替代传统搜索过滤界面；同时在内部推动全公司生产力转型。Omio 覆盖 45 国、超 1000 家运营商的出行选项，此次合作将 AI 对话体验带入高频跨境出行场景。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

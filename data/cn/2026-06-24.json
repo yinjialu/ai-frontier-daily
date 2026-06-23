@@ -1,0 +1,33 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.24",
+  "cnDate": "6月24日 周三",
+  "edition": "VOL.175",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code v0.19.0：语音听写 + 可唤醒后台 Sub-Agent + Artifact 工具 + 动态工作流全面上线",
+      "summary": "阿里 Qwen Code v0.19.0 是本月最大幅度更新：新增原生语音听写（流式采集）、可唤醒的后台 Sub-Agent（异步执行、可随时恢复）、Artifact 工具（可发布交互式 HTML 页面）、TUI 思考块查看器，并全面支持动态工作流（含续跑、保存、关键词触发、通知推送）。同日修复版 v0.19.1 跟进修复 MCP 资源补全与若干安全问题。",
+      "source": "github.com/QwenLM/qwen-code"
+    },
+    {
+      "tag": "开发者",
+      "company": "Kimi",
+      "title": "Kimi Code v0.19.1：修复 ACP 编辑器无法新建线程 + 会话归档后状态残留",
+      "summary": "Kimi Code v0.19.1 修复了 Zed 等 ACP 编辑器接入后无法创建新对话线程的问题；会话被归档或移除时 session state 现在会正确清理；修复 Web 侧边栏未读指示器在多标签页间不同步的问题；将 localStorage 访问重构为模块化组件。",
+      "source": "github.com/MoonshotAI/kimi-code"
+    },
+    {
+      "tag": "政策",
+      "company": "混元",
+      "title": "腾讯混元 46 个旧版本于 6 月 22 日正式停服，TokenHub 平台接棒 hy3-preview",
+      "summary": "腾讯云混元于 6 月 22 日 00:00（北京时间）正式下线包括 HY2.0、hunyuan-turbos、hunyuan-t1 在内的 46 个旧版本模型，同步关闭腾讯云大模型平台与 Agent 开发平台中对应接入点。用户须迁移至 TokenHub 平台并使用 hy3-preview（295B MoE 架构，256K 上下文）。完整旧平台将于 2026 年 9 月 30 日彻底关停。",
+      "source": "cloud.tencent.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

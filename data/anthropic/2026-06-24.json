@@ -1,0 +1,24 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.24",
+  "cnDate": "6月24日 周三",
+  "edition": "VOL.175",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.187：sandbox.credentials 凭据隔离 + 远端 MCP 超时修复 + CJK 乱码根治",
+      "summary": "新增 `sandbox.credentials` 配置项，可阻止沙箱命令读取指定凭据文件与环境变量，强化多租户安全边界；组织级模型限制现在会在模型选择器中显示警告而非静默过滤；远端 MCP 工具调用超时从 5 分钟硬等改为立即报错；远端会话启动提速约 2.7 秒；根治了终端 Korean/CJK 字符乱码（mojibake）问题；`--resume` 不再报「No conversation found」、`/update` 不再在远端控制下挂死等多项体验修复。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK TS v0.3.187：sandbox.credentials 同步入 SDK 类型定义",
+      "summary": "将 Claude Code v2.1.187 新增的 `sandbox.credentials` 配置同步至 TypeScript Agent SDK 的设置类型，开发者可在 SDK 层面声明式管理沙箱对凭据文件与环境变量的访问权限，与服务端行为保持一致。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

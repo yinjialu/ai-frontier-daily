@@ -1,0 +1,30 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.24",
+  "cnDate": "6月24日 周三",
+  "edition": "VOL.175",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Google DeepMind 联手 A24 设立 AI 电影研究室：7500 万美元投资共建下一代创作工具",
+      "summary": "Google DeepMind 宣布向独立电影公司 A24（《瞬息全宇宙》《后室》出品方）投资 7500 万美元，并在 A24 内部共建 AI 电影制作研究室。DeepMind 提供顶级 AI 研究能力与算力，A24 以一线导演和艺术家的创作实践反哺工具迭代。双方承诺将艺术完整性置于首位，目标是开发将 AI 能力真正融入专业创作流程的新工具与新工作流。",
+      "source": "blog.google"
+    },
+    {
+      "tag": "研究",
+      "title": "Gemini for Science 正式亮相：面向科学研究的 AI 实验工具集",
+      "summary": "Google 发布「Gemini for Science」，汇集基于 Gemini 模型的科研专属 AI 实验工具与研究接口，覆盖多个学科方向，定位为科学家的智能研究伙伴。Google 研究副总裁 Eli Collins 撰文介绍了首批实验性工具如何加速跨领域科学探索，标志着 Gemini 在专业科学计算场景的战略布局正式落地。",
+      "source": "blog.google"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini API 部分预览模型将于 6 月 25 日停服：建议迁移至 gemini-3.1-flash-lite / Veo 3.1",
+      "summary": "Gemini API changelog 更新：`gemini-3.1-flash-image-preview` 与 `gemini-3-pro-image-preview` 将于 6 月 25 日正式下线；`gemini-3.1-flash-lite-preview` 已停服，官方建议迁移至 `gemini-3.1-flash-lite`；视频生成预览模型将于 6 月 30 日停服，替代方案为 Veo 3.1。开发者需在本周内完成迁移以避免服务中断。",
+      "source": "ai.google.dev"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 官方发布、API 更新与开发者生态动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

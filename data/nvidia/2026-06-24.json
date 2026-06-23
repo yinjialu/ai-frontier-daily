@@ -1,0 +1,36 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.24",
+  "cnDate": "6月24日 周三",
+  "edition": "VOL.175",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA Halos for Robotics：全行业首套物理 AI 全栈安全体系，40 余家厂商接入",
+      "summary": "NVIDIA 发布 Halos for Robotics，汇集自动驾驶领域积累的 1.86 万工程人年与 700 万行经验证代码，提供 IGX Thor 计算模块、Halos OS 软件栈及 AI Systems Inspection Lab，帮助合作伙伴获得第三方安全认证。首批超过 40 家生态伙伴已接入，Agility 人形机器人 Digit 率先部署并在亚马逊、GXO、舍弗勒、丰田生产环境落地，标志着 Physical AI 安全合规进入可量化认证阶段。",
+      "source": "nvidianews.nvidia.com"
+    },
+    {
+      "tag": "生态",
+      "title": "TOP500 六月榜：NVIDIA 技术支撑全球 81% 最快超算，Grace CPU 系统数量再创新高",
+      "summary": "ISC 2026 发布最新 TOP500 超算榜单，NVIDIA GPU 驱动 238 个系统，NVIDIA 网络互联覆盖 376 个（创历史纪录），Grace CPU 加速节点达 26 台（较上期增加 8 台）。NVIDIA 整体技术覆盖全球 TOP500 中的 81%。Green500 能效榜单前十中有 9 台使用 NVIDIA 技术，AI 超算市场格局进一步巩固。",
+      "source": "blogs.nvidia.com"
+    },
+    {
+      "tag": "企业",
+      "title": "DTW Ignite 2026：NVIDIA 联合软银、NTT Data 推出开源 30B 电信专用大模型 Nemotron LTM",
+      "summary": "NVIDIA 在哥本哈根 DTW Ignite 2026 大会上发布面向电信运营商的全栈 Agentic AI 平台，核心是与 AdaptKey AI 联合开发的 30B 参数开源电信专用模型 Nemotron LTM（Large Telco Model），配合 NemoClaw 蓝图和 OpenShell 安全运行时实现受策略约束的长周期 Agent 任务。软银、NTT Data、ServiceNow 现场演示了基于该平台的 5G 自愈网络与 AI 智能运维。",
+      "source": "blogs.nvidia.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "TensorRT-LLM v1.3.0rc19：新增 Wan2.2-T2V、Step-3.7 NVFP4、MiniMax-M3 支持",
+      "summary": "TensorRT-LLM 发布 v1.3.0rc19，新增 Wan2.2 文生视频量化检查点、Step-3.7 NVFP4 精度、T5/BART PyTorch 后端、MiniMax-M3 及 EAGLE3 动态树支持；性能改进包括 per-expert LoRA CUDA Graph、异步 Ulysses 流水线、Blackwell+ 默认启用 TrtllmGenAttention；新增 Prometheus 指标（缓存与推测解码统计）以及 disaggregated 服务下的 beam search 支持。",
+      "source": "github.com/NVIDIA/TensorRT-LLM"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
