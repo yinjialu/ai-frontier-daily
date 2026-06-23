@@ -17,7 +17,7 @@ from scripts.firsthand.config import load_sources
 from scripts.firsthand.adapters import fetch_source, fetch_article_text
 from scripts.firsthand.summarize import summarize
 from scripts.firsthand.store import ingested_urls, write_okf, load_state, save_state
-from scripts.firsthand.pipeline import diff_new_articles
+from scripts.firsthand.pipeline import diff_new_articles, render_pr_body
 
 REPO = Path(__file__).resolve().parent.parent
 DEFAULT_SOURCES = REPO / "firsthand-sources.yaml"
@@ -109,14 +109,9 @@ def _real_open_pr(branch, articles):
             by_source.setdefault(a["source"], []).append(a)
         counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
         title = f"📡 内参新动态 | {branch[-10:]} ({counts})"
-        body_lines = []
-        for sid, arts in by_source.items():
-            body_lines.append(f"## {sid}")
-            for a in arts:
-                body_lines.append(f"- [{a['title']}]({a['url']})")
-                body_lines.append(f"  > {a['summary']}")
+        body = render_pr_body(articles)
         subprocess.run(
-            ["gh", "pr", "create", "--title", title, "--body", "\n".join(body_lines),
+            ["gh", "pr", "create", "--title", title, "--body", body,
              "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
             cwd=REPO, check=True,
         )

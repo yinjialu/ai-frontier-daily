@@ -1,6 +1,9 @@
 import json
 import subprocess
 
+# 摘要生成失败时写入的占位文本（PR 正文据此打 ⚠️ 标记）
+SUMMARY_FAILED = "(摘要生成失败)"
+
 _PROMPT = """只返回 JSON，不要任何解释或代码块标记。
 格式：{{"summary": "中文摘要，100字以内", "tags": ["标签1", "标签2"]}}
 针对以下文章生成面向中文 AI 从业者的摘要与 2-4 个主题标签。
@@ -31,8 +34,8 @@ def summarize(title: str, body: str, runner=_claude_runner) -> dict:
     try:
         obj = _parse_json(runner(prompt))
         return {
-            "summary": str(obj.get("summary") or "(摘要生成失败)"),
+            "summary": str(obj.get("summary") or SUMMARY_FAILED),
             "tags": list(obj.get("tags") or []),
         }
     except Exception:
-        return {"summary": "(摘要生成失败)", "tags": []}
+        return {"summary": SUMMARY_FAILED, "tags": []}
