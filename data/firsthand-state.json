@@ -3,8 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "last_checked": "2026-06-23T21:05:09+08:00",
-    "known_urls_count": 23,
+    "known_urls_count": 46,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
