@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scripts.firsthand.config import load_sources
-from scripts.firsthand.adapters import fetch_source, fetch_article_text
+from scripts.firsthand.adapters import fetch_source, fetch_article_text, fetch_article_title
 from scripts.firsthand.summarize import summarize
 from scripts.firsthand.store import ingested_urls, write_okf, load_state, save_state
 from scripts.firsthand.pipeline import diff_new_articles, render_pr_body
@@ -28,6 +28,7 @@ DEFAULT_STATE = REPO / "data" / "firsthand-state.json"
 def run_once(sources_path, okf_root, state_file, now,
              fetch_fn=fetch_source,
              article_text_fn=fetch_article_text,
+             article_title_fn=fetch_article_title,
              summarize_fn=summarize,
              open_pr_fn=None,
              commit_state_fn=None):
@@ -69,9 +70,17 @@ def run_once(sources_path, okf_root, state_file, now,
         pr_articles = []
         for source, art in all_new:
             text = article_text_fn(art["url"])
-            s = summarize_fn(art.get("title") or art["url"], text)
+            # html-links 适配器不带标题 → 去文章页取 <h1>/<title>；失败回退 URL
+            title = art.get("title")
+            if not title:
+                try:
+                    title = article_title_fn(art["url"])
+                except Exception:
+                    title = None
+            title = title or art["url"]
+            s = summarize_fn(title, text)
             article = {
-                "title": art.get("title") or art["url"],
+                "title": title,
                 "source": source["id"],
                 "url": art["url"],
                 "summary": s["summary"],

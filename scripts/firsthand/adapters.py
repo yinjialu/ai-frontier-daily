@@ -82,3 +82,51 @@ def fetch_article_text(url: str, fetcher=_http_get) -> str:
     parser = _TextExtractor()
     parser.feed(fetcher(url))
     return "\n".join(parser.parts)
+
+
+class _TitleExtractor(HTMLParser):
+    """抓 <h1>（文章标题，最干净）与 <title>（兜底）。"""
+
+    def __init__(self):
+        super().__init__()
+        self._in_title = False
+        self._in_h1 = False
+        self.title_tag = None
+        self.h1 = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "title" and self.title_tag is None:
+            self._in_title = True
+        elif tag == "h1" and self.h1 is None:
+            self._in_h1 = True
+
+    def handle_endtag(self, tag):
+        if tag == "title":
+            self._in_title = False
+        elif tag == "h1":
+            self._in_h1 = False
+
+    def handle_data(self, data):
+        if self._in_title:
+            self.title_tag = (self.title_tag or "") + data
+        if self._in_h1:
+            self.h1 = (self.h1 or "") + data
+
+
+# <title> 常带站点后缀，如 "标题 | Claude" / "标题 \ Anthropic" / "标题 - X"
+_TITLE_SUFFIX_RE = re.compile(r"\s*[|\\\-–—]\s*[^|\\\-–—]+$")
+
+
+def extract_title(html: str) -> str | None:
+    """优先 <h1>；无则取 <title> 并剥掉站点名后缀。都没有返回 None。"""
+    p = _TitleExtractor()
+    p.feed(html)
+    if p.h1 and p.h1.strip():
+        return p.h1.strip()
+    if p.title_tag and p.title_tag.strip():
+        return _TITLE_SUFFIX_RE.sub("", p.title_tag.strip()).strip() or p.title_tag.strip()
+    return None
+
+
+def fetch_article_title(url: str, fetcher=_http_get) -> str | None:
+    return extract_title(fetcher(url))

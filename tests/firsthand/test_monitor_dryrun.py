@@ -66,6 +66,39 @@ def test_run_once_second_run_opens_pr(tmp_path):
     assert (okf_root / "demo" / "2026-06-23-b.md").exists()
 
 
+def test_run_once_fetches_title_when_missing(tmp_path):
+    """html-links 抓到的条目 title=None 时，应调 article_title_fn 取文章页标题，
+    而非回退成 URL。"""
+    yaml_file = tmp_path / "sources.yaml"
+    yaml_file.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo/blog\n"
+        "    type: html-links\n    link_prefix: /blog/\n    base_url: https://demo\n",
+        encoding="utf-8",
+    )
+    okf_root = tmp_path / "firsthand"
+    state_file = tmp_path / "state.json"
+    (okf_root / "demo").mkdir(parents=True)
+    (okf_root / "demo" / "2026-06-22-a.md").write_text(
+        "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
+
+    fetched = [{"url": "https://demo/blog/a", "title": None},
+               {"url": "https://demo/blog/b", "title": None}]
+    captured = {}
+    run_once(
+        sources_path=yaml_file, okf_root=okf_root, state_file=state_file,
+        now="2026-06-23T15:30:00+08:00",
+        fetch_fn=lambda s: fetched,
+        article_text_fn=lambda u: "body",
+        article_title_fn=lambda u: "真实标题 B",
+        summarize_fn=lambda t, b: {"summary": "摘要", "tags": ["x"]},
+        open_pr_fn=lambda branch, articles: captured.update(articles=articles),
+        commit_state_fn=lambda: None,
+    )
+    # 新文章 b 的标题来自 article_title_fn，不是 URL
+    assert captured["articles"][0]["title"] == "真实标题 B"
+    assert (okf_root / "demo" / "2026-06-23-b.md").exists()
+
+
 def test_run_once_corrupt_state_open_pr_without_initialized_is_first_run(tmp_path):
     """state 部分损坏：有 open_pr_urls 但无 initialized、且无 OKF 文件，
     仍应当首刊静默处理（不开 PR），不误开全量历史 PR。"""
