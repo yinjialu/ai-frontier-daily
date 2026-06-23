@@ -1,0 +1,7 @@
+sources:
+  - id: claude-blog
+    name: Claude Blog
+    url: https://claude.com/blog
+    type: html-links
+    link_prefix: /blog/
+    base_url: https://claude.com

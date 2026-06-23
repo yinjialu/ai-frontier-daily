@@ -18,6 +18,19 @@ scripts/install-launchd.sh
 
 装完 `launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.publish` 立即试跑一次。
 
+### 另一个独立任务：一手信源内参监控（每小时）
+
+与上面的每日发布**相互独立**的第二个 launchd 任务，监控 `claude.com/blog` 等官方信源、
+新文章自动出中文摘要并开 PR。装法同样一行：
+
+```bash
+scripts/install-firsthand-launchd.sh
+```
+
+立即试跑：`launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.firsthand`，
+日志 `tail -f ~/Library/Logs/ai-frontier-daily-firsthand.log`。机制详见 `CLAUDE.md`「一手信源内参监控」。
+依赖本机 `claude` 与 `gh` 已登录（摘要走 claude 订阅额度；缺 claude 仅退回占位摘要，不影响通知）。
+
 ---
 
 ## 配置资产清单：什么在仓库、什么在本机
@@ -29,6 +42,11 @@ scripts/install-launchd.sh
 | 通知脚本 | `scripts/notify.sh` | ✅ | 随仓库 |
 | Python 依赖 | `requirements.txt` | ✅ | `pip install -r` |
 | 安装脚本 | `scripts/install-launchd.sh` | ✅ | 随仓库 |
+| 内参 launchd plist | `scripts/launchd-firsthand.plist` | ✅ | 随仓库，`install-firsthand-launchd.sh` symlink 进 `~/Library/LaunchAgents/` |
+| 内参主脚本 | `scripts/monitor_firsthand.py` + `scripts/firsthand/` | ✅ | 随仓库 |
+| 内参信源配置 | `firsthand-sources.yaml` | ✅ | 随仓库 |
+| 内参安装脚本 | `scripts/install-firsthand-launchd.sh` | ✅ | 随仓库 |
+| claude / gh 登录态 | 本机 `claude` / `gh auth` | ❌ 本机 | 新机执行 `claude`（登录）、`gh auth login`；内参摘要与开 PR 依赖 |
 | 微信凭据 | `~/.config/wechat-official-draft/config.yaml` | ❌ 私密 | 从 `scripts/config-templates/` 复制填写 |
 | 推送渠道 key | `~/.config/ai-frontier-daily/notify.env` | ❌ 私密 | 从 `scripts/config-templates/` 复制填写（可选） |
 | 小红书登录态 | `~/.config/xiaohongshu-mcp/` | ❌ 私密 | 仅当启用 XHS（默认暂停）才需要 |
