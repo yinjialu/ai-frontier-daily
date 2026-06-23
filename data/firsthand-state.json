@@ -61,6 +61,7 @@
       "https://www.anthropic.com/engineering/building-effective-agents",
       "https://www.anthropic.com/engineering/contextual-retrieval"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 25
   }
 }
