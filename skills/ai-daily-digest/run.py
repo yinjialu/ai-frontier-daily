@@ -94,11 +94,54 @@ def reindex(out: Path):
     print(f"✓ 已重建 index.json + 各厂商 latest.json（{n_vendors} 厂商 / {n_days} 天）")
 
 
+def probe(out: Path) -> int:
+    """监控哨兵：只探测信源健康 + 校验当天 routine 是否已产出，不去重/策展/渲染/调 LLM。
+    依赖仅 feedparser + pyyaml（无 node/playwright/ANTHROPIC_API_KEY）。用法：python run.py --probe
+    退出码：今日无 routine 产出 或 有「停更」信源 → 1（供 CI 告警）；仅临时失败 → 0（仅记录）。"""
+    import curator
+    health = out / "output" / "sources_health.json"
+    for v in curator.VENDOR_META:
+        collector.collect(mock=False, vendor=v, health_path=health)
+
+    try:
+        hdata = json.loads(health.read_text("utf-8"))
+    except Exception:
+        hdata = {}
+    stale = [(k, s.get("error") or "长期零产出") for k, s in sorted(hdata.items()) if s.get("stale")]
+    failed = [(k, s.get("error") or "本次零产出") for k, s in sorted(hdata.items())
+              if not s.get("ok") and not s.get("stale")]
+
+    today = datetime.date.today().isoformat()        # CI 设 TZ=Asia/Shanghai，故为北京日期
+    try:
+        idx_updated = json.loads((out / "output" / "index.json").read_text("utf-8")).get("updated", "")
+    except Exception:
+        idx_updated = ""
+    routine_ok = idx_updated == today
+
+    print("\n===== 信源监控哨兵报告 =====")
+    print(f"今日(Asia/Shanghai)：{today}")
+    print("routine 产出：" + ("✓ index.json 已更新到今天"
+          if routine_ok else f"✗ index.json updated={idx_updated or '空'}，今天未见产出"))
+    print(f"信源：停更 {len(stale)} / 临时失败 {len(failed)}")
+    for k, err in stale:
+        print(f"  ⚠ 停更  {k} — {err}")
+    for k, err in failed:
+        print(f"  ✗ 失败  {k} — {err}")
+
+    if (not routine_ok) or stale:
+        print("\n⚠ 发现需关注的异常（今日无 routine 产出 或 有停更信源）→ 退出码 1，CI 将告警。")
+        return 1
+    print("\n✓ 一切正常（临时失败仅记录、不告警）。")
+    return 0
+
+
 def main():
     if "--vendors" in sys.argv:
         list_vendors(); return
     if "--reindex" in sys.argv:
         reindex(OUT); return
+    if "--probe" in sys.argv:
+        sys.exit(probe(OUT))
     mock = "--live" not in sys.argv
     force = "--force" in sys.argv
     vendor = _arg_value("--vendor", "anthropic")
