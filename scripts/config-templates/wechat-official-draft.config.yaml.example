@@ -1,0 +1,18 @@
+# 微信公众号【已认证服务号】凭据（模板）
+# ────────────────────────────────────────────────────────────────
+# 安装位置（本机私密，勿提交仓库）：
+#     ~/.config/wechat-official-draft/config.yaml
+# 复制本模板并填值：
+#     mkdir -p ~/.config/wechat-official-draft
+#     cp scripts/config-templates/wechat-official-draft.config.yaml.example ~/.config/wechat-official-draft/config.yaml
+#     chmod 600 ~/.config/wechat-official-draft/config.yaml
+#
+# ⚠ 前置条件（缺一则发布报错 40164 / IP 不在白名单）：
+#   1. 必须是【已认证的服务号】（订阅号无草稿/素材 API 权限）。
+#   2. 运行本机的【公网出口 IP】必须加入公众号后台「设置与开发 → 基本配置 → IP 白名单」。
+#      换电脑 / 换网络 / 代理出口轮换都会变更出口 IP —— 查当前出口：curl -s https://api.ipify.org
+#      （本仓库所在机器走 TUN 全局代理，出口 IP 会轮换，需把代理出口段都加白名单或固定出口。）
+# ────────────────────────────────────────────────────────────────
+wechat:
+  appid: wx_你的_appid
+  secret: 你的_appsecret
