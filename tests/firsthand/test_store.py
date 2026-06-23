@@ -81,6 +81,8 @@ def test_ingested_urls_empty_for_new_source(tmp_path):
 
 def test_slugify():
     assert slugify("https://claude.com/blog/artifacts-in-claude-code") == "artifacts-in-claude-code"
+    # 末段是 index.html → 退用父段
+    assert slugify("https://transformer-circuits.pub/2026/may-update/index.html") == "may-update"
 
 
 def test_state_roundtrip(tmp_path):

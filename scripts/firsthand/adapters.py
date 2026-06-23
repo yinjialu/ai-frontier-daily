@@ -98,7 +98,13 @@ def _fetch_rss(source: dict, fetcher) -> list[dict]:
         link = getattr(e, "link", None)
         if not link:
             continue
-        out.append({"url": canonical_url(link), "title": getattr(e, "title", None)})
+        # feed entry 自带发布时间 → 直接取 published（ISO 日期），免逐篇抓文章页
+        published = None
+        tm = getattr(e, "published_parsed", None) or getattr(e, "updated_parsed", None)
+        if tm:
+            published = f"{tm.tm_year:04d}-{tm.tm_mon:02d}-{tm.tm_mday:02d}"
+        out.append({"url": canonical_url(link), "title": getattr(e, "title", None),
+                    "published": published})
     return out
 
 

@@ -43,6 +43,22 @@ def test_fetch_article_published_uses_fetcher():
     html = '<script type="application/ld+json">{"datePublished":"Feb 05, 2026"}</script>'
     assert fetch_article_published("http://x", fetcher=lambda u: html) == "2026-02-05"
 
+
+def test_rss_adapter_captures_published_from_feed():
+    """rss 源直接从 feed entry 取 published（ISO 日期），无需逐篇抓文章页。"""
+    rss = '''<?xml version="1.0"?><rss version="2.0"><channel>
+    <item><title>Post A</title><link>https://x.com/a</link>
+      <pubDate>Mon, 05 Jan 2026 10:00:00 GMT</pubDate></item>
+    <item><title>Post B</title><link>https://x.com/b</link>
+      <pubDate>Wed, 18 Mar 2026 12:00:00 GMT</pubDate></item>
+    </channel></rss>'''
+    src = {"id": "x", "type": "rss", "url": "http://feed"}
+    items = fetch_source(src, fetcher=lambda u: rss)
+    by_url = {i["url"]: i for i in items}
+    assert by_url["https://x.com/a"]["published"] == "2026-01-05"
+    assert by_url["https://x.com/b"]["published"] == "2026-03-18"
+
+
 SAMPLE_HTML = '''
 <html><body>
 <a href="/blog/post-a">Post A</a>
