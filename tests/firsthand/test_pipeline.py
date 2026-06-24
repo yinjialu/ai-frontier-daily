@@ -1,5 +1,50 @@
-from scripts.firsthand.pipeline import diff_new_articles, render_pr_body
+from scripts.firsthand.pipeline import diff_new_articles, render_pr_body, cluster_same_event
 from scripts.firsthand.summarize import SUMMARY_FAILED
+
+
+def _a(source, title, url, summary="s"):
+    return {"source": source, "title": title, "url": url, "summary": summary}
+
+
+def test_cluster_groups_cross_source_by_shared_bigram():
+    arts = [
+        _a("anthropic-news", "Introducing Claude Tag", "u1"),
+        _a("claude-blog", "Agent identity in Claude Tag", "u2"),
+        _a("openai-news", "OpenAI ships new voice model", "u3"),
+    ]
+    groups = cluster_same_event(arts)
+    # Claude Tag 两篇(不同源,共享 bigram "claude tag")归一组；voice 单独
+    multi = [g for g in groups if len(g) > 1]
+    assert len(multi) == 1
+    assert {a["url"] for a in multi[0]} == {"u1", "u2"}
+
+
+def test_cluster_does_not_group_same_source():
+    arts = [
+        _a("claude-blog", "Claude Managed Agents memory", "u1"),
+        _a("claude-blog", "Claude Managed Agents updates", "u2"),
+    ]
+    # 同源不归并(归并只针对跨源同事件)
+    assert all(len(g) == 1 for g in cluster_same_event(arts))
+
+
+def test_cluster_does_not_group_on_single_common_word():
+    arts = [
+        _a("claude-blog", "Claude Opus 4.8 released", "u1"),
+        _a("anthropic-news", "Claude Code desktop redesign", "u2"),
+    ]
+    # 仅共享单词 "claude"(无共享 bigram)→ 不归并
+    assert all(len(g) == 1 for g in cluster_same_event(arts))
+
+
+def test_render_pr_body_shows_same_event_section():
+    arts = [
+        _a("anthropic-news", "Introducing Claude Tag", "u1", "新功能"),
+        _a("claude-blog", "Agent identity in Claude Tag", "u2", "访问模型"),
+    ]
+    body = render_pr_body(arts)
+    assert "🔗 疑似同一事件" in body
+    assert "u1" in body and "u2" in body
 
 def test_diff_excludes_ingested_and_open_pr():
     fetched = [
