@@ -28,9 +28,10 @@
       "https://claude.com/blog/the-claude-cowork-product-guide",
       "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
       "https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude",
-      "https://claude.com/blog/agent-identity-access-model"
+      "https://claude.com/blog/agent-identity-access-model",
+      "https://claude.com/blog/building-effective-human-agent-teams"
     ],
-    "last_new_article": "2026-06-23T20:53:57+08:00"
+    "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -1288,10 +1289,12 @@
       "https://deepmind.google/blog/introducing-veo-31-and-advanced-creative-capabilities",
       "https://deepmind.google/blog/how-a-gemma-model-helped-discover-a-new-potential-cancer-therapy-pathway",
       "https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome",
-      "https://deepmind.google/blog/gemini-robotics-on-device-brings-ai-to-local-robotic-devices"
+      "https://deepmind.google/blog/gemini-robotics-on-device-brings-ai-to-local-robotic-devices",
+      "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 100
+    "known_urls_count": 100,
+    "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1316,10 +1319,12 @@
       "https://blog.google/innovation-and-ai/technology/research/gemini-for-science-io-2026",
       "https://blog.google/innovation-and-ai/products/identifying-ai-generated-media-online",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/accelerator-ai-for-the-planet",
-      "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates"
+      "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 20
+    "known_urls_count": 20,
+    "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1344,10 +1349,12 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app",
       "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions",
       "https://blog.google/products-and-platforms/platforms/android/android-show-io-edition-2026",
-      "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence"
+      "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 20
+    "known_urls_count": 20,
+    "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
