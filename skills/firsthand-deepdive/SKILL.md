@@ -30,7 +30,7 @@ p=write_draft('content', cands[<选中序号-1>], today, feature_available=False
 
 ### 3. 交 article-harness 打磨（复用，不重造）
 ```bash
-bash /Users/jialu/Documents/Engineer/skills/article-harness/harness.sh content/deepdive/<date>_<slug>/draft.md
+bash ~/.claude/skills/article-harness/harness.sh content/deepdive/<date>_<slug>/draft.md
 ```
 Writer 整理润色 ↔ Reviewer 按 reviewer.md 评分迭代，输出成稿。**用户只审核**。
 
@@ -42,4 +42,4 @@ Writer 整理润色 ↔ Reviewer 按 reviewer.md 评分迭代，输出成稿。*
 
 ## 与其他线的关系
 - 选题来源：内参 `data/firsthand/index.json`（官方一手）。
-- 不重造 Writer-Reviewer（复用 article-harness）；「skills 收敛」工程（独立仓 + skills.sh + 全局安装）完成后仅改第 3 步路径为全局安装路径。
+- 不重造 Writer-Reviewer（复用 article-harness）；article-harness 已收敛进公开仓 `yinjialu/bianliang-skills`（skills.sh，`npx skills add`），全局安装路径调用（`~/.claude/skills/article-harness/`）。
