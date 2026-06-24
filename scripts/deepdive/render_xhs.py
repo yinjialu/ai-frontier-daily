@@ -58,6 +58,12 @@ def main(argv: list[str]) -> int:
 
     out_dir = REPO / "output" / "deepdive" / data["slug"]
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    caption = xhs.get("caption", "")
+    tags = " ".join("#" + t for t in xhs.get("tags", []))
+    (out_dir / "caption.txt").write_text(
+        (caption + "\n\n" + tags).strip(), encoding="utf-8")
+
     print(f"渲染 → {out_dir}")
     subprocess.run(["node", str(RENDER_JS), str(render_json), str(out_dir)], check=True)
     return 0
