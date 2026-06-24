@@ -66,6 +66,8 @@ def main(argv: list[str]) -> int:
         return 1
 
     data = build_render_data(xhs, article_dir)
+    if xhs.get("cover") and data["cover"] is None:
+        print(f"⚠ 封面路径不存在（{xhs['cover']}），退回文字封面卡", file=sys.stderr)
     render_json = article_dir / "_render.json"
     render_json.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 

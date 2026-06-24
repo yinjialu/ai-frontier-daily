@@ -37,3 +37,22 @@ def test_too_many_lines():
 def test_line_too_long():
     d = load(); d["cards"][0]["lines"] = ["字" * 23]
     assert any("每行" in e for e in validate_xhs(d))
+
+# 健壮性：脏输入应友好报错而非崩栈（校验器是稳定性闸门，拦的就是脏输入）
+def test_null_title_does_not_crash():
+    d = load(); d["title"] = None
+    errs = validate_xhs(d)   # 不应抛 TypeError
+    assert any("标题" in e for e in errs)
+
+def test_null_caption_does_not_crash():
+    d = load(); d["caption"] = None
+    assert any("文案" in e for e in validate_xhs(d))
+
+def test_non_dict_card_does_not_crash():
+    d = load(); d["cards"][0] = "我不是对象"
+    errs = validate_xhs(d)   # 不应抛 AttributeError
+    assert any("必须是对象" in e for e in errs)
+
+def test_null_line_does_not_crash():
+    d = load(); d["cards"][0]["lines"] = [None]
+    assert any("每行" in e for e in validate_xhs(d))

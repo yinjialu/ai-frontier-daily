@@ -64,7 +64,7 @@
     var coverInner;
     if (DATA.cover) {
       coverInner = '<div class="inner cover-img">'
-        + '<img class="cover" src="' + esc(DATA.cover) + '">'
+        + '<img class="cover" src="' + escAttr(DATA.cover) + '">'
         + '<div class="cover-title">' + esc(DATA.title) + '</div></div>';
     } else {
       coverInner = '<div class="inner cover-text"><div class="cover-title">'
@@ -76,11 +76,11 @@
       var lines = (c.lines || []).map(function(ln){
         return '<li>' + esc(ln) + '</li>';
       }).join("");
+      var nn = pad(i + 1);
       var inner = '<div class="inner card-body">'
-        + '<div class="kicker">' + String(i + 1).padStart(2, "0") + '</div>'
+        + '<div class="kicker">' + nn + '</div>'
         + '<h2 class="heading">' + esc(c.heading) + '</h2>'
         + '<ul class="lines">' + lines + '</ul></div>';
-      var nn = String(i + 1).padStart(2, "0");
       cards.push({ name: nn + "-card", cls: "deepdive", w: W, h: H, inner: inner });
     });
     return cards;

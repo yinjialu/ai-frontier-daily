@@ -17,29 +17,37 @@ LINE_MAX = 22
 TAGS_MIN, TAGS_MAX = 1, 10
 
 
+def _count(x) -> str:
+    """安全取长度供报错展示：非字符串/列表时不抛异常，标「非文本」。"""
+    return str(len(x)) if isinstance(x, (str, list)) else "非文本"
+
+
 def validate_xhs(data: dict) -> list[str]:
     errors: list[str] = []
     title = data.get("title", "")
     if not isinstance(title, str) or len(title) > TITLE_MAX:
-        errors.append(f"标题需 ≤{TITLE_MAX} 字（当前 {len(title)}）")
+        errors.append(f"标题需 ≤{TITLE_MAX} 字（当前 {_count(title)}）")
     caption = data.get("caption", "")
     if not isinstance(caption, str) or len(caption) > CAPTION_MAX:
-        errors.append(f"文案需 ≤{CAPTION_MAX} 字（当前 {len(caption)}）")
+        errors.append(f"文案需 ≤{CAPTION_MAX} 字（当前 {_count(caption)}）")
     cards = data.get("cards")
     if not isinstance(cards, list) or not (CARDS_MIN <= len(cards) <= CARDS_MAX):
-        errors.append(f"卡片数需 {CARDS_MIN}~{CARDS_MAX} 张（当前 {len(cards) if isinstance(cards, list) else 'N/A'}）")
+        errors.append(f"卡片数需 {CARDS_MIN}~{CARDS_MAX} 张（当前 {_count(cards)}）")
         cards = cards if isinstance(cards, list) else []
     for i, c in enumerate(cards):
+        if not isinstance(c, dict):
+            errors.append(f"卡片{i} 必须是对象（含 heading/lines）")
+            continue
         h = c.get("heading", "")
         if not isinstance(h, str) or len(h) > HEADING_MAX:
-            errors.append(f"卡片{i} heading 需 ≤{HEADING_MAX} 字（当前 {len(h)}）")
+            errors.append(f"卡片{i} heading 需 ≤{HEADING_MAX} 字（当前 {_count(h)}）")
         lines = c.get("lines")
         if not isinstance(lines, list) or len(lines) > LINES_MAX:
-            errors.append(f"卡片{i} 行数需 ≤{LINES_MAX}（当前 {len(lines) if isinstance(lines, list) else 'N/A'}）")
+            errors.append(f"卡片{i} 行数需 ≤{LINES_MAX}（当前 {_count(lines)}）")
             lines = lines if isinstance(lines, list) else []
         for j, ln in enumerate(lines):
             if not isinstance(ln, str) or len(ln) > LINE_MAX:
-                errors.append(f"卡片{i} 第{j}行 每行需 ≤{LINE_MAX} 字（当前 {len(ln)}）")
+                errors.append(f"卡片{i} 第{j}行 每行需 ≤{LINE_MAX} 字（当前 {_count(ln)}）")
     tags = data.get("tags")
     if not isinstance(tags, list) or not (TAGS_MIN <= len(tags) <= TAGS_MAX):
         errors.append(f"tags 需 {TAGS_MIN}~{TAGS_MAX} 个")
