@@ -19,3 +19,6 @@ output/**/公众号贴图.md
 # macOS 垃圾文件
 .DS_Store
 **/.DS_Store
+
+# article-harness 迭代中间产物（成稿在 draft 同目录，工作区不提交）
+content/deepdive/**/.harness-workspace/
