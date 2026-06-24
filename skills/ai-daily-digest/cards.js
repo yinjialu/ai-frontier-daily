@@ -57,7 +57,37 @@
     return (tc + " " + sc).trim();
   }
 
+  // 专题深度·小红书知识卡：封面 + 每要点一张。版式见 cards.css 的 .card.deepdive。
+  function deepdiveCards(DATA){
+    var W = 1080, H = 1440, cards = [];
+    // 封面卡
+    var coverInner;
+    if (DATA.cover) {
+      coverInner = '<div class="inner cover-img">'
+        + '<img class="cover" src="file://' + esc(DATA.cover) + '">'
+        + '<div class="cover-title">' + esc(DATA.title) + '</div></div>';
+    } else {
+      coverInner = '<div class="inner cover-text"><div class="cover-title">'
+        + esc(DATA.title) + '</div></div>';
+    }
+    cards.push({ name: "00-cover", cls: "deepdive cover", w: W, h: H, inner: coverInner });
+    // 知识卡
+    (DATA.cards || []).forEach(function(c, i){
+      var lines = (c.lines || []).map(function(ln){
+        return '<li>' + esc(ln) + '</li>';
+      }).join("");
+      var inner = '<div class="inner card-body">'
+        + '<div class="kicker">' + String(i + 1).padStart(2, "0") + '</div>'
+        + '<h2 class="heading">' + esc(c.heading) + '</h2>'
+        + '<ul class="lines">' + lines + '</ul></div>';
+      var nn = String(i + 1).padStart(2, "0");
+      cards.push({ name: nn + "-card", cls: "deepdive", w: W, h: H, inner: inner });
+    });
+    return cards;
+  }
+
   function buildDeck(DATA){
+    if (DATA && DATA.kind === "deepdive") return deepdiveCards(DATA);
     var out=[], U=DATA.updates||[], V=vendorOf(DATA), vc="v-"+V.id, sc=styleClass(DATA);
 
     // 小红书封面
