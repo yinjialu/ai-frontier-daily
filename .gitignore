@@ -27,3 +27,5 @@ content/deepdive/**/.harness-workspace/
 content/deepdive/**/wechat-*.json
 content/deepdive/**/wechat-preview.html
 content/deepdive/**/xhs/
+# 小红书渲染中间产物（含 base64 内联封面，体积大）
+content/deepdive/**/_render.json

@@ -231,3 +231,21 @@
   --glass-bg:rgba(14,12,12,.36);--glass-hi:rgba(255,255,255,.32);
   --glass-border:rgba(255,255,255,.24);--glass-shade:rgba(0,0,0,.3);
 }
+
+/* ===== 专题深度·小红书知识卡（纯追加，不影响早报版式） ===== */
+.card.deepdive{background:#fff;color:#16181d;}
+.card.deepdive .inner{padding:96px 84px;justify-content:flex-start;}
+.card.deepdive.cover .inner{justify-content:center;align-items:flex-start;}
+.card.deepdive .cover-title{font-size:84px;line-height:1.25;font-weight:800;letter-spacing:.5px;}
+.card.deepdive .cover-img{position:relative;padding:0;}
+.card.deepdive .cover-img img.cover{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.card.deepdive .cover-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;
+  background:linear-gradient(transparent,rgba(0,0,0,.62));pointer-events:none;}
+.card.deepdive .cover-img .cover-title{position:absolute;left:84px;bottom:96px;right:84px;color:#fff;
+  text-shadow:0 2px 24px rgba(0,0,0,.5);font-size:72px;z-index:2;}
+.card.deepdive .kicker{font-size:40px;font-weight:700;color:#c0392b;margin-bottom:28px;}
+.card.deepdive .heading{font-size:64px;line-height:1.3;font-weight:800;margin:0 0 56px;}
+.card.deepdive .lines{list-style:none;padding:0;margin:0;}
+.card.deepdive .lines li{font-size:46px;line-height:1.55;margin-bottom:28px;
+  padding-left:40px;position:relative;}
+.card.deepdive .lines li::before{content:"·";position:absolute;left:8px;color:#c0392b;font-weight:800;}

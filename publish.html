@@ -90,6 +90,14 @@ header h1{margin:0;font-size:18px;font-weight:700;color:var(--ink)}
 .act-btn.solid{background:var(--accent);color:#fff}
 .act-btn[disabled]{opacity:.6}
 
+/* Deepdive section */
+.dd-section{margin:18px 16px 0;padding-top:16px;border-top:1px solid var(--line)}
+.dd-head{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);opacity:.85;margin-bottom:10px}
+.dd-controls{display:flex;gap:8px;margin-bottom:10px}
+.dd-input{flex:1;min-width:0;font-size:14px;padding:8px 12px;border-radius:8px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);-webkit-appearance:none}
+
 /* Shortcut help */
 details.sc-help{background:var(--paper);border:1px solid var(--line);border-radius:10px;
   margin:12px 16px 0;font-size:12.5px;color:var(--soft)}
@@ -135,6 +143,17 @@ details.sc-help code{background:var(--cream);padding:1px 5px;border-radius:4px;f
   </div>
 </details>
 <div id="panels"><div class="loading"><span class="spin">⏳</span> 加载中…</div></div>
+
+<section id="deepdive" class="dd-section">
+  <div class="dd-head">📚 深度内容（专题）</div>
+  <div class="dd-controls">
+    <select id="dd-slug" class="dd-input" onchange="loadDeepdive()">
+      <option value="">— 选择专题 —</option>
+    </select>
+    <button class="act-btn solid" onclick="loadDeepdive()">加载</button>
+  </div>
+  <div id="dd-body"><p class="img-hint">选择一个专题，拉取它的小红书配图与文案。</p></div>
+</section>
 
 <div id="lb" onclick="closeLb()">
   <button class="lb-close" onclick="closeLb()">✕</button>
@@ -495,6 +514,86 @@ function switchTo(v) {
   const color = VENDOR_META[v]?.color || 'var(--c-anthropic)';
   document.documentElement.style.setProperty('--accent', color);
 }
+
+// ── 深度内容（专题）────────────────────────────────────────────
+// 复用 PANEL_FILES + runShortcut / downloadAll（与早报 Tab 同一套快捷指令/打包逻辑），
+// 仅文案改为 fetch 该专题 caption.txt。slug 静态托管无法列目录，由用户输入并存 localStorage。
+async function loadDeepdive() {
+  const input = document.getElementById('dd-slug');
+  const body = document.getElementById('dd-body');
+  const slug = (input.value || '').trim();
+  if (!slug) {
+    body.innerHTML = '<p class="img-hint">请先选择专题。</p>';
+    return;
+  }
+  localStorage.setItem('deepdive_slug', slug);
+  body.innerHTML = '<div class="loading"><span class="spin">⏳</span> 加载中…</div>';
+  const dirPath = `output/deepdive/${slug}`;
+  let manifest;
+  try {
+    manifest = await (await fetch(`${dirPath}/manifest.json`)).json();
+  } catch(e) {
+    body.innerHTML = `<p class="img-hint">未找到 <code>${dirPath}/manifest.json</code>，确认 slug 正确且已渲染。</p>`;
+    return;
+  }
+  const files = (manifest.files || []).filter(f => /\.(jpg|png)$/i.test(f));
+  PANEL_FILES['deepdive'] = { dirPath, files };
+
+  body.innerHTML = `
+<div class="img-head">📷 配图 · 共 ${files.length} 张</div>
+<div class="img-actions">
+  <button class="act-btn solid" onclick="runShortcut('deepdive',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
+  <button class="act-btn" onclick="copyDeepdiveCaption(this)">🔗 复制文案</button>
+  <button class="act-btn" onclick="downloadAll('deepdive',this)">⬇️ 打包 (.zip)</button>
+</div>
+<div class="img-strip" id="imgs-deepdive"></div>
+<p class="img-hint">「发送到快捷指令」直接存相册（首次填一次指令名）；「复制文案」复制标题+标签 · 按顺序上传</p>
+`;
+  const imgStrip = document.getElementById('imgs-deepdive');
+  for (const fname of files) {
+    const src = `${dirPath}/${fname}`;
+    const thumb = document.createElement('div');
+    thumb.className = 'img-thumb';
+    thumb.innerHTML = `<img src="${src}" alt="${fname}" loading="lazy"><div class="img-label">${fname}</div>`;
+    thumb.onclick = () => openLb(src);
+    imgStrip.appendChild(thumb);
+  }
+}
+
+async function copyDeepdiveCaption(btn) {
+  const info = PANEL_FILES['deepdive'];
+  if (!info) return;
+  let text = '';
+  try {
+    text = await (await fetch(`${info.dirPath}/caption.txt`)).text();
+  } catch(e) { text = ''; }
+  await clipboardWrite(text);
+  btn.textContent = '✓ 文案已复制'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = '🔗 复制文案'; btn.classList.remove('done'); }, 2000);
+}
+
+// 拉取已渲染专题清单（output/deepdive/index.json）填充下拉
+async function loadDeepdiveIndex() {
+  const sel = document.getElementById('dd-slug');
+  if (!sel) return [];
+  let items = [];
+  try {
+    const idx = await (await fetch('output/deepdive/index.json')).json();
+    items = idx.items || [];
+  } catch(e) { /* 无清单：下拉保持仅占位项 */ }
+  const saved = localStorage.getItem('deepdive_slug') || '';
+  sel.innerHTML = '<option value="">— 选择专题 —</option>' +
+    items.map(it => `<option value="${it.slug}">${it.title || it.slug}</option>`).join('');
+  if (saved && items.some(it => it.slug === saved)) sel.value = saved;
+  return items;
+}
+
+// 初始化：填充下拉，有上次选择则自动加载（程序化赋值不触发 onchange，需显式调用）
+(async function() {
+  await loadDeepdiveIndex();
+  const sel = document.getElementById('dd-slug');
+  if (sel && sel.value) loadDeepdive();
+})();
 
 init();
 </script>

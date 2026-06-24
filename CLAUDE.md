@@ -38,6 +38,11 @@
   全局安装于 `~/.agents/skills/article-harness`(Claude Code/Codex 等 universal 工具共享,Claude Code 软链 `~/.claude/skills/`)。
   **个人写作品味(writer/reviewer)留本地 `~/Documents/context-harness-data/article-harness/`,运行时优先加载,不随仓公开。**
   设计/计划见 `docs/superpowers/{specs,plans}/2026-06-24-{专题深度线,bianliang-skills-收敛}*`。
+- **小红书发布**:`deepdive-xiaohongshu` skill 把成稿 → `xhs.json`(卡片脚本,硬约束校验 `scripts/deepdive/xhs_validate.py`)
+  → `scripts/deepdive/render_xhs.py` 复用 `render.js` 渲染 1080×1440 知识卡到 `output/deepdive/<slug>/`(封面内联 base64
+  规避 setContent 拦 file://;深度卡为 `cards.js`/`cards.css` 纯追加 `kind:"deepdive"`)→ `publish.html`「深度内容」入口
+  移动端发布(快捷指令)或 `publish_xhs_newspic.py`(xiaohongshu-mcp)。设计/计划见
+  `docs/superpowers/{specs,plans}/2026-06-24-专题深度小红书发布*`。
 
 ## 本机发布链路(参考)
 
