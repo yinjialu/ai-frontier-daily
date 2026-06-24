@@ -45,7 +45,9 @@ def test_build_skeleton_structure():
     assert "https://claude.com/blog/agent-identity-access-model" in md
     for sec in ["① 这是什么", "② 功能详解", "③ 官方案例", "④ 实操截图", "⑤ 作者点评"]:
         assert sec in md
+    # 不可体验 → ④ 是「整节不进正文」的 Writer 指令，不是可发布的占位段落
     assert "暂不可体验" in md
+    assert "本节整节不进成稿正文" in md
     assert "正文@https://www.anthropic.com/news/introducing-claude-tag" in md
     assert "Claude 作为团队成员加入 Slack。" in md
 
@@ -54,7 +56,7 @@ def test_build_skeleton_feature_available_marks_todo_screenshot():
     cluster = [_it("X feature", "claude-blog", "https://claude.com/blog/x",
                    "2026-06-24T00:00:00+08:00")]
     md = build_skeleton(cluster, fetch_text_fn=lambda u: "t", feature_available=True)
-    assert "待补截图" in md
+    assert "截图" in md
     assert "暂不可体验" not in md
 
 

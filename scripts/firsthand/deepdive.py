@@ -37,9 +37,12 @@ def build_skeleton(cluster: list[dict], fetch_text_fn=fetch_article_text,
 
     seen_summaries = "；".join(a.get("summary") or "" for a in cluster if a.get("summary"))
 
-    screenshot_todo = ("TODO: 待补截图/录屏（功能可体验时补操作截图）"
-                       if feature_available else
-                       "TODO: 该功能**暂不可体验**——本节标注「暂不可体验，待开放后补截图/录屏」")
+    screenshot_todo = (
+        "TODO（Writer 指令）: 补操作截图/录屏入正文。"
+        if feature_available else
+        "TODO（Writer 指令）: 该功能暂不可体验 → **本节整节不进成稿正文**（删掉本节，"
+        "不要写成「暂不可体验，待补」之类占位段落）；不可体验这点若重要，用一句自然的"
+        "读者向陈述并入相邻段落即可，'待开放后补截图'以审核说明带外告知作者。")
 
     body = [
         "---",
