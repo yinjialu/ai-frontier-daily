@@ -39,12 +39,32 @@ def build_render_data(xhs: dict, article_dir: Path) -> dict:
         p = (Path(article_dir) / cover).resolve()
         if p.exists():
             cover_uri = _image_data_uri(p)
+
+    cards = []
+    for card in xhs.get("cards", []):
+        if not isinstance(card, dict):
+            cards.append(card)
+            continue
+        c = dict(card)
+        image = c.get("image")
+        if image:
+            p = (Path(article_dir) / image).resolve()
+            c["image"] = _image_data_uri(p) if p.exists() else None
+        cards.append(c)
+
     return {
         "kind": "deepdive",
         "slug": xhs.get("slug", ""),
         "title": xhs.get("title", ""),
+        "coverTitle": xhs.get("coverTitle", xhs.get("title", "")),
         "cover": cover_uri,
-        "cards": xhs.get("cards", []),
+        "style": xhs.get("style", ""),
+        "edition": xhs.get("edition", "AI FRONTIER"),
+        "brand": xhs.get("brand", "变量生活"),
+        "period": xhs.get("period", ""),
+        "topics": xhs.get("topics", []),
+        "coverCaption": xhs.get("coverCaption", []),
+        "cards": cards,
         "caption": xhs.get("caption", ""),
         "tags": xhs.get("tags", []),
     }
@@ -65,6 +85,15 @@ def update_index(deepdive_root: Path, slug: str, title: str) -> list[dict]:
     idx_path.write_text(
         json.dumps({"items": items}, ensure_ascii=False, indent=2), encoding="utf-8")
     return items
+
+
+def clean_render_outputs(out_dir: Path) -> None:
+    """重渲前清掉旧卡图与 manifest，避免卡数变少时残留历史图片。"""
+    if not out_dir.exists():
+        return
+    for p in out_dir.iterdir():
+        if p.suffix.lower() in {".jpg", ".jpeg", ".png"} or p.name == "manifest.json":
+            p.unlink()
 
 
 def main(argv: list[str]) -> int:
@@ -90,6 +119,7 @@ def main(argv: list[str]) -> int:
 
     out_dir = REPO / "output" / "deepdive" / data["slug"]
     out_dir.mkdir(parents=True, exist_ok=True)
+    clean_render_outputs(out_dir)
 
     caption = xhs.get("caption", "")
     tags = " ".join("#" + t for t in xhs.get("tags", []))

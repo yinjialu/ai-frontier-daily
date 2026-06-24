@@ -1,63 +1,61 @@
 {
   "slug": "introducing-claude-tag",
+  "style": "editorial",
+  "edition": "AI FRONTIER",
+  "brand": "变量生活",
+  "period": "2026.06",
   "cover": "assets/cover-xiaohei-agent-identity.png",
-  "title": "给 AI 发一张工牌",
+  "title": "Claude Tag 发工牌了",
+  "coverTitle": "Claude Tag\n给 AI 发工牌",
+  "topics": ["Agent Identity", "权限模型", "AI 同事"],
+  "coverCaption": [
+    "它不是“又一个 Slack 机器人”。",
+    "真正的新东西，是 Claude 有了自己的身份和权限边界。"
+  ],
   "cards": [
     {
-      "heading": "Claude Tag 是什么",
-      "lines": [
-        "把 Claude 拉进 Slack 当同事",
-        "@它就能派活,它自己拆步骤做完",
-        "今天只在企业版 beta,普通人还玩不到"
-      ]
+      "kind": "quote",
+      "heading": "真正变化\n不是进 Slack",
+      "quote": "Claude Tag 真正的新东西，不是 Claude 进了 Slack，而是它换了一套身份模型。",
+      "notes": [
+        ["01", "过去：AI 借你的账号和权限干活。"],
+        ["02", "现在：AI 需要自己的身份、权限和审计记录。"]
+      ],
+      "footer": ["核心判断", "Swipe"]
     },
     {
-      "heading": "重点不在那个壳子",
-      "lines": [
-        "把机器人塞进 Slack,几年前就有人做了",
-        "真正卡住「AI 当同事」的",
-        "是身份和授权,不是聊天界面"
-      ]
+      "kind": "image",
+      "heading": "单人还能借\n多人就会乱",
+      "image": "assets/claude-tag-illustrations/01-per-user-permission-risk.png",
+      "caption": ["一旦 AI 进了共享频道，问题就变成：它到底在借谁的权限？"],
+      "footer": ["权限歧义", "03 / 06"]
     },
     {
-      "heading": "「代表你」为什么会散架",
-      "lines": [
-        "你用 Claude,是它借你的权限行事",
-        "但 agent 越来越自主",
-        "你下线了它还在干,借谁的权限?"
-      ]
+      "kind": "quote",
+      "heading": "act as user\n直接散架",
+      "quote": "如果它在你下线后继续工作，甚至凭据主人已经离职，它到底是代表谁在访问数据库？",
+      "notes": [
+        ["A", "agent 越自主，越不能假设人一直在回路里。"],
+        ["B", "多人团队里，没有任何一个人的权限永远是对的。"]
+      ],
+      "footer": ["身份问题", "04 / 06"]
     },
     {
-      "heading": "多人频道:谁来借权限?",
-      "lines": [
-        "三个工程师加一个 PM 一起 debug",
-        "没有谁的权限「永远是对的」",
-        "借了某人凭据,频道就成了侧门"
-      ]
+      "kind": "image",
+      "heading": "从个人钥匙\n到频道身份",
+      "image": "assets/claude-tag-illustrations/02-per-channel-agent-identity.png",
+      "caption": ["权限从 per-user 搬到 per-channel，审计主语也变成 Claude 自己。"],
+      "footer": ["Agent Identity", "05 / 06"]
     },
     {
-      "heading": "答案:让它「成为它自己」",
-      "lines": [
-        "Claude 在每个系统里都有自己的账号",
-        "权限从「人」搬到「频道」",
-        "管理员按频道配权限,不再借人"
-      ]
-    },
-    {
-      "heading": "这一步解决了什么",
-      "lines": [
-        "共享频道不再是私密文档的侧门",
-        "撤权变成一个动作:吊销身份即可",
-        "审计的主语是 Claude,不是某个人"
-      ]
-    },
-    {
-      "heading": "为什么这一步绕不过去",
-      "lines": [
-        "要 agent 自主、长期驻留",
-        "「借人类身份」必然走死",
-        "「代表你」是工具,「成为自己」是同事"
-      ]
+      "kind": "closing",
+      "heading": "AI 当同事\n先要有身份",
+      "quote": "“代表你”是 AI 当工具时的逻辑；\n“成为它自己”，才是 AI 当同事时的逻辑。",
+      "notes": [
+        ["READ", "完整长文已发公众号：变量生活"],
+        ["TOPIC", "Claude Tag / Agent Identity / 非人身份治理"]
+      ],
+      "footer": ["变量生活", "完整长文见公众号"]
     }
   ],
   "caption": "6 月 23 日 Anthropic 发布 Claude Tag——把 Claude 拉进 Slack 当同事,@它就能派活,它自己拆步骤做完。但它真正的新东西不是「进了 Slack」,而是换了一套身份模型:AI 不再「代表你」去访问数据,而是「以它自己的身份」行事。\n\n为什么这很重要?当 agent 越来越自主、在多人频道里长期驻留,「借人类的权限」这条路就走死了——人都不在回路里,它到底借谁的权限?而且只要借了某个人的凭据,共享频道就会变成别人私密文档的一扇侧门。\n\nAnthropic 的解法是给 Claude 一个独立的 agent identity:它在每个系统里都有自己的账号,权限从 per-user 搬到 per-channel,撤权变成吊销一个身份,审计的主语也从「某个人」变成 Claude 自己。\n\n「代表你」是 AI 当工具时的逻辑;「成为它自己」,才是 AI 当同事时的逻辑。\n\n(注:今天只在 Claude 企业版/团队版 beta,跑在 Opus 4.8,普通用户暂时玩不到)",

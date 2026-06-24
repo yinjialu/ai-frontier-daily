@@ -6,6 +6,7 @@
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
   function escAttr(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");}
   function pad(n){return String(n).padStart(2,"0");}
+  function br(s){return esc(s).replace(/\n/g,"<br>");}
 
   // 来源链接：优先用原文 url；缺 url 时退回 https://<域名> 兜底到官网首页；都没有则纯文本。
   // 渲染成 <a> 时样式继承父级、无下划线（见 cards.css .srclink），导出的图片视觉零变化；
@@ -59,6 +60,9 @@
 
   // 专题深度·小红书知识卡：封面 + 每要点一张。版式见 cards.css 的 .card.deepdive。
   function deepdiveCards(DATA){
+    if (String(DATA.style || DATA.layout || "").toLowerCase() === "editorial") {
+      return editorialDeepdiveCards(DATA);
+    }
     var W = 1080, H = 1440, cards = [];
     // 封面卡
     var coverInner;
@@ -82,6 +86,72 @@
         + '<h2 class="heading">' + esc(c.heading) + '</h2>'
         + '<ul class="lines">' + lines + '</ul></div>';
       cards.push({ name: nn + "-card", cls: "deepdive", w: W, h: H, inner: inner });
+    });
+    return cards;
+  }
+
+  function noteHTML(notes){
+    return (notes || []).map(function(n, i){
+      var nb, text;
+      if (Array.isArray(n)) { nb = n[0]; text = n[1]; }
+      else { nb = n && (n.label || n.nb || n.n); text = n && (n.text || n.body); }
+      if (!nb) nb = pad(i + 1);
+      return '<div class="note-item"><div class="note-nb">' + esc(nb) + '</div>'
+        + '<p class="note-text">' + br(text || "") + '</p></div>';
+    }).join("");
+  }
+
+  function captionHTML(lines){
+    var arr = Array.isArray(lines) ? lines : (lines ? [lines] : []);
+    return arr.map(function(line){
+      return '<p class="caption-line">' + br(line) + '</p>';
+    }).join("");
+  }
+
+  function footerHTML(footer, fallbackLeft, fallbackRight){
+    var left = fallbackLeft, right = fallbackRight;
+    if (Array.isArray(footer)) { left = footer[0] || left; right = footer[1] || right; }
+    return '<div class="bottom-strip"><span>' + esc(left || "") + '</span><span>' + esc(right || "") + '</span></div>';
+  }
+
+  // 专题深度·小红书杂志卡：沉淀自 content/deepdive/*/xhs 的 editorial magazine 版式。
+  function editorialDeepdiveCards(DATA){
+    var W = 1080, H = 1440, cards = [];
+    var total = ((DATA.cards || []).length + 1);
+    var edition = DATA.edition || "AI FRONTIER";
+    var brand = DATA.brand || "变量生活";
+    var period = DATA.period || "";
+    var title = DATA.coverTitle || DATA.title || "";
+    var topics = (DATA.topics || DATA.tags || []).slice(0, 3);
+    var coverCaption = DATA.coverCaption || [];
+    var coverInner = '<div class="grain"></div><div class="inner content">'
+      + '<p class="page-kicker">' + esc(edition) + ' · 01 / ' + pad(total) + '</p>'
+      + '<h1 class="title-tight">' + br(title) + '</h1>'
+      + '<div class="pill-row">' + topics.map(function(t){ return '<span class="pill">' + esc(t) + '</span>'; }).join("") + '</div>'
+      + (DATA.cover ? '<figure class="hero-img"><img src="' + escAttr(DATA.cover) + '" alt="' + escAttr(DATA.title || title) + '"></figure>' : "")
+      + '<div class="caption-band">' + captionHTML(coverCaption) + '</div>'
+      + footerHTML([brand, period], brand, period)
+      + '</div>';
+    cards.push({ name: "00-cover", cls: "deepdive xhs-card cover", w: W, h: H, inner: coverInner });
+
+    (DATA.cards || []).forEach(function(c, i){
+      var page = i + 2, nn = pad(i + 1), pageText = pad(page) + " / " + pad(total);
+      var kind = c.kind || (c.image ? "image" : "quote");
+      var inner = '<div class="grain"></div><div class="inner content">'
+        + '<p class="page-kicker">' + esc(edition) + ' · ' + pad(page) + ' / ' + pad(total) + '</p>'
+        + '<h2 class="title-mid">' + br(c.heading || "") + '</h2>';
+      if (kind === "image") {
+        inner += c.image
+          ? '<figure class="image-page-img"><img src="' + escAttr(c.image) + '" alt="' + escAttr(c.heading || "") + '"></figure>'
+          : '<div class="quote-shot"><p class="quote-main">' + br((c.caption || c.lines || [])[0] || "") + '</p></div>';
+        inner += '<div class="caption-band">' + captionHTML(c.caption || c.lines) + '</div>';
+      } else {
+        var quote = c.quote || (c.lines || []).join("\n");
+        inner += '<div class="quote-shot"><p class="quote-main">' + br(quote) + '</p></div>';
+        inner += '<div class="note-list">' + noteHTML(c.notes || []) + '</div>';
+      }
+      inner += footerHTML(c.footer, c.heading || nn, pageText) + '</div>';
+      cards.push({ name: nn + "-card", cls: "deepdive xhs-card " + kind, w: W, h: H, inner: inner });
     });
     return cards;
   }

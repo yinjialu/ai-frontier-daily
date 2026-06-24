@@ -249,3 +249,69 @@
 .card.deepdive .lines li{font-size:46px;line-height:1.55;margin-bottom:28px;
   padding-left:40px;position:relative;}
 .card.deepdive .lines li::before{content:"·";position:absolute;left:8px;color:#c0392b;font-weight:800;}
+
+/* 专题深度·小红书杂志卡（沉淀自 content/deepdive/*/xhs 的 editorial magazine 版式） */
+.card.deepdive.xhs-card{
+  --paper:#f3f0e8;--paper-2:#ebe6da;--ink:#0a0a0b;--muted:#68625a;
+  --line:rgba(10,10,11,.22);--editorial-accent:#111;--paper-rgb:243,240,232;--ink-rgb:10,10,11;
+  background:var(--paper);color:var(--ink);font-family:var(--sans);isolation:isolate;
+}
+.card.deepdive.xhs-card::after{
+  background:linear-gradient(180deg,rgba(var(--ink-rgb),.02),rgba(var(--ink-rgb),.05) 60%,rgba(var(--ink-rgb),.08));
+  mix-blend-mode:multiply;opacity:1;
+}
+.card.deepdive.xhs-card .grain{
+  position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:multiply;
+  background-image:radial-gradient(rgba(0,0,0,.045) 1px,transparent 1px);background-size:3px 3px;
+}
+.card.deepdive.xhs-card .content{
+  position:relative;z-index:2;width:100%;height:100%;padding:96px 88px;display:flex;flex-direction:column;
+}
+.card.deepdive.xhs-card .page-kicker{
+  font-family:var(--mono);font-size:19px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(var(--ink-rgb),.55);margin:0 0 28px;
+}
+.card.deepdive.xhs-card .title-tight{
+  font-family:var(--serifcn);font-size:86px;line-height:1.08;font-weight:700;letter-spacing:.02em;margin:0;
+}
+.card.deepdive.xhs-card .title-mid{
+  font-family:var(--serifcn);font-size:72px;line-height:1.12;font-weight:700;letter-spacing:.02em;margin:0;
+}
+.card.deepdive.xhs-card .quote-shot{
+  margin-top:56px;padding:58px 54px;background:rgba(var(--paper-rgb),.74);
+  border:1px solid var(--line);min-height:650px;display:flex;flex-direction:column;justify-content:center;
+}
+.card.deepdive.xhs-card .quote-main{
+  font-family:var(--serifcn);font-size:50px;line-height:1.48;font-weight:500;letter-spacing:.02em;margin:0;
+}
+.card.deepdive.xhs-card .quote-main strong{color:var(--editorial-accent);font-weight:900;}
+.card.deepdive.xhs-card .note-list{display:grid;gap:22px;margin-top:44px;}
+.card.deepdive.xhs-card .note-item{
+  display:grid;grid-template-columns:70px 1fr;gap:22px;align-items:start;padding-top:22px;border-top:1px solid var(--line);
+}
+.card.deepdive.xhs-card .note-nb{
+  font-family:var(--mono);font-size:22px;letter-spacing:.08em;color:var(--editorial-accent);
+}
+.card.deepdive.xhs-card .note-text{
+  font-family:var(--serifcn);font-size:30px;line-height:1.45;color:rgba(var(--ink-rgb),.76);margin:0;
+}
+.card.deepdive.xhs-card .hero-img{
+  margin-top:48px;border:1px solid var(--line);background:#fff;padding:18px;
+}
+.card.deepdive.xhs-card .hero-img img,.card.deepdive.xhs-card .image-page-img img{width:100%;display:block;}
+.card.deepdive.xhs-card .image-page-img{
+  margin-top:44px;margin-left:-24px;width:calc(100% + 48px);border:1px solid var(--line);background:#fff;padding:12px;
+}
+.card.deepdive.xhs-card .caption-band{margin-top:28px;display:grid;gap:18px;}
+.card.deepdive.xhs-card .caption-line{
+  font-family:var(--serifcn);font-size:34px;line-height:1.38;margin:0;color:rgba(var(--ink-rgb),.82);
+}
+.card.deepdive.xhs-card .bottom-strip{
+  margin-top:auto;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;
+  font-family:var(--mono);font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.card.deepdive.xhs-card .pill-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;}
+.card.deepdive.xhs-card .pill{
+  border:1px solid var(--line);padding:10px 14px;font-family:var(--mono);font-size:18px;letter-spacing:.08em;
+  color:var(--muted);background:rgba(var(--paper-rgb),.64);
+}
