@@ -27,7 +27,8 @@
       "https://claude.com/blog/observability-for-developers-building-connectors",
       "https://claude.com/blog/the-claude-cowork-product-guide",
       "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
-      "https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude"
+      "https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude",
+      "https://claude.com/blog/agent-identity-access-model"
     ],
     "last_new_article": "2026-06-23T20:53:57+08:00"
   },
@@ -86,5 +87,13 @@
     ],
     "initialized": true,
     "known_urls_count": 15
+  },
+  "anthropic-news": {
+    "initialized": true,
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
+    "open_pr_urls": [
+      "https://www.anthropic.com/news/introducing-claude-tag"
+    ]
   }
 }
