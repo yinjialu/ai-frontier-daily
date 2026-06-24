@@ -97,6 +97,15 @@ header h1{margin:0;font-size:18px;font-weight:700;color:var(--ink)}
 .dd-controls{display:flex;gap:8px;margin-bottom:10px}
 .dd-input{flex:1;min-width:0;font-size:14px;padding:8px 12px;border-radius:8px;
   border:1px solid var(--line);background:var(--paper);color:var(--ink);-webkit-appearance:none}
+/* 深度区：标题 + 正文文案展示，方便复制 */
+.dd-text{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
+.dd-field-head{display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;font-weight:600;color:var(--soft);margin-bottom:6px}
+.dd-field-input,.dd-field-area{width:100%;font-size:14px;padding:9px 12px;border-radius:8px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  font-family:inherit;-webkit-appearance:none}
+.dd-field-area{line-height:1.6;resize:vertical;white-space:pre-wrap;word-break:break-word}
+.act-btn.mini{font-size:11px;padding:4px 12px}
 
 /* Shortcut help */
 details.sc-help{background:var(--paper);border:1px solid var(--line);border-radius:10px;
@@ -539,16 +548,33 @@ async function loadDeepdive() {
   const files = (manifest.files || []).filter(f => /\.(jpg|png)$/i.test(f));
   PANEL_FILES['deepdive'] = { dirPath, files };
 
+  // 取标题（下拉选中项文字）+ 正文文案（caption.txt，含正文+标签）一并展示，方便直接复制
+  const title = (input.options[input.selectedIndex] && input.options[input.selectedIndex].text) || slug;
+  let caption = '';
+  try { caption = await (await fetch(`${dirPath}/caption.txt`)).text(); } catch(e) {}
+
   body.innerHTML = `
+<div class="dd-text">
+  <div class="dd-field">
+    <div class="dd-field-head"><span>📝 标题（≤20字）</span><button class="act-btn mini" onclick="copyField('dd-title-v',this)">复制</button></div>
+    <input id="dd-title-v" class="dd-field-input" readonly>
+  </div>
+  <div class="dd-field">
+    <div class="dd-field-head"><span>📄 正文 + 标签</span><button class="act-btn mini" onclick="copyField('dd-caption-v',this)">复制</button></div>
+    <textarea id="dd-caption-v" class="dd-field-area" rows="8" readonly></textarea>
+  </div>
+</div>
 <div class="img-head">📷 配图 · 共 ${files.length} 张</div>
 <div class="img-actions">
   <button class="act-btn solid" onclick="runShortcut('deepdive',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
-  <button class="act-btn" onclick="copyDeepdiveCaption(this)">🔗 复制文案</button>
   <button class="act-btn" onclick="downloadAll('deepdive',this)">⬇️ 打包 (.zip)</button>
 </div>
 <div class="img-strip" id="imgs-deepdive"></div>
-<p class="img-hint">「发送到快捷指令」直接存相册（首次填一次指令名）；「复制文案」复制标题+标签 · 按顺序上传</p>
+<p class="img-hint">标题/正文点「复制」直接拷贝；配图「发送到快捷指令」存相册（首次填指令名）· 按顺序上传</p>
 `;
+  // 用 .value 赋值（避免标题/文案里的引号、「」、# 破坏 HTML 转义）
+  document.getElementById('dd-title-v').value = title;
+  document.getElementById('dd-caption-v').value = caption;
   const imgStrip = document.getElementById('imgs-deepdive');
   for (const fname of files) {
     const src = `${dirPath}/${fname}`;
@@ -560,16 +586,13 @@ async function loadDeepdive() {
   }
 }
 
-async function copyDeepdiveCaption(btn) {
-  const info = PANEL_FILES['deepdive'];
-  if (!info) return;
-  let text = '';
-  try {
-    text = await (await fetch(`${info.dirPath}/caption.txt`)).text();
-  } catch(e) { text = ''; }
-  await clipboardWrite(text);
-  btn.textContent = '✓ 文案已复制'; btn.classList.add('done');
-  setTimeout(() => { btn.textContent = '🔗 复制文案'; btn.classList.remove('done'); }, 2000);
+// 从只读输入框/文本域复制（标题、正文）。按 .value 取，避免重复 fetch + 转义问题。
+async function copyField(elId, btn) {
+  const el = document.getElementById(elId);
+  await clipboardWrite(el ? el.value : '');
+  const orig = btn.textContent;
+  btn.textContent = '✓ 已复制'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1500);
 }
 
 // 拉取已渲染专题清单（output/deepdive/index.json）填充下拉
