@@ -109,14 +109,22 @@ def run_once(sources_path, okf_root, state_file, now,
                 "detected": now,            # 探测时间（诚实标注）
             }
             write_okf(okf_root, article)
-            state[source["id"]].setdefault("open_pr_urls", [])
-            state[source["id"]]["open_pr_urls"].append(art["url"])
-            state[source["id"]]["last_new_article"] = now
-            pr_articles.append(article)
-        new_count = len(pr_articles)
-        branch = f"firsthand/{now[:10]}"
+            pr_articles.append((source["id"], article))
+        # 分支名带时间戳 → 同日多批次不撞名（旧版固定 firsthand/<date> 同日第二批会冲突）
+        branch = f"firsthand/{now[:10]}-{now[11:19].replace(':', '')}"
+        pr_ok = True
         if open_pr_fn:
-            open_pr_fn(branch, pr_articles)
+            try:
+                open_pr_fn(branch, [a for _, a in pr_articles])
+            except Exception as e:
+                # 开 PR 失败不崩整轮：不标记已见 → 下一轮自动重试（OKF 已在分支，不丢内容）
+                pr_ok = False
+                print(f"[firsthand] open_pr 失败，本批留待下轮重试: {e}")
+        if pr_ok:
+            for sid, article in pr_articles:
+                state[sid].setdefault("open_pr_urls", []).append(article["url"])
+                state[sid]["last_new_article"] = now
+            new_count = len(pr_articles)
 
     save_state(state_file, state)
     save_state(heartbeat_file, heartbeat)  # 本地心跳，不提交
@@ -139,8 +147,12 @@ def _real_open_pr(branch, articles):
         for a in articles:
             by_source.setdefault(a["source"], []).append(a)
         counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
-        title = f"📡 内参新动态 | {branch[-10:]} ({counts})"
+        title = f"📡 内参新动态 | {branch.split('/')[-1]} ({counts})"
         body = render_pr_body(articles)
+        # 确保 label 存在（缺则建，幂等）——否则 gh pr create 会因缺 label 报错
+        subprocess.run(["gh", "label", "create", "firsthand-intel",
+                        "--color", "1f6feb", "--description", "一手信源内参监控"],
+                       cwd=REPO, check=False)
         subprocess.run(
             ["gh", "pr", "create", "--title", title, "--body", body,
              "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
