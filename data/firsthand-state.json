@@ -155,7 +155,8 @@
       "https://transformer-circuits.pub/2021/garcon/index.html",
       "https://distill.pub/2020/circuits"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 53
   },
   "openai-news": {
     "last_fetch_ok": true,
@@ -1181,7 +1182,8 @@
       "https://openai.com/index/weight-normalization",
       "https://openai.com/index/introducing-openai"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 1019
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1288,7 +1290,8 @@
       "https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome",
       "https://deepmind.google/blog/gemini-robotics-on-device-brings-ai-to-local-robotic-devices"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 100
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1315,7 +1318,8 @@
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/accelerator-ai-for-the-planet",
       "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 20
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1342,7 +1346,8 @@
       "https://blog.google/products-and-platforms/platforms/android/android-show-io-edition-2026",
       "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 20
   },
   "qwen-blog": {
     "last_fetch_ok": true,
@@ -1393,7 +1398,8 @@
       "https://qwenlm.github.io/blog/ofasys",
       "https://qwenlm.github.io/blog/chinese-clip"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 44
   },
   "inclusionai-ling": {
     "last_fetch_ok": true,
@@ -1420,6 +1426,7 @@
       "https://www.inclusion-ai.org/blog/ming-lite-omni-preview",
       "https://www.inclusion-ai.org/blog/agenticlearning"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 20
   }
 }
