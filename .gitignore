@@ -22,3 +22,8 @@ output/**/公众号贴图.md
 
 # article-harness 迭代中间产物（成稿在 draft 同目录，工作区不提交）
 content/deepdive/**/.harness-workspace/
+
+# 发布运行产物（公众号草稿 API 响应/预览、小红书一次性打包），不进 git
+content/deepdive/**/wechat-*.json
+content/deepdive/**/wechat-preview.html
+content/deepdive/**/xhs/
