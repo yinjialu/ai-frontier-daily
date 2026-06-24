@@ -1,5 +1,7 @@
 # ai-frontier-daily
 
+> Codex / universal 工具读这份;内容与 `CLAUDE.md` 保持同步,仅推送分支前缀按工具区分(本文件用 `Codex/*`)。
+
 抓取 AI 大厂官方动态 → 中文策展 → 渲染卡片 → GitHub Pages 展示 → 公众号/小红书半自动发布。
 完整流水线指令(信源、策展规范、渲染、发布)见 `skills/ai-daily-digest/SKILL.md`——执行每日任务前先读它。
 
@@ -16,7 +18,7 @@
 ## 一手信源内参监控(独立于每日日报)
 
 - launchd `com.yinjialu.ai-frontier-daily.firsthand` 每小时 + 开机自启跑 `scripts/monitor_firsthand.py`:
-  抓 `firsthand-sources.yaml` 信源 → 新文章 `Codex -p` 出中文摘要 → 写 `data/firsthand/<id>/*.md`(OKF)
+  抓 `firsthand-sources.yaml` 信源 → 新文章 `claude -p` 出中文摘要 → 写 `data/firsthand/<id>/*.md`(OKF)
   → **当天累积一个 `firsthand/<date>` PR**(reviewer=yinjialu):当天首批建 PR,后续批次往同分支追加
   commit + 评论 @yinjialu 通知(克制:一天一条线程,不刷屏)。装/触发见 `scripts/install-firsthand-launchd.sh`;
   与每日发布任务(`com.yinjialu.ai-frontier-daily.publish`)独立。新机迁移见 `scripts/SETUP-NEW-MACHINE.md`。
@@ -32,11 +34,12 @@
 
 - 对官方一手的重要功能点做面向普通用户的深度文章。流程:选题初筛(扫 `data/firsthand/index.json` 同事件聚合候选)
   → 用户选 → `scripts/firsthand/deepdive.py` 生成五段骨架 draft 到 `content/deepdive/<date>_<slug>/`
-  → 交 `Engineer/skills/article-harness`(复用,不重造)Writer-Reviewer 打磨 → 用户审核 → 反馈沉淀进
-  `article-harness/reviewer.md` → `wechat-official-draft` 发布。
+  → 交 `article-harness`(复用,不重造)Writer-Reviewer 打磨 → 用户审核 → 反馈沉淀 → `wechat-official-draft` 发布。
 - 触发:`firsthand-deepdive` skill(「深挖 X / 专题深度」)。
-- article-harness 属通用内容生产 skills,后续由「skills 收敛」工程(独立仓 + skills.sh + 全局安装)统一管理,
-  届时本线第 3 步调用路径改为全局安装路径。设计/计划见 `docs/superpowers/{specs,plans}/2026-06-24-专题深度线*`。
+- **article-harness 已收敛进公开仓 `yinjialu/bianliang-skills`**(skills.sh,`npx skills add yinjialu/bianliang-skills`),
+  全局安装于 `~/.agents/skills/article-harness`(Claude Code/Codex 等 universal 工具共享,Codex 软链 `~/.codex/skills/`)。
+  **个人写作品味(writer/reviewer)留本地 `~/Documents/context-harness-data/article-harness/`,运行时优先加载,不随仓公开。**
+  设计/计划见 `docs/superpowers/{specs,plans}/2026-06-24-{专题深度线,bianliang-skills-收敛}*`。
 
 ## 本机发布链路(参考)
 
