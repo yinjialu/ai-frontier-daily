@@ -110,8 +110,8 @@ def run_once(sources_path, okf_root, state_file, now,
             }
             write_okf(okf_root, article)
             pr_articles.append((source["id"], article))
-        # 分支名带时间戳 → 同日多批次不撞名（旧版固定 firsthand/<date> 同日第二批会冲突）
-        branch = f"firsthand/{now[:10]}-{now[11:19].replace(':', '')}"
+        # 当天一个 PR：分支固定 firsthand/<date>；当天后续批次追加 commit + 评论 @user（见 _real_open_pr）
+        branch = f"firsthand/{now[:10]}"
         pr_ok = True
         if open_pr_fn:
             try:
@@ -133,31 +133,58 @@ def run_once(sources_path, okf_root, state_file, now,
     return {"new_count": new_count}
 
 
+def _existing_open_pr(branch: str) -> str:
+    """当天分支若已有 open PR，返回其编号，否则空串。"""
+    r = subprocess.run(
+        ["gh", "pr", "list", "--head", branch, "--state", "open",
+         "--json", "number", "--jq", ".[0].number // empty"],
+        cwd=REPO, capture_output=True, text=True)
+    return r.stdout.strip()
+
+
 def _real_open_pr(branch, articles):
-    """建分支、提交 OKF 文件、开 PR。无论中途是否抛异常都切回 main，
-    避免无人值守循环卡在 firsthand 分支。"""
+    """当天累积一个 PR：
+    - 当天已有 open PR → checkout 该分支、追加 OKF commit、push（PR 自动更新）、评论 @user 通知；
+    - 当天还没有 → 新建分支 + PR（reviewer=yinjialu）。
+    无论中途是否抛异常都切回 main，避免无人值守循环卡在 firsthand 分支。
+    push 是关键步骤（check=True）；label/评论是尽力而为（check=False），失败不影响去重标记。"""
+    by_source = {}
+    for a in articles:
+        by_source.setdefault(a["source"], []).append(a)
+    counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
+    body = render_pr_body(articles)
     try:
-        subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
-        # 只提 OKF 文件——state.json 走 main 单独提交，避免两头写同一文件 merge 时回退
-        subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
-        subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
-                       cwd=REPO, check=True)
-        subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
-        by_source = {}
-        for a in articles:
-            by_source.setdefault(a["source"], []).append(a)
-        counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
-        title = f"📡 内参新动态 | {branch.split('/')[-1]} ({counts})"
-        body = render_pr_body(articles)
-        # 确保 label 存在（缺则建，幂等）——否则 gh pr create 会因缺 label 报错
-        subprocess.run(["gh", "label", "create", "firsthand-intel",
-                        "--color", "1f6feb", "--description", "一手信源内参监控"],
-                       cwd=REPO, check=False)
-        subprocess.run(
-            ["gh", "pr", "create", "--title", title, "--body", body,
-             "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
-            cwd=REPO, check=True,
-        )
+        pr_num = _existing_open_pr(branch)
+        if pr_num:
+            # 更新模式：切到已有分支，追加本批 OKF
+            subprocess.run(["git", "fetch", "origin", branch], cwd=REPO, check=True)
+            subprocess.run(["git", "checkout", "-B", branch, f"origin/{branch}"],
+                           cwd=REPO, check=True)
+            subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
+            subprocess.run(["git", "commit", "-m", f"firsthand: 新增 ({counts})"],
+                           cwd=REPO, check=True)
+            subprocess.run(["git", "push", "origin", branch], cwd=REPO, check=True)
+            # 评论里 @user → 触发提醒通知（尽力而为，失败不影响）
+            subprocess.run(["gh", "pr", "comment", pr_num,
+                            "--body", f"@yinjialu 🆕 本日内参新增（{counts}）：\n\n{body}"],
+                           cwd=REPO, check=False)
+        else:
+            # 新建模式
+            subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
+            subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
+            subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
+                           cwd=REPO, check=True)
+            subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
+            title = f"📡 内参新动态 | {branch.split('/')[-1]} ({counts})"
+            # 确保 label 存在（缺则建，幂等，失败不影响）
+            subprocess.run(["gh", "label", "create", "firsthand-intel",
+                            "--color", "1f6feb", "--description", "一手信源内参监控"],
+                           cwd=REPO, check=False)
+            subprocess.run(
+                ["gh", "pr", "create", "--title", title, "--body", body,
+                 "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
+                cwd=REPO, check=True,
+            )
     finally:
         subprocess.run(["git", "checkout", "main"], cwd=REPO, check=False)
 
