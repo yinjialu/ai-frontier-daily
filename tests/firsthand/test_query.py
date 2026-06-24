@@ -1,6 +1,28 @@
 import json
 from pathlib import Path
-from scripts.firsthand.query import load_index, recent
+from scripts.firsthand.query import load_index, recent, vendor_of, filter_vendor
+
+
+def test_vendor_of_maps_sources():
+    assert vendor_of("claude-blog") == "anthropic"
+    assert vendor_of("anthropic-news") == "anthropic"
+    assert vendor_of("transformer-circuits") == "anthropic"
+    assert vendor_of("openai-news") == "openai"
+    assert vendor_of("deepmind-blog") == "gemini"
+    assert vendor_of("google-gemini") == "gemini"
+    assert vendor_of("qwen-blog") == "cn"
+    assert vendor_of("inclusionai-ling") == "cn"
+    assert vendor_of("unknown-x") is None
+
+
+def test_filter_vendor():
+    items = [
+        {"title": "a", "source": "claude-blog"},
+        {"title": "b", "source": "openai-news"},
+        {"title": "c", "source": "deepmind-blog"},
+    ]
+    assert [a["title"] for a in filter_vendor(items, "anthropic")] == ["a"]
+    assert [a["title"] for a in filter_vendor(items, "gemini")] == ["c"]
 
 
 def test_load_index_missing_returns_empty(tmp_path):
