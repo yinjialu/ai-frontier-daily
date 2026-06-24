@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.25",
+  "cnDate": "6月25日 周四",
+  "edition": "VOL.176",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA BioNeMo Agent Toolkit：生命科学 AI Agent 专用工具链，十年积累打包为开发套件",
+      "summary": "NVIDIA 发布 BioNeMo Agent Toolkit，整合十余年在药物研发、基因组学、蛋白质结构等领域积累的库、工具与开放模型，提供域专用技能供 AI Agent 直接调用（分子对接、多组学分析等）。开发者可在主流 Agent 框架中无缝接入，大幅降低生命科学 AI 应用构建门槛，加速从数据采集到假设验证的科研闭环。",
+      "source": "nvidianews.nvidia.com"
+    },
+    {
+      "tag": "企业",
+      "title": "欧洲 35 台 NVIDIA Vera Rubin AI 超算同期部署，覆盖 23 国、累计 800 Exaflops AI 算力",
+      "summary": "ISC High Performance 2026 大会上，NVIDIA 披露欧洲 23 国正同步建造 35 台 Vera Rubin AI 超算，将支持逾 300 万研究人员。单机柜 Vera Rubin 系统可提供超 7 Exaflops AI 性能 + 5 Petaflops FP64 双精度算力，相当于 TOP500 入榜级别。德国莱布尼茨超算中心的 Blue Lion 预计 2027 年投入使用，算力为现有系统 30 倍，覆盖天体物理、环境科学与生命科学领域。",
+      "source": "nvidianews.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

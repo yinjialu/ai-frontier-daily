@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.25",
+  "cnDate": "6月25日 周四",
+  "edition": "VOL.176",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "OpenAI × Broadcom 首款自研推理芯片 Jalapeño：9 个月流片，每瓦性能领跑，成本约降 50%",
+      "summary": "OpenAI 联合博通发布首款专为 LLM 推理设计的自研 ASIC 芯片 Jalapeño，借 AI 工具辅助设计仅 9 个月完成流片。早期测试显示每瓦推理性能大幅优于当前主流 GPU，整体成本约降 50%。工程样片已在跑 GPT-5.3-Codex-Spark，计划 2026 年底起在吉瓦级数据中心规模部署，搭档微软等伙伴落地。OpenAI 全栈战略首次延伸至底层硬件层。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "安全",
+      "title": "Patch the Planet：OpenAI 联手 Trail of Bits 用 AI 自动发现并修复开源安全漏洞",
+      "summary": "OpenAI Daybreak 子计划，联合安全公司 Trail of Bits 针对 curl、Python、Go、aiohttp、Sigstore 等 19 个知名开源项目自动化扫描并修复漏洞。AI 模型与人类安全工程师协作：模型发现漏洞、预审报告，工程师审核后提交补丁。已发现数百个 bug，提交 64 个 PR，37 个补丁已合并。参与项目维护者可获 ChatGPT Pro 及 Codex Security 访问权限。",
+      "source": "openai.com/index/patch-the-planet/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

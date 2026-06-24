@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.25",
+  "cnDate": "6月25日 周四",
+  "edition": "VOL.176",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini API Managed Agents 公测：Antigravity 自主 Agent 在 Google 云端沙箱全流程执行",
+      "summary": "Google 在 Gemini API 上线 Managed Agents 公测，开发者无需自管服务器即可构建有状态自主 Agent。内置通用 Agent antigravity-preview-05-2026 运行于 Google 托管的 Linux 隔离沙箱，可自主规划、执行 Python 代码、管理文件、浏览网页；File Search 同步升级支持多模态，可通过 gemini-embedding-2 对图片进行语义索引与搜索，面向企业 RAG 场景。",
+      "source": "ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+      "tag": "开发者",
+      "title": "Google Python GenAI SDK v2.10.0：MCP 异步流式支持 + Computer Use 安全策略自定义",
+      "summary": "最新版本为 generate_content_stream 新增 MCP 异步支持，Agent Platform 链路可通过流式接口直接调用 MCP 工具；Computer Use 功能新增安全策略禁用选项（disabled_safety_policies），适用于有明确内容审核需求的企业场景。此前 v2.9.0 已完全重写 interactions 实现以提升稳定性，本版保持 API 兼容，建议已用 v2.8.x 的团队直接升级。",
+      "source": "github.com/googleapis/python-genai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 官方发布、API 更新与开发者生态动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

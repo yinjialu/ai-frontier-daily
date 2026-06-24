@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.25",
+  "cnDate": "6月25日 周四",
+  "edition": "VOL.176",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code v0.19.2：远程 LSP 状态监控 + 破坏性命令确认防护 + Web Shell 语音听写",
+      "summary": "新增远程 LSP 状态路由，开发者可实时监控语言服务器健康状况；Vision Bridge 改进提升图像理解准确度；对删除、重写等破坏性 auto-mode 命令引入确定性确认机制，防止误操作；Web Shell 新增语音听写输入支持；同时修复主题样式、Daemon 优化及多项 CLI/SDK 问题，整体稳定性提升。",
+      "source": "github.com/QwenLM/qwen-code"
+    },
+    {
+      "tag": "开发者",
+      "company": "Kimi",
+      "title": "Kimi Code v0.19.2：-c 快速继续会话 + 剪贴板图片提示 + Bash 工具卡片体验升级",
+      "summary": "新增 `-c` 作为 `--continue` 的快捷参数，方便快速恢复上次会话；检测到剪贴板图片时显示瞬态提示（对纯文字模型明确提示图片已被忽略）；Bash 工具卡片支持在结果到达前通过 Ctrl+O 展开查看完整命令；修复内联图片渲染错误及跨会话历史持久化问题，改善长期使用体验。",
+      "source": "github.com/MoonshotAI/kimi-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

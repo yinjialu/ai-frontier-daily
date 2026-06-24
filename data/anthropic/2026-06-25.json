@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.25",
+  "cnDate": "6月25日 周四",
+  "edition": "VOL.176",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Claude Tag 正式上线 Slack：企业版 @Claude 可作虚拟团队成员，支持异步多步任务与上下文记忆",
+      "summary": "Anthropic 推出 Claude Tag，向 Enterprise / Team 用户开放研究预览。团队成员在 Slack 频道 @Claude 即可委派多步任务，Claude 在后台自主拆解执行并将结果回送至对话线程；支持跨成员接力任务、主动推送进度、连接代码库与外部工具；Anthropic 内部产品团队 65% 代码已由此方式生成。旧版 Claude for Slack 将于 8 月 3 日退役，管理员有 30 天迁移窗口。",
+      "source": "anthropic.com/news"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.191：/rewind 回溯会话状态 + 流式 CPU 占用降 37% + MCP 自动重试",
+      "summary": "/rewind 指令新上线：可将对话回溯到执行 /clear 之前的状态，避免上下文丢失；流式响应期间滚动位置不再跳动；后台 Agent 被停止后不再意外复活；MCP Server 遭遇瞬时网络错误时自动重试；通过合并文本更新批次，流式传输过程中 CPU 占用降低约 37%，长会话体验显著改善。",
+      "source": "github.com/anthropics/claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK TS v0.3.191：NotebookEdit 内联 Diff + 每周模型用量限额精细追踪",
+      "summary": "同步 Claude Code v2.1.191。NotebookEdit 的 replace/delete 操作新增 old_source 字段，IDE 可渲染内联 diff 便于代码审查；新增 seven_day_overage 限流类型，并补充 model_scoped 数组，开发者可获取各模型的周度用量窗口、利用率与重置时间，实现精细化调速与配额管理。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
