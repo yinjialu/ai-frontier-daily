@@ -225,3 +225,36 @@ def test_run_once_second_run_records_known_urls_count(tmp_path):
     st = json.loads(state_file.read_text(encoding="utf-8"))["demo"]
     assert "known_urls_count" in st
     assert "total_articles_seen" not in st
+
+
+def test_run_once_pr_failure_does_not_crash_or_mark_seen(tmp_path):
+    """开 PR 失败时：run_once 不崩、不把文章标记已见（下轮可重试）。"""
+    yaml_file = tmp_path / "sources.yaml"
+    yaml_file.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo/blog\n"
+        "    type: html-links\n    link_prefix: /blog/\n    base_url: https://demo\n",
+        encoding="utf-8",
+    )
+    okf_root = tmp_path / "firsthand"
+    state_file = tmp_path / "state.json"
+    (okf_root / "demo").mkdir(parents=True)
+    (okf_root / "demo" / "01-a.md").write_text(
+        "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
+
+    fetched = [{"url": "https://demo/blog/a", "title": "A"},
+               {"url": "https://demo/blog/b", "title": "B"}]
+    def boom(branch, articles):
+        raise RuntimeError("gh failed")
+    result = run_once(
+        sources_path=yaml_file, okf_root=okf_root, state_file=state_file,
+        now="2026-06-23T15:30:00+08:00",
+        fetch_fn=lambda s: fetched, article_text_fn=lambda u: "body",
+        article_published_fn=lambda u: None,
+        summarize_fn=lambda t, b: {"summary": "x", "tags": []},
+        open_pr_fn=boom, commit_state_fn=lambda: None,
+    )
+    # 不崩，new_count=0（PR 失败未计），b 未被标记已见
+    assert result["new_count"] == 0
+    import json
+    st = json.loads(state_file.read_text(encoding="utf-8"))["demo"]
+    assert "https://demo/blog/b" not in st.get("open_pr_urls", [])
