@@ -11,11 +11,12 @@ def test_sets_kind_deepdive(tmp_path):
     data = build_render_data(load(), tmp_path)
     assert data["kind"] == "deepdive"
 
-def test_cover_resolved_to_abspath_when_exists(tmp_path):
+def test_cover_becomes_data_uri_when_exists(tmp_path):
     (tmp_path / "assets").mkdir()
     (tmp_path / "assets" / "cover.png").write_bytes(b"x")
     data = build_render_data(load(), tmp_path)
-    assert data["cover"] == str((tmp_path / "assets" / "cover.png").resolve())
+    # 内联成 data URI（file:// 在 setContent 渲染下会被 Chromium 拦截）
+    assert data["cover"].startswith("data:image/png;base64,")
 
 def test_cover_null_when_missing_file(tmp_path):
     data = build_render_data(load(), tmp_path)   # 没建 cover 文件

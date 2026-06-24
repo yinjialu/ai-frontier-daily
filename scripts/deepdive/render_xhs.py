@@ -7,7 +7,9 @@
   python -m scripts.deepdive.render_xhs content/deepdive/<slug>
   （目录内需有 xhs.json；封面图相对路径写在 xhs.json 的 cover 字段）
 """
+import base64
 import json
+import mimetypes
 import subprocess
 import sys
 from pathlib import Path
@@ -18,19 +20,30 @@ REPO = Path(__file__).resolve().parents[2]
 RENDER_JS = REPO / "skills" / "ai-daily-digest" / "render.js"
 
 
+def _image_data_uri(path: Path) -> str:
+    """封面图 → base64 data URI。
+
+    render.js 用 page.setContent 渲染（origin=about:blank），Chromium 会拦截
+    file:// 子资源，故封面必须内联成 data URI 才能在渲染时加载出来。
+    """
+    mime = mimetypes.guess_type(str(path))[0] or "image/png"
+    b64 = base64.b64encode(path.read_bytes()).decode("ascii")
+    return f"data:{mime};base64,{b64}"
+
+
 def build_render_data(xhs: dict, article_dir: Path) -> dict:
-    """xhs.json dict + 文章目录 → render.js 要的 DATA。"""
+    """xhs.json dict + 文章目录 → render.js 要的 DATA。cover 内联成 data URI。"""
     cover = xhs.get("cover")
-    cover_abs = None
+    cover_uri = None
     if cover:
         p = (Path(article_dir) / cover).resolve()
         if p.exists():
-            cover_abs = str(p)
+            cover_uri = _image_data_uri(p)
     return {
         "kind": "deepdive",
         "slug": xhs.get("slug", ""),
         "title": xhs.get("title", ""),
-        "cover": cover_abs,
+        "cover": cover_uri,
         "cards": xhs.get("cards", []),
         "caption": xhs.get("caption", ""),
         "tags": xhs.get("tags", []),

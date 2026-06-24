@@ -64,7 +64,7 @@
     var coverInner;
     if (DATA.cover) {
       coverInner = '<div class="inner cover-img">'
-        + '<img class="cover" src="file://' + esc(DATA.cover) + '">'
+        + '<img class="cover" src="' + esc(DATA.cover) + '">'
         + '<div class="cover-title">' + esc(DATA.title) + '</div></div>';
     } else {
       coverInner = '<div class="inner cover-text"><div class="cover-title">'

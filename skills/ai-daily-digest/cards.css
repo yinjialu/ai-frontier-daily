@@ -239,6 +239,8 @@
 .card.deepdive .cover-title{font-size:84px;line-height:1.25;font-weight:800;letter-spacing:.5px;}
 .card.deepdive .cover-img{position:relative;padding:0;}
 .card.deepdive .cover-img img.cover{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.card.deepdive .cover-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;
+  background:linear-gradient(transparent,rgba(0,0,0,.62));pointer-events:none;}
 .card.deepdive .cover-img .cover-title{position:absolute;left:84px;bottom:96px;right:84px;color:#fff;
   text-shadow:0 2px 24px rgba(0,0,0,.5);font-size:72px;z-index:2;}
 .card.deepdive .kicker{font-size:40px;font-weight:700;color:#c0392b;margin-bottom:28px;}
