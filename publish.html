@@ -147,11 +147,12 @@ details.sc-help code{background:var(--cream);padding:1px 5px;border-radius:4px;f
 <section id="deepdive" class="dd-section">
   <div class="dd-head">📚 深度内容（专题）</div>
   <div class="dd-controls">
-    <input id="dd-slug" class="dd-input" placeholder="输入专题 slug，如 2026-06-24_xxx"
-      onkeydown="if(event.key==='Enter')loadDeepdive()">
+    <select id="dd-slug" class="dd-input" onchange="loadDeepdive()">
+      <option value="">— 选择专题 —</option>
+    </select>
     <button class="act-btn solid" onclick="loadDeepdive()">加载</button>
   </div>
-  <div id="dd-body"><p class="img-hint">输入专题 slug 后点「加载」，拉取该专题的小红书配图与文案。</p></div>
+  <div id="dd-body"><p class="img-hint">选择一个专题，拉取它的小红书配图与文案。</p></div>
 </section>
 
 <div id="lb" onclick="closeLb()">
@@ -522,7 +523,7 @@ async function loadDeepdive() {
   const body = document.getElementById('dd-body');
   const slug = (input.value || '').trim();
   if (!slug) {
-    body.innerHTML = '<p class="img-hint">请先输入专题 slug。</p>';
+    body.innerHTML = '<p class="img-hint">请先选择专题。</p>';
     return;
   }
   localStorage.setItem('deepdive_slug', slug);
@@ -571,11 +572,27 @@ async function copyDeepdiveCaption(btn) {
   setTimeout(() => { btn.textContent = '🔗 复制文案'; btn.classList.remove('done'); }, 2000);
 }
 
-// 恢复上次的 slug，有则自动加载
-(function() {
+// 拉取已渲染专题清单（output/deepdive/index.json）填充下拉
+async function loadDeepdiveIndex() {
+  const sel = document.getElementById('dd-slug');
+  if (!sel) return [];
+  let items = [];
+  try {
+    const idx = await (await fetch('output/deepdive/index.json')).json();
+    items = idx.items || [];
+  } catch(e) { /* 无清单：下拉保持仅占位项 */ }
   const saved = localStorage.getItem('deepdive_slug') || '';
-  const input = document.getElementById('dd-slug');
-  if (input && saved) { input.value = saved; loadDeepdive(); }
+  sel.innerHTML = '<option value="">— 选择专题 —</option>' +
+    items.map(it => `<option value="${it.slug}">${it.title || it.slug}</option>`).join('');
+  if (saved && items.some(it => it.slug === saved)) sel.value = saved;
+  return items;
+}
+
+// 初始化：填充下拉，有上次选择则自动加载（程序化赋值不触发 onchange，需显式调用）
+(async function() {
+  await loadDeepdiveIndex();
+  const sel = document.getElementById('dd-slug');
+  if (sel && sel.value) loadDeepdive();
 })();
 
 init();

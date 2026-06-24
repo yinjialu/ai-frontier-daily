@@ -50,6 +50,23 @@ def build_render_data(xhs: dict, article_dir: Path) -> dict:
     }
 
 
+def update_index(deepdive_root: Path, slug: str, title: str) -> list[dict]:
+    """维护 output/deepdive/index.json（发布页下拉用）：按 slug upsert，最新置顶。"""
+    idx_path = deepdive_root / "index.json"
+    items: list[dict] = []
+    if idx_path.exists():
+        try:
+            items = json.loads(idx_path.read_text(encoding="utf-8")).get("items", [])
+        except (ValueError, OSError):
+            items = []
+    items = [it for it in items if it.get("slug") != slug]
+    items.insert(0, {"slug": slug, "title": title})
+    idx_path.parent.mkdir(parents=True, exist_ok=True)
+    idx_path.write_text(
+        json.dumps({"items": items}, ensure_ascii=False, indent=2), encoding="utf-8")
+    return items
+
+
 def main(argv: list[str]) -> int:
     if len(argv) != 2:
         print("用法：python -m scripts.deepdive.render_xhs <article_dir>", file=sys.stderr)
@@ -81,6 +98,7 @@ def main(argv: list[str]) -> int:
 
     print(f"渲染 → {out_dir}")
     subprocess.run(["node", str(RENDER_JS), str(render_json), str(out_dir)], check=True)
+    update_index(REPO / "output" / "deepdive", data["slug"], data["title"])
     return 0
 
 
