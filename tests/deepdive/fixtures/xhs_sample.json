@@ -1,0 +1,13 @@
+{
+  "slug": "introducing-claude-tag",
+  "cover": "assets/cover.png",
+  "title": "Claude Tag：给 AI 发工牌",
+  "cards": [
+    {"heading": "AI 不再代表你", "lines": ["以前它借你的权限行事", "现在它有自己的账号"]},
+    {"heading": "权限按频道发", "lines": ["从 per-user", "到 per-channel"]},
+    {"heading": "侧门风险", "lines": ["共享密钥打结", "一处泄漏全局沦陷"]},
+    {"heading": "为什么现在做", "lines": ["Agent 要独立身份", "审计与撤销才可行"]}
+  ],
+  "caption": "一句话讲清 Claude Tag 是什么。",
+  "tags": ["AI", "Claude", "Agent"]
+}
