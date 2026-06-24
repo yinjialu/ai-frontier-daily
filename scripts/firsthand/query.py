@@ -9,6 +9,26 @@ import json
 from pathlib import Path
 
 
+# 内参 source id → 每日早报 vendor 轨。供早报(云端,IP 抓不到 news/blog)消费内参(本机抓)补盲区。
+SOURCE_VENDOR = {
+    "claude-blog": "anthropic", "anthropic-news": "anthropic",
+    "anthropic-research": "anthropic", "anthropic-engineering": "anthropic",
+    "transformer-circuits": "anthropic",
+    "openai-news": "openai",
+    "deepmind-blog": "gemini", "google-models-research": "gemini",
+    "google-gemini": "gemini",
+    "qwen-blog": "cn", "inclusionai-ling": "cn",
+}
+
+
+def vendor_of(source: str) -> str | None:
+    return SOURCE_VENDOR.get(source)
+
+
+def filter_vendor(items: list[dict], vendor: str) -> list[dict]:
+    return [a for a in items if vendor_of(a.get("source")) == vendor]
+
+
 def load_index(okf_root) -> list[dict]:
     p = Path(okf_root) / "index.json"
     if not p.exists():
@@ -46,6 +66,8 @@ def _render_text(items: list[dict]) -> str:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=7)
+    ap.add_argument("--vendor", default=None,
+                    help="按早报 vendor 轨过滤（anthropic/openai/gemini/cn）")
     ap.add_argument("--root", default=str(Path(__file__).resolve().parent.parent.parent
                                           / "data" / "firsthand"))
     ap.add_argument("--json", action="store_true", help="输出 JSON（给 agent 消费）")
@@ -53,6 +75,8 @@ def main():
     today = datetime.datetime.now(
         datetime.timezone(datetime.timedelta(hours=8))).date().isoformat()
     items = recent(load_index(args.root), args.days, today)
+    if args.vendor:
+        items = filter_vendor(items, args.vendor)
     if args.json:
         print(json.dumps(items, ensure_ascii=False, indent=2))
     else:

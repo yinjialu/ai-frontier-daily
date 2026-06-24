@@ -72,6 +72,14 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    都可直接 WebFetch，Google 系 RSS 也能抓；需要细节再 `WebSearch`。厂商特例：Anthropic
    主站 JS 渲染、无官方 RSS（抓 `anthropic.com/news` 顶部条目）；`openai.com/news` 网页对
    WebFetch 返回 403，用其 RSS `https://openai.com/news/rss.xml`。
+3.5 **补内参（本机抓取，补云端盲区——重要）**：云端 Routine 是数据中心 IP，`anthropic.com/news`、
+   `claude.com/blog` 等 Cloudflare/JS 站常被拦（早报因此会漏 news/blog 内容，只剩 GitHub releases）。
+   本机内参监控用住宅 IP 已抓好这些，导出在 `data/firsthand/index.json`。对每个厂商 V，**额外读内参近 1~2 天条目作候选**：
+   ```bash
+   python3 -m scripts.firsthand.query --vendor <anthropic|openai|gemini|cn> --days 2 --json
+   ```
+   把这些条目**并入候选池**，与 WebFetch/WebSearch 结果一起去重策展（同一事件只留一条，优先内参的官方一手 + 真实发布日期）。内参覆盖：anthropic（claude-blog/news/research/engineering/transformer-circuits）、openai、gemini（deepmind/google）、cn（qwen/蚂蚁百灵）；nvidia 暂无内参源，仍走 WebFetch。
+
 4. **去重（Claude 链路）**：看 `data/<V.id>/` 里最近的 *.json，只挑近 1~3 天的「新」条目，
    避免与已发布重复；若今天 `data/<V.id>/<DATE>.json` 已存在且已覆盖当日要点，则该厂商
    跳过、不覆写。（B 链路的 `seen.db` 去重不适用于本链路。）
