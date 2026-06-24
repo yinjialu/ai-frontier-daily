@@ -32,6 +32,8 @@ Anthropic 给 Claude Tag 列了四个相对「单机版」Claude 的新特性，
 
 为什么我说重点不是「AI 同事」这个壳子？因为把机器人塞进 Slack 这件事，几年前就有人做了。真正卡住「AI 当同事」的，从来不是聊天界面，而是**身份和授权**。
 
+![单人权限还能借，多人频道就会乱](assets/claude-tag-illustrations/01-per-user-permission-risk.png)
+
 你平时把 Claude 当个人助理用，授权模型很直白：你接上自己的 Google Drive、GitHub、日历，模型**借用你的权限**去读写——它本质上是「以你的名义」在动作（act as the user）。单机、单人，谁的活谁授权，清清楚楚。
 
 但 Anthropic 在那篇 [agent identity 的博客](https://claude.com/blog/agent-identity-access-model)里点破了：这套「代表用户」的模型，搬到 Claude Tag 上会直接散架，原因有两个，而且都不是 Slack 特有的，是**所有想长出自主性的 agent 迟早会撞上的墙**：
@@ -43,6 +45,8 @@ Anthropic 给 Claude Tag 列了四个相对「单机版」Claude 的新特性，
 ## 它的答案：让 Claude「成为它自己」
 
 Anthropic 给这两个问题的解法，就是这篇文章想让你记住的那个词——**agent identity（代理身份）**：
+
+![从个人钥匙到频道级 agent identity](assets/claude-tag-illustrations/02-per-channel-agent-identity.png)
 
 > 在一个开了 Claude Tag 的频道里，Claude 不是在替某个用户行事。它在每一个接触到的系统里，**都有自己的账号**：它在 Slack 里以 Claude app 的身份发言，以 Claude GitHub App 的身份开 PR，用管理员配的 service account 去查你的数据仓库。
 
