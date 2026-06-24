@@ -190,11 +190,19 @@ def _real_open_pr(branch, articles):
 
 
 def _real_commit_state():
-    """state.json 直接提交 main（本机无 403）。"""
-    subprocess.run(["git", "add", "data/firsthand-state.json"], cwd=REPO, check=False)
+    """state.json + 索引产物(index.json/feed.xml)直接提交 main（本机无 403）。
+    索引从 main 的 OKF 重建,内容不变则字节一致 → 不产生提交,不刷屏。"""
+    try:
+        from scripts.firsthand.index import write_outputs
+        write_outputs(DEFAULT_OKF_ROOT)
+    except Exception as e:
+        print(f"[firsthand] 索引生成失败(忽略): {e}")
+    subprocess.run(["git", "add", "data/firsthand-state.json",
+                    "data/firsthand/index.json", "data/firsthand/feed.xml"],
+                   cwd=REPO, check=False)
     r = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=REPO)
     if r.returncode != 0:
-        subprocess.run(["git", "commit", "-m", "chore: firsthand state"], cwd=REPO, check=False)
+        subprocess.run(["git", "commit", "-m", "chore: firsthand state + index"], cwd=REPO, check=False)
         subprocess.run(["git", "push", "origin", "main"], cwd=REPO, check=False)
 
 
