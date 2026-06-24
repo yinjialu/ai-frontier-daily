@@ -56,3 +56,18 @@ def test_build_skeleton_feature_available_marks_todo_screenshot():
     md = build_skeleton(cluster, fetch_text_fn=lambda u: "t", feature_available=True)
     assert "待补截图" in md
     assert "暂不可体验" not in md
+
+
+from scripts.firsthand.deepdive import write_draft
+
+
+def test_write_draft_path_and_content(tmp_path):
+    cluster = [_it("Introducing Claude Tag", "anthropic-news",
+                   "https://www.anthropic.com/news/introducing-claude-tag",
+                   "2026-06-24T07:49:00+08:00")]
+    path = write_draft(tmp_path, cluster, today="2026-06-24",
+                       fetch_text_fn=lambda u: "正文", feature_available=False)
+    assert path.parent.name == "2026-06-24_introducing-claude-tag"
+    assert path.name == "draft.md"
+    assert path.exists()
+    assert "## ① 这是什么" in path.read_text(encoding="utf-8")

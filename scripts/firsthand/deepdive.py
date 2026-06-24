@@ -80,3 +80,14 @@ def build_skeleton(cluster: list[dict], fetch_text_fn=fetch_article_text,
         body.append(text[:6000])
         body.append("")
     return "\n".join(body)
+
+
+def write_draft(content_root, cluster: list[dict], today: str,
+                fetch_text_fn=fetch_article_text, feature_available: bool = False) -> Path:
+    """写 <content_root>/deepdive/<date>_<slug>/draft.md，返回路径。"""
+    slug = slugify(cluster[0]["resource"])
+    d = Path(content_root) / "deepdive" / f"{today}_{slug}"
+    d.mkdir(parents=True, exist_ok=True)
+    path = d / "draft.md"
+    path.write_text(build_skeleton(cluster, fetch_text_fn, feature_available), encoding="utf-8")
+    return path
