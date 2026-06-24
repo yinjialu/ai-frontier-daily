@@ -209,7 +209,9 @@ def _real_commit_state():
 def main():
     import datetime
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec="seconds")
-    subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=REPO, check=False)
+    # --autostash：监控与交互会话共用本仓工作目录，pull 前自动 stash 未提交改动、
+    # pull 完再恢复，避免脏工作树时 `pull --rebase` 硬失败（state 提交滞留）。
+    subprocess.run(["git", "pull", "--rebase", "--autostash", "origin", "main"], cwd=REPO, check=False)
     result = run_once(
         DEFAULT_SOURCES, DEFAULT_OKF_ROOT, DEFAULT_STATE, now,
         open_pr_fn=_real_open_pr, commit_state_fn=_real_commit_state,
