@@ -1,6 +1,6 @@
 {
   "updated": "2026-06-24T21:13:04+08:00",
-  "count": 72,
+  "count": 74,
   "items": [
     {
       "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
@@ -15,6 +15,34 @@
         "全栈基础设施"
       ],
       "summary": "OpenAI 携手博通发布首款自研推理芯片 Jalapeño,为 LLM 推理从零设计,而非通用加速器改造。借 OpenAI 模型加速,仅九个月完成流片,早期测试显示每瓦性能大幅超越当前业界顶尖水平。芯片优化 kernel、内存搬运、网络与服务模式,工程样片已跑 GPT-5.3-Codex-Spark,将与微软等伙伴在 2026 年起以吉瓦级数据中心规模部署,标志 OpenAI 全栈战略延伸至硬件层。"
+    },
+    {
+      "title": "Agent identity in Claude Tag: a new access model for autonomous, team-wide AI",
+      "source": "claude-blog",
+      "resource": "https://claude.com/blog/agent-identity-access-model",
+      "published": "2026-06-24",
+      "detected": "2026-06-24T07:49:26+08:00",
+      "tags": [
+        "Agent 身份与权限",
+        "Claude Tag",
+        "多人协作 AI",
+        "企业访问控制"
+      ],
+      "summary": "Anthropic 为 Claude Tag(多人协作场景)推出 agent identity 访问模型:Claude 不再借用某个用户的权限,而是以自身独立账号行事——在 Slack 以 Claude app 发言、以 Claude GitHub App 提 PR、用服务账号查数仓。管理员在 workspace 层定义身份(连接、仓库、connector、skills、standing instructions),各 channel 默认继承并可覆盖,权限从 per-user 转为 per-channel,撤销身份即全局断权,也杜绝共享频道成为私人文档的侧门。"
+    },
+    {
+      "title": "Introducing Claude Tag",
+      "source": "anthropic-news",
+      "resource": "https://www.anthropic.com/news/introducing-claude-tag",
+      "published": "2026-06-23",
+      "detected": "2026-06-24T07:49:26+08:00",
+      "tags": [
+        "Claude Tag",
+        "Agent 协作",
+        "Slack 集成",
+        "Anthropic"
+      ],
+      "summary": "Anthropic 推出 Claude Tag，让 Claude 作为团队成员加入 Slack 频道，被 @Claude 标记即可委派任务。支持多人协作共享上下文、跨频道学习记忆、主动推送（ambient）和异步自主执行。权限按频道严格隔离，管理员可控工具访问与 token 预算。基于 Opus 4.8，面向 Enterprise/Team 客户 beta 开放，被视为 Claude Code 的演进。"
     },
     {
       "title": "The full Claude Desktop experience on AWS, Google Cloud, and Microsoft Foundry",

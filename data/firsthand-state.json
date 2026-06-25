@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 47,
+    "known_urls_count": 49,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -96,7 +96,7 @@
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag"
     ],
-    "known_urls_count": 13
+    "known_urls_count": 14
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1293,12 +1293,12 @@
       "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 100,
+    "known_urls_count": 101,
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-models-research": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://blog.google/innovation-and-ai/technology/research/helping-communities-prepare-for-natural-disasters",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/deepmind-a24-research-partnership",
@@ -1353,7 +1353,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 20,
+    "known_urls_count": 21,
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "qwen-blog": {
@@ -1409,8 +1409,8 @@
     "known_urls_count": 44
   },
   "inclusionai-ling": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",
     "open_pr_urls": [
       "https://www.inclusion-ai.org/blog/agentic-ai-202606",
       "https://www.inclusion-ai.org/blog/agentic-landscape-in-2026-Q1",
