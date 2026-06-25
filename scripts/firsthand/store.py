@@ -59,6 +59,10 @@ def ingested_urls(root: Path, source_id: str) -> set[str]:
 def _render_okf(article: dict) -> str:
     tags = ", ".join(article.get("tags") or [])
     body = article.get("summary") or ""
+    # 摘要失败：把原因写进 body，commit/PR diff 里直接可见为啥失败（不再静默吞掉）。
+    err = article.get("summary_error")
+    if err:
+        body = f"{body}\n\n> 失败原因：{err}"
     published = article.get("published")
     fm = [
         "---",
