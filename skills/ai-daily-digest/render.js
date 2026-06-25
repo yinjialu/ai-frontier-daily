@@ -41,7 +41,17 @@ function renderWkhtml(card, outFile, tmpDir){
 
 async function renderPlaywright(cards, outDir){
   const { chromium } = require("playwright");           // 生产环境：npm i playwright && npx playwright install chromium
-  const browser = await chromium.launch();
+  const launchOpts = {};
+  // CCR 环境：优先使用预装的 Chromium（版本可能与当前 playwright 不匹配，通过 executablePath 绕过）
+  const CHROMIUM_PATHS = [
+    "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+    "/opt/pw-browsers/chromium-1228/chrome-linux/chrome",
+    process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
+  ].filter(Boolean);
+  for (const p of CHROMIUM_PATHS) {
+    try { require("fs").accessSync(p); launchOpts.executablePath = p; break; } catch(e) {}
+  }
+  const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage({deviceScaleFactor:SCALE});
   const fileUrl = "file://" + path.join(__dirname, "cards.html");
   for (const card of cards){
