@@ -1,0 +1,30 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.26",
+  "cnDate": "6月26日 周五",
+  "edition": "VOL.177",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.5-Cyber 正式发布：CyberGym 单模型纪录 85.6%",
+      "summary": "OpenAI 发布专为网络安全设计的 GPT-5.5-Cyber，在 CyberGym 评测中以 85.6% 创单模型最高分；是 Daybreak 网络安全计划的核心模型，聚焦威胁分析、漏洞检测与安全防御；面向企业安全团队与专业从业者开放，标志 OpenAI 正式进军垂直安全赛道。",
+      "source": "openai.com/news"
+    },
+    {
+      "tag": "政策",
+      "title": "GPT-4.5 明日（6/27）从 ChatGPT 正式下线",
+      "summary": "经 30 天过渡期，GPT-4.5 将于 6 月 27 日从 ChatGPT 全面退场；GPT-5.x 系列已全面覆盖并超越其能力范围，此次退场延续 OpenAI 精简模型矩阵策略；API 侧时间表另行公布，开发者需关注后续通知。",
+      "source": "openai.com/news"
+    },
+    {
+      "tag": "开发者",
+      "title": "openai-python v2.44.0：修复认证请求头优先级 bug",
+      "summary": "openai-python SDK 发布 v2.44.0，修复认证请求头的优先级逻辑错误——在某些配置下自定义 API key 未正确覆盖默认凭据；属于安全性关键修复，使用自定义鉴权的开发者建议尽快升级。",
+      "source": "github.com/openai/openai-python/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方公告、模型迭代与 API 动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

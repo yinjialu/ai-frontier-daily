@@ -1,0 +1,24 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.26",
+  "cnDate": "6月26日 周五",
+  "edition": "VOL.177",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.193：Bash 实时路径补全 + 全 Shell 命令自动分类",
+      "summary": "新版引入 bash 模式（!）实时文件路径自动补全，提升命令行效率；新增 autoMode.classifyAllShell 设置，将所有 Shell 命令统一走 auto-mode 分类器路由；MCP 服务启动时若需认证则显示明确提示；通过合并文本更新批次，流式响应 CPU 占用降约 37%。",
+      "source": "github.com/anthropics/claude-code/releases"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK v0.3.193：Browser SDK 跟进建议 + Windows 控制台闪烁修复",
+      "summary": "Browser SDK 的 query() 新增 promptSuggestions 选项，Agent 响应后可自动生成下一步建议问题，改善对话连贯性；修复 Windows 平台启动 CLI 子进程时出现的控制台窗口闪烁问题；同步 Claude Code v2.1.193 的稳定性改进。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

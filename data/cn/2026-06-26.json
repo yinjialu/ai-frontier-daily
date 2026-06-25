@@ -1,0 +1,40 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.26",
+  "cnDate": "6月26日 周五",
+  "edition": "VOL.177",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "company": "豆包",
+      "title": "豆包大模型 2.1 Pro：多项基准超 Claude Opus 4.6，API 成本降 80%",
+      "summary": "字节跳动火山引擎 FORCE 2026 夏季大会发布豆包 2.1 Pro，Coding、Agent、VLM 全面跨越「质变点」，多项基准测试超越 Claude Opus 4.6；API 定价 6 元/M input token，综合成本较 Claude Opus 4.6 降 80%；每日 Token 调用量突破 1.8 万亿，国内 MaaS 市占率达 49.5%。",
+      "source": "volcengine.com"
+    },
+    {
+      "tag": "模型发布",
+      "company": "豆包",
+      "title": "Seedance 2.5 首发：30 秒原生视频 + 50 路多模态素材联合生成",
+      "summary": "字节跳动同场发布视频生成模型 Seedance 2.5，首次实现 30 秒单段原生生成、最多 50 个多模态素材（图文视频混合）联合输入，并支持局部编辑保图像一致性；三项能力均为国内首发，预计 7 月正式商用上线。",
+      "source": "volcengine.com"
+    },
+    {
+      "tag": "模型发布",
+      "company": "Kimi",
+      "title": "Kimi Researcher 启动灰测：端到端 Agentic RL 深度研究专属模型",
+      "summary": "月之暗面推出 Kimi Researcher，以端到端 Agentic RL 技术专为复杂深度研究任务训练，已开始小规模灰度测试；支持从任务规划到多源检索、分析与综合的全自主执行，对标 Deep Research 级别能力，是国产首个此类专属研究 Agent 模型。",
+      "source": "moonshot.cn"
+    },
+    {
+      "tag": "开发者",
+      "company": "Kimi",
+      "title": "Kimi-Code v0.20.0：Shell 模式 + 插件管理重设计 + Web Chat 逐行 diff",
+      "summary": "Kimi-Code 新版引入 Shell 模式（输入 ! 可让 AI 感知命令执行过程），插件管理界面改为标签式全面重设计；服务端新增 Bearer Token 认证；Web Chat 端文件编辑改为逐行 diff 展示，明显提升多轮代码审查与协作体验。",
+      "source": "github.com/MoonshotAI/kimi-code/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

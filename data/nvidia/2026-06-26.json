@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.26",
+  "cnDate": "6月26日 周五",
+  "edition": "VOL.177",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "TensorRT-LLM v1.3.0rc19：EAGLE3 动态树 + MiniMax-M3 / Step-3.7 NVFP4 支持",
+      "summary": "新版引入 EAGLE3 动态树推测解码，加速长文本推理；扩展 MoE 后端选项并集成 Prometheus 指标输出，方便生产监控；新增对 MiniMax-M3、Step-3.7（NVFP4 精度）、Wan2.2-T2V 视频生成模型的支持；同时优化 Qwen 系模型性能并修复多项 Attention 后端问题。",
+      "source": "github.com/NVIDIA/TensorRT-LLM/releases"
+    },
+    {
+      "tag": "生态",
+      "title": "ISC 2026：NVIDIA 科学计算软件加速 + 闭环温水冷却方案亮相",
+      "summary": "在 ISC High Performance 2026 大会上，NVIDIA 发布用于科学计算的新 AI 软件，覆盖化学、材料发现与暗物质探测；同时展示闭环温水冷却系统设计，可消除数据中心冷却回路本身的用水需求，降低冷水机组成本；NVIDIA 技术覆盖本届 TOP500 榜单 81% 席位、新入榜系统的 90%。",
+      "source": "nvidianews.nvidia.com/news/latest"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、软件与生态最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

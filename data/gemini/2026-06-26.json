@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.26",
+  "cnDate": "6月26日 周五",
+  "edition": "VOL.177",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.5 Flash 内置 Computer Use：屏幕操控 × Search × Maps 三合一",
+      "summary": "Google 将 Computer Use 作为原生工具内置于 Gemini 3.5 Flash，同一 Agent 可同时操控屏幕、调用 Search 和 Maps，无需在多个模型间切换。OSWorld-Verified 得分 78.4（GPT-5.5 为 78.7），但定价仅 $1.5/M input——约为 GPT-5.5 的三分之一；现已通过 Gemini API 与 Enterprise Agent Platform 正式开放。",
+      "source": "ai.google.dev/gemini-api"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.49.0：eval 存量命令 + 路径遍历安全漏洞修复",
+      "summary": "Gemini CLI 新增 eval:inventory CLI 命令与 JSON 输出，支持可视化管理评估集资产；修复 skill 安装流程中的路径遍历安全漏洞，防止恶意 skill 包访问目录外文件；解决 zero-quota 限制场景下缺少快速失败逻辑的问题，提升工具链整体稳定性。",
+      "source": "github.com/google-gemini/gemini-cli/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型、API 与生态最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
