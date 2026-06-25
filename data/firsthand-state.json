@@ -1329,8 +1329,8 @@
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-gemini": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Max retries exceeded with url: /products/gemini/rss/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))",
     "open_pr_urls": [
       "https://blog.google/company-news/outreach-and-initiatives/arts-culture/dataland-ai-art-museum",
       "https://blog.google/products-and-platforms/devices/pixel/june-2026-pixel-drop",
@@ -1359,8 +1359,8 @@
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
