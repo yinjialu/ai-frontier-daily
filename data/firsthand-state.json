@@ -1354,11 +1354,12 @@
       "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
       "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks",
-      "https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools"
+      "https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools",
+      "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents"
     ],
     "initialized": true,
     "known_urls_count": 23,
-    "last_new_article": "2026-06-26T02:55:29+08:00"
+    "last_new_article": "2026-06-26T05:57:34+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
