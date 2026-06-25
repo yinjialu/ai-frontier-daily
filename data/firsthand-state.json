@@ -1181,14 +1181,16 @@
       "https://openai.com/index/welcome-pieter-and-shivon",
       "https://openai.com/index/team-plus-plus",
       "https://openai.com/index/weight-normalization",
-      "https://openai.com/index/introducing-openai"
+      "https://openai.com/index/introducing-openai",
+      "https://openai.com/index/how-agents-are-transforming-work"
     ],
     "initialized": true,
-    "known_urls_count": 1020
+    "known_urls_count": 1020,
+    "last_new_article": "2026-06-25T17:45:29+08:00"
   },
   "deepmind-blog": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='deepmind.google', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning",
       "https://deepmind.google/blog/securing-the-future-of-ai-agents",
@@ -1297,8 +1299,8 @@
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-models-research": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Read timed out. (read timeout=20)",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://blog.google/innovation-and-ai/technology/research/helping-communities-prepare-for-natural-disasters",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/deepmind-a24-research-partnership",
@@ -1323,7 +1325,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 20,
+    "known_urls_count": 21,
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-gemini": {
@@ -1357,8 +1359,8 @@
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
