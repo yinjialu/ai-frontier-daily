@@ -33,8 +33,11 @@ def write_index(out: Path):
       - output/<vendor>/latest.json：各厂商最新一天指针，供发布脚本消费
     dir = "<vendor>/<date>"（相对 output/）。count = 当天策展后的动态条数。"""
     days, latest = [], {}
+    valid_vendors = set(curator.VENDOR_META)                    # 每日厂商白名单（curator 权威清单）
     for df in sorted((out / "data").glob("*/*.json")):
         vendor = df.parent.name
+        if vendor not in valid_vendors:                        # 跳过 firsthand 等非每日目录（如 data/firsthand/index.json）
+            continue
         date = df.stem
         try:
             d = json.loads(df.read_text("utf-8"))
