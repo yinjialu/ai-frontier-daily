@@ -3,7 +3,6 @@
   "vendors": [
     "anthropic",
     "cn",
-    "firsthand",
     "gemini",
     "nvidia",
     "openai"
@@ -1621,15 +1620,6 @@
         "小红书_02_安全.jpg",
         "小红书_99_结尾.jpg"
       ]
-    },
-    {
-      "vendor": "firsthand",
-      "date": "index",
-      "dir": "firsthand/index",
-      "cnDate": "",
-      "edition": "",
-      "count": 0,
-      "files": []
     }
   ]
 }
