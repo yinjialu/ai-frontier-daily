@@ -1353,11 +1353,12 @@
       "https://blog.google/products-and-platforms/platforms/android/android-show-io-edition-2026",
       "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
-      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks"
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks",
+      "https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools"
     ],
     "initialized": true,
     "known_urls_count": 22,
-    "last_new_article": "2026-06-26T00:53:54+08:00"
+    "last_new_article": "2026-06-26T02:55:29+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
