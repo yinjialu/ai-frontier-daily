@@ -1,7 +1,72 @@
 {
-  "updated": "2026-06-24T21:13:04+08:00",
-  "count": 74,
+  "updated": "2026-06-25T17:45:29+08:00",
+  "count": 79,
   "items": [
+    {
+      "title": "How agents are transforming work",
+      "source": "openai-news",
+      "resource": "https://openai.com/index/how-agents-are-transforming-work",
+      "published": "2026-06-25",
+      "detected": "2026-06-25T17:45:29+08:00",
+      "tags": [],
+      "summary": "(摘要生成失败)"
+    },
+    {
+      "title": "Building effective human-agent teams",
+      "source": "claude-blog",
+      "resource": "https://claude.com/blog/building-effective-human-agent-teams",
+      "published": "2026-06-24",
+      "detected": "2026-06-25T07:33:20+08:00",
+      "tags": [
+        "AI Agent",
+        "人机协作",
+        "Anthropic",
+        "企业 AI"
+      ],
+      "summary": "Anthropic 总结其内部数月实践,探讨从'单人单 Agent'向'人机协作团队'(multiplayer agents)的转变。这类 Agent 拥有独立 memory、skills 和不绑定人类的 credentials,常驻 Slack 等协作工具中。核心经验:公开透明地工作,以工作区级别的清晰安全边界取代逐条文档的软共享,让 context 自由流向所有人类与 AI 队友。"
+    },
+    {
+      "title": "Introducing computer use in Gemini 3.5 Flash",
+      "source": "deepmind-blog",
+      "resource": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash",
+      "published": "2026-06-24",
+      "detected": "2026-06-25T07:33:20+08:00",
+      "tags": [
+        "Computer Use",
+        "Gemini 3.5 Flash",
+        "AI Agent",
+        "Prompt Injection 防护"
+      ],
+      "summary": "Google 将 computer use 能力原生内置进 Gemini 3.5 Flash，不再依赖独立的 2.5 computer use 模型。开发者可借此构建跨浏览器、移动、桌面环境的自定义 Agent，实现长程任务与企业级自动化（如持续软件测试、知识工作）。同时推出针对性对抗训练及两套企业安全防护：敏感操作需用户确认、检测到 prompt injection 自动中止，并倡导沙箱、人工复核等纵深防御。"
+    },
+    {
+      "title": "Introducing computer use in Gemini 3.5 Flash",
+      "source": "google-gemini",
+      "resource": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
+      "published": "2026-06-24",
+      "detected": "2026-06-25T07:33:20+08:00",
+      "tags": [
+        "Gemini 3.5 Flash",
+        "Computer Use",
+        "AI Agent",
+        "Prompt Injection 防护"
+      ],
+      "summary": "Google 将 computer use 能力内置到 Gemini 3.5 Flash 主模型，取代独立的 2.5 computer use 模型。开发者可经 Gemini API 与企业平台构建跨浏览器、移动、桌面的智能体，胜任软件测试、企业自动化等长程任务。针对 prompt injection 风险，提供对抗训练及敏感操作确认、注入检测自动停止两套企业安全防护。"
+    },
+    {
+      "title": "Introducing computer use in Gemini 3.5 Flash",
+      "source": "google-models-research",
+      "resource": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
+      "published": "2026-06-24",
+      "detected": "2026-06-25T07:33:20+08:00",
+      "tags": [
+        "Gemini 3.5 Flash",
+        "Computer Use",
+        "AI Agent",
+        "Prompt Injection 防护"
+      ],
+      "summary": "Google 在 Gemini 3.5 Flash 中将 computer use 升级为内置工具，不再依赖独立的 2.5 模型。开发者可借此构建跨浏览器、移动、桌面的自定义 Agent，实现长程任务与企业自动化（如持续软件测试、知识工作）。同时针对 prompt injection 做对抗训练，并提供敏感操作确认、注入即停两套企业级防护。已通过 Gemini API 与企业 Agent 平台开放。"
+    },
     {
       "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
       "source": "openai-news",

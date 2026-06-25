@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 49,
+    "known_urls_count": 50,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -1185,7 +1185,7 @@
       "https://openai.com/index/how-agents-are-transforming-work"
     ],
     "initialized": true,
-    "known_urls_count": 1021,
+    "known_urls_count": 1022,
     "last_new_article": "2026-06-25T17:45:29+08:00"
   },
   "deepmind-blog": {
@@ -1295,7 +1295,7 @@
       "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 101,
+    "known_urls_count": 102,
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-models-research": {
@@ -1325,7 +1325,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash"
     ],
     "initialized": true,
-    "known_urls_count": 21,
+    "known_urls_count": 22,
     "last_new_article": "2026-06-25T07:33:20+08:00"
   },
   "google-gemini": {
@@ -1358,7 +1358,7 @@
       "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents"
     ],
     "initialized": true,
-    "known_urls_count": 24,
+    "known_urls_count": 25,
     "last_new_article": "2026-06-26T05:57:34+08:00"
   },
   "qwen-blog": {
