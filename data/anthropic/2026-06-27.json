@@ -1,0 +1,30 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.27",
+  "cnDate": "6月27日 周六",
+  "edition": "VOL.178",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Anthropic 分享 Multiplayer Agents 实践：Claude 常驻 Slack 作虚拟队友，内部 65% 代码由此产生",
+      "summary": "Anthropic 博客披露内部数月实践：AI Agent 正从「单人单 Agent」向「人机协作团队」演进。Claude 以独立 memory、skills 和不绑定单人的 credentials 常驻 Slack，公开透明地工作、上下文自由流向全体成员；核心原则是以工作区级别的权限边界取代人工传递文档。内部产品团队已有 65% 代码由此链路生成。",
+      "source": "claude.com/blog/building-effective-human-agent-teams"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.195：中日泰语音听写修复 + 插件名精确匹配 + 鼠标交互开关",
+      "summary": "新版修复日语、中文、泰语等无空格语言的语音听写识别错误；修复含连字符的插件名被子串误匹配的 bug，改为精确匹配；新增 CLAUDE_CODE_DISABLE_MOUSE_CLICKS 环境变量，可在全屏模式禁用鼠标点击同时保留滚轮；后台任务崩溃后恢复逻辑修复，整体稳定性提升。",
+      "source": "github.com/anthropics/claude-code/releases"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Agent SDK TypeScript v0.3.195：Query.reinitialize() 断线重连 + Skill 事件修复",
+      "summary": "新增 Query.reinitialize() 方法，可在 transport 中断后重新发送初始化请求并重新传递待处理的 permission/dialog 提示，解决会话断线后状态丢失问题；修复同步 skill 列表在变更检测器订阅前已解析时 commands_changed 事件不触发的 bug，确保 skill 列表变更通知可靠送达。",
+      "source": "github.com/anthropics/claude-agent-sdk-typescript/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

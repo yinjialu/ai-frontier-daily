@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.27",
+  "cnDate": "6月27日 周六",
+  "edition": "VOL.178",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code cua-driver-rs v0.6.8：多平台预构建二进制 + 飞书 Adapter + Computer-Use MCP 集成",
+      "summary": "阿里 Qwen Code 发布 cua-driver-rs v0.6.8，提供 macOS universal（代码签名）、Linux x86_64/arm64、Windows 预构建二进制，可通过环境变量切换相对坐标模式；本次约 100+ 提交涵盖新增飞书频道 Adapter、worktree 功能、computer-use MCP 集成，以及 CLI 持久化、权限处理与遥测优化，是 computer-use 方向最大规模集中更新。",
+      "source": "github.com/QwenLM/qwen-code/releases"
+    },
+    {
+      "tag": "模型发布",
+      "company": "百川",
+      "title": "Baichuan-M4 联合清华发布，据报道三项 HealthBench 全球第一，幻觉率 3.3%",
+      "summary": "百川智能联合清华大学据报道发布 Baichuan-M4 医疗大模型，在 OpenAI 提出的 HealthBench 综合榜（68.6 分）、Hard 子集、Professional 子集三项均排全球第一，超越 GPT-5.5 与 Claude Opus 4.7；幻觉率低至 3.3%，具备主动追问、危急重症识别与全病程记忆等临床能力，是国内首个多项权威医疗基准登顶全球的模型。",
+      "source": "news.qq.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日速递国产大模型最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,18 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.06.27",
+  "cnDate": "6月27日 周六",
+  "edition": "VOL.178",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Triton Inference Server v2.70.0 正式发布：对应 NGC 26.06，弃用 Windows，安全加固",
+      "summary": "Triton v2.70.0 对应 NGC 容器 26.06，重大变更：正式移除 Windows 服务端支持，Python 客户端 BF16 处理须改用 ml_dtypes.bfloat16。新增 TensorRT 多 GPU 推理优化、PyTorch 2 动态 batching、路径遍历安全加固，以及增强的 gRPC/HTTP 安全层；vLLM 后端在显式控制模式下暂不支持张量并行度 > 1。",
+      "source": "github.com/triton-inference-server/server/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

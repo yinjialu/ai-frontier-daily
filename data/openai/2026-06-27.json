@@ -1,0 +1,36 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.27",
+  "cnDate": "6月27日 周六",
+  "edition": "VOL.178",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.6 三模型发布预览：Sol 旗舰 / Terra 均衡 / Luna 轻量，限定 20 家合作方优先试用",
+      "summary": "OpenAI 上线 GPT-5.6 系列预览：Sol 为当前最强旗舰（$5/$30 per M token），Terra 以 GPT-5.5 同等性能提供两倍成本优势（$2.5/$15），Luna 主打低延迟低价格（$1/$6）。应美国政府要求，首批仅向约 20 家受信合作方开放，安全评估通过后逐步扩大至更多用户。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "企业",
+      "title": "OpenAI 数据：80.6% 用户委托超 30 分钟任务，非开发者一年增长 137 倍",
+      "summary": "OpenAI 公布 Agent 使用数据：今年 1–5 月 80.6% 的用户提交过超 30 分钟人力等价任务，70.2% 超 60 分钟；顶部 1% 用户每天产生超 60 小时 Codex Agent 执行时长；法律、招聘等全部内部部门已用 Codex 处理主要工作。非开发者个人用户自 2025 年 8 月增长 137 倍，机构用户增长 189 倍。",
+      "source": "openai.com/index/how-agents-are-transforming-work"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex Remote 全面 GA：所有 ChatGPT 套餐开放，手机 App + QR 码安全配对",
+      "summary": "Codex Remote 正式向所有 ChatGPT 订阅套餐开放，iOS / Android 移动端可发起、查看并审批运行在本地 Mac/Windows 上的 Codex 任务；新增一对一 QR 码安全认证配对防止未授权访问；同步上线 DigitalOcean 云工作区插件，无本地机器亦可运行 Codex。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "政策",
+      "title": "GPT-4.5 今日正式退役，GPT-4 时代落幕；o3 将于 8 月 26 日跟进",
+      "summary": "历经 30 天过渡期，GPT-4.5 于今日（6 月 27 日）正式从 ChatGPT 退场，成为最后一个 GPT-4 代系列模型。OpenAI 同步宣布 o3 将于 8 月 26 日从 ChatGPT 下线（90 天过渡期）。上述退场均仅限 ChatGPT，API 访问不受影响，开发者可继续调用。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、Codex、API 更新与研究动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
