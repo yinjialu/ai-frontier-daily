@@ -1,7 +1,47 @@
 {
-  "updated": "2026-06-25T17:45:29+08:00",
-  "count": 79,
+  "updated": "2026-06-26T05:57:34+08:00",
+  "count": 82,
   "items": [
+    {
+      "title": "5 ways Google parents are using Gemini",
+      "source": "google-gemini",
+      "resource": "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents",
+      "published": "2026-06-25",
+      "detected": "2026-06-26T05:57:34+08:00",
+      "tags": [
+        "Gemini",
+        "AI应用场景",
+        "Google"
+      ],
+      "summary": "Google 官方 The Keyword 博客分享多位 Google 员工父母如何用 Gemini 减轻育儿心智负担：包括生成含午睡时间和亲子友好餐厅的旅行行程、导入学校课程表生成测验帮孩子备考、用 Gemini 逐步追问引导解题等五种家庭场景。"
+    },
+    {
+      "title": "Try these 3 Google AI tools to help find your next job.",
+      "source": "google-gemini",
+      "resource": "https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools",
+      "published": "2026-06-25",
+      "detected": "2026-06-26T02:55:29+08:00",
+      "tags": [
+        "AI求职工具",
+        "Gemini",
+        "NotebookLM"
+      ],
+      "summary": "谷歌推荐三款 AI 工具辅助求职：Career Dreamer 基于兴趣与经历头脑风暴目标岗位，NotebookLM 打磨简历与求职信、把过往经历串成连贯叙事，Gemini Live 进行面试模拟并提供实时反馈。整体覆盖找岗位、备材料、练面试的全流程。"
+    },
+    {
+      "title": "5 ways to learn with study notebooks in the Gemini app",
+      "source": "google-gemini",
+      "resource": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks",
+      "published": "2026-06-25",
+      "detected": "2026-06-26T00:53:54+08:00",
+      "tags": [
+        "Gemini",
+        "AI教育",
+        "个性化学习",
+        "Google"
+      ],
+      "summary": "Google 在 Gemini app 推出 study notebooks 学习笔记本功能，将 Gemini 打造为交互式自适应学习平台。学生上传课程资料后，Gemini 生成诊断测验评估知识盲点，建立学业基线，再据实时强弱项生成定制化短课程与练习测验，并通过仪表盘追踪进度。学习中可随时提问，今夏将加入图表等视觉元素。"
+    },
     {
       "title": "How agents are transforming work",
       "source": "openai-news",

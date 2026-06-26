@@ -84,10 +84,12 @@
       "https://www.anthropic.com/research/attack-navigator",
       "https://www.anthropic.com/research/coding-agents-social-sciences",
       "https://www.anthropic.com/research/glasswing-initial-update",
-      "https://www.anthropic.com/research/exploit-evals"
+      "https://www.anthropic.com/research/exploit-evals",
+      "https://www.anthropic.com/research/economic-index-june-2026-report"
     ],
     "initialized": true,
-    "known_urls_count": 26
+    "known_urls_count": 26,
+    "last_new_article": "2026-06-27T07:15:57+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -1182,11 +1184,12 @@
       "https://openai.com/index/team-plus-plus",
       "https://openai.com/index/weight-normalization",
       "https://openai.com/index/introducing-openai",
-      "https://openai.com/index/how-agents-are-transforming-work"
+      "https://openai.com/index/how-agents-are-transforming-work",
+      "https://openai.com/index/previewing-gpt-5-6-sol"
     ],
     "initialized": true,
     "known_urls_count": 1022,
-    "last_new_article": "2026-06-25T17:45:29+08:00"
+    "last_new_article": "2026-06-27T07:15:57+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1355,11 +1358,12 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
       "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks",
       "https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools",
-      "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents"
+      "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents",
+      "https://blog.google/products-and-platforms/products/gemini/gemini-help-avoid-jetlag"
     ],
     "initialized": true,
-    "known_urls_count": 25,
-    "last_new_article": "2026-06-26T05:57:34+08:00"
+    "known_urls_count": 28,
+    "last_new_article": "2026-06-27T07:15:57+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
