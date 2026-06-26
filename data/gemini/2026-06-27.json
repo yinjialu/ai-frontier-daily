@@ -1,0 +1,30 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.27",
+  "cnDate": "6月27日 周六",
+  "edition": "VOL.178",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Gemini Intelligence 登陆 Android：Chrome 摘要 + 自动填表 + Rambler 语音润色 + 自然语言建小组件",
+      "summary": "Google 将 Gemini Intelligence 深度整合至 Android 系统：可在 Chrome 内对网页自动摘要、跨应用自动填写表单；新增 Rambler 功能将用户语音留言润色为精简文字；用户还可通过自然语言描述直接生成个性化系统小组件。这是迄今最深度的 Gemini × Android 整合，覆盖主流 Android 手机设备。",
+      "source": "blog.google/platforms/android"
+    },
+    {
+      "tag": "研究",
+      "title": "DeepMind × A24 签约约 7500 万美元 AI 电影研究合作，Google 首次持股影视公司",
+      "summary": "据报道，Google DeepMind 与《瞬息全宇宙》出品方独立影视厂牌 A24 达成约 7500 万美元合作，共同开发面向电影人的 AI 研究工具与创作工作流；这是 Google 首次以股权形式进入影视公司，A24 将作为测试合作方验证 DeepMind 最新生成与创意辅助模型，标志 AI 与高端创意产业进入深度融合阶段。",
+      "source": "deepmind.google"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI v0.50.0-preview.1：Tool Registry 自动发现 + 防工作区二进制污染",
+      "summary": "预览版引入 Tool Registry 自动发现机制，CLI 可检测并注册本地可用工具集，无需手动配置；修复工作区级可执行文件遮蔽系统 PATH 下同名二进制的安全问题，防止恶意包篡改默认命令；改进 npm 版本发布完整性验证；同步更新 Vertex AI base URL。",
+      "source": "github.com/google-gemini/gemini-cli/releases"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型、API 与生态最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
