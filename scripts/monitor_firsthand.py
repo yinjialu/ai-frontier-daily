@@ -104,6 +104,7 @@ def run_once(sources_path, okf_root, state_file, now,
                 "source": source["id"],
                 "url": art["url"],
                 "summary": s["summary"],
+                "summary_error": s.get("error"),  # 摘要失败原因（成功为 None）→ 进 OKF/PR
                 "tags": s["tags"],
                 "published": published,     # 真实发布日期（取不到则 None，不写入文件）
                 "detected": now,            # 探测时间（诚实标注）
