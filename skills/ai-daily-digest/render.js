@@ -41,7 +41,10 @@ function renderWkhtml(card, outFile, tmpDir){
 
 async function renderPlaywright(cards, outDir){
   const { chromium } = require("playwright");           // 生产环境：npm i playwright && npx playwright install chromium
-  const browser = await chromium.launch();
+  const launchOpts = process.env.PLAYWRIGHT_EXECUTABLE_PATH
+    ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH }
+    : {};
+  const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage({deviceScaleFactor:SCALE});
   const fileUrl = "file://" + path.join(__dirname, "cards.html");
   for (const card of cards){
