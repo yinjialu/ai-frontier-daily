@@ -88,7 +88,7 @@
       "https://www.anthropic.com/research/economic-index-june-2026-report"
     ],
     "initialized": true,
-    "known_urls_count": 26,
+    "known_urls_count": 27,
     "last_new_article": "2026-06-27T07:15:57+08:00"
   },
   "anthropic-news": {
@@ -1188,7 +1188,7 @@
       "https://openai.com/index/previewing-gpt-5-6-sol"
     ],
     "initialized": true,
-    "known_urls_count": 1022,
+    "known_urls_count": 1023,
     "last_new_article": "2026-06-27T07:15:57+08:00"
   },
   "deepmind-blog": {
@@ -1362,7 +1362,7 @@
       "https://blog.google/products-and-platforms/products/gemini/gemini-help-avoid-jetlag"
     ],
     "initialized": true,
-    "known_urls_count": 28,
+    "known_urls_count": 29,
     "last_new_article": "2026-06-27T07:15:57+08:00"
   },
   "qwen-blog": {
