@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.28",
+  "cnDate": "6月28日 周日",
+  "edition": "VOL.179",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Gemini 登陆 Android Chrome：Auto Browse 自动代办 + Nano Banana 画中生图 + Personal Intelligence",
+      "summary": "Google 近期在 Android 版 Chrome 深度嵌入 Gemini：Auto Browse 可代替用户完成预订停车、更新订单等多步骤任务（敏感操作须二次确认）；Nano Banana 支持对页面内图片直接生成与编辑；Personal Intelligence 接入 Gmail 与 Google 相册，在浏览时提供个人化上下文建议。先向美国 AI Pro/Ultra 订阅用户推出，要求 Android 12 及以上、4GB+ 内存设备。",
+      "source": "blog.google/products-and-platforms/products/chrome"
+    },
+    {
+      "tag": "生态",
+      "title": "Gemini App 上线学习笔记本：自适应测验 + 知识盲点追踪 + 定制化短课",
+      "summary": "Google 在 Gemini App 推出 Study Notebooks 功能，将 AI 引入个性化备考流程：学生上传课程资料后，Gemini 自动生成诊断测验评估知识盲点、建立学业基线，再据实时薄弱项生成定制短课程与练习题；全程仪表盘追踪进度，随时可提问。今夏计划加入图表等视觉元素，进一步完善互动式学习体验。",
+      "source": "blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Google Gemini 模型、API 与生态最新动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
