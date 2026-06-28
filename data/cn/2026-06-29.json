@@ -1,0 +1,30 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.29",
+  "cnDate": "6月29日 周一",
+  "edition": "VOL.180",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "美国国会推动制裁 AI 蒸馏攻击——Anthropic 致函点名 DeepSeek、月之暗面、MiniMax",
+      "company": "DeepSeek",
+      "summary": "Anthropic 向美参议院银行委员会发函，披露 Q1 2026 三起蒸馏攻击案例，点名 DeepSeek、月之暗面（Kimi）、MiniMax 为攻击源。最新案例（6 周内 2880 万次）指向阿里 Qwen 团队。参议员 Hagerty 与 Kim 已推动将制裁条款纳入国防法案，涉事公司面临美国政府直接施压风险。"
+    },
+    {
+      "tag": "开发者",
+      "title": "Qwen Code v0.19.3 正式发布：web_fetch 稳定修复，可用于生产环境",
+      "company": "通义千问",
+      "summary": "通义千问旗下 Qwen Code 于 6 月 28 日发布 v0.19.3 稳定版，核心修复 web_fetch 工具 JSON 解析兜底逻辑，确保网页抓取在异常响应格式下不崩溃。该版本将 nightly 渠道已验证的稳定性改进整体落地为正式可用版本，适合生产部署。"
+    },
+    {
+      "tag": "开发者",
+      "title": "DeepSeek API 7 月 24 日停用历史别名，需迁移至版本化模型 ID",
+      "company": "DeepSeek",
+      "summary": "DeepSeek 官方宣布旧版模型别名 deepseek-chat 与 deepseek-reasoner 将于 7 月 24 日 15:59 UTC 正式退役。现有调用须在此前切换至版本化 ID（如 deepseek-v4-pro、deepseek-v4-flash），延迟迁移将导致 API 调用中断。建议开发者本周内完成更新测试。"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

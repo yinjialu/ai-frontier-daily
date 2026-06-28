@@ -1,0 +1,24 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.29",
+  "cnDate": "6月29日 周一",
+  "edition": "VOL.180",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Anthropic 致函美参议院：指控阿里巴巴 Qwen 实施史上最大蒸馏攻击",
+      "summary": "Anthropic 向美国参议院银行委员会发函，揭露阿里巴巴 Qwen 团队通过约 2.5 万个伪造账号、在六周内对 Claude 发起 2880 万次自动化提问，专攻软件工程与 Agent 推理等核心商业能力。信中同期披露 Q1 三起早期案例，涉及 DeepSeek、月之暗面与 MiniMax。国会已推动将相关制裁条款纳入国防法案。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "研究",
+      "title": "Anthropic 经济指数「Cadences」：AI 使用已深嵌日常生活节律",
+      "summary": "第六期经济指数升级至小时级采样，首批用户调查（约 9700 人）核心发现：93% 对话有可识别产出；Claude Code 自主度评分比日常聊天高 0.37 分（5 分制）；反直觉结论——越是最大化委托 Claude 的用户，对 AI 经济影响反而越乐观；35% 受访者预计明年 AI 可完成其大部分日常工作。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

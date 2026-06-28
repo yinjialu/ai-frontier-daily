@@ -1,0 +1,36 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.29",
+  "cnDate": "6月29日 周一",
+  "edition": "VOL.180",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini Managed Agents API 公测：托管沙盒运行有状态自治 Agent",
+      "summary": "Gemini API 开放 Managed Agents 公测，开发者可将 Agent 部署至 Google 托管的隔离 Linux 沙盒，实现有状态跨会话自主运行。通用版 Antigravity Agent（antigravity-preview-05-2026）同步公测，可自主规划推理、写代码、管理文件、浏览网络，无需自建运行时环境，对标 Anthropic Managed Agents。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Gemini 3.1 Flash-Lite 与 Flash Image 进入公测",
+      "summary": "Gemini 3.1 Flash-Lite 公测上线，定位成本最优 Flash 模型，专为高并发低延迟场景设计；Flash Image 同步公测，支持高质量图像生成，较前代版本定价与延迟均有改善。两款模型均可通过 Gemini API 与 Vertex AI 访问。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "开发者",
+      "title": "Gemini API 新增 Lyria 音乐生成与多模态 File Search",
+      "summary": "Lyria 音频生成进入公测：lyria-3-pro-preview 可生成最长 184 秒音频，lyria-3-clip-preview 生成 30 秒片段。File Search 升级为多模态——利用 gemini-embedding-2 对图片进行原生嵌入与语义检索，扩展内容库多模态搜索能力。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "政策",
+      "title": "⚠️ Vertex AI 旧版图像生成接口明日弃用，今日须完成迁移",
+      "summary": "Vertex AI 图像生成旧版接口将于 6 月 30 日正式停用，今日是最后迁移窗口。使用旧端点的开发者若未完成迁移将遭遇服务中断。官方建议切换至最新图像生成模型端点，Gemini API 文档已提供详细迁移指南。",
+      "source": "ai.google.dev"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
