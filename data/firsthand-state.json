@@ -1485,6 +1485,7 @@
       "https://github.com/deepseek-ai/DreamCraft3D",
       "https://github.com/deepseek-ai/DeepSeek-Coder"
     ],
-    "initialized": true
+    "initialized": true,
+    "known_urls_count": 35
   }
 }
