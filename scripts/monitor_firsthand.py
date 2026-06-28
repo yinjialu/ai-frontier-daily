@@ -272,11 +272,18 @@ def _post_heartbeat(now: str, new_count: int, error: str | None = None):
 
 
 def main():
-    import datetime
-    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec="seconds")
+    import datetime, time
+    tz8 = datetime.timezone(datetime.timedelta(hours=8))
+    start_dt = datetime.datetime.now(tz8)
+    now = start_dt.isoformat(timespec="seconds")
+    t0 = time.monotonic()
+
+    print(f"[firsthand] START {now}")
+
     # --autostash：监控与交互会话共用本仓工作目录，pull 前自动 stash 未提交改动、
     # pull 完再恢复，避免脏工作树时 `pull --rebase` 硬失败（state 提交滞留）。
     subprocess.run(["git", "pull", "--rebase", "--autostash", "origin", "main"], cwd=REPO, check=False)
+
     error_msg = None
     new_count = 0
     try:
@@ -288,8 +295,12 @@ def main():
     except Exception as e:
         import traceback
         error_msg = traceback.format_exc()
-        print(f"[firsthand] {now} ERROR: {e}")
-    print(f"[firsthand] {now} new={new_count}")
+        print(f"[firsthand] ERROR {now}: {e}")
+
+    elapsed = round(time.monotonic() - t0)
+    status = "ERROR" if error_msg else "OK"
+    print(f"[firsthand] END {now} status={status} new={new_count} elapsed={elapsed}s")
+
     _post_heartbeat(now, new_count, error=error_msg)
 
 
