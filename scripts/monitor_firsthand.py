@@ -144,6 +144,7 @@ def run_once(sources_path, okf_root, state_file, now,
                 "summary_error": s.get("error"),
                 "tags": s["tags"],
                 "detected": fa["detected"] or now,
+                "full_text": text,
             })
             if not s.get("error"):
                 retry_count += 1
