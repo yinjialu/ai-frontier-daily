@@ -23,6 +23,7 @@ jobs:
       contents: write        # 读 + 修改文件、git commit/push 回 PR 分支
       pull-requests: write   # 读评论 / 回评论 / 操作 PR 分支
       issues: write
+      id-token: write        # 获取 OIDC token，claude-code-action 鉴权必需
     steps:
       - uses: actions/checkout@v4
         with:
