@@ -6,25 +6,11 @@
   "brand": "AI 前哨 · 每日国产大模型",
   "updates": [
     {
-      "tag": "生态",
-      "company": "DeepSeek",
-      "title": "DeepSeek 首次对外融资落地，组建 Agent Harness 新团队对标 Claude Code，全员至少双倍扩招",
-      "summary": "DeepSeek 官方公众号发布成立以来最大规模扩招计划：所有部门至少翻倍，开放算法、研发、运营、产品等 7 类共 33 个岗位，全接受实习。同期宣布组建 Agent Harness 新团队，目标打造对标 Claude Code 的国产编程智能体产品。据多家财经媒体报道，DeepSeek 已完成首轮外部融资，腾讯、宁德时代、网易等战略投资方参与，资金将支撑算力与团队双扩张。",
-      "source": "finance.sina.com.cn"
-    },
-    {
       "tag": "模型发布",
       "company": "通义千问",
       "title": "据报道阿里推出 Qwen VLo：多模态统一理解与生成，长段落图文精细可控",
       "summary": "据报道，阿里推出 Qwen VLo 多模态统一模型，在同一框架内支持图像理解与生成，采用从左至右、从上到下逐步构建图像的自回归生成范式，在需要精细控制的长段落文字渲染任务上表现突出。具体参数规模、公开基准评测及公测时间尚待官方正式公告。",
       "source": "tongyi.aliyun.com"
-    },
-    {
-      "tag": "开发者",
-      "company": "Kimi",
-      "title": "Kimi Code v0.20.0 引入 Shell 模式与服务端 Bearer Token 认证，v0.20.1 跟进修复",
-      "summary": "Kimi Code v0.20.0 新增 Shell 模式，允许直接在界面内运行终端命令；引入服务端 Bearer Token 认证与 Host/Origin 校验提升部署安全性；插件管理重设计为标签页 UI；Web Chat 新增逐行差异可视化展示 Agent 文件修改详情。v0.20.1 进一步修复 Windows 服务器启动问题、上下文窗口管理缺陷，并通过消息缓存优化长对话响应速度。",
-      "source": "github.com/MoonshotAI/kimi-code/releases"
     },
     {
       "tag": "政策",
