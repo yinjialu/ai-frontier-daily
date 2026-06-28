@@ -8,7 +8,7 @@ tags: []
 detected: 2026-06-28T21:20:41+08:00
 ---
 
-Google 演示 Gemini app 的时差调整功能：授权访问 Gmail 和 Calendar 后，Gemini 可自动读取航班信息、生成抗时差作息日程并写入日历。该能力由 Gemini 3.5 Flash 模型驱动，强调前沿智能与实际行动（action）相结合。
+Google 展示 Gemini app 的实用出行功能：授权访问 Gmail 和 Calendar 后，Gemini 可自动识别航班信息、生成个性化抗时差作息日程，并直接写入用户日历——全程无需手动操作。该功能由 Gemini 3.5 Flash 模型驱动，体现"前沿智能 + 实际行动（action）"的产品方向。
 
 ## Full Text
 

@@ -7,7 +7,7 @@ tags: []
 detected: 2026-06-28T21:20:41+08:00
 ---
 
-OpenAI 预览下一代模型 GPT-5.6 Sol，定位为新一代旗舰模型。该页面仅以预览形式发布，正文为 ASCII 艺术占位内容，暂未披露具体能力、基准或发布细节，表明 OpenAI 正在为新模型造势预热。
+OpenAI 预览 GPT-5.6 系列三款新模型：旗舰款 Sol、均衡款 Terra（性能媲美 GPT-5.5 但便宜 2 倍）、快速低价款 Luna。Sol 在编程（Terminal-Bench 2.1 SOTA）、生物学（GeneBench v1）、网络安全（ExploitBench，仅用 Mythos 约 1/3 token 达到相近水平）均创新高；新增 max 推理模式和调用子智能体的 ultra 模式。安全上投入 70 万 A100 等效 GPU 小时做自动红队测试，搭配实时输出分类器、账号级审查等多层防护，不越"Cyber Critical"红线。现已向受信合作伙伴有限预览（已提前知会美国政府），Sol 定价 $5 输入/$30 输出 per 1M token，未来数周更广泛开放；Cerebras 上将达 750 token/秒。
 
 ## Full Text
 
