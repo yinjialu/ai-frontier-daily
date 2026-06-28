@@ -207,17 +207,90 @@ def _real_commit_state():
         subprocess.run(["git", "push", "origin", "main"], cwd=REPO, check=False)
 
 
+HEARTBEAT_ISSUE_TITLE = "📡 firsthand 监控心跳"
+HEARTBEAT_ISSUE_LABEL = "firsthand-heartbeat"
+
+
+def _ensure_heartbeat_issue() -> str:
+    """找到或创建心跳 issue，返回 issue number（字符串）。"""
+    r = subprocess.run(
+        ["gh", "issue", "list", "--label", HEARTBEAT_ISSUE_LABEL,
+         "--state", "open", "--json", "number", "--jq", ".[0].number // empty"],
+        cwd=REPO, capture_output=True, text=True)
+    num = r.stdout.strip()
+    if num:
+        return num
+    # 确保 label 存在
+    subprocess.run(
+        ["gh", "label", "create", HEARTBEAT_ISSUE_LABEL,
+         "--color", "0075ca", "--description", "firsthand 监控心跳"],
+        cwd=REPO, check=False, capture_output=True)
+    r2 = subprocess.run(
+        ["gh", "issue", "create",
+         "--title", HEARTBEAT_ISSUE_TITLE,
+         "--label", HEARTBEAT_ISSUE_LABEL,
+         "--body", "此 Issue 由监控脚本自动维护，记录每次 firsthand 监控的执行结果。"],
+        cwd=REPO, capture_output=True, text=True, check=True)
+    # 输出形如 https://github.com/owner/repo/issues/123
+    import re
+    m = re.search(r"/issues/(\d+)", r2.stdout)
+    return m.group(1) if m else ""
+
+
+def _post_heartbeat(now: str, new_count: int, error: str | None = None):
+    """往心跳 issue 追加一条运行状态评论。失败静默，不影响主流程。"""
+    import datetime
+    try:
+        issue_num = _ensure_heartbeat_issue()
+        if not issue_num:
+            return
+        tz8 = datetime.timezone(datetime.timedelta(hours=8))
+        dt = datetime.datetime.fromisoformat(now)
+        next_dt = dt + datetime.timedelta(hours=1)
+        next_str = next_dt.strftime("%H:%M")
+        if error:
+            body = (
+                f"### ❌ 执行失败 `{now}`\n\n"
+                f"```\n{error[:1000]}\n```\n\n"
+                f"下次检测：约 {next_str}"
+            )
+        elif new_count > 0:
+            body = (
+                f"### ✅ `{now}` — 发现 {new_count} 条新内容\n\n"
+                f"已开 PR，下次检测：约 {next_str}"
+            )
+        else:
+            body = (
+                f"### ✅ `{now}` — 无新内容\n\n"
+                f"各信源均无更新，下次检测：约 {next_str}"
+            )
+        subprocess.run(
+            ["gh", "issue", "comment", issue_num, "--body", body],
+            cwd=REPO, check=False, capture_output=True)
+    except Exception as e:
+        print(f"[firsthand] 心跳评论失败(忽略): {e}")
+
+
 def main():
     import datetime
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec="seconds")
     # --autostash：监控与交互会话共用本仓工作目录，pull 前自动 stash 未提交改动、
     # pull 完再恢复，避免脏工作树时 `pull --rebase` 硬失败（state 提交滞留）。
     subprocess.run(["git", "pull", "--rebase", "--autostash", "origin", "main"], cwd=REPO, check=False)
-    result = run_once(
-        DEFAULT_SOURCES, DEFAULT_OKF_ROOT, DEFAULT_STATE, now,
-        open_pr_fn=_real_open_pr, commit_state_fn=_real_commit_state,
-    )
-    print(f"[firsthand] {now} new={result['new_count']}")
+    error_msg = None
+    new_count = 0
+    try:
+        result = run_once(
+            DEFAULT_SOURCES, DEFAULT_OKF_ROOT, DEFAULT_STATE, now,
+            open_pr_fn=_real_open_pr, commit_state_fn=_real_commit_state,
+        )
+        new_count = result["new_count"]
+    except Exception as e:
+        import traceback
+        error_msg = traceback.format_exc()
+        print(f"[firsthand] {now} ERROR: {e}")
+    print(f"[firsthand] {now} new={new_count}")
+    _post_heartbeat(now, new_count, error=error_msg)
 
 
 if __name__ == "__main__":
