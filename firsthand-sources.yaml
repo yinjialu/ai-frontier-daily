@@ -61,3 +61,9 @@ sources:
     name: 蚂蚁百灵 inclusionAI Blog
     url: https://inclusionai.github.io/blog/atom.xml
     type: rss
+
+  - id: deepseek-github
+    name: DeepSeek GitHub 新仓库
+    url: https://github.com/deepseek-ai
+    org: deepseek-ai
+    type: github-org

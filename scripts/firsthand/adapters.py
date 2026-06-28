@@ -108,7 +108,28 @@ def _fetch_rss(source: dict, fetcher) -> list[dict]:
     return out
 
 
-_ADAPTERS = {"html-links": _fetch_html_links, "rss": _fetch_rss}
+def _fetch_github_org(source: dict, fetcher) -> list[dict]:
+    """调 GitHub API 列举 org 的公开仓库，按 created 时间倒序。
+    每个仓库 → {url: github页面, title: repo名, published: 创建日期}。
+    source 需包含 org 字段（GitHub org name）。"""
+    import json
+    org = source.get("org") or source["id"]
+    url = f"https://api.github.com/orgs/{org}/repos?sort=created&direction=desc&per_page=50"
+    data = json.loads(fetcher(url))
+    out = []
+    for repo in data:
+        if repo.get("fork"):
+            continue
+        created = (repo.get("created_at") or "")[:10]  # YYYY-MM-DD
+        out.append({
+            "url": canonical_url(repo["html_url"]),
+            "title": repo.get("full_name") or repo["name"],
+            "published": created or None,
+        })
+    return out
+
+
+_ADAPTERS = {"html-links": _fetch_html_links, "rss": _fetch_rss, "github-org": _fetch_github_org}
 
 
 def fetch_source(source: dict, fetcher=_http_get) -> list[dict]:
