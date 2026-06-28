@@ -1,0 +1,32 @@
+name: Claude Assistant
+
+# PR / issue 评论里 @claude 时触发，让 Claude Code 在云端读取仓库文件、
+# 生成内容并提交回当前 PR 分支。用途之一：内参摘要本地生成失败时，
+# monitor 把抓好的全文提交 + 评论 @claude，由云端补摘要（见 firsthand 监控）。
+#
+# 前置：仓库 Settings → Secrets → Actions 配 CLAUDE_CODE_OAUTH_TOKEN
+#       （本机 `claude setup-token` 生成，走 Claude 订阅额度，非 API 付费）。
+# 注意：issue_comment 触发的 workflow 必须存在于默认分支(main)才会响应评论。
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  claude:
+    # 仅在评论文本含 @claude 时触发，避免每条评论都跑
+    if: contains(github.event.comment.body, '@claude')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # 读 + 修改文件、git commit/push 回 PR 分支
+      pull-requests: write   # 读评论 / 回评论 / 操作 PR 分支
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
