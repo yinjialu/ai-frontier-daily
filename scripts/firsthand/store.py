@@ -43,6 +43,37 @@ def _next_sequence(d: Path) -> int:
     return mx + 1
 
 
+_FM_TITLE_RE = re.compile(r"^title:\s*(.+)\s*$", re.MULTILINE)
+_FM_SOURCE_RE = re.compile(r"^source:\s*(\S+)\s*$", re.MULTILINE)
+_FM_DETECTED_RE = re.compile(r"^detected:\s*(\S+)\s*$", re.MULTILINE)
+_FM_TAGS_RE = re.compile(r"^tags:\s*\[([^\]]*)\]\s*$", re.MULTILINE)
+_SUMMARY_FAILED_RE = re.compile(r"^\(摘要生成失败\)", re.MULTILINE)
+
+
+def failed_summary_articles(root: Path) -> list[dict]:
+    """扫所有 OKF 文件，返回摘要失败（body 含占位符）的文章列表，供重试。"""
+    out = []
+    root = Path(root)
+    for md in sorted(root.glob("*/*.md")):
+        text = md.read_text(encoding="utf-8")
+        if not _SUMMARY_FAILED_RE.search(text):
+            continue
+        r_url = _FM_RESOURCE_RE.search(text)
+        r_title = _FM_TITLE_RE.search(text)
+        r_source = _FM_SOURCE_RE.search(text)
+        r_detected = _FM_DETECTED_RE.search(text)
+        if not (r_url and r_source):
+            continue
+        out.append({
+            "path": md,
+            "url": r_url.group(1),
+            "title": r_title.group(1).strip() if r_title else None,
+            "source": r_source.group(1),
+            "detected": r_detected.group(1) if r_detected else None,
+        })
+    return out
+
+
 def ingested_urls(root: Path, source_id: str) -> set[str]:
     """扫 data/firsthand/<id>/*.md 的 frontmatter resource，= 已入库 URL 集合（去重真相）。"""
     d = _source_dir(root, source_id)

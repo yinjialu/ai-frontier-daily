@@ -14,11 +14,18 @@ _PROMPT = """只返回 JSON，不要任何解释或代码块标记。
 {body}
 """
 
+_CLAUDE_BIN = str(
+    next((p for p in [
+        __import__("pathlib").Path.home() / ".local/bin/claude",
+        __import__("pathlib").Path("/usr/local/bin/claude"),
+    ] if p.exists()), "claude")
+)
+
 def _claude_runner(prompt: str) -> str:
     # timeout 抛 TimeoutExpired；非零退出（限流/未登录/网络）时错误多在 stderr，
     # 显式抛出带 stderr 的异常 —— 否则空 stdout 会坍缩成无用的 "no json"。
     proc = subprocess.run(
-        ["claude", "-p", prompt],
+        [_CLAUDE_BIN, "-p", prompt],
         capture_output=True, text=True, timeout=120,
     )
     if proc.returncode != 0:

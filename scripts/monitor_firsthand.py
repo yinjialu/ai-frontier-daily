@@ -18,7 +18,7 @@ from scripts.firsthand.adapters import (
     fetch_source, fetch_article_text, fetch_article_title, fetch_article_published,
 )
 from scripts.firsthand.summarize import summarize
-from scripts.firsthand.store import ingested_urls, write_okf, load_state, save_state
+from scripts.firsthand.store import ingested_urls, write_okf, load_state, save_state, failed_summary_articles
 from scripts.firsthand.pipeline import diff_new_articles, render_pr_body
 
 REPO = Path(__file__).resolve().parent.parent
@@ -128,11 +128,36 @@ def run_once(sources_path, okf_root, state_file, now,
                 state[sid]["last_new_article"] = now
             new_count = len(pr_articles)
 
+    # 重试：扫所有摘要失败的 OKF，重新生成后原地覆写（write_okf 幂等）
+    retry_articles = failed_summary_articles(okf_root)
+    retry_count = 0
+    for fa in retry_articles:
+        try:
+            text = article_text_fn(fa["url"])
+            title = fa["title"] or article_title_fn(fa["url"])
+            s = summarize_fn(title or fa["url"], text)
+            write_okf(okf_root, {
+                "title": title or fa["url"],
+                "source": fa["source"],
+                "url": fa["url"],
+                "summary": s["summary"],
+                "summary_error": s.get("error"),
+                "tags": s["tags"],
+                "detected": fa["detected"] or now,
+            })
+            if not s.get("error"):
+                retry_count += 1
+                print(f"[firsthand] 摘要补生成成功: {fa['url']}")
+            else:
+                print(f"[firsthand] 摘要补生成仍失败: {fa['url']} — {s['error']}")
+        except Exception as e:
+            print(f"[firsthand] 摘要重试异常: {fa['url']} — {e}")
+
     save_state(state_file, state)
     save_state(heartbeat_file, heartbeat)  # 本地心跳，不提交
     if commit_state_fn:
         commit_state_fn()
-    return {"new_count": new_count}
+    return {"new_count": new_count, "retry_count": retry_count}
 
 
 def _existing_open_pr(branch: str) -> str:
@@ -315,12 +340,14 @@ def main():
 
     error_msg = None
     new_count = 0
+    retry_count = 0
     try:
         result = run_once(
             DEFAULT_SOURCES, DEFAULT_OKF_ROOT, DEFAULT_STATE, now,
             open_pr_fn=_real_open_pr, commit_state_fn=_real_commit_state,
         )
         new_count = result["new_count"]
+        retry_count = result.get("retry_count", 0)
     except Exception as e:
         import traceback
         error_msg = traceback.format_exc()
@@ -328,7 +355,7 @@ def main():
 
     elapsed = round(time.monotonic() - t0)
     status = "ERROR" if error_msg else "OK"
-    print(f"[firsthand] END {now} status={status} new={new_count} elapsed={elapsed}s")
+    print(f"[firsthand] END {now} status={status} new={new_count} retry={retry_count} elapsed={elapsed}s")
 
     date_str = now[:10]
     _close_stale_heartbeat_prs(date_str)
