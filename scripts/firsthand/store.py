@@ -76,7 +76,9 @@ def _render_okf(article: dict) -> str:
     fm.append(f"tags: [{tags}]")
     fm.append(f"detected: {article['detected']}")
     fm.append("---")
-    return "\n".join(fm) + "\n\n" + body + "\n"
+    full_text = article.get("full_text") or ""
+    full_text_section = f"\n\n## Full Text\n\n{full_text}" if full_text.strip() else ""
+    return "\n".join(fm) + "\n\n" + body + full_text_section + "\n"
 
 
 def write_okf(root: Path, article: dict) -> Path:

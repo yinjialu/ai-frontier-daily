@@ -108,6 +108,7 @@ def run_once(sources_path, okf_root, state_file, now,
                 "tags": s["tags"],
                 "published": published,     # 真实发布日期（取不到则 None，不写入文件）
                 "detected": now,            # 探测时间（诚实标注）
+                "full_text": text,          # 原文备份，避免链接失效/访问受限时云端无内容可用
             }
             write_okf(okf_root, article)
             pr_articles.append((source["id"], article))
