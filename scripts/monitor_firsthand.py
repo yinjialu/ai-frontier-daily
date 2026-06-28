@@ -239,16 +239,14 @@ def _ensure_heartbeat_issue() -> str:
 
 
 def _post_heartbeat(now: str, new_count: int, error: str | None = None):
-    """往心跳 issue 追加一条运行状态评论。失败静默，不影响主流程。"""
-    import datetime
+    """更新心跳 issue 的唯一评论为最新状态。失败静默，不影响主流程。"""
+    import datetime, json
     try:
         issue_num = _ensure_heartbeat_issue()
         if not issue_num:
             return
-        tz8 = datetime.timezone(datetime.timedelta(hours=8))
         dt = datetime.datetime.fromisoformat(now)
-        next_dt = dt + datetime.timedelta(hours=1)
-        next_str = next_dt.strftime("%H:%M")
+        next_str = (dt + datetime.timedelta(hours=1)).strftime("%H:%M")
         if error:
             body = (
                 f"### ❌ 执行失败 `{now}`\n\n"
@@ -265,9 +263,22 @@ def _post_heartbeat(now: str, new_count: int, error: str | None = None):
                 f"### ✅ `{now}` — 无新内容\n\n"
                 f"各信源均无更新，下次检测：约 {next_str}"
             )
-        subprocess.run(
-            ["gh", "issue", "comment", issue_num, "--body", body],
-            cwd=REPO, check=False, capture_output=True)
+        # 找现有评论 → 编辑；没有则新建
+        r = subprocess.run(
+            ["gh", "api", f"repos/{{owner}}/{{repo}}/issues/{issue_num}/comments",
+             "--jq", ".[0].id // empty"],
+            cwd=REPO, capture_output=True, text=True)
+        comment_id = r.stdout.strip()
+        if comment_id:
+            subprocess.run(
+                ["gh", "api", "--method", "PATCH",
+                 f"repos/{{owner}}/{{repo}}/issues/comments/{comment_id}",
+                 "-f", f"body={body}"],
+                cwd=REPO, check=False, capture_output=True)
+        else:
+            subprocess.run(
+                ["gh", "issue", "comment", issue_num, "--body", body],
+                cwd=REPO, check=False, capture_output=True)
     except Exception as e:
         print(f"[firsthand] 心跳评论失败(忽略): {e}")
 
