@@ -43,15 +43,6 @@
       "summary": "Google 在 Gemini app 推出 study notebooks 学习笔记本功能，将 Gemini 打造为交互式自适应学习平台。学生上传课程资料后，Gemini 生成诊断测验评估知识盲点，建立学业基线，再据实时强弱项生成定制化短课程与练习测验，并通过仪表盘追踪进度。学习中可随时提问，今夏将加入图表等视觉元素。"
     },
     {
-      "title": "How agents are transforming work",
-      "source": "openai-news",
-      "resource": "https://openai.com/index/how-agents-are-transforming-work",
-      "published": "2026-06-25",
-      "detected": "2026-06-25T17:45:29+08:00",
-      "tags": [],
-      "summary": "(摘要生成失败)"
-    },
-    {
       "title": "Building effective human-agent teams",
       "source": "claude-blog",
       "resource": "https://claude.com/blog/building-effective-human-agent-teams",
@@ -162,15 +153,6 @@
         "Anthropic"
       ],
       "summary": "Anthropic 宣布通过 AWS、Google Cloud、Microsoft Foundry 部署的 Claude Desktop 现已开放完整体验，整合 chat、Claude Cowork 和 Claude Code 于一体。企业可在自有云环境内运行推理、本地存储对话历史，并支持按用户 SSO、MDM 策略模板、离线安装及可完全本地运行的 M365 连接器；chat/Cowork/Code 各有独立策略密钥，便于按角色分阶段放权。"
-    },
-    {
-      "title": "Project Fetch: Phase two",
-      "source": "anthropic-research",
-      "resource": "https://www.anthropic.com/research/project-fetch-phase-two",
-      "published": "2026-06-18",
-      "detected": "2026-06-23T22:48:38+08:00",
-      "tags": [],
-      "summary": "(摘要生成失败)"
     },
     {
       "title": "Claude Code now supports artifacts",
@@ -1123,6 +1105,29 @@
         "Prompt Caching"
       ],
       "summary": "Anthropic 提出 Contextual Retrieval，针对传统 RAG 切块丢失上下文导致检索失败的问题，通过 Contextual Embeddings 与 Contextual BM25 为每个 chunk 补充上下文，使检索失败率降低 49%，结合重排序后降低 67%。并指出知识库小于 20 万 token 时可直接配合 prompt caching 全量放入上下文。"
+    },
+    {
+      "title": "How agents are transforming work",
+      "source": "openai-news",
+      "resource": "https://openai.com/index/how-agents-are-transforming-work",
+      "published": null,
+      "detected": "2026-06-25T17:45:29+08:00",
+      "tags": [
+        "AI Agent",
+        "Codex",
+        "工作方式变革",
+        "经济研究"
+      ],
+      "summary": "OpenAI 经济研究论文测量 Codex 的经济潜力。Agent 把知识工作单元从单次交互变为可委托的长程任务:到 2026 年 5 月,80.6% 个人用户发起过超 30 分钟人力的请求,25.6% 超 8 小时。Codex 已成 OpenAI 全部门(含法务、财务、招聘)主力 AI 工具,占内部周输出 token 的 99.8%;非开发者采用增速远超开发者(个人用户 137 倍)。"
+    },
+    {
+      "title": "Project Fetch: Phase two",
+      "source": "anthropic-research",
+      "resource": "https://www.anthropic.com/research/project-fetch-phase-two",
+      "published": null,
+      "detected": "2026-06-23T22:48:38+08:00",
+      "tags": [],
+      "summary": "(摘要生成失败)\n\n> 失败原因：JSONDecodeError: Expecting ',' delimiter: line 1 column 158 (char 157)"
     },
     {
       "title": "How we contain Claude across products",
