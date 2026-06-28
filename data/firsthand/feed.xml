@@ -1691,9 +1691,7 @@ Other Policies
 OpenAI © 2015–2026
 Your privacy choices
 English
-United States</description></item><item><title>How agents are transforming work</title><link>https://openai.com/index/how-agents-are-transforming-work</link><guid isPermaLink="true">https://openai.com/index/how-agents-are-transforming-work</guid><category>openai-news</category><pubDate></pubDate><description>OpenAI 经济研究论文测量 Codex 的经济潜力。Agent 把知识工作单元从单次交互变为可委托的长程任务:到 2026 年 5 月,80.6% 个人用户发起过超 30 分钟人力的请求,25.6% 超 8 小时。Codex 已成 OpenAI 全部门(含法务、财务、招聘)主力 AI 工具,占内部周输出 token 的 99.8%;非开发者采用增速远超开发者(个人用户 137 倍)。</description></item><item><title>Project Fetch: Phase two</title><link>https://www.anthropic.com/research/project-fetch-phase-two</link><guid isPermaLink="true">https://www.anthropic.com/research/project-fetch-phase-two</guid><category>anthropic-research</category><pubDate></pubDate><description>(摘要生成失败)
-
-&gt; 失败原因：JSONDecodeError: Expecting ',' delimiter: line 1 column 128 (char 127)
+United States</description></item><item><title>How agents are transforming work</title><link>https://openai.com/index/how-agents-are-transforming-work</link><guid isPermaLink="true">https://openai.com/index/how-agents-are-transforming-work</guid><category>openai-news</category><pubDate></pubDate><description>OpenAI 经济研究论文测量 Codex 的经济潜力。Agent 把知识工作单元从单次交互变为可委托的长程任务:到 2026 年 5 月,80.6% 个人用户发起过超 30 分钟人力的请求,25.6% 超 8 小时。Codex 已成 OpenAI 全部门(含法务、财务、招聘)主力 AI 工具,占内部周输出 token 的 99.8%;非开发者采用增速远超开发者(个人用户 137 倍)。</description></item><item><title>Project Fetch: Phase two</title><link>https://www.anthropic.com/research/project-fetch-phase-two</link><guid isPermaLink="true">https://www.anthropic.com/research/project-fetch-phase-two</guid><category>anthropic-research</category><pubDate></pubDate><description>Anthropic 重做 Project Fetch 实验：让 Claude Opus 4.7 在无人协助下操控四足机器狗。结果模型完成所有人类去年完成的任务，速度比最快人类团队快约 20 倍，且代码量少近 10 倍、首次即对。但精确推球（fetch）等闭环控制仍是短板。再次印证「模型助人→人助模型→模型自主」的演进路径正从网络安全延伸到物理世界。
 
 ## Full Text
 
