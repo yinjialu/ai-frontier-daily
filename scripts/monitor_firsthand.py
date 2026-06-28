@@ -208,42 +208,78 @@ def _real_commit_state():
         subprocess.run(["git", "push", "origin", "main"], cwd=REPO, check=False)
 
 
-HEARTBEAT_ISSUE_TITLE = "📡 firsthand 监控心跳"
-HEARTBEAT_ISSUE_LABEL = "firsthand-heartbeat"
-
-
-def _ensure_heartbeat_issue() -> str:
-    """找到或创建心跳 issue，返回 issue number（字符串）。"""
+def _ensure_daily_pr(date_str: str) -> str:
+    """确保当天 firsthand/<date> PR 存在，返回 PR 编号。
+    若已有 PR（有无内容均可）直接返回；否则创建一个仅含 .heartbeat 标记的空 PR。
+    失败返回空串，不影响主流程。"""
+    branch = f"firsthand/{date_str}"
+    pr_num = _existing_open_pr(branch)
+    if pr_num:
+        return pr_num
+    # 检查远端是否已有该分支（内容 PR 刚被 auto-merge 的边界情况）
     r = subprocess.run(
-        ["gh", "issue", "list", "--label", HEARTBEAT_ISSUE_LABEL,
-         "--state", "open", "--json", "number", "--jq", ".[0].number // empty"],
+        ["git", "ls-remote", "--heads", "origin", branch],
         cwd=REPO, capture_output=True, text=True)
-    num = r.stdout.strip()
-    if num:
-        return num
-    # 确保 label 存在
-    subprocess.run(
-        ["gh", "label", "create", HEARTBEAT_ISSUE_LABEL,
-         "--color", "0075ca", "--description", "firsthand 监控心跳"],
-        cwd=REPO, check=False, capture_output=True)
-    r2 = subprocess.run(
-        ["gh", "issue", "create",
-         "--title", HEARTBEAT_ISSUE_TITLE,
-         "--label", HEARTBEAT_ISSUE_LABEL,
-         "--body", "此 Issue 由监控脚本自动维护，记录每次 firsthand 监控的执行结果。"],
-        cwd=REPO, capture_output=True, text=True, check=True)
-    # 输出形如 https://github.com/owner/repo/issues/123
-    import re
-    m = re.search(r"/issues/(\d+)", r2.stdout)
-    return m.group(1) if m else ""
-
-
-def _post_heartbeat(now: str, new_count: int, error: str | None = None):
-    """更新心跳 issue 的唯一评论为最新状态。失败静默，不影响主流程。"""
-    import datetime, json
+    if r.stdout.strip():
+        return ""  # 分支存在但 PR 已关闭（已合并），不重开
     try:
-        issue_num = _ensure_heartbeat_issue()
-        if not issue_num:
+        marker = REPO / "data" / "firsthand" / date_str / ".heartbeat"
+        marker.parent.mkdir(parents=True, exist_ok=True)
+        marker.write_text(date_str)
+        subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
+        subprocess.run(["git", "add", str(marker)], cwd=REPO, check=True)
+        subprocess.run(["git", "commit", "-m", f"firsthand: 心跳占位 {date_str}"],
+                       cwd=REPO, check=True)
+        subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
+        subprocess.run(["gh", "label", "create", "firsthand-heartbeat",
+                        "--color", "0075ca", "--description", "firsthand 心跳 PR"],
+                       cwd=REPO, check=False, capture_output=True)
+        r2 = subprocess.run(
+            ["gh", "pr", "create",
+             "--title", f"📡 firsthand 心跳 | {date_str}",
+             "--body", "每小时心跳 PR，无真实内容时自动关闭。",
+             "--label", "firsthand-heartbeat", "--base", "main"],
+            cwd=REPO, capture_output=True, text=True, check=True)
+        import re
+        m = re.search(r"/pull/(\d+)", r2.stdout)
+        return m.group(1) if m else ""
+    except Exception as e:
+        print(f"[firsthand] 创建心跳 PR 失败(忽略): {e}")
+        return ""
+    finally:
+        subprocess.run(["git", "checkout", "main"], cwd=REPO, check=False)
+
+
+def _close_stale_heartbeat_prs(today: str):
+    """关闭昨天及更早、纯心跳（无真实文章）的 firsthand PR。"""
+    try:
+        r = subprocess.run(
+            ["gh", "pr", "list", "--label", "firsthand-heartbeat",
+             "--state", "open", "--json", "number,headRefName",
+             "--jq", ".[] | [.number, .headRefName] | @tsv"],
+            cwd=REPO, capture_output=True, text=True)
+        for line in r.stdout.strip().splitlines():
+            parts = line.split("\t")
+            if len(parts) != 2:
+                continue
+            num, ref = parts
+            date = ref.replace("firsthand/", "")
+            if date < today:
+                subprocess.run(
+                    ["gh", "pr", "close", num, "--comment",
+                     f"心跳 PR 自动关闭（{date} 当日无内容）。"],
+                    cwd=REPO, check=False, capture_output=True)
+                print(f"[firsthand] 关闭过期心跳 PR #{num} ({date})")
+    except Exception as e:
+        print(f"[firsthand] 清理心跳 PR 失败(忽略): {e}")
+
+
+def _post_heartbeat(now: str, new_count: int, date_str: str, error: str | None = None):
+    """往当天 PR 追加一条心跳评论。失败静默，不影响主流程。"""
+    import datetime
+    try:
+        pr_num = _ensure_daily_pr(date_str)
+        if not pr_num:
             return
         dt = datetime.datetime.fromisoformat(now)
         next_str = (dt + datetime.timedelta(hours=1)).strftime("%H:%M")
@@ -254,31 +290,12 @@ def _post_heartbeat(now: str, new_count: int, error: str | None = None):
                 f"下次检测：约 {next_str}"
             )
         elif new_count > 0:
-            body = (
-                f"### ✅ `{now}` — 发现 {new_count} 条新内容\n\n"
-                f"已开 PR，下次检测：约 {next_str}"
-            )
+            body = f"### ✅ `{now}` — 发现 {new_count} 条新内容，下次检测：约 {next_str}"
         else:
-            body = (
-                f"### ✅ `{now}` — 无新内容\n\n"
-                f"各信源均无更新，下次检测：约 {next_str}"
-            )
-        # 找现有评论 → 编辑；没有则新建
-        r = subprocess.run(
-            ["gh", "api", f"repos/{{owner}}/{{repo}}/issues/{issue_num}/comments",
-             "--jq", ".[0].id // empty"],
-            cwd=REPO, capture_output=True, text=True)
-        comment_id = r.stdout.strip()
-        if comment_id:
-            subprocess.run(
-                ["gh", "api", "--method", "PATCH",
-                 f"repos/{{owner}}/{{repo}}/issues/comments/{comment_id}",
-                 "-f", f"body={body}"],
-                cwd=REPO, check=False, capture_output=True)
-        else:
-            subprocess.run(
-                ["gh", "issue", "comment", issue_num, "--body", body],
-                cwd=REPO, check=False, capture_output=True)
+            body = f"### ✅ `{now}` — 无新内容，下次检测：约 {next_str}"
+        subprocess.run(
+            ["gh", "pr", "comment", pr_num, "--body", body],
+            cwd=REPO, check=False, capture_output=True)
     except Exception as e:
         print(f"[firsthand] 心跳评论失败(忽略): {e}")
 
@@ -313,7 +330,9 @@ def main():
     status = "ERROR" if error_msg else "OK"
     print(f"[firsthand] END {now} status={status} new={new_count} elapsed={elapsed}s")
 
-    _post_heartbeat(now, new_count, error=error_msg)
+    date_str = now[:10]
+    _close_stale_heartbeat_prs(date_str)
+    _post_heartbeat(now, new_count, date_str, error=error_msg)
 
 
 if __name__ == "__main__":
