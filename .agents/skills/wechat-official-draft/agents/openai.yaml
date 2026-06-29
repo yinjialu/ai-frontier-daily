@@ -1,4 +1,0 @@
-interface:
-  display_name: "WeChat Official Draft"
-  short_description: "Create stable WeChat draft articles"
-  default_prompt: "Use $wechat-official-draft to turn this Markdown article into a simple stable WeChat Official Account draft."

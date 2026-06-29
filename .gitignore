@@ -16,6 +16,9 @@ output/**/公众号贴图.md
 # 本机预览辅助（端口/命令因机器而异）
 .claude/launch.json
 
+# 本地安装的 skills（npx skills add 安装目录，不入库）
+.agents/skills/
+
 # macOS 垃圾文件
 .DS_Store
 **/.DS_Store
