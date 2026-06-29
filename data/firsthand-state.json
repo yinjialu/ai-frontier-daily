@@ -29,9 +29,11 @@
       "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
       "https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude",
       "https://claude.com/blog/agent-identity-access-model",
-      "https://claude.com/blog/building-effective-human-agent-teams"
+      "https://claude.com/blog/building-effective-human-agent-teams",
+      "https://claude.com/blog/introducing-the-claude-apps-gateway",
+      "https://claude.com/blog/claude-in-microsoft-foundry"
     ],
-    "last_new_article": "2026-06-25T07:33:20+08:00"
+    "last_new_article": "2026-06-30T07:27:53+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -1361,11 +1363,13 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks",
       "https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools",
       "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents",
-      "https://blog.google/products-and-platforms/products/gemini/gemini-help-avoid-jetlag"
+      "https://blog.google/products-and-platforms/products/gemini/gemini-help-avoid-jetlag",
+      "https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion",
+      "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me"
     ],
     "initialized": true,
     "known_urls_count": 30,
-    "last_new_article": "2026-06-27T07:15:57+08:00"
+    "last_new_article": "2026-06-30T07:27:53+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
@@ -1448,8 +1452,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=20)",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
