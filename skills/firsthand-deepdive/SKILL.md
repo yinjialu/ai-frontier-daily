@@ -28,17 +28,21 @@ p=write_draft('content', cands[<选中序号-1>], today, feature_available=False
 ```
 产出 `content/deepdive/<date>_<slug>/draft.md`：五段骨架 + frontmatter sources（官方 URL）+ 官方原文素材。
 
-### 3. 交 article-harness 打磨（复用，不重造）
+### 3. article-harness 迭代润色
 ```bash
 bash ~/.claude/skills/article-harness/harness.sh content/deepdive/<date>_<slug>/draft.md
 ```
-Writer 整理润色 ↔ Reviewer 按 reviewer.md 评分迭代，输出成稿。**用户只审核**。
+Writer 整理润色 ↔ Reviewer 迭代，PASS 后自动进入步骤4。
 
-### 4. 审核反馈沉淀（已有机制）
-用户对成稿的每条可泛化反馈 → 沉淀进 `article-harness/reviewer.md`（含专题深度专属维度：官方案例翻译准确 / 对普通用户友好不堆术语 / 截图占位标注清楚）。说一次，后续自动检查。
+### 4. 自动推送微信草稿箱
+harness PASS 后，立即用 `wechat-official-draft` skill 将 `<draft_dir>/.harness-workspace/finished.md` 推送到微信公众号草稿箱，**无需用户介入**。
 
-### 5. 发布
-终审后 → `wechat-official-draft` skill 排版发布。
+用户在微信草稿箱完成最终验收。
+
+### 5. 反馈沉淀（推送后主动询问）
+草稿推送成功后，**立即询问用户**："草稿已推送，有没有想沉淀的审稿反馈？"
+用户说完后，将可泛化的反馈条目追加写入 `~/Documents/context-harness-data/article-harness/reviewer.md`，并告知已写入。
+没有反馈则跳过。
 
 ## 与其他线的关系
 - 选题来源：内参 `data/firsthand/index.json`（官方一手）。

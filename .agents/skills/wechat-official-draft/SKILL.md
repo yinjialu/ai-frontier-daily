@@ -15,6 +15,7 @@ The bundled script uses official WeChat APIs directly:
 - `cgi-bin/media/uploadimg` for inline article images
 - `cgi-bin/material/add_material` for the cover
 - `cgi-bin/draft/add` for draft creation
+- `cgi-bin/draft/update` for replacing an existing draft article
 
 ## Credentials
 
@@ -64,6 +65,17 @@ node "$HOME/.codex/skills/wechat-official-draft/scripts/push_draft.mjs" \
   --cover cover.png
 ```
 
+Replace an existing draft article:
+
+```bash
+node .agents/skills/wechat-official-draft/scripts/push_draft.mjs \
+  --file article.md \
+  --title "文章标题" \
+  --cover cover.png \
+  --update-media-id "existing_draft_media_id" \
+  --index 0
+```
+
 Generate local preview HTML without calling WeChat:
 
 ```bash
@@ -82,13 +94,15 @@ node "$HOME/.codex/skills/wechat-official-draft/scripts/push_draft.mjs" \
    - `digest` must be 128 characters or fewer.
    - A cover image is required for draft creation.
 3. Use `--dry-run` first when the user asks to preview formatting.
-4. Create the draft only when the user asks to push, upload, publish, or create a WeChat draft.
-5. Report the draft `media_id`, saved JSON response path, and preview path if created.
+4. Use `--update-media-id` when the user asks to replace or overwrite an existing draft; otherwise create a new draft.
+5. Create or update the draft only when the user asks to push, upload, publish, or create/update a WeChat draft.
+6. Report the action, draft `media_id`, saved JSON response path, and preview path if created or updated.
 
 ## Layout Principles
 
 Keep the formatter simple and extensible:
 
+- Strip YAML frontmatter before rendering or uploading; metadata such as `title`, `date`, `sources`, and `cover` must never appear in the WeChat article body.
 - Use inline styles only.
 - Prefer a single constrained content column.
 - Keep paragraphs readable with 16px text and generous line-height.
@@ -97,6 +111,14 @@ Keep the formatter simple and extensible:
 - Do not use external CSS, JavaScript, local file paths in the final content, or unsupported WeChat editor features.
 
 Future template extensions should be added behind script options or small reference files, not by changing the core publish workflow.
+
+## Regression Check
+
+When changing the formatter or publish script, run:
+
+```bash
+node .agents/skills/wechat-official-draft/tests/frontmatter-smoke.mjs
+```
 
 ## Failure Handling
 

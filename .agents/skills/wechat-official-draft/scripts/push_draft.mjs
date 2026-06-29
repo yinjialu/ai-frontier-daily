@@ -16,6 +16,8 @@ Options:
   --digest <text>        WeChat digest, max 128 characters
   --author <text>        Author, max 16 characters
   --cover <path>         Cover image path; required unless --dry-run
+  --update-media-id <id> Update an existing draft instead of creating a new one
+  --index <n>            Article index for draft updates; default 0
   --out <path>           Response JSON path
   --preview-out <path>   Local rendered HTML preview path
   --config <path>        Config YAML path; default ~/.config/wechat-official-draft/config.yaml
@@ -55,6 +57,8 @@ function parseArgs(argv) {
     previewOut: '',
     config: defaultConfigPath,
     dryRun: false,
+    updateMediaId: '',
+    index: 0,
   };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -68,6 +72,8 @@ function parseArgs(argv) {
     else if (arg === '--digest') args.digest = next();
     else if (arg === '--author') args.author = next();
     else if (arg === '--cover') args.cover = next();
+    else if (arg === '--update-media-id') args.updateMediaId = next();
+    else if (arg === '--index') args.index = Number.parseInt(next(), 10);
     else if (arg === '--out') args.out = next();
     else if (arg === '--preview-out') args.previewOut = next();
     else if (arg === '--config') args.config = next();
@@ -82,6 +88,7 @@ function parseArgs(argv) {
   if (!args.file) throw new Error('--file is required');
   if (!args.title) throw new Error('--title is required');
   if (!args.dryRun && !args.cover) throw new Error('--cover is required for draft creation');
+  if (!Number.isInteger(args.index) || args.index < 0) throw new Error('--index must be a non-negative integer');
   if ([...args.title].length > 32) throw new Error('--title must be 32 characters or fewer');
   if ([...args.digest].length > 128) throw new Error('--digest must be 128 characters or fewer');
   if ([...args.author].length > 16) throw new Error('--author must be 16 characters or fewer');
@@ -163,6 +170,13 @@ function collectImages(markdown, articlePath) {
     source: match[2],
     resolved: path.isAbsolute(match[2]) ? match[2] : path.resolve(path.dirname(articlePath), match[2]),
   }));
+}
+
+function stripFrontmatter(markdown) {
+  const normalized = markdown.replace(/^\uFEFF/, '');
+  if (!normalized.startsWith('---')) return normalized;
+  const match = normalized.match(/^---[ \t]*\r?\n[\s\S]*?\r?\n(?:---|\.\.\.)[ \t]*(?:\r?\n|$)/);
+  return match ? normalized.slice(match[0].length).replace(/^\s+/, '') : markdown;
 }
 
 function renderHtml(markdown, imageUrlBySource = new Map()) {
@@ -255,7 +269,7 @@ async function main() {
   }
   const args = parseArgs(argv);
   const articlePath = path.resolve(args.file);
-  const markdown = fs.readFileSync(articlePath, 'utf8');
+  const markdown = stripFrontmatter(fs.readFileSync(articlePath, 'utf8'));
   const images = collectImages(markdown, articlePath);
   const defaultOutDir = path.resolve(process.cwd(), '.tmp/wechat-official-draft');
   fs.mkdirSync(defaultOutDir, { recursive: true });
@@ -288,27 +302,27 @@ async function main() {
 
   const content = renderHtml(markdown, imageUrlBySource);
   fs.writeFileSync(previewOut, content);
-  const payload = {
-    articles: [
-      {
-        title: args.title,
-        author: args.author,
-        digest: args.digest,
-        content,
-        content_source_url: '',
-        thumb_media_id: cover.media_id,
-        need_open_comment: 0,
-        only_fans_can_comment: 0,
-      },
-    ],
+  const article = {
+    title: args.title,
+    author: args.author,
+    digest: args.digest,
+    content,
+    content_source_url: '',
+    thumb_media_id: cover.media_id,
+    need_open_comment: 0,
+    only_fans_can_comment: 0,
   };
-  const draft = await getJson(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${encodeURIComponent(token)}`, {
+  const payload = args.updateMediaId
+    ? { media_id: args.updateMediaId, index: args.index, articles: article }
+    : { articles: [article] };
+  const endpoint = args.updateMediaId ? 'update' : 'add';
+  const draft = await getJson(`https://api.weixin.qq.com/cgi-bin/draft/${endpoint}?access_token=${encodeURIComponent(token)}`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(payload),
   });
-  fs.writeFileSync(responseOut, JSON.stringify({ draft, title: args.title, preview: previewOut }, null, 2));
-  console.log(JSON.stringify({ success: true, draft, saved: responseOut, preview: previewOut }, null, 2));
+  fs.writeFileSync(responseOut, JSON.stringify({ draft, action: endpoint, media_id: args.updateMediaId || draft.media_id, title: args.title, preview: previewOut }, null, 2));
+  console.log(JSON.stringify({ success: true, action: endpoint, draft, media_id: args.updateMediaId || draft.media_id, saved: responseOut, preview: previewOut }, null, 2));
 }
 
 const IP_WHITELIST_URL = 'https://developers.weixin.qq.com/platform?tab1=basicInfo&tab2=dev';
