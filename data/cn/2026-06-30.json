@@ -1,0 +1,33 @@
+{
+  "vendor": "cn",
+  "date": "2026.06.30",
+  "cnDate": "6月30日 周二",
+  "edition": "VOL.181",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "company": "DeepSeek",
+      "title": "DeepSeek V4 正式版定档 7 月中旬，峰谷 API 定价同步公布",
+      "summary": "DeepSeek 官宣 V4 正式版将于 7 月中旬上线，并引入峰谷定价机制：高峰时段（北京时间 09:00–12:00 / 14:00–18:00）API 价格翻倍，V4-Flash 峰/谷输入 2/1 元/M tokens，V4-Pro 峰/谷 6/3 元/M tokens；命中缓存价格均为原价 1/40，低峰时段成本可大幅压缩。",
+      "source": "ithome.com"
+    },
+    {
+      "tag": "开发者",
+      "company": "Kimi",
+      "title": "Kimi Code v0.20.2：支持 Anthropic 兼容协议，自动恢复上下文溢出",
+      "summary": "Moonshot AI 发布 Kimi Code v0.20.2，新增支持 Anthropic 兼容协议接入托管版模型、自动压缩并恢复 Provider 413 上下文溢出、/new /clear 命令别名，以及 WebUI 补全提示音（默认关闭，隐私优先）；压缩上限默认设为 128k tokens 防止再次溢出。",
+      "source": "github.com/MoonshotAI"
+    },
+    {
+      "tag": "模型发布",
+      "company": "通义千问",
+      "title": "据报道：通义千问 Qwen VLo 疑似发布，多模态统一理解与生成",
+      "summary": "据搜索摘要显示，阿里巴巴疑似发布 Qwen VLo 多模态模型，支持从左到右、从上到下的渐进式图像生成，尤其适合精细长文本图像任务，可统一处理视觉理解与生成；官方原始页面因 403 无法直接核实，以上信息暂以搜索摘要为据，待官方确认。",
+      "source": "qwen.ai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

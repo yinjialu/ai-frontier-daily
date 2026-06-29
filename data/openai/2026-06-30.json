@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026.06.30",
+  "cnDate": "6月30日 周二",
+  "edition": "VOL.181",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "HP Inc. 与 OpenAI 正式签署 Frontier 战略合作",
+      "summary": "HP Inc. 全面采用 OpenAI Frontier 平台，覆盖店内客户体验、语音交互与软件开发。试点数据显示：1 名工程师数周内完成 43 个项目共 122 个 PR；安全团队将原计划需一个月修复的漏洞压缩至一天，双方将深化数据整合、治理与安全领域合作。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "政策",
+      "title": "OpenAI 将 AI 就业框架扩展至欧盟：18% 岗位面临自动化风险",
+      "summary": "OpenAI 经济研究团队将 4 月美国版 AI 就业转型框架延伸至欧盟（使用 ESCO 职业分类 + Eurostat 数据）：18% 岗位自动化风险较高、24% 将因 AI 整合重组、12% 将随 AI 共同增长、46% 近期变化较小；不足 1% 劳动者需要高级 AI 技能，多数人最需要数字素养与人类技能。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

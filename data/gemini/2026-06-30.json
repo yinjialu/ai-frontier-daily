@@ -1,0 +1,36 @@
+{
+  "vendor": "gemini",
+  "date": "2026.06.30",
+  "cnDate": "6月30日 周二",
+  "edition": "VOL.181",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "DeepMind AlphaGenome 全面开放：单次处理 100 万碱基对",
+      "summary": "DeepMind AlphaGenome 正式对外开放，单次推理可处理 100 万个 DNA 碱基对（单核苷酸分辨率），在 22/24 单序列预测基准与 24/26 变异效应预测基准上超越当前最优模型，已有来自 160 个国家约 3000 名科学家参与使用，相关成果已发表于《Nature》。",
+      "source": "deepmind.google"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Veo 3.0 / 2.0 今日正式弃用，Veo 3.1 全面接棒",
+      "summary": "Gemini API 旧版视频生成模型 veo-3.0 与 veo-2.0 于今日（6 月 30 日）到达弃用截止日，开发者须迁移至 Veo 3.1 Preview 或 GA 版本；Veo 3.1 新增更丰富原生音频、精细电影风格控制与图生视频跨场景角色一致性功能。",
+      "source": "ai.google.dev"
+    },
+    {
+      "tag": "生态",
+      "title": "Gemini in Sheets：公式错误一键诊断并自动修复",
+      "summary": "Google Sheets 接入 Gemini 公式错误修复能力：点击一键触发 Gemini 分析周边数据结构、定位错误根因、给出修正后的公式，全程无需手动调试；功能于 6 月 29 日起开始向用户推送。",
+      "source": "workspaceupdates.googleblog.com"
+    },
+    {
+      "tag": "生态",
+      "title": "Gemini Canvas 作品可直接附加到 Google Classroom 作业",
+      "summary": "Gemini Canvas 新增「分享至 Classroom」按钮，教育者和学生可将 Canvas 制作的交互网站、测验、互动游戏与信息图表直接附加至 Classroom 作业或贴文，省去手动复制链接操作，6 月 29 日起逐步推送。",
+      "source": "workspaceupdates.googleblog.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

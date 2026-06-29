@@ -1,0 +1,36 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.06.30",
+  "cnDate": "6月30日 周二",
+  "edition": "VOL.181",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Claude 正式登陆 Microsoft Azure Foundry（GA）",
+      "summary": "Anthropic 宣布 Claude Opus 4.8 与 Haiku 4.5 在 Microsoft Azure Foundry 全面 GA，提供「托管于 Azure」与「托管于 Anthropic」两种部署模式，支持 Azure 原生身份验证、统一计费与治理合规，可选开启美国数据专区，企业客户无需离开 Azure 生态即可安全集成 Claude。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "政策",
+      "title": "Mythos 5 获美国政府有限授权重新发布",
+      "summary": "据 CNBC 报道，美国商务部长 Lutnick 批准 Anthropic 向约 100 家可信企业及联邦机构重新开放 Mythos 5，此前该模型因国家安全审查一度受出口管制；关联模型 Fable 仍维持限制状态，两者处理边界尚待官方正式说明。",
+      "source": "cnbc.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Team / Enterprise 新增 Trusted Devices 远程控制验证",
+      "summary": "管理员可在控制台强制要求成员完成设备验证后，才能查看或远程操控本地 Claude Code 会话，为现有 Remote Control 功能增加一层安全防护，防止未经授权设备接入组织内部 Agent 任务流。",
+      "source": "anthropic.com"
+    },
+    {
+      "tag": "生态",
+      "title": "「AI for Science」直播今日举行：药企与科研机构展示 Claude 应用",
+      "summary": "Anthropic 今日举办「The Briefing: AI for Science」线上直播，邀请制药、生物技术及学术研究机构演示 Claude 在科学研究中的实际落地用例，内容涵盖产品与研究 Demo，意在推动 AI 在科学领域规模化应用。",
+      "source": "anthropic.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
