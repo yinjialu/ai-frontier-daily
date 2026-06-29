@@ -1190,7 +1190,7 @@
       "https://openai.com/index/mapping-ai-jobs-transition-eu"
     ],
     "initialized": true,
-    "known_urls_count": 1025,
+    "known_urls_count": 1026,
     "last_new_article": "2026-06-29T19:05:39+08:00"
   },
   "deepmind-blog": {
@@ -1448,8 +1448,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
