@@ -1185,11 +1185,12 @@
       "https://openai.com/index/weight-normalization",
       "https://openai.com/index/introducing-openai",
       "https://openai.com/index/how-agents-are-transforming-work",
-      "https://openai.com/index/previewing-gpt-5-6-sol"
+      "https://openai.com/index/previewing-gpt-5-6-sol",
+      "https://openai.com/index/hp-frontier-partnership"
     ],
     "initialized": true,
     "known_urls_count": 1024,
-    "last_new_article": "2026-06-27T07:15:57+08:00"
+    "last_new_article": "2026-06-29T08:57:03+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
