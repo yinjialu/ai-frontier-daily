@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# 本机监听器：把云端 routine 推上来的 daily-<DATE> 分支合并进 main，再为各厂商建微信贴图草稿。
+# 本机监听器：把云端 routine 推上来的每日内容分支合并进 main，再为各厂商建微信贴图草稿。
 # 小红书图文笔记（走本地 xiaohongshu-mcp 服务，见 publish_xhs_newspic.py）：平台已警告三方工具/脚本
 # 发布，[4/4] 段默认暂停（XHS_PUBLISH=1 才发），代码与登录态保留以便后续恢复或更换合规方案。
 #
-# 背景：Claude Code on the web 的 GitHub 代理「只允许推当前工作分支」，云端 routine 推不了 main，
-#       只能推 daily-<DATE> 分支（见 SKILL.md）。本脚本在本机（有完整 push 权）做合并 + 微信发布。
+# 背景：云端代理「只允许推当前工作分支」，routine 推不了 main，只能推内容分支
+#       （如 daily-<DATE>、Codex/daily-<DATE>）。本脚本在本机（有完整 push 权）做合并 + 微信发布。
 #
 # 用法：
-#   scripts/watch-and-publish.sh            # 合并 daily 分支 → main → 各厂商建微信贴图草稿
+#   scripts/watch-and-publish.sh            # 合并每日内容分支 → main → 各厂商建微信贴图草稿
 #   scripts/watch-and-publish.sh --dry-run  # 只演练（合并照常做，微信只打印结构不碰 API）
 #
 # 可选环境变量：
@@ -40,9 +40,12 @@ retry git fetch origin --prune --quiet
 git checkout main --quiet
 retry git pull --ff-only --quiet
 
-echo "[2/3] 合并 daily-* 分支 → main…"
-for ref in $(git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/daily-*' 2>/dev/null); do
-  br="${ref#origin/}"; date="${br#daily-}"
+echo "[2/3] 合并每日内容分支 → main…"
+for ref in $(git for-each-ref --format='%(refname:short)' \
+  'refs/remotes/origin/daily-*' \
+  'refs/remotes/origin/Codex/daily-*' \
+  'refs/remotes/origin/codex/daily-*' 2>/dev/null); do
+  br="${ref#origin/}"; leaf="${br##*/}"; date="${leaf#daily-}"
   if git merge-base --is-ancestor "$ref" main 2>/dev/null; then
     echo "  · $br 已并入 main，清理远端分支"
     [ -z "$DRY" ] && git push origin --delete "$br" --quiet 2>/dev/null || true

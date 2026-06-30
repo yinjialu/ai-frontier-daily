@@ -7,7 +7,7 @@
 #   scripts/install-firsthand-launchd.sh             # 安装/刷新
 #   scripts/install-firsthand-launchd.sh --uninstall # 卸载
 #
-# 前置依赖见 scripts/SETUP-NEW-MACHINE.md（仓库路径、Python 依赖、claude/gh 登录态）。
+# 前置依赖见 scripts/SETUP-NEW-MACHINE.md（仓库路径、Python 依赖、模型配置、gh 登录态）。
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
@@ -51,9 +51,12 @@ if ! "$PY" -c "import yaml, requests, feedparser" 2>/dev/null; then
 fi
 echo "· Python 依赖 OK（$PY: yaml / requests / feedparser）"
 
-# 2. 登录态检查（缺失只告警 —— 影响摘要，不影响通知）
+# 2. 模型配置与登录态检查（缺失只告警 —— 影响摘要/开 PR，不影响抓取）
+MODEL_ENV="$HOME/.config/ai-frontier-daily/firsthand.env"
+if [ ! -f "$MODEL_ENV" ] || ! grep -q '^FIRSTHAND_LLM_API_KEY=' "$MODEL_ENV"; then
+  echo "⚠ 未配置一手信源摘要模型 —— 摘要会退回占位文本。参考：scripts/config-templates/firsthand.env.example"
+fi
 command -v gh >/dev/null 2>&1 || echo "⚠ 未找到 gh CLI —— 开 PR 会失败。装：brew install gh && gh auth login"
-command -v claude >/dev/null 2>&1 || echo "⚠ 未找到 claude CLI —— 摘要会退回占位文本（通知/PR 仍正常）。"
 
 # 3. 安装 plist（symlink，保持与仓库同步）
 mkdir -p "$HOME/Library/LaunchAgents"

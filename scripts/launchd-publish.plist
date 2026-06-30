@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 本机监听器：每天拉取云端推到 main 的当天动态，为各厂商建微信贴图草稿。
-     云端（GitHub Actions daily.yml）北京时间 07:00 抓取渲染并直接 push main；
+     云端（Codex Automation）北京时间 07:00 抓取渲染并推内容分支；
      本机 07:15 / 07:45 / 08:30 三次兜底跑 watch-and-publish.sh（吸收云端 cron 抖动，
      配合 .last_published.<vendor> 去重，每家每天只成功推一次）。
      兼容旧链路：若云端改推 daily-<DATE> 分支，脚本会自动合并进 main。
