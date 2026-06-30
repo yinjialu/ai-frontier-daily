@@ -7,6 +7,9 @@
 
 ## 推送策略(云端 routine / 任何自动化会话必读)
 
+- **每日早报内容生成已迁移到 Codex Automation**:每天北京时间 07:00 运行,按
+  `skills/ai-daily-digest/SKILL.md` 生成 `data/` + `output/`,提交 `daily: YYYY-MM-DD`,
+  推 `Codex/daily-YYYY-MM-DD` 分支;auto-merge workflow 负责合入 main。
 - **只推当前工作分支(`Codex/*`),不要尝试推 main。** 云端 GitHub 代理直推 main 必 403,
   这是预期行为,**不要把 403 当失败重试**。
 - 推完分支即收工:`.github/workflows/auto-merge-daily.yml` 会在分支只含 `data/` + `output/`
@@ -18,10 +21,12 @@
 ## 一手信源内参监控(独立于每日日报)
 
 - launchd `com.yinjialu.ai-frontier-daily.firsthand` 每小时 + 开机自启跑 `scripts/monitor_firsthand.py`:
-  抓 `firsthand-sources.yaml` 信源 → 新文章 `claude -p` 出中文摘要 → 写 `data/firsthand/<id>/*.md`(OKF)
+  抓 `firsthand-sources.yaml` 信源 → 新文章经 DeepSeek Anthropic-compatible API 出中文摘要
+  (`~/.config/ai-frontier-daily/firsthand.env`) → 写 `data/firsthand/<id>/*.md`(OKF)
   → **当天累积一个 `firsthand/<date>` PR**(reviewer=yinjialu):当天首批建 PR,后续批次往同分支追加
   commit + 评论 @yinjialu 通知(克制:一天一条线程,不刷屏)。装/触发见 `scripts/install-firsthand-launchd.sh`;
   与每日发布任务(`com.yinjialu.ai-frontier-daily.publish`)独立。新机迁移见 `scripts/SETUP-NEW-MACHINE.md`。
+  若 PR 里有失败摘要,评论 `@DeepSeek` 可触发 `.github/workflows/deepseek.yml` 用 DeepSeek 补修并提交回 PR 分支。
 - **去重唯一真相 = `data/firsthand/<id>/` 实际文件**(扫 frontmatter `resource`),不是独立账本;
   `data/firsthand-state.json`(健康统计 + 防重复 open_pr_urls)直接提交 main,本机无 403。
 - **内参 PR 分支必须 `firsthand/` 前缀、commit 不带 `daily:`**——否则触发/误触发 auto-merge-daily。

@@ -1,7 +1,7 @@
 # AI 前哨 · 每日 AI 大厂动态
 
 抓取 AI 大厂官方动态（**Anthropic + OpenAI**，可继续扩展）→ 中文策展 →
-渲染小红书 / 公众号卡片 → GitHub Pages 可视化展示页 → GitHub Actions 每天自动更新。
+渲染小红书 / 公众号卡片 → GitHub Pages 可视化展示页 → Codex Automation 每天自动更新。
 
 整条流程封装为可安装的 **Agent Skill**：[`skills/ai-daily-digest`](skills/ai-daily-digest/SKILL.md)。
 
@@ -26,11 +26,13 @@ Skill 用法详见 [`skills/ai-daily-digest/SKILL.md`](skills/ai-daily-digest/SK
 
 ## 它如何运转
 
-- **Claude 驱动**（交互 / 定时 routine）：Claude 用 web 工具抓真实动态 → 中文策展 →
+- **Agent 驱动**（交互 / Codex 定时 automation）：Codex/Claude 用 web 工具抓真实动态 → 中文策展 →
   `node render.js` 渲染 → 提交触发 Pages → `PushNotification` 推手机。
-- **无人值守**（`.github/workflows/daily.yml`，每天北京时间 07:00 或手动触发）：
-  先后跑 `run.py --live --vendor anthropic` 与 `--vendor openai`，抓 RSS → 去重 →
-  调 Claude 摘要 → Playwright 渲染 → 提交 `data/` 与 `output/` 回仓库。
+- **无人值守早报**（Codex Automation，每天北京时间 07:00）：
+  读 `skills/ai-daily-digest/SKILL.md`，遍历 `run.py --vendors` 返回的全部厂商，抓取一手动态、
+  中文策展、Playwright 渲染，提交 `data/` 与 `output/` 到 `Codex/daily-YYYY-MM-DD`。
+- **GitHub Actions 哨兵**（`.github/workflows/daily.yml`）：
+  只做信源健康探测和当天产出校验，异常时开 Issue，不负责生成内容。
 - GitHub Pages「从分支部署」：仓库一有新提交就自动重新发布，`index.html` 读
   `output/index.json` 按厂商展示当天卡片。
 
@@ -47,8 +49,7 @@ gh api -X POST repos/$(gh api user -q .login)/ai-frontier-daily/pages \
 # 配置 Actions 密钥（live 模式调 Claude 用；切勿写进代码）
 gh secret set ANTHROPIC_API_KEY --body "sk-ant-你的key"
 
-# 立即跑一次真实抓取（也可等每天 07:00 自动跑）
-gh workflow run daily-ai-watch
+# 早报生成由 Codex Automation 每天 07:00 自动跑；Actions daily.yml 只做哨兵校验。
 ```
 
 ## 本地预览 / 调试

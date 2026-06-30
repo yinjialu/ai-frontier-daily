@@ -125,8 +125,9 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    ```
    **一次提交涵盖所有厂商；commit 格式必须是 `daily: YYYY-MM-DD`**（auto-merge guard 的
    正则依赖此标记，写成 `daily: <vendor> <date>` 会被整支跳过）。推送遵循仓库根目录
-   CLAUDE.md 与下文「推送策略（routine 必读）」：云端只推当前工作分支（`claude/*`），
-   本机会话可直推 main。所有厂商今天都无新内容则不提交、直接结束。
+   AGENTS.md / CLAUDE.md 与下文「推送策略（routine 必读）」：云端只推当前工作分支
+   （Codex 用 `Codex/daily-YYYY-MM-DD`，Claude 用 `claude/*`），本机会话可直推 main。
+   所有厂商今天都无新内容则不提交、直接结束。
 10. **开当天 GitHub Issue**（每日讨论贴，仅当本次有新内容时执行）：在本仓库创建 Issue，
     标题 `📰 VOL.NNN · YYYY-MM-DD 每日 AI 动态`，label `daily-digest`。正文按厂商分节，
     每节列出今日各条目（标题加粗 + 一句话摘要 + 源链接），末尾附展示页链接并邀请讨论。
@@ -221,9 +222,10 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
   编辑器导入草稿箱。
 - 公众号【已认证服务号】——「云端抓取 → 本机合并+推送」半自动链路（仍由人工群发）：
 
-  **推送策略（routine 必读）**：Claude Code on the web 的 GitHub 代理只允许推当前工作分支，
+  **推送策略（routine 必读）**：云端 GitHub 代理只允许推当前工作分支，
   直推 main 会得到 403——这是预期行为，**不要把 403 当失败重试，也不要尝试推 main**。
-  routine 只需把 `daily: YYYY-MM-DD` 提交推到自己的工作分支（`claude/*`），
+  routine 只需把 `daily: YYYY-MM-DD` 提交推到自己的工作分支（Codex 用 `Codex/daily-YYYY-MM-DD`，
+  Claude 用 `claude/*`），
   `.github/workflows/auto-merge-daily.yml` 会在分支只含 `data/`+`output/` 改动时自动合并入 main
   并删除分支。**代码 / 文档 / 配置改动不要混进每日内容分支**——guard 会整支跳过；
   这类改动请单独开分支提 PR 人工合并（纯文档推送不会触发 workflow，混推会滞留在分支上流失）。
@@ -231,12 +233,12 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
   一条命令搞定「合并分支 + 各厂商建草稿」：
 
   ```bash
-  scripts/watch-and-publish.sh --dry-run   # 演练：照常合并 daily 分支，但微信只打印结构不碰 API
-  scripts/watch-and-publish.sh             # 合并 daily-* → main → 为当天每个厂商建微信贴图草稿
+  scripts/watch-and-publish.sh --dry-run   # 演练：照常合并每日内容分支，但微信只打印结构不碰 API
+  scripts/watch-and-publish.sh             # 合并 daily-* / Codex/daily-* → main → 为当天每个厂商建微信贴图草稿
   VENDORS_PUBLISH="anthropic openai" scripts/watch-and-publish.sh   # 只给指定厂商发微信
   ```
 
-  它做三件事：① `git fetch`，把未合并的 `origin/daily-<DATE>` 用 `-X theirs` 合并进 main、
+  它做三件事：① `git fetch`，把未合并的 `origin/daily-<DATE>` / `origin/Codex/daily-<DATE>` 用 `-X theirs` 合并进 main、
   `run.py --reindex` 重建指针、push main、删远端分支；② 对每个有当天 `data/<vendor>/<DATE>.json`
   的厂商跑 `publish_wechat_newspic.py --vendor <id>` 建**贴图(newspic)**草稿；③ `.last_published.<vendor>`
   去重（每家每天只成功一次）。凭据 `~/.config/wechat-official-draft/config.yaml`，本机公网 IP 须在
@@ -265,7 +267,7 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
    （页面强调色 + 热力图梯度）。**易漏**：缺了 Tab 选中态没色、页面 chrome 不换色。
 5. `curator.py`：在 `VENDOR_META` 加品牌名/brand/结尾文案；发布脚本（to_xhs_post/to_wechat_md/
    publish_wechat_newspic）的 `VENDOR_NAME`/标签按需补。
-6. **云端定时无需改**：CCR 每日 routine 与 `daily.yml` 都自适应——跑 `run.py --vendors` 读出厂商清单
+6. **云端定时无需改**：Codex Automation / CCR routine 与 `daily.yml` 都自适应——跑 `run.py --vendors` 读出厂商清单
    再遍历；只要新厂商在 `curator.py` `VENDOR_META` + `sources.yaml` 登记好即可被自动带上。
 
 展示页 Tab 的**显示名与顺序**也自动派生（名字取 `cards.js` 的 `VENDORS.name`、顺序按其定义序）；

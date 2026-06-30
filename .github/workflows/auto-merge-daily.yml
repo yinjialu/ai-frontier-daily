@@ -1,6 +1,6 @@
 name: auto-merge-daily
 
-# 当 routine 把每日内容推到内容分支（直推 main 遇 403 的兜底分支，如 claude/* 或 daily-*）时，
+# 当 routine 把每日内容推到内容分支（直推 main 遇 403 的兜底分支，如 claude/*、Codex/* 或 daily-*）时，
 # 自动把「纯每日内容」的提交合并入 main，触发 Pages 重新部署。
 # 严格门槛（三条全满足才合并），避免误合人工/代码分支：
 #   1) 相对 main 的改动只在 data/ 与 output/ 下（含任何代码改动 → 跳过，留人工 PR）
@@ -12,6 +12,8 @@ on:
     branches:
       - 'daily-*'
       - 'claude/**'
+      - 'Codex/**'
+      - 'codex/**'
     paths:
       - 'data/**'
 
@@ -80,7 +82,7 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "auto-merge $BR（routine 每日内容）"
           git push origin main
-          # 合并已成功，删除内容分支防止 claude/* 堆积（删失败不影响结果）
+          # 合并已成功，删除内容分支防止 routine 内容分支堆积（删失败不影响结果）
           git push origin --delete "$BR" || true
           echo "✅ $BR 已自动合并入 main 并删除分支，Pages 将重新部署"
 

@@ -29,7 +29,8 @@ scripts/install-firsthand-launchd.sh
 
 立即试跑：`launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.firsthand`，
 日志 `tail -f ~/Library/Logs/ai-frontier-daily-firsthand.log`。机制详见 `CLAUDE.md`「一手信源内参监控」。
-依赖本机 `claude` 与 `gh` 已登录（摘要走 claude 订阅额度；缺 claude 仅退回占位摘要，不影响通知）。
+依赖本机 `gh` 已登录；摘要走 DeepSeek Anthropic-compatible API，本机私密配置在
+`~/.config/ai-frontier-daily/firsthand.env`。缺模型配置时仅退回占位摘要，不影响通知。
 
 ---
 
@@ -46,7 +47,8 @@ scripts/install-firsthand-launchd.sh
 | 内参主脚本 | `scripts/monitor_firsthand.py` + `scripts/firsthand/` | ✅ | 随仓库 |
 | 内参信源配置 | `firsthand-sources.yaml` | ✅ | 随仓库 |
 | 内参安装脚本 | `scripts/install-firsthand-launchd.sh` | ✅ | 随仓库 |
-| claude / gh 登录态 | 本机 `claude` / `gh auth` | ❌ 本机 | 新机执行 `claude`（登录）、`gh auth login`；内参摘要与开 PR 依赖 |
+| 一手信源摘要模型 | `~/.config/ai-frontier-daily/firsthand.env` | ❌ 私密 | 从 `scripts/config-templates/firsthand.env.example` 复制填写；内参摘要依赖 |
+| gh 登录态 | 本机 `gh auth` | ❌ 本机 | 新机执行 `gh auth login`；开 PR 依赖 |
 | 微信凭据 | `~/.config/wechat-official-draft/config.yaml` | ❌ 私密 | 从 `scripts/config-templates/` 复制填写 |
 | 推送渠道 key | `~/.config/ai-frontier-daily/notify.env` | ❌ 私密 | 从 `scripts/config-templates/` 复制填写（可选） |
 | 小红书登录态 | `~/.config/xiaohongshu-mcp/` | ❌ 私密 | 仅当启用 XHS（默认暂停）才需要 |

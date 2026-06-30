@@ -1,14 +1,14 @@
 name: daily-monitor
 
 # 信源监控哨兵（不出内容）。
-# 职责分工：出内容由云端 Claude Routine 负责（北京 07:00，吃订阅额度，会开讨论 Issue）；
-# 本 workflow 只做「信源健康探测 + 校验当天 routine 是否已产出」，发现异常自动开 Issue 告警。
+# 职责分工：出内容由 Codex Automation 负责（北京 07:00，会开讨论 Issue）；
+# 本 workflow 只做「信源健康探测 + 校验当天 automation 是否已产出」，发现异常自动开 Issue 告警。
 # 不调 LLM、不装浏览器、不写 main —— 轻量、确定、零额外凭据。
 
 on:
   schedule:
     - cron: "0 23 * * *"   # UTC 23:00 = 北京 07:00；GitHub 调度延迟后实际约 07:55，
-                            # 落在 routine（约 07:14）之后，正好用来校验其当天产出。
+                            # 落在 Codex Automation 之后，正好用来校验其当天产出。
   workflow_dispatch: {}     # 支持在 Actions 页手动触发
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
       - name: Install deps (lightweight · no browser / no LLM)
         run: pip install -r skills/ai-daily-digest/requirements.txt
 
-      - name: Probe sources & verify routine output
+      - name: Probe sources & verify automation output
         id: probe
         run: |
           set +e
@@ -58,7 +58,7 @@ jobs:
         run: |
           TODAY=$(date +%F)
           TITLE="🚨 监控告警 ${TODAY}：每日动态异常"
-          BODY=$(printf '哨兵在 %s 检测到异常（今日无 routine 产出，或有停更信源）。\n\n```\n%s\n```\n\n— 由 daily-monitor workflow 自动生成；指派给仓库 owner 以触发含本 Issue 链接的通知邮件。' "$TODAY" "$(cat probe.log)")
+          BODY=$(printf '哨兵在 %s 检测到异常（今日无 Codex Automation 产出，或有停更信源）。\n\n```\n%s\n```\n\n— 由 daily-monitor workflow 自动生成；指派给仓库 owner 以触发含本 Issue 链接的通知邮件。' "$TODAY" "$(cat probe.log)")
           # 同日去重：当天若已有同标题且 open 的告警 Issue，则追加评论而非新开
           NUM=$(gh issue list --search "in:title \"${TITLE}\"" --state open --json number --jq '.[0].number // empty')
           if [ -n "$NUM" ]; then

@@ -1,0 +1,87 @@
+name: DeepSeek Assistant
+
+# PR / issue 评论里 @DeepSeek / @deepseek 时触发，使用 DeepSeek Anthropic-compatible API
+# 修复 PR 分支中一手信源 OKF 文件的失败摘要。不运行通用 Agent。
+#
+# 前置：仓库 Settings → Secrets → Actions 配 FIRSTHAND_LLM_API_KEY。
+# baseUrl/model 默认写在 workflow env，可按需改为 secrets 或 variables。
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  deepseek:
+    if: >-
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       (contains(github.event.comment.body, '@DeepSeek') ||
+        contains(github.event.comment.body, '@deepseek'))) ||
+      (github.event_name == 'pull_request_review_comment' &&
+       (contains(github.event.comment.body, '@DeepSeek') ||
+        contains(github.event.comment.body, '@deepseek')))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      FIRSTHAND_LLM_API_KEY: ${{ secrets.FIRSTHAND_LLM_API_KEY }}
+      FIRSTHAND_LLM_BASE_URL: https://api.deepseek.com/anthropic
+      FIRSTHAND_LLM_MODEL: deepseek-v4-flash
+      FIRSTHAND_LLM_TIMEOUT_SECONDS: "120"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout PR branch
+        id: pr
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            pr="${{ github.event.issue.number }}"
+          else
+            pr="${{ github.event.pull_request.number }}"
+          fi
+          echo "number=$pr" >> "$GITHUB_OUTPUT"
+          gh pr checkout "$pr"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Repair failed firsthand summaries
+        run: python3 -m scripts.firsthand.repair_summaries
+
+      - name: Commit repaired summaries
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/firsthand; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add data/firsthand
+          git commit -m "firsthand: DeepSeek 修复摘要"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment result
+        if: always()
+        run: |
+          set -euo pipefail
+          pr="${{ steps.pr.outputs.number }}"
+          if [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+            gh pr comment "$pr" --body "✅ @DeepSeek 已修复失败摘要并提交到当前 PR 分支。"
+          else
+            gh pr comment "$pr" --body "ℹ️ @DeepSeek 已检查，当前 PR 没有可修复的失败摘要。"
+          fi
