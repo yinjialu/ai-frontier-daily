@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 52,
+    "known_urls_count": 53,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -100,10 +100,11 @@
     "last_fetch_error": null,
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag",
-      "https://www.anthropic.com/news/claude-science-ai-workbench"
+      "https://www.anthropic.com/news/claude-science-ai-workbench",
+      "https://www.anthropic.com/news/claude-sonnet-5"
     ],
-    "known_urls_count": 14,
-    "last_new_article": "2026-07-01T01:06:02+08:00"
+    "known_urls_count": 15,
+    "last_new_article": "2026-07-01T02:07:49+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -161,10 +162,12 @@
       "https://transformer-circuits.pub/2021/videos/index.html",
       "https://github.com/anthropics/PySvelte",
       "https://transformer-circuits.pub/2021/garcon/index.html",
-      "https://distill.pub/2020/circuits"
+      "https://distill.pub/2020/circuits",
+      "https://transformer-circuits.pub/2026/june-update/index.html"
     ],
     "initialized": true,
-    "known_urls_count": 53
+    "known_urls_count": 53,
+    "last_new_article": "2026-07-01T02:07:49+08:00"
   },
   "openai-news": {
     "last_fetch_ok": true,
@@ -1199,7 +1202,7 @@
       "https://openai.com/index/genebench-pro/case-studies"
     ],
     "initialized": true,
-    "known_urls_count": 1028,
+    "known_urls_count": 1030,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "deepmind-blog": {
@@ -1341,7 +1344,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
     ],
     "initialized": true,
-    "known_urls_count": 22,
+    "known_urls_count": 23,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "google-gemini": {
@@ -1378,7 +1381,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
     ],
     "initialized": true,
-    "known_urls_count": 32,
+    "known_urls_count": 33,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "qwen-blog": {
