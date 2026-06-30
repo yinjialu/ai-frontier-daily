@@ -31,9 +31,10 @@
       "https://claude.com/blog/agent-identity-access-model",
       "https://claude.com/blog/building-effective-human-agent-teams",
       "https://claude.com/blog/introducing-the-claude-apps-gateway",
-      "https://claude.com/blog/claude-in-microsoft-foundry"
+      "https://claude.com/blog/claude-in-microsoft-foundry",
+      "https://claude.com/blog/getting-started-with-loops"
     ],
-    "last_new_article": "2026-06-30T07:27:53+08:00"
+    "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -98,9 +99,11 @@
     "last_fetch_ok": true,
     "last_fetch_error": null,
     "open_pr_urls": [
-      "https://www.anthropic.com/news/introducing-claude-tag"
+      "https://www.anthropic.com/news/introducing-claude-tag",
+      "https://www.anthropic.com/news/claude-science-ai-workbench"
     ],
-    "known_urls_count": 14
+    "known_urls_count": 14,
+    "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1191,11 +1194,13 @@
       "https://openai.com/index/hp-frontier-partnership",
       "https://openai.com/index/mapping-ai-jobs-transition-eu",
       "https://openai.com/index/how-chatgpt-adoption-has-expanded",
-      "https://openai.com/index/core-dump-epidemiology-data-infrastructure-bug"
+      "https://openai.com/index/core-dump-epidemiology-data-infrastructure-bug",
+      "https://openai.com/index/introducing-genebench-pro",
+      "https://openai.com/index/genebench-pro/case-studies"
     ],
     "initialized": true,
-    "known_urls_count": 1026,
-    "last_new_article": "2026-07-01T00:04:17+08:00"
+    "known_urls_count": 1028,
+    "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1305,7 +1310,7 @@
       "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash"
     ],
     "initialized": true,
-    "known_urls_count": 102,
+    "known_urls_count": 103,
     "last_new_article": "2026-07-01T00:04:17+08:00"
   },
   "google-models-research": {
@@ -1332,11 +1337,12 @@
       "https://blog.google/innovation-and-ai/products/identifying-ai-generated-media-online",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/accelerator-ai-for-the-planet",
       "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
     ],
     "initialized": true,
     "known_urls_count": 22,
-    "last_new_article": "2026-06-25T07:33:20+08:00"
+    "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1368,11 +1374,12 @@
       "https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents",
       "https://blog.google/products-and-platforms/products/gemini/gemini-help-avoid-jetlag",
       "https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion",
-      "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me"
+      "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
     ],
     "initialized": true,
     "known_urls_count": 32,
-    "last_new_article": "2026-06-30T07:27:53+08:00"
+    "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
