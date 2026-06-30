@@ -103,7 +103,7 @@
       "https://www.anthropic.com/news/claude-science-ai-workbench",
       "https://www.anthropic.com/news/claude-sonnet-5"
     ],
-    "known_urls_count": 15,
+    "known_urls_count": 16,
     "last_new_article": "2026-07-01T02:07:49+08:00"
   },
   "transformer-circuits": {
@@ -166,7 +166,7 @@
       "https://transformer-circuits.pub/2026/june-update/index.html"
     ],
     "initialized": true,
-    "known_urls_count": 53,
+    "known_urls_count": 54,
     "last_new_article": "2026-07-01T02:07:49+08:00"
   },
   "openai-news": {
