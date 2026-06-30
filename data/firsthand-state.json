@@ -1189,11 +1189,13 @@
       "https://openai.com/index/how-agents-are-transforming-work",
       "https://openai.com/index/previewing-gpt-5-6-sol",
       "https://openai.com/index/hp-frontier-partnership",
-      "https://openai.com/index/mapping-ai-jobs-transition-eu"
+      "https://openai.com/index/mapping-ai-jobs-transition-eu",
+      "https://openai.com/index/how-chatgpt-adoption-has-expanded",
+      "https://openai.com/index/core-dump-epidemiology-data-infrastructure-bug"
     ],
     "initialized": true,
     "known_urls_count": 1026,
-    "last_new_article": "2026-06-29T19:05:39+08:00"
+    "last_new_article": "2026-07-01T00:04:17+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1299,11 +1301,12 @@
       "https://deepmind.google/blog/how-a-gemma-model-helped-discover-a-new-potential-cancer-therapy-pathway",
       "https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome",
       "https://deepmind.google/blog/gemini-robotics-on-device-brings-ai-to-local-robotic-devices",
-      "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash"
+      "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash",
+      "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash"
     ],
     "initialized": true,
     "known_urls_count": 102,
-    "last_new_article": "2026-06-25T07:33:20+08:00"
+    "last_new_article": "2026-07-01T00:04:17+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
