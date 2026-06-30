@@ -1378,11 +1378,12 @@
       "https://blog.google/products-and-platforms/products/gemini/gemini-help-avoid-jetlag",
       "https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion",
       "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite",
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026"
     ],
     "initialized": true,
     "known_urls_count": 33,
-    "last_new_article": "2026-07-01T01:06:02+08:00"
+    "last_new_article": "2026-07-01T05:10:44+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
