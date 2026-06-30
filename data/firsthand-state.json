@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 50,
+    "known_urls_count": 52,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -1368,7 +1368,7 @@
       "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me"
     ],
     "initialized": true,
-    "known_urls_count": 30,
+    "known_urls_count": 32,
     "last_new_article": "2026-06-30T07:27:53+08:00"
   },
   "qwen-blog": {
