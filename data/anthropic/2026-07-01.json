@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.01",
+  "cnDate": "7月1日 周三",
+  "edition": "VOL.182",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.197：Sonnet 5 成为默认模型，开放 100 万上下文",
+      "summary": "Anthropic 在 Claude Code v2.1.197 中把 Claude Sonnet 5 设为默认模型，并开放原生 100 万 token 上下文窗口；官方同步给出截至 8 月 31 日的促销价格，开发者升级 CLI 后即可使用。",
+      "source": "github.com/anthropics/claude-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

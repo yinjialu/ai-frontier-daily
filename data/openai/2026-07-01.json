@@ -1,0 +1,30 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.01",
+  "cnDate": "7月1日 周三",
+  "edition": "VOL.182",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "OpenAI Signals：ChatGPT 全球采用继续扩张",
+      "summary": "OpenAI 发布新的 Signals 数据，显示 ChatGPT 采用率在全球继续增长：用户使用频次提升、能力探索更广，并在不同地区和语言中带动增长。官方重点从真实使用行为观察 AI 普及速度。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "研究",
+      "title": "OpenAI 推出 GeneBench-Pro：面向基因组与生命科学的真实任务基准",
+      "summary": "OpenAI 发布 GeneBench-Pro，用复杂真实数据集测试模型在基因组学、生物学与科学研究中的表现。相比泛化问答基准，它更关注研究工作流中可验证、可复现的专业推理能力。",
+      "source": "openai.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "OpenAI 工程团队用大规模 core dump 分析定位 18 年老 bug",
+      "summary": "OpenAI 工程团队复盘一次罕见基础设施崩溃排查：通过大规模 core dump 分析同时发现硬件故障与长期潜伏的软件缺陷。该案例展示了 AI 基础设施在可观测性和低频故障治理上的工程需求。",
+      "source": "openai.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

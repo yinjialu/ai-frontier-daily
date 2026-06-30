@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.01",
+  "cnDate": "7月1日 周三",
+  "edition": "VOL.182",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "Kimi",
+      "title": "Kimi Code v0.20.3：模型列表后台自动刷新，Glob 改用 ripgrep",
+      "summary": "Moonshot AI 发布 Kimi Code v0.20.3，Provider 模型列表改为后台自动刷新，新模型无需重启即可出现；Glob 底层改用 ripgrep，默认遵守 .gitignore、支持 brace pattern，并优化 TUI 错误显示。",
+      "source": "github.com/MoonshotAI/kimi-code"
+    },
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code 夜版加入桌面语音输入与 Chrome 扩展架构回归",
+      "summary": "Qwen Code v0.19.3 夜版更新覆盖 core、CLI、SDK 与桌面端：新增可配置 auto-compact 阈值、断点 turn 恢复、桌面语音听写，并以 daemon-direct 架构恢复 Chrome 扩展。",
+      "source": "github.com/QwenLM/qwen-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

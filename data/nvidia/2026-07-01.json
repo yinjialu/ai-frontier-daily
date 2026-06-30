@@ -1,0 +1,36 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.01",
+  "cnDate": "7月1日 周三",
+  "edition": "VOL.182",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "NVIDIA BioNeMo Agent Toolkit 接入 Claude Science",
+      "summary": "NVIDIA 宣布 BioNeMo Agent Toolkit 可在 Anthropic Claude Science 中用于生命科学研究。科研人员可借助 Claude 的 agent 工作台编排 BioNeMo 模型、库与加速工作流，降低药研自动化门槛。",
+      "source": "blogs.nvidia.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "TensorRT-LLM v1.3.0rc20：最后一个支持 TensorRT backend 的 RC",
+      "summary": "TensorRT-LLM v1.3.0rc20 发布，并提示这是最后一个支持 TensorRT backend 的 RC 版本。该版加入 DeepSeek V4 准备、MXFP8 权重格式、Hopper 上 NVFP4 后端与 Qwen3.5 EPLB 支持。",
+      "source": "github.com/NVIDIA/TensorRT-LLM"
+    },
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 展示推理软件栈如何降低 token 成本",
+      "summary": "NVIDIA 博文梳理 Baseten、Cognition、Deep Infra、Together AI 与 Cursor 等团队如何借助 NVIDIA 软件栈和开源生态降低推理 token 成本，重点从部署优化、吞吐与开源组件复用解释成本曲线。",
+      "source": "blogs.nvidia.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "Omniverse + Metropolis 三套流程提升 Vision AI Agent 准确率",
+      "summary": "NVIDIA 给出三套 Vision AI Agent 工作流，结合 Omniverse 合成数据、Metropolis 与微调，让工厂、城市、仓储和交通视频数据更稳定地转化为运营情报，重点解决真实场景标注和泛化难题。",
+      "source": "blogs.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、推理框架与生态合作动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

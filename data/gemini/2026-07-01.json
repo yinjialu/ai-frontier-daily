@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.01",
+  "cnDate": "7月1日 周三",
+  "edition": "VOL.182",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Gemini Omni Flash 与 Nano Banana 2 Lite 开放构建",
+      "summary": "Google / DeepMind 宣布开发者可开始使用 Gemini Omni Flash 与 Nano Banana 2 Lite：前者面向高质量视频和对话式编辑，后者是更快、更低成本的 Gemini Image 模型，适合规模化图像生成应用。",
+      "source": "deepmind.google"
+    },
+    {
+      "tag": "生态",
+      "title": "Gemini Spark 更新：登陆 macOS，接入常用应用并实时追踪主题",
+      "summary": "Google 为 Gemini Spark 发布一组更新：推出 macOS 应用，强化与常用应用连接，并支持实时跟踪主题。对重度 Gemini 用户来说，Spark 正从单点工具向跨应用工作台演进。",
+      "source": "blog.google"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
