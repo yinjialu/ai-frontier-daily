@@ -1,6 +1,30 @@
 import json
 from pathlib import Path
-from scripts.monitor_firsthand import run_once
+from scripts.monitor_firsthand import _firsthand_pr_title, _source_counts_from_pr_files, run_once
+
+
+def test_firsthand_pr_title_counts_all_pr_files():
+    files = [
+        {"path": "data/firsthand/openai-news/04-a.md"},
+        {"path": "data/firsthand/openai-news/05-b.md"},
+        {"path": "data/firsthand/google-gemini/03-a.md"},
+        {"path": "data/firsthand/anthropic-news/14-a.md"},
+        {"path": "data/firsthand/anthropic-news/14-b.md"},
+        {"path": "README.md"},
+    ]
+
+    counts = _source_counts_from_pr_files(files)
+    title = _firsthand_pr_title("firsthand/2026-07-01", counts)
+
+    assert counts == {
+        "anthropic-news": 2,
+        "google-gemini": 1,
+        "openai-news": 2,
+    }
+    assert title == (
+        "📡 内参新动态 | 2026-07-01 "
+        "(anthropic-news 2篇, openai-news 2篇, google-gemini 1篇)"
+    )
 
 
 def test_run_once_first_run_no_pr(tmp_path, monkeypatch):
