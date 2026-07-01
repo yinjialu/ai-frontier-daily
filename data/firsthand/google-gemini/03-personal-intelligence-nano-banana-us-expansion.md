@@ -3,14 +3,11 @@ type: Article
 title: The Gemini app is bringing personalized image creation to more users.
 source: google-gemini
 resource: https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion
-published: 2026-06-29
-tags: []
+tags: [Gemini, 图像生成, 个性化AI, Google生态]
 detected: 2026-06-30T07:27:53+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：JSONDecodeError: Expecting ',' delimiter: line 1 column 160 (char 159)
+Google Gemini应用向美国用户免费开放个性化图像生成功能，通过Personal Intelligence结合Google Photos等应用数据，用户可用简单提示生成符合自身风格和生活的图像，无需手动上传照片。
 
 ## Full Text
 
