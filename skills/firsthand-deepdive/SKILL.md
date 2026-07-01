@@ -29,9 +29,18 @@ p=write_draft('content', cands[<选中序号-1>], today, feature_available=False
 产出 `content/deepdive/<date>_<slug>/draft.md`：五段骨架 + frontmatter sources（官方 URL）+ 官方原文素材。
 
 ### 3. article-harness 迭代润色
+article-harness 已适配多宿主，同一个 Writer/Reviewer 协议按当前 Agent 环境选择执行方式：
+
+**Codex 内使用时**（优先）：
+- 读取并遵循 `~/.codex/skills/article-harness/SKILL.md`。
+- 不从 shell 直接跑 `~/.claude/.../harness.sh`；由当前 Codex 主 Agent 按 article-harness 的 Codex subagent 流程编排 Writer/Reviewer 迭代。
+- 输入草稿为 `content/deepdive/<date>_<slug>/draft.md`，产物契约保持不变：`content/deepdive/<date>_<slug>/.harness-workspace/finished.md` 与 `feedback.md`。
+
+**Claude Code 内使用时**（暂时保持原链路不变）：
 ```bash
 bash ~/.claude/skills/article-harness/harness.sh content/deepdive/<date>_<slug>/draft.md
 ```
+
 Writer 整理润色 ↔ Reviewer 迭代，PASS 后自动进入步骤4。
 
 ### 4. 自动推送微信草稿箱
@@ -46,4 +55,4 @@ harness PASS 后，立即用 `wechat-official-draft` skill 将 `<draft_dir>/.har
 
 ## 与其他线的关系
 - 选题来源：内参 `data/firsthand/index.json`（官方一手）。
-- 不重造 Writer-Reviewer（复用 article-harness）；article-harness 已收敛进公开仓 `yinjialu/bianliang-skills`（skills.sh，`npx skills add`），全局安装路径调用（`~/.claude/skills/article-harness/`）。
+- 不重造 Writer-Reviewer（复用 article-harness）；article-harness 已收敛进公开仓 `yinjialu/bianliang-skills`（skills.sh，`npx skills add`），全局安装路径按宿主区分：Codex 使用 `~/.codex/skills/article-harness/` 的 Codex 模式，Claude Code 暂继续使用 `~/.claude/skills/article-harness/` 的 CLI runner。
