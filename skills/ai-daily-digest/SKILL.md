@@ -76,9 +76,11 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    `claude.com/blog` 等 Cloudflare/JS 站常被拦（早报因此会漏 news/blog 内容，只剩 GitHub releases）。
    本机内参监控用住宅 IP 已抓好这些，导出在 `data/firsthand/index.json`。对每个厂商 V，**额外读内参近 1~2 天条目作候选**：
    ```bash
-   python3 -m scripts.firsthand.query --vendor <anthropic|openai|gemini|cn> --days 2 --json
+   python3 -m scripts.firsthand.query --vendor <anthropic|openai|gemini|cn> --days 2 --json --include-open-prs
    ```
    把这些条目**并入候选池**，与 WebFetch/WebSearch 结果一起去重策展（同一事件只留一条，优先内参的官方一手 + 真实发布日期）。内参覆盖：anthropic（claude-blog/news/research/engineering/transformer-circuits）、openai、gemini（deepmind/google）、cn（qwen/蚂蚁百灵）；nvidia 暂无内参源，仍走 WebFetch。
+   `--include-open-prs` 会只读 open / 已拉取的 `firsthand/*` PR 中 `data/firsthand/**/*.md` 的 OKF 内容，
+   让「已发现但尚未合入 main」的一手官方动态也能进入当天早报候选池；它不读取 PR 里的代码改动。
 
 4. **去重（Claude 链路）**：看 `data/<V.id>/` 里最近的 *.json，只挑近 1~3 天的「新」条目，
    避免与已发布重复；若今天 `data/<V.id>/<DATE>.json` 已存在且已覆盖当日要点，则该厂商
