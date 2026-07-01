@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 53,
+    "known_urls_count": 55,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -1382,7 +1382,7 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 34,
+    "known_urls_count": 36,
     "last_new_article": "2026-07-01T05:10:44+08:00"
   },
   "qwen-blog": {
