@@ -103,7 +103,7 @@
       "https://www.anthropic.com/news/claude-science-ai-workbench",
       "https://www.anthropic.com/news/claude-sonnet-5"
     ],
-    "known_urls_count": 16,
+    "known_urls_count": 17,
     "last_new_article": "2026-07-01T02:07:49+08:00"
   },
   "transformer-circuits": {
@@ -1341,11 +1341,12 @@
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/accelerator-ai-for-the-planet",
       "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite",
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
     "known_urls_count": 23,
-    "last_new_article": "2026-07-01T01:06:02+08:00"
+    "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1379,11 +1380,12 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion",
       "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite",
-      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026"
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026",
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
     "known_urls_count": 36,
-    "last_new_article": "2026-07-01T05:10:44+08:00"
+    "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
