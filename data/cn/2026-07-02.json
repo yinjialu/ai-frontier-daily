@@ -1,0 +1,28 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.02",
+  "cnDate": "7月2日 周四",
+  "edition": "VOL.183",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "Kimi",
+      "title": "Kimi Code 0.21.x：插件命令、压缩重构与严格 Provider 兼容修复",
+      "summary": "月之暗面连续发布 Kimi Code 0.21.0/0.21.1：插件可声明 slash commands，会话压缩重构以适配严格 provider，并修复加密 reasoning 流开始前的空白等待。对多模型开发环境更友好。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "url": "https://github.com/MoonshotAI/kimi-code/releases"
+    },
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code v0.19.4：自动压缩阈值、桌面听写与 Chrome 扩展架构回归",
+      "summary": "通义千问发布 Qwen Code v0.19.4，新增可配置自动压缩阈值、Stop hook 上下文使用、桌面端语音听写和 daemon-direct Chrome 扩展架构，并修复 shell 检查重复触发等开发体验问题。",
+      "source": "github.com/QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code/releases/tag/v0.19.4"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}

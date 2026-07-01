@@ -1,0 +1,19 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.02",
+  "cnDate": "7月2日 周四",
+  "edition": "VOL.183",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.198：Chrome GA + 后台 Agent 自动开草稿 PR",
+      "summary": "Anthropic 发布 Claude Code v2.1.198：Claude in Chrome 正式 GA，后台 Agent 完成工作后可提交、推送并开 draft PR；同时新增通知钩子、/dataviz skill、AWS 上游网关与多项稳定性修复。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.198"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

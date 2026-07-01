@@ -1,0 +1,33 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.02",
+  "cnDate": "7月2日 周四",
+  "edition": "VOL.183",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Google Cloud Workbench 扩展登陆 VS Code：本地 IDE 直连云端 Notebook",
+      "summary": "Google 发布 Workbench Notebooks VS Code 扩展，把 Gemini Enterprise Agent Platform Workbench 的托管 Jupyter 环境接入本地 IDE。开发者可在 VS Code 内连接云端算力、运行 notebook，并复用本地配置。",
+      "source": "developers.googleblog.com",
+      "url": "https://developers.googleblog.com/ml-development-in-vs-code-with-google-cloud-power-workbench-extension-now-available/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Google 解释 ADK 2.0：用确定性 workflow 约束 Agent 执行",
+      "summary": "Google 发布 ADK 2.0 设计说明，核心是把探索式 Agent 能力与确定性执行逻辑结合：新增结构化 workflow runtime、任务协作模型与图式编排，降低企业级 Agent 应用的不可控性。",
+      "source": "developers.googleblog.com",
+      "url": "https://developers.googleblog.com/why-we-built-adk-20/"
+    },
+    {
+      "tag": "开发者",
+      "title": "Genkit 更新 Agents API：前后端共用协议构建 Agent 应用",
+      "summary": "Google 更新开源 Genkit，引入 Agents API，把消息历史、工具循环、流式输出与状态持久化封装到统一接口。它面向 TypeScript 与 Go 开发者，降低全栈 Agent 应用和多 Agent 协调的接线成本。",
+      "source": "developers.googleblog.com",
+      "url": "https://developers.googleblog.com/build-agentic-full-stack-apps-with-genkit/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Google Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
