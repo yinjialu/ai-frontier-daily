@@ -4,13 +4,11 @@ title: Circuits Updates — June 2026
 source: transformer-circuits
 resource: https://transformer-circuits.pub/2026/june-update/index.html
 published: 2026-06-30
-tags: []
+tags: [稀疏自编码器, 可解释性, AI安全, Anthropic]
 detected: 2026-07-01T02:07:49+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+Anthropic提出Turn-Averaged稀疏自编码器，通过平均每轮对话残差流训练SAE，显著减少特征数量并提升高层语义抽象，优于逐token SAE，用于模型安全行为审计与可解释性分析。
 
 ## Full Text
 

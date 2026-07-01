@@ -4,13 +4,11 @@ title: Claude Science, an AI workbench for scientists, is now available
 source: anthropic-news
 resource: https://www.anthropic.com/news/claude-science-ai-workbench
 published: 2026-06-30
-tags: []
+tags: [AI科研工具, Claude Science, 科学计算, AI代理]
 detected: 2026-07-01T01:06:02+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+Anthropic推出Claude Science，为科学家打造的一站式AI工作台，集成PubMed、Jupyter等常用工具，支持60+科学领域技能，可自动管理计算资源、生成可审计的科研产物，并内置审阅代理检查引用与计算错误。
 
 ## Full Text
 

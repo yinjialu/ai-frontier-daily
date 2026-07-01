@@ -4,13 +4,11 @@ title: Getting started with loops
 source: claude-blog
 resource: https://claude.com/blog/getting-started-with-loops
 published: 2026-06-30
-tags: []
+tags: [agentic loops, Claude Code, coding agent, loop design]
 detected: 2026-07-01T01:06:02+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+本文介绍了Claude Code团队对agentic loops的定义与分类，包括turn-based和goal-based等循环模式，并提供了从简单到复杂的实践指南，帮助开发者根据任务类型选择合适的循环策略，同时管理token消耗。
 
 ## Full Text
 

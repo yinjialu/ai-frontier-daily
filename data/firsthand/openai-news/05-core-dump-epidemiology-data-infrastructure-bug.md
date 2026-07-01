@@ -4,13 +4,11 @@ title: Core dump epidemiology: fixing an 18-year-old bug
 source: openai-news
 resource: https://openai.com/index/core-dump-epidemiology-data-infrastructure-bug
 published: 2026-06-30
-tags: []
+tags: [C++调试, 崩溃分析, 系统可靠性, 竞态条件]
 detected: 2026-07-01T00:04:17+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+OpenAI通过种群级数据分析诊断并修复了ChatGPT数据基础设施Rockset中的两个隐蔽崩溃：一个Azure主机硬件错误和GNU libunwind库中隐藏18年的竞态条件，展示了利用大规模崩溃数据集进行调试的有效方法。
 
 ## Full Text
 

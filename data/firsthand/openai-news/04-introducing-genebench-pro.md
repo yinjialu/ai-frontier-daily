@@ -4,13 +4,11 @@ title: Introducing GeneBench-Pro
 source: openai-news
 resource: https://openai.com/index/introducing-genebench-pro
 published: 2026-06-30
-tags: []
+tags: [计算生物学, AI 基准测试, 科研判断, 基因组学]
 detected: 2026-07-01T01:06:02+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+OpenAI 推出 GeneBench-Pro，一个面向计算生物学的高难度基准，测试 AI 代理在模糊数据中做出高阶判断（如选择分析路径、修正假设）的能力。包含 129 个合成问题，覆盖 10 个领域，旨在避免常见基准缺陷，推动 AI 在真实科研中的判断力评估。
 
 ## Full Text
 

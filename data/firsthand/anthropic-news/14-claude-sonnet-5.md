@@ -4,13 +4,11 @@ title: Introducing Claude Sonnet 5
 source: anthropic-news
 resource: https://www.anthropic.com/news/claude-sonnet-5
 published: 2026-06-30
-tags: []
+tags: [Claude Sonnet 5, 智能体模型, 性能与定价, AI开发]
 detected: 2026-07-01T02:07:49+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+Claude Sonnet 5 发布，智能体能力大幅提升，接近 Opus 4.8 但价格更低。在推理、工具使用、编码方面显著优于前代，安全性更好，支持自主执行复杂任务。提供入门优惠价。
 
 ## Full Text
 

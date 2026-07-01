@@ -4,13 +4,11 @@ title: Start building with Nano Banana 2 Lite and Gemini Omni Flash
 source: deepmind-blog
 resource: https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash
 published: 2026-06-30
-tags: []
+tags: [图像生成, 视频生成, Gemini模型, Google AI]
 detected: 2026-07-01T00:04:17+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+Google DeepMind发布Nano Banana 2 Lite图像模型（最快、最经济）和Gemini Omni Flash视频生成模型，支持对话式编辑，现已在AI Studio、Gemini API等平台开放，助力开发者构建端到端多媒体体验。
 
 ## Full Text
 

@@ -4,13 +4,11 @@ title: Inside Genebench-Pro
 source: openai-news
 resource: https://openai.com/index/genebench-pro/case-studies
 published: 2026-06-30
-tags: []
+tags: [基因组学, 基准测试, AI应用, 生物信息学]
 detected: 2026-07-01T01:06:02+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+GeneBench-Pro是面向AI的基因组学基准测试，包含10个复杂案例研究，涵盖体细胞肿瘤、功能基因组、统计遗传学等领域，要求模型处理基因数据并输出结构化JSON答案。
 
 ## Full Text
 

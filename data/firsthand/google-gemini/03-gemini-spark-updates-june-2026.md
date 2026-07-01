@@ -4,13 +4,11 @@ title: Gemini Spark updates: macOS launch, connected apps and more
 source: google-gemini
 resource: https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026
 published: 2026-06-30
-tags: []
+tags: [Gemini Spark, macOS, AI自动化, 生产力工具]
 detected: 2026-07-01T05:10:44+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+Google Gemini Spark更新：推出macOS桌面应用，支持连接Canva、Dropbox等应用，并可实时追踪新闻、体育、财经等主题，提升桌面文件自动化处理与工作流效率。
 
 ## Full Text
 

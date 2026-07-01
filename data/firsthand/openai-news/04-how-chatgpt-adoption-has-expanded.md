@@ -4,13 +4,11 @@ title: How ChatGPT adoption has expanded
 source: openai-news
 resource: https://openai.com/index/how-chatgpt-adoption-has-expanded
 published: 2026-06-30
-tags: []
+tags: [ChatGPT, 全球AI采用, 用户行为分析, 多语言AI]
 detected: 2026-07-01T00:04:17+08:00
 ---
 
-(摘要生成失败)
-
-> 失败原因：RuntimeError: claude 退出码 1: Not logged in · Please run /login
+OpenAI发布报告，显示ChatGPT全球采用持续深化：用户日均消息量6个月增50%，任务多样性翻倍；非洲、亚洲及低HDI地区增速最快；非英语用户超半数，巴西、哥伦比亚等地女性用户增长显著。
 
 ## Full Text
 
