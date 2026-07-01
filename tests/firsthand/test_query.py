@@ -1,6 +1,14 @@
 import json
 from pathlib import Path
-from scripts.firsthand.query import load_index, recent, vendor_of, filter_vendor
+from scripts.firsthand.query import (
+    filter_vendor,
+    load_index,
+    merge_by_resource,
+    okf_items_from_tree,
+    recent,
+    vendor_of,
+    _local_firsthand_remote_branches,
+)
 
 
 def test_vendor_of_maps_sources():
@@ -51,3 +59,81 @@ def test_load_index_reads_items(tmp_path):
         encoding="utf-8")
     items = load_index(tmp_path)
     assert items[0]["title"] == "T"
+
+
+def test_okf_items_from_tree_parses_only_firsthand_markdown():
+    tree = {
+        "data/firsthand/anthropic-news/14-claude-science.md": (
+            "---\n"
+            "title: Claude Science\n"
+            "source: anthropic-news\n"
+            "resource: https://www.anthropic.com/news/claude-science-ai-workbench\n"
+            "published: 2026-06-30\n"
+            "tags: [科学, Agent]\n"
+            "detected: 2026-07-01T01:06:02+08:00\n"
+            "---\n\n"
+            "Anthropic 发布 Claude Science 工作台。"
+        ),
+        "README.md": "ignore",
+        "data/firsthand/index.json": "{}",
+        "data/anthropic/2026-07-01.json": "{}",
+    }
+
+    items = okf_items_from_tree(tree)
+
+    assert len(items) == 1
+    assert items[0]["title"] == "Claude Science"
+    assert items[0]["source"] == "anthropic-news"
+    assert items[0]["resource"] == "https://www.anthropic.com/news/claude-science-ai-workbench"
+    assert items[0]["summary"] == "Anthropic 发布 Claude Science 工作台。"
+
+
+def test_merge_by_resource_prefers_open_pr_items():
+    main = [
+        {
+            "title": "Old",
+            "resource": "https://example.com/a",
+            "detected": "2026-07-01T01:00:00+08:00",
+            "summary": "old",
+        },
+        {
+            "title": "Main only",
+            "resource": "https://example.com/b",
+            "detected": "2026-07-01T02:00:00+08:00",
+        },
+    ]
+    overlay = [
+        {
+            "title": "Fresh",
+            "resource": "https://example.com/a",
+            "detected": "2026-07-01T03:00:00+08:00",
+            "summary": "fresh",
+        },
+        {
+            "title": "PR only",
+            "resource": "https://example.com/c",
+            "detected": "2026-07-01T04:00:00+08:00",
+        },
+    ]
+
+    merged = merge_by_resource(main, overlay)
+
+    assert [a["title"] for a in merged] == ["PR only", "Fresh", "Main only"]
+    assert next(a for a in merged if a["resource"] == "https://example.com/a")["summary"] == "fresh"
+
+
+def test_local_firsthand_remote_branches_parses_origin_refs(monkeypatch):
+    class Proc:
+        returncode = 0
+        stdout = "\n".join([
+            "origin/firsthand/2026-07-01",
+            "origin/main",
+            "origin/firsthand/2026-06-30",
+        ])
+
+    monkeypatch.setattr("scripts.firsthand.query.subprocess.run", lambda *args, **kwargs: Proc())
+
+    assert _local_firsthand_remote_branches() == [
+        "firsthand/2026-06-30",
+        "firsthand/2026-07-01",
+    ]

@@ -6,7 +6,10 @@
 import argparse
 import datetime
 import json
+import subprocess
 from pathlib import Path
+
+from scripts.firsthand.index import parse_okf
 
 
 # 内参 source id → 每日早报 vendor 轨。供早报(云端,IP 抓不到 news/blog)消费内参(本机抓)补盲区。
@@ -34,6 +37,121 @@ def load_index(okf_root) -> list[dict]:
     if not p.exists():
         return []
     return json.loads(p.read_text(encoding="utf-8")).get("items", [])
+
+
+def _is_firsthand_okf(path: str) -> bool:
+    parts = path.split("/")
+    return (
+        len(parts) == 4
+        and parts[0] == "data"
+        and parts[1] == "firsthand"
+        and path.endswith(".md")
+    )
+
+
+def okf_items_from_tree(tree: dict[str, str]) -> list[dict]:
+    """Parse OKF markdown blobs from a path->text tree, ignoring non-OKF files."""
+    return [parse_okf(text) for path, text in tree.items() if _is_firsthand_okf(path)]
+
+
+def merge_by_resource(main_items: list[dict], overlay_items: list[dict]) -> list[dict]:
+    """Merge items by resource URL; overlay items win, then sort by detected desc."""
+    by_resource = {}
+    fallback = []
+    for item in main_items:
+        resource = item.get("resource")
+        if resource:
+            by_resource[resource] = item
+        else:
+            fallback.append(item)
+    for item in overlay_items:
+        resource = item.get("resource")
+        if resource:
+            by_resource[resource] = item
+        else:
+            fallback.append(item)
+    merged = list(by_resource.values()) + fallback
+    merged.sort(key=lambda a: a.get("detected") or "", reverse=True)
+    return merged
+
+
+def _open_firsthand_pr_branches() -> list[str]:
+    """Return open PR head branches under firsthand/*; failure means no overlay."""
+    proc = subprocess.run(
+        ["gh", "pr", "list", "--state", "open", "--json", "headRefName", "--limit", "100"],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        return _local_firsthand_remote_branches()
+    try:
+        prs = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        return []
+    return sorted({
+        pr.get("headRefName")
+        for pr in prs
+        if str(pr.get("headRefName") or "").startswith("firsthand/")
+    })
+
+
+def _local_firsthand_remote_branches() -> list[str]:
+    """Best-effort fallback when GitHub API is unavailable.
+
+    It may include already-merged remote branches, but merge_by_resource plus the
+    recent window keeps this safe for early-morning digest candidate discovery.
+    """
+    proc = subprocess.run(
+        ["git", "for-each-ref", "--format=%(refname:short)", "refs/remotes/origin/firsthand"],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        return []
+    branches = []
+    for ref in proc.stdout.splitlines():
+        if ref.startswith("origin/firsthand/"):
+            branches.append(ref.removeprefix("origin/"))
+    return sorted(set(branches))
+
+
+def _git_tree_for_branch(branch: str) -> dict[str, str]:
+    """Fetch and read data/firsthand/*.md from origin/<branch> without checkout."""
+    ref = f"origin/{branch}"
+    exists = subprocess.run(
+        ["git", "rev-parse", "--verify", "--quiet", ref],
+        capture_output=True, text=True,
+    )
+    if exists.returncode != 0:
+        fetched = subprocess.run(
+            ["git", "fetch", "origin", branch, "--quiet"],
+            capture_output=True, text=True,
+        )
+        if fetched.returncode != 0:
+            return {}
+    listing = subprocess.run(
+        ["git", "ls-tree", "-r", "--name-only", ref, "--", "data/firsthand"],
+        capture_output=True, text=True,
+    )
+    if listing.returncode != 0:
+        return {}
+    tree = {}
+    for path in listing.stdout.splitlines():
+        if not _is_firsthand_okf(path):
+            continue
+        blob = subprocess.run(
+            ["git", "show", f"{ref}:{path}"],
+            capture_output=True, text=True,
+        )
+        if blob.returncode == 0:
+            tree[path] = blob.stdout
+    return tree
+
+
+def load_open_pr_items(branches: list[str] | None = None) -> list[dict]:
+    branches = branches if branches is not None else _open_firsthand_pr_branches()
+    items = []
+    for branch in branches:
+        items.extend(okf_items_from_tree(_git_tree_for_branch(branch)))
+    return items
 
 
 def recent(items: list[dict], days: int, today: str) -> list[dict]:
@@ -71,10 +189,15 @@ def main():
     ap.add_argument("--root", default=str(Path(__file__).resolve().parent.parent.parent
                                           / "data" / "firsthand"))
     ap.add_argument("--json", action="store_true", help="输出 JSON（给 agent 消费）")
+    ap.add_argument("--include-open-prs", action="store_true",
+                    help="叠加 open firsthand/* PR 中尚未合入 main 的 OKF 条目")
     args = ap.parse_args()
     today = datetime.datetime.now(
         datetime.timezone(datetime.timedelta(hours=8))).date().isoformat()
-    items = recent(load_index(args.root), args.days, today)
+    items = load_index(args.root)
+    if args.include_open_prs:
+        items = merge_by_resource(items, load_open_pr_items())
+    items = recent(items, args.days, today)
     if args.vendor:
         items = filter_vendor(items, args.vendor)
     if args.json:
