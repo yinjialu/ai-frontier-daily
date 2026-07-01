@@ -7,6 +7,7 @@ os.environ["PATH"] = (
     + ":" + os.path.expanduser("~/.local/bin")
 )
 
+import json
 import sys
 import subprocess
 from pathlib import Path
@@ -170,6 +171,39 @@ def _existing_open_pr(branch: str) -> str:
     return r.stdout.strip()
 
 
+def _source_counts_from_pr_files(files: list[dict]) -> dict[str, int]:
+    """从 PR 文件列表统计 data/firsthand/<source>/*.md 数量。"""
+    counts = {}
+    for f in files:
+        path = f.get("path", "")
+        parts = path.split("/")
+        if len(parts) == 4 and parts[0] == "data" and parts[1] == "firsthand" and path.endswith(".md"):
+            counts[parts[2]] = counts.get(parts[2], 0) + 1
+    return dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0])))
+
+
+def _firsthand_pr_title(branch: str, counts: dict[str, int]) -> str:
+    date = branch.split("/")[-1]
+    suffix = ", ".join(f"{source} {count}篇" for source, count in counts.items())
+    return f"📡 内参新动态 | {date} ({suffix})" if suffix else f"📡 内参新动态 | {date}"
+
+
+def _refresh_pr_title(pr_num: str, branch: str) -> None:
+    """按当前 PR 文件列表刷新标题；失败不影响内容分支推送。"""
+    r = subprocess.run(
+        ["gh", "pr", "view", pr_num, "--json", "files"],
+        cwd=REPO, capture_output=True, text=True,
+    )
+    if r.returncode != 0:
+        return
+    try:
+        files = json.loads(r.stdout).get("files") or []
+    except json.JSONDecodeError:
+        return
+    title = _firsthand_pr_title(branch, _source_counts_from_pr_files(files))
+    subprocess.run(["gh", "pr", "edit", pr_num, "--title", title], cwd=REPO, check=False)
+
+
 def _real_open_pr(branch, articles):
     """当天累积一个 PR：
     - 当天已有 open PR → checkout 该分支、追加 OKF commit、push（PR 自动更新）、评论 @user 通知；
@@ -192,6 +226,7 @@ def _real_open_pr(branch, articles):
             subprocess.run(["git", "commit", "-m", f"firsthand: 新增 ({counts})"],
                            cwd=REPO, check=True)
             subprocess.run(["git", "push", "origin", branch], cwd=REPO, check=True)
+            _refresh_pr_title(pr_num, branch)
             # 评论里 @user → 触发提醒通知（尽力而为，失败不影响）
             subprocess.run(["gh", "pr", "comment", pr_num,
                             "--body", f"@yinjialu 🆕 本日内参新增（{counts}）：\n\n{body}"],
@@ -203,7 +238,7 @@ def _real_open_pr(branch, articles):
             subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
                            cwd=REPO, check=True)
             subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
-            title = f"📡 内参新动态 | {branch.split('/')[-1]} ({counts})"
+            title = _firsthand_pr_title(branch, {k: len(v) for k, v in by_source.items()})
             # 确保 label 存在（缺则建，幂等，失败不影响）
             subprocess.run(["gh", "label", "create", "firsthand-intel",
                             "--color", "1f6feb", "--description", "一手信源内参监控"],
