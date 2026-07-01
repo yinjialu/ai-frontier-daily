@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.02",
+  "cnDate": "7月2日 周四",
+  "edition": "VOL.183",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Codex 0.142.5 修复 Responses WebSocket 请求体写入 trace 日志",
+      "summary": "OpenAI 发布 Codex 0.142.5，回补一个隐私与安全相关修复：避免完整 Responses WebSocket 请求 payload 被写入 trace 日志。使用远程调试或集中日志的团队应尽快升级。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.142.5"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

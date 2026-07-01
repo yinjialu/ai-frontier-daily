@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.02",
+  "cnDate": "7月2日 周四",
+  "edition": "VOL.183",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "NVIDIA 强调美国本土 AI 基建链：芯片、电子制造与 AI 工厂同步建设",
+      "summary": "NVIDIA 官方博客梳理其与合作伙伴在美国建设 AI 基础设施的投入，强调半导体制造、电子制造和 AI 工厂三类设施同步扩张。文章称 2026 年 NVIDIA 驱动的 AI 需求将为美国 GDP 贡献 4850 亿美元。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/nvidia-and-partners-build-in-america-for-america/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 NVIDIA AI 平台与生态动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
