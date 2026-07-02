@@ -114,10 +114,16 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
      本地预览对比：浏览器打开 `skills/ai-daily-digest/glass-preview.html`；
      展示页 `index.html` 顶部「质感」可一键切换（存 `localStorage`）。
 7. **渲染卡片**：
+   渲染前先跑一次环境自检（幂等；用 `uv` 管 Python 依赖、安装 npm 依赖与 Playwright Chromium，
+   并做 Python + Chromium smoke test）：
+   ```bash
+   scripts/ensure-daily-render-env.sh
+   ```
    ```bash
    node "$SKILL_DIR/render.js" data/<vendor>/<date>.json output/<vendor>/<date> --engine playwright
    ```
-   （`$SKILL_DIR` = 本 skill 目录；首次缺依赖先 `npm i playwright && npx playwright install --with-deps chromium`）
+   （`$SKILL_DIR` = 本 skill 目录；Playwright 渲染器已使用整页 clip 截图，避免元素稳定性等待导致的
+   `elementHandle.screenshot` 超时。）
 8. **更新展示页指针与索引**（所有厂商处理完后执行一次）：调 `python "$SKILL_DIR/run.py" --reindex`，
    它按实际生成的 *.jpg 重建各厂商 `output/<vendor>/latest.json` + 汇总 `output/index.json`，
    不要手拼这两个文件。
