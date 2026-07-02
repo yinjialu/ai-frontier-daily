@@ -104,7 +104,7 @@
       "https://www.anthropic.com/news/claude-sonnet-5",
       "https://www.anthropic.com/news/redeploying-fable-5"
     ],
-    "known_urls_count": 18,
+    "known_urls_count": 19,
     "last_new_article": "2026-07-02T09:08:38+08:00"
   },
   "transformer-circuits": {
@@ -1318,8 +1318,8 @@
     "last_new_article": "2026-07-01T00:04:17+08:00"
   },
   "google-models-research": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://blog.google/innovation-and-ai/technology/research/helping-communities-prepare-for-natural-disasters",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/deepmind-a24-research-partnership",
