@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.03",
+  "cnDate": "7月3日 周五",
+  "edition": "VOL.184",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Claude Enterprise 增强用量分析与支出控制",
+      "summary": "Anthropic 为 Claude Enterprise 增加管理员分析、模型级权限和支出提醒，可按团队/用户追踪成本，并通过 Analytics API 接入财务与云成本系统。",
+      "source": "claude.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

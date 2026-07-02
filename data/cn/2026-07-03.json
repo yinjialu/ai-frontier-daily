@@ -1,0 +1,19 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.03",
+  "cnDate": "7月3日 周五",
+  "edition": "VOL.184",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "company": "通义千问",
+      "tag": "开发者",
+      "title": "Qwen Code v0.19.5 强化多通道与 Web Shell 体验",
+      "summary": "Qwen Code v0.19.5 增加 DingTalk 主动发送、通道会话生命周期元数据、TLS serve 参数与统一 /effort 命令，并修复 Web Shell 与 MCP 可用性问题。",
+      "source": "github.com/QwenLM/qwen-code"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}

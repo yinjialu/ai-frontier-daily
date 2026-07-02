@@ -1,0 +1,30 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.03",
+  "cnDate": "7月3日 周五",
+  "edition": "VOL.184",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "NVIDIA 推出 AI 算力扩张的资本合作模式",
+      "summary": "NVIDIA 以收入分成和信用支持方式邀请资本伙伴参与 AI 云建设，帮助 neocloud 为企业与 ISV 扩容 GPU 服务，缓解推理时代的算力融资压力。",
+      "source": "blogs.nvidia.com"
+    },
+    {
+      "tag": "安全",
+      "title": "NVIDIA 强调机密计算支撑 Agentic AI 安全扩展",
+      "summary": "NVIDIA 介绍 Confidential Computing 在 AI 推理和 Agent 场景中的应用，主张用硬件根信任保护使用中的数据，降低隐私、主权与合规顾虑。",
+      "source": "developer.nvidia.com"
+    },
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 发布 AI Agent 强化学习实战指南",
+      "summary": "NVIDIA 面向模型构建者和 Agent 开发者梳理何时使用强化学习，以及如何搭建可验证的首个 RL 训练循环，重点服务长程 Agent 优化。",
+      "source": "developer.nvidia.com"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 NVIDIA AI 平台与生态动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
