@@ -10,6 +10,7 @@ os.environ["PATH"] = (
 import json
 import sys
 import subprocess
+import inspect
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -111,7 +112,8 @@ def run_once(sources_path, okf_root, state_file, now,
                 "detected": now,            # 探测时间（诚实标注）
                 "full_text": text,          # 原文备份，避免链接失效/访问受限时云端无内容可用
             }
-            write_okf(okf_root, article)
+            path = write_okf(okf_root, article)
+            article["okf_path"] = str(path)
             pr_articles.append((source["id"], article))
         # 当天一个 PR：分支固定 firsthand/<date>；当天后续批次追加 commit + 评论 @user（见 _real_open_pr）
         branch = f"firsthand/{now[:10]}"
@@ -132,12 +134,13 @@ def run_once(sources_path, okf_root, state_file, now,
     # 重试：扫所有摘要失败的 OKF，重新生成后原地覆写（write_okf 幂等）
     retry_articles = failed_summary_articles(okf_root)
     retry_count = 0
+    retry_paths = []
     for fa in retry_articles:
         try:
             text = article_text_fn(fa["url"])
             title = fa["title"] or article_title_fn(fa["url"])
             s = summarize_fn(title or fa["url"], text)
-            write_okf(okf_root, {
+            path = write_okf(okf_root, {
                 "title": title or fa["url"],
                 "source": fa["source"],
                 "url": fa["url"],
@@ -147,6 +150,7 @@ def run_once(sources_path, okf_root, state_file, now,
                 "detected": fa["detected"] or now,
                 "full_text": text,
             })
+            retry_paths.append(str(path))
             if not s.get("error"):
                 retry_count += 1
                 print(f"[firsthand] 摘要补生成成功: {fa['url']}")
@@ -158,7 +162,11 @@ def run_once(sources_path, okf_root, state_file, now,
     save_state(state_file, state)
     save_state(heartbeat_file, heartbeat)  # 本地心跳，不提交
     if commit_state_fn:
-        commit_state_fn()
+        sig = inspect.signature(commit_state_fn)
+        if sig.parameters:
+            commit_state_fn(retry_paths)
+        else:
+            commit_state_fn()
     return {"new_count": new_count, "retry_count": retry_count}
 
 
@@ -215,6 +223,9 @@ def _real_open_pr(branch, articles):
         by_source.setdefault(a["source"], []).append(a)
     counts = ", ".join(f"{k} {len(v)}篇" for k, v in by_source.items())
     body = render_pr_body(articles)
+    okf_paths = sorted({a["okf_path"] for a in articles if a.get("okf_path")})
+    if not okf_paths:
+        raise RuntimeError("no OKF paths to stage for firsthand PR")
     try:
         pr_num = _existing_open_pr(branch)
         if pr_num:
@@ -222,7 +233,7 @@ def _real_open_pr(branch, articles):
             subprocess.run(["git", "fetch", "origin", branch], cwd=REPO, check=True)
             subprocess.run(["git", "checkout", "-B", branch, f"origin/{branch}"],
                            cwd=REPO, check=True)
-            subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
+            subprocess.run(["git", "add", *okf_paths], cwd=REPO, check=True)
             subprocess.run(["git", "commit", "-m", f"firsthand: 新增 ({counts})"],
                            cwd=REPO, check=True)
             subprocess.run(["git", "push", "origin", branch], cwd=REPO, check=True)
@@ -234,7 +245,7 @@ def _real_open_pr(branch, articles):
         else:
             # 新建模式
             subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
-            subprocess.run(["git", "add", "data/firsthand/"], cwd=REPO, check=True)
+            subprocess.run(["git", "add", *okf_paths], cwd=REPO, check=True)
             subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
                            cwd=REPO, check=True)
             subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
@@ -252,7 +263,7 @@ def _real_open_pr(branch, articles):
         subprocess.run(["git", "checkout", "main"], cwd=REPO, check=False)
 
 
-def _real_commit_state():
+def _real_commit_state(extra_paths=None):
     """state.json + 索引产物(index.json/feed.xml)直接提交 main（本机无 403）。
     索引从 main 的 OKF 重建,内容不变则字节一致 → 不产生提交,不刷屏。"""
     try:
@@ -260,9 +271,9 @@ def _real_commit_state():
         write_outputs(DEFAULT_OKF_ROOT)
     except Exception as e:
         print(f"[firsthand] 索引生成失败(忽略): {e}")
-    subprocess.run(["git", "add", "data/firsthand-state.json",
-                    "data/firsthand/index.json", "data/firsthand/feed.xml"],
-                   cwd=REPO, check=False)
+    paths = ["data/firsthand-state.json", "data/firsthand/index.json", "data/firsthand/feed.xml"]
+    paths.extend(extra_paths or [])
+    subprocess.run(["git", "add", *paths], cwd=REPO, check=False)
     r = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=REPO)
     if r.returncode != 0:
         subprocess.run(["git", "commit", "-m", "chore: firsthand state + index"], cwd=REPO, check=False)
