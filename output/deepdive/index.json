@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "slug": "redeploying-fable-5",
+      "title": "Fable 5 重新上线"
+    },
+    {
       "slug": "getting-started-with-loops",
       "title": "Agent 有了运行时"
     },
