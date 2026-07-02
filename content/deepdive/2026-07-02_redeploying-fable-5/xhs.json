@@ -1,0 +1,89 @@
+{
+  "slug": "redeploying-fable-5",
+  "style": "editorial",
+  "edition": "AI FRONTIER",
+  "brand": "变量生活",
+  "period": "2026.07",
+  "cover": "assets/xiaohei-illustrations/01-model-gate.png",
+  "title": "Fable 5 重新上线",
+  "coverTitle": "Fable 5\n重新上线",
+  "topics": ["Anthropic", "模型安全", "AI 治理"],
+  "coverCaption": [
+    "这不是普通产品恢复。",
+    "而是前沿模型从上线，走向受控开放。"
+  ],
+  "cards": [
+    {
+      "kind": "quote",
+      "heading": "不只是\n又能用了",
+      "quote": "Fable 5 重新上线，真正值得看的是 Anthropic 如何解释越狱、出口管制和重新开放。",
+      "notes": [
+        ["01", "模型发布不再只是能力、价格和文档。"],
+        ["02", "安全审查、访问分级和政府协作开始进入发布流程。"]
+      ],
+      "footer": ["核心判断", "Swipe"]
+    },
+    {
+      "kind": "image",
+      "heading": "先过安全闸\n再恢复访问",
+      "image": "assets/xiaohei-illustrations/01-model-gate.png",
+      "caption": [
+        "Fable 5 的恢复，不是开关一拨。",
+        "它背后有出口管制解除、分类器更新和风险复核。"
+      ],
+      "footer": ["受控开放", "03 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "争议不在\n能否越狱",
+      "quote": "更关键的问题是：被绕过的是哪一层？绕过之后释放了什么能力？风险到底有多大？",
+      "notes": [
+        ["边界", "是安全 margin 被穿透，还是核心危险能力被打开？"],
+        ["代价", "分类器越保守，正常 coding/debugging 越可能被误伤。"]
+      ],
+      "footer": ["Jailbreak", "04 / 08"]
+    },
+    {
+      "kind": "image",
+      "heading": "越狱不是\n一个开关",
+      "image": "assets/xiaohei-illustrations/02-jailbreak-scale.png",
+      "caption": [
+        "Anthropic 提了四个维度：能力增益、范围、武器化难度、可发现性。",
+        "这更像漏洞分级，而不是一句“被越狱了”。"
+      ],
+      "footer": ["风险分级", "05 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "前沿模型\n不是裸能力",
+      "quote": "真正上线的不是一个裸模型，而是模型、分类器、权限、日志、滥用检测和人工确认组成的系统。",
+      "notes": [
+        ["Harness", "Claude Code 本身就是一套模型外壳。"],
+        ["防御", "单层被绕过，后面还要有 policy、sandbox 和审计兜底。"]
+      ],
+      "footer": ["基础设施视角", "06 / 08"]
+    },
+    {
+      "kind": "image",
+      "heading": "发布变成\n治理流程",
+      "image": "assets/xiaohei-illustrations/03-release-governance.png",
+      "caption": [
+        "前沿模型发布正在变成一条链路：内部评测、外部安全伙伴、政府预评估、持续监控。",
+        "开放访问只是最后一步。"
+      ],
+      "footer": ["模型治理", "07 / 08"]
+    },
+    {
+      "kind": "closing",
+      "heading": "能力曲线之外\n还有治理曲线",
+      "quote": "模型公司以后不只要证明模型更强，也要证明自己知道如何限制、暂停、修补和重新开放。",
+      "notes": [
+        ["READ", "完整长文已发公众号：变量生活"],
+        ["DO", "别把前沿模型可用性当成稳定前提。"]
+      ],
+      "footer": ["变量生活", "完整长文见公众号"]
+    }
+  ],
+  "caption": "Fable 5 重新上线了。\n\n但这次真正值得看的，不是“又能用了”，而是 Anthropic 少见地把一件敏感的事摊开讲：一个前沿模型被发现可能绕过安全机制后，模型公司、云厂商、安全研究者和政府之间，应该如何判断风险、修补问题、决定能不能重新开放。\n\n我觉得这里有三个信号：\n\n1. 越狱不该只被理解成一个开关。更重要的是分级：能力增益有多大、范围多广、是否容易武器化、是否已经传播。\n\n2. 前沿模型不是裸能力。真正上线的是模型本体、分类器、权限、日志、滥用检测、云平台分发和人工确认机制组成的系统。\n\n3. 发布开始变成治理流程。以后最强模型的节奏，可能不只由产品团队决定，也会受安全评估、政府协作和合规流程影响。\n\n这对开发者也很现实：不要把前沿模型可用性当成绝对稳定前提；遇到拒答，也要考虑它可能是安全策略变化，而不只是模型变弱。\n\n完整长文已发公众号：变量生活。",
+  "tags": ["AI", "Anthropic", "Claude", "Fable5", "模型安全", "AI治理", "Agent"]
+}

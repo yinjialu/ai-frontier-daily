@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 55,
+    "known_urls_count": 56,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -32,9 +32,10 @@
       "https://claude.com/blog/building-effective-human-agent-teams",
       "https://claude.com/blog/introducing-the-claude-apps-gateway",
       "https://claude.com/blog/claude-in-microsoft-foundry",
-      "https://claude.com/blog/getting-started-with-loops"
+      "https://claude.com/blog/getting-started-with-loops",
+      "https://claude.com/blog/giving-admins-more-visibility-and-control-over-claude-usage-and-spend"
     ],
-    "last_new_article": "2026-07-01T01:06:02+08:00"
+    "last_new_article": "2026-07-03T07:02:01+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -101,10 +102,11 @@
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag",
       "https://www.anthropic.com/news/claude-science-ai-workbench",
-      "https://www.anthropic.com/news/claude-sonnet-5"
+      "https://www.anthropic.com/news/claude-sonnet-5",
+      "https://www.anthropic.com/news/redeploying-fable-5"
     ],
-    "known_urls_count": 16,
-    "last_new_article": "2026-07-01T02:07:49+08:00"
+    "known_urls_count": 19,
+    "last_new_article": "2026-07-02T09:08:38+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -166,7 +168,7 @@
       "https://transformer-circuits.pub/2026/june-update/index.html"
     ],
     "initialized": true,
-    "known_urls_count": 54,
+    "known_urls_count": 55,
     "last_new_article": "2026-07-01T02:07:49+08:00"
   },
   "openai-news": {
@@ -1202,7 +1204,7 @@
       "https://openai.com/index/genebench-pro/case-studies"
     ],
     "initialized": true,
-    "known_urls_count": 1030,
+    "known_urls_count": 1034,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "deepmind-blog": {
@@ -1313,7 +1315,7 @@
       "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash"
     ],
     "initialized": true,
-    "known_urls_count": 103,
+    "known_urls_count": 104,
     "last_new_article": "2026-07-01T00:04:17+08:00"
   },
   "google-models-research": {
@@ -1341,11 +1343,12 @@
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/accelerator-ai-for-the-planet",
       "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite",
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 23,
-    "last_new_article": "2026-07-01T01:06:02+08:00"
+    "known_urls_count": 25,
+    "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1379,11 +1382,12 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion",
       "https://blog.google/products-and-platforms/products/workspace/take-notes-for-me",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite",
-      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026"
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026",
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 36,
-    "last_new_article": "2026-07-01T05:10:44+08:00"
+    "known_urls_count": 39,
+    "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,

@@ -46,17 +46,36 @@ async function renderPlaywright(cards, outDir){
     : {};
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage({deviceScaleFactor:SCALE});
-  const fileUrl = "file://" + path.join(__dirname, "cards.html");
-  for (const card of cards){
-    const html = cardPage(card, true);
-    await page.setContent(html, {waitUntil:"networkidle"});
-    const el = await page.$(".card");
-    const shot = {path: path.join(outDir, card.name + "." + EXT)};
-    if (EXT === "jpg") { shot.type = "jpeg"; shot.quality = QUALITY; }
-    await el.screenshot(shot);
-    console.log("  ✓", card.name + "." + EXT);
+  try {
+    for (const card of cards){
+      const html = cardPage(card, true);
+      await page.setViewportSize({
+        width: card.w,
+        height: Math.max(card.h || 1440, 2400),
+      });
+      await page.setContent(html, {waitUntil:"domcontentloaded"});
+      await page.evaluate(async () => {
+        if (!document.fonts) return;
+        await Promise.race([
+          document.fonts.ready,
+          new Promise(resolve => setTimeout(resolve, 5000)),
+        ]);
+      });
+      const box = await page.$eval(".card", el => {
+        const r = el.getBoundingClientRect();
+        return {width: Math.ceil(r.width), height: Math.ceil(r.height)};
+      });
+      const shot = {
+        path: path.join(outDir, card.name + "." + EXT),
+        clip: {x: 0, y: 0, width: box.width, height: box.height},
+      };
+      if (EXT === "jpg") { shot.type = "jpeg"; shot.quality = QUALITY; }
+      await page.screenshot(shot);
+      console.log("  ✓", card.name + "." + EXT);
+    }
+  } finally {
+    await browser.close();
   }
-  await browser.close();
 }
 
 (async function main(){
