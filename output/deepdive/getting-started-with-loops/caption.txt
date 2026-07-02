@@ -1,0 +1,21 @@
+Claude 官方最近讲了 Getting started with loops。
+
+我觉得重点不是又多了几个命令，而是 agent 产品正在从「对话界面」往「运行时系统」移动。
+
+以前我们主要设计 prompt：这一轮怎么让模型答得更好。
+
+但 loop 关心的是另一组问题：
+
+1. trigger：它因为什么被唤醒？
+2. verification：它怎么检查自己做得对不对？
+3. stop condition：满足什么条件必须停？
+4. budget：最多消耗多少轮、多少 token、多少外部资源？
+
+真正难的也不是让 agent 多跑几步，而是让它知道什么时候该停、什么时候该叫人、什么时候不该继续烧资源。
+
+所以我更愿意把 Claude loops 看成一个信号：AI 的下一步，不只是更聪明地回答你，而是更可靠地在流程里运行。
+
+我们以前学的是怎么写一句好 prompt。
+接下来要学的，是怎么设计一个好 loop。
+
+#AI #Claude #Agent #ClaudeCode #PromptEngineering #自动化
