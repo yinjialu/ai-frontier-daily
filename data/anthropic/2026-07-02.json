@@ -6,6 +6,13 @@
   "brand": "AI 前哨 · 每日 Anthropic",
   "updates": [
     {
+      "tag": "政策",
+      "title": "Fable 5 全球恢复访问，Anthropic 补充越狱分级框架",
+      "summary": "Anthropic 确认美国出口管制解除后，Fable 5 自 7 月 1 日起恢复全球访问，Mythos 5 先向获批美国机构开放；官方同时上线新网络安全分类器，并提出行业共享的 AI 越狱严重度评估框架。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/redeploying-fable-5"
+    },
+    {
       "tag": "开发者",
       "title": "Claude Code v2.1.198：Chrome GA + 后台 Agent 自动开草稿 PR",
       "summary": "Anthropic 发布 Claude Code v2.1.198：Claude in Chrome 正式 GA，后台 Agent 完成工作后可提交、推送并开 draft PR；同时新增通知钩子、/dataviz skill、AWS 上游网关与多项稳定性修复。",
