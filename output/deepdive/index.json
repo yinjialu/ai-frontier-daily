@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "slug": "getting-started-with-loops",
+      "title": "Agent 有了运行时"
+    },
+    {
       "slug": "introducing-claude-tag",
       "title": "Claude Tag 发工牌了"
     }

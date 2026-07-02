@@ -1,0 +1,90 @@
+{
+  "slug": "getting-started-with-loops",
+  "style": "editorial",
+  "edition": "AI FRONTIER",
+  "brand": "变量生活",
+  "period": "2026.07",
+  "cover": "assets/cover-wechat-21x9.png",
+  "title": "Agent 有了运行时",
+  "coverTitle": "Agent\n有了运行时",
+  "topics": ["Claude Loops", "Agent", "运行时"],
+  "coverCaption": [
+    "重点不是新命令。",
+    "而是 AI 开始进入可触发、可停止、可验证的流程。"
+  ],
+  "cards": [
+    {
+      "kind": "quote",
+      "heading": "别只学 prompt\n要学 loop",
+      "quote": "prompt 决定模型这一轮怎么想；loop 决定模型什么时候启动、什么时候继续、什么时候停。",
+      "notes": [
+        ["01", "一次回答，解决的是生成质量。"],
+        ["02", "持续运行，考验的是触发、验证、停止和预算。"]
+      ],
+      "footer": ["核心判断", "Swipe"]
+    },
+    {
+      "kind": "image",
+      "heading": "prompt 纸条\n进了机器",
+      "image": "assets/getting-started-with-loops-illustrations/01-prompt-to-loop.png",
+      "caption": [
+        "Claude 不再只是回答一次。",
+        "它被放进一个有边界的循环里反复检查、继续、停止。"
+      ],
+      "footer": ["从 prompt 到 loop", "03 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "四种 loop\n交出四种控制权",
+      "quote": "turn-based、goal-based、time-based、proactive，真正区别是人把哪部分控制权交给系统。",
+      "notes": [
+        ["触发", "turn-based 还由人一轮轮推动。"],
+        ["目标", "goal-based 把下一步和完成判断交出去一部分。"],
+        ["时间", "time-based 把什么时候启动交给系统。"]
+      ],
+      "footer": ["控制权变化", "04 / 08"]
+    },
+    {
+      "kind": "image",
+      "heading": "最难的\n不是开始",
+      "image": "assets/getting-started-with-loops-illustrations/02-stop-condition.png",
+      "caption": [
+        "真正难的是停止。",
+        "一个好 loop，必须知道什么证据足够让自己停下来。"
+      ],
+      "footer": ["Stop Condition", "05 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "verification\n是刹车系统",
+      "quote": "没有 verification，loop 只是多跑几轮；有了 verification，loop 才变成可收敛的系统。",
+      "notes": [
+        ["可检查", "测试通过、引用可查、没有占位符，比“更好一点”更适合 loop。"],
+        ["可托付", "系统必须能发现偏差，也能及时把控制权还给人。"]
+      ],
+      "footer": ["验证机制", "06 / 08"]
+    },
+    {
+      "kind": "image",
+      "heading": "从聊天窗口\n到基础设施",
+      "image": "assets/getting-started-with-loops-illustrations/03-agent-infrastructure.png",
+      "caption": [
+        "当 AI 定时运行、检查状态、写回结果，它就不再只是工具。",
+        "它开始接近 cron、CI、监控和日报系统。"
+      ],
+      "footer": ["Time-based Loop", "07 / 08"]
+    },
+    {
+      "kind": "closing",
+      "heading": "好 loop\n像调度器",
+      "quote": "模型是智能的 CPU，tools 是外设，context 是内存；loop 决定任务何时被唤醒、继续、挂起和退出。",
+      "notes": [
+        ["READ", "完整长文已发公众号：变量生活"],
+        ["DO", "先写清 trigger / verification / stop / budget。"]
+      ],
+      "footer": ["变量生活", "完整长文见公众号"]
+    }
+  ],
+  "caption": "Claude 官方最近讲了 Getting started with loops。\n\n我觉得重点不是又多了几个命令，而是 agent 产品正在从「对话界面」往「运行时系统」移动。\n\n以前我们主要设计 prompt：这一轮怎么让模型答得更好。\n\n但 loop 关心的是另一组问题：\n\n1. trigger：它因为什么被唤醒？\n2. verification：它怎么检查自己做得对不对？\n3. stop condition：满足什么条件必须停？\n4. budget：最多消耗多少轮、多少 token、多少外部资源？\n\n真正难的也不是让 agent 多跑几步，而是让它知道什么时候该停、什么时候该叫人、什么时候不该继续烧资源。\n\n所以我更愿意把 Claude loops 看成一个信号：AI 的下一步，不只是更聪明地回答你，而是更可靠地在流程里运行。\n\n我们以前学的是怎么写一句好 prompt。\n接下来要学的，是怎么设计一个好 loop。",
+  "tags": ["AI", "Claude", "Agent", "ClaudeCode", "PromptEngineering", "自动化"]
+}
