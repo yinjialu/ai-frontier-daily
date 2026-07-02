@@ -3,6 +3,7 @@ seen.db
 # 内参监控本地心跳（last_checked，每小时变，不提交以免刷屏 main）
 data/.firsthand-heartbeat.json
 node_modules/
+.venv/
 __pycache__/
 *.pyc
 
