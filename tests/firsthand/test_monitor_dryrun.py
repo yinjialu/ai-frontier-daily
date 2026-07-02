@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from scripts import monitor_firsthand
 from scripts.monitor_firsthand import _firsthand_pr_title, _source_counts_from_pr_files, run_once
 
 
@@ -282,3 +283,31 @@ def test_run_once_pr_failure_does_not_crash_or_mark_seen(tmp_path):
     import json
     st = json.loads(state_file.read_text(encoding="utf-8"))["demo"]
     assert "https://demo/blog/b" not in st.get("open_pr_urls", [])
+
+
+def test_real_open_pr_stages_only_current_article_paths(monkeypatch):
+    """更新已有 PR 时只 stage 本轮写出的 OKF，避免扫入工作树遗留文件。"""
+    calls = []
+
+    def fake_run(cmd, **kwargs):
+        calls.append(cmd)
+        class Result:
+            returncode = 0
+            stdout = ""
+            stderr = ""
+        return Result()
+
+    monkeypatch.setattr(monitor_firsthand, "_existing_open_pr", lambda branch: "94")
+    monkeypatch.setattr(monitor_firsthand, "_refresh_pr_title", lambda pr_num, branch: None)
+    monkeypatch.setattr(monitor_firsthand.subprocess, "run", fake_run)
+
+    monitor_firsthand._real_open_pr("firsthand/2026-07-02", [{
+        "source": "demo",
+        "title": "Demo article",
+        "url": "https://demo/article",
+        "summary": "摘要",
+        "okf_path": "data/firsthand/demo/02-article.md",
+    }])
+
+    assert ["git", "add", "data/firsthand/demo/02-article.md"] in calls
+    assert ["git", "add", "data/firsthand/"] not in calls
