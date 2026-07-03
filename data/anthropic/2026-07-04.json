@@ -1,0 +1,19 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.04",
+  "cnDate": "7月4日 周六",
+  "edition": "VOL.185",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Anthropic 公开 Fable 5 网络安全分类器与越狱评级框架",
+      "summary": "Anthropic 披露 Fable 5 的网络安全分类器边界，将网络请求分为禁止、高风险双用途、低风险双用途和良性使用，并提出 CJS 越狱严重性分级，帮助行业统一评估风险。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

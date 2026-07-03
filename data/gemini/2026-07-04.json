@@ -1,0 +1,19 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.04",
+  "cnDate": "7月4日 周六",
+  "edition": "VOL.185",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "Google 汇总 6 月 AI 更新：Gemini 3.5 Live Translate 与 Gemma 4 12B",
+      "summary": "Google 月度汇总披露 Gemini 3.5 Live Translate、Gemma 4 12B 本地模型、Gemini 3.5 Flash computer use、Nano Banana 2 Lite 和 Gemini Omni Flash 等更新，覆盖端侧、多模态和 Agent 场景。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Google Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
