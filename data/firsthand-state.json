@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 56,
+    "known_urls_count": 57,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -103,10 +103,11 @@
       "https://www.anthropic.com/news/introducing-claude-tag",
       "https://www.anthropic.com/news/claude-science-ai-workbench",
       "https://www.anthropic.com/news/claude-sonnet-5",
-      "https://www.anthropic.com/news/redeploying-fable-5"
+      "https://www.anthropic.com/news/redeploying-fable-5",
+      "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
     ],
-    "known_urls_count": 19,
-    "last_new_article": "2026-07-02T09:08:38+08:00"
+    "known_urls_count": 20,
+    "last_new_article": "2026-07-03T08:03:28+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1347,7 +1348,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 25,
+    "known_urls_count": 26,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
@@ -1386,7 +1387,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 39,
+    "known_urls_count": 40,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
