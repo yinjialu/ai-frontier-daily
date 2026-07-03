@@ -1313,11 +1313,12 @@
       "https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome",
       "https://deepmind.google/blog/gemini-robotics-on-device-brings-ai-to-local-robotic-devices",
       "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash",
-      "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash"
+      "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash",
+      "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership"
     ],
     "initialized": true,
     "known_urls_count": 104,
-    "last_new_article": "2026-07-01T00:04:17+08:00"
+    "last_new_article": "2026-07-04T07:38:50+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1391,8 +1392,8 @@
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='qwenlm.github.io', port=443): Read timed out. (read timeout=20)",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
