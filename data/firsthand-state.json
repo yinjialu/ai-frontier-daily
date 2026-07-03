@@ -1391,8 +1391,8 @@
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='qwenlm.github.io', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
