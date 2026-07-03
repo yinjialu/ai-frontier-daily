@@ -71,8 +71,8 @@
     "known_urls_count": 50
   },
   "anthropic-research": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Read timed out. (read timeout=20)",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://www.anthropic.com/research/team/alignment",
       "https://www.anthropic.com/research/team/economic-research",
