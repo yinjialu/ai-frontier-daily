@@ -71,8 +71,8 @@
     "known_urls_count": 50
   },
   "anthropic-research": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://www.anthropic.com/research/team/alignment",
       "https://www.anthropic.com/research/team/economic-research",
@@ -106,7 +106,7 @@
       "https://www.anthropic.com/news/redeploying-fable-5",
       "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
     ],
-    "known_urls_count": 20,
+    "known_urls_count": 21,
     "last_new_article": "2026-07-03T08:03:28+08:00"
   },
   "transformer-circuits": {
