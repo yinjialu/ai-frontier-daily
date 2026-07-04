@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.05",
+  "cnDate": "7月5日 周日",
+  "edition": "VOL.186",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "company": "Kimi",
+      "tag": "开发者",
+      "title": "Kimi Code 0.22.2/0.22.3：补强多模态 Web Chat 与后台子 Agent",
+      "summary": "Kimi Code 连续发布 0.22.2/0.22.3，修复流式转录、工具调用 ID、上下文压缩和视频播放问题，并新增图片点击放大、推理等级选择与后台子 Agent 完成等待。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "url": "https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.22.3"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}
