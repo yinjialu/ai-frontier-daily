@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 57,
+    "known_urls_count": 58,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -106,7 +106,7 @@
       "https://www.anthropic.com/news/redeploying-fable-5",
       "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
     ],
-    "known_urls_count": 21,
+    "known_urls_count": 22,
     "last_new_article": "2026-07-03T08:03:28+08:00"
   },
   "transformer-circuits": {
