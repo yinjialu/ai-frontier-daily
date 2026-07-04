@@ -1,0 +1,19 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.05",
+  "cnDate": "7月5日 周日",
+  "edition": "VOL.186",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Google DeepMind 与 A24 建立生成式影像研究合作",
+      "summary": "Google DeepMind 与电影公司 A24 宣布长期研究合作，让创作者参与测试和反馈未来 AI 影像工作流；短期不是模型发布，但显示多模态生成技术正进入专业内容制作环节。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/deepmind-a24-research-partnership/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Google Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

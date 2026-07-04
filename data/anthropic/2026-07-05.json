@@ -1,0 +1,19 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.05",
+  "cnDate": "7月5日 周日",
+  "edition": "VOL.186",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.200/201：背景 Agent 与权限模式集中修复",
+      "summary": "Claude Code v2.1.200/201 将默认权限模式统一为 Manual，并修复后台会话睡眠唤醒、中断重跑、daemon 接管、插件加载和无障碍输出等问题，降低长时间 Agent 工作流的中断风险。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.200"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
