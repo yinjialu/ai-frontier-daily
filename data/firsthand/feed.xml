@@ -1,5 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-07-03T08:03:28+08:00</lastBuildDate><item><title>More details on Fable 5’s cyber safeguards and our jailbreak framework</title><link>https://www.anthropic.com/news/fable-safeguards-jailbreak-framework</link><guid isPermaLink="true">https://www.anthropic.com/news/fable-safeguards-jailbreak-framework</guid><category>anthropic-news</category><pubDate>2026-07-02</pubDate><description>Anthropic发布Fable 5模型的安全分类器细节，按风险等级划分四类网络安全用途，并公开AI越狱严重性框架草案，旨在建立行业标准，邀请各界反馈。
+<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-07-04T07:38:50+08:00</lastBuildDate><item><title>Google DeepMind and A24 announce first-of-its-kind research partnership</title><link>https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership</link><guid isPermaLink="true">https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership</guid><category>deepmind-blog</category><pubDate>2026-07-03</pubDate><description>Google DeepMind 与独立电影公司 A24 达成首次研究合作，将 AI 技术融入电影制作流程，帮助艺术家开发新工作流，共同塑造未来娱乐工具。
+
+## Full Text
+
+Google DeepMind and A24 launch research partnership
+Skip to main content
+The Keyword
+Google DeepMind and A24 announce first-of-its-kind research partnership
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Home
+Innovation &amp; AI
+Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+NotebookLM
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+See all AI updates
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+NotebookLM
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+See all AI updates
+Products &amp; platforms
+Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+See all product updates
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+See all product updates
+Company news
+Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Subscribe
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+["What's new in Android 17?", "What is the Google Home Speaker?", "How can I learn new AI skills?"]
+Subscribe
+The Keyword
+Home
+Innovation &amp; AI
+Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+NotebookLM
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+See all AI updates
+Products &amp; platforms
+Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+See all product updates
+Company news
+Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Images
+RSS feed
+Subscribe
+Breadcrumb
+Innovation &amp; AI
+Models &amp; research
+Google DeepMind
+Today, Google DeepMind and A24 are announcing a first-of-its-kind partnership focused on research. The collaboration pairs a world-leading research lab with the industry’s most filmmaker-forward studio to help artists develop new workflows and techniques. This ensures the tools of the future are shaped by the creators who use them.
+This partnership creates a deep research and development collaboration between A24 and Google DeepMind spanning multiple projects over time. By anchoring Google DeepMind's innovations directly within the creative process, A24 and its filmmakers can help shape new technology in service of their vision and expand their storytelling possibilities. This hands-on collaboration provides Google DeepMind with invaluable feedback and guidance from leading artists. In addition, Google has made an investment in A24.
+Looking ahead, the partnership represents the beginning of a collaborative journey, one rooted in research and shared curiosity. While the initial focus is on bridging the gap between cutting-edge technology and next generation entertainment, the specific goals, technical outputs and creative milestones of this initiative will evolve over time. As A24 and Google DeepMind’s researchers work side-by-side to test, iterate and build, this partnership aims to expand what is possible in the future of entertainment.
+POSTED IN:
+Google DeepMind
+Related stories
+Let’s stay in touch. Get the latest news from Google in your inbox.
+Subscribe
+No thanks
+Follow Us
+Privacy
+Terms
+About Google
+Google Products
+About the Keyword
+Help
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>More details on Fable 5’s cyber safeguards and our jailbreak framework</title><link>https://www.anthropic.com/news/fable-safeguards-jailbreak-framework</link><guid isPermaLink="true">https://www.anthropic.com/news/fable-safeguards-jailbreak-framework</guid><category>anthropic-news</category><pubDate>2026-07-02</pubDate><description>Anthropic发布Fable 5模型的安全分类器细节，按风险等级划分四类网络安全用途，并公开AI越狱严重性框架草案，旨在建立行业标准，邀请各界反馈。
 
 ## Full Text
 
