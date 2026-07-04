@@ -38,8 +38,8 @@
     "last_new_article": "2026-07-03T07:02:01+08:00"
   },
   "anthropic-engineering": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "502 Server Error: Bad Gateway for url: https://www.anthropic.com/engineering",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://www.anthropic.com/engineering/how-we-contain-claude",
       "https://www.anthropic.com/engineering/april-23-postmortem",
