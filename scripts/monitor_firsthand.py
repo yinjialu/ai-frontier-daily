@@ -27,6 +27,24 @@ REPO = Path(__file__).resolve().parent.parent
 DEFAULT_SOURCES = REPO / "firsthand-sources.yaml"
 DEFAULT_OKF_ROOT = REPO / "data" / "firsthand"
 DEFAULT_STATE = REPO / "data" / "firsthand-state.json"
+GIT_TIMEOUT_SECONDS = 180
+GH_TIMEOUT_SECONDS = 90
+
+
+def _cmd_timeout(cmd: list[str]) -> int:
+    return GH_TIMEOUT_SECONDS if cmd and cmd[0] == "gh" else GIT_TIMEOUT_SECONDS
+
+
+def _run(cmd: list[str], **kwargs):
+    """Run git/gh with a bounded timeout so launchd cannot wedge forever."""
+    kwargs.setdefault("cwd", REPO)
+    kwargs.setdefault("timeout", _cmd_timeout(cmd))
+    try:
+        return subprocess.run(cmd, **kwargs)
+    except subprocess.TimeoutExpired:
+        if kwargs.get("check"):
+            raise
+        return subprocess.CompletedProcess(cmd, 124, stdout="", stderr="timeout")
 
 
 def run_once(sources_path, okf_root, state_file, now,
@@ -172,10 +190,10 @@ def run_once(sources_path, okf_root, state_file, now,
 
 def _existing_open_pr(branch: str) -> str:
     """当天分支若已有 open PR，返回其编号，否则空串。"""
-    r = subprocess.run(
+    r = _run(
         ["gh", "pr", "list", "--head", branch, "--state", "open",
          "--json", "number", "--jq", ".[0].number // empty"],
-        cwd=REPO, capture_output=True, text=True)
+        capture_output=True, text=True)
     return r.stdout.strip()
 
 
@@ -198,9 +216,9 @@ def _firsthand_pr_title(branch: str, counts: dict[str, int]) -> str:
 
 def _refresh_pr_title(pr_num: str, branch: str) -> None:
     """按当前 PR 文件列表刷新标题；失败不影响内容分支推送。"""
-    r = subprocess.run(
+    r = _run(
         ["gh", "pr", "view", pr_num, "--json", "files"],
-        cwd=REPO, capture_output=True, text=True,
+        capture_output=True, text=True,
     )
     if r.returncode != 0:
         return
@@ -209,7 +227,7 @@ def _refresh_pr_title(pr_num: str, branch: str) -> None:
     except json.JSONDecodeError:
         return
     title = _firsthand_pr_title(branch, _source_counts_from_pr_files(files))
-    subprocess.run(["gh", "pr", "edit", pr_num, "--title", title], cwd=REPO, check=False)
+    _run(["gh", "pr", "edit", pr_num, "--title", title], check=False)
 
 
 def _real_open_pr(branch, articles):
@@ -230,37 +248,34 @@ def _real_open_pr(branch, articles):
         pr_num = _existing_open_pr(branch)
         if pr_num:
             # 更新模式：切到已有分支，追加本批 OKF
-            subprocess.run(["git", "fetch", "origin", branch], cwd=REPO, check=True)
-            subprocess.run(["git", "checkout", "-B", branch, f"origin/{branch}"],
-                           cwd=REPO, check=True)
-            subprocess.run(["git", "add", *okf_paths], cwd=REPO, check=True)
-            subprocess.run(["git", "commit", "-m", f"firsthand: 新增 ({counts})"],
-                           cwd=REPO, check=True)
-            subprocess.run(["git", "push", "origin", branch], cwd=REPO, check=True)
+            _run(["git", "fetch", "origin", branch], check=True)
+            _run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=True)
+            _run(["git", "add", *okf_paths], check=True)
+            _run(["git", "commit", "-m", f"firsthand: 新增 ({counts})"], check=True)
+            _run(["git", "push", "origin", branch], check=True)
             _refresh_pr_title(pr_num, branch)
             # 评论里 @user → 触发提醒通知（尽力而为，失败不影响）
-            subprocess.run(["gh", "pr", "comment", pr_num,
-                            "--body", f"@yinjialu 🆕 本日内参新增（{counts}）：\n\n{body}"],
-                           cwd=REPO, check=False)
+            _run(["gh", "pr", "comment", pr_num,
+                  "--body", f"@yinjialu 🆕 本日内参新增（{counts}）：\n\n{body}"],
+                 check=False)
         else:
             # 新建模式
-            subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
-            subprocess.run(["git", "add", *okf_paths], cwd=REPO, check=True)
-            subprocess.run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"],
-                           cwd=REPO, check=True)
-            subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
+            _run(["git", "checkout", "-B", branch], check=True)
+            _run(["git", "add", *okf_paths], check=True)
+            _run(["git", "commit", "-m", f"firsthand: 内参新动态 {branch}"], check=True)
+            _run(["git", "push", "-u", "origin", branch], check=True)
             title = _firsthand_pr_title(branch, {k: len(v) for k, v in by_source.items()})
             # 确保 label 存在（缺则建，幂等，失败不影响）
-            subprocess.run(["gh", "label", "create", "firsthand-intel",
-                            "--color", "1f6feb", "--description", "一手信源内参监控"],
-                           cwd=REPO, check=False)
-            subprocess.run(
+            _run(["gh", "label", "create", "firsthand-intel",
+                  "--color", "1f6feb", "--description", "一手信源内参监控"],
+                 check=False)
+            _run(
                 ["gh", "pr", "create", "--title", title, "--body", body,
                  "--reviewer", "yinjialu", "--label", "firsthand-intel", "--base", "main"],
-                cwd=REPO, check=True,
+                check=True,
             )
     finally:
-        subprocess.run(["git", "checkout", "main"], cwd=REPO, check=False)
+        _run(["git", "checkout", "main"], check=False)
 
 
 def _real_commit_state(extra_paths=None):
@@ -273,11 +288,11 @@ def _real_commit_state(extra_paths=None):
         print(f"[firsthand] 索引生成失败(忽略): {e}")
     paths = ["data/firsthand-state.json", "data/firsthand/index.json", "data/firsthand/feed.xml"]
     paths.extend(extra_paths or [])
-    subprocess.run(["git", "add", *paths], cwd=REPO, check=False)
-    r = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=REPO)
+    _run(["git", "add", *paths], check=False)
+    r = _run(["git", "diff", "--cached", "--quiet"])
     if r.returncode != 0:
-        subprocess.run(["git", "commit", "-m", "chore: firsthand state + index"], cwd=REPO, check=False)
-        subprocess.run(["git", "push", "origin", "main"], cwd=REPO, check=False)
+        _run(["git", "commit", "-m", "chore: firsthand state + index"], check=False)
+        _run(["git", "push", "origin", "main"], check=False)
 
 
 def _ensure_daily_pr(date_str: str) -> str:
@@ -289,29 +304,28 @@ def _ensure_daily_pr(date_str: str) -> str:
     if pr_num:
         return pr_num
     # 检查远端是否已有该分支（内容 PR 刚被 auto-merge 的边界情况）
-    r = subprocess.run(
+    r = _run(
         ["git", "ls-remote", "--heads", "origin", branch],
-        cwd=REPO, capture_output=True, text=True)
+        capture_output=True, text=True)
     if r.stdout.strip():
         return ""  # 分支存在但 PR 已关闭（已合并），不重开
     try:
         marker = REPO / "data" / "firsthand" / date_str / ".heartbeat"
         marker.parent.mkdir(parents=True, exist_ok=True)
         marker.write_text(date_str)
-        subprocess.run(["git", "checkout", "-B", branch], cwd=REPO, check=True)
-        subprocess.run(["git", "add", str(marker)], cwd=REPO, check=True)
-        subprocess.run(["git", "commit", "-m", f"firsthand: 心跳占位 {date_str}"],
-                       cwd=REPO, check=True)
-        subprocess.run(["git", "push", "-u", "origin", branch], cwd=REPO, check=True)
-        subprocess.run(["gh", "label", "create", "firsthand-heartbeat",
-                        "--color", "0075ca", "--description", "firsthand 心跳 PR"],
-                       cwd=REPO, check=False, capture_output=True)
-        r2 = subprocess.run(
+        _run(["git", "checkout", "-B", branch], check=True)
+        _run(["git", "add", str(marker)], check=True)
+        _run(["git", "commit", "-m", f"firsthand: 心跳占位 {date_str}"], check=True)
+        _run(["git", "push", "-u", "origin", branch], check=True)
+        _run(["gh", "label", "create", "firsthand-heartbeat",
+              "--color", "0075ca", "--description", "firsthand 心跳 PR"],
+             check=False, capture_output=True)
+        r2 = _run(
             ["gh", "pr", "create",
              "--title", f"📡 firsthand 心跳 | {date_str}",
              "--body", "每小时心跳 PR，无真实内容时自动关闭。",
              "--label", "firsthand-heartbeat", "--base", "main"],
-            cwd=REPO, capture_output=True, text=True, check=True)
+            capture_output=True, text=True, check=True)
         import re
         m = re.search(r"/pull/(\d+)", r2.stdout)
         return m.group(1) if m else ""
@@ -319,17 +333,17 @@ def _ensure_daily_pr(date_str: str) -> str:
         print(f"[firsthand] 创建心跳 PR 失败(忽略): {e}")
         return ""
     finally:
-        subprocess.run(["git", "checkout", "main"], cwd=REPO, check=False)
+        _run(["git", "checkout", "main"], check=False)
 
 
 def _close_stale_heartbeat_prs(today: str):
     """关闭昨天及更早、纯心跳（无真实文章）的 firsthand PR。"""
     try:
-        r = subprocess.run(
+        r = _run(
             ["gh", "pr", "list", "--label", "firsthand-heartbeat",
              "--state", "open", "--json", "number,headRefName",
              "--jq", ".[] | [.number, .headRefName] | @tsv"],
-            cwd=REPO, capture_output=True, text=True)
+            capture_output=True, text=True)
         for line in r.stdout.strip().splitlines():
             parts = line.split("\t")
             if len(parts) != 2:
@@ -337,10 +351,10 @@ def _close_stale_heartbeat_prs(today: str):
             num, ref = parts
             date = ref.replace("firsthand/", "")
             if date < today:
-                subprocess.run(
+                _run(
                     ["gh", "pr", "close", num, "--comment",
                      f"心跳 PR 自动关闭（{date} 当日无内容）。"],
-                    cwd=REPO, check=False, capture_output=True)
+                    check=False, capture_output=True)
                 print(f"[firsthand] 关闭过期心跳 PR #{num} ({date})")
     except Exception as e:
         print(f"[firsthand] 清理心跳 PR 失败(忽略): {e}")
@@ -365,9 +379,9 @@ def _post_heartbeat(now: str, new_count: int, date_str: str, error: str | None =
             body = f"### ✅ `{now}` — 发现 {new_count} 条新内容，下次检测：约 {next_str}"
         else:
             body = f"### ✅ `{now}` — 无新内容，下次检测：约 {next_str}"
-        subprocess.run(
+        _run(
             ["gh", "pr", "comment", pr_num, "--body", body],
-            cwd=REPO, check=False, capture_output=True)
+            check=False, capture_output=True)
     except Exception as e:
         print(f"[firsthand] 心跳评论失败(忽略): {e}")
 
@@ -383,7 +397,7 @@ def main():
 
     # --autostash：监控与交互会话共用本仓工作目录，pull 前自动 stash 未提交改动、
     # pull 完再恢复，避免脏工作树时 `pull --rebase` 硬失败（state 提交滞留）。
-    subprocess.run(["git", "pull", "--rebase", "--autostash", "origin", "main"], cwd=REPO, check=False)
+    _run(["git", "pull", "--rebase", "--autostash", "origin", "main"], check=False)
 
     error_msg = None
     new_count = 0
