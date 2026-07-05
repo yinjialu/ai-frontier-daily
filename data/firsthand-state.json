@@ -1353,8 +1353,8 @@
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://blog.google/company-news/outreach-and-initiatives/arts-culture/dataland-ai-art-museum",
       "https://blog.google/products-and-platforms/devices/pixel/june-2026-pixel-drop",
@@ -1472,8 +1472,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
