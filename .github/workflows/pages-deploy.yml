@@ -1,0 +1,60 @@
+name: pages-deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'publish.html'
+      - '.nojekyll'
+      - 'data/**'
+      - 'output/**'
+      - 'skills/ai-daily-digest/cards.css'
+      - 'skills/ai-daily-digest/cards.js'
+      - '.github/workflows/pages-deploy.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify daily index before deploy
+        run: |
+          set -euo pipefail
+          test -f output/index.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          idx = json.loads(Path("output/index.json").read_text("utf-8"))
+          updated = idx.get("updated", "")
+          days = [d for d in idx.get("days", []) if d.get("date") == updated]
+          print(f"output/index.json updated={updated} entries={len(days)}")
+          if not updated or not days:
+              raise SystemExit("output/index.json has no entries for updated date")
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
