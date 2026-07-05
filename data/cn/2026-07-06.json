@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.06",
+  "cnDate": "7月6日 周一",
+  "edition": "VOL.187",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "company": "通义千问",
+      "tag": "开发者",
+      "title": "Qwen Code v0.19.6：强化 Agent 编排、视觉模型与 Web Shell",
+      "summary": "Qwen Code 发布稳定版 v0.19.6，新增数据可视化技能、嵌套子 Agent、会话 artifact API 与视觉模型选择，同时修复多模态上下文、超时和 Web Shell 体验问题。",
+      "source": "github.com/QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code/releases/tag/v0.19.6"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}
