@@ -97,8 +97,8 @@
   },
   "anthropic-news": {
     "initialized": true,
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag",
       "https://www.anthropic.com/news/claude-science-ai-workbench",
@@ -110,8 +110,8 @@
     "last_new_article": "2026-07-03T08:03:28+08:00"
   },
   "transformer-circuits": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='transformer-circuits.pub', port=443): Read timed out. (read timeout=20)",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://transformer-circuits.pub/2026/may-update/index.html",
       "https://transformer-circuits.pub/2026/nla/index.html",
@@ -1444,8 +1444,8 @@
     "known_urls_count": 44
   },
   "inclusionai-ling": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.inclusion-ai.org', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://www.inclusion-ai.org/blog/agentic-ai-202606",
       "https://www.inclusion-ai.org/blog/agentic-landscape-in-2026-Q1",
