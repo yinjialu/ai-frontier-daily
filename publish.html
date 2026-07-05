@@ -188,6 +188,17 @@ const KEYWORD_TAGS = [
   ['Dynamo','#Dynamo'],['Gemini CLI','#GeminiCLI'],
   ['Claude Code','#ClaudeCode'],['Antigravity','#Antigravity'],
 ];
+const assetUrl = (path) => `${path}${path.includes('?') ? '&' : '?'}v=${Date.now()}`;
+const fetchJSON = async (path) => {
+  const res = await fetch(assetUrl(path), { cache: 'no-store' });
+  if (!res.ok) throw new Error(path);
+  return res.json();
+};
+const fetchText = async (path) => {
+  const res = await fetch(assetUrl(path), { cache: 'no-store' });
+  if (!res.ok) throw new Error(path);
+  return res.text();
+};
 
 // ── 文案构建 ────────────────────────────────────────────────────
 function buildTags(vendor, updates) {
@@ -432,7 +443,7 @@ async function init() {
 
   let idx;
   try {
-    idx = await (await fetch('output/index.json')).json();
+    idx = await fetchJSON('output/index.json');
   } catch(e) {
     panelsEl.innerHTML = '<div class="empty">索引加载失败，请稍后重试</div>';
     return;
@@ -454,7 +465,7 @@ async function init() {
     const d = todayByVendor[v];
     if (!d) return;
     try {
-      dataByVendor[v] = await (await fetch(`data/${v}/${d.date}.json`)).json();
+      dataByVendor[v] = await fetchJSON(`data/${v}/${d.date}.json`);
     } catch(e) { /* 数据缺失，按无内容处理 */ }
   }));
 
@@ -540,7 +551,7 @@ async function loadDeepdive() {
   const dirPath = `output/deepdive/${slug}`;
   let manifest;
   try {
-    manifest = await (await fetch(`${dirPath}/manifest.json`)).json();
+    manifest = await fetchJSON(`${dirPath}/manifest.json`);
   } catch(e) {
     body.innerHTML = `<p class="img-hint">未找到 <code>${dirPath}/manifest.json</code>，确认 slug 正确且已渲染。</p>`;
     return;
@@ -551,7 +562,7 @@ async function loadDeepdive() {
   // 取标题（下拉选中项文字）+ 正文文案（caption.txt，含正文+标签）一并展示，方便直接复制
   const title = (input.options[input.selectedIndex] && input.options[input.selectedIndex].text) || slug;
   let caption = '';
-  try { caption = await (await fetch(`${dirPath}/caption.txt`)).text(); } catch(e) {}
+  try { caption = await fetchText(`${dirPath}/caption.txt`); } catch(e) {}
 
   body.innerHTML = `
 <div class="dd-text">
@@ -601,7 +612,7 @@ async function loadDeepdiveIndex() {
   if (!sel) return [];
   let items = [];
   try {
-    const idx = await (await fetch('output/deepdive/index.json')).json();
+    const idx = await fetchJSON('output/deepdive/index.json');
     items = idx.items || [];
   } catch(e) { /* 无清单：下拉保持仅占位项 */ }
   const saved = localStorage.getItem('deepdive_slug') || '';
