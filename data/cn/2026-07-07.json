@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.07",
+  "cnDate": "7月7日 周二",
+  "edition": "VOL.188",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "company": "Kimi",
+      "tag": "开发者",
+      "title": "Kimi Code 0.23.0：默认保留推理并试验工具渐进披露",
+      "summary": "Kimi Code 0.23.0 对 Kimi 模型默认启用 Preserved Thinking，新增实验性 select_tools 渐进工具披露，并补充归档会话恢复、子 Agent 进度卡等 Web 体验。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "url": "https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}

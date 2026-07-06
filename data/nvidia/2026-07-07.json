@@ -1,0 +1,33 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.07",
+  "cnDate": "7月7日 周二",
+  "edition": "VOL.188",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA 总结开放模型在 ICML 2026 的研究影响",
+      "summary": "NVIDIA 称 ICML 2026 中大量论文使用其 GPU 与 Nemotron、Cosmos、BioNeMo 等开放模型，强调开放模型和开源工具链正在成为 AI 研究基础设施。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/open-models-icml-2026/"
+    },
+    {
+      "tag": "企业",
+      "title": "NVIDIA 梳理主权 AI 的国家级部署路径",
+      "summary": "NVIDIA 发布主权 AI 文章，梳理各国如何围绕本地基础设施、数据、人才和产业网络部署 AI，重点面向语言、文化、监管与战略优先级适配。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/nations-deploy-ai-strategic-priorities/"
+    },
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 用非均匀张量并行提升大规模 LLM 训练 Goodput",
+      "summary": "NVIDIA 技术博客介绍 Nonuniform Tensor Parallelism，让 LLM 训练在部分 GPU 短暂不可用时动态调整并行度，目标是在 Blackwell 集群上减少停顿和吞吐损失。",
+      "source": "developer.nvidia.com",
+      "url": "https://developer.nvidia.com/blog/enhancing-goodput-in-large-scale-llm-training-with-nonuniform-tensor-parallelism/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 NVIDIA AI 平台与生态动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

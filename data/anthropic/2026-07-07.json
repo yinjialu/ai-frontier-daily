@@ -1,0 +1,33 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.07",
+  "cnDate": "7月7日 周二",
+  "edition": "VOL.188",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "阿尔伯塔政府用 Claude Code 审查 4.66 亿行代码",
+      "summary": "Anthropic 披露加拿大阿尔伯塔省政府用 Claude Code 在 20 小时内扫描 4.66 亿行政府代码，并结合红蓝队 Agent 推进漏洞修复和持续安全审查。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/alberta-government-claude-cybersecurity"
+    },
+    {
+      "tag": "研究",
+      "title": "Anthropic 提出 Claude 内部的 J-space 工作空间",
+      "summary": "Anthropic 发布可解释性研究，称 Claude 内部出现类似全局工作空间的 J-space，可读出隐藏中间思考并做因果干预，为监控模型意图提供新工具。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/research/global-workspace"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.202：工作流规模、遥控与历史搜索修复",
+      "summary": "Claude Code v2.1.202 增加动态工作流规模设置和 workflow OpenTelemetry 属性，并修复远程控制指令、后台会话重命名、历史搜索崩溃等长任务问题。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.202"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

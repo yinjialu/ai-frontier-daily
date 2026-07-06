@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.07",
+  "cnDate": "7月7日 周二",
+  "edition": "VOL.188",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "OpenAI 发布 GPT-Realtime-2.1 与 mini 版",
+      "summary": "OpenAI API changelog 7 月 6 日新增 gpt-realtime-2.1 和 mini 版，改进字母数字识别、静音噪声处理与打断体验，面向实时语音 Agent。",
+      "source": "developers.openai.com",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
