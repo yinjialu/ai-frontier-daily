@@ -33,9 +33,10 @@
       "https://claude.com/blog/introducing-the-claude-apps-gateway",
       "https://claude.com/blog/claude-in-microsoft-foundry",
       "https://claude.com/blog/getting-started-with-loops",
-      "https://claude.com/blog/giving-admins-more-visibility-and-control-over-claude-usage-and-spend"
+      "https://claude.com/blog/giving-admins-more-visibility-and-control-over-claude-usage-and-spend",
+      "https://claude.com/blog/a-field-guide-to-claude-fable-finding-your-unknowns"
     ],
-    "last_new_article": "2026-07-03T07:02:01+08:00"
+    "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -89,11 +90,12 @@
       "https://www.anthropic.com/research/coding-agents-social-sciences",
       "https://www.anthropic.com/research/glasswing-initial-update",
       "https://www.anthropic.com/research/exploit-evals",
-      "https://www.anthropic.com/research/economic-index-june-2026-report"
+      "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "https://www.anthropic.com/research/global-workspace"
     ],
     "initialized": true,
     "known_urls_count": 28,
-    "last_new_article": "2026-06-27T07:15:57+08:00"
+    "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -104,10 +106,11 @@
       "https://www.anthropic.com/news/claude-science-ai-workbench",
       "https://www.anthropic.com/news/claude-sonnet-5",
       "https://www.anthropic.com/news/redeploying-fable-5",
-      "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
+      "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
+      "https://www.anthropic.com/news/alberta-government-claude-cybersecurity"
     ],
     "known_urls_count": 22,
-    "last_new_article": "2026-07-03T08:03:28+08:00"
+    "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -166,11 +169,12 @@
       "https://github.com/anthropics/PySvelte",
       "https://transformer-circuits.pub/2021/garcon/index.html",
       "https://distill.pub/2020/circuits",
-      "https://transformer-circuits.pub/2026/june-update/index.html"
+      "https://transformer-circuits.pub/2026/june-update/index.html",
+      "https://transformer-circuits.pub/2026/workspace/index.html"
     ],
     "initialized": true,
     "known_urls_count": 55,
-    "last_new_article": "2026-07-01T02:07:49+08:00"
+    "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "openai-news": {
     "last_fetch_ok": true,
