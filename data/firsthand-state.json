@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 58,
+    "known_urls_count": 59,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -94,7 +94,7 @@
       "https://www.anthropic.com/research/global-workspace"
     ],
     "initialized": true,
-    "known_urls_count": 28,
+    "known_urls_count": 29,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "anthropic-news": {
@@ -109,7 +109,7 @@
       "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
       "https://www.anthropic.com/news/alberta-government-claude-cybersecurity"
     ],
-    "known_urls_count": 22,
+    "known_urls_count": 23,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "transformer-circuits": {
@@ -173,7 +173,7 @@
       "https://transformer-circuits.pub/2026/workspace/index.html"
     ],
     "initialized": true,
-    "known_urls_count": 55,
+    "known_urls_count": 56,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "openai-news": {
