@@ -36,7 +36,10 @@ def load_index(okf_root) -> list[dict]:
     p = Path(okf_root) / "index.json"
     if not p.exists():
         return []
-    return json.loads(p.read_text(encoding="utf-8")).get("items", [])
+    items = json.loads(p.read_text(encoding="utf-8")).get("items", [])
+    for item in items:
+        item.setdefault("candidate_origin", "main")
+    return items
 
 
 def _is_firsthand_okf(path: str) -> bool:
@@ -150,7 +153,10 @@ def load_open_pr_items(branches: list[str] | None = None) -> list[dict]:
     branches = branches if branches is not None else _open_firsthand_pr_branches()
     items = []
     for branch in branches:
-        items.extend(okf_items_from_tree(_git_tree_for_branch(branch)))
+        for item in okf_items_from_tree(_git_tree_for_branch(branch)):
+            item["candidate_origin"] = "open-pr"
+            item["candidate_ref"] = branch
+            items.append(item)
     return items
 
 
@@ -174,7 +180,10 @@ def _render_text(items: list[dict]) -> str:
         lines.append(f"## {sid}（{len(arts)}）")
         for a in arts:
             pub = a.get("published") or "?"
-            lines.append(f"- [{pub}] {a.get('title')} — {a.get('resource')}")
+            ref = ""
+            if a.get("candidate_origin") == "open-pr":
+                ref = f"（open PR: {a.get('candidate_ref') or '?'}）"
+            lines.append(f"- [{pub}] {a.get('title')} {ref}— {a.get('resource')}")
             if a.get("summary"):
                 lines.append(f"  > {a['summary']}")
         lines.append("")

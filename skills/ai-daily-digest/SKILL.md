@@ -64,6 +64,11 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
 1. **日期与刊号**：按 Asia/Shanghai(UTC+8) 取 `DATE=YYYY-MM-DD`（云端 runner 多为 UTC，
    直接 `date` 会差一天，用 `TZ=Asia/Shanghai date +%F`）；`edition` 用年内第几天
    VOL.NNN（`TZ=Asia/Shanghai date +%j`）。
+1.5 **发布链路 doctor（前置健康检查）**：正式抓取/渲染前先跑只读 preflight，提前暴露
+   Python/Node/Playwright/Pages 索引等环境问题：
+   ```bash
+   python3 scripts/doctor_publish.py --stage daily --stage pages
+   ```
 2. **取厂商清单**：运行 `python3 skills/ai-daily-digest/run.py --vendors`，得到 JSON 数组，
    每项含 `{id, name, brand, sources:[抓取URL]}`，遍历其中每一个厂商（数量与名字以输出为准）。
    若某项 `sources` 为空（环境缺 pyyaml），改读 `sources.yaml` 的 `vendors.<id>` 下
@@ -81,6 +86,8 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    把这些条目**并入候选池**，与 WebFetch/WebSearch 结果一起去重策展（同一事件只留一条，优先内参的官方一手 + 真实发布日期）。内参覆盖：anthropic（claude-blog/news/research/engineering/transformer-circuits）、openai、gemini（deepmind/google）、cn（qwen/蚂蚁百灵）；nvidia 暂无内参源，仍走 WebFetch。
    `--include-open-prs` 会只读 open / 已拉取的 `firsthand/*` PR 中 `data/firsthand/**/*.md` 的 OKF 内容，
    让「已发现但尚未合入 main」的一手官方动态也能进入当天早报候选池；它不读取 PR 里的代码改动。
+   JSON 输出会给这类候选加 `candidate_origin: "open-pr"` 与 `candidate_ref: "firsthand/<date>"`，
+   日报 Issue/最终回复里要保留这个来源标注，便于 review 时知道该候选尚未进入 main。
 
 4. **去重（Claude 链路）**：看 `data/<V.id>/` 里最近的 *.json，只挑近 1~3 天的「新」条目，
    避免与已发布重复；若今天 `data/<V.id>/<DATE>.json` 已存在且已覆盖当日要点，则该厂商
@@ -129,12 +136,16 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    不要手拼这两个文件。
 9. **提交并推送**（触发 GitHub Pages 重新发布）：若本次有任意厂商产出新内容：
    ```bash
-   git add -A data output && git commit -m "daily: <DATE>"
+   git add -A data output
+   scripts/guard-daily-content-commit.sh <DATE>
+   git commit -m "daily: <DATE>"
    ```
    **一次提交涵盖所有厂商；commit 格式必须是 `daily: YYYY-MM-DD`**（auto-merge guard 的
    正则依赖此标记，写成 `daily: <vendor> <date>` 会被整支跳过）。推送遵循仓库根目录
    AGENTS.md / CLAUDE.md 与下文「推送策略（routine 必读）」：云端只推当前工作分支
    （Codex 用 `Codex/daily-YYYY-MM-DD`，Claude 用 `claude/*`），本机会话可直推 main。
+   `guard-daily-content-commit.sh` 是 hard guard：当前分支必须是 `Codex/daily-<DATE>`，
+   staged diff 必须只含 `data/` + `output/` 且不能含 `data/firsthand/`，否则直接停止。
    所有厂商今天都无新内容则不提交、直接结束。
 10. **开当天 GitHub Issue**（每日讨论贴，仅当本次有新内容时执行）：在本仓库创建 Issue，
     标题 `📰 VOL.NNN · YYYY-MM-DD 每日 AI 动态`，label `daily-digest`。正文按厂商分节，

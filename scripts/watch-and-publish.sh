@@ -36,6 +36,7 @@ DRY=""; [ "${1:-}" = "--dry-run" ] && DRY="--dry-run"
 VENDORS_PUBLISH="${VENDORS_PUBLISH:-}"
 
 echo "[1/3] 同步远端…"
+python3 scripts/doctor_publish.py --stage pages
 retry git fetch origin --prune --quiet
 git checkout main --quiet
 retry git pull --ff-only --quiet
@@ -76,6 +77,7 @@ else
   done
 fi
 [ -n "${vendors// /}" ] || echo "  · 今天（$TODAY）暂无任何厂商数据，跳过发布"
+[ -z "${vendors// /}" ] || python3 scripts/doctor_publish.py --stage wechat
 
 published=""; failed=""
 for v in $vendors; do
@@ -103,6 +105,7 @@ xhs_published=""; xhs_failed=""
 if [ "$XHS_PUBLISH" != "1" ]; then
   echo "  · 小红书自动发布已暂停（XHS_PUBLISH≠1，规避三方工具发布风控），跳过"
 else
+[ -z "${vendors// /}" ] || python3 scripts/doctor_publish.py --stage xhs
 for v in $vendors; do
   f="data/$v/$TODAY.json"
   [ -f "$f" ] || continue

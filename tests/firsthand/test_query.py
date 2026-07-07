@@ -3,6 +3,7 @@ from pathlib import Path
 from scripts.firsthand.query import (
     filter_vendor,
     load_index,
+    load_open_pr_items,
     merge_by_resource,
     okf_items_from_tree,
     recent,
@@ -59,6 +60,7 @@ def test_load_index_reads_items(tmp_path):
         encoding="utf-8")
     items = load_index(tmp_path)
     assert items[0]["title"] == "T"
+    assert items[0]["candidate_origin"] == "main"
 
 
 def test_okf_items_from_tree_parses_only_firsthand_markdown():
@@ -137,3 +139,25 @@ def test_local_firsthand_remote_branches_parses_origin_refs(monkeypatch):
         "firsthand/2026-06-30",
         "firsthand/2026-07-01",
     ]
+
+
+def test_load_open_pr_items_marks_candidate_ref(monkeypatch):
+    tree = {
+        "data/firsthand/claude-blog/25-loops.md": (
+            "---\n"
+            "title: Getting started with loops\n"
+            "source: claude-blog\n"
+            "resource: https://claude.com/blog/getting-started-with-loops\n"
+            "published: 2026-06-30\n"
+            "detected: 2026-07-01T08:00:00+08:00\n"
+            "---\n\n"
+            "Loops summary."
+        ),
+    }
+    monkeypatch.setattr("scripts.firsthand.query._git_tree_for_branch", lambda branch: tree)
+
+    items = load_open_pr_items(["firsthand/2026-07-01"])
+
+    assert len(items) == 1
+    assert items[0]["candidate_origin"] == "open-pr"
+    assert items[0]["candidate_ref"] == "firsthand/2026-07-01"
