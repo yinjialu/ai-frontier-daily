@@ -1,0 +1,40 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.08",
+  "cnDate": "7月8日 周三",
+  "edition": "VOL.189",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 强调 Vera CPU 面向 Agentic AI 的吞吐价值",
+      "summary": "NVIDIA 技术博客称 Vera CPU 针对 Agent 工具调用、代码执行、检索和 RL rollout 等 CPU 关键路径优化，以更高单线程性能和内存带宽减少 GPU 等待。",
+      "source": "developer.nvidia.com",
+      "url": "https://developer.nvidia.com/blog/nvidia-vera-cpu-boosts-ai-factory-throughput-to-accelerate-agentic-workloads/"
+    },
+    {
+      "tag": "生态",
+      "title": "NVIDIA 与 Hugging Face 将 Isaac GR00T 接入 LeRobot",
+      "summary": "NVIDIA 宣布与 Hugging Face 合作，把 Isaac GR00T 1.7、Isaac Teleop、数据集与机器人工作流带入 LeRobot，并计划后续接入 Cosmos 3 世界模型。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/"
+    },
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 用 Nemotron 构建工业告警分析 Agent",
+      "summary": "NVIDIA 发布工业告警管理 Agent 实战，展示 Nemotron 结合历史数据、作业手册、相似案例、OCR 和异常检测，输出根因假设、证据包与处置建议。",
+      "source": "developer.nvidia.com",
+      "url": "https://developer.nvidia.com/blog/building-an-analysis-ai-agent-for-industrial-alarm-management-with-nvidia-nemotron/"
+    },
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 发布 Isaac GR00T 端到端人形机器人策略工作流",
+      "summary": "NVIDIA 介绍 Isaac GR00T 开发平台，将 Isaac Lab、Isaac Teleop、GR00T 1.7、训练脚本、仿真评估和 Isaac ROS 部署串成开放模块化流程。",
+      "source": "developer.nvidia.com",
+      "url": "https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 NVIDIA AI 平台与生态动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.08",
+  "cnDate": "7月8日 周三",
+  "edition": "VOL.189",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "OpenAI 展示 AP+ 用 ChatGPT Enterprise 与 Codex 提速支付研发",
+      "summary": "OpenAI 发布 Australian Payments Plus 案例，称 AP+ 用 ChatGPT Enterprise 和 Codex 处理支付规范、技术排障与原型验证，将部分复杂对账调查从 4 小时降至约 30 分钟。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/australian-payments-plus/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 产品、模型与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}

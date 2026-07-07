@@ -1,0 +1,28 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.08",
+  "cnDate": "7月8日 周三",
+  "edition": "VOL.189",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "company": "通义千问",
+      "tag": "开发者",
+      "title": "Qwen Code v0.19.7：增强 Web Shell、Daemon 与模型回退链",
+      "summary": "Qwen Code v0.19.7 增加 Daemon 状态页、会话导出、Web Shell 会话管理和指标面板，并加入模型过载自动切换、前台子 Agent 并发上限等稳定性改进。",
+      "source": "github.com/QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code/releases/tag/v0.19.7"
+    },
+    {
+      "company": "Kimi",
+      "tag": "开发者",
+      "title": "Kimi Code 0.23.1：补强思考保留、后台子 Agent 与 Web 会话",
+      "summary": "Kimi Code 0.23.1 默认在 Anthropic 兼容模式保留前序思考，修复 kimi -p 丢弃长跑后台子 Agent、Web 流式恢复、goal 预算与队列处理等问题。",
+      "source": "github.com/MoonshotAI/kimi-code",
+      "url": "https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.1"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,26 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.08",
+  "cnDate": "7月8日 周三",
+  "edition": "VOL.189",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Anthropic 复盘 Claude Code 从内部 CLI 到编码 Agent",
+      "summary": "Anthropic 发布 Claude Code 口述史，披露其从安全研究内部工具、Claude CLI 原型到正式产品的演进，对开发者理解 Agentic Coding 产品形态有参考价值。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/features/making-of-claude-code"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.203 修复后台 Agent 与 worktree 隔离问题",
+      "summary": "Claude Code v2.1.203 集中修复后台会话卡死、token 失效、子 Agent 结果丢失、PATH 继承和 worktree 隔离等问题，并加入登录过期提醒与 MCP roots 更新。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.203"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 官方发布与 Claude 生态更新",
+  "outroCta": "关注 · 不错过任何更新"
+}
