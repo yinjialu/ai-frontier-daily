@@ -11,6 +11,7 @@ on:
       - 'output/**'
       - 'skills/ai-daily-digest/cards.css'
       - 'skills/ai-daily-digest/cards.js'
+      - 'scripts/doctor_publish.py'
       - '.github/workflows/pages-deploy.yml'
   workflow_dispatch: {}
 
@@ -33,19 +34,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Verify daily index before deploy
-        run: |
-          set -euo pipefail
-          test -f output/index.json
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          idx = json.loads(Path("output/index.json").read_text("utf-8"))
-          updated = idx.get("updated", "")
-          days = [d for d in idx.get("days", []) if d.get("date") == updated]
-          print(f"output/index.json updated={updated} entries={len(days)}")
-          if not updated or not days:
-              raise SystemExit("output/index.json has no entries for updated date")
-          PY
+        run: python3 scripts/doctor_publish.py --stage pages
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
