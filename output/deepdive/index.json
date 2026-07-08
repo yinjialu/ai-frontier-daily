@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "slug": "claude-cowork-knowledge-work",
+      "title": "AI接管工作周边"
+    },
+    {
       "slug": "making-of-claude-code",
       "title": "Claude Code怎么来的"
     },
