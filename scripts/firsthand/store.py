@@ -1,6 +1,7 @@
 import json
 import re
 from pathlib import Path
+from .urls import canonical_url
 
 _FM_RESOURCE_RE = re.compile(r"^resource:\s*(\S+)\s*$", re.MULTILINE)
 _FM_PUBLISHED_RE = re.compile(r"^published:\s*(\S+)\s*$", re.MULTILINE)
@@ -25,9 +26,10 @@ def _existing_okf_for(d: Path, url: str) -> Path | None:
     """返回目录中 resource==url 的现有 OKF 文件（用于幂等复用原文件名/序号）。"""
     if not d.exists():
         return None
+    canonical = canonical_url(url)
     for md in d.glob("*.md"):
         m = _FM_RESOURCE_RE.search(md.read_text(encoding="utf-8"))
-        if m and m.group(1) == url:
+        if m and canonical_url(m.group(1)) == canonical:
             return md
     return None
 
@@ -83,7 +85,7 @@ def ingested_urls(root: Path, source_id: str) -> set[str]:
     for md in d.glob("*.md"):
         m = _FM_RESOURCE_RE.search(md.read_text(encoding="utf-8"))
         if m:
-            urls.add(m.group(1))
+            urls.add(canonical_url(m.group(1)))
     return urls
 
 
@@ -100,7 +102,7 @@ def _render_okf(article: dict) -> str:
         "type: Article",
         f"title: {article['title']}",
         f"source: {article['source']}",
-        f"resource: {article['url']}",
+        f"resource: {canonical_url(article['url'])}",
     ]
     if published:
         fm.append(f"published: {published}")
@@ -125,7 +127,8 @@ def write_okf(root: Path, article: dict) -> Path:
     """
     d = _source_dir(root, article["source"])
     d.mkdir(parents=True, exist_ok=True)
-    url = article["url"]
+    url = canonical_url(article["url"])
+    article = {**article, "url": url}
     existing = _existing_okf_for(d, url)
     if existing is not None:
         path = existing  # 幂等：同一 URL 复用原文件名/序号

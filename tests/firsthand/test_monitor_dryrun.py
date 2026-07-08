@@ -97,6 +97,73 @@ def test_run_once_second_run_opens_pr(tmp_path):
     assert "detected: 2026-06-23T15:30:00+08:00" in txt
 
 
+def test_run_once_skips_urls_seen_on_remote_firsthand_branch(tmp_path):
+    """已写入远端 firsthand/* 分支的文章，即使未合入 main，也不应次日重复开 PR。"""
+    yaml_file = tmp_path / "sources.yaml"
+    yaml_file.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo/blog\n"
+        "    type: html-links\n    link_prefix: /blog/\n    base_url: https://demo\n",
+        encoding="utf-8",
+    )
+    okf_root = tmp_path / "firsthand"
+    state_file = tmp_path / "state.json"
+    (okf_root / "demo").mkdir(parents=True)
+    (okf_root / "demo" / "01-a.md").write_text(
+        "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
+
+    fetched = [
+        {"url": "https://demo/blog/a", "title": "A"},
+        {"url": "https://demo/blog/b", "title": "B"},
+        {"url": "https://demo/blog/c", "title": "C"},
+    ]
+    captured = {}
+    run_once(
+        sources_path=yaml_file, okf_root=okf_root, state_file=state_file,
+        now="2026-06-24T15:30:00+08:00",
+        fetch_fn=lambda s: fetched,
+        article_text_fn=lambda u: "body",
+        article_published_fn=lambda u: None,
+        summarize_fn=lambda t, b: {"summary": "摘要", "tags": ["x"]},
+        open_pr_fn=lambda branch, articles: captured.update(articles=articles),
+        commit_state_fn=lambda: None,
+        branch_seen_fn=lambda sid: {"https://demo/blog/b"},
+    )
+
+    assert [a["url"] for a in captured["articles"]] == ["https://demo/blog/c"]
+    assert not (okf_root / "demo" / "02-b.md").exists()
+    assert (okf_root / "demo" / "02-c.md").exists()
+
+
+def test_run_once_dedupes_canonical_url_variants(tmp_path):
+    """query / fragment / trailing slash 变化不应绕过去重。"""
+    yaml_file = tmp_path / "sources.yaml"
+    yaml_file.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo/blog\n"
+        "    type: html-links\n    link_prefix: /blog/\n    base_url: https://demo\n",
+        encoding="utf-8",
+    )
+    okf_root = tmp_path / "firsthand"
+    state_file = tmp_path / "state.json"
+    (okf_root / "demo").mkdir(parents=True)
+    (okf_root / "demo" / "01-a.md").write_text(
+        "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
+
+    fetched = [{"url": "https://demo/blog/a/?utm_source=x#top", "title": "A"}]
+    calls = {"pr": 0}
+    result = run_once(
+        sources_path=yaml_file, okf_root=okf_root, state_file=state_file,
+        now="2026-06-24T15:30:00+08:00",
+        fetch_fn=lambda s: fetched,
+        article_text_fn=lambda u: "body",
+        summarize_fn=lambda t, b: {"summary": "摘要", "tags": ["x"]},
+        open_pr_fn=lambda branch, articles: calls.__setitem__("pr", calls["pr"] + 1),
+        commit_state_fn=lambda: None,
+    )
+
+    assert calls["pr"] == 0
+    assert result["new_count"] == 0
+
+
 def test_run_once_heartbeat_separate_and_state_stable(tmp_path):
     """无新文章时连续两轮，state.json 应完全一致（last_checked 不进 state，
     避免每小时心跳把 main 刷屏）；last_checked 写入独立 heartbeat 文件并随时间更新。"""
