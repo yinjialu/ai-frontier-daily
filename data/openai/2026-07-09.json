@@ -1,0 +1,43 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.09",
+  "cnDate": "7月9日 周四",
+  "edition": "VOL.190",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "OpenAI 发布 GPT-Live，主打全双工语音交互",
+      "summary": "OpenAI 发布 GPT-Live，采用全双工架构支持边听边说、实时打断与连续决策，并可把复杂任务委托给更强模型，提升语音助手自然度。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/introducing-gpt-live",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "研究",
+      "title": "OpenAI 审计编码评测：SWE-Bench Pro 约三成任务有缺陷",
+      "summary": "OpenAI 发布编码评测分析，指出 SWE-Bench Pro 中约 30% 任务存在测试过严、提示不清或覆盖不足等问题，提醒团队不要直接把榜单当能力结论。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "政策",
+      "title": "OpenAI 公布政府与国家安全合作原则",
+      "summary": "OpenAI 阐明与政府和国家安全机构合作的边界：支持网络、生物安全等防御用途，禁止大规模监控、自主武器和自动高风险决策。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/government-national-security-partnerships",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 0.143.0 默认启用远程插件并支持系统代理",
+      "summary": "OpenAI Codex 0.143.0 默认启用远程插件，改进插件目录和版本展示，并支持通过 macOS、Windows 系统代理路由认证与 Responses API 流量。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.143.0"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 产品、模型与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,28 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.09",
+  "cnDate": "7月9日 周四",
+  "edition": "VOL.190",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "AI应用",
+      "title": "Google 用 AI 提升多灾种早期预警与灾后响应",
+      "summary": "Google 结合联合国报告介绍其危机韧性 AI：洪水预测、灾害预警、卫星建筑损毁分析等模型已用于政府和国际组织的实际应急流程。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/technology/research/technology-global-crisis-resilience",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "AI应用",
+      "title": "Google FireSat 新增三颗卫星，用 AI 早期探测野火",
+      "summary": "Google Research 与 Earth Fire Alliance 等合作的 FireSat 计划新增三颗卫星，面向 5×5 米级早期火点探测，为消防机构提供更连续的野火数据。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/firesat-satellites",
+      "candidate_ref": "firsthand/2026-07-09"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Google Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

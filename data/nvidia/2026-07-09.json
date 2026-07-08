@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.09",
+  "cnDate": "7月9日 周四",
+  "edition": "VOL.190",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "NVIDIA Nemotron 3 Ultra 接入 LangChain Deep Agents 调优栈",
+      "summary": "NVIDIA 称 LangChain 针对 Nemotron 3 Ultra 调优 Deep Agents harness 后，在公开基准中达到开放模型领先表现，并以更低成本支持企业持续评测与定制 Agent。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/nemotron-langchain-agents-open-stack/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 NVIDIA AI 平台与生态动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

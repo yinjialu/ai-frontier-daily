@@ -1,0 +1,52 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.09",
+  "cnDate": "7月9日 周四",
+  "edition": "VOL.190",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Claude Code 与 Claude Cowork 进入美国政府桌面端",
+      "summary": "Anthropic 将 Claude Code 与 Claude Cowork 引入 Claude for Government Desktop 公测，运行在 FedRAMP High 授权环境，并提供部门管理、审计日志和支出控制。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/bringing-claude-code-and-claude-cowork-to-government",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code 解释模型选择与 effort level",
+      "summary": "Anthropic 发布 Claude Code 使用指南，区分模型能力与 effort level 的作用：前者决定可处理复杂度，后者影响读取、验证和迭代深度，适合团队建立默认策略。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/claude-model-and-effort-level-in-claude-code",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "AI应用",
+      "title": "Claude Cowork 将扩展到移动端与网页端",
+      "summary": "Anthropic 宣布 Claude Cowork 将登陆移动端和网页端，让后台任务可跨设备继续运行；官方称多数使用集中在运营、内容创作等非编码知识工作。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/cowork-web-mobile",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "研究",
+      "title": "Anthropic 披露 Claude Cowork 120 万次会话用法",
+      "summary": "Anthropic 分析 Claude Cowork 120 万次会话，发现辅助性知识工作接近一半，业务流程与运营、内容创作占比最高，反映 Agent 正进入日常连接型任务。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/how-people-are-using-claude-cowork",
+      "candidate_ref": "firsthand/2026-07-09"
+    },
+    {
+      "tag": "企业",
+      "title": "Thomson Reuters 用 Claude 构建高风险专业 AI",
+      "summary": "Thomson Reuters CTO 介绍其面向法律、税务等高风险场景的 AI 方法：把权威内容、领域专家和评估基础设施结合，用 Claude 支撑可验证系统。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-how-thomson-reuters-builds-ai-for-high--stakes-professional-work",
+      "candidate_ref": "firsthand/2026-07-09"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 官方发布与 Claude 生态更新",
+  "outroCta": "关注 · 不错过任何更新"
+}

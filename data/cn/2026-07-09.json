@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.09",
+  "cnDate": "7月9日 周四",
+  "edition": "VOL.190",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code v0.19.8 增强 serve 隔离、多工作区与技能预览",
+      "summary": "Qwen Code v0.19.8 加入 serve 环境隔离、多工作区会话路由、自动生成技能的内联预览与编辑器交接，并继续修复 Web Shell 和权限请求体验。",
+      "source": "github.com/QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code/releases/tag/v0.19.8"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪国产大模型官方发布与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}
