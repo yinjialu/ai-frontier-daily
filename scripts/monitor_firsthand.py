@@ -31,6 +31,13 @@ GIT_TIMEOUT_SECONDS = 180
 GH_TIMEOUT_SECONDS = 90
 
 
+def _short_error(e: Exception, limit: int = 300) -> str:
+    """Single-line exception summary for PR comments and retry logs."""
+    msg = f"{type(e).__name__}: {e}"
+    msg = " ".join(msg.split())
+    return msg[:limit]
+
+
 def _cmd_timeout(cmd: list[str]) -> int:
     return GH_TIMEOUT_SECONDS if cmd and cmd[0] == "gh" else GIT_TIMEOUT_SECONDS
 
@@ -64,6 +71,7 @@ def run_once(sources_path, okf_root, state_file, now,
     heartbeat_file = Path(state_file).parent / ".firsthand-heartbeat.json"
     heartbeat = load_state(heartbeat_file)
     all_new = []
+    fetch_failures = []
     for source in sources:
         sid = source["id"]
         st = state.setdefault(sid, {})
@@ -108,7 +116,16 @@ def run_once(sources_path, okf_root, state_file, now,
 
         pr_articles = []
         for source, art in all_new:
-            text = article_text_fn(art["url"])
+            try:
+                text = article_text_fn(art["url"])
+            except Exception as e:
+                fetch_failures.append({
+                    "source": source["id"],
+                    "url": art["url"],
+                    "error": _short_error(e),
+                })
+                print(f"[firsthand] 正文抓取失败，跳过本篇: {art['url']} — {_short_error(e)}")
+                continue
             # html-links 适配器不带标题 → 去文章页取 <h1>/<title>；失败回退 URL
             title = art.get("title")
             if not title:
@@ -136,7 +153,7 @@ def run_once(sources_path, okf_root, state_file, now,
         # 当天一个 PR：分支固定 firsthand/<date>；当天后续批次追加 commit + 评论 @user（见 _real_open_pr）
         branch = f"firsthand/{now[:10]}"
         pr_ok = True
-        if open_pr_fn:
+        if pr_articles and open_pr_fn:
             try:
                 open_pr_fn(branch, [a for _, a in pr_articles])
             except Exception as e:
@@ -185,7 +202,7 @@ def run_once(sources_path, okf_root, state_file, now,
             commit_state_fn(retry_paths)
         else:
             commit_state_fn()
-    return {"new_count": new_count, "retry_count": retry_count}
+    return {"new_count": new_count, "retry_count": retry_count, "fetch_failures": fetch_failures}
 
 
 def _existing_open_pr(branch: str) -> str:
@@ -360,7 +377,8 @@ def _close_stale_heartbeat_prs(today: str):
         print(f"[firsthand] 清理心跳 PR 失败(忽略): {e}")
 
 
-def _post_heartbeat(now: str, new_count: int, date_str: str, error: str | None = None):
+def _post_heartbeat(now: str, new_count: int, date_str: str, error: str | None = None,
+                    warnings: list[dict] | None = None):
     """往当天 PR 追加一条心跳评论。失败静默，不影响主流程。"""
     import datetime
     try:
@@ -375,6 +393,14 @@ def _post_heartbeat(now: str, new_count: int, date_str: str, error: str | None =
                 f"```\n{error[:1000]}\n```\n\n"
                 f"下次检测：约 {next_str}"
             )
+        elif warnings:
+            lines = [f"### ⚠️ `{now}` — 部分文章抓取失败，下次检测：约 {next_str}", ""]
+            for item in warnings[:10]:
+                lines.append(f"- **{item.get('source', 'unknown')}** {item.get('url')}")
+                lines.append(f"  - `{item.get('error')}`")
+            if len(warnings) > 10:
+                lines.append(f"- 其余 {len(warnings) - 10} 条略")
+            body = "\n".join(lines)
         elif new_count > 0:
             body = f"### ✅ `{now}` — 发现 {new_count} 条新内容，下次检测：约 {next_str}"
         else:
@@ -400,6 +426,7 @@ def main():
     _run(["git", "pull", "--rebase", "--autostash", "origin", "main"], check=False)
 
     error_msg = None
+    warnings = []
     new_count = 0
     retry_count = 0
     try:
@@ -409,6 +436,7 @@ def main():
         )
         new_count = result["new_count"]
         retry_count = result.get("retry_count", 0)
+        warnings = result.get("fetch_failures", [])
     except Exception as e:
         import traceback
         error_msg = traceback.format_exc()
@@ -420,7 +448,7 @@ def main():
 
     date_str = now[:10]
     _close_stale_heartbeat_prs(date_str)
-    _post_heartbeat(now, new_count, date_str, error=error_msg)
+    _post_heartbeat(now, new_count, date_str, error=error_msg, warnings=warnings)
 
 
 if __name__ == "__main__":

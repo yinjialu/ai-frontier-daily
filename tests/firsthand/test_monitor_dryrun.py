@@ -285,6 +285,57 @@ def test_run_once_pr_failure_does_not_crash_or_mark_seen(tmp_path):
     assert "https://demo/blog/b" not in st.get("open_pr_urls", [])
 
 
+def test_run_once_article_fetch_failure_skips_only_failed_article(tmp_path):
+    """单篇正文抓取失败时，不应拖垮整轮；失败 URL 不标记已见，留待下轮重试。"""
+    yaml_file = tmp_path / "sources.yaml"
+    yaml_file.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo/blog\n"
+        "    type: html-links\n    link_prefix: /blog/\n    base_url: https://demo\n",
+        encoding="utf-8",
+    )
+    okf_root = tmp_path / "firsthand"
+    state_file = tmp_path / "state.json"
+    (okf_root / "demo").mkdir(parents=True)
+    (okf_root / "demo" / "01-a.md").write_text(
+        "---\nresource: https://demo/blog/a\n---\n", encoding="utf-8")
+
+    fetched = [
+        {"url": "https://demo/blog/a", "title": "A"},
+        {"url": "https://demo/blog/bad", "title": "Bad"},
+        {"url": "https://demo/blog/good", "title": "Good"},
+    ]
+
+    def article_text(url):
+        if url.endswith("/bad"):
+            raise RuntimeError("404 Not Found")
+        return "body"
+
+    captured = {}
+    result = run_once(
+        sources_path=yaml_file, okf_root=okf_root, state_file=state_file,
+        now="2026-06-23T15:30:00+08:00",
+        fetch_fn=lambda s: fetched,
+        article_text_fn=article_text,
+        article_published_fn=lambda u: None,
+        summarize_fn=lambda t, b: {"summary": "x", "tags": []},
+        open_pr_fn=lambda branch, articles: captured.update(articles=articles),
+        commit_state_fn=lambda: None,
+    )
+
+    assert result["new_count"] == 1
+    assert result["fetch_failures"] == [{
+        "source": "demo",
+        "url": "https://demo/blog/bad",
+        "error": "RuntimeError: 404 Not Found",
+    }]
+    assert [a["url"] for a in captured["articles"]] == ["https://demo/blog/good"]
+
+    st = json.loads(state_file.read_text(encoding="utf-8"))["demo"]
+    assert "https://demo/blog/good" in st.get("open_pr_urls", [])
+    assert "https://demo/blog/bad" not in st.get("open_pr_urls", [])
+    assert (okf_root / "demo" / "02-good.md").exists()
+
+
 def test_real_open_pr_stages_only_current_article_paths(monkeypatch):
     """更新已有 PR 时只 stage 本轮写出的 OKF，避免扫入工作树遗留文件。"""
     calls = []
