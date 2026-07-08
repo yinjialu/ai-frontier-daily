@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "slug": "claude-code-model-effort",
+      "title": "模型和effort怎么选"
+    },
+    {
       "slug": "claude-cowork-knowledge-work",
       "title": "AI接管工作周边"
     },
