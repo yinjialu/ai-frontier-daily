@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 65,
+    "known_urls_count": 71,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -72,8 +72,8 @@
     "known_urls_count": 50
   },
   "anthropic-research": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Read timed out. (read timeout=20)",
     "open_pr_urls": [
       "https://www.anthropic.com/research/team/alignment",
       "https://www.anthropic.com/research/team/economic-research",
@@ -109,7 +109,7 @@
       "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
       "https://www.anthropic.com/news/alberta-government-claude-cybersecurity"
     ],
-    "known_urls_count": 23,
+    "known_urls_count": 35,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "transformer-circuits": {
@@ -1209,7 +1209,7 @@
       "https://openai.com/index/genebench-pro/case-studies"
     ],
     "initialized": true,
-    "known_urls_count": 1039,
+    "known_urls_count": 1045,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "deepmind-blog": {
@@ -1353,7 +1353,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 28,
+    "known_urls_count": 30,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
@@ -1392,7 +1392,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 41,
+    "known_urls_count": 42,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
