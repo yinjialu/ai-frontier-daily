@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 59,
+    "known_urls_count": 65,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -94,7 +94,7 @@
       "https://www.anthropic.com/research/global-workspace"
     ],
     "initialized": true,
-    "known_urls_count": 29,
+    "known_urls_count": 30,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "anthropic-news": {
@@ -1209,7 +1209,7 @@
       "https://openai.com/index/genebench-pro/case-studies"
     ],
     "initialized": true,
-    "known_urls_count": 1034,
+    "known_urls_count": 1039,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "deepmind-blog": {
@@ -1353,7 +1353,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 26,
+    "known_urls_count": 28,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
@@ -1392,7 +1392,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 40,
+    "known_urls_count": 41,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
