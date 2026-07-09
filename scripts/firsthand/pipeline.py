@@ -1,12 +1,13 @@
 import re
 
 from .summarize import SUMMARY_FAILED
+from .urls import canonical_url
 
 
 def diff_new_articles(fetched: list[dict], ingested: set, open_pr: set) -> list[dict]:
     """抓取结果中扣除已入库 + 已在未合并 PR 的 URL，得真·新文章。"""
-    known = ingested | open_pr
-    return [a for a in fetched if a["url"] not in known]
+    known = {canonical_url(u) for u in (ingested | open_pr)}
+    return [a for a in fetched if canonical_url(a["url"]) not in known]
 
 
 # 标题里太常见、不具区分度的词，不参与 bigram（避免"the/a/in"等噪音）

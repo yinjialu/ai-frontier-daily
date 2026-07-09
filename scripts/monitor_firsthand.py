@@ -8,6 +8,7 @@ os.environ["PATH"] = (
 )
 
 import json
+import re
 import sys
 import subprocess
 import inspect
@@ -22,6 +23,7 @@ from scripts.firsthand.adapters import (
 from scripts.firsthand.summarize import summarize
 from scripts.firsthand.store import ingested_urls, write_okf, load_state, save_state, failed_summary_articles
 from scripts.firsthand.pipeline import diff_new_articles, render_pr_body
+from scripts.firsthand.urls import canonical_url
 
 REPO = Path(__file__).resolve().parent.parent
 DEFAULT_SOURCES = REPO / "firsthand-sources.yaml"
@@ -29,6 +31,8 @@ DEFAULT_OKF_ROOT = REPO / "data" / "firsthand"
 DEFAULT_STATE = REPO / "data" / "firsthand-state.json"
 GIT_TIMEOUT_SECONDS = 180
 GH_TIMEOUT_SECONDS = 90
+_REMOTE_FIRSTHAND_BRANCH_CACHE: dict[str, set[str]] = {}
+_REMOTE_FIRSTHAND_BRANCHES_FETCHED = False
 
 
 def _short_error(e: Exception, limit: int = 300) -> str:
@@ -54,6 +58,59 @@ def _run(cmd: list[str], **kwargs):
         return subprocess.CompletedProcess(cmd, 124, stdout="", stderr="timeout")
 
 
+def _remote_firsthand_branch_urls(source_id: str) -> set[str]:
+    """Read resource URLs already present on remote firsthand/* branches.
+
+    This is a recovery dedupe layer for the unhappy path where a content PR was
+    closed without merging, or state.json failed to commit after the PR branch
+    was pushed. As long as the remote branch still exists, the next run will not
+    re-open the same articles as fresh content.
+    """
+    global _REMOTE_FIRSTHAND_BRANCHES_FETCHED
+    if source_id in _REMOTE_FIRSTHAND_BRANCH_CACHE:
+        return _REMOTE_FIRSTHAND_BRANCH_CACHE[source_id]
+    if not _REMOTE_FIRSTHAND_BRANCHES_FETCHED:
+        _run(
+            ["git", "fetch", "--prune", "origin",
+             "+refs/heads/firsthand/*:refs/remotes/origin/firsthand/*"],
+            check=False, capture_output=True, text=True,
+        )
+        _REMOTE_FIRSTHAND_BRANCHES_FETCHED = True
+    refs = _run(
+        ["git", "for-each-ref", "--format=%(refname:short)",
+         "refs/remotes/origin/firsthand"],
+        capture_output=True, text=True,
+    )
+    if refs.returncode != 0:
+        _REMOTE_FIRSTHAND_BRANCH_CACHE[source_id] = set()
+        return set()
+
+    urls: set[str] = set()
+    resource_re = re.compile(r"^resource:\s*(\S+)\s*$", re.MULTILINE)
+    prefix = f"data/firsthand/{source_id}/"
+    for ref in refs.stdout.splitlines():
+        ref = ref.strip()
+        if not ref:
+            continue
+        tree = _run(
+            ["git", "ls-tree", "-r", "--name-only", ref, "--", prefix],
+            capture_output=True, text=True,
+        )
+        if tree.returncode != 0:
+            continue
+        for path in tree.stdout.splitlines():
+            if not path.endswith(".md"):
+                continue
+            blob = _run(["git", "show", f"{ref}:{path}"], capture_output=True, text=True)
+            if blob.returncode != 0:
+                continue
+            m = resource_re.search(blob.stdout)
+            if m:
+                urls.add(canonical_url(m.group(1)))
+    _REMOTE_FIRSTHAND_BRANCH_CACHE[source_id] = urls
+    return urls
+
+
 def run_once(sources_path, okf_root, state_file, now,
              fetch_fn=fetch_source,
              article_text_fn=fetch_article_text,
@@ -61,7 +118,8 @@ def run_once(sources_path, okf_root, state_file, now,
              article_published_fn=fetch_article_published,
              summarize_fn=summarize,
              open_pr_fn=None,
-             commit_state_fn=None):
+             commit_state_fn=None,
+             branch_seen_fn=None):
     """单轮检查。副作用函数（PR/commit）可注入便于测试。返回统计 dict。"""
     okf_root = Path(okf_root)
     sources = load_sources(sources_path)
@@ -86,14 +144,16 @@ def run_once(sources_path, okf_root, state_file, now,
             st["last_fetch_error"] = str(e)
             continue
         ingested = ingested_urls(okf_root, sid)
-        open_pr = set(st.get("open_pr_urls", []))
+        state_seen = {canonical_url(u) for u in st.get("open_pr_urls", [])}
+        branch_seen = branch_seen_fn(sid) if branch_seen_fn else set()
+        open_pr = state_seen | {canonical_url(u) for u in branch_seen}
         # 去重唯一真相 = OKF 文件。有 OKF 文件永远不是首刊；
         # 否则看显式 initialized flag（与 open_pr / known_urls_count 解耦，
         # 避免 state 部分损坏时误开历史全量 PR）。
         first_run = not ingested and not st.get("initialized")
         new_articles = diff_new_articles(fetched, ingested, open_pr)
         if first_run:
-            st["open_pr_urls"] = [a["url"] for a in fetched]
+            st["open_pr_urls"] = [canonical_url(a["url"]) for a in fetched]
             st["initialized"] = True
             continue
         st["known_urls_count"] = len(ingested) + len(open_pr)
@@ -162,7 +222,10 @@ def run_once(sources_path, okf_root, state_file, now,
                 print(f"[firsthand] open_pr 失败，本批留待下轮重试: {e}")
         if pr_ok:
             for sid, article in pr_articles:
-                state[sid].setdefault("open_pr_urls", []).append(article["url"])
+                seen = state[sid].setdefault("open_pr_urls", [])
+                url = canonical_url(article["url"])
+                if url not in {canonical_url(u) for u in seen}:
+                    seen.append(url)
                 state[sid]["last_new_article"] = now
             new_count = len(pr_articles)
 
@@ -433,6 +496,7 @@ def main():
         result = run_once(
             DEFAULT_SOURCES, DEFAULT_OKF_ROOT, DEFAULT_STATE, now,
             open_pr_fn=_real_open_pr, commit_state_fn=_real_commit_state,
+            branch_seen_fn=_remote_firsthand_branch_urls,
         )
         new_count = result["new_count"]
         retry_count = result.get("retry_count", 0)
