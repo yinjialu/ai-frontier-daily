@@ -1,0 +1,261 @@
+---
+type: Article
+title: ChatGPT Sites
+source: openai-news
+resource: https://openai.com/academy/chatgpt-sites
+published: 2026-06-02
+tags: [ChatGPT Sites, Codex, 内部工具, 无代码开发]
+detected: 2026-07-11T06:22:56+08:00
+---
+
+ChatGPT Sites 允许用户通过自然语言描述，利用 Codex 创建并部署内部网站或轻应用，适用于团队协作场景，无需编程。
+
+## Full Text
+
+ChatGPT Sites | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+June 2, 2026
+OpenAI Academy
+ChatGPT Sites
+Create that kind of lightweight website or app with Codex.
+Loading…
+Share
+What is an internal site or app?
+What is an internal site or app?
+What ChatGPT sites does
+Start with a small, focused use case
+How to build a site in Codex
+1. Describe what you need
+2. Review the first version
+3. Ask Codex to make changes
+4. Deploy the site
+5. Share it with the right people
+Review before you share
+Keep your site up to date with an automation
+Try it
+Common questions
+Do I need to know how to code?
+Is a site the same as a full software product?
+Can I update a site after I deploy it?
+Can a site connect to my organization’s data?
+What should admins review?
+What is an internal site or app?
+What ChatGPT sites does
+Start with a small, focused use case
+How to build a site in Codex
+1. Describe what you need
+2. Review the first version
+3. Ask Codex to make changes
+4. Deploy the site
+5. Share it with the right people
+Review before you share
+Keep your site up to date with an automation
+Try it
+Common questions
+Do I need to know how to code?
+Is a site the same as a full software product?
+Can I update a site after I deploy it?
+Can a site connect to my organization’s data?
+What should admins review?
+ChatGPT sites are a way to create and share a live website or lightweight app from Codex.
+You describe what you need, work with Codex to build it, then deploy a site that people in your workspace can open and use.
+A site can be useful when you have a piece of work that needs a place to live: a launch tracker, a dashboard for a weekly review, a calculator for exploring options, or an onboarding page for a new project.
+What is an internal site or app?
+An internal site is a webpage created for people inside your organization or workspace. It gives a team one place to return to for a specific piece of work.
+For example, an internal site might bring together the milestones, owners, links, and risks for a product launch. Instead of searching through several documents, teammates can open one page and check the latest information.
+A lightweight app is similar, but it includes a way for people to interact with the information. A calculator might ask for a few inputs and show a result. A dashboard might help people review information in a consistent format.
+These tools are usually smaller in scope than a full software product. They are often created for one team, one project, or one recurring workflow.
+Format
+What it is useful for
+Example
+Document
+Reading or sharing information
+A written launch plan
+Internal site
+Giving a group one page to revisit
+A launch tracker with milestones and links
+Lightweight app
+Helping people work with information
+A calculator for comparing project options
+Larger software project
+Supporting a more complex or long-term product need
+A custom system with advanced infrastructure requirements
+What ChatGPT sites does
+In the Codex desktop app, you can ask Codex to build a site or lightweight app for a real piece of work.
+Codex helps create the site and deploy it from the same workspace where you built it. You can review the result, tell Codex what to change, and deploy an updated version when it is ready for other people to use.
+ChatGPT sites includes hosting, access controls, storage, and database support.
+Start with a small, focused use case
+A good first site solves one clear problem for a defined group of people.
+If your team needs to…
+You could create…
+Include…
+Track a launch
+A launch tracker
+Milestones, owners, links, and risks
+Review information each week
+A dashboard
+The information used in the review meeting
+Compare options
+A calculator
+Inputs, assumptions, and a clear result
+Help people join a project
+An onboarding page
+Background, resources, and next steps
+Organize a project
+An internal page
+Key links, updates, and reference material
+A useful site can be small. The goal is to create something people can open and use for a specific task.
+How to build a site in Codex
+1. Describe what you need
+Start by telling Codex what you want to create and who will use it.
+For example:
+Build a launch tracker for our cross-functional team. Include milestones, owners, links, risks, and a weekly update section. Keep the page easy to scan during our weekly review.
+2. Review the first version
+Open the site and check whether it reflects the workflow you had in mind.
+Look at the content, structure, labels, and any calculations or interactive elements. Test the main experience as if you were a teammate opening it for the first time.
+3. Ask Codex to make changes
+You can continue the conversation and describe what you want to adjust.
+For example:
+Move the risks section higher on the page. Add a filter for milestone owner. Make the weekly updates easier to scan.
+4. Deploy the site
+When the site is ready, ask Codex to deploy it.
+Codex will provide a URL for the deployed version. If the site is not deployed automatically, ask:
+Deploy this site and give me the URL.
+Open the deployed link in Chrome and check the site once more before sharing it. The in-app browser is not currently supported.
+5. Share it with the right people
+When you are ready to expand access, click the Share button at the end of the Codex turn.
+Depending on your workspace settings, you can share a site with specific people or groups. You can also return to the sites page in the Codex sidebar later to review the site settings and manage access.
+For Enterprise workspaces, admins control whether ChatGPT sites is available.
+Review before you share
+A site may contain plans, analysis, project information, or user inputs. Before sharing it, check both the content and the audience.
+Keep your site up to date with an automation
+Sites cannot connect directly to live data today. If the information in your site changes regularly, you can create a separate automation to gather the latest updates on a schedule and prepare a refreshed version for your site. For example, an automation could review an approved project tracker every weekday morning, summarize what changed, and organize the latest milestones, owners, and risks in a consistent format. You can then review the updates and refresh your site when needed.
+ChatGPT sites is intended for focused websites and lightweight apps. Some projects may still require a different tool or a larger engineering effort.
+Try it
+Start with a site that supports a real project your team already understands.
+Build an onboarding site for new members of this project. Include a short overview, key documents, the team directory, common questions, and a first-week checklist. Before you build it, propose a simple page structure and ask me any questions you need.
+Or try a calculator:
+Build a lightweight app that helps our team compare project options. Ask me for the inputs, assumptions, and scoring rules first. Then create a results page that shows how the score was calculated.
+Common questions
+Do I need to know how to code?
+You can start by describing the site in plain language. Codex can build the first version and make changes based on your feedback.
+Is a site the same as a full software product?
+A site is a good fit for a focused internal tool, page, dashboard, or calculator. A more complex product may still require a separate engineering project.
+Can I update a site after I deploy it?
+Ask Codex to make the change, review the new version, and deploy the update when it is ready.
+Can a site connect to my organization’s data?
+Sites cannot connect directly to live data sources today. For information that changes regularly, use a separate automation to gather updates on a schedule, then review the changes and refresh the site when needed.
+What should admins review?
+Admins should confirm whether ChatGPT sites is enabled, who can create and share sites, which sites exist in the workspace, who can access them, and when a site should be removed.
+Continue learning with OpenAI Academy
+Discover additional guides and resources to help you build practical AI skills.
+View all topics
+Keep reading
+View all
+Plugins and skills | OpenAI
+OpenAI Academy
+Apr 23, 2026
+Automations | OpenAI
+OpenAI Academy
+Apr 23, 2026
+Settings | OpenAI
+OpenAI Academy
+Apr 23, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security & Privacy
+Trust & Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Livestreams
+Podcast
+RSS
+Terms & Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States
