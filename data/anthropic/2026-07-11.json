@@ -1,0 +1,36 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.11",
+  "cnDate": "7月11日 周六",
+  "edition": "VOL.192",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "Anthropic 发起“困难问题”倡议，公开追踪公众关切",
+      "summary": "Anthropic 面向公众征集 AI 对就业、家庭、社会与科学的影响等问题，并承诺公开追踪回应和不足，延续其公共利益使命下的透明治理实践。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/hard-questions",
+      "candidate_ref": "firsthand/2026-07-11"
+    },
+    {
+      "tag": "企业",
+      "title": "UST 将 Claude 接入芯片验证等物理 AI 流程",
+      "summary": "工程服务商 UST 把 Claude Code 接入芯片验证、数字孪生和回归测试流程，并计划培训 2 万名工程师；其 iDEC 平台目前已将验证周期缩短 50%–70%。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/ust-claude",
+      "candidate_ref": "firsthand/2026-07-11"
+    },
+    {
+      "tag": "企业",
+      "title": "Cognition 分享让 Claude Fable 5 夜间持续工作的经验",
+      "summary": "Cognition 介绍如何让 Claude Fable 5 在无人值守时段持续处理软件工程任务：通过长任务拆解、验证和人工复核，把模型能力嵌入更稳定的开发流程。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-how-cognition-trusts-claude-fable-5-to-work-through-the-night",
+      "candidate_ref": "firsthand/2026-07-11"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 官方发布与 Claude 生态更新",
+  "outroCta": "关注 · 不错过任何更新"
+}
