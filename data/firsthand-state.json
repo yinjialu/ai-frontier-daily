@@ -1,9 +1,9 @@
 {
   "claude-blog": {
     "initialized": true,
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
-    "known_urls_count": 59,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='claude.com', port=443): Max retries exceeded with url: /blog (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102206a50>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
+    "known_urls_count": 71,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -39,8 +39,8 @@
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "anthropic-engineering": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Max retries exceeded with url: /engineering (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102207140>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://www.anthropic.com/engineering/how-we-contain-claude",
       "https://www.anthropic.com/engineering/april-23-postmortem",
@@ -72,8 +72,8 @@
     "known_urls_count": 50
   },
   "anthropic-research": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Max retries exceeded with url: /research (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102207830>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://www.anthropic.com/research/team/alignment",
       "https://www.anthropic.com/research/team/economic-research",
@@ -94,13 +94,13 @@
       "https://www.anthropic.com/research/global-workspace"
     ],
     "initialized": true,
-    "known_urls_count": 29,
+    "known_urls_count": 30,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "anthropic-news": {
     "initialized": true,
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Max retries exceeded with url: /news (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102206210>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag",
       "https://www.anthropic.com/news/claude-science-ai-workbench",
@@ -109,12 +109,12 @@
       "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
       "https://www.anthropic.com/news/alberta-government-claude-cybersecurity"
     ],
-    "known_urls_count": 23,
+    "known_urls_count": 35,
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "transformer-circuits": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='transformer-circuits.pub', port=443): Max retries exceeded with url: /feed.xml (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102207530>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://transformer-circuits.pub/2026/may-update/index.html",
       "https://transformer-circuits.pub/2026/nla/index.html",
@@ -177,8 +177,8 @@
     "last_new_article": "2026-07-07T03:58:07+08:00"
   },
   "openai-news": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='openai.com', port=443): Max retries exceeded with url: /news/rss.xml (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1022077a0>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://openai.com/index/helping-build-shared-standards-for-advanced-ai",
       "https://openai.com/index/gpt-5-immunology-mystery",
@@ -1209,12 +1209,12 @@
       "https://openai.com/index/genebench-pro/case-studies"
     ],
     "initialized": true,
-    "known_urls_count": 1034,
+    "known_urls_count": 1045,
     "last_new_article": "2026-07-01T01:06:02+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": false,
-    "last_fetch_error": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",
+    "last_fetch_error": "HTTPSConnectionPool(host='deepmind.google', port=443): Max retries exceeded with url: /blog/rss.xml (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10221c290>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning",
       "https://deepmind.google/blog/securing-the-future-of-ai-agents",
@@ -1325,8 +1325,8 @@
     "last_new_article": "2026-07-04T07:38:50+08:00"
   },
   "google-models-research": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Max retries exceeded with url: /innovation-and-ai/models-and-research/rss/ (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10221cb60>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://blog.google/innovation-and-ai/technology/research/helping-communities-prepare-for-natural-disasters",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/deepmind-a24-research-partnership",
@@ -1353,12 +1353,12 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 26,
+    "known_urls_count": 30,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "google-gemini": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='blog.google', port=443): Max retries exceeded with url: /products/gemini/rss/ (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10221d940>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://blog.google/company-news/outreach-and-initiatives/arts-culture/dataland-ai-art-museum",
       "https://blog.google/products-and-platforms/devices/pixel/june-2026-pixel-drop",
@@ -1392,12 +1392,12 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"
     ],
     "initialized": true,
-    "known_urls_count": 40,
+    "known_urls_count": 42,
     "last_new_article": "2026-07-02T07:58:41+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='qwenlm.github.io', port=443): Max retries exceeded with url: /blog/index.xml (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102206e70>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
@@ -1448,8 +1448,8 @@
     "known_urls_count": 44
   },
   "inclusionai-ling": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='inclusionai.github.io', port=443): Max retries exceeded with url: /blog/atom.xml (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1022076b0>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://www.inclusion-ai.org/blog/agentic-ai-202606",
       "https://www.inclusion-ai.org/blog/agentic-landscape-in-2026-Q1",
@@ -1476,8 +1476,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /orgs/deepseek-ai/repos?sort=created&direction=desc&per_page=50 (Caused by ProxyError('Unable to connect to proxy', ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10221dd60>, 'Connection to 10.23.0.1 timed out. (connect timeout=20)')))",
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
