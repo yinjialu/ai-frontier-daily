@@ -1,0 +1,80 @@
+{
+  "slug": "cognition-fable-5",
+  "style": "editorial",
+  "edition": "AI FRONTIER",
+  "brand": "变量生活",
+  "period": "2026.07",
+  "title": "AI为什么能工作一整夜",
+  "cover": null,
+  "coverTitle": "AI 为什么能\n工作一整夜？",
+  "topics": ["AI Agent", "Claude Fable 5", "软件工程"],
+  "coverCaption": "真正的突破，不是写得更快\n而是更久不跑偏",
+  "cards": [
+    {
+      "kind": "quote",
+      "heading": "Agent为何跑偏",
+      "quote": "能完成几分钟的任务，不等于能承担一整段工作。",
+      "notes": [
+        ["旧问题", "上下文一长就忘记主线"],
+        ["真实后果", "代码看似完成，实际埋下细小 bug"]
+      ],
+      "footer": "01 / 06 · TASK HORIZON"
+    },
+    {
+      "kind": "quote",
+      "heading": "Fable 5变长了",
+      "quote": "第二天醒来，它已经连续工作了 8 小时，而且还在推进。",
+      "notes": [
+        ["重点", "不是输出更多 token"],
+        ["而是", "第 40 个动作后仍记得第一个约束"]
+      ],
+      "footer": "02 / 06 · LONG-RUNNING AGENT"
+    },
+    {
+      "kind": "quote",
+      "heading": "可靠性来自调查",
+      "quote": "好的 Agent 会翻日志、找证据、修正路线。",
+      "notes": [
+        ["能力 01", "主动使用 debugging tools"],
+        ["能力 02", "明确 invariants 再执行"],
+        ["能力 03", "知道自己还不知道什么"]
+      ],
+      "footer": "03 / 06 · EVIDENCE OVER GUESS"
+    },
+    {
+      "kind": "quote",
+      "heading": "别只相信榜单",
+      "quote": "We trust no eval.",
+      "notes": [
+        ["Cognition 的做法", "让工程师把模型放进真实工作日"],
+        ["真正要问", "这段代码，我愿意留下吗？"]
+      ],
+      "footer": "04 / 06 · REAL WORK > BENCHMARK"
+    },
+    {
+      "kind": "quote",
+      "heading": "人的角色上移",
+      "quote": "从告诉 Agent 下一步怎么写，变成设计目标、约束和验收方式。",
+      "notes": [
+        ["以前", "人执行，模型辅助"],
+        ["现在", "人定义边界，Agent 持续推进"],
+        ["下一步", "Agent 主动发现问题并介入"]
+      ],
+      "footer": "05 / 06 · FROM TYPING TO ORCHESTRATING"
+    },
+    {
+      "kind": "closing",
+      "heading": "开发者先做4件事",
+      "quote": "Agent 的上限，越来越取决于任务环境。",
+      "notes": [
+        ["1", "写清验收标准"],
+        ["2", "建立可运行反馈回路"],
+        ["3", "把上下文放进工具"],
+        ["4", "定义什么时候必须找人"]
+      ],
+      "footer": "06 / 06 · 变量生活"
+    }
+  ],
+  "caption": "AI 为什么能工作一整夜？\n\nCognition 分享了他们测试 Claude Fable 5 的经验：工程师睡前把复杂任务交给 Agent，第二天醒来，它已经连续工作了 8 小时，而且还在推进。\n\n但重点不是“AI 终于会熬夜”，而是 Agent 跨过了几个关键门槛：\n\n1. 能在长上下文里保持主线\n2. 会主动翻日志、找证据，而不是猜一个答案\n3. 能先明确约束和 invariants 再执行\n4. 知道自己不知道什么\n\n这也是为什么 Cognition 说：We trust no eval。\n\n榜单只能告诉你模型在定义好的任务上表现如何，不能代替真实工程现场。真正要问的是：\n\n这段代码，我愿意留下吗？\n它能在脏上下文里继续工作吗？\n它会不会把错误假设带到下一步？\n它知道什么时候应该找人吗？\n\n对开发者来说，下一阶段不是让 Agent 替你打一段代码，而是把工作拆成目标、约束、验证和权限边界，让 Agent 能持续推进。\n\n完整文章已准备好，原始案例来自 Anthropic 官方访谈。",
+  "tags": ["AI", "Claude", "Fable5", "Agent", "AI编程", "软件工程", "变量生活"]
+}
