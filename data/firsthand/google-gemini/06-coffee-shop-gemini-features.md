@@ -1,0 +1,436 @@
+---
+type: Article
+title: 3 ways this coffee shop is growing with Gemini
+source: google-gemini
+resource: https://blog.google/products-and-platforms/products/gemini/coffee-shop-gemini-features
+published: 2026-07-08
+tags: [Gemini应用, 小企业自动化, 咖啡店案例, AI效率提升]
+detected: 2026-07-09T07:50:17+08:00
+---
+
+旧金山咖啡店Henry's House of Coffee利用Gemini自动化数据追踪、设计文档和撰写营销邮件，节省时间并推动增长。展示了AI在小企业中的实用场景。
+
+## Full Text
+
+3 ways small businesses can save time with Gemini
+Skip to main content
+The Keyword
+3 ways this coffee shop is growing with Gemini
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Home
+Innovation & AI
+Innovation & AI
+Models & Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+NotebookLM
+See all
+Infrastructure & cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety & Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+See all AI updates
+Models & Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+NotebookLM
+See all
+Infrastructure & cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety & Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+See all AI updates
+Products & platforms
+Products & platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning & Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads & Commerce blog
+Waze blog
+See all product updates
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning & Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads & Commerce blog
+Waze blog
+See all product updates
+Company news
+Company news
+Outreach & initiatives
+Creating opportunity
+Safety & security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Outreach & initiatives
+Creating opportunity
+Safety & security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Subscribe
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+["What's new in Android 17?", "What is the Google Home Speaker?", "How can I learn new AI skills?"]
+Subscribe
+The Keyword
+Home
+Innovation & AI
+Innovation & AI
+Models & Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+NotebookLM
+See all
+Infrastructure & cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety & Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+See all AI updates
+Products & platforms
+Products & platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning & Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads & Commerce blog
+Waze blog
+See all product updates
+Company news
+Company news
+Outreach & initiatives
+Creating opportunity
+Safety & security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Images
+RSS feed
+Subscribe
+Breadcrumb
+Products & Platforms
+Products
+Gemini
+3 ways this coffee shop is growing with Gemini
+Jul 08, 2026
+·
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+A San Francisco coffee shop uses Gemini to save time on graphic design, email marketing and sales forecasting.
+Sarah Armstrong
+Contributor, The Keyword
+Read AI-generated summary
+General summary
+Hrag Kalebjian uses Gemini to streamline operations at Henry’s House of Coffee, saving time on manual tasks. He relies on the tool to write custom code for sales tracking, design customer-facing documents, and draft engaging newsletter content. You can replicate these results by asking Gemini to automate your spreadsheets, simplify your internal guides, and summarize industry news for your marketing efforts.
+Summaries were generated by Google AI. Generative AI is experimental.
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+This content is generated by Google AI. Generative AI is experimental
+[[duration]] minutes
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Hrag Kalebjian didn’t always plan to run the family coffee business. But when his father considered retiring, Hrag stepped in to keep the legacy alive. He focused on bringing the traditional shop into the digital age to reach a new generation of customers.
+"I saw a big opportunity in the online space," he says. "I’ve been here ever since and I love every single day."
+Today,
+Henry’s House of Coffee
+is a San Francisco staple with a thriving nationwide subscription model. But managing e-commerce alongside a physical shop means wearing many hats — from roaster to accountant to marketer.
+To win back his time, Hrag turned to
+Gemini
+to handle the heavy lifting. Here are three ways he uses Gemini to simplify his daily operations and grow his business:
+1. Automating data tracking without expensive software
+Tracking daily revenue is vital, but manually pulling metrics is time-consuming.
+Hrag used Gemini as a technical assistant to write custom code for a daily sales forecaster. Instead of programming it from scratch, he used everyday language to ask for help and shared screenshots with Gemini to troubleshoot errors.
+"It only took about an hour to set up, and I get the report every morning," he says.
+Try it yourself:
+Ask Gemini to write a
+Google Sheets
+function to automatically highlight days when sales fall under your monthly average, then have Gemini walk you through how to use it.
+2. Reclaiming hours on creative and design assets
+Creating menus and manuals often requires jumping between multiple apps. Google simplifies this by connecting your existing documents into one convenient workspace.
+When Hrag wanted to revamp an instruction card for the shop's Armenian coffee kits, he bypassed the usual multi-hour design process. He dropped an old, dense 15-step PDF directly into Gemini.
+"After maybe 20 minutes of me uploading and talking to it, I had a card that was ready to print," Hrag says. Ultimately, the shop has created assets 95% faster by using Gemini.
+Try it yourself:
+Upload an internal business overview or standard operating document to Gemini and type: "Turn this document into a clean, friendly, print-ready guide for our customers."
+3. Turning industry news into high-performing marketing content
+Email marketing builds engagement, but drafting copy from scratch is a drain. Gemini excels at summarizing updates and matching your brand's voice.
+Hrag uses Gemini to synthesize coffee news for "The Sunday Pour," his weekly newsletter. By using Gemini to polish his ideas, he delivers engaging updates that receive a great response from his audience.
+Try it yourself:
+Paste article links or text into Gemini and ask: "Read these updates and provide a three-bullet summary in a casual tone for a newsletter."
+Pro and Ultra subscribers
+can also set up
+scheduled actions
+to have Gemini compile industry reports every week.
+Through this kind of experimentation, Hrag’s learned that growth isn’t about working more hours — it’s about better tools. Gemini handles the busy work so small business owners can focus on their customers.
+Get more stories from Google in your inbox.
+Get more
+stories from Google
+in your inbox.
+Email address
+Your information will be used in accordance with
+Google's privacy policy.
+Subscribe
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You are already subscribed to our newsletter.
+You can also subscribe with a
+different email address
+.
+POSTED IN:
+Gemini
+Related stories
+Google Workspace
+Gemini can now take notes in Google Meet for Google AI Pro and Ultra subscribers.
+Jun 29, 2026
+Gemini
+Here's how Gemini can help you avoid jetlag.
+Jun 26, 2026
+Gemini
+Try these 3 Google AI tools to help find your next job.
+By
+Lindsey Lanquist
+Jun 25, 2026
+Gemini
+5 ways Google parents are using Gemini
+By
+Chaim Gartenberg
+Jun 25, 2026
+Arts & Culture
+Powering the world’s first AI arts museum
+By
+Mira Lane
+Search
+4 ways soccer fans can catch every moment of the tournament
+Jun 08, 2026
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6
+Let’s stay in touch. Get the latest news from Google in your inbox.
+Subscribe
+No thanks
+Follow Us
+Privacy
+Terms
+About Google
+Google Products
+About the Keyword
+Help
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
