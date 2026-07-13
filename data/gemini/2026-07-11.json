@@ -1,0 +1,28 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.11",
+  "cnDate": "7月11日 周六",
+  "edition": "VOL.192",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "AI应用",
+      "title": "Gemini 推出 Study Notebooks 个性化学习空间",
+      "summary": "Gemini 应用新增 Study Notebooks，用户可围绕目标主题建立学习空间，获得定制课程、练习测验和进度追踪，把通用聊天组织成可持续的学习流程。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/how-to-make-gemini-study-notebooks",
+      "candidate_ref": "firsthand/2026-07-11"
+    },
+    {
+      "tag": "开发者",
+      "title": "AlphaEvolve 面向 Google Cloud 客户广泛推出",
+      "summary": "Google 将基于 Gemini 的 AlphaEvolve 代码优化代理扩展到 Google Cloud 客户，可从基线算法自动搜索更优方案并返回可读代码，覆盖芯片、物流和科研等复杂问题。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-on-cloud",
+      "candidate_ref": "firsthand/2026-07-11"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Google Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}

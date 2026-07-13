@@ -4,11 +4,11 @@ title: Helping K–12 educators build practical AI skills
 source: openai-news
 resource: https://openai.com/index/k-12-educators-practical-skills
 published: 2026-07-08
-tags: [AI教育, K-12, 教师培训, OpenAI]
-detected: 2026-07-09T07:50:17+08:00
+tags: [AI教育, K-12, OpenAI, 教师培训]
+detected: 2026-07-09T04:39:38+08:00
 ---
 
-OpenAI与Walton家庭基金会合作举办K-12教育者AI技能Jam，通过线下实践工作坊帮助教师将AI应用于教学、行政等日常工作，研究显示每周可节省5.9小时，旨在提升AI素养与负责任采用。
+OpenAI Academy与沃尔顿家族基金会合作，于2026年夏季举办K-12教育者AI技能工作坊，覆盖美国多个城市，提供实操培训，帮助教师将AI融入备课、沟通等日常工作，预计每周节省5.9小时，推动AI素养与负责任应用。
 
 ## Full Text
 
@@ -163,6 +163,6 @@ Other Policies
 (opens in a new window)
 (opens in a new window)
 OpenAI © 2015–2026
-Your privacy choices
+Manage Cookies
 English
 United States

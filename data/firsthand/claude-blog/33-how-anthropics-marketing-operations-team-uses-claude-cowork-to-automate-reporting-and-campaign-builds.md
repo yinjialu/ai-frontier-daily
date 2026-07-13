@@ -4,11 +4,11 @@ title: How Anthropic's marketing operations team uses Claude Cowork to automate 
 source: claude-blog
 resource: https://claude.com/blog/how-anthropics-marketing-operations-team-uses-claude-cowork-to-automate-reporting-and-campaign-builds
 published: 2026-07-08
-tags: [AI自动化, 营销运营, Claude Cowork, 效率提升]
-detected: 2026-07-09T07:50:17+08:00
+tags: [AI Agent, 营销运营自动化, Claude Cowork]
+detected: 2026-07-09T04:39:38+08:00
 ---
 
-Anthropic营销运营团队使用Claude Cowork自动化周报生成和活动搭建，将原来每周1-2天的手动数据整合压缩至数小时，自动从仓库、Slack等来源抓取数据并生成报告，团队重心转向验证和流程优化。
+Anthropic营销运营团队通过Claude Cowork自动化每周报告和活动搭建，将原本数天的手动工作压缩至数小时，提升效率并聚焦数据验证与流程优化。
 
 ## Full Text
 

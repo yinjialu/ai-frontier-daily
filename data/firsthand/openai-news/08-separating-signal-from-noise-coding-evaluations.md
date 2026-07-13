@@ -4,11 +4,11 @@ title: Separating signal from noise in coding evaluations
 source: openai-news
 resource: https://openai.com/index/separating-signal-from-noise-coding-evaluations
 published: 2026-07-08
-tags: [代码评估, 基准测试, 数据质量, AI能力评估]
-detected: 2026-07-09T07:50:17+08:00
+tags: [编程基准测试, 模型评估, 数据质量, SWE-Bench]
+detected: 2026-07-09T04:39:38+08:00
 ---
 
-OpenAI对SWE-Bench Pro进行审计，发现约30%的任务存在缺陷，包括过度严格的测试、未明确说明的提示等问题，建议模型开发者谨慎解读评估结果，强调数据质量对能力评估的重要性。
+OpenAI审计SWE-Bench Pro发现约30%任务存在缺陷，包括测试严格、提示不明确、覆盖率低等，提醒开发者需仔细审查基准测试结果以避免误导模型能力评估。
 
 ## Full Text
 
@@ -47,6 +47,7 @@ Methodology
 Human-supervised agent review
 Human annotation campaign
 Discussion
+Table of contents
 Methodology
 Human-supervised agent review
 Human annotation campaign
@@ -229,6 +230,6 @@ Other Policies
 (opens in a new window)
 (opens in a new window)
 OpenAI © 2015–2026
-Your privacy choices
+Manage Cookies
 English
 United States

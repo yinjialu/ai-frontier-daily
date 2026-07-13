@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "slug": "cognition-fable-5",
+      "title": "AI为什么能工作一整夜"
+    },
+    {
       "slug": "claude-code-model-effort",
       "title": "模型和effort怎么选"
     },

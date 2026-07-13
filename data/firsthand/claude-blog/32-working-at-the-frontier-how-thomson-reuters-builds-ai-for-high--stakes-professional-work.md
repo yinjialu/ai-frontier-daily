@@ -4,11 +4,11 @@ title: Working at the frontier: How Thomson Reuters builds AI for high-stakes pr
 source: claude-blog
 resource: https://claude.com/blog/working-at-the-frontier-how-thomson-reuters-builds-ai-for-high--stakes-professional-work
 published: 2026-07-08
-tags: [企业级AI, 法律AI, Claude应用, AI评测]
-detected: 2026-07-09T07:50:17+08:00
+tags: [企业AI, 法律AI, Claude应用, 专业工作流]
+detected: 2026-07-09T04:39:38+08:00
 ---
 
-Thomson Reuters CTO Joel Hron 讲述如何为律师、会计师等专业领域构建高精度AI：结合Claude等前沿模型与权威内容、领域专家及工作流集成，实现可验证、可辩护的Fiduciary-Grade AI™，显著提升法律研究效率。
+路透社CTO分享如何为律师、会计师等高风险专业工作构建AI，强调结合权威内容、领域专家和评估基础设施形成Fiduciary-Grade AI，并利用Claude模型实现可验证、可辩护的智能系统。
 
 ## Full Text
 

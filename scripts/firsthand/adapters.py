@@ -2,10 +2,40 @@ import re
 import requests
 import feedparser
 from html.parser import HTMLParser
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from .urls import canonical_url, make_absolute
 
 _HREF_RE = re.compile(r'href="([^"]+)"')
 _UA = {"User-Agent": "Mozilla/5.0 (firsthand-monitor)"}
+
+# launchd may inherit a stale HTTP(S)_PROXY from the interactive session that
+# installed or restarted it. Public firsthand sources are reachable directly
+# on the host, so do not let requests silently route them through that proxy.
+# Keep a small retry budget for transient CDN/connection failures.
+_HTTP = requests.Session()
+_HTTP.trust_env = False
+_HTTP.headers.update(_UA)
+_HTTP.mount("https://", HTTPAdapter(max_retries=Retry(
+    total=3,
+    connect=3,
+    read=3,
+    status=2,
+    backoff_factor=0.5,
+    status_forcelist=(429, 500, 502, 503, 504),
+    allowed_methods=frozenset({"GET"}),
+    respect_retry_after_header=True,
+)))
+_HTTP.mount("http://", HTTPAdapter(max_retries=Retry(
+    total=3,
+    connect=3,
+    read=3,
+    status=2,
+    backoff_factor=0.5,
+    status_forcelist=(429, 500, 502, 503, 504),
+    allowed_methods=frozenset({"GET"}),
+    respect_retry_after_header=True,
+)))
 
 _MONTHS = {m: i for i, m in enumerate(
     ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -30,7 +60,7 @@ def parse_human_date(text: str) -> str | None:
 
 
 def _http_get(url: str) -> str:
-    resp = requests.get(url, timeout=20, headers=_UA)
+    resp = _HTTP.get(url, timeout=20)
     resp.raise_for_status()
     return resp.text
 

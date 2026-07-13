@@ -1,0 +1,44 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.11",
+  "cnDate": "7月11日 周六",
+  "edition": "VOL.192",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.6 面向复杂工作推出，强化长任务协作",
+      "summary": "OpenAI 发布 GPT-5.6，定位为面向复杂专业工作的前沿模型，并同步强调其在推理、编码和长流程任务中的能力，微软 365 Copilot 已将其设为首选模型。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/gpt-5-6",
+      "candidate_ref": "firsthand/2026-07-11"
+    },
+    {
+      "tag": "AI应用",
+      "title": "ChatGPT 转向长期协作伙伴，覆盖更完整工作流",
+      "summary": "OpenAI 将 ChatGPT 的产品定位从单次问答扩展到持续协作，围绕研究、写作、分析和执行等复杂工作提供更连贯的上下文与任务支持。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work",
+      "candidate_ref": "firsthand/2026-07-11"
+    },
+    {
+      "tag": "企业",
+      "title": "德国电信以 ChatGPT 和 API 推进 AI 原生转型",
+      "summary": "德国电信让员工广泛使用 ChatGPT 与 API，并把 AI 嵌入客服、网络运营和语音通信；官方披露月活用户超 5 万，2026 年工具使用量增长 546%。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/deutsche-telekom",
+      "candidate_ref": "firsthand/2026-07-11"
+    },
+    {
+      "tag": "安全",
+      "title": "OpenAI 为 GPT-5.5 启动生物安全漏洞赏金计划",
+      "summary": "OpenAI 面向 GPT-5.5 的生物安全风险启动漏洞赏金计划，邀请研究者报告模型在相关任务上的潜在危险行为，以补充内部评估和防护机制。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/bio-bug-bounty",
+      "candidate_ref": "firsthand/2026-07-11"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 OpenAI 产品、模型与开发者生态",
+  "outroCta": "关注 · 不错过任何更新"
+}
