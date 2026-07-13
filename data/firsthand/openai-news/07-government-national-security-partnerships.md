@@ -4,11 +4,11 @@ title: Our approach to government and national security partnerships
 source: openai-news
 resource: https://openai.com/index/government-national-security-partnerships
 published: 2026-07-08
-tags: [OpenAI, 国家安全, AI治理, 民主价值观]
-detected: 2026-07-09T04:39:38+08:00
+tags: [AI安全, 政府合作, 国家安保, AI治理]
+detected: 2026-07-09T07:50:17+08:00
 ---
 
-OpenAI发布国家安全原则，明确与政府合作立场：在民主问责与法治下使用AI进行防御（网络、生物安全），禁止大规模监控、自主武器和自动高风险决策，支持立法监管。
+OpenAI发布国家安保原则，明确与政府及国安合作中AI的民主问责、人类判断与法治底线，已在网络与生物安全领域与多国建立可信访问合作，并限制大规模监控、自主武器等高风险用途。
 
 ## Full Text
 
@@ -146,6 +146,6 @@ Other Policies
 (opens in a new window)
 (opens in a new window)
 OpenAI © 2015–2026
-Manage Cookies
+Your privacy choices
 English
 United States

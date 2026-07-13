@@ -4,11 +4,11 @@ title: 3 ways this coffee shop is growing with Gemini
 source: google-gemini
 resource: https://blog.google/products-and-platforms/products/gemini/coffee-shop-gemini-features
 published: 2026-07-08
-tags: [Gemini应用, 小型企业, 自动化, AI工具]
-detected: 2026-07-09T04:39:38+08:00
+tags: [Gemini应用, 小企业自动化, 咖啡店案例, AI效率提升]
+detected: 2026-07-09T07:50:17+08:00
 ---
 
-旧金山咖啡店老板使用Gemini自动化数据追踪、设计文档和营销内容，节省时间并提升运营效率，展示了AI在小企业中的实际应用。
+旧金山咖啡店Henry's House of Coffee利用Gemini自动化数据追踪、设计文档和撰写营销邮件，节省时间并推动增长。展示了AI在小企业中的实用场景。
 
 ## Full Text
 
