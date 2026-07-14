@@ -1,0 +1,28 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.15",
+  "cnDate": "7月15日 周三",
+  "edition": "VOL.196",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Google DeepMind 与印度 Atal Innovation Mission 推出 ATL Saathi",
+      "summary": "Google DeepMind 与印度 Atal Innovation Mission 推出 ATL Saathi，为学校创新实验室提供 AI 辅助的学习与创意工具，帮助学生和教师更低门槛地开展项目式 STEM 教育，扩大 Gemini 在教育场景的落地。",
+      "source": "deepmind.google",
+      "url": "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/",
+      "candidate_ref": "firsthand/2026-07-14"
+    },
+    {
+      "tag": "研究",
+      "title": "Google 发布 Gemini 在东南亚语言能力的评估分析",
+      "summary": "Google 介绍 Gemini 面向东南亚多种语言的能力建设，并引用 SEA-HELM 等区域评测讨论语言与文化适配。对开发者而言，多语言模型的竞争已从通用英语能力延伸到本地语言质量与文化语境。",
+      "source": "blog.google",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-southeast-asia-report-2026",
+      "candidate_ref": "firsthand/2026-07-14"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Google Gemini 最新动态",
+  "outroCta": "关注 · 不错过任何更新"
+}
