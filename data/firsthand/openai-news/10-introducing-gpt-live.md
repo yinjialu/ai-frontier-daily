@@ -4,11 +4,11 @@ title: Introducing GPT-Live
 source: openai-news
 resource: https://openai.com/index/introducing-gpt-live
 published: 2026-07-08
-tags: [全双工语音, GPT-Live, 连续交互, AI对话系统]
-detected: 2026-07-09T04:39:38+08:00
+tags: [语音AI, 全双工, GPT-Live, 自然交互]
+detected: 2026-07-09T07:50:17+08:00
 ---
 
-OpenAI发布GPT-Live，采用全双工架构实现同时听说的连续交互，支持实时决策与打断，并可委托GPT-5.5处理复杂任务，显著提升语音对话自然度与智能化水平。
+OpenAI发布GPT-Live，全双工架构语音模型，支持同时听与说，实现更自然的对话。它能将复杂任务委托给GPT-5.5等后台模型，保持对话流畅。评估显示其在交互自然性和推理能力上显著优于Advanced Voice Mode。
 
 ## Full Text
 
@@ -246,6 +246,6 @@ Other Policies
 (opens in a new window)
 (opens in a new window)
 OpenAI © 2015–2026
-Manage Cookies
+Your privacy choices
 English
 United States

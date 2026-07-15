@@ -1,18 +1,18 @@
 ---
 type: Article
-title: How Anthropic's marketing operations team uses Claude Cowork to automate reporting and campaign builds
+title: Working at the frontier: How Hebbia builds AI for financial diligence that can't miss a detail
 source: claude-blog
-resource: https://claude.com/blog/how-anthropics-marketing-operations-team-uses-claude-cowork-to-automate-reporting-and-campaign-builds
-published: 2026-07-08
-tags: [AI自动化, 营销运营, Claude Cowork, 效率提升]
-detected: 2026-07-09T07:50:17+08:00
+resource: https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail
+published: 2026-07-13
+tags: [金融AI, 大模型评测, Claude应用, AI Agent]
+detected: 2026-07-14T08:23:12+08:00
 ---
 
-Anthropic营销运营团队使用Claude Cowork自动化周报生成和活动搭建，将原来每周1-2天的手动数据整合压缩至数小时，自动从仓库、Slack等来源抓取数据并生成报告，团队重心转向验证和流程优化。
+Hebbia为金融机构构建AI尽职调查平台，使用Claude Fable 5在自有金融评测中取得最大准确率提升（约20%相对增益），通过元提示和矩阵网格实现透明可追溯的分析，满足高精度投资决策需求。
 
 ## Full Text
 
-Using Claude Cowork in marketing operations to automate reporting and campaign building | Claude by Anthropic
+Working at the frontier: How Hebbia builds AI for financial diligence that can't miss a detail | Claude by Anthropic
 Meet Claude
 Products
 Claude
@@ -184,90 +184,52 @@ Try Claude
 Blog
 Blog
 /
-How Anthropic's marketing operations team uses Claude Cowork to automate reporting and campaign builds
+Working at the frontier: How Hebbia builds AI for financial diligence that can't miss a detail
 Explore here
 Ask questions about this page
 Copy as markdown
-How Anthropic's marketing operations team uses Claude Cowork to automate reporting and campaign builds
-Ian Chan and Annabel Custer, in marketing operations at Anthropic, share how they automate work their team used to do by hand across multiple platforms.
+Working at the frontier: How Hebbia builds AI for financial diligence that can't miss a detail
+Hebbia builds research and diligence software for financial professionals, and tests every new model against finance evals tied to expert outcomes. In testing, Claude Fable 5 posted the biggest accuracy gain its research team has recorded, and tracked complex queries that prior models kept dropping.
 Category
 Enterprise AI
 Product
-Claude Cowork
+No items found.
 Date
-July 8, 2026
+July 13, 2026
 Reading time
 5
 min
 Share
 Copy link
-https://claude.com/blog/how-anthropics-marketing-operations-team-uses-claude-cowork-to-automate-reporting-and-campaign-builds
-Marketing operations teams spend a meaningful portion of their time keeping the systems behind marketing programs in step with the business. While automation sits firmly in their purview, a lot of the work is anything but: martech tools don’t integrate cleanly with each other, reports are consolidated manually, landing pages get spun up one at a time.
-Ian Chan, on the marketing operations team at Anthropic, used to spend one to two days a week pulling together the weekly marketing metrics review. Annabel Custer, who focuses on campaign operations, used to set up each new event by clicking through Salesforce, HubSpot, Swoogo, and email tools in sequence. Both have now compressed days of manual work into hours by setting up workflows in Claude Cowork.
-The recovered hours have shifted the shape of their work. Ian and Annabel now spend less time clicking through systems and more time on enablement, validation, and the underlying data and processes the marketing team relies on as more people across the company pull their own numbers and drive their own programs.
-Generating the weekly marketing metrics report
-In a perfect world, every metric in the weekly report Ian prepares for marketing and leadership would live in a dashboard and his job would be to simply put together the narrative. In practice, some metrics are in the dashboard already, while others haven’t yet made it there from the data warehouse, and others haven’t been piped into the warehouse yet. New ones might exist only in a Slack message or a call transcript.
-At Anthropic, the business moves faster than a traditional reporting pipeline can keep up with and Ian used to spend a day to two days every week tracking down data and validating it. Claude Cowork now handles most of that data hunt.
-A scheduled task runs every Sunday evening, prompting Claude to read the previous week's review and the latest meeting transcript, check Slack for what the sales team is focused on, query the warehouse, and leave a folder with the numbers and a few suggested focus areas.
-On Monday morning, Ian opens Claude Cowork and pulls the initial report, which contains the metrics tables and suggested headlines, or areas of focus.
-The weekly business review summary is shown here created with demo data and all information anonymized or modified for publication.
-Ian reviews them and once he’s confirmed or decided where to focus the narrative, he tells Claude to expand on them with supporting details and examples. Some weeks the team is responding to a sales priority, and others—to a product launch. At the quarter turn, Ian tells Claude to lead with quarterly plans and feeds in the quarterly review doc.
-Claude generates the leadership slide from the same data and narrative: what changed, why, and what the teams are doing about it. Any follow-ups become Asana tasks.
-The weekly metrics report, shown here with demo data and all information anonymized or modified for publication, contains key metrics and suggested areas of focus.
-When the numbers don’t line up, Claude flags the mismatch instead of guessing. After a reorg on the sales team, for example, marketing's reporting no longer matched theirs. Claude flagged the gap and asked Ian how to handle it.
-The process runs on connectors to the marketing platforms and tools the team uses, and three skills that Ian has built and updates continually:
-A prep skill
-drives the report assembly, including focus, headlines, and expansion with supporting detail.
-A proofreading skill
-checks every number in the draft against a verified source.
-An action-items skill
-turns follow-ups into Asana tasks.
-At the end of each weekly session, Ian asks Claude to summarize what came up that should go back into the skills. The new sales reorg structure, for example, the corrections he made, or a new way he wanted the headlines framed. In Ian’s case, the entire process, which used to take up to two days of work, takes up to two hours.
-Now, a meaningful share of Ian’s time has moved to helping marketers frame their questions, refine their prompts, and interpret what they get back when they pull their own numbers from Claude. He also has bandwidth to go deeper into the data layer, making sure Claude interprets the numbers, definitions, and regional structures the same way as the data warehouse.
-Human validation has become an integral part of both workstreams—a shift that’s accelerating as Claude automates the mundane manual tasks that have traditionally taken up much of marketing analysts’ time.
-Automating event builds and data imports
-Setting up the infrastructure behind marketing campaigns has traditionally been one of the most manual processes in marketing. Every event, webinar, or integrated campaign needs to be set up in the CRM, in the marketing automation platform that runs the email sequences and the automation behind them, and in the event management platform that hosts the registration page and the event landing page. Each of these is typically a different vendor, and the integrations between them are rarely complete.
-Before Claude Cowork, Annabel picked up every request from a dedicated Slack channel and worked through the sequence manually. Her new setup is almost entirely handled by Claude. It starts with an intake form where requesters specify the type of help they need: event build, data import, apply-to-attend, or approval support.
-Once an hour, a
-dispatcher skill
-reads the channel, picks the most urgent request, stamps the ticket so the work doesn't get duplicated, and hands it off to one of five specialist skills that Annabel has set up to do the required work. It doesn’t do any event setup itself; its job is to decide what runs next, and keeping it separate lets Annabel refine each specialist skill on its own without touching the routing.
-The dispatcher skill, edited for publication to show demo data and information, reads the channel and hand off requests to one of five specialist skills that do the required work.
-For an event build, which is the most complex request type, an
-event-build skill
-handles the full sequence end to end: CRM campaign creation, marketing automation campaign with workflows and lists, event platform setup, email drafting, landing page generation, and all of the integrations between them.
-The event-build skill (excerpted and edited for publication) scripts two Slack updates: when Claude picks up the request, and when the landing page is ready for the requester's review and the audit takes over.
-When the build is done, it hands off to a new agent for audit. The
-audit agent
-starts with no prior context, submits a test registration on the live landing page, opens the confirmation email in Gmail, and marks the Asana task complete if everything looks right. Annabel reviews each result before it ships.
-This workflow runs on connectors to the marketing platforms and tools Annabel works with, plus a number of skills she's built and updates as she finds new edge cases:
-A dispatcher skill
-reads the intake channel and routes each request to the right specialist skill below.
-An event-build skill
-drives the end-to-end setup across platforms.
-A webinar-landing-page creation skill
-spins up landing pages for webinars.
-An audit skill
-, run by a separate fresh Claude instance, verifies the event-build skill's output before the task is marked complete.
-An apply-to-attend skill
-handles in-flight changes to the registration flow:
-An approval-support skill
-handles event approvals and sends the appropriate emails at a scheduled cadence.
-A data-import
-skill
-scrubs lists and processes attendee data.
-She also keeps a separate "manager" agent open. When a run misfires, she opens the manager and asks it to look at what happened and propose what to adjust. Anything worth keeping goes back into the relevant skill.
-While these automated workflows will become significant time savers in Annabel’s day, her primary motivation to build them was quality of work. As the marketing team scales, marketers cloning event pages from whatever template happens to be nearby can produce bugs, such as confirmation emails surfacing the wrong city name or broken landing pages. With Claude Cowork, she gets consistency across builds, at scale.
-As Claude takes on the repetitive parts of campaign operations, Annabel can focus on more strategic projects, like enablement, and automating or optimizing processes and campaign architecture for better insights.
-Advice for Marketing Ops teams on getting started with Claude Cowork
-Turn repeated corrections into skills.
-When you find yourself correcting Claude on the same thing more than once, that feedback belongs in a skill. You don’t need to build skills, either: Claude can do that for you.
-Build a proofreading skill first.
-The proofreading skill checks that every number Claude puts in a report traces back to a verified source.
-Ask Claude to reflect.
-Claude reads instructions differently than a human writes them, so after the first runs of a new workflow, ask what was difficult about the instructions. Annabel feeds what surfaces back into the skill as part of her broader practice of constantly updating skills.
-Lean on scheduled tasks.
-Work that runs on its own every Sunday night or every hour is work no one has to remember to do.
-‍
+https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail
+Hebbia is an AI platform built for the rigor of  institutional finance, serving more than a third of the top 50 asset managers along with tier-1 investment banks and law firms. Divya Mehta, the company's founding product manager, spends roughly half her time with its largest investment banking, private equity, and credit customers.
+Those customers make decisions based on analyses that span thousands of dense documents, where a wrong number can change the outcome of an entire deal.
+How Hebbia holds the line on accuracy
+A banker or investor weighing an opportunity has to work through all the data that could impact the decision, including the company's public filings, its credit agreements, internal documents, and structured data like information from a CRM. Hebbia's meta-prompting turns plain-language requests into prompts, and then Claude runs each step of the analysis across hundreds of documents. Each answer lands in its own cell on a grid in Hebbia's Matrix, enabling full transparency, traceability, and steerability.
+Keeping those answers accurate at scale is the work of Hebbia's applied AI research team, led by Adithya Ramanathan. For Ramanathan, the point of that work is finding signals: getting a model to draw on the right data, in the right context, and surface what a customer wants to know.
+"When you're connecting it to the right data and putting it in the right ecosystem," Ramanathan says, "that's when you get the alpha that finance professionals actually chase."
+Getting there means running every new model through Hebbia's finance-specific benchmark, head to head against the model it would replace, and expanding what the benchmark measures with each release to keep pace as models improve. The benchmark is built to be hard on purpose.
+"The bar is extremely high, and our customers hold us to that extremely high bar—and rightfully so," Mehta says. "At the end of the day, they're making investment decisions at a very large scale based on the analysis and final work product built in Hebbia."
+The team at Hebbia runs every new Claude model through finance-specific benchmarks that run head-to-head against the model it would replace.
+Clearing Hebbia's evals by the widest margin yet
+Joe Renner, a researcher on the applied AI team, runs each new Claude model against that benchmark, with a battery of tests replicating key finance knowledge worker use cases. One such test covers question answering and citation finding over financial documents. Another test runs through Hebbia's agent system, with the tools its chat product uses, on the kind of open-ended, multi-source analysis a customer actually does.
+Claude Fable 5 cleared both by the widest margin Renner had measured. On the question-answering and citation test, it posted about a 20% relative gain in accuracy over financial documents, the best he had seen from any new model. Citation match held roughly steady—Renner believes the gain comes from the model better understanding the evidence it finds.
+"It comes down to two seemingly fundamental qualities: the ability to find the right information from a dense data set, and then synthesize it correctly," Divya says. "These seem like fundamental model capabilities, but they have massive impact when we think about finance and research workflows." On the agent run, it held every part of a multi-part request at once, answering all of them and citing each answer back to its source.
+Claude Fable 5 also showed more reach. On open-ended analysis, it reasoned from a wider cross-section of the data and arrived at conclusions the team thought were worth a closer look. Renner traces that to how the model holds a long task together: it keeps every part of a request in view, prompts its own sub-agents and tools so the right facts come back, and grounds each claim in the source rather than inferring it.
+Setting a new standard for deal diligence with Claude Fable 5
+The information that gives customers  an edge usually sits in unstructured, proprietary documents.
+Those have been harder to analyze at scale than the structured, quantitative data finance already models well. Hebbia built Matrix to make that qualitative work systematic, and every model generation widens what it can take on.
+That might be a data room with thousands of documents, where the work is finding the relevant signal, citing it, and drafting each section of an investment memo. Or it might be analyzing every document tied to a credit deal (the credit agreement, amendments, side letters, each running hundreds of dense technical pages) and extracting the full covenant package, financial terms and operating restrictions alike, from that unstructured mass.
+"These are actually the types of documents that Anthropic models have always done really well at," Mehta says.
+With earlier Sonnet and Opus models, Matrix could already pull out and synthesize a credit agreement's covenants—the dense protections a lender writes in for itself. With Claude Fable 5, Hebbia is reaching for the rest of the job: the multi-step analysis on top of those covenants, comparing them against live monitoring data, flagging risks, all the way to a first draft of the covenant review and an internal memo. That review is something credit firms used to pay outside teams a great deal to produce by hand.
+Claude Fable 5 enables Matrix, Hebbia's AI platform built for financial professionals, to take on longer-running, multi-step tasks like synthesizing credit agreement coven
+What's next
+Now that models like Claude Fable 5 can carry this work end to end, the comparison is the specialist hours it replaces.
+Before AI, when a managing director needed a deck to pitch a CEO, it would take a junior banker 2-3 days to learn the company, pull financials, and build slides. In the pre-Opus days, the timeline to produce a first draft compressed by 12 to 24 hours, and with earlier Opus models on Hebbia, Mehta says, it dropped even further, taking about a day to run end-to-end. Hebbia has since codified the whole job into a Matrix that gathers the data across sources in a set of deterministic agentic steps, does the analysis, and builds the final deck, financial model, and internal research in a couple of minutes, so the banker can spend the time on which buyers to pursue and how to position them. Claude Fable 5 tightens it further, she says.
+Decomposing the work into steps still matters, "no matter how brilliant the model is," because firms want control over which documents feed the analysis and how each step is built. So Hebbia is adopting the Claude Agent SDK to compose these jobs as smaller, repeatable, checked steps rather than a single model run.
+"Compressing the deal lifecycle has a massive impact on a firm's ability to compete for those investments," Mehta says. She hears it in customer conversations. Two or three years ago the questions were defensive, about hallucinations and whether the math was right. "Today, those conversations have changed completely. They're: how can I automate more of my workflow? How do I sequence more steps together? How can I generate ten, fifteen, twenty slide decks in one click with high fidelity and consistency?"
+Get started with
+Claude Fable 5.
 No items found.
 Prev
 Prev
@@ -281,13 +243,27 @@ FAQ
 No items found.
 Related posts
 Explore more product news and best practices for teams building with Claude.
-Jul 8, 2026
-Working at the frontier: How Thomson Reuters builds AI for high-stakes professional work
+Jun 5, 2026
+The Claude Cowork product guide
 Enterprise AI
-Working at the frontier: How Thomson Reuters builds AI for high-stakes professional work
-Working at the frontier: How Thomson Reuters builds AI for high-stakes professional work
-Working at the frontier: How Thomson Reuters builds AI for high-stakes professional work
-Working at the frontier: How Thomson Reuters builds AI for high-stakes professional work
+The Claude Cowork product guide
+The Claude Cowork product guide
+The Claude Cowork product guide
+The Claude Cowork product guide
+Jun 24, 2026
+Building effective human-agent teams
+Enterprise AI
+Building effective human-agent teams
+Building effective human-agent teams
+Building effective human-agent teams
+Building effective human-agent teams
+Jul 10, 2026
+Working at the frontier: How Cognition trusts Claude Fable 5 to work through the night
+Enterprise AI
+Working at the frontier: How Cognition trusts Claude Fable 5 to work through the night
+Working at the frontier: How Cognition trusts Claude Fable 5 to work through the night
+Working at the frontier: How Cognition trusts Claude Fable 5 to work through the night
+Working at the frontier: How Cognition trusts Claude Fable 5 to work through the night
 Jul 7, 2026
 How people are using Claude Cowork
 Enterprise AI
@@ -295,20 +271,6 @@ How people are using Claude Cowork
 How people are using Claude Cowork
 How people are using Claude Cowork
 How people are using Claude Cowork
-Jun 3, 2026
-How Anthropic enables self-service data analytics with Claude
-Enterprise AI
-How Anthropic enables self-service data analytics with Claude
-How Anthropic enables self-service data analytics with Claude
-How Anthropic enables self-service data analytics with Claude
-How Anthropic enables self-service data analytics with Claude
-May 14, 2026
-How Claude Code works in large codebases: Best practices and where to start
-Enterprise AI
-How Claude Code works in large codebases: Best practices and where to start
-How Claude Code works in large codebases: Best practices and where to start
-How Claude Code works in large codebases: Best practices and where to start
-How Claude Code works in large codebases: Best practices and where to start
 Transform how your organization operates with Claude
 See pricing
 See pricing
@@ -655,5 +617,4 @@ Deutsch (Germany)
 Français (France)
 한국어 (South Korea)
 Italian (Italy)
-Claude Cowork
-Business
+Financial services
