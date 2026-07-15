@@ -1,0 +1,36 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.14",
+  "cnDate": "7月14日 周二",
+  "edition": "VOL.195",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "Anthropic 用四条价值轴比较 Claude 的模型与语言差异",
+      "summary": "Anthropic 将 Claude 的表达倾向压缩为谨慎、严谨、深度和坦诚等四条价值轴，比较不同模型与语言的差异。结果显示，模型版本和语言都会改变回答风格，为对齐训练与跨文化评估提供了可量化方法。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/research/claude-values-models-languages",
+      "candidate_ref": "firsthand/2026-07-14"
+    },
+    {
+      "tag": "研究",
+      "title": "Claude 在机器人任务上的能力取决于控制接口",
+      "summary": "Anthropic 测试 Claude 控制机械臂、四足和人形机器人，发现模型直接控制关节时表现较弱，但监督预训练策略或使用高层指令时已能完成部分导航与抓取。模型能力提升仍伴随可靠性和安全边界问题。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/research/claude-plays-robotics",
+      "candidate_ref": "firsthand/2026-07-14"
+    },
+    {
+      "tag": "企业",
+      "title": "Hebbia 用 Claude Fable 5 提升金融尽调准确率",
+      "summary": "金融 AI 公司 Hebbia 将 Claude Fable 5 用于尽职调查，通过元提示和矩阵网格组织多来源材料，在自有金融评测中取得约 20% 的相对准确率提升，并保留可追溯的分析过程，适合高风险决策复核。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail",
+      "candidate_ref": "firsthand/2026-07-14"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 官方发布与 Claude 生态更新",
+  "outroCta": "关注 · 不错过任何更新"
+}

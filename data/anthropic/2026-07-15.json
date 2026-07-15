@@ -1,0 +1,50 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.15",
+  "cnDate": "7月15日 周三",
+  "edition": "VOL.196",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Anthropic 推出面向美国 K-12 教师的 Claude for Teachers",
+      "summary": "Anthropic 为完成验证的美国 K-12 教师提供一年免费高级 Claude，接入按州标准映射的课程资源、教学 skills 和教育工具连接器，并承诺不使用教师提交的数据训练模型，主打备课、差异化教学与日常自动化。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/claude-for-teachers"
+    },
+    {
+      "tag": "生态",
+      "title": "Anthropic 承诺投入 1000 万加元支持加拿大 AI 研究",
+      "summary": "Anthropic 将向 Amii、Mila、Vector 等加拿大研究机构及医院、大学提供研究经费和 Claude/API credits，覆盖强化学习、AI 安全、健康、机器人与低资源语言等方向，并同步发布加拿大 Claude 使用情况简报。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/canadian-ai-research"
+    },
+    {
+      "tag": "研究",
+      "title": "Claude 在机器人任务上的能力取决于控制接口",
+      "summary": "Anthropic 测试 Claude 控制机械臂、四足和人形机器人，发现模型直接控制关节时表现较弱，但监督预训练策略或使用高层指令时已能完成部分导航与抓取。模型能力提升仍伴随可靠性和安全边界问题。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/research/claude-plays-robotics",
+      "candidate_ref": "firsthand/2026-07-14"
+    },
+    {
+      "tag": "研究",
+      "title": "Anthropic 用四条价值轴比较 Claude 的模型与语言差异",
+      "summary": "Anthropic 将 Claude 的表达倾向压缩为谨慎、严谨、深度和坦诚等四条价值轴，比较不同模型与语言的差异。结果显示，模型版本和语言都会改变回答风格，为对齐训练与跨文化评估提供了可量化方法。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/research/claude-values-models-languages",
+      "candidate_ref": "firsthand/2026-07-14"
+    },
+    {
+      "tag": "企业",
+      "title": "Hebbia 用 Claude Fable 5 提升金融尽调准确率",
+      "summary": "金融 AI 公司 Hebbia 将 Claude Fable 5 用于尽职调查，通过元提示和矩阵网格组织多来源材料，在自有金融评测中取得约 20% 的相对准确率提升，并保留可追溯的分析过程，适合高风险决策复核。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail",
+      "candidate_ref": "firsthand/2026-07-14"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注 AI 前哨，每日追踪 Anthropic 官方发布与 Claude 生态更新",
+  "outroCta": "关注 · 不错过任何更新"
+}
