@@ -1,0 +1,89 @@
+{
+  "slug": "claude-code-model-effort",
+  "style": "editorial",
+  "edition": "AI FRONTIER",
+  "brand": "变量生活",
+  "period": "2026.07",
+  "cover": "assets/cover-model-effort.png",
+  "title": "模型和effort怎么选",
+  "coverTitle": "模型和\neffort怎么选",
+  "topics": ["Claude Code", "Agent", "效率调参"],
+  "coverCaption": [
+    "模型决定能力边界。",
+    "effort 决定它愿意读多少、查多少、测多少。"
+  ],
+  "cards": [
+    {
+      "kind": "quote",
+      "heading": "别把两个旋钮\n当成一个",
+      "quote": "模型不是“更努力”，effort 也不是“更聪明”。一个管能力边界，一个管工作量预算。",
+      "notes": [
+        ["模型", "换的是一组冻结权重，决定能力范围。"],
+        ["effort", "控制读文件、用工具、验证和推进深度。"]
+      ],
+      "footer": ["核心判断", "02 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "模型不是\n临时学习",
+      "quote": "把文档放进上下文，是 steering；不是把知识写进模型 weights。",
+      "notes": [
+        ["上下文", "这一轮会影响预测。"],
+        ["权重", "训练后冻结，不会被你的 prompt 改掉。"]
+      ],
+      "footer": ["Model Selection", "03 / 08"]
+    },
+    {
+      "kind": "image",
+      "heading": "effort像\n工作量预算",
+      "image": "assets/cover-model-effort.png",
+      "caption": [
+        "低 effort 更快回来问你。",
+        "高 effort 更愿意自己读、查、跑、验。"
+      ],
+      "footer": ["Effort Level", "04 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "错了以后\n先别调旋钮",
+      "quote": "先检查上下文：任务是否清楚？工具是否可用？测试命令、约束、验收标准有没有给足？",
+      "notes": [
+        ["上游", "CLAUDE.md、skills、复现步骤更关键。"],
+        ["误区", "不要用高 effort 弥补混乱输入。"]
+      ],
+      "footer": ["Context First", "05 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "问一句\n它是哪种错",
+      "quote": "它是不知道，还是没试够？",
+      "notes": [
+        ["不知道", "读了、试了、仍然判断错：换更强模型。"],
+        ["没试够", "跳文件、没跑测试、没查证：提高 effort。"]
+      ],
+      "footer": ["Debug Heuristic", "06 / 08"]
+    },
+    {
+      "kind": "quote",
+      "heading": "通才、专家\n和专科医生",
+      "quote": "Sonnet 像好通才，Opus 像专家，Fable 像专科医生；effort 决定他们在你任务上花多久。",
+      "notes": [
+        ["Sonnet high", "认真读项目，适合具体代码理解。"],
+        ["Opus/Fable", "适合复杂、模糊、陌生或小模型够不到的问题。"]
+      ],
+      "footer": ["Model Ladder", "07 / 08"]
+    },
+    {
+      "kind": "closing",
+      "heading": "不是拉满\n而是会分配预算",
+      "quote": "简单任务快速过，重要任务认真查，复杂任务请强模型，长任务先拆小。",
+      "notes": [
+        ["READ", "完整长文已发公众号：变量生活"],
+        ["DO", "下次报错先判断：上下文、模型、effort 哪个真该动。"]
+      ],
+      "footer": ["变量生活", "完整长文见公众号"]
+    }
+  ],
+  "caption": "Claude Code 里有两个很容易混在一起的旋钮：模型和 effort。\n\n官方这篇文章把它讲得很清楚：\n\n模型决定能力边界。\neffort 决定工作量预算。\n\n模型选择，本质上是在换一组冻结权重。你的 prompt、CLAUDE.md、上下文文件能 steering 这一轮输出，但不会把知识写进模型本身。\n\neffort 也不只是“多想一会儿”。它会影响 Claude 愿意读多少文件、调用多少工具、跑多少验证、在回来找你之前推进多少步骤。\n\n所以当 Claude Code 做错时，别马上拉满设置。\n\n先问一句：\n\n它是不知道，还是没试够？\n\n如果它有上下文，也认真试了，但还是理解错、判断错，换更强模型。\n\n如果它跳过文件、没跑测试、没查证、重构半路停下，提高 effort。\n\n但在这之前，更应该先检查任务上下文：复现步骤、测试命令、约束、验收标准、CLAUDE.md 有没有给清楚。\n\n真正会用 Claude Code，不是永远用最强模型和最高 effort，而是学会给不同任务分配不同预算。\n\n完整长文已发公众号：变量生活。",
+  "tags": ["AI", "ClaudeCode", "Agent", "AI编程", "效率工具", "模型选择", "变量生活"]
+}
