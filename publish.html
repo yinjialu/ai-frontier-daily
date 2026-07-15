@@ -391,6 +391,15 @@ function renderPanelInto(panelEl, vendor, data, dirPath, xhsFiles) {
   panelEl.innerHTML = `
 <p class="pdate">${data.cnDate} · ${data.edition || ''}</p>
 
+<div class="img-head">📷 配图 · 共 ${xhsFiles.length} 张</div>
+<div class="img-actions">
+  <button class="act-btn solid" onclick="runShortcut('${vendor}',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
+  <button class="act-btn" onclick="copyLinks('${vendor}',this)">🔗 复制链接</button>
+  <button class="act-btn" onclick="downloadAll('${vendor}',this)">⬇️ 打包 (.zip)</button>
+</div>
+<div class="img-strip" id="imgs-${vendor}"></div>
+<p class="img-hint">「发送到快捷指令」直接存相册（首次填一次指令名）；「打包」得到 zip（文件 App 内长按解压）· 按顺序上传</p>
+
 <div class="cblock">
   <div class="cblock-head">
     <span class="cblock-label">标 题</span>
@@ -407,14 +416,6 @@ function renderPanelInto(panelEl, vendor, data, dirPath, xhsFiles) {
   <div class="cblock-body tall" id="${bodyId}">${escHtml(content)}</div>
 </div>
 
-<div class="img-head">📷 配图 · 共 ${xhsFiles.length} 张</div>
-<div class="img-actions">
-  <button class="act-btn solid" onclick="runShortcut('${vendor}',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
-  <button class="act-btn" onclick="copyLinks('${vendor}',this)">🔗 复制链接</button>
-  <button class="act-btn" onclick="downloadAll('${vendor}',this)">⬇️ 打包 (.zip)</button>
-</div>
-<div class="img-strip" id="imgs-${vendor}"></div>
-<p class="img-hint">「发送到快捷指令」直接存相册（首次填一次指令名）；「打包」得到 zip（文件 App 内长按解压）· 按顺序上传</p>
 `;
 
   // 缩略图
@@ -565,6 +566,13 @@ async function loadDeepdive() {
   try { caption = await fetchText(`${dirPath}/caption.txt`); } catch(e) {}
 
   body.innerHTML = `
+<div class="img-head">📷 配图 · 共 ${files.length} 张</div>
+<div class="img-actions">
+  <button class="act-btn solid" onclick="runShortcut('deepdive',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
+  <button class="act-btn" onclick="downloadAll('deepdive',this)">⬇️ 打包 (.zip)</button>
+</div>
+<div class="img-strip" id="imgs-deepdive"></div>
+<p class="img-hint">先选图并发送到相册，再复制标题和正文；配图按顺序上传</p>
 <div class="dd-text">
   <div class="dd-field">
     <div class="dd-field-head"><span>📝 标题（≤20字）</span><button class="act-btn mini" onclick="copyField('dd-title-v',this)">复制</button></div>
@@ -575,13 +583,6 @@ async function loadDeepdive() {
     <textarea id="dd-caption-v" class="dd-field-area" rows="8" readonly></textarea>
   </div>
 </div>
-<div class="img-head">📷 配图 · 共 ${files.length} 张</div>
-<div class="img-actions">
-  <button class="act-btn solid" onclick="runShortcut('deepdive',this)" oncontextmenu="resetShortcutName();return false;">📲 发送到快捷指令</button>
-  <button class="act-btn" onclick="downloadAll('deepdive',this)">⬇️ 打包 (.zip)</button>
-</div>
-<div class="img-strip" id="imgs-deepdive"></div>
-<p class="img-hint">标题/正文点「复制」直接拷贝；配图「发送到快捷指令」存相册（首次填指令名）· 按顺序上传</p>
 `;
   // 用 .value 赋值（避免标题/文案里的引号、「」、# 破坏 HTML 转义）
   document.getElementById('dd-title-v').value = title;
