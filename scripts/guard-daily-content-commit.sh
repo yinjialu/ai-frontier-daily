@@ -44,4 +44,15 @@ if ! git diff --cached --name-only --diff-filter=ACMRTUXB | grep -qE "^(data|out
   exit 1
 fi
 
+coverage_path="output/daily-research/$DATE.json"
+if ! git diff --cached --name-only --diff-filter=ACMRTUXB | grep -qx "$coverage_path"; then
+  echo "Refusing daily commit: missing research coverage ledger $coverage_path." >&2
+  echo "Run: python3 scripts/validate_daily_coverage.py --init --date $DATE" >&2
+  exit 1
+fi
+if ! python3 scripts/validate_daily_coverage.py --check --date "$DATE"; then
+  echo "Refusing daily commit: research coverage ledger is incomplete." >&2
+  exit 1
+fi
+
 echo "Daily content commit guard passed for $branch."
