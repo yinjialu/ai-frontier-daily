@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026-07-17",
+  "cnDate": "7月17日 周五",
+  "edition": "VOL.198",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "company": "Kimi",
+      "title": "Kimi 发布 2.8T 参数旗舰模型 K3",
+      "summary": "月之暗面推出 Kimi K3：总参数 2.8T，原生支持视觉理解与 100 万 token 上下文，面向长程编程、知识工作和推理任务；模型已上线 Kimi、Kimi Code 与 API，完整权重计划于 7 月 27 日发布。",
+      "source": "kimi.com",
+      "url": "https://www.kimi.com/blog/kimi-k3"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
