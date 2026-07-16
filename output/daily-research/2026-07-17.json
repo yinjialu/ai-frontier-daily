@@ -1,0 +1,60 @@
+{
+  "coverage_version": 1,
+  "date": "2026-07-17",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [
+        {
+          "queries": ["official Anthropic news/blog July 16 2026 OR July 17 2026"],
+          "sources": ["https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork", "https://claude.com/blog/ai-code-migration"]
+        }
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 5}
+    },
+    "openai": {
+      "official_search": [
+        {
+          "queries": ["official OpenAI news July 16 2026 OR July 17 2026"],
+          "sources": ["https://openai.com/index/unlocking-self-improvement-gpt-red", "https://openai.com/index/why-teens-deserve-access-safe-ai", "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action"]
+        }
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 5}
+    },
+    "gemini": {
+      "official_search": [
+        {
+          "queries": ["official Google Gemini DeepMind blog July 16 2026 OR July 17 2026"],
+          "sources": ["https://deepmind.google/blog/our-approach-to-bioresilience/"]
+        }
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 2}
+    },
+    "nvidia": {
+      "official_search": [
+        {
+          "queries": ["official NVIDIA AI blog news July 16 2026 OR July 17 2026"],
+          "sources": ["https://blogs.nvidia.com/blog/category/generative-ai/"]
+        }
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 0}
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {"queries": ["DeepSeek 官方 2026年7月17日 新模型 OR API 更新"], "sources": ["https://api-docs.deepseek.com/updates/"]},
+        "通义千问": {"queries": ["通义千问 Qwen 官方 2026年7月17日 发布 更新"], "sources": ["none-found"]},
+        "智谱": {"queries": ["智谱 GLM 官方 2026年7月17日 发布 更新"], "sources": ["https://docs.bigmodel.cn/cn/update/new-releases"]},
+        "Kimi": {"queries": ["Kimi 官方 K3 2026年7月17日"], "sources": ["https://www.kimi.com/blog/kimi-k3"]},
+        "豆包": {"queries": ["豆包 火山方舟 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://www.volcengine.com/"]},
+        "文心": {"queries": ["文心 ERNIE 千帆 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://cloud.baidu.com/doc/qianfan/s/rmh4stp0j"]},
+        "混元": {"queries": ["腾讯 混元 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://cloud.tencent.com/document/product/1729/132069"]},
+        "MiniMax": {"queries": ["MiniMax 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://www.minimax.io/news"]},
+        "阶跃星辰": {"queries": ["阶跃星辰 StepFun 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://platform.stepfun.com/"]},
+        "百川": {"queries": ["百川智能 Baichuan 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://www.baichuan-ai.com/"]},
+        "零一万物": {"queries": ["零一万物 01.AI 官方 2026年7月17日 模型 发布 更新"], "sources": ["https://www.01.ai/cn"]},
+        "百灵": {"queries": ["蚂蚁百灵 inclusionAI 官方 2026年7月17日 模型 发布 更新"], "sources": ["none-found"]}
+      },
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 0}
+    }
+  }
+}

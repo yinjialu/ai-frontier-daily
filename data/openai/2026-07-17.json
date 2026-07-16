@@ -1,0 +1,36 @@
+{
+  "vendor": "openai",
+  "date": "2026-07-17",
+  "cnDate": "7月17日 周五",
+  "edition": "VOL.198",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "OpenAI 用 GPT-Red 自动化红队提升模型抗注入能力",
+      "summary": "OpenAI 公布 GPT-Red：一个通过 self-play 强化学习训练的自动化安全红队模型，用来发现 prompt injection 漏洞并生成训练数据。其结果已用于提升 GPT-5.6 的鲁棒性，官方称最难直接注入基准的失败率较四个月前模型降低约 6 倍。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/unlocking-self-improvement-gpt-red",
+      "candidate_ref": "firsthand/2026-07-16"
+    },
+    {
+      "tag": "政策",
+      "title": "OpenAI 公开 ChatGPT 面向青少年的安全设计",
+      "summary": "OpenAI 介绍 ChatGPT 面向未成年用户的年龄识别、家长控制、学习模式和风险通知等设计，并强调在扩大使用机会的同时，针对自伤、暴力、危险挑战和不健康身体形象等风险提供更强保护。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/why-teens-deserve-access-safe-ai",
+      "candidate_ref": "firsthand/2026-07-16"
+    },
+    {
+      "tag": "政策",
+      "title": "OpenAI 梳理美国联邦与州层面的 AI 安全行动",
+      "summary": "OpenAI 汇总美国联邦与州政府近期推进 AI 安全的政策与实践，强调标准、测试、透明度和跨机构协作的重要性。这是一篇政策立场与进展梳理，不等同于新的模型或 API 发布。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action",
+      "candidate_ref": "firsthand/2026-07-16"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
