@@ -1,0 +1,20 @@
+{
+  "vendor": "gemini",
+  "date": "2026-07-17",
+  "cnDate": "7月17日 周五",
+  "edition": "VOL.198",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Google DeepMind 发布 AI 生物安全韧性框架",
+      "summary": "Google DeepMind 与 Isomorphic Labs 公布 bioresilience 路线，围绕预防、检测、响应三方面使用 AI 应对生物安全风险，并分享威胁建模、评测、缓解与监控的四步安全流程，以及与政府和研究机构的合作方向。",
+      "source": "deepmind.google",
+      "url": "https://deepmind.google/blog/our-approach-to-bioresilience/",
+      "candidate_ref": "firsthand/2026-07-16"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
