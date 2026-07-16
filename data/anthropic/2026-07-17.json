@@ -1,0 +1,32 @@
+{
+  "vendor": "anthropic",
+  "date": "2026-07-17",
+  "cnDate": "7月17日 周五",
+  "edition": "VOL.198",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "模型应用",
+      "title": "Claude Fable 5 开始承担 Claude Cowork 的长任务",
+      "summary": "Anthropic 分享 Fable 5 在 Claude Cowork 中执行深度研究、尽调和财务规划等长流程任务的实践。模型会先拆解计划、并行调用子代理并持续校验结果，用户可以把精力更多放在目标和判断标准上。",
+      "source": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork",
+      "candidate_ref": "firsthand/2026-07-16"
+    },
+    {
+      "tag": "企业",
+      "title": "Base44 用 Claude Fable 5 重写核心工程系统",
+      "summary": "Base44 称 Fable 5 已能处理此前只交给资深工程师的系统提示词重构和移动基础设施任务：一次运行约四小时，产出接近 90%–95% 的可用结果，并主动发现缓存命中测试缺口。",
+      "source": "https://claude.com/blog/working-at-the-frontier-why-base44-trusts-claude-fable-5-with-their-most-challenging-engineering-work",
+      "candidate_ref": "firsthand/2026-07-16"
+    },
+    {
+      "tag": "开发者",
+      "title": "Anthropic 总结用 Claude Code 做百万行代码迁移",
+      "summary": "Anthropic 公布大规模代码迁移的六步方法，并以 Bun 从 Zig 迁移到 Rust 为例：约百万行代码在两周内完成，合并前测试全部通过。关键不在逐个修 bug，而是建立规则、并行工作流和可机械验证的评审循环。",
+      "source": "https://claude.com/blog/ai-code-migration"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
