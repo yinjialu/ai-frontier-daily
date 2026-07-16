@@ -5,6 +5,10 @@
 抓取 AI 大厂官方动态 → 中文策展 → 渲染卡片 → GitHub Pages 展示 → 公众号/小红书半自动发布。
 完整流水线指令(信源、策展规范、渲染、发布)见 `skills/ai-daily-digest/SKILL.md`——执行每日任务前先读它。
 
+日报抓取覆盖必须落盘：开始前运行 `python3 scripts/validate_daily_coverage.py --init --date YYYY-MM-DD`，
+结束后运行 `--check`。`cn` 轨按 `skills/ai-daily-digest/daily-search-matrix.json` 逐家公司记录搜索，
+无结果也写 `none-found`；`scripts/guard-daily-content-commit.sh` 会拒绝缺少或不完整覆盖台账的日报提交。
+
 ## 推送策略(云端 routine / 任何自动化会话必读)
 
 - **每日早报内容生成已迁移到 Codex Automation**:每天北京时间 07:00 运行,按

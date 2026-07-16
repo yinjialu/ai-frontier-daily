@@ -194,7 +194,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=7)
     ap.add_argument("--vendor", default=None,
-                    help="按早报 vendor 轨过滤（anthropic/openai/gemini/cn）")
+                    help="按早报 vendor 轨过滤（anthropic/openai/gemini/nvidia/cn）")
     ap.add_argument("--root", default=str(Path(__file__).resolve().parent.parent.parent
                                           / "data" / "firsthand"))
     ap.add_argument("--json", action="store_true", help="输出 JSON（给 agent 消费）")

@@ -37,7 +37,7 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
 - **cn 抓取以 WebSearch 为主（重要，与国外四家不同）**：实测国内厂商官网/changelog（火山/腾讯云/
   文心/智谱/MiniMax/DeepSeek 等）对 `WebFetch` 普遍返回 **403**（反爬 + 海外 IP 限制），不可靠。
   故 cn 的发现路径**反过来**：
-  1. **首选 `WebSearch`** 逐家查近 1~3 天动态（如「智谱 GLM 发布 2026年6月」「MiniMax 新模型」），
+  1. **首选 `WebSearch`** 按 `daily-search-matrix.json` 逐家公司查近 1~3 天动态（如「智谱 GLM 发布 2026年6月」「MiniMax 新模型」），
      这是 cn 唯一稳定可达的路径（国外四家用 WebFetch RSS，cn 用 WebSearch）。
   2. **`WebFetch` 仅作补充**：搜到具体文章 URL 后可试抓细节，403 就退回用搜索摘要，**不要因抓不到就编造**。
   3. **`sources.yaml` 的 `vendors.cn.rss`（GitHub releases.atom）**可正常抓，但多为 CLI/SDK 线，
@@ -73,6 +73,14 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
    每项含 `{id, name, brand, sources:[抓取URL]}`，遍历其中每一个厂商（数量与名字以输出为准）。
    若某项 `sources` 为空（环境缺 pyyaml），改读 `sources.yaml` 的 `vendors.<id>` 下
    rss/webfetch 的 url。
+   **先建立本次抓取覆盖记录**（这是提交 guard 的硬前置，不是可选笔记）：
+   ```bash
+   python3 scripts/validate_daily_coverage.py --init --date <DATE>
+   ```
+   抓取完成后，把每个厂商的官方搜索 query/来源 URL、`firsthand.query` 的候选数量填入
+   `output/daily-research/<DATE>.json`，并运行 `python3 scripts/validate_daily_coverage.py --check --date <DATE>`。
+   `cn` 聚合轨必须逐一记录 `daily-search-matrix.json` 中的每家公司，即使搜索无结果也要写
+   `sources: ["none-found"]`；缺任何一家，后续 guard 会拒绝提交。这样“没有结果”与“没有搜索”不再混淆。
 3. **抓取真实最新动态**（对每个厂商 V）：依次 `WebFetch` V.sources 的 URL——RSS/Atom/网页
    都可直接 WebFetch，Google 系 RSS 也能抓；需要细节再 `WebSearch`。厂商特例：Anthropic
    主站 JS 渲染、无官方 RSS（抓 `anthropic.com/news` 顶部条目）；`openai.com/news` 网页对
@@ -137,6 +145,7 @@ Kimi / 豆包 / 文心 / 混元 / MiniMax / 阶跃星辰 / 百川 / 零一万物
 9. **提交并推送**（触发 GitHub Pages 重新发布）：若本次有任意厂商产出新内容：
    ```bash
    git add -A data output
+   python3 scripts/validate_daily_coverage.py --check --date <DATE>
    scripts/guard-daily-content-commit.sh <DATE>
    git commit -m "daily: <DATE>"
    ```
