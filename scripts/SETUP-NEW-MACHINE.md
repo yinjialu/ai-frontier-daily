@@ -28,7 +28,8 @@ scripts/install-firsthand-launchd.sh
 ```
 
 立即试跑：`launchctl kickstart -k gui/$(id -u)/com.yinjialu.ai-frontier-daily.firsthand`，
-日志 `tail -f ~/Library/Logs/ai-frontier-daily-firsthand.log`。机制详见 `CLAUDE.md`「一手信源内参监控」。
+任务通过 `~/.local/share/ai-frontier-daily/worktrees/firsthand` 独立 worktree 运行；日志
+`tail -f ~/Library/Logs/ai-frontier-daily-firsthand.log`。机制详见 `CLAUDE.md`「一手信源内参监控」。
 依赖本机 `gh` 已登录；摘要走 DeepSeek Anthropic-compatible API，本机私密配置在
 `~/.config/ai-frontier-daily/firsthand.env`。缺模型配置时仅退回占位摘要，不影响通知。
 

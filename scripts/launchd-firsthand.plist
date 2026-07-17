@@ -3,7 +3,8 @@
      抓 firsthand-sources.yaml 信源 → 新文章经 DeepSeek Anthropic-compatible API 出中文摘要
      （~/.config/ai-frontier-daily/firsthand.env）→ 写 data/firsthand/<id>/*.md(OKF)
      → 开 firsthand/<date> 分支 PR(reviewer=yinjialu)。详见 CLAUDE.md「一手信源内参监控」。
-     与每日发布任务(com.yinjialu.ai-frontier-daily.publish)相互独立。
+     通过 ~/.local/share/ai-frontier-daily/worktrees/firsthand 独立 worktree 运行，
+     与主工作区及每日发布任务(com.yinjialu.ai-frontier-daily.publish)相互隔离。
      安装：scripts/install-firsthand-launchd.sh（symlink + bootstrap，git pull 自动生效）。
      此文件为仓库参考副本；实际生效的是 ~/Library/LaunchAgents/ 下同名 symlink，改后需 bootout + bootstrap 重载。 -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -14,8 +15,8 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/jialu/anaconda3/bin/python3</string>
-    <string>/Users/jialu/ai-frontier-daily/scripts/monitor_firsthand.py</string>
+    <string>/bin/bash</string>
+    <string>/Users/jialu/ai-frontier-daily/scripts/run-firsthand-launchd.sh</string>
   </array>
 
   <key>WorkingDirectory</key>

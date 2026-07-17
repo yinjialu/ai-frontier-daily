@@ -12,6 +12,7 @@ import re
 import sys
 import subprocess
 import inspect
+import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -33,6 +34,17 @@ GIT_TIMEOUT_SECONDS = 180
 GH_TIMEOUT_SECONDS = 90
 _REMOTE_FIRSTHAND_BRANCH_CACHE: dict[str, set[str]] = {}
 _REMOTE_FIRSTHAND_BRANCHES_FETCHED = False
+
+
+def _shanghai_now() -> str:
+    tz8 = datetime.timezone(datetime.timedelta(hours=8))
+    return datetime.datetime.now(tz8).isoformat(timespec="seconds")
+
+
+def _return_to_base(check: bool = False):
+    """Return the dedicated monitor worktree to the latest remote main."""
+    _run(["git", "fetch", "origin", "main"], check=check)
+    return _run(["git", "checkout", "--detach", "origin/main"], check=check)
 
 
 def _short_error(e: Exception, limit: int = 300) -> str:
@@ -119,7 +131,8 @@ def run_once(sources_path, okf_root, state_file, now,
              summarize_fn=summarize,
              open_pr_fn=None,
              commit_state_fn=None,
-             branch_seen_fn=None):
+             branch_seen_fn=None,
+             branch_date_fn=None):
     """单轮检查。副作用函数（PR/commit）可注入便于测试。返回统计 dict。"""
     okf_root = Path(okf_root)
     sources = load_sources(sources_path)
@@ -211,7 +224,8 @@ def run_once(sources_path, okf_root, state_file, now,
             article["okf_path"] = str(path)
             pr_articles.append((source["id"], article))
         # 当天一个 PR：分支固定 firsthand/<date>；当天后续批次追加 commit + 评论 @user（见 _real_open_pr）
-        branch = f"firsthand/{now[:10]}"
+        branch_date = branch_date_fn() if branch_date_fn else now[:10]
+        branch = f"firsthand/{branch_date}"
         pr_ok = True
         if pr_articles and open_pr_fn:
             try:
@@ -355,7 +369,7 @@ def _real_open_pr(branch, articles):
                 check=True,
             )
     finally:
-        _run(["git", "checkout", "main"], check=False)
+        _return_to_base(check=False)
 
 
 def _real_commit_state(extra_paths=None):
@@ -371,8 +385,26 @@ def _real_commit_state(extra_paths=None):
     _run(["git", "add", *paths], check=False)
     r = _run(["git", "diff", "--cached", "--quiet"])
     if r.returncode != 0:
-        _run(["git", "commit", "-m", "chore: firsthand state + index"], check=False)
-        _run(["git", "push", "origin", "main"], check=False)
+        committed = _run(
+            ["git", "commit", "-m", "chore: firsthand state + index"],
+            check=False,
+        )
+        if committed.returncode != 0:
+            raise RuntimeError("firsthand state commit failed")
+        for attempt in range(2):
+            pushed = _run(["git", "push", "origin", "HEAD:main"], check=False)
+            if pushed.returncode == 0:
+                return
+            _run(["git", "fetch", "origin", "main"], check=True)
+            rebased = _run(["git", "rebase", "origin/main"], check=False)
+            if rebased.returncode != 0:
+                _run(["git", "rebase", "--abort"], check=False)
+                break
+            print(f"[firsthand] main 前进，state push 重试 {attempt + 1}/2")
+        # 保留一条远程恢复分支，避免 state commit 因并发冲突静默丢失。
+        recovery = f"firsthand-state-recovery/{_shanghai_now()[:10]}"
+        _run(["git", "push", "origin", f"HEAD:{recovery}"], check=False)
+        raise RuntimeError(f"firsthand state push failed; recovery={recovery}")
 
 
 def _ensure_daily_pr(date_str: str) -> str:
@@ -413,7 +445,7 @@ def _ensure_daily_pr(date_str: str) -> str:
         print(f"[firsthand] 创建心跳 PR 失败(忽略): {e}")
         return ""
     finally:
-        _run(["git", "checkout", "main"], check=False)
+        _return_to_base(check=False)
 
 
 def _close_stale_heartbeat_prs(today: str):
@@ -476,17 +508,15 @@ def _post_heartbeat(now: str, new_count: int, date_str: str, error: str | None =
 
 
 def main():
-    import datetime, time
-    tz8 = datetime.timezone(datetime.timedelta(hours=8))
-    start_dt = datetime.datetime.now(tz8)
-    now = start_dt.isoformat(timespec="seconds")
+    import time
+    now = _shanghai_now()
     t0 = time.monotonic()
 
     print(f"[firsthand] START {now}")
 
     # --autostash：监控与交互会话共用本仓工作目录，pull 前自动 stash 未提交改动、
     # pull 完再恢复，避免脏工作树时 `pull --rebase` 硬失败（state 提交滞留）。
-    _run(["git", "pull", "--rebase", "--autostash", "origin", "main"], check=False)
+    _return_to_base(check=True)
 
     error_msg = None
     warnings = []
@@ -497,6 +527,7 @@ def main():
             DEFAULT_SOURCES, DEFAULT_OKF_ROOT, DEFAULT_STATE, now,
             open_pr_fn=_real_open_pr, commit_state_fn=_real_commit_state,
             branch_seen_fn=_remote_firsthand_branch_urls,
+            branch_date_fn=lambda: _shanghai_now()[:10],
         )
         new_count = result["new_count"]
         retry_count = result.get("retry_count", 0)
@@ -510,9 +541,10 @@ def main():
     status = "ERROR" if error_msg else "OK"
     print(f"[firsthand] END {now} status={status} new={new_count} retry={retry_count} elapsed={elapsed}s")
 
-    date_str = now[:10]
+    end_now = _shanghai_now()
+    date_str = end_now[:10]
     _close_stale_heartbeat_prs(date_str)
-    _post_heartbeat(now, new_count, date_str, error=error_msg, warnings=warnings)
+    _post_heartbeat(end_now, new_count, date_str, error=error_msg, warnings=warnings)
 
 
 if __name__ == "__main__":
