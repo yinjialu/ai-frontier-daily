@@ -103,8 +103,8 @@
   },
   "anthropic-news": {
     "initialized": true,
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Read timed out.",
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag",
       "https://www.anthropic.com/news/claude-science-ai-workbench",
