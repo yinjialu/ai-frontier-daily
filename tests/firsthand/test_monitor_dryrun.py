@@ -429,3 +429,33 @@ def test_real_open_pr_stages_only_current_article_paths(monkeypatch):
 
     assert ["git", "add", "data/firsthand/demo/02-article.md"] in calls
     assert ["git", "add", "data/firsthand/"] not in calls
+
+
+def test_run_once_uses_current_branch_date_after_midnight(tmp_path):
+    """长任务跨午夜时，内容进入完成时的日期分支。"""
+    sources = tmp_path / "sources.yaml"
+    sources.write_text(
+        "sources:\n  - id: demo\n    name: Demo\n    url: https://demo\n    type: rss\n",
+        encoding="utf-8",
+    )
+    state_file = tmp_path / "state.json"
+    state_file.write_text('{"demo":{"initialized":true}}', encoding="utf-8")
+    captured = {}
+
+    run_once(
+        sources_path=sources,
+        okf_root=tmp_path / "firsthand",
+        state_file=state_file,
+        now="2026-07-16T23:56:27+08:00",
+        fetch_fn=lambda source: [{"url": "https://demo/new", "title": "New"}],
+        article_text_fn=lambda url: "body",
+        article_title_fn=lambda url: "New",
+        article_published_fn=lambda url: None,
+        summarize_fn=lambda title, text: {"summary": "摘要", "tags": []},
+        open_pr_fn=lambda branch, articles: captured.update(branch=branch),
+        commit_state_fn=lambda: None,
+        branch_seen_fn=lambda sid: set(),
+        branch_date_fn=lambda: "2026-07-17",
+    )
+
+    assert captured["branch"] == "firsthand/2026-07-17"
