@@ -36,9 +36,11 @@
       "https://claude.com/blog/giving-admins-more-visibility-and-control-over-claude-usage-and-spend",
       "https://claude.com/blog/a-field-guide-to-claude-fable-finding-your-unknowns",
       "https://claude.com/blog/working-at-the-frontier-how-cognition-trusts-claude-fable-5-to-work-through-the-night",
-      "https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail"
+      "https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail",
+      "https://claude.com/blog/working-at-the-frontier-cursor",
+      "https://claude.com/blog/ciso-guide-to-agentic-ai"
     ],
-    "last_new_article": "2026-07-14T08:23:12+08:00"
+    "last_new_article": "2026-07-18T07:31:58+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -103,8 +105,8 @@
   },
   "anthropic-news": {
     "initialized": true,
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='www.anthropic.com', port=443): Read timed out.",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://www.anthropic.com/news/introducing-claude-tag",
       "https://www.anthropic.com/news/claude-science-ai-workbench",
@@ -1222,11 +1224,12 @@
       "https://openai.com/index/bio-bug-bounty",
       "https://openai.com/index/deutsche-telekom",
       "https://openai.com/academy/how-to-use-chatgpt-work-for-everyday-tasks",
-      "https://openai.com/index/modeling-ai-jobs-transition"
+      "https://openai.com/index/modeling-ai-jobs-transition",
+      "https://openai.com/index/a-scorecard-for-the-ai-age"
     ],
     "initialized": true,
     "known_urls_count": 1073,
-    "last_new_article": "2026-07-11T10:32:28+08:00"
+    "last_new_article": "2026-07-18T07:31:58+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
