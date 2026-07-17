@@ -1,0 +1,19 @@
+{
+  "vendor": "gemini",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Google DeepMind 分享 AI 生物安全路线",
+      "summary": "Google DeepMind 与 Isomorphic Labs 发布生物韧性方案，计划把 Gemini、AlphaEvolve、AlphaGenome 等能力用于疫情预防、监测和响应，同时通过威胁建模、评估、缓解与监控降低模型被滥用的风险。",
+      "source": "https://deepmind.google/blog/our-approach-to-bioresilience",
+      "candidate_ref": "firsthand/2026-07-17"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

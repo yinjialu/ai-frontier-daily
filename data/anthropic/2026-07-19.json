@@ -1,0 +1,19 @@
+{
+  "vendor": "anthropic",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Anthropic 总结用 Claude Code 做百万行代码迁移",
+      "summary": "Anthropic 公布大规模代码迁移的六步方法，并以 Bun 从 Zig 迁移到 Rust 为例：约百万行代码在两周内完成，合并前测试全部通过。关键在于先建立规则、并行工作流和可机械验证的评审循环。",
+      "source": "https://claude.com/blog/ai-code-migration",
+      "candidate_ref": "firsthand/2026-07-17"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

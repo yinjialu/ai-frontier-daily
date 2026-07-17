@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "政策",
+      "title": "OpenAI 公开 ChatGPT 面向青少年的安全设计",
+      "summary": "OpenAI 介绍 ChatGPT 面向未成年用户的年龄识别、家长控制、学习模式和风险通知等设计，并强调在扩大使用机会的同时，针对自伤、暴力、危险挑战和不健康身体形象等风险提供更强保护。",
+      "source": "https://openai.com/index/why-teens-deserve-access-safe-ai",
+      "candidate_ref": "firsthand/2026-07-17"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

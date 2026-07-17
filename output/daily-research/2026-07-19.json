@@ -1,0 +1,104 @@
+{
+  "coverage_version": 1,
+  "date": "2026-07-19",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [
+        {"queries": ["site:anthropic.com/news OR site:claude.com/blog Anthropic July 17 2026"], "sources": ["https://claude.com/blog/ai-code-migration", "https://www.anthropic.com/news"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 6
+      }
+    },
+    "openai": {
+      "official_search": [
+        {"queries": ["site:openai.com/index OpenAI July 17 2026"], "sources": ["https://openai.com/news/rss.xml", "https://openai.com/index/why-teens-deserve-access-safe-ai"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 5
+      }
+    },
+    "gemini": {
+      "official_search": [
+        {"queries": ["site:blog.google OR site:deepmind.google/blog Gemini Google DeepMind July 17 2026"], "sources": ["https://deepmind.google/blog/our-approach-to-bioresilience", "https://deepmind.google/blog/rss.xml"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 2
+      }
+    },
+    "nvidia": {
+      "official_search": [
+        {"queries": ["site:nvidianews.nvidia.com OR site:blogs.nvidia.com NVIDIA July 17 2026"], "sources": ["https://nvidianews.nvidia.com/releases.xml", "https://blogs.nvidia.com/feed/"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {
+          "queries": ["DeepSeek 2026-07-17 OR 2026-07-18 官方 动态 发布"],
+          "sources": ["https://www.deepseek.com/en/transparency/", "https://api-docs.deepseek.com/updates/"]
+        },
+        "通义千问": {
+          "queries": ["通义千问 2026-07-17 OR 2026-07-18 官方 动态 发布"],
+          "sources": ["https://qwen.ai/blog", "https://huggingface.co/Qwen"]
+        },
+        "智谱": {
+          "queries": ["智谱 GLM 2026-07-17 OR 2026-07-18 官方 动态 发布"],
+          "sources": ["https://docs.bigmodel.cn/cn/update/new-releases"]
+        },
+        "Kimi": {
+          "queries": ["Kimi 月之暗面 2026-07-17 OR 2026-07-18 官方 动态 发布"],
+          "sources": ["https://www.moonshot.cn/about", "https://platform.moonshot.ai/docs/changelog"]
+        },
+        "豆包": {
+          "queries": ["豆包 字节 Seed 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://research.doubao.com/zh/", "https://www.volcengine.com/docs/82379/1159177"]
+        },
+        "文心": {
+          "queries": ["文心 百度 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://cloud.baidu.com/news/news", "https://cloud.baidu.com/doc/qianfan-docs/index.html"]
+        },
+        "混元": {
+          "queries": ["混元 腾讯 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://cloud.tencent.com/document/product/1729/97765", "https://www.tencent.com/zh-cn/newsroom/all-news/"]
+        },
+        "MiniMax": {
+          "queries": ["MiniMax 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://platform.minimax.io/docs/release-notes/models", "https://www.minimaxi.com/news"]
+        },
+        "阶跃星辰": {
+          "queries": ["阶跃星辰 StepFun 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://platform.stepfun.com/", "https://www.stepfun.com/research"]
+        },
+        "百川": {
+          "queries": ["百川智能 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://www.baichuan-ai.com/"]
+        },
+        "零一万物": {
+          "queries": ["零一万物 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://www.01.ai/cn"]
+        },
+        "百灵": {
+          "queries": ["蚂蚁百灵 2026-07-17 OR 2026-07-18 官方 发布"],
+          "sources": ["https://www.ant-ling.com/zh/"]
+        }
+      },
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    }
+  }
+}
