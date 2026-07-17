@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 本机监听器：把云端 routine 推上来的每日内容分支合并进 main，再为各厂商建微信贴图草稿。
+# 本机监听器：从远程 main / 当天日报分支读取内容，再为各厂商建微信贴图草稿。
 # 小红书图文笔记（走本地 xiaohongshu-mcp 服务，见 publish_xhs_newspic.py）：平台已警告三方工具/脚本
 # 发布，[4/4] 段默认暂停（XHS_PUBLISH=1 才发），代码与登录态保留以便后续恢复或更换合规方案。
 #
@@ -38,58 +38,59 @@ VENDORS_PUBLISH="${VENDORS_PUBLISH:-}"
 echo "[1/3] 同步远端…"
 python3 scripts/doctor_publish.py --stage pages
 retry git fetch origin --prune --quiet
-git checkout main --quiet
-retry git pull --ff-only --quiet
 
-echo "[2/3] 合并每日内容分支 → main…"
-for ref in $(git for-each-ref --format='%(refname:short)' \
-  'refs/remotes/origin/daily-*' \
-  'refs/remotes/origin/Codex/daily-*' \
-  'refs/remotes/origin/codex/daily-*' 2>/dev/null); do
-  br="${ref#origin/}"; leaf="${br##*/}"; date="${leaf#daily-}"
-  if git merge-base --is-ancestor "$ref" main 2>/dev/null; then
-    echo "  · $br 已并入 main，清理远端分支"
-    [ -z "$DRY" ] && git push origin --delete "$br" --quiet 2>/dev/null || true
-    continue
+# 22:00 Automation 预制次日刊：晚间运行取次日，午夜后运行取当天。
+# PUBLISH_DATE 可用于手动补发或测试，格式 YYYY-MM-DD。
+if [ -n "${PUBLISH_DATE:-}" ]; then
+  TARGET_DATE="$PUBLISH_DATE"
+elif [ "$(TZ=Asia/Shanghai date +%H)" -ge 18 ]; then
+  TARGET_DATE="$(TZ=Asia/Shanghai date -v+1d +%F)"
+else
+  TARGET_DATE="$(TZ=Asia/Shanghai date +%F)"
+fi
+
+echo "[2/3] 选择日报刊期：$TARGET_DATE"
+source_ref="origin/main"
+for candidate in "origin/Codex/daily-$TARGET_DATE" "origin/codex/daily-$TARGET_DATE" "origin/daily-$TARGET_DATE"; do
+  if git rev-parse --verify --quiet "$candidate" >/dev/null; then
+    source_ref="$candidate"
+    break
   fi
-  echo "  · 合并 $br"
-  if [ -n "$DRY" ]; then echo "    (dry-run：跳过实际合并)"; continue; fi
-  if ! git merge -X theirs --no-edit "$ref" >/dev/null 2>&1; then
-    echo "    ⚠ 合并冲突，放弃 $br（需人工处理）"; git merge --abort || true; continue
-  fi
-  python3 skills/ai-daily-digest/run.py --reindex   # 以实际文件为准重建 index/latest，避免合并产生的指针错位
-  git add -A && git commit -q -m "merge daily $date（云端 routine）" 2>/dev/null || true
-  retry git push origin main --quiet
-  git push origin --delete "$br" --quiet 2>/dev/null || true
-  echo "    ✓ 已合并并推送 main，删除 $br"
 done
+echo "  · 内容来源：$source_ref ($(git rev-parse --short "$source_ref"))"
+
+# 不切换当前 worktree（避免覆盖正在执行的脚本）；只把目标 ref 的发布素材导出到临时目录。
+CONTENT_ROOT="${PUBLISH_CONTENT_ROOT:-$HOME/.local/share/ai-frontier-daily/publisher-content}"
+rm -rf "$CONTENT_ROOT"
+mkdir -p "$CONTENT_ROOT"
+git archive "$source_ref" data output | tar -x -C "$CONTENT_ROOT"
+export DIGEST_OUT="$CONTENT_ROOT"
 
 echo "[3/4] 各厂商建微信贴图草稿…"
-TODAY="$(TZ=Asia/Shanghai date +%F)"
 # 自适应：未显式指定厂商时，取当天 data/*/<date>.json 存在的全部厂商（新增厂商自动覆盖）
 if [ -n "$VENDORS_PUBLISH" ]; then
   vendors="$VENDORS_PUBLISH"
 else
   vendors=""
-  for f in data/*/"$TODAY".json; do
+  for f in "$CONTENT_ROOT"/data/*/"$TARGET_DATE".json; do
     [ -f "$f" ] || continue
     vendors="$vendors $(basename "$(dirname "$f")")"
   done
 fi
-[ -n "${vendors// /}" ] || echo "  · 今天（$TODAY）暂无任何厂商数据，跳过发布"
+[ -n "${vendors// /}" ] || echo "  · 刊期（$TARGET_DATE）暂无任何厂商数据，跳过发布"
 [ -z "${vendors// /}" ] || python3 scripts/doctor_publish.py --stage wechat
 
 published=""; failed=""
 for v in $vendors; do
-  f="data/$v/$TODAY.json"
-  [ -f "$f" ] || { echo "  · $v 无 $TODAY 数据，跳过"; continue; }
+  f="$CONTENT_ROOT/data/$v/$TARGET_DATE.json"
+  [ -f "$f" ] || { echo "  · $v 无 $TARGET_DATE 数据，跳过"; continue; }
   mark="$REPO/.last_published.$v"
-  if [ -z "$DRY" ] && [ -f "$mark" ] && [ "$(cat "$mark" 2>/dev/null)" = "$TODAY" ]; then
-    echo "  · $v $TODAY 已推过草稿，跳过"; continue
+  if [ -z "$DRY" ] && [ -f "$mark" ] && [ "$(cat "$mark" 2>/dev/null)" = "$TARGET_DATE" ]; then
+    echo "  · $v $TARGET_DATE 已推过草稿，跳过"; continue
   fi
-  echo "  · 微信贴图草稿：$v $TODAY"
-  if python3 skills/ai-daily-digest/publish_wechat_newspic.py --vendor "$v" $DRY; then
-    [ -z "$DRY" ] && echo "$TODAY" > "$mark"
+  echo "  · 微信贴图草稿：$v $TARGET_DATE"
+  if python3 skills/ai-daily-digest/publish_wechat_newspic.py "$f" $DRY; then
+    [ -z "$DRY" ] && echo "$TARGET_DATE" > "$mark"
     published="$published $v"
   else
     echo "    ⚠ $v 微信草稿失败（检查 ~/.config/wechat-official-draft/config.yaml、本机公网 IP 白名单、需已认证服务号）"
@@ -107,19 +108,19 @@ if [ "$XHS_PUBLISH" != "1" ]; then
 else
 [ -z "${vendors// /}" ] || python3 scripts/doctor_publish.py --stage xhs
 for v in $vendors; do
-  f="data/$v/$TODAY.json"
+  f="$CONTENT_ROOT/data/$v/$TARGET_DATE.json"
   [ -f "$f" ] || continue
   mark="$REPO/.last_published_xhs.$v"
-  if [ -z "$DRY" ] && [ -f "$mark" ] && [ "$(cat "$mark" 2>/dev/null)" = "$TODAY" ]; then
-    echo "  · $v $TODAY 已发过小红书，跳过"; continue
+  if [ -z "$DRY" ] && [ -f "$mark" ] && [ "$(cat "$mark" 2>/dev/null)" = "$TARGET_DATE" ]; then
+    echo "  · $v $TARGET_DATE 已发过小红书，跳过"; continue
   fi
-  echo "  · 小红书笔记：$v $TODAY"
+  echo "  · 小红书笔记：$v $TARGET_DATE"
   if [ -n "$DRY" ]; then
     python3 skills/ai-daily-digest/publish_xhs_newspic.py --vendor "$v" --dry-run >/dev/null && echo "    (dry-run：素材组装 OK，不发布)"
     continue
   fi
   if python3 skills/ai-daily-digest/publish_xhs_newspic.py --vendor "$v"; then
-    echo "$TODAY" > "$mark"
+    echo "$TARGET_DATE" > "$mark"
     xhs_published="$xhs_published $v"
     sleep 45   # 厂商间隔，避免连发触发风控
   else
@@ -129,7 +130,7 @@ for v in $vendors; do
 done
 fi
 
-echo "✓ watch-and-publish 完成（$TODAY）"
+echo "✓ watch-and-publish 完成（刊期 ${TARGET_DATE}）"
 
 # 手机推送：本次真的有动作才提醒（dry-run 不推）
 if [ -z "$DRY" ] && { [ -n "${published// /}" ] || [ -n "${xhs_published// /}" ] || [ -n "${xhs_failed// /}" ]; }; then
@@ -140,3 +141,5 @@ if [ -z "$DRY" ] && { [ -n "${published// /}" ] || [ -n "${xhs_published// /}" ]
   [ -n "${xhs_failed// /}" ] && msg="$msg；小红书失败：${xhs_failed# }"
   "$REPO/scripts/notify.sh" "AI 前哨 · 今日发布" "${msg#；}" || true
 fi
+
+[ -z "${failed// /}" ] && [ -z "${xhs_failed// /}" ]

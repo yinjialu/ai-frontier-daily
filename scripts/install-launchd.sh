@@ -71,7 +71,7 @@ launchctl bootstrap "$DOMAIN" "$PLIST_DST" 2>/dev/null \
 
 # 5. 校验
 if launchctl list "$LABEL" >/dev/null 2>&1; then
-  echo "✓ 安装成功：$LABEL（每天 07:15 / 07:45 / 08:30 触发）"
+  echo "✓ 安装成功：$LABEL（每天 23:15 / 23:45 / 次日 00:30 触发）"
   echo "  立即试跑： launchctl kickstart -k $DOMAIN/$LABEL"
   echo "  看日志：   tail -f ~/Library/Logs/ai-frontier-daily-publish.log"
 else

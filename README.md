@@ -28,7 +28,7 @@ Skill 用法详见 [`skills/ai-daily-digest/SKILL.md`](skills/ai-daily-digest/SK
 
 - **Agent 驱动**（交互 / Codex 定时 automation）：Codex/Claude 用 web 工具抓真实动态 → 中文策展 →
   `node render.js` 渲染 → 提交触发 Pages → `PushNotification` 推手机。
-- **无人值守早报**（Codex Automation，每天北京时间 07:00）：
+- **无人值守早报**（Codex Automation，每天北京时间 22:00 预制次日刊）：
   读 `skills/ai-daily-digest/SKILL.md`，遍历 `run.py --vendors` 返回的全部厂商，抓取一手动态、
   中文策展、Playwright 渲染，提交 `data/` 与 `output/` 到 `Codex/daily-YYYY-MM-DD`。
 - **GitHub Actions 哨兵**（`.github/workflows/daily.yml`）：
@@ -49,7 +49,7 @@ gh api -X POST repos/$(gh api user -q .login)/ai-frontier-daily/pages \
 # 配置 Actions 密钥（live 模式调 Claude 用；切勿写进代码）
 gh secret set ANTHROPIC_API_KEY --body "sk-ant-你的key"
 
-# 早报生成由 Codex Automation 每天 07:00 自动跑；Actions daily.yml 只做哨兵校验。
+# 早报生成由 Codex Automation 每天 22:00 自动预制次日刊；Actions daily.yml 只做哨兵校验。
 ```
 
 ## 本地预览 / 调试

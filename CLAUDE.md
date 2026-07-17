@@ -5,7 +5,7 @@
 
 ## 推送策略(云端 routine / 任何自动化会话必读)
 
-- **每日早报内容生成已迁移到 Codex Automation**:每天北京时间 07:00 运行,按
+- **每日早报内容生成已迁移到 Codex Automation**:每天北京时间 22:00 预制次日刊,按
   `skills/ai-daily-digest/SKILL.md` 生成 `data/` + `output/`,提交 `daily: YYYY-MM-DD`,
   推 `Codex/daily-YYYY-MM-DD` 分支;auto-merge workflow 负责合入 main。
 - **只推当前工作分支(`claude/*`),不要尝试推 main。** 云端 GitHub 代理直推 main 必 403,
@@ -51,7 +51,7 @@
 
 ## 本机发布链路(参考)
 
-- launchd 每天 07:15 / 07:45 / 08:30 跑 `scripts/watch-and-publish.sh`:拉 main → 各厂商建
+- launchd 每天 23:15 / 23:45 / 次日 00:30 跑独立 publisher worktree：读取次日刊 → 各厂商建
   微信贴图草稿(`publish_wechat_newspic.py` 直调,凭据 `~/.config/wechat-official-draft/config.yaml`)。
 - 贴图(newspic)链路不走 wechat-official-draft skill(其 push_draft.mjs 仅支持图文 news 形态);
   skill 留给交互排版自由文章,已项目内安装于 `.agents/skills/`。

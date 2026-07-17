@@ -275,7 +275,7 @@ output/index.json                  # 汇总所有厂商，供展示页（每天�
   - 单厂商手动发：`scripts/publish-local.sh [--vendor <id>]`（只发不合并）。
   - 图文文章形态（可选）：`to_wechat_md.py [--vendor <id>]` → `push_draft.mjs`。
 
-  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 07:15/07:45/08:30 跑 `watch-and-publish.sh`，
+  每日自动：`scripts/launchd-publish.plist`（LaunchAgent，每天 23:15/23:45/次日 00:30 通过独立 publisher worktree 跑 `watch-and-publish.sh`，
   多次兜底吸收云端 cron 抖动）。安装/更新：
   ```bash
   cp scripts/launchd-publish.plist ~/Library/LaunchAgents/com.yinjialu.ai-frontier-daily.publish.plist
