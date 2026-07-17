@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19",
+  "updated": "2026-07-18",
   "vendors": [
     "anthropic",
     "cn",
@@ -2636,10 +2636,10 @@
     },
     {
       "vendor": "anthropic",
-      "date": "2026-07-19",
-      "dir": "anthropic/2026-07-19",
-      "cnDate": "7月19日 周日",
-      "edition": "VOL.200",
+      "date": "2026-07-18",
+      "dir": "anthropic/2026-07-18",
+      "cnDate": "7月18日 周六",
+      "edition": "VOL.199",
       "count": 1,
       "files": [
         "公众号_封面_900x383.jpg",
@@ -2651,10 +2651,10 @@
     },
     {
       "vendor": "gemini",
-      "date": "2026-07-19",
-      "dir": "gemini/2026-07-19",
-      "cnDate": "7月19日 周日",
-      "edition": "VOL.200",
+      "date": "2026-07-18",
+      "dir": "gemini/2026-07-18",
+      "cnDate": "7月18日 周六",
+      "edition": "VOL.199",
       "count": 1,
       "files": [
         "公众号_封面_900x383.jpg",
@@ -2666,10 +2666,10 @@
     },
     {
       "vendor": "openai",
-      "date": "2026-07-19",
-      "dir": "openai/2026-07-19",
-      "cnDate": "7月19日 周日",
-      "edition": "VOL.200",
+      "date": "2026-07-18",
+      "dir": "openai/2026-07-18",
+      "cnDate": "7月18日 周六",
+      "edition": "VOL.199",
       "count": 1,
       "files": [
         "公众号_封面_900x383.jpg",
