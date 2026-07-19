@@ -1,0 +1,35 @@
+{
+  "vendor": "anthropic",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Cursor 用真实工程评测验证 Claude Fable 5",
+      "summary": "Cursor 以模糊需求、错误线索和长任务组成内部 CursorBench，Claude Fable 5 在 Max effort 下取得 72.9%。团队认为它更擅长理解完整任务目标，适合路径未知、需要长期自主推进的高难工程问题。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-cursor",
+      "candidate_ref": "firsthand/2026-07-18"
+    },
+    {
+      "tag": "安全",
+      "title": "Anthropic 给出 Agent 风险评估四问框架",
+      "summary": "Anthropic 副 CISO 建议从不可信输入、可执行动作、潜在影响范围和可观测性四方面评估 Agent，并遵循“最小代理权”原则。重点不是追求零风险，而是把权限、身份和响应边界变得可审计。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/ciso-guide-to-agentic-ai",
+      "candidate_ref": "firsthand/2026-07-18"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code 2.1.214 集中修复权限绕过",
+      "summary": "Claude Code 2.1.214 修复 PowerShell、Bash 重定向、超长命令和远程确认等多处权限检查问题，并为长工具调用加入心跳。使用本地执行、后台任务或远程会话的团队应优先升级。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.214"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

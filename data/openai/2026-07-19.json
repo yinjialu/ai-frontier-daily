@@ -1,0 +1,27 @@
+{
+  "vendor": "openai",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "OpenAI 提出 AI 投资回报四项记分卡",
+      "summary": "OpenAI 建议企业用有用工作量、成功任务总成本、结果可靠性和规模化价值衡量 AI，而非只看 token 单价或榜单。核心指标是满足质量门槛的任务成本，需同时计入人工复核、重试与返工。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/a-scorecard-for-the-ai-age",
+      "candidate_ref": "firsthand/2026-07-18"
+    },
+    {
+      "tag": "开发者",
+      "title": "Codex 0.144.6 修正 GPT-5.6 上下文配置",
+      "summary": "Codex CLI 0.144.6 更新 GPT-5.6 Sol、Terra、Luna 的内置指令，并将三款模型上下文窗口统一修正为 272K。这是面向模型元数据与提示词的稳定版 hotfix，相关用户可直接升级。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.144.6"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,33 @@
+{
+  "vendor": "nvidia",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 用 Vera Rubin 强化 Agent 后训练经济性",
+      "summary": "NVIDIA 将“单位成本获得的智能”作为 Agent 时代后训练指标，称 Vera Rubin 训练最大模型所需 GPU 数可降至 Blackwell 的四分之一。目标是支撑更多 RL rollout、环境并行和持续迭代。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/nvidia-vera-rubin-post-training-intelligence-per-dollar/"
+    },
+    {
+      "tag": "生态",
+      "title": "日本联合 NVIDIA 建设国家级 AI 基础设施",
+      "summary": "日本政府、产业伙伴与 NVIDIA 宣布建设国家级 AI 基础设施，覆盖主权模型、工业应用与人才生态。该计划把算力、开放模型和行业部署结合，显示国家级 AI 能力正从单点超算转向完整产业栈。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/japan-government-industrial-leaders-and-nvidia-launch-the-worlds-first-national-ai-infrastructure"
+    },
+    {
+      "tag": "开发者",
+      "title": "NVIDIA 用 BlueField 扩展 Agentic AI 工厂",
+      "summary": "NVIDIA 介绍以 BlueField DPU 承担网络、存储与安全基础设施任务，让 GPU 更集中处理模型推理和训练。对大规模 Agentic AI 工厂而言，这种协同设计旨在降低数据移动和基础设施开销。",
+      "source": "developer.nvidia.com",
+      "url": "https://developer.nvidia.com/blog/scaling-agentic-ai-factories-through-extreme-co-design-with-nvidia-bluefield/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,40 @@
+{
+  "coverage_version": 1,
+  "date": "2026-07-19",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [{"queries": ["site:anthropic.com/news OR site:anthropic.com/research OR site:claude.com/blog after:2026-07-17 Anthropic Claude"], "sources": ["https://www.anthropic.com/news", "https://claude.com/blog/working-at-the-frontier-cursor", "https://claude.com/blog/ciso-guide-to-agentic-ai", "https://github.com/anthropics/claude-code/releases/tag/v2.1.214"]}],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 7}
+    },
+    "openai": {
+      "official_search": [{"queries": ["site:openai.com/index after:2026-07-17 OpenAI"], "sources": ["https://openai.com/news/rss.xml", "https://openai.com/index/a-scorecard-for-the-ai-age", "https://github.com/openai/codex/releases/tag/rust-v0.144.6"]}],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 6}
+    },
+    "gemini": {
+      "official_search": [{"queries": ["site:blog.google/products/gemini OR site:deepmind.google/blog after:2026-07-17 Gemini DeepMind"], "sources": ["https://blog.google/products/gemini/rss/", "https://deepmind.google/blog/rss.xml"]}],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 2}
+    },
+    "nvidia": {
+      "official_search": [{"queries": ["site:nvidianews.nvidia.com OR site:blogs.nvidia.com OR site:developer.nvidia.com/blog after:2026-07-16 NVIDIA AI"], "sources": ["https://nvidianews.nvidia.com/releases.xml", "https://blogs.nvidia.com/feed/", "https://developer.nvidia.com/blog/feed"]}],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 0}
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {"queries": ["site:deepseek.com OR site:api-docs.deepseek.com/updates after:2026-07-16 DeepSeek"], "sources": ["none-found"]},
+        "通义千问": {"queries": ["site:qwen.ai/blog OR site:github.com/QwenLM after:2026-07-16 Qwen release"], "sources": ["https://github.com/QwenLM/qwen-code/releases/tag/v0.19.12"]},
+        "智谱": {"queries": ["site:z.ai/blog OR site:bigmodel.cn after:2026-07-16 GLM 智谱 发布"], "sources": ["none-found"]},
+        "Kimi": {"queries": ["site:moonshot.cn OR site:platform.moonshot.ai/docs/changelog OR site:github.com/MoonshotAI after:2026-07-16 Kimi"], "sources": ["none-found"]},
+        "豆包": {"queries": ["site:seed.bytedance.com/zh/blog OR site:volcengine.com/docs/82379 after:2026-07-16 豆包 Seed"], "sources": ["none-found"]},
+        "文心": {"queries": ["site:cloud.baidu.com after:2026-07-16 文心 千帆 发布"], "sources": ["none-found"]},
+        "混元": {"queries": ["site:cloud.tencent.com/document/product/1729 after:2026-07-16 混元 发布"], "sources": ["none-found"]},
+        "MiniMax": {"queries": ["site:minimax.io/news OR site:minimaxi.com/news OR site:github.com/MiniMax-AI after:2026-07-16 MiniMax"], "sources": ["none-found"]},
+        "阶跃星辰": {"queries": ["site:stepfun.com OR site:platform.stepfun.com after:2026-07-16 阶跃星辰 发布"], "sources": ["none-found"]},
+        "百川": {"queries": ["site:baichuan-ai.com after:2026-07-16 百川智能 发布"], "sources": ["none-found"]},
+        "零一万物": {"queries": ["site:01.ai/cn after:2026-07-16 零一万物 发布"], "sources": ["none-found"]},
+        "百灵": {"queries": ["site:ant-ling.com OR site:inclusionai.github.io/blog after:2026-07-16 蚂蚁百灵 Ling"], "sources": ["none-found"]}
+      },
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 0}
+    }
+  }
+}

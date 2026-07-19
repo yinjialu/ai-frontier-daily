@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026-07-19",
+  "cnDate": "7月19日 周日",
+  "edition": "VOL.200",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "通义千问",
+      "title": "Qwen Code 0.19.12 扩展 Web 与多 Agent 能力",
+      "summary": "Qwen Code 0.19.12 重构 web_fetch 的内容保真、安全和容错能力，加入同轮消息 steering、按模型限制子 Agent 并发、Skills 管理页及完整多模态图片路由，进一步完善长任务与工作区协作体验。",
+      "source": "github.com/QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code/releases/tag/v0.19.12"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂国产模型动向",
+  "outroDesc": "聚合国内大模型、产品与工程实践的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
