@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 83,
+    "known_urls_count": 85,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -1228,7 +1228,7 @@
       "https://openai.com/index/a-scorecard-for-the-ai-age"
     ],
     "initialized": true,
-    "known_urls_count": 1074,
+    "known_urls_count": 1075,
     "last_new_article": "2026-07-18T07:31:58+08:00"
   },
   "deepmind-blog": {
