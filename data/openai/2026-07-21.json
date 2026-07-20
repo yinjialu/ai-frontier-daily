@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.21",
+  "cnDate": "7月21日 周二",
+  "edition": "VOL.202",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "OpenAI 提出 AI 时代的投资回报记分卡",
+      "summary": "OpenAI 提出评估 AI 投资的四类指标：使用与采用、生产率与质量、业务结果、组织与人才。它把“用了多少 AI”与“是否带来可验证的业务改变”区分开，给企业衡量 Agent 项目回报提供了更完整的框架。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/a-scorecard-for-the-ai-age"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、产品、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

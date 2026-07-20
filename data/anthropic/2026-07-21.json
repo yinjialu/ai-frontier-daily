@@ -1,0 +1,33 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.21",
+  "cnDate": "7月21日 周二",
+  "edition": "VOL.202",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code v2.1.215：7月19日发布",
+      "summary": "Anthropic 官方 GitHub 发布 Claude Code v2.1.215，延续近期密集的 CLI 迭代。对使用 Claude Code 的开发者而言，及时升级可获得最新的稳定性、工具调用与体验修复；具体变更以 release notes 为准。",
+      "source": "github.com/anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.215"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Cursor 用真实工程任务评测 Claude Fable 5",
+      "summary": "Cursor 分享其自建 CursorBench：Claude Fable 5 在模糊、需要理解全局的工程任务上达到 72.9%（Max effort）。这类结果更接近真实开发场景，显示编码 Agent 的竞争焦点正从局部答对转向端到端完成复杂目标。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-cursor"
+    },
+    {
+      "tag": "安全",
+      "title": "Anthropic 发布企业 Agent 安全治理框架",
+      "summary": "Anthropic 的 CISO 指南把 Agent 治理拆为身份、连接器白名单、逐工具权限、沙箱、出口控制、Telemetry 与组织级开关七项要求。对准备部署高自治 Agent 的企业，这套清单可直接转成权限与审计评审项。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/ciso-guide-to-agentic-ai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.21",
+  "cnDate": "7月21日 周二",
+  "edition": "VOL.202",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Bristol Myers Squibb 将用 Vera Rubin 建生命科学 AI 工厂",
+      "summary": "NVIDIA 官方披露，Bristol Myers Squibb 将基于 NVIDIA Vera Rubin 建设面向生命科学的 AI 工厂，服务药物研发等工作负载。案例显示新一代 AI 基础设施正从通用算力采购走向按行业任务组织的专用生产系统。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/bristol-myers-squibb-building-life-science-industrys-most-advanced-ai-factory-on-nvidia-vera-rubin/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA AI 芯片、基础设施、开发者与机器人生态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

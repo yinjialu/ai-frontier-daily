@@ -1,0 +1,36 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.21",
+  "cnDate": "7月21日 周二",
+  "edition": "VOL.202",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "company": "Kimi",
+      "title": "Kimi K3 上线 TokenHub，统一接入更多开发者工作流",
+      "summary": "腾讯云 TokenHub 官方动态显示，7 月 17 日新增支持 Kimi K3 模型。对开发者而言，K3 可通过统一模型服务入口接入现有 API 与企业工作流，减少切换平台的接入成本；这是平台侧接入信息，模型详情以 Kimi 官方发布为准。",
+      "source": "cloud.tencent.com",
+      "url": "https://cloud.tencent.com/document/product/1823/130675"
+    },
+    {
+      "tag": "模型发布",
+      "company": "Kimi",
+      "title": "Kimi 发布 K3：面向长程编程与知识工作",
+      "summary": "Kimi 官方发布 K3，主打长程编程、知识工作与推理任务，支持视觉理解和 100 万 token 上下文，并已接入 Kimi、Kimi Code 与 API。完整权重计划于 7 月 27 日发布，开发者可先评估托管接口。",
+      "source": "kimi.com",
+      "url": "https://www.kimi.com/blog/kimi-k3"
+    },
+    {
+      "tag": "企业",
+      "company": "零一万物",
+      "title": "零一万物发布企业 AI 决策中枢万策平台",
+      "summary": "零一万物官网将“万策平台发布”标为 2026 年 7 月动态，并延展出老板 AI、投资官 AI、销冠 AI 三类应用。产品定位从通用模型进一步落到企业决策流程，强调把战略判断转成可运行、可验证、可迭代的系统。",
+      "source": "01.ai",
+      "url": "https://www.01.ai/cn"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "聚合国内大模型、产品与工程实践的真实变化。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,96 @@
+{
+  "coverage_version": 1,
+  "date": "2026-07-21",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [{"queries": ["Anthropic Claude Code releases July 19 2026"], "sources": ["https://github.com/anthropics/claude-code/releases.atom"]}, {"queries": ["Anthropic Cursor Claude Fable 5 July 17 2026"], "sources": ["https://claude.com/blog/working-at-the-frontier-cursor"]}, {"queries": ["Anthropic CISO agentic AI July 17 2026"], "sources": ["https://claude.com/blog/ciso-guide-to-agentic-ai"]}],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 2
+      }
+    },
+    "openai": {
+      "official_search": [{"queries": ["OpenAI official news RSS July 17 2026"], "sources": ["https://openai.com/news/rss.xml"]}, {"queries": ["OpenAI scorecard AI age July 17 2026"], "sources": ["https://openai.com/index/a-scorecard-for-the-ai-age"]}],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 1
+      }
+    },
+    "gemini": {
+      "official_search": [{"queries": ["Gemini official news RSS July 18 2026 to July 20 2026"], "sources": ["https://blog.google/products/gemini/rss/"]}, {"queries": ["Google DeepMind official blog RSS July 18 2026 to July 20 2026"], "sources": ["https://deepmind.google/blog/rss.xml"]}],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "nvidia": {
+      "official_search": [{"queries": ["NVIDIA official newsroom July 20 2026"], "sources": ["https://nvidianews.nvidia.com/releases.xml"]}, {"queries": ["NVIDIA AI blog July 20 2026 Vera Rubin"], "sources": ["https://blogs.nvidia.com/feed/", "https://blogs.nvidia.com/blog/bristol-myers-squibb-building-life-science-industrys-most-advanced-ai-factory-on-nvidia-vera-rubin/"]}],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {
+          "queries": ["DeepSeek 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "通义千问": {
+          "queries": ["通义千问 Qwen 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "智谱": {
+          "queries": ["智谱 GLM Z.ai 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "Kimi": {
+          "queries": ["Kimi 月之暗面 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["https://www.kimi.com/blog/kimi-k3"]
+        },
+        "豆包": {
+          "queries": ["豆包 火山方舟 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "文心": {
+          "queries": ["文心 千帆 ERNIE 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "混元": {
+          "queries": ["混元 腾讯云 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["https://cloud.tencent.com/document/product/1823/130675"]
+        },
+        "MiniMax": {
+          "queries": ["MiniMax 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "阶跃星辰": {
+          "queries": ["阶跃星辰 StepFun 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "百川": {
+          "queries": ["百川智能 Baichuan 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        },
+        "零一万物": {
+          "queries": ["零一万物 01.AI 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["https://www.01.ai/cn"]
+        },
+        "百灵": {
+          "queries": ["百灵 inclusionAI 2026年7月20日/19日/18日 官方更新"],
+          "sources": ["none-found"]
+        }
+      },
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    }
+  }
+}
