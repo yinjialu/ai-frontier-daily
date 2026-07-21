@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 85,
+    "known_urls_count": 86,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -120,7 +120,7 @@
       "https://www.anthropic.com/news/ben-bernanke",
       "https://www.anthropic.com/news/rare-disease-research-grants"
     ],
-    "known_urls_count": 47,
+    "known_urls_count": 48,
     "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "transformer-circuits": {
@@ -1231,7 +1231,7 @@
       "https://openai.com/index/safety-alignment-long-horizon-models"
     ],
     "initialized": true,
-    "known_urls_count": 1075,
+    "known_urls_count": 1076,
     "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "deepmind-blog": {
@@ -1417,7 +1417,7 @@
       "https://blog.google/products-and-platforms/products/gemini/launch-business-with-gemini"
     ],
     "initialized": true,
-    "known_urls_count": 46,
+    "known_urls_count": 47,
     "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "qwen-blog": {
