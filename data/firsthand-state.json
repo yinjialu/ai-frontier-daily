@@ -38,9 +38,10 @@
       "https://claude.com/blog/working-at-the-frontier-how-cognition-trusts-claude-fable-5-to-work-through-the-night",
       "https://claude.com/blog/working-at-the-frontier-how-hebbia-builds-ai-for-financial-diligence-that-cant-miss-a-detail",
       "https://claude.com/blog/working-at-the-frontier-cursor",
-      "https://claude.com/blog/ciso-guide-to-agentic-ai"
+      "https://claude.com/blog/ciso-guide-to-agentic-ai",
+      "https://claude.com/blog/working-at-the-frontier-rakuten"
     ],
-    "last_new_article": "2026-07-18T07:31:58+08:00"
+    "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -116,10 +117,11 @@
       "https://www.anthropic.com/news/alberta-government-claude-cybersecurity",
       "https://www.anthropic.com/news/hard-questions",
       "https://www.anthropic.com/news/ust-claude",
-      "https://www.anthropic.com/news/ben-bernanke"
+      "https://www.anthropic.com/news/ben-bernanke",
+      "https://www.anthropic.com/news/rare-disease-research-grants"
     ],
     "known_urls_count": 47,
-    "last_new_article": "2026-07-11T06:22:56+08:00"
+    "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1225,11 +1227,12 @@
       "https://openai.com/index/deutsche-telekom",
       "https://openai.com/academy/how-to-use-chatgpt-work-for-everyday-tasks",
       "https://openai.com/index/modeling-ai-jobs-transition",
-      "https://openai.com/index/a-scorecard-for-the-ai-age"
+      "https://openai.com/index/a-scorecard-for-the-ai-age",
+      "https://openai.com/index/safety-alignment-long-horizon-models"
     ],
     "initialized": true,
     "known_urls_count": 1075,
-    "last_new_article": "2026-07-18T07:31:58+08:00"
+    "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1410,11 +1413,12 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite",
       "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026",
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026",
-      "https://blog.google/innovation-and-ai/products/gemini-app/how-to-make-gemini-study-notebooks"
+      "https://blog.google/innovation-and-ai/products/gemini-app/how-to-make-gemini-study-notebooks",
+      "https://blog.google/products-and-platforms/products/gemini/launch-business-with-gemini"
     ],
     "initialized": true,
     "known_urls_count": 46,
-    "last_new_article": "2026-07-11T06:22:56+08:00"
+    "last_new_article": "2026-07-21T09:08:30+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
