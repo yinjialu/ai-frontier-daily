@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-23",
+  "updated": "2026-07-22",
   "vendors": [
     "anthropic",
     "cn",
@@ -2810,10 +2810,10 @@
     },
     {
       "vendor": "anthropic",
-      "date": "2026-07-23",
-      "dir": "anthropic/2026-07-23",
-      "cnDate": "7月23日 周四",
-      "edition": "VOL.204",
+      "date": "2026-07-22",
+      "dir": "anthropic/2026-07-22",
+      "cnDate": "7月22日 周三",
+      "edition": "VOL.203",
       "count": 2,
       "files": [
         "公众号_封面_900x383.jpg",
@@ -2826,10 +2826,10 @@
     },
     {
       "vendor": "openai",
-      "date": "2026-07-23",
-      "dir": "openai/2026-07-23",
-      "cnDate": "7月23日 周四",
-      "edition": "VOL.204",
+      "date": "2026-07-22",
+      "dir": "openai/2026-07-22",
+      "cnDate": "7月22日 周三",
+      "edition": "VOL.203",
       "count": 2,
       "files": [
         "公众号_封面_900x383.jpg",
