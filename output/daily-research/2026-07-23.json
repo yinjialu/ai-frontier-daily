@@ -1,0 +1,108 @@
+{
+  "coverage_version": 1,
+  "date": "2026-07-23",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [
+        {"queries": ["Anthropic July 21 2026 official news"], "sources": ["https://www.anthropic.com/news", "https://claude.com/blog"]},
+        {"queries": ["Anthropic July 22 2026 official news"], "sources": ["https://www.anthropic.com/news", "https://claude.com/blog"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 2
+      }
+    },
+    "openai": {
+      "official_search": [
+        {"queries": ["OpenAI July 21 2026 official news"], "sources": ["https://openai.com/news/rss.xml", "https://openai.com/index"]},
+        {"queries": ["OpenAI July 22 2026 official news"], "sources": ["https://openai.com/news/rss.xml", "https://openai.com/index"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 1
+      }
+    },
+    "gemini": {
+      "official_search": [
+        {"queries": ["Gemini July 21 2026 official news"], "sources": ["https://blog.google/products-and-platforms/products/gemini/", "https://deepmind.google/discover/blog/"]},
+        {"queries": ["Gemini July 22 2026 official news"], "sources": ["https://blog.google/products-and-platforms/products/gemini/", "https://deepmind.google/discover/blog/"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "nvidia": {
+      "official_search": [
+        {"queries": ["NVIDIA July 21 2026 AI official news"], "sources": ["https://www.nvidia.com/en-us/news/", "https://blogs.nvidia.com/"]},
+        {"queries": ["NVIDIA July 22 2026 AI official news"], "sources": ["https://www.nvidia.com/en-us/news/", "https://blogs.nvidia.com/"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {
+          "queries": ["DeepSeek 2026年7月21日 AI 官方动态", "DeepSeek 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "通义千问": {
+          "queries": ["通义千问 2026年7月21日 AI 官方动态", "通义千问 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "智谱": {
+          "queries": ["智谱 GLM 2026年7月21日 AI 官方动态", "智谱 GLM 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "Kimi": {
+          "queries": ["Kimi 2026年7月21日 AI 官方动态", "Kimi 2026年7月22日 AI 官方动态"],
+          "sources": ["https://www.kimi.com/zh-sg/help/agent/agent-overview"]
+        },
+        "豆包": {
+          "queries": ["豆包 2026年7月21日 AI 官方动态", "豆包 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "文心": {
+          "queries": ["文心 2026年7月21日 AI 官方动态", "文心 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "混元": {
+          "queries": ["混元 2026年7月21日 AI 官方动态", "混元 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "MiniMax": {
+          "queries": ["MiniMax 2026年7月21日 AI 官方动态", "MiniMax 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "阶跃星辰": {
+          "queries": ["阶跃星辰 2026年7月21日 AI 官方动态", "阶跃星辰 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "百川": {
+          "queries": ["百川智能 2026年7月21日 AI 官方动态", "百川智能 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "零一万物": {
+          "queries": ["零一万物 2026年7月21日 AI 官方动态", "零一万物 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        },
+        "百灵": {
+          "queries": ["蚂蚁百灵 2026年7月21日 AI 官方动态", "蚂蚁百灵 2026年7月22日 AI 官方动态"],
+          "sources": ["none-found"]
+        }
+      },
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    }
+  }
+}

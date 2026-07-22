@@ -1,0 +1,28 @@
+{
+  "vendor": "anthropic",
+  "date": "2026.07.23",
+  "cnDate": "7月23日 周四",
+  "edition": "VOL.204",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "Anthropic 为罕见病研究提供最高 5 万美元 Claude 积分",
+      "summary": "Anthropic 面向罕见遗传病研究启动专项资助，入选者可在六个月内获得最高 5 万美元 Claude 积分，覆盖基础科学与早期生物科技两条赛道，申请截止 8 月 2 日。",
+      "source": "anthropic.com",
+      "url": "https://www.anthropic.com/news/rare-disease-research-grants",
+      "candidate_ref": "firsthand/2026-07-21"
+    },
+    {
+      "tag": "企业",
+      "title": "Rakuten：Claude Fable 5 让企业 Agent 可通宵运行",
+      "summary": "Rakuten 表示，Claude Fable 5 能在长时间任务中反复检查假设、发现错误并回到目标重新执行，让团队可以把完整决策交给 Agent 运行数小时，同时把人工集中到真正需要判断的环节。",
+      "source": "claude.com",
+      "url": "https://claude.com/blog/working-at-the-frontier-rakuten",
+      "candidate_ref": "firsthand/2026-07-21"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Anthropic 官方发布、工程博客、研究与更新日志。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
