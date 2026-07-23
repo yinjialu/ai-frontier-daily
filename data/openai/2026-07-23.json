@@ -1,0 +1,26 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.23",
+  "cnDate": "7月23日 周四",
+  "edition": "VOL.204",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "OpenAI 推出 Presence：把企业 Agent 部署纳入可控闭环",
+      "summary": "OpenAI 发布 Presence，面向客服、保险理赔和内部 IT 等高价值流程，整合权限、策略、护栏、模拟评测与人工升级；产品目前面向符合条件的企业限量商用，强调上线后的持续评估与受控更新。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/introducing-openai-presence/"
+    },
+    {
+      "tag": "生态",
+      "title": "OpenAI 支持 Genesis Mission：向科研机构提供 Codex 与 API 资源",
+      "summary": "OpenAI 宣布支持美国能源部 Genesis Mission，计划向约 2000 名国家实验室与高校研究者提供 Codex，并投入 API 额度开展超导材料和科学发现等大型研究；重点是把 frontier AI 接入真实实验与计算基础设施。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/advancing-the-next-era-of-national-science/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、产品、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

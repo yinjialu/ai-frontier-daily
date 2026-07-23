@@ -1,0 +1,26 @@
+{
+  "vendor": "gemini",
+  "date": "2026.07.23",
+  "cnDate": "7月23日 周四",
+  "edition": "VOL.204",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "AI应用",
+      "title": "Gemini Live 可直接看镜头：把现实场景变成实时求助入口",
+      "summary": "Google 介绍 Gemini Live 的摄像头与屏幕共享用法，用户可让 Gemini 识别眼前物体、阅读说明或排查报错并给出步骤建议；这让多模态助手从回答图片问题进一步走向持续的现场协作。",
+      "source": "blog.google",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-live-camera-how-to/"
+    },
+    {
+      "tag": "生态",
+      "title": "Gemini 登上 Samsung 新设备：从手机扩展到手表与眼镜",
+      "summary": "Google 在 Galaxy Unpacked 介绍 Gemini 与 Samsung 新设备的整合：新折叠屏支持跨应用任务，Gemini Notebook 可整理研究并生成资源，Galaxy Watch 与后续智能眼镜也将成为新的交互入口。",
+      "source": "blog.google",
+      "url": "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Gemini 官方发布、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

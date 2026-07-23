@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.23",
+  "cnDate": "7月23日 周四",
+  "edition": "VOL.204",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA 开源 GPU 医疗物理仿真框架，服务机器人训练与评测",
+      "summary": "NVIDIA 开源 Medical Physics Simulation 框架，帮助医疗机器人模拟解剖结构与器械交互、生成难以采集的边界场景，并在真实硬件测试前完成策略训练和评估，降低医疗机器人数据与验证成本。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/medical-physics-simulation-open-source/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 官方发布、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
