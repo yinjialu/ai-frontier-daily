@@ -6,6 +6,13 @@
   "brand": "AI 前哨 · 每日 Gemini",
   "updates": [
     {
+      "tag": "模型发布",
+      "title": "Google 发布 Gemini 3.6 Flash、3.5 Flash-Lite 与 3.5 Flash Cyber",
+      "summary": "Google DeepMind 发布三款新模型：Gemini 3.6 Flash 主打编码、知识工作与多模态任务的 token 效率，3.5 Flash-Lite 面向高并发低延迟场景，3.5 Flash Cyber 则聚焦网络安全能力。",
+      "source": "deepmind.google",
+      "url": "https://deepmind.google/blog/introducing-gemini-36-flash-35-flash-lite-and-35-flash-cyber"
+    },
+    {
       "tag": "AI应用",
       "title": "Gemini Live 可直接看镜头：把现实场景变成实时求助入口",
       "summary": "Google 介绍 Gemini Live 的摄像头与屏幕共享用法，用户可让 Gemini 识别眼前物体、阅读说明或排查报错并给出步骤建议；这让多模态助手从回答图片问题进一步走向持续的现场协作。",

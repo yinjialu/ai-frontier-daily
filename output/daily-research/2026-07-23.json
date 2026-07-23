@@ -33,7 +33,7 @@
       "firsthand_query": {
         "command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs",
         "status": "completed",
-        "candidate_count": 0
+        "candidate_count": 1
       }
     },
     "nvidia": {
