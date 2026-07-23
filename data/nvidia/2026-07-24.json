@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.24",
+  "cnDate": "7月24日 周五",
+  "edition": "VOL.205",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "NVIDIA 与美国海军研究生院上线 DGX GB300 AI 超级计算机",
+      "summary": "NVIDIA 宣布美国海军研究生院的 DGX GB300 系统正式上线，向师生开放大规模模型训练与推理，覆盖天气预测、网络安全、灾害响应等研究；配合 Mission Control 与校企课程，AI 基础设施开始直接进入军事与工程教育场景。",
+      "source": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/naval-postgraduate-school-dgx-ai-supercomputer/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 官方发布、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

@@ -1,0 +1,26 @@
+{
+  "vendor": "openai",
+  "date": "2026.07.24",
+  "cnDate": "7月24日 周五",
+  "edition": "VOL.205",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "产品",
+      "title": "OpenAI 推出 ChatGPT Health：连接个人健康数据辅助理解与管理",
+      "summary": "OpenAI 向美国成年用户开始推出 ChatGPT Health，可在用户授权下连接 Apple Health 和部分医疗记录，让回答结合用药、化验、就诊、睡眠与运动等背景；数据不用于训练基础模型或定向广告，产品定位是辅助理解与就医准备，不替代医疗服务。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/health-in-chatgpt/"
+    },
+    {
+      "tag": "生态",
+      "title": "OpenAI 展示新闻机构 AI 工作流：从采编检索到个性化阅读",
+      "summary": "OpenAI 汇总 AP、Axios、Politico、Le Monde 等新闻机构案例：用模型处理资料检索、事实核验、翻译、音频与读者问答，同时保留记者和编辑的判断权；公司还推出面向新闻机构的 Academy，试图把 AI 从单点工具推进到组织工作流。",
+      "source": "openai.com",
+      "url": "https://openai.com/index/how-news-organizations-are-using-ai/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、产品、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}

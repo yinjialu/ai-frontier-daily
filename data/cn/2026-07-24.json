@@ -1,0 +1,20 @@
+{
+  "vendor": "cn",
+  "date": "2026.07.24",
+  "cnDate": "7月24日 周五",
+  "edition": "VOL.205",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "tag": "开发者",
+      "company": "DeepSeek",
+      "title": "DeepSeek 今日停用旧 API 别名，开发者需迁移到 V4 Flash",
+      "summary": "DeepSeek API 文档显示，旧模型别名 deepseek-chat 与 deepseek-reasoner 的过渡期于 7 月 24 日结束，接口将不再保留这两个名称；使用方应改用 deepseek-v4-flash，并按需选择非思考或思考模式，避免线上调用在截止日后失效。",
+      "source": "api-docs.deepseek.com",
+      "url": "https://api-docs.deepseek.com/updates/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "聚合国内大模型、产品与工程实践的真实变化。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
