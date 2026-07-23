@@ -1,0 +1,87 @@
+name: auto-merge-firsthand
+
+# 每天早报（北京时间 22:00）开始前，把已就绪的一手信源内参合入 main。
+# 心跳 PR、含摘要失败占位符的 PR、以及夹带非内参文件的 PR 都不会自动合并。
+on:
+  schedule:
+    - cron: '50 13 * * *' # UTC 13:50 = Asia/Shanghai 21:50
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-merge-firsthand-main
+  cancel-in-progress: false
+
+jobs:
+  merge-ready-firsthand-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 合并已就绪的内参 PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          # 按 PR 编号从旧到新处理；同一天通常只有一条。
+          mapfile -t PRS < <(
+            gh pr list --repo "$REPO" --state open --base main --limit 100 \
+              --json number,headRefName,isDraft \
+              --jq '.[] | select(.isDraft == false and (.headRefName | startswith("firsthand/"))) | .number' \
+              | sort -n
+          )
+
+          if [ "${#PRS[@]}" -eq 0 ]; then
+            echo "没有待处理的 firsthand/* PR"
+            exit 0
+          fi
+
+          for PR in "${PRS[@]}"; do
+            HEAD_REF="$(gh pr view "$PR" --repo "$REPO" --json headRefName --jq .headRefName)"
+            mapfile -t FILES < <(gh pr diff "$PR" --repo "$REPO" --name-only)
+
+            if [ "${#FILES[@]}" -eq 0 ]; then
+              echo "PR #$PR ($HEAD_REF) 无文件改动，跳过"
+              continue
+            fi
+
+            HAS_ARTICLE=0
+            INVALID=0
+            SUMMARY_FAILED=0
+            for FILE in "${FILES[@]}"; do
+              if [[ "$FILE" =~ ^data/firsthand/[^/]+/[^/]+\.md$ ]]; then
+                HAS_ARTICLE=1
+                CONTENT="$(gh api \
+                  -H 'Accept: application/vnd.github.raw+json' \
+                  "repos/$REPO/contents/$FILE?ref=$HEAD_REF")"
+                if grep -q '^(摘要生成失败)' <<<"$CONTENT"; then
+                  SUMMARY_FAILED=1
+                  echo "PR #$PR 含摘要失败占位符: $FILE"
+                fi
+              elif [[ "$FILE" =~ ^data/firsthand/[0-9]{4}-[0-9]{2}-[0-9]{2}/\.heartbeat$ ]]; then
+                : # 允许心跳 PR 后续追加真实文章
+              else
+                INVALID=1
+                echo "PR #$PR 含超出自动合并范围的文件: $FILE"
+              fi
+            done
+
+            if [ "$HAS_ARTICLE" -ne 1 ]; then
+              echo "PR #$PR 只有心跳、没有真实内参，跳过"
+              continue
+            fi
+            if [ "$INVALID" -ne 0 ] || [ "$SUMMARY_FAILED" -ne 0 ]; then
+              echo "PR #$PR 未通过内参自动合并检查，保留人工处理"
+              continue
+            fi
+
+            # 使用 GitHub PR 合并 API，让分支保护/合并冲突继续充当最后一道门。
+            if gh pr merge "$PR" --repo "$REPO" --squash --delete-branch; then
+              echo "✅ PR #$PR ($HEAD_REF) 已合并入 main"
+            else
+              echo "::warning::PR #$PR ($HEAD_REF) 合并失败，已保留供人工处理"
+            fi
+          done
