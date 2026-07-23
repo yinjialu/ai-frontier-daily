@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 86,
+    "known_urls_count": 91,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -41,9 +41,11 @@
       "https://claude.com/blog/ciso-guide-to-agentic-ai",
       "https://claude.com/blog/working-at-the-frontier-rakuten",
       "https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle",
-      "https://claude.com/blog/how-datadog-built-a-universal-machine-tool-for-claude-code"
+      "https://claude.com/blog/how-datadog-built-a-universal-machine-tool-for-claude-code",
+      "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills",
+      "https://claude.com/blog/how-outtake-built-a-cyber-investigator-on-claude"
     ],
-    "last_new_article": "2026-07-22T12:14:48+08:00"
+    "last_new_article": "2026-07-23T08:14:45+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -120,10 +122,13 @@
       "https://www.anthropic.com/news/hard-questions",
       "https://www.anthropic.com/news/ust-claude",
       "https://www.anthropic.com/news/ben-bernanke",
-      "https://www.anthropic.com/news/rare-disease-research-grants"
+      "https://www.anthropic.com/news/rare-disease-research-grants",
+      "https://www.anthropic.com/news/donation-public-first-action",
+      "https://www.anthropic.com/news/economic-futures-research-fund-agenda",
+      "https://www.anthropic.com/news/anthropic-economic-index-connector"
     ],
-    "known_urls_count": 48,
-    "last_new_article": "2026-07-21T09:08:30+08:00"
+    "known_urls_count": 49,
+    "last_new_article": "2026-07-23T08:14:45+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1233,11 +1238,16 @@
       "https://openai.com/index/safety-alignment-long-horizon-models",
       "https://openai.com/index/introducing-chatgpt-small-business-program",
       "https://openai.com/index/hugging-face-model-evaluation-security-incident",
-      "https://openai.com/index/david-velez-robin-vince-join-openai-boards"
+      "https://openai.com/index/david-velez-robin-vince-join-openai-boards",
+      "https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community",
+      "https://openai.com/index/how-news-organizations-are-using-ai",
+      "https://openai.com/index/advancing-the-next-era-of-national-science",
+      "https://openai.com/index/introducing-openai-presence",
+      "https://openai.com/index/ntt-data"
     ],
     "initialized": true,
-    "known_urls_count": 1076,
-    "last_new_article": "2026-07-22T12:14:48+08:00"
+    "known_urls_count": 1083,
+    "last_new_article": "2026-07-23T08:14:45+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1347,11 +1357,12 @@
       "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash",
       "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership",
       "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber",
-      "https://deepmind.google/blog/introducing-gemini-36-flash-35-flash-lite-and-35-flash-cyber"
+      "https://deepmind.google/blog/introducing-gemini-36-flash-35-flash-lite-and-35-flash-cyber",
+      "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission"
     ],
     "initialized": true,
-    "known_urls_count": 110,
-    "last_new_article": "2026-07-22T12:14:48+08:00"
+    "known_urls_count": 114,
+    "last_new_article": "2026-07-23T08:14:45+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1384,7 +1395,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber"
     ],
     "initialized": true,
-    "known_urls_count": 34,
+    "known_urls_count": 36,
     "last_new_article": "2026-07-22T12:14:48+08:00"
   },
   "google-gemini": {
@@ -1424,11 +1435,13 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/how-to-make-gemini-study-notebooks",
       "https://blog.google/products-and-platforms/products/gemini/launch-business-with-gemini",
       "https://blog.google/products-and-platforms/products/education/summer-productivity-tips-google-ai-tools",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber",
+      "https://blog.google/products-and-platforms/products/gemini/gemini-live-camera-how-to",
+      "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026"
     ],
     "initialized": true,
-    "known_urls_count": 47,
-    "last_new_article": "2026-07-22T12:14:48+08:00"
+    "known_urls_count": 52,
+    "last_new_article": "2026-07-23T08:14:45+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
