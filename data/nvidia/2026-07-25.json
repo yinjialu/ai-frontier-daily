@@ -1,0 +1,19 @@
+{
+  "vendor": "nvidia",
+  "date": "2026.07.25",
+  "cnDate": "7月25日 周六",
+  "edition": "VOL.206",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA 与 KAIST 共建韩国 AI 研究实验室",
+      "summary": "NVIDIA 与韩国科学技术院宣布在首尔共建 AI 研究实验室，聚焦面向韩国产业与语言的 Agent 模型和系统；合作包含算力、研究经费、实习与人才招聘，计划五年投入 3 亿美元，推动 Nemotron 开源模型从学术研究走向企业部署。",
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-kaist-launch-joint-ai-research-lab-to-accelerate-ai-innovation-in-korea"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 NVIDIA 官方发布、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
