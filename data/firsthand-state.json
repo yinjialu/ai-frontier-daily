@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 95,
+    "known_urls_count": 96,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -1245,11 +1245,12 @@
       "https://openai.com/index/advancing-the-next-era-of-national-science",
       "https://openai.com/index/introducing-openai-presence",
       "https://openai.com/index/ntt-data",
-      "https://openai.com/index/health-in-chatgpt"
+      "https://openai.com/index/health-in-chatgpt",
+      "https://openai.com/index/codex-collaborator-creative-team"
     ],
     "initialized": true,
-    "known_urls_count": 1093,
-    "last_new_article": "2026-07-24T06:48:05+08:00"
+    "known_urls_count": 1094,
+    "last_new_article": "2026-07-24T08:35:46+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1398,7 +1399,7 @@
       "https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy"
     ],
     "initialized": true,
-    "known_urls_count": 36,
+    "known_urls_count": 37,
     "last_new_article": "2026-07-24T06:48:05+08:00"
   },
   "google-gemini": {
