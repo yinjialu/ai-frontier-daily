@@ -1,5 +1,1221 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-07-23T08:14:45+08:00</lastBuildDate><item><title>Building verification loops in Claude Code with skills</title><link>https://claude.com/blog/building-verification-loops-in-claude-code-with-skills</link><guid isPermaLink="true">https://claude.com/blog/building-verification-loops-in-claude-code-with-skills</guid><category>claude-blog</category><pubDate>2026-07-22</pubDate><description>介绍在Claude Code中利用skills构建验证循环，将人工检查自动化，使Claude自行反馈修正，提升开发效率。涵盖内置验证循环及自定义技能编写方法。
+<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-07-24T08:35:46+08:00</lastBuildDate><item><title>Think through hard problems in voice mode</title><link>https://claude.com/blog/think-through-hard-problems-in-voice-mode</link><guid isPermaLink="true">https://claude.com/blog/think-through-hard-problems-in-voice-mode</guid><category>claude-blog</category><pubDate>2026-07-23</pubDate><description>Anthropic宣布语音模式升级，支持Claude Opus、Sonnet和Haiku模型，可中途切换。语音模式现可调用Gmail、Slack等工具，新增多种语言支持，适用于复杂问题推理、头脑风暴及实际业务操作。
+
+## Full Text
+
+Think through hard problems in voice mode | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+Think through hard problems in voice mode
+Explore here
+Ask questions about this page
+Copy as markdown
+Think through hard problems in voice mode
+Starting today, voice mode runs on Claude Opus, Claude Sonnet, and Claude Haiku, reaches the tools you’ve connected like Gmail and Slack, and speaks many more languages.
+Category
+Product announcements
+Product
+Claude apps
+Date
+July 23, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/think-through-hard-problems-in-voice-mode
+Some problems you can't type your way through. Voice mode is for practicing for an important pitch meeting, deciding between multiple offers, reviewing your own process out loud, or brainstorming new ideas.
+A sounding board that keeps up
+After we added hands-free conversation earlier this year, people started using voice mode for more than quick questions. They began working through real business problems across longer sessions, out loud rather than through text. But until now, voice mode only ran on our Claude Haiku model, which we chose for speed. It kept conversations quick, but not always deep.
+Claude Opus and Sonnet, models designed for hard problem-solving, are now available in voice mode. You can switch models mid-conversation from the model picker. Voice mode uses the fastest version of whichever model you’ve selected, so the conversation runs smoothly. It defaults to the last model you used in text chat, so you can move between voice and text without starting over.
+With more capable models, you can talk through a half-formed idea and work out what you actually think. Claude asks follow-up questions and builds on your thinking rather than handing you an answer. Voice mode takes turns, meaning Claude listens, pauses to think, and then responds.
+A few things to try:
+Practice for an important conversation and ask Claude for feedback on your communication style.
+Talk through a client pitch and ask Claude to find gaps in your logic.
+Brainstorm ideas for your product roadmap and ask Claude to validate them with competitive research.
+Ask Claude to help you evaluate a few different hypotheses for why your last video went viral.
+From talking to doing
+When you’ve  decided what to do, ask Claude to do it. Some examples of what you can achieve in your tools:
+Running late? Ask Claude to push a meeting on your Google Calendar by 30 minutes.
+Turn a conversation about a client pitch into a one-pager in Canva.
+Ask Claude to summarize the emails you’ve received today and draft responses to the most critical ones.
+Claude will ask for permission before using one of your connected tools. You can connect a new tool in Settings &gt; Connectors on the Claude mobile, desktop or web apps.
+Converse in many more languages
+With many more languages now available in voice mode on every plan, you can talk with Claude in the language you think in, switching mid-conversation. Available languages include:
+English
+French
+German
+Hindi
+Indonesian
+Italian
+Japanese
+Korean
+Portuguese (Brazilian)
+Spanish (Latin America)
+Spanish (Spain)
+Tell Claude out loud to switch from English to your language of choice, or select your language from the language picker in voice settings.
+Claude doesn’t automatically detect your language, so you’ll need to ask out loud or select your language to make the switch from English. You will need to set your language specifically for voice mode, as your previous language settings will not carry over.
+Getting started
+The latest update to voice mode is available in beta to all chat users on mobile, desktop, and web, but works best from your phone. On the Free plan, you get Claude Haiku, one connected tool, and all available languages. Paid plans can access expanded models and all your connected tools. Voice conversations count toward your regular usage limits.
+Try voice mode in the Claude mobile app by tapping the sound wave icon, or
+download the app to get started
+.
+No items found.
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+May 12, 2026
+Claude for the legal industry
+Product announcements
+Claude for the legal industry
+Claude for the legal industry
+Claude for the legal industry
+Claude for the legal industry
+Jul 7, 2026
+Claude Cowork is coming to mobile and web
+Product announcements
+Claude Cowork is coming to mobile and web
+Claude Cowork is coming to mobile and web
+Claude Cowork is coming to mobile and web
+Claude Cowork is coming to mobile and web
+Apr 9, 2026
+Making Claude Cowork ready for enterprise
+Product announcements
+Making Claude Cowork ready for enterprise
+Making Claude Cowork ready for enterprise
+Making Claude Cowork ready for enterprise
+Making Claude Cowork ready for enterprise
+Mar 24, 2026
+Auto mode for Claude Code
+Claude Code
+Auto mode for Claude Code
+Auto mode for Claude Code
+Auto mode for Claude Code
+Auto mode for Claude Code
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude apps
+Productivity</description></item><item><title>Launching Health in ChatGPT</title><link>https://openai.com/index/health-in-chatgpt</link><guid isPermaLink="true">https://openai.com/index/health-in-chatgpt</guid><category>openai-news</category><pubDate>2026-07-23</pubDate><description>OpenAI面向美国用户推出ChatGPT Health功能，可安全连接Apple Health和医疗记录，利用GPT-5.5/5.6模型提供个性化健康分析、总结与建议，强调隐私保护（数据不用于训练或广告），支持Free/Go/Plus/Pro计划。
+
+## Full Text
+
+Launching Health in ChatGPT  | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+July 23, 2026
+Product
+Launching Health in ChatGPT
+Rolling out to U.S. users, you can securely connect your health information to help you better understand and navigate your health.
+Loading…
+Share
+What early users are saying
+What early users are saying
+Health conversations grounded in your information
+Improving health intelligence with physicians
+Built with privacy, security, and control
+How to connect and use your health information
+Connect your health information
+Using a wearable or another health app?
+Review and update relevant health details
+Bring your health context into conversations
+Explore and manage your health information
+What early users are saying
+Health conversations grounded in your information
+Improving health intelligence with physicians
+Built with privacy, security, and control
+How to connect and use your health information
+Connect your health information
+Using a wearable or another health app?
+Review and update relevant health details
+Bring your health context into conversations
+Explore and manage your health information
+Health in ChatGPT is launching to U.S. users. You can choose to securely connect Apple Health and supported medical records so ChatGPT can help you understand your information in context, keep track of what has changed, and have more informed, personalized conversations. The experience builds on feedback from early testers and gives you control over what you connect and when ChatGPT can use it.
+Every week, more than 300 million people turn to ChatGPT with health-related questions—from understanding a lab result and preparing for an appointment to making sense of what a doctor said and building a healthier routine. But the context behind those questions is often scattered across patient portals, medical records, apps, and wearables, making it difficult to see and act on the complete picture.
+With your permission, ChatGPT can now draw on relevant information you’ve connected in Health to help you compare a new result with prior tests, summarize changes since your last appointment, or explore how sleep, activity, and workouts relate to your routine. This can reduce the need to repeatedly gather, upload, or explain the same details, helping you feel more informed, ask better questions, and take a more active role in your health while supporting, not replacing, the care you receive from medical professionals.
+We’re continuing to improve the models behind health conversations so ChatGPT can reason more carefully across complex details, explain health information clearly, ask for missing context, and recognize when professional care may be needed. GPT‑5.5 Instant brought frontier health intelligence to all free users. GPT‑5.6 Sol builds on that progress with even stronger performance on more complex questions.
+Health is built with layered privacy and security safeguards. Connected medical records and Apple Health information, and conversations that use it, are not used to train our foundation models or target ads. We’re beginning to roll out Health to logged-in ChatGPT users 18 and older in the U.S. on web and iOS across Free, Go, Plus, and Pro plans today. Open Health from the sidebar in ChatGPT to get started. Health is not yet available in Codex.
+What early users are saying
+Technical program manager
+Portfolio manager
+Nurse
+Consultant
+Small business owner
+Operations manager
+Consultant
+“The most useful part has been turning scattered medical history into something I can actually understand and explain. I have multiple overlapping issues and ChatGPT helped connect those pieces into a clear timeline, explain the medical terms in plain English, and create summaries I could share with a physical therapist or trainer.
+This has helped me feel less lost in my own health history. Instead of just seeing disconnected diagnoses, imaging results, and surgery notes, I could understand the bigger pattern. It made the information more usable and gave me better language to advocate for myself with providers and trainers.”
+—Blake, technical program manager
+Health conversations grounded in your information
+Earlier this year, we introduced a
+dedicated health experience
+⁠
+to a limited group of users that required visiting a separate space in ChatGPT to get the full benefit. Early testing showed that health questions often arose naturally in the course of conversations. For example, while planning meals or looking for recipes, someone might want ChatGPT to take a food allergy or dietary restriction into account. Among people with access, more than 70% of health-related conversations took place outside the dedicated health experience. Moving to a separate space added an unnecessary step.
+Based on that feedback, you can now choose to let ChatGPT draw on relevant information you’ve connected in Health across your conversations, without needing to start within Health. With your permission, ChatGPT can consider relevant information you have connected, such as medications, lab results, recent visits, sleep, and activity, alongside the goals and context you share. This added context can make everyday conversations more useful. For example, ChatGPT can consider a dietary restriction when helping you choose a restaurant, or a recent injury when planning lower-impact weekend activities with your family. You can ask follow-up questions, add context, or correct information that is incomplete or out of date.
+Health, in the left sidebar, remains your home base for connecting and managing your information, seeing recent data and trends, exploring suggested prompts, browsing synced records, and returning to past health conversations.
+Take action today
+Meal planning
+Health summary
+Finding patterns
+Appointment prep
+Exercise planning
+Improving health intelligence with physicians
+We use dedicated training to improve the models behind health conversations in ChatGPT. GPT‑5.5 Instant, available to users on the Free plan, has made meaningful gains in recognizing when urgent care may be needed, asking for relevant context, explaining uncertainty, and making complex information easier to understand. On our most challenging health evaluations, it performed at a level comparable to our frontier Thinking models at the time of evaluation.
+Learn more about those results and our work with physicians
+⁠
+.
+GPT‑5.6 Sol
+⁠
+, available to paid users, is our strongest model yet for health. It builds on our progress with stronger performance on tasks that require reasoning across complex details, clear communication, and careful judgment. It can help explain a visit note in plain language, understand how lab results have changed over time, consider the factors across options a doctor discussed, or prepare questions for a follow-up appointment.
+To measure progress, we work with hundreds of physicians around the world to develop realistic health scenarios and detailed rubrics that define what a strong response should do. These evaluations assess qualities including accuracy, safety, communication, context awareness, completeness, and appropriate escalation. Every GPT‑5.6 model outperformed GPT‑5.5 on
+HealthBench Professional
+⁠
+(opens in a new window)
+, an evaluation of AI performance on challenging health tasks.
+Finally, physicians extensively tested Health in ChatGPT before release, helping us measure and improve real-world model performance and safety with connected health data. While these results represent meaningful progress and we are continuously improving our models, ChatGPT can still make mistakes and does not replace the care and judgment of qualified medical professionals. We encourage people to verify important information and discuss medical decisions with their healthcare provider.
+Built with privacy, security, and control
+Health is built with layered privacy and security safeguards. All ChatGPT conversations are encrypted at rest and in transit, and information connected in Health receives additional encryption protections.
+The information connected in Health is not used to train our foundation models or target ads.
+Connected medical records and Apple Health information, and conversations that use it, are not used to train our foundation models or target ads, regardless of the model-training setting you choose for ChatGPT. Conversations that do not use this data follow your standard ChatGPT model-training setting choices, which you can change at any time in Settings &gt; Data Controls.
+You decide when ChatGPT can use the information connected in Health.
+By default, ChatGPT asks for permission before using connected medical records and Apple Health information to personalize a response. You can approve each request or choose to always allow access, which turns off these permission prompts. You can change this setting anytime in Settings &gt; Plugins &gt; Health.
+You can disconnect your Health information at any time.
+Disconnect accounts at any time in Health &gt; Accounts. When you do, data synced from that source is deleted from OpenAI’s systems within 30 days. Information already included in your ChatGPT conversation history remains until you delete those conversations.
+Memory remains in your control.
+To personalize future chats,
+memories
+⁠
+can be created from your Health conversations. Memories are not created directly from connected medical records and Apple Health information. If you’d like to have a conversation without creating memories, you can use
+Temporary Chat
+⁠
+(opens in a new window)
+or turn memory off in Settings &gt; Memory.
+Additional safeguards help protect sensitive sharing.
+Before ChatGPT takes an action in another connected plugin that could disclose Health information, like sending your running partner a training plan based on your Apple Health data, additional safeguards help check that the sharing matches your request. For some sensitive actions, ChatGPT may ask you to confirm before proceeding. We continue to test these safeguards through dedicated red-team exercises focused on connected information in Health and use the findings to strengthen our protections.
+How to connect and use your health information
+You can ask health questions in ChatGPT without connecting anything. To use Health and get responses grounded in your own information, you can choose to connect Apple Health, supported medical records from U.S. hospital systems, One Medical, or Function Health.
+Connect your health information
+Open Health from the sidebar or More menu in ChatGPT and select “Get started.” ChatGPT will guide you through securely connecting your health information.
+Once connected, your information will begin syncing, which may take a few minutes. While it syncs, you can connect additional accounts or return later.
+Using a wearable or another health app?
+If you use a wearable, fitness, or nutrition app that shares data with Apple Health, make sure sharing is turned on. Once you connect Apple Health to ChatGPT, ChatGPT can use the information that app makes available through Apple Health, when you allow it. Available information varies by app and metric, and some proprietary scores may not transfer.
+Review and update relevant health details
+After connecting, you can review conditions and medications, remove anything that is no longer relevant, and add details that may be missing, including family health history. Connected information may not always be complete or current, for example, a medication may remain listed after you stop taking it, so tell ChatGPT when something changes and check important details against the original source.
+Bring your health context into conversations
+Once your information is synced, you can ask questions anywhere in ChatGPT. When relevant, ChatGPT may use Health information based on your permissions. By default, ChatGPT asks before using this information. You can allow access once or choose to always allow it, and can change this setting anytime in Settings &gt; Plugins &gt; Health. You can also add @Health to your message to explicitly ask ChatGPT to include health context.
+Explore and manage your health information
+Return to Health anytime to see recent data and trends, find suggested prompts, browse synced records, revisit past conversations, and manage your connected accounts.
+ChatGPT
+2026
+Author
+OpenAI
+Keep reading
+View all
+Introducing OpenAI Presence
+Product
+Jul 22, 2026
+GPT-5.6 is now the preferred model in Microsoft 365 Copilot
+Product
+Jul 9, 2026
+ChatGPT is now a partner for your most ambitious work
+Product
+Jul 9, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Understanding the AI economy</title><link>https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy</guid><category>google-models-research</category><pubDate>2026-07-23</pubDate><description>Google发布ATLAS报告，基于15亿用户AI交互数据，揭示AI在工作中的使用广泛但浅层，覆盖68%职业但仅用于21%任务，强调AI辅助而非替代。
+
+## Full Text
+
+The first ATLAS report on AI
+Skip to main content
+Understanding the AI economy
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Understanding the AI economy
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Technology
+Research
+Understanding the AI economy
+Jul 23, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Google’s ATLAS is an expansive look at how people are using AI at work and in day-to-day life.
+Zanna Iscenko
+AI &amp; Economy Lead, Chief Economist's Office
+Scott Strand
+Head of StratOps and Special Projects, Technology &amp; Society
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Google launched a new study called ATLAS to see how people are actually using AI in their daily lives and jobs. They found that most people use AI to help with tasks rather than letting it do everything for them. It turns out that workers in all kinds of fields, from offices to repair shops, are using these tools to get things done faster. This research helps everyone understand how AI is changing the world so we can use it in a helpful way.
+Summaries were generated by Google AI. Generative AI is experimental.
+There is broad agreement that AI’s potential to transform the global economy and the way we work is significant. However, the outcomes – what this means for work, for people’s lives, and the economy writ large – are not automatic nor guaranteed.
+A lot has to happen
+. To get there, we as a society must work together to positively shape how AI impacts our lives, jobs, and economy. In order for this shared work to be effective, it is critical to have a rich understanding of how AI is being adopted and used in the economy. Society needs empirical insights and evidence-based research to inform decisions, initiatives, and actions.
+To help, Google is launching the first iteration of the
+AI &amp; Economy ATLAS
+(Activity, Task, Landscape, and Adoption Study), an ongoing, large-scale, de-identified study of how people are using Google’s AI products and tools. ATLAS’s first dataset (v1.0) is built from 15 million aggregated and de-identified human-AI interactions across the Gemini App, AI Mode, and the Gemini API, which together are used by more than 1 billion people monthly. ATLAS v1.0 insights span more than 150 countries, 140 languages, 800 occupations, and 4,000 tasks; ATLAS is the most comprehensive look to date at how real people are using AI at scale.
+ATLAS sheds light on how people are using Google’s AI tools for various tasks at work and in their day-to-day lives. The ATLAS v1.0 report provides an early view of a quickly moving landscape: AI’s capabilities are advancing, its use is evolving, and tools for observing its impact on the economy are still a work-in-progress.
+What are we learning from ATLAS v1.0?
+Here a few of the most interesting observations so far:
+AI use at work is broad but shallow:
+Workplace adoption spans all industry sectors and also 68% of all occupations that collectively represent 90% of total U.S. employment. However within jobs, people are using AI selectively: in a typical job AI is used for only ~21% of tasks.
+At work, most AI use is focused on collaboration and assistance with tasks, and so far task automation is uncommon:
+ATLAS data shows the vast majority of AI interactions at work focus on collaborative uses such as ideation, strategy, information retrieval, and learning. Tasks like creative design and hypothesis testing (categorized in ATLAS as “non-routine cognitive”) show up in AI work interactions at a much higher rate than in the economy as a whole (65% vs 35%). Less than 10% of those interactions fully automate tasks.
+AI use is not limited to white collar workers, it’s also assisting workers in predominantly physical and manual occupations with adjacent tasks:
+AI use for work is not limited to jobs traditionally seen as knowledge work. While not as prevalent, workers in manual and technical trades (e.g., auto technicians, industrial mechanics) are using conversational AI as a live collaborator for real-time diagnostics, troubleshooting, and on-the-fly learning. When workers in these areas use our AI tools, they’re 2x more likely to use multimodal AI (i.e. using AI to create images or video). For example, automotive technicians and industrial mechanics use AI to interpret complex test results, debug electrical wiring, and inspect machinery for wear.
+AI is delivering value at home that may be missed in standard economic metrics, particularly around high-friction administrative tasks
+: Over 86% of interactions with AI tools in ATLAS occur outside of work. People are using AI in new and interesting ways not captured in standard economic metrics including productive household activities (e.g. researching purchases, help with using appliances, and tools) and high-friction administrative tasks (e.g. navigating government services like taxes, licensing, and fines).
+Global AI adoption is tracking GDP per capita, with notable exceptions:
+AI usage has diffused globally. ATLAS data shows AI usage in over 150 countries and territories that represent 99% of the world's population. We also see this in the diversity of languages used in ATLAS. English represents only about a third of global AI conversations, and users do not systematically abandon their native languages for complex tasks. Looking more deeply, on a per-capita basis AI usage closely mirrors a country’s relative level of wealth, raising concerns about a persisting digital divide. However this isn’t a universal rule: some middle-income countries in South America and the Middle East are adopting AI at rates comparable to higher-income countries.
+Here are some additional findings:
+How ATLAS has been developed
+ATLAS insights are powered by Google DeepMind’s Observation Clustering and Taxonomy Organisation (OCTO), a tool for transforming massive unstructured text data, like LLM conversations, and distilling them into organized entities. ATLAS has been developed with the highest level of privacy protections. In addition to scrubbing personally identifiable information (PII), we added several additional layers of protection that automatically remove any possible references to sensitive information, remove all linkages between de-identified ATLAS data and underlying user logs, summarize the text data, and aggregate summaries into groups representing multiple users.
+What’s next?
+This is just the beginning — the ATLAS v1.0 represents the start of a long-term project. AI’s capabilities continue to expand, people are continuing to find new and interesting ways to use it, and research methodologies to understand AI continue to evolve. There are many more questions around AI and the economy where more work will be needed — work that Google’s
+AI &amp; Economy Research Program
+is undertaking in collaboration with academic and other researchers.
+And there is a much wider range of economically-relevant AI usage not reflected in ATLAS. These include AI-enabled products with billions of users and interactions like Google Workspace, Google Translate, and AI Overviews; enterprise platforms, such as Gemini for Google Cloud and Gemini Enterprise; and frontier capabilities in several key areas, such as agentic coding and world models.
+As we continue to build upon ATLAS and expand its scope and capabilities to generate new insights, we aim to provide a sharper understanding of the AI-driven transformation of the economy. We hope it is helpful to researchers, policymakers, businesses, workers, and other participants in the economy as we work together to shape the ways AI can positively support people in their lives.
+We’d like to acknowledge Dame Diane Coyle (Cambridge) and Dr. David Autor (MIT) for their contributions to the ATLAS v1.0 report, as well as the entire ATLAS team
+1
+.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+Google Research
+1
+Zanna Iscenko, AI &amp; Economy Research Program; Scott Strand, AI &amp; Economy Research Program;
+Yiyuan Chen, AI &amp; Economy Research Program; Guillaume Aimard, AI &amp; Economy Research Program; Mihai Codreanu, AI &amp; Economy Research Program; Vivek Sampathkumar, AI &amp; Economy Research Program; Alex Imas, Economics, Google DeepMind; Julian Jacobs, Economics, Google DeepMind; Evalyne Muiruri, Google DeepMind; Juan Mateos-Garcia, Google DeepMind; Jia Jen Ng, Google DeepMind; Samirah Javed, Google DeepMind; Josh Martin, AI &amp; Economy Research Program; Omar Ajmeri, AI &amp; Economy Research Program; Denis Calin, AI &amp; Economy Research Program; Andrew Kim, Senior Director, Research, Labs, Technology &amp; Society; Fabien Curto Millet, Chief Economist; James Manyika, President of Research, Labs, Technology &amp; Society
+Related stories
+Google Research
+How governments and organizations are leveraging Google’s AI breakthroughs for crisis resilience
+By
+          
+            
+            Yossi Matias
+Google Research
+Three new satellites join the fight against wildfires.
+By
+          
+            
+            Christopher Van Arsdale
+AI
+The latest AI news we announced in June 2026
+By
+          
+            
+            News from Google Team
+Google Research
+Towards a world where no one is surprised by a natural disaster
+By
+          
+            
+            Yossi Matias
+Google Research
+New research shows how AMIE, our medical AI, could help manage health conditions.
+By
+          
+            
+            Mike Schaekermann
+Google Research
+4 ways researchers are collaborating with Co-Scientist to solve big problems
+By
+          
+            
+            Joel Meares
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>Building verification loops in Claude Code with skills</title><link>https://claude.com/blog/building-verification-loops-in-claude-code-with-skills</link><guid isPermaLink="true">https://claude.com/blog/building-verification-loops-in-claude-code-with-skills</guid><category>claude-blog</category><pubDate>2026-07-22</pubDate><description>介绍在Claude Code中利用skills构建验证循环，将人工检查自动化，使Claude自行反馈修正，提升开发效率。涵盖内置验证循环及自定义技能编写方法。
 
 ## Full Text
 
@@ -10328,6 +11544,170 @@ Jun 25, 2026
 OpenAI and Broadcom unveil LLM-optimized inference chip
 Company
 Jun 24, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>How Codex became a collaborator for OpenAI’s creative team</title><link>https://openai.com/index/codex-collaborator-creative-team</link><guid isPermaLink="true">https://openai.com/index/codex-collaborator-creative-team</guid><category>openai-news</category><pubDate>2026-07-16</pubDate><description>OpenAI创意专家Chad Nelson利用Codex构建理解品牌背景的自定义工具，一天内生成50个创意方向并快速原型，展示了AI在创意工作流中的协作潜力，降低技术门槛，提升探索效率。
+
+## Full Text
+
+How Codex became a collaborator for OpenAI’s creative team | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+July 16, 2026
+OpenAI on OpenAI
+How Codex became a collaborator for OpenAI’s creative team
+Loading…
+Share
+Building custom tools that understand the brief
+Building custom tools that understand the brief
+Expanding the field of ideas
+Moving from concept to prototype faster
+Building custom tools that understand the brief
+Expanding the field of ideas
+Moving from concept to prototype faster
+This is part of our series sharing internal examples of how OpenAI is using its own technology and APIs. These tools are being used internally, at OpenAI, and are shared here as illustrative examples of how frontier AI is supporting use cases across our teams.
+Most people assume Codex is just for engineers and developers, but for Chad Nelson, Creative Specialist at OpenAI, Codex has become a creative problem solver and collaborator. Chad’s role is to explore what OpenAI models can make possible for creative teams, then turn those possibilities into demos, workflows, and ideas brand partners can build on.
+Used to working within the constraints of the standard software for creatives, Chad’s been impressed with Codex’s ability to help him create better tools, build custom workflows, and generate campaign directions grounded in the full context of a project.
+“I'm actually bringing Codex sketches, storyboards, and design style guides—things that you wouldn’t assume Codex could understand. But it not only understands those things, it actually helps me collaborate and create utilizing those different assets.”
+—Chad Nelson, Creative Specialist, OpenAI
+Building custom tools that understand the brief
+“The tools I’ve been using my whole career have no idea what project I’m on, what brand I’m working for, what product I’m trying to pitch,” Chad says. “Codex and ChatGPT have the context. They understand that I’m working for
+this
+client, with
+this
+product, with
+these
+strategic goals.”
+Codex can also understand brand books, style guides, fonts, and composition—and with that knowledge becomes more attuned to the creative needs of a project.
+A campaign direction is shaped by the brand it’s for, the product, and the emotional quality you want to convey in the work. Chad found that Codex can take all of this context and work across those inputs in a way traditional tools could not.
+He also uses Codex to create and customize tools that will help solve specific problems.
+Using natural language, he can describe the workflow he wants and ask Codex to help build it. That might mean connecting an API key, creating a prototype interface, or designing a custom UI that lets him explore visual treatments.
+“With Codex, I can actually create tools, user interfaces, sliders, and controls,” he says. “I can adjust camera composition or lighting, and create real-time shadows with depth and dimension.”
+Expanding the field of ideas
+Codex is also speeding up creative exploration. Recently, Chad had one day to develop a broad set of campaign ideas for a new client. Normally, he might have pursued five directions, or maybe 10 with enough time. Many would likely have been close variations of the same idea.
+With Codex, Chad started by giving the system project context: the brand and its products, some guidelines, and the client’s goals. He also provided input about the tone he wanted the campaign to strike.
+In just one day, Chad and Codex generated 50 campaign directions, which he then reviewed and distilled into the 10 strongest ideas. “What I found is Codex is allowing me to riff creatively and to explore all these different options with a greater sense of freedom,” he says.
+With more ideas to work with, Chad was able to bring a stronger set of options into the pitch, even under a tight deadline.
+Moving from concept to prototype faster
+Codex gives creative teams leverage in places where work often slows down: initial concepting, workflow design, and technical implementation.
+When Chad has a prototype in mind, he can describe it and start building. If a workflow depends on new modalities or API integrations, he can ask Codex to help connect them. And if he gets stuck, he can explain the issue in natural language and work through it without leaving the creative flow.
+For creatives, this reduces the gap between idea and execution:
+Technical hurdles that once required a handoff can become part of the same creative process.
+Creative directors can work with composition and lighting controls instead of long prompts.
+Designers can prototype an interface without waiting for custom tools to be scoped and built.
+Teams can explore more concepts while keeping human judgment at the center.
+More broadly, Chad’s experience illustrates the new ways creative teams are using AI: building the systems they need to create, evaluate, and refine ideas as the work takes shape.
+“One thing that I think I’ve learned through using Codex is that if you have an idea for a creative workflow or a solution or an interface, just ask it,” he says. “Tell it what you’re thinking of, and suddenly in 10 minutes you’ll be looking at a prototype for it.”
+Codex
+2026
+Author
+OpenAI
+Keep reading
+View all
+Driving sales productivity and customer success at OpenAI
+API
+Sep 29, 2025
+Converting inbound leads into customers at OpenAI
+API
+Sep 29, 2025
+Empowering teams to unlock insights faster at OpenAI
+API
+Sep 29, 2025
 Research
 Research Index
 Research Overview

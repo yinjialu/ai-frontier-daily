@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 96,
+    "known_urls_count": 97,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -44,9 +44,13 @@
       "https://claude.com/blog/how-datadog-built-a-universal-machine-tool-for-claude-code",
       "https://claude.com/blog/building-verification-loops-in-claude-code-with-skills",
       "https://claude.com/blog/how-outtake-built-a-cyber-investigator-on-claude",
-      "https://claude.com/blog/think-through-hard-problems-in-voice-mode"
+      "https://claude.com/blog/think-through-hard-problems-in-voice-mode",
+      "https://claude.com/blog/four-role-based-claude-certifications",
+      "https://claude.com/blog/how-the-product-designer-who-built-claude-design-uses-it-to-explore-ideas-before-building-them",
+      "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+      "https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case"
     ],
-    "last_new_article": "2026-07-24T06:48:05+08:00"
+    "last_new_article": "2026-07-25T09:01:34+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -103,11 +107,12 @@
       "https://www.anthropic.com/research/economic-index-june-2026-report",
       "https://www.anthropic.com/research/global-workspace",
       "https://www.anthropic.com/research/claude-plays-robotics",
-      "https://www.anthropic.com/research/claude-values-models-languages"
+      "https://www.anthropic.com/research/claude-values-models-languages",
+      "https://www.anthropic.com/research/project-pilot"
     ],
     "initialized": true,
     "known_urls_count": 37,
-    "last_new_article": "2026-07-14T08:23:12+08:00"
+    "last_new_article": "2026-07-25T09:01:34+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -126,10 +131,11 @@
       "https://www.anthropic.com/news/rare-disease-research-grants",
       "https://www.anthropic.com/news/donation-public-first-action",
       "https://www.anthropic.com/news/economic-futures-research-fund-agenda",
-      "https://www.anthropic.com/news/anthropic-economic-index-connector"
+      "https://www.anthropic.com/news/anthropic-economic-index-connector",
+      "https://www.anthropic.com/news/claude-opus-5"
     ],
     "known_urls_count": 55,
-    "last_new_article": "2026-07-23T08:14:45+08:00"
+    "last_new_article": "2026-07-25T09:01:34+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1249,7 +1255,7 @@
       "https://openai.com/index/codex-collaborator-creative-team"
     ],
     "initialized": true,
-    "known_urls_count": 1094,
+    "known_urls_count": 1097,
     "last_new_article": "2026-07-24T08:35:46+08:00"
   },
   "deepmind-blog": {
@@ -1399,7 +1405,7 @@
       "https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy"
     ],
     "initialized": true,
-    "known_urls_count": 37,
+    "known_urls_count": 38,
     "last_new_article": "2026-07-24T06:48:05+08:00"
   },
   "google-gemini": {
