@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 97,
+    "known_urls_count": 105,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -111,7 +111,7 @@
       "https://www.anthropic.com/research/project-pilot"
     ],
     "initialized": true,
-    "known_urls_count": 37,
+    "known_urls_count": 39,
     "last_new_article": "2026-07-25T09:01:34+08:00"
   },
   "anthropic-news": {
@@ -134,7 +134,7 @@
       "https://www.anthropic.com/news/anthropic-economic-index-connector",
       "https://www.anthropic.com/news/claude-opus-5"
     ],
-    "known_urls_count": 55,
+    "known_urls_count": 57,
     "last_new_article": "2026-07-25T09:01:34+08:00"
   },
   "transformer-circuits": {
