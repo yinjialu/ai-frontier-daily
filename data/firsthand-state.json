@@ -48,9 +48,10 @@
       "https://claude.com/blog/four-role-based-claude-certifications",
       "https://claude.com/blog/how-the-product-designer-who-built-claude-design-uses-it-to-explore-ideas-before-building-them",
       "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
-      "https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case"
+      "https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case",
+      "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
     ],
-    "last_new_article": "2026-07-25T09:01:34+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -108,11 +109,12 @@
       "https://www.anthropic.com/research/global-workspace",
       "https://www.anthropic.com/research/claude-plays-robotics",
       "https://www.anthropic.com/research/claude-values-models-languages",
-      "https://www.anthropic.com/research/project-pilot"
+      "https://www.anthropic.com/research/project-pilot",
+      "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
     ],
     "initialized": true,
     "known_urls_count": 39,
-    "last_new_article": "2026-07-25T09:01:34+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -132,10 +134,13 @@
       "https://www.anthropic.com/news/donation-public-first-action",
       "https://www.anthropic.com/news/economic-futures-research-fund-agenda",
       "https://www.anthropic.com/news/anthropic-economic-index-connector",
-      "https://www.anthropic.com/news/claude-opus-5"
+      "https://www.anthropic.com/news/claude-opus-5",
+      "https://www.anthropic.com/news/position-open-weights-models",
+      "https://www.anthropic.com/news/cognizant-anthropic",
+      "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
     ],
     "known_urls_count": 57,
-    "last_new_article": "2026-07-25T09:01:34+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1252,11 +1257,66 @@
       "https://openai.com/index/introducing-openai-presence",
       "https://openai.com/index/ntt-data",
       "https://openai.com/index/health-in-chatgpt",
-      "https://openai.com/index/codex-collaborator-creative-team"
+      "https://openai.com/index/codex-collaborator-creative-team",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-iuvm",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-zero-zeno",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-doppelganger",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-spamouflage",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-bad-grammar",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-corrupt-comment",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-tort-report",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-rwandan-election-content",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-bet-bot",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-storm-2035-2024",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-a2z",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-stop-news-2024",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-hoax-russian-troll",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-cyberav3ngers",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-sweetspecter",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-storm-0817",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-deceptive-employment-scheme",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-peer-review",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-task-scam",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-ghana-election",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-cyber-threat-actors",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-iranian-influence-nexus",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-romance-baiting-scam",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-sponsored-discontent",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-sneer-review",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-wrong-number",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-storm-2035-2025",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-uncle-spam",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-high-five",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-helgoland-bite",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-it-workers",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-scopecreep",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-vixen-keyhole-panda",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-vague-focus",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-nine-emdash-line",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-stop-news-2025",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-prc-linked-abuse",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-korean-language-malware-support",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-phishing-and-scripting-support",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-russian-speaking-malware-tooling",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-scam-operations",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-tech-and-tariffs",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-data-center-bandwagon",
+      "https://openai.com/index/how-ai-is-expanding-what-people-do-at-work",
+      "https://openai.com/index/scientific-computing-agentic-ai",
+      "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores",
+      "https://openai.com/index/chatgpt-for-academic-researchers",
+      "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency",
+      "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6",
+      "https://openai.com/index/avatarin",
+      "https://openai.com/index/advancing-responsible-ai-across-europe",
+      "https://openai.com/index/building-abundant-intelligence",
+      "https://openai.com/index/unive",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation",
+      "https://openai.com/index/ten-advances-in-mathematics"
     ],
     "initialized": true,
     "known_urls_count": 1097,
-    "last_new_article": "2026-07-24T08:35:46+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1367,11 +1427,15 @@
       "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership",
       "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber",
       "https://deepmind.google/blog/introducing-gemini-36-flash-35-flash-lite-and-35-flash-cyber",
-      "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission"
+      "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission",
+      "https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber",
+      "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots",
+      "https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control",
+      "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration"
     ],
     "initialized": true,
     "known_urls_count": 116,
-    "last_new_article": "2026-07-23T08:14:45+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1402,11 +1466,15 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026",
       "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-on-cloud",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber",
-      "https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy"
+      "https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/using-gemini-to-manage-farm",
+      "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5",
+      "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana"
     ],
     "initialized": true,
     "known_urls_count": 38,
-    "last_new_article": "2026-07-24T06:48:05+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1447,11 +1515,17 @@
       "https://blog.google/products-and-platforms/products/education/summer-productivity-tips-google-ai-tools",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber",
       "https://blog.google/products-and-platforms/products/gemini/gemini-live-camera-how-to",
-      "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026"
+      "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/using-gemini-to-manage-farm",
+      "https://blog.google/innovation-and-ai/products/gemini-app/speak-naturally-gemini-app-mac-os",
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-july-2026",
+      "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana",
+      "https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026"
     ],
     "initialized": true,
     "known_urls_count": 56,
-    "last_new_article": "2026-07-23T08:14:45+08:00"
+    "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
