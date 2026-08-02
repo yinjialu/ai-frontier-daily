@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 105,
+    "known_urls_count": 106,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -113,7 +113,7 @@
       "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
     ],
     "initialized": true,
-    "known_urls_count": 39,
+    "known_urls_count": 40,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "anthropic-news": {
@@ -139,7 +139,7 @@
       "https://www.anthropic.com/news/cognizant-anthropic",
       "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
     ],
-    "known_urls_count": 57,
+    "known_urls_count": 60,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "transformer-circuits": {
@@ -1315,7 +1315,7 @@
       "https://openai.com/index/ten-advances-in-mathematics"
     ],
     "initialized": true,
-    "known_urls_count": 1097,
+    "known_urls_count": 1152,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "deepmind-blog": {
@@ -1434,7 +1434,7 @@
       "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration"
     ],
     "initialized": true,
-    "known_urls_count": 116,
+    "known_urls_count": 120,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "google-models-research": {
@@ -1473,7 +1473,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana"
     ],
     "initialized": true,
-    "known_urls_count": 38,
+    "known_urls_count": 42,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "google-gemini": {
@@ -1524,7 +1524,7 @@
       "https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026"
     ],
     "initialized": true,
-    "known_urls_count": 56,
+    "known_urls_count": 62,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "qwen-blog": {
