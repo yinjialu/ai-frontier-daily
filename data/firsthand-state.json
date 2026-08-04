@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 106,
+    "known_urls_count": 107,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -113,7 +113,7 @@
       "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
     ],
     "initialized": true,
-    "known_urls_count": 40,
+    "known_urls_count": 41,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "anthropic-news": {
@@ -139,7 +139,7 @@
       "https://www.anthropic.com/news/cognizant-anthropic",
       "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
     ],
-    "known_urls_count": 60,
+    "known_urls_count": 63,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "transformer-circuits": {
@@ -1312,11 +1312,12 @@
       "https://openai.com/index/building-abundant-intelligence",
       "https://openai.com/index/unive",
       "https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation",
-      "https://openai.com/index/ten-advances-in-mathematics"
+      "https://openai.com/index/ten-advances-in-mathematics",
+      "https://openai.com/index/continuous-voice-interaction-with-gpt-live"
     ],
     "initialized": true,
-    "known_urls_count": 1152,
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "known_urls_count": 1207,
+    "last_new_article": "2026-08-04T08:07:52+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1434,7 +1435,7 @@
       "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration"
     ],
     "initialized": true,
-    "known_urls_count": 120,
+    "known_urls_count": 124,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "google-models-research": {
@@ -1473,7 +1474,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana"
     ],
     "initialized": true,
-    "known_urls_count": 42,
+    "known_urls_count": 46,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "google-gemini": {
@@ -1524,7 +1525,7 @@
       "https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026"
     ],
     "initialized": true,
-    "known_urls_count": 62,
+    "known_urls_count": 68,
     "last_new_article": "2026-08-02T17:00:22+08:00"
   },
   "qwen-blog": {
@@ -1608,8 +1609,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "403 Client Error: rate limit exceeded for url: https://api.github.com/orgs/deepseek-ai/repos?sort=created&direction=desc&per_page=50",
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
