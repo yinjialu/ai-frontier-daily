@@ -1,0 +1,19 @@
+{
+  "vendor": "gemini",
+  "date": "2026.08.04",
+  "cnDate": "8月4日 周二",
+  "edition": "VOL.216",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Gemini CLI 推出 8 月 3 日 nightly：持续滚动验证新能力",
+      "summary": "Google Gemini CLI 在 8 月 3 日发布 v0.55.0-nightly.20260803 预览构建，并提供从前一 nightly 到本版的完整变更记录。nightly 适合开发者抢先测试，但版本变化快，不建议未经验证直接用于生产工作流。",
+      "source": "github.com/google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.55.0-nightly.20260803.gf47d6c6f7"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 Gemini 官方发布、模型、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
