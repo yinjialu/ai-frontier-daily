@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026.08.04",
+  "cnDate": "8月4日 周二",
+  "edition": "VOL.216",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Codex 发布 0.147.0-alpha.6：继续推进开发者预览",
+      "summary": "OpenAI 的 Codex CLI 在 8 月 3 日发布 0.147.0-alpha.6 预览版本。该版本属于快速迭代的 alpha 通道，适合希望提前验证最新命令行编码代理能力的开发者，但生产环境仍应优先使用稳定版本。",
+      "source": "github.com/openai/codex",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.147.0-alpha.6"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "持续追踪 OpenAI 官方发布、产品、研究与开发者动态。点个关注，明天见。",
+  "outroCta": "关注 · 不错过任何更新"
+}
