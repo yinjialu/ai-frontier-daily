@@ -49,9 +49,10 @@
       "https://claude.com/blog/how-the-product-designer-who-built-claude-design-uses-it-to-explore-ideas-before-building-them",
       "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
       "https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case",
-      "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
+      "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
+      "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude"
     ],
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -137,10 +138,11 @@
       "https://www.anthropic.com/news/claude-opus-5",
       "https://www.anthropic.com/news/position-open-weights-models",
       "https://www.anthropic.com/news/cognizant-anthropic",
-      "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
+      "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      "https://www.anthropic.com/news/tino-cuellar"
     ],
     "known_urls_count": 63,
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1313,11 +1315,16 @@
       "https://openai.com/index/unive",
       "https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation",
       "https://openai.com/index/ten-advances-in-mathematics",
-      "https://openai.com/index/continuous-voice-interaction-with-gpt-live"
+      "https://openai.com/index/continuous-voice-interaction-with-gpt-live",
+      "https://openai.com/index/introducing-the-openai-economic-research-exchange",
+      "https://openai.com/index/apple-is-getting-this-wrong",
+      "https://openai.com/index/circles",
+      "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models",
+      "https://openai.com/index/learn-teach-chatgpt-work-codex"
     ],
     "initialized": true,
-    "known_urls_count": 1207,
-    "last_new_article": "2026-08-04T08:07:52+08:00"
+    "known_urls_count": 1209,
+    "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1471,11 +1478,13 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/using-gemini-to-manage-farm",
       "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana",
+      "https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026",
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026"
     ],
     "initialized": true,
     "known_urls_count": 46,
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1522,11 +1531,13 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-july-2026",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana",
-      "https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026"
+      "https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026",
+      "https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026",
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026"
     ],
     "initialized": true,
     "known_urls_count": 68,
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
@@ -1609,8 +1620,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "403 Client Error: rate limit exceeded for url: https://api.github.com/orgs/deepseek-ai/repos?sort=created&direction=desc&per_page=50",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
