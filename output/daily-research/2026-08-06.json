@@ -1,0 +1,114 @@
+{
+  "coverage_version": 1,
+  "date": "2026-08-06",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [
+        {"queries": ["Anthropic official latest news August 6 2026"], "sources": ["https://www.anthropic.com/news"]},
+        {"queries": ["Anthropic Claude Code releases August 6 2026"], "sources": ["https://github.com/anthropics/claude-code/releases.atom"]},
+        {"queries": ["Anthropic Agent SDK releases August 6 2026"], "sources": ["https://github.com/anthropics/claude-agent-sdk-typescript/releases.atom"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "openai": {
+      "official_search": [
+        {"queries": ["OpenAI official latest news August 6 2026"], "sources": ["https://openai.com/news/rss.xml"]},
+        {"queries": ["OpenAI Codex releases August 6 2026"], "sources": ["https://github.com/openai/codex/releases.atom"]},
+        {"queries": ["OpenAI API changelog August 6 2026"], "sources": ["https://developers.openai.com/api/docs/changelog"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 1
+      }
+    },
+    "gemini": {
+      "official_search": [
+        {"queries": ["Google Gemini official latest news August 6 2026"], "sources": ["https://blog.google/products/gemini/rss/"]},
+        {"queries": ["Google DeepMind official latest news August 6 2026"], "sources": ["https://deepmind.google/blog/rss.xml"]},
+        {"queries": ["Gemini CLI releases August 6 2026"], "sources": ["https://github.com/google-gemini/gemini-cli/releases.atom"]},
+        {"queries": ["Gemini API changelog August 6 2026"], "sources": ["https://ai.google.dev/gemini-api/docs/changelog"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "nvidia": {
+      "official_search": [
+        {"queries": ["NVIDIA official AI news August 6 2026"], "sources": ["https://nvidianews.nvidia.com/releases.xml"]},
+        {"queries": ["NVIDIA blog AI August 6 2026"], "sources": ["https://blogs.nvidia.com/feed/"]},
+        {"queries": ["NVIDIA developer blog AI August 6 2026"], "sources": ["https://developer.nvidia.com/blog/feed"]},
+        {"queries": ["NVIDIA Dynamo release August 6 2026"], "sources": ["https://github.com/ai-dynamo/dynamo/releases.atom"]}
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {
+          "queries": ["DeepSeek 官方 2026年8月5日 更新 模型 API"],
+          "sources": ["none-found"]
+        },
+        "通义千问": {
+          "queries": ["通义千问 Qwen 官方 2026年8月5日 更新 模型"],
+          "sources": ["none-found"]
+        },
+        "智谱": {
+          "queries": ["智谱 GLM 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "Kimi": {
+          "queries": ["Kimi 月之暗面 官方 2026年8月5日 更新"],
+          "sources": ["https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0"]
+        },
+        "豆包": {
+          "queries": ["豆包 火山方舟 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "文心": {
+          "queries": ["文心 百度千帆 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "混元": {
+          "queries": ["混元 腾讯云 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "MiniMax": {
+          "queries": ["MiniMax 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "阶跃星辰": {
+          "queries": ["阶跃星辰 StepFun 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "百川": {
+          "queries": ["百川智能 Baichuan 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "零一万物": {
+          "queries": ["零一万物 01.AI 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        },
+        "百灵": {
+          "queries": ["蚂蚁百灵 inclusionAI 官方 2026年8月5日 更新"],
+          "sources": ["none-found"]
+        }
+      },
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    }
+  }
+}

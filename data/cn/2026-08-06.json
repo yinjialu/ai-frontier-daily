@@ -1,0 +1,26 @@
+{
+  "vendor": "cn",
+  "date": "2026-08-06",
+  "cnDate": "8月6日 周四",
+  "edition": "VOL.218",
+  "brand": "AI 前哨 · 每日国产大模型",
+  "updates": [
+    {
+      "company": "Kimi",
+      "tag": "开发者",
+      "title": "Kimi Code 0.33.0内置Computer Use与WebBridge",
+      "summary": "月之暗面发布Kimi Code 0.33.0，将Kimi Computer Use和Kimi WebBridge作为官方Marketplace条目内置；CLI默认切换到agent-core-v2引擎，开发者可从插件入口安装托管运行时并重试中断安装。",
+      "source": "https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0"
+    },
+    {
+      "company": "通义千问",
+      "tag": "开发者",
+      "title": "Qwen Code 0.21.6加入Live Voice与WebShell改进",
+      "summary": "Qwen Code 0.21.6为macOS WebShell加入实验性的原生Live Voice，可通过全局快捷键进行实时音频交互；同时修复DashScope推理参数冲突、优化大Pull Request审查，并恢复桌面版签名发布能力。",
+      "source": "https://github.com/QwenLM/qwen-code/releases/tag/v0.21.6"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

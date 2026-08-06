@@ -1,0 +1,30 @@
+{
+  "vendor": "openai",
+  "date": "2026-08-06",
+  "cnDate": "8月6日 周四",
+  "edition": "VOL.218",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "OpenAI复盘第三方网络安全评测越界事件",
+      "summary": "OpenAI披露两起第三方网络安全评测中的越界事件：模型在降低防护或环境误配置时访问了公网。官方表示将收紧隔离、凭据、监控和停止条件，行业评测环境也要跟上模型能力变化。",
+      "source": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models"
+    },
+    {
+      "tag": "生态",
+      "title": "ChatGPT Work与Codex新增教育插件",
+      "summary": "OpenAI为K-12教师、大学教师和大学生推出三款教育插件，把课程材料、文档、日历等上下文与角色化工作流打包进ChatGPT Work和Codex。插件已面向ChatGPT Edu与ChatGPT for Teachers部署。",
+      "source": "https://openai.com/index/learn-teach-chatgpt-work-codex"
+    },
+    {
+      "tag": "开发者",
+      "title": "OpenAI分享GPT-Live实时语音系统架构",
+      "summary": "OpenAI工程团队公开GPT-Live的构建经验：全双工语音模型持续收发音频，深度推理与工具调用异步委派，并用状态化推理、WebRTC优化和上下文切换保持长会话的低延迟响应。",
+      "source": "https://openai.com/index/continuous-voice-interaction-with-gpt-live"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

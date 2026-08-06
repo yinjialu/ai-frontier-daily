@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026-08-06",
+  "cnDate": "8月6日 周四",
+  "edition": "VOL.218",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "Claude Code 2.1.222强化隔离与权限控制",
+      "summary": "Claude Code 2.1.222修复了隔离worktree会影响主检出、后台任务绕过工具限制等安全问题，同时改进代理连接、用量统计、MCP归因和会话与Pull Request的关联，开发者可优先升级验证。",
+      "source": "https://github.com/anthropics/claude-code/releases/tag/v2.1.222"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
