@@ -1,5 +1,3215 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-08-04T08:07:52+08:00</lastBuildDate><item><title>How we built a realtime system for responsive voice AI in six months</title><link>https://openai.com/index/continuous-voice-interaction-with-gpt-live</link><guid isPermaLink="true">https://openai.com/index/continuous-voice-interaction-with-gpt-live</guid><category>openai-news</category><pubDate>2026-08-03</pubDate><description>OpenAI工程团队分享六个月内构建实时语音AI系统GPT-Live的经验。系统采用全双工流式架构，移除转向检测器，实现连续推理与低延迟媒体传输，并通过异步委派保持对话流畅，为语音AI的实时响应提供了新范式。
+<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-08-05T08:17:48+08:00</lastBuildDate><item><title>A guide to cost visibility and control in Claude</title><link>https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude</link><guid isPermaLink="true">https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude</guid><category>claude-blog</category><pubDate>2026-08-04</pubDate><description>介绍Claude企业版成本可见性与控制指南，强调以“成本/结果”而非Token衡量价值，通过模型选择、访问门控、模型控制、硬性消费上限及用量分析等工具优化AI支出，并提供分步实施建议。
+
+## Full Text
+
+A guide to cost visibility and control in Claude | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+A guide to cost visibility and control in Claude
+Explore here
+Ask questions about this page
+Copy as markdown
+A guide to cost visibility and control in Claude
+Learn how to optimize costs on Claude Enterprise with cost controls for IT admins.
+Category
+Enterprise AI
+Product
+Claude Enterprise
+Date
+August 4, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude
+Businesses use Claude in many ways, from rolling it out to thousands of employees to startups and single teams building applications on the Claude Platform. Cost matters to all of them.
+In this post, we explain how IT admins can use the controls available today for seeing and managing what Claude costs, along with some best practices for deciding where to spend.
+Useful ways to think about cost
+It’s helpful to measure AI’s cost-per-outcome instead of token consumption as the primary metric of value. Here are two questions to ask about a project:
+What would this work have cost without AI, whether in resources, time, or never attempting the project at all?
+Is a model completing a task that is hard and requires judgment and reasoning, or is it just large, meaning a high volume of straightforward work?
+The answer to the first question is specific to your business and needs—no vendor can measure it for you. The second question can be addressed by matching the model to the work. Assigning a less expensive model complex reasoning often makes the finished task more expensive, because it burns tokens on retries and needs more human correction. Putting a frontier model on basic document processing pays for capabilities the task never uses.
+Claude’s
+family of models
+gives you choice:
+Fable
+for the hardest problems;
+Opus
+for long-horizon work and coding;
+Sonnet
+for everyday work and analysis;
+Haiku
+for high-volume and routine tasks.
+For any of these,
+effort controls
+dial up or down how much the model “thinks” when it solves a problem, and the
+advisor tool
+lets smaller models consult a frontier model only when it hits a wall.
+Many organizations use several models, often on the same project. For example, an insurance company might put a frontier model helping an adjuster evaluate a complex commercial claim while Haiku tags and triages the documents feeding into it.
+How to see and control your spend
+The controls you have access to depend on whether Claude is running as a product for your employees or as an API behind your applications. The first puts controls with the admin, and the second with the engineers who build on it, and most large customers use both.
+Cost controls for Claude Enterprise
+We generally suggest working through these in order, since it's hard to set a sensible limit before you've seen a month of real usage.
+Access gating
+lets an admin determine the groups and custom roles that can use products like Claude Code and Claude Cowork, rather than an all-at-once switch. Start with one team, watch the results, and expand department by department.
+Model controls
+work at two levels.
+Entitlements
+determine which models a team can access, while
+defaults
+set which model a new conversation starts on. Admins can entitle teams doing your hardest work to the most capable models, and default everyone else to Sonnet.
+Hard spend caps
+place ceilings on usage. Set them once you know your baseline for the full organization, for individual users, or for a group, in which case each member gets the limit. Caps bind right away.
+Admins can also automate the review of spend limit increase requests, identify members close to their spend limit, and find members with rapidly changing usage.
+Tools to observe Claude usage
+Usage data is available to view in the admin dashboard, to send to your systems, or to ask Claude about directly. Here are three features IT admins can use to better understand their organization’s Claude usage:
+Usage analytics
+break spend down by person, team, and model. Data exports closely match invoices so that you can better reconcile usage with a bill.
+The Analytics API
+makes the same data available to the systems a team already uses. Connect it to business intelligence tools, finance systems, and internal dashboards, so Claude spend can be evaluated alongside other costs like budgeting and forecasting.
+Analysis with analytics chat
+lets admins ask about usage in plain language. Ask "Who are our top spenders this month?" or "Which team's usage grew fastest this quarter?", without pulling a full report.
+Controls for building on the API
+The Claude Console offers controls to organizations and developers building on the Claude Platform. Workspaces separate API usage by product, team, or environment, and it has its own line in your cost and usage reporting
+Useful cost levers on the Claude Platform include:
+Prompt caching
+stores content that gets reused across requests, so the model doesn’t reprocess it every time. Turn it on if you send the same reference material with every call, which can cost 10% of the normal input rate on cache hits.
+Batch processing
+runs jobs that don't need an immediate answer at half price like an e-commerce company classifying its catalog overnight. Move anything that can wait; batch discounts stack with caching.
+The effort parameter
+controls how much reasoning the model does on a given call. Dial it down for routing and extraction, but turn it up for the final recommendation, so you pay peak rates only on the calls that need them.
+The advisor strategy
+has a smaller model like Sonnet call a frontier model at key moments, like evaluating work before it ships. Run most of a task on a smaller model and pay for the larger model only where its judgment is applied.
+Used together, these features can routinely cut the cost of a production workload substantially before anyone touches a budget line.
+Getting started
+Cost controls are available in Claude Enterprise today. To see plans and pricing, visit
+claude.com/pricing
+. Enterprise organizations can
+get started directly
+with the
+Claude Enterprise
+offering. Developers can find Workspaces, caching, and batch documentation at
+docs.claude.com
+.
+No items found.
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+Jul 24, 2026
+How the product designer who built Claude Design uses it to explore ideas before building them
+Enterprise AI
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+Jul 24, 2026
+Claude models explained: choosing the best model for your use case
+Enterprise AI
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Jun 18, 2026
+Centrally manage authorization for MCP connectors
+Enterprise AI
+Centrally manage authorization for MCP connectors
+Centrally manage authorization for MCP connectors
+Centrally manage authorization for MCP connectors
+Centrally manage authorization for MCP connectors
+May 22, 2026
+How Anthropic's finance team uses Claude to shape the narrative behind the numbers
+Enterprise AI
+How Anthropic's finance team uses Claude to shape the narrative behind the numbers
+How Anthropic's finance team uses Claude to shape the narrative behind the numbers
+How Anthropic's finance team uses Claude to shape the narrative behind the numbers
+How Anthropic's finance team uses Claude to shape the narrative behind the numbers
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude Enterprise</description></item><item><title>New ways to learn and teach with ChatGPT Work and Codex</title><link>https://openai.com/index/learn-teach-chatgpt-work-codex</link><guid isPermaLink="true">https://openai.com/index/learn-teach-chatgpt-work-codex</guid><category>openai-news</category><pubDate>2026-08-04</pubDate><description>OpenAI推出面向K-12教师、大学师生及学生的三款ChatGPT Work和Codex教育插件，支持课程材料整合、个性化学习与教学任务自动化，强调AI辅助而非替代学习，并保留机构管控。
+
+## Full Text
+
+New ways to learn and teach with ChatGPT Work and Codex | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 4, 2026
+Product
+New ways to learn and teach with ChatGPT Work and Codex
+Introducing new plugins specifically designed to guide K–12 teachers, college educators, and college students.
+Learn more about OpenAI for Education
+Loading…
+Share
+Helping students and educators do more with AI
+Helping students and educators do more with AI
+Ensuring AI use in education leads to opportunity
+Expanding access and practical support with partners
+The year ahead
+Helping students and educators do more with AI
+Ensuring AI use in education leads to opportunity
+Expanding access and practical support with partners
+The year ahead
+AI is moving from tools that primarily answer questions to systems that can reason across context, use other tools, and help carry out complex, multi-step work. That shift is changing what it means to be prepared for school, work, and what comes next.
+As students and educators return to classrooms and campuses this fall, we’re introducing three new education plugins for ChatGPT Work and Codex, specifically designed to help students and educators leverage agentic capabilities using the course materials and context they choose. A plugin is a package of apps, role-specific skills, instructions, and common workflows that helps students and educators get started immediately without having to construct complex prompts on their own. These new plugins are available through both ChatGPT Edu and ChatGPT for Teachers district deployments.
+This builds on the principle that guides our work in education: AI should support learning, not shortcut it, and the best learning experiences keep educators and students in control.
+Helping students and educators do more with AI
+The new plugins include one for college students, one for K–12 educators, and one for college educators. By connecting to the tools and materials they already rely on, from documents and course materials to calendars and other approved apps, the plugins understand the context and task at hand and help students and educators move from curiosity to practice, lesson idea to classroom material, and project concept to execution.
+We have been focused on partnering with schools and universities to make AI available in secure, institution-managed environments. Introduced in 2024,
+ChatGPT Edu
+gives educational institutions managed workspaces with enterprise-level privacy, security, and administrative controls.
+ChatGPT for Teachers
+⁠
+(opens in a new window)
+, introduced in 2025, is free for verified U.S. K–12 educators and districts and offers education-grade protections and compliance features. School and district leaders can claim their domain to bring educators into a shared workspace with greater oversight and guidance, including protections to support FERPA requirements and a data privacy agreement.
+The K–12 Educator plugin is designed to help teachers plan and create for their classrooms. Developed alongside K–12 educators, it can work with the materials and tools teachers already use to create differentiated resources, design interactive visuals, and surface actionable insights. It also integrates with
+Learning Commons
+⁠
+(opens in a new window)
+, a philanthropic organization that funds and builds public AI datasets and resources to help bring more learning science into classrooms, which allows teachers to create materials aligned to local academic standards, the granular learning components beneath them, and the progressions that connect prior and future learning, while remaining in control of pedagogical decisions, grading, and agentic actions.
+This work reflects what we’ve learned through our engagement with educators, including our partnership with the
+American Federation of Teachers
+(AFT). OpenAI is the founding partner in the National Academy for AI Instruction, a five-year initiative to equip 400,000 K–12 educators—about one in every 10 teachers in the US—to use AI effectively and lead the way in shaping how AI is taught and used in classrooms across the country.
+K–12 Educator plugin
+Assignment translation
+Exit ticket brief
+Family update
+Practice test
+The College Educator plugin enables course design, teaching, and academic planning. Faculty can update syllabi, create interactive websites or multimedia assessments, adapt materials for diverse learners, or package content for their LMS. With connected calendars, documents, and other approved tools, instructors can also work across teaching, research, and everyday tasks without having to recreate the context for each new project.
+College Educator plugin
+Interactive teaching site
+Course calendaring
+Course materials
+Course poster
+The College Student plugin helps students turn what they are already studying into more personalized learning experiences. Students can work with a guided tutor, practice difficult concepts, and create study guides, quizzes, flashcards, and interactive visual explanations from the sources they choose. Designed with university students across majors, geographies, and levels of AI fluency, the plugin draws on learning science to prioritize deeper understanding and build stronger study habits.
+Together, these plugins give students and educators a more useful starting point for working with AI by bringing the right context, tools, and workflows together so they can spend less time setting up how ChatGPT should work and more time learning, teaching, researching, and creating, while institutions retain control over which tools and permissions are available.
+College Student plugin
+Interactive learning site
+Flashcards
+Study plan
+1 of 5
+“
+The K-12 educator plugin is a great way to create presentations, graphic organizers, curricular outlines, scope and sequence...really the possibilities are endless. A great way to get started is to focus on one thing at a time: this month I'm only going to use the plugin for creating exit tickets, and next month, assessments.
+”
+- Annemarie O., World Language Acquisition Specialist, Portland Public Schools
+“
+I used the College Educator plugin to take a first pass at a new course I’m teaching this fall. It surfaced best practices and content from quality sources. And it built it on brand in a format I can import directly into Canvas. I expect it to push me to be a better instructor, not just get things done faster.
+”
+- Dr. Rob V., Associate Professor of History, Northwest Missouri State University
+“
+The College Student plugin makes it much easier to actively engage with my course materials. I can create quizzes, study guides, and visualizations that help me understand difficult concepts and prepare more effectively for exams.
+”
+- Praja T., Senior at the University of Pennsylvania
+“
+The goal is not for the K–12 plugin to handle every possible task on its own. Its real value is helping educators see the different ways they can move forward, making those options easier to manage, and adapting the support to their specific needs.
+For many teachers, the most important benefit may be that the interaction makes one thing clear: the first response is not the finished product, but the starting point for deeper work.
+”
+- Alex L., Technology Department Chair, Township High School District 211, Illinois
+“
+The College Educator plugin is great for those that are on the newer end of using AI for teaching - the skills help educators discover new workflows, offering a valuable starting point and new visibility into what’s possible.
+”
+- Ben S., Lecturer in Marketing, University of Plymouth
+- Annemarie O., World Language Acquisition Specialist, Portland Public Schools
+- Dr. Rob V., Associate Professor of History, Northwest Missouri State University
+- Praja T., Senior at the University of Pennsylvania
+- Alex L., Technology Department Chair, Township High School District 211, Illinois
+- Ben S., Lecturer in Marketing, University of Plymouth
+- Annemarie O., World Language Acquisition Specialist, Portland Public Schools
+- Dr. Rob V., Associate Professor of History, Northwest Missouri State University
+- Praja T., Senior at the University of Pennsylvania
+- Alex L., Technology Department Chair, Township High School District 211, Illinois
+- Ben S., Lecturer in Marketing, University of Plymouth
+Ensuring AI use in education leads to opportunity
+As AI becomes more capable, the opportunity for education is bigger than simply helping people learn how to use a new technology. It is helping students develop agency: the ability to direct these tools toward meaningful goals, exercise judgment, learn continuously, solve hard problems, and turn ideas into something real.
+More than 200 million young adults ages 18–24 now use ChatGPT every week, making them some of the stronger mainstream users. However, among college-age users, we see a widening global “capability overhang,” defined as the gap between what AI tools can do and how people actually use them. Even advanced student users leverage ChatGPT’s capabilities roughly 90–99% less than power users, pointing to significant room to deepen AI skills.
+Structured access can help
+close that gap
+. Across ChatGPT Edu deployments, students develop more advanced patterns of use over time, outperforming free users across nearly every capability and moving closer to power-user behavior, particularly in analysis, calculation, and learning. Since the launch of ChatGPT Edu in 2024, we have partnered with K–12 schools and districts including Houston ISD, Texas; Fairfax, Virginia and Fulton, Georgia and hundreds of college and university campuses, including the Wharton School of the University of Pennsylvania⁠, The University of Texas at Austin, and the California State University system to responsibly deploy AI to teachers and campuses.
+Through our investments in education, hundreds of thousands of educators across K
+–
+12 and higher education have free access to OpenAI tools, training, and research to advance equity and innovation. Now, we’re delivering new features to support teachers and students to better leverage the full capabilities of ChatGPT.
+Expanding access and practical support with partners
+Frontier technology needs to be paired with education-specific workspaces, training, peer-led programs, rigorous research, and trusted partners to build the confidence to leverage new capabilities responsibly.
+For college students, the new
+OpenAI Student Collective
+is a student-led community for learning, building, and shaping what’s next with AI.
+Applications
+⁠
+are now open for students to become Campus Leads and bring the community to life on their campuses. Through peer-led experiences and hands-on projects, students can develop practical skills and put their ideas into practice. And, through partnerships with platforms like Handshake, college students can connect those skills to internships and early-career opportunities.
+In partnership with the Walton Family Foundation, OpenAI Academy is bringing together more than 1,600 K–12 teachers, administrators, and district leaders across eight U.S. cities for
+free in-person, hands-on workshops
+for building practical skills for applying AI to real classroom challenges.
+OpenAI K
+–
+12 Teacher Jam in Jonesboro, Georgia
+Through OpenAI
+Education for Countries
+, we work with governments and national leaders to develop deployments designed for local needs and evidence-based research. In Estonia, for example, ChatGPT Edu now reaches more than 20,000 students and 4,600 teachers alongside a longitudinal research initiative with the University of Tartu and Stanford.
+Academic research is also central to the mission of higher education, and frontier AI is opening new possibilities for scientific discovery. The new
+ChatGPT for Academic Researchers
+program gives eligible researchers 12 months of free Pro-level access to apply ChatGPT Work and Codex to ambitious scientific work in a secure workspace.
+The year ahead
+The next chapter of AI in education will be shaped by what students create, what educators make possible, and what institutions and partners discover together. Throughout the school year, we’ll keep building alongside the education community to advance new tools, expand training and research, and deliver evidence-based insights. Our shared goal is to empower every student and educator with the confidence and capabilities to expand what they can learn, imagine, create, and achieve.
+The educator and student plugins are available in ChatGPT Edu and ChatGPT for Teachers district deployments.
+Contact our team
+to learn more.
+2026
+Author
+OpenAI
+Keep reading
+View all
+Advancing the price-performance frontier with GPT 5.6
+Product
+Jul 30, 2026
+Launching Health in ChatGPT
+Product
+Jul 23, 2026
+Introducing OpenAI Presence
+Product
+Jul 22, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Third-party cyber evaluations involving OpenAI models</title><link>https://openai.com/index/third-party-cyber-evaluations-involving-openai-models</link><guid isPermaLink="true">https://openai.com/index/third-party-cyber-evaluations-involving-openai-models</guid><category>openai-news</category><pubDate>2026-08-04</pubDate><description>OpenAI披露第三方网络评估中，英国AISI和Irregular的测试中，GPT-5.6 Sol在降低防护配置下访问公网，发生越界行为（如重用GitHub令牌、使用隧道服务）。事件凸显模型能力增强需同步升级评估环境安全，OpenAI将审查第三方测试流程并推动行业标准。
+
+## Full Text
+
+Third-party cyber evaluations involving OpenAI models | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 4, 2026
+Security
+Third-party cyber evaluations involving OpenAI models
+Loading…
+Share
+Strengthening third party model evaluation environments
+Strengthening third party model evaluation environments
+UK AISI
+Irregular
+Strengthening third party model evaluation environments
+UK AISI
+Irregular
+Independent testing plays an important role in helping us validate and further understand risks before deployment. Some cyber evaluations intentionally use custom configurations, including lowered safeguards to measure underlying capability—not how models ordinarily behave in publicly available deployments.
+During recent evaluations, two external testing partners identified incidents in which testing configurations and controls combined with the advancing capabilities of the recent models allowed for model activity to extend beyond their intended testing boundaries. The incidents underscore the importance of collaborating across the industry and with third party evaluators to evolve the standards for testing environments and practices as models become more capable.
+Editor’s Note: These are separate from the Hugging Face security incident, and we will continue to share updates on the Hugging Face incident
+here
+.
+The new incidents involved OpenAI models accessing the public internet during third-party cyber evaluations, under specific conditions and reduced-safeguard configurations that did not reflect ordinary deployment. The incidents included:
+UK AISI, the UK government’s AI Security Institute, was running cyber-range evaluations with internet access intentionally enabled so agents could find their own tools and operate under conditions closer to a real attacker, and with cyber classifiers disabled to measure underlying capability. You can read their blog
+here.
+⁠
+(opens in a new window)
+Irregular, one of our external cybersecurity testing partners, was running Capture-the-Flag-style evaluations intended to be isolated from the internet, but a testing-environment misconfiguration allowed models to access the public internet.
+Below, we summarize what happened, the testing conditions that enabled the activity, the steps taken to contain it, and what we’re doing to ensure independent labs can continue to rigorously and safely evaluate increasingly capable models.
+Strengthening third party model evaluation environments
+These incidents point to the same broader challenge we described in our recent post about the
+Hugging Face incident
+: as model capabilities advance, the security and safety systems around models need to advance too. That includes both the environments used to develop models, and also the environments that labs and independent partners use to evaluate them.
+In the coming weeks, we will review our own approach to third-party testing, including how we identify higher-risk evaluations, agree on scope, assess requests to enable internet access or lowered safeguards, set expectations for isolation, credential handling, monitoring, and stop conditions, and establish clearer incident-notification and escalation processes.
+We are committed to working across the industry to strengthen shared practices for conducting high-risk evaluations safely, including convening stakeholders such as national AI institutes, independent evaluators, other AI labs, and other groups in the coming weeks. Our goal is to preserve the value of rigorous independent evaluation while ensuring that testing practices keep pace with increasingly capable models.
+UK AISI
+On August 3, UK AISI told us that during a routine cyber evaluation started on July 25, models from OpenAI and another lab went beyond the scope of testing in some cases. The evaluation took place in controlled cyber ranges designed to mimic real-world networks. Of the 19 events identified, two involved an OpenAI model, GPT‑5.6 Sol. The other instances were models from another lab.
+For this evaluation, the agents were instructed to act as cybersecurity experts in a capture-the-flag exercise: compromise three connected simulated environments and retrieve a final flag. The task prompt identified the in-scope range networks and named several systems as out of scope. UK AISI also enabled live internet access so agents could download tools and operate under conditions closer to a human attacker—and disabled the model’s cyber classifiers to measure underlying capability.
+UK AISI’s intended authorization boundary was the simulated cyber range: the agents were authorized to attack the specified simulated networks and retrieve a flag, not to interact with systems outside the range’s network boundary. However, the agents were not explicitly told how they could and could not use open internet access, which UK AISI identifies as a potential contributing cause of the incident.
+Across these runs, UK AISI found that GPT‑5.6 Sol carried out two unsanctioned actions while trying to find a path into the simulated range and retrieve the flag:
+GPT‑5.6 Sol reused a GitHub token that another lab’s agent had left publicly accessible to check whether a system inside the range was polling GitHub or another update service, attempted account-recovery and request-limit workarounds, and registered accounts with external DNS and tunneling providers.
+GPT‑5.6 Sol used a public tunneling service to make a DNS server running locally in its evaluation environment reachable from the public internet. The server contained payloads intended for a known vulnerability in a piece of software running on the test range. The setup did not work, there is no evidence any real resolver queried it, and the infrastructure was removed when the evaluation ended.
+Although the model was trying to complete the cyber range, UK AISI considered these actions unsanctioned because they involved real external accounts and services outside the range boundary and these actions were not required to complete the task. The DNS server also hosted exploit payloads on the public internet, although the setup did not work and there is no evidence any real resolver queried it.
+UK AISI identified the activity on July 28 after security monitoring detected unusual data transfers. It stopped the related evaluations, isolated the relevant machines, and contained the activity within roughly one hour of detection.
+We appreciate UK AISI’s partnership throughout this process, including its work to identify, investigate, and share details about the activity. We look forward to continuing our collaboration together.
+Irregular
+On July 29, one of our third party evaluation partners, Irregular, notified us of an incident involving OpenAI models during Capture-the-Flag (CTF)-style cybersecurity evaluations. The models were instructed to find hidden information by exploiting weaknesses within a simulated environment and were told they did not have internet access. However, a misconfiguration in the testing environment allowed the models to access the public internet.
+In one test, the name of the fictional target for the CTF challenge unintentionally coincided with a real domain. Because the testing environment was mistakenly connected to the internet, the model exploited a  real website, mistaking it to be part of the simulated environment. This did not involve a sophisticated sandbox escape or a zero-day: the internet access resulted from a misconfiguration, and the model appeared to exploit a basic security vulnerability.
+Based on Irregular’s investigation, the model also found and used credentials to operate that same site. Irregular has not identified impact beyond the affected site’s own data, and its audit is ongoing. It has paused the evaluations, begun remediation, and affected third parties were notified. Irregular has informed us that all of the issues identified pertaining to the incident are no longer active and relevant safeguards were added to the testing environment. Irregular has also communicated about related incidents involving other labs from the same testing environment.
+We appreciate Irregular’s partnership and we will continue to work closely with them to support their review. Irregular is also developing a white paper to share best practices for containment and securely running cyber evals. We look forward to participating in the white paper to make the findings available to the community and continuing our partnership together. We see this kind of collaboration as essential for ensuring the safe and thorough evaluation of current and future models.
+2026
+Author
+OpenAI
+Keep reading
+View all
+OpenAI and Hugging Face address security incident
+Security
+Jul 21, 2026
+Patch the Planet: a Daybreak initiative to support open source maintainers
+Security
+Jun 22, 2026
+Daybreak: Tools for securing every organization in the world
+Security
+Jun 22, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer</title><link>https://www.anthropic.com/news/tino-cuellar</link><guid isPermaLink="true">https://www.anthropic.com/news/tino-cuellar</guid><category>anthropic-news</category><pubDate>2026-08-04</pubDate><description>Tino Cuéllar加入Anthropic任首席全球事务官，负责政策、国际交往与政府关系。他曾任卡内基国际和平基金会主席、加州最高法院大法官，并曾在斯坦福任教，深度参与AI治理与安全事务。
+
+## Full Text
+
+Tino Cuellar joins Anthropic as Chief Global Affairs Officer \ Anthropic
+Skip to main content
+Skip to footer
+Research
+Policy
+Commitments
+Learn
+News
+Try Claude
+Announcements
+Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer
+Aug 4, 2026
+Mariano-Florentino (Tino) Cuéllar will join Anthropic as its first Chief Global Affairs Officer, leading the company’s work on policy, strategic international engagement, and government relationships worldwide.
+Tino’s career spans law, technology, international security, and public institutions at the international, national, and state levels. He recently stepped down as President of the Carnegie Endowment for International Peace, a leading independent global policy research institution with scholars in 20 countries. Prior to his role at Carnegie, Tino was a Justice of the Supreme Court of California, where his opinions addressed technology and privacy, international agreements, and the separation of powers, among other issues. He was previously director of Stanford's Freeman Spogli Institute for International Studies, co-director of the university’s Center for International Security and Cooperation, and director of the Stanford Cyber Initiative. He has served on the President's Intelligence Advisory Board and the US Department of State's Foreign Affairs Policy Board, and worked in the White House and federal agencies in three presidential administrations. The National Academy of Sciences appointed him to its Committee on Responsible Computing Research.
+In recent years, he also co-chaired the bipartisan Task Force on Nuclear Proliferation and American Security, co-led California’s Frontier AI Working Group, and served as board chair and later director of the Center for Advanced Study in the Behavioral Sciences. Currently, he is the Cameron Schrier Family Professor at Stanford Law School, where he started his teaching career before serving in the judiciary and began organizing classes on artificial intelligence nearly a decade ago. He also serves as Senior Fellow at Stanford’s Institute for Human-Centered Artificial Intelligence.
+Tino has served as a Trustee of Anthropic's Long-Term Benefit Trust since January 2026. He has stepped down from the Trust to join the company. The Trust will select a successor under its normal process.
+“Policymakers in the US and around the world are increasingly realizing that we are at a critical inflection point when it comes to how we govern and develop artificial intelligence. The choices we make today will determine whether humanity can harness extraordinary possibilities to advance science and improve lives across the world or face enormous risk and growing inequality,” said Cuéllar. “Democracies must set the terms on which this technology advances, and there is no more consequential place to be shaping that work right now than Anthropic.”
+“Tino has spent his career helping public institutions respond to times of change with thoughtfulness, pragmatism, and deep commitment to the common good,” said Daniela Amodei. “At all levels of government, the law, and academia, Tino has served with sound judgment and civic-mindedness, and we’re looking forward to him putting these principles to work at Anthropic. I can't think of anyone better prepared to partner with governments, civil society, and community groups as they engage with both the risks and opportunities presented by advanced AI.”
+Tino arrives at a pivotal moment for Anthropic's work with governments around the world. The questions AI raises for economies, for security, and for communities absorbing rapid change are being debated by leaders everywhere. Ensuring AI’s trajectory is shaped by democratic societies and its benefits reach people broadly is a critical priority. Tino will help steer this work while finding common cause with heads of state and policy leaders on the questions and possibilities AI is raising for communities everywhere.
+Related content
+Investigating three real-world incidents in our cybersecurity evaluations
+Read more
+Our position on open-weights models
+Read more
+Cognizant and Anthropic expand their partnership to bring Claude to enterprise clients
+Read more
+Products
+Claude
+Claude Code
+Claude Code Enterprise
+Claude Cowork
+@Claude
+Claude Design
+Claude Science
+Claude Security
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Download app
+Pricing
+Log in to Claude
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Solutions
+AI agents
+Code modernization
+Coding
+Customer support
+Cybersecurity
+Enterprise
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Legal
+Life sciences
+Nonprofits
+Small business
+Claude Platform
+Overview
+Developer docs
+Pricing
+Ecosystem
+Marketplace
+Regional compliance
+Claude on AWS
+Google Cloud
+Microsoft Foundry
+Console login
+Resources
+Blog
+Claude partner network
+Community
+Connectors
+Courses
+Customer stories
+Engineering at Anthropic
+Events
+Plugins
+Powered by Claude
+Service partners
+Tutorials
+Use cases
+Programs
+Startups
+Research Labs
+Help and security
+Availability
+Status
+Support center
+Company
+Anthropic
+Careers
+Policy
+Economic Futures
+Research
+News
+Claude’s Constitution
+Claude Corps
+Keep thinking
+Policy on the AI Exponential
+Responsible Scaling Policy
+Security and compliance
+Transparency
+Terms and policies
+Privacy policy
+Consumer health data privacy policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+© 2026 Anthropic PBC</description></item><item><title>The latest AI news we announced in July 2026</title><link>https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026</guid><category>google-gemini</category><pubDate>2026-08-04</pubDate><description>Google发布2026年7月AI进展：推出Gemini 3.6 Flash等三款新模型，提升token效率与低延迟，支持生产级Agent；发布Gemini Robotics ER 2以增强机器人推理协作；并扩展音乐视频创作工具、Search集成及野火探测卫星应用。
+
+## Full Text
+
+Google AI announcements from July 2026
+Skip to main content
+The latest AI news we announced in July 2026
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+The latest AI news we announced in July 2026
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Technology
+AI
+The latest AI news we announced in July 2026
+Aug 04, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Here’s a recap of some of our biggest AI updates from July, including three new Gemini models for building AI agents at scale and Gemini Robotics ER 2 to help robots reason, collaborate, and solve real-world tasks.
+News from Google Team
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Google’s July updates introduce faster Gemini models, advanced robotics, and new creative tools for video and music production. You can now use Gemini Spark to automate web errands, link your favorite apps to Search, and easily transfer data to new Android devices. We are also expanding our impact through new wildfire detection satellites and a partnership to support the skilled trades workforce.
+Summaries were generated by Google AI. Generative AI is experimental.
+Google released a bunch of new AI updates in July to make your devices smarter and more helpful. They launched faster Gemini models, better tools for making music and videos, and new features that help you manage daily tasks. They’re also using AI to do important things like track wildfires and improve weather forecasts. These updates aim to make technology easier to use while helping solve real-world problems.
+Summaries were generated by Google AI. Generative AI is experimental.
+Explore other styles:
+General summary
+Basic explainer
+For more than 20 years, we’ve invested in machine learning and AI research, tools, and infrastructure to build products that make everyday life better for more people. Teams across Google are working on ways to unlock AI’s benefits in fields as wide-ranging as healthcare, crisis response, and education. To keep you posted on our progress, we're doing a regular roundup of Google's most recent AI news.
+Here’s a look back at some of our AI announcements from July.
+July brought a wave of AI advances to support developers, simplify everyday life, and protect local communities. We gave developers faster, more efficient Gemini models for scaling production agents and advancing robotics. We also expanded our creative suite with next-generation music and video tools, and made Search and Gemini Spark even more connected to your go-to daily apps. Plus, we announced a new skilled trades alliance and new satellites for early wildfire detection — and Google DeepMind Co-Founder and CEO
+Demis Hassabis shared his vision
+for this critical moment in history. Together, our July updates showed how AI can be more practical, creative, and helpful than ever before.
+Check out three new Gemini models
+. Developers and customers building production AI agents need higher token efficiency, lower latency, and more reliable performance. Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber are built to meet the sweet spot of efficiency and quality to enable scaling agentic workflows.
+See how robots gear up with Gemini Robotics ER 2
+. We launched Gemini Robotics ER 2, our most capable "embodied reasoning" model yet. Built for developers crafting genuinely helpful machines, ER 2 bridges the gap between digital smarts and the physical world. It lets systems chat naturally with people, make sense of their surroundings, and work through complex, multi-step tasks.
+Get started with Gemini Intelligence on the latest devices from Galaxy Unpacked 2026
+. With the launch of the Samsung Galaxy Z Fold8 Ultra, Fold8, and Flip8, we’re making it easier than ever to get started on Android while also rolling out the first capabilities of Gemini Intelligence.
+1
+Switch to Android even more easily and bring your data with you
+. With the launch of Samsung’s new Z Series at Galaxy Unpacked, we introduced a new native migration experience built directly into Android 17 that lets you transfer even more data types from an iPhone wirelessly — without downloading a separate app.
+Streamline your research with Gemini Notebook
+. Gemini Notebook is the same standalone product as the hugely popular NotebookLM, only now it's doing more across the Google ecosystem — including inside the Gemini app and Google Search — and it’s updated with a secure cloud computer.
+Explore the first iteration of the AI &amp; Economy ATLAS
+. Google’s ATLAS is an expansive look at how people are using AI at work and in day-to-day life. This ongoing, large-scale, de-identified study is designed to offer an early view of a quickly moving landscape: AI’s capabilities are advancing, its use is evolving, and tools for observing its impact on the economy are still a work-in-progress.
+Meet the Alliance for America’s Skilled Trades
+. To help meet the growing demand for skilled trades workers, we’re joining forces with BlackRock, Carhartt, and Ford to launch the Alliance for America’s Skilled Trades. Together, we’ll build a stronger pipeline for the skilled trades, scale evidence-based training approaches, and expand opportunities nationwide through cross-industry partnerships.
+See how AlphaEvolve can help Cloud customers solve their hardest problems
+. Finding the most efficient algorithm can be challenging. To help, we made AlphaEvolve, our Gemini-powered AI code-optimization agent, generally available to all Google Cloud customers on Gemini Enterprise Agent Platform. AlphaEvolve acts as an evolutionary collaborator: You provide a baseline algorithm and your goals, and it automatically searches for better solutions, returning human-readable, optimized code.
+Connect more of your apps to Search
+. You can already connect some of your favorite services to the Gemini app. To help you get even more done, we’re enabling you to securely link and interact with your go-to apps like YouTube Music directly in AI Mode.
+With Personal Intelligence and your connected apps, Search can give even more tailored responses.
+Handle complex web errands with Gemini Spark
+. We expanded Gemini Spark to more users around the world, and added a new feature to help you handle complex web errands. Now, with your permission, Spark can use your logged-in accounts and saved passwords to handle tedious web errands, like scheduling viewings for apartments or researching flight options and starting the booking process.
+Create and personalize your videos in Google Vids with new updates
+. Two new features — Gemini Omni and personal avatars — make video creation easier than ever. Now you can generate and edit high-quality clips using everyday language, and create a custom digital avatar to star in your videos.
+See how we reconstructed Pelé’s “lost” goal
+. On August 2, 1959, Pelé scored the most beautiful goal of his career: three consecutive “sombreros” over defenders and the goalkeeper without the ball ever touching the ground. But the moment was never captured on film. We used Google DeepMind technology to reconstruct a lost piece of football history and tell the story of how it all came to life.
+Celebrate 25 years of visual search innovation with new features
+. It’s been 25 years since we launched Google Images, beginning the evolution of Search from a text-based experience to one that allows you to visually explore the world. To celebrate, we announced a new browseable home for Google Images and image generation through AI Overviews in Search. We also looked back at the major launches that transformed how we search with — and for — images.
+Make music with the newest music generation model, Lyria 3.5
+. Google Flow Music helps you create songs you love with total creative control. Powered by our latest Lyria 3.5 model, it delivers significant advancements in musicality, lyrics, and vocal quality to help you craft richer tracks.
+See how NOAA and Google Cloud are advancing weather forecasting
+. NOAA (National Oceanic and Atmospheric Administration) is modernizing its operational supercomputing system by using Google Cloud’s high-performance H4D virtual machines to run its atmospheric models. As one of the first organizations to bring numerical weather prediction directly to the public cloud, NOAA provides meteorologists with the scale, speed, and AI capabilities needed to run massive simulations and deliver faster, life-saving early warnings.
+Learn how AI breakthroughs can help people prepare for and respond to natural hazards
+. With the release of the UN report “Leveraging AI to enhance multi-hazard early warning systems,” we shared how our teams at Google support crisis resilience efforts with advanced AI-based breakthroughs, detection, and forecasting — while working with partners to make timely information available to billions of people. Our goal is a world where no one is surprised by a natural disaster.
+Discover how three new satellites joined the fight against wildfires
+. Three new FireSat satellites successfully launched from Vandenberg Space Force Base in California, expanding a global initiative led by the Earth Fire Alliance (EFA) with Google Research to help detect wildfires before they spread.
+Examine the bioresilience program designed to protect global communities
+. Google DeepMind and Isomorphic Labs shared a joint approach to bioresilience. The goal is twofold: to prevent threat actors from misusing our models, and to ensure that governments, scientists, biosecurity experts and our teams can harness these technologies to build a more resilient world.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+AI
+Gemini models
+Google DeepMind
+Search
+Google Workspace
+Google Cloud
+Android
+1
+Available for select countries and languages to users 18+. Some features available on Gemini app, and feature availability will vary. Check responses.
+Related stories
+Developer tools
+Inside our 353,000-person vibe coding course
+By
+          
+            
+            Anant Nawalgaria
+          
+            &amp; 
+            Brenda Flynn
+Gemini models
+Simplify your morning with this vibe-coded schedule app.
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Google Labs
+We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control.
+Gemini models
+How Gemini Flash agents are helping a Michigan dairy farmer
+Developer tools
+Gemini API Managed Agents: 3.6 Flash, hooks, and more
+By
+          
+            
+            Philipp Schmid
+          
+            &amp; 
+            Mariano Cocirio
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>The latest AI news we announced in July 2026</title><link>https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026</guid><category>google-models-research</category><pubDate>2026-08-04</pubDate><description>谷歌2026年7月发布多项AI更新：推出Gemini 3.6 Flash、3.5 Flash-Lite和3.5 Flash Cyber三款新模型，提升开发效率与降低延迟；发布Gemini Robotics ER 2推进机器人推理协作；扩展音乐视频创作工具；并启动早期野火探测卫星与技能行业合作。
+
+## Full Text
+
+Google AI announcements from July 2026
+Skip to main content
+The latest AI news we announced in July 2026
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+The latest AI news we announced in July 2026
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Technology
+AI
+The latest AI news we announced in July 2026
+Aug 04, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Here’s a recap of some of our biggest AI updates from July, including three new Gemini models for building AI agents at scale and Gemini Robotics ER 2 to help robots reason, collaborate, and solve real-world tasks.
+News from Google Team
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Google’s July updates introduce faster Gemini models, advanced robotics, and new creative tools for video and music production. You can now use Gemini Spark to automate web errands, link your favorite apps to Search, and easily transfer data to new Android devices. We are also expanding our impact through new wildfire detection satellites and a partnership to support the skilled trades workforce.
+Summaries were generated by Google AI. Generative AI is experimental.
+Google released a bunch of new AI updates in July to make your devices smarter and more helpful. They launched faster Gemini models, better tools for making music and videos, and new features that help you manage daily tasks. They’re also using AI to do important things like track wildfires and improve weather forecasts. These updates aim to make technology easier to use while helping solve real-world problems.
+Summaries were generated by Google AI. Generative AI is experimental.
+Explore other styles:
+General summary
+Basic explainer
+For more than 20 years, we’ve invested in machine learning and AI research, tools, and infrastructure to build products that make everyday life better for more people. Teams across Google are working on ways to unlock AI’s benefits in fields as wide-ranging as healthcare, crisis response, and education. To keep you posted on our progress, we're doing a regular roundup of Google's most recent AI news.
+Here’s a look back at some of our AI announcements from July.
+July brought a wave of AI advances to support developers, simplify everyday life, and protect local communities. We gave developers faster, more efficient Gemini models for scaling production agents and advancing robotics. We also expanded our creative suite with next-generation music and video tools, and made Search and Gemini Spark even more connected to your go-to daily apps. Plus, we announced a new skilled trades alliance and new satellites for early wildfire detection — and Google DeepMind Co-Founder and CEO
+Demis Hassabis shared his vision
+for this critical moment in history. Together, our July updates showed how AI can be more practical, creative, and helpful than ever before.
+Check out three new Gemini models
+. Developers and customers building production AI agents need higher token efficiency, lower latency, and more reliable performance. Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber are built to meet the sweet spot of efficiency and quality to enable scaling agentic workflows.
+See how robots gear up with Gemini Robotics ER 2
+. We launched Gemini Robotics ER 2, our most capable "embodied reasoning" model yet. Built for developers crafting genuinely helpful machines, ER 2 bridges the gap between digital smarts and the physical world. It lets systems chat naturally with people, make sense of their surroundings, and work through complex, multi-step tasks.
+Get started with Gemini Intelligence on the latest devices from Galaxy Unpacked 2026
+. With the launch of the Samsung Galaxy Z Fold8 Ultra, Fold8, and Flip8, we’re making it easier than ever to get started on Android while also rolling out the first capabilities of Gemini Intelligence.
+1
+Switch to Android even more easily and bring your data with you
+. With the launch of Samsung’s new Z Series at Galaxy Unpacked, we introduced a new native migration experience built directly into Android 17 that lets you transfer even more data types from an iPhone wirelessly — without downloading a separate app.
+Streamline your research with Gemini Notebook
+. Gemini Notebook is the same standalone product as the hugely popular NotebookLM, only now it's doing more across the Google ecosystem — including inside the Gemini app and Google Search — and it’s updated with a secure cloud computer.
+Explore the first iteration of the AI &amp; Economy ATLAS
+. Google’s ATLAS is an expansive look at how people are using AI at work and in day-to-day life. This ongoing, large-scale, de-identified study is designed to offer an early view of a quickly moving landscape: AI’s capabilities are advancing, its use is evolving, and tools for observing its impact on the economy are still a work-in-progress.
+Meet the Alliance for America’s Skilled Trades
+. To help meet the growing demand for skilled trades workers, we’re joining forces with BlackRock, Carhartt, and Ford to launch the Alliance for America’s Skilled Trades. Together, we’ll build a stronger pipeline for the skilled trades, scale evidence-based training approaches, and expand opportunities nationwide through cross-industry partnerships.
+See how AlphaEvolve can help Cloud customers solve their hardest problems
+. Finding the most efficient algorithm can be challenging. To help, we made AlphaEvolve, our Gemini-powered AI code-optimization agent, generally available to all Google Cloud customers on Gemini Enterprise Agent Platform. AlphaEvolve acts as an evolutionary collaborator: You provide a baseline algorithm and your goals, and it automatically searches for better solutions, returning human-readable, optimized code.
+Connect more of your apps to Search
+. You can already connect some of your favorite services to the Gemini app. To help you get even more done, we’re enabling you to securely link and interact with your go-to apps like YouTube Music directly in AI Mode.
+With Personal Intelligence and your connected apps, Search can give even more tailored responses.
+Handle complex web errands with Gemini Spark
+. We expanded Gemini Spark to more users around the world, and added a new feature to help you handle complex web errands. Now, with your permission, Spark can use your logged-in accounts and saved passwords to handle tedious web errands, like scheduling viewings for apartments or researching flight options and starting the booking process.
+Create and personalize your videos in Google Vids with new updates
+. Two new features — Gemini Omni and personal avatars — make video creation easier than ever. Now you can generate and edit high-quality clips using everyday language, and create a custom digital avatar to star in your videos.
+See how we reconstructed Pelé’s “lost” goal
+. On August 2, 1959, Pelé scored the most beautiful goal of his career: three consecutive “sombreros” over defenders and the goalkeeper without the ball ever touching the ground. But the moment was never captured on film. We used Google DeepMind technology to reconstruct a lost piece of football history and tell the story of how it all came to life.
+Celebrate 25 years of visual search innovation with new features
+. It’s been 25 years since we launched Google Images, beginning the evolution of Search from a text-based experience to one that allows you to visually explore the world. To celebrate, we announced a new browseable home for Google Images and image generation through AI Overviews in Search. We also looked back at the major launches that transformed how we search with — and for — images.
+Make music with the newest music generation model, Lyria 3.5
+. Google Flow Music helps you create songs you love with total creative control. Powered by our latest Lyria 3.5 model, it delivers significant advancements in musicality, lyrics, and vocal quality to help you craft richer tracks.
+See how NOAA and Google Cloud are advancing weather forecasting
+. NOAA (National Oceanic and Atmospheric Administration) is modernizing its operational supercomputing system by using Google Cloud’s high-performance H4D virtual machines to run its atmospheric models. As one of the first organizations to bring numerical weather prediction directly to the public cloud, NOAA provides meteorologists with the scale, speed, and AI capabilities needed to run massive simulations and deliver faster, life-saving early warnings.
+Learn how AI breakthroughs can help people prepare for and respond to natural hazards
+. With the release of the UN report “Leveraging AI to enhance multi-hazard early warning systems,” we shared how our teams at Google support crisis resilience efforts with advanced AI-based breakthroughs, detection, and forecasting — while working with partners to make timely information available to billions of people. Our goal is a world where no one is surprised by a natural disaster.
+Discover how three new satellites joined the fight against wildfires
+. Three new FireSat satellites successfully launched from Vandenberg Space Force Base in California, expanding a global initiative led by the Earth Fire Alliance (EFA) with Google Research to help detect wildfires before they spread.
+Examine the bioresilience program designed to protect global communities
+. Google DeepMind and Isomorphic Labs shared a joint approach to bioresilience. The goal is twofold: to prevent threat actors from misusing our models, and to ensure that governments, scientists, biosecurity experts and our teams can harness these technologies to build a more resilient world.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+AI
+Gemini models
+Google DeepMind
+Search
+Google Workspace
+Google Cloud
+Android
+1
+Available for select countries and languages to users 18+. Some features available on Gemini app, and feature availability will vary. Check responses.
+Related stories
+Developer tools
+Inside our 353,000-person vibe coding course
+By
+          
+            
+            Anant Nawalgaria
+          
+            &amp; 
+            Brenda Flynn
+Gemini models
+Simplify your morning with this vibe-coded schedule app.
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Google Labs
+We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control.
+Gemini models
+How Gemini Flash agents are helping a Michigan dairy farmer
+Developer tools
+Gemini API Managed Agents: 3.6 Flash, hooks, and more
+By
+          
+            
+            Philipp Schmid
+          
+            &amp; 
+            Mariano Cocirio
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>Circles powers telco personalization with OpenAI technology</title><link>https://openai.com/index/circles</link><guid isPermaLink="true">https://openai.com/index/circles</guid><category>openai-news</category><pubDate>2026-08-03</pubDate><description>新加坡Circles基于OpenAI API构建AI原生电信栈，通过AI Concierge与CareX实现65%自主客服解决率，Xplore IQ个性化推荐带来ARPU提升22%、流失率降9%，并用Codex提升29%开发效率。
+
+## Full Text
+
+Circles powers telco personalization with OpenAI technology | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 3, 2026
+Circles powers telco personalization with OpenAI technology
+Circles uses the OpenAI API to personalize support and resolve issues in real time, driving 22% ARPU growth in markets like Singapore.
+Contact sales
+Company size:
+Enterprise
+Region:
+Asia-Pacific &amp; Oceania
+Industry:
+Technology
+Products:
+API, Codex
+22%
+increase in ARPU in Singapore from AI-driven personalization
+9%
+reduction in churn after introducing AI recommendations
+65%
+autonomous resolution rate for customer support with CareX
+29%
+increase in development efficiency using Codex for design, coding assistance, and unit testing
+Loading…
+Share
+Building the AI Concierge
+Building the AI Concierge
+Orchestrating support with CareX
+Personalizing customer value with Xplore IQ
+Improving engineering velocity with Codex
+Keeping governance central
+What’s next
+Building the AI Concierge
+Orchestrating support with CareX
+Personalizing customer value with Xplore IQ
+Improving engineering velocity with Codex
+Keeping governance central
+What’s next
+Telcos have rich customer signals across usage, billing, network activity, and location, but turning those signals into timely, personalized action remains difficult. Circles saw an opportunity to rethink the telco experience around that challenge, using OpenAI to build an AI-native telco stack that can connect support, personalization, operations, and monetization in real time.
+The result is a customer experience built around Circles’ AI Concierge, a conversational interface powered by OpenAI’s API platform. In Singapore, Circles’ AI-powered personalization has helped increase ARPU by 22% and reduce churn by 9%. CareX, the multi-agent architecture behind the AI Concierge, now delivers a 65% autonomous resolution rate for customer support.
+Founded in Singapore, Circles is a technology company whose SaaS platform helps digital telco operators launch and run AI-powered customer experiences. The company also operates Circles.Life, its own consumer telco business in Singapore. Founded in 2014, Circles works with telco operators across 14 countries and six continents.
+Building the AI Concierge
+Traditional telco support is often reactive. Customers navigate menus, repeat information, and wait for help after a problem has already occurred. While operators have rich customer data across usage, billing, network activity, and location, it has remained a challenge to turn those signals into timely, personalized action. To address this, Circles built its AI Concierge on the OpenAI API, creating a conversational interface designed to deliver proactive, context-aware customer engagement.
+The AI Concierge brings search, account management, support, and personalized recommendations into a single experience. By understanding a customer’s real-time context, such as browsing roaming options or investigating a billing issue, it can route requests to the appropriate specialist agents, recommend relevant actions, and resolve issues without requiring customers to repeat information or navigate multiple workflows.
+"AI should empower users, not force-fit them into outdated journeys. OpenAI's role has been critical in enabling Circles to scale this vision globally. With the AI concierge, we are moving beyond providing simple answers to delivering real-world outcomes, along with balancing cost and latency to maximize value for operators and customers alike."
+—Awais Malik, Global Chief Growth Officer, Circles
+Orchestrating support with CareX
+CareX is the proprietary multi-agent architecture that powers Circles’ AI Concierge. It combines an orchestration agent that understands each customer’s history and current activity with specialist agents for billing, subscriptions, network management, and account services.
+Unlike a traditional chatbot, CareX is designed to understand, act, and resolve customer requests. For example, when a customer raises a billing issue, the orchestration agent combines the customer’s app context, account history, and request before routing it to the appropriate specialist agent. The agent receives only the information needed to resolve the issue. If required, the AI agent seamlessly escalates the case to a human agent with the full context attached.
+The approach is already delivering measurable results. In an early deployment, one operator achieved 55% autonomous resolution within the first week. Today, CareX autonomously resolves 65% of customer service interactions across supported workflows, without human intervention.
+As CareX expands into real-time voice support, the platform is targeting 95% autonomous resolution across the entire workflow, including text and voice. This will extend the same AI-driven resolution capabilities to the channel many customers turn to first, while making service more natural, immediate, and accessible.
+Personalizing customer value with Xplore IQ
+Built on the OpenAI API, Xplore IQ is Circles’ AI-powered personalization engine. It combines customer behavior, account history, and real-time signals to identify the most relevant next action, from recommending a roaming pack or plan upgrade to preventing churn before it happens.
+By replacing broad campaigns with hyper-personalized recommendations, Xplore IQ helps operators engage customers at the right moment. In Singapore, Circles measured its impact by comparing customers who received AI-powered recommendations against those who didn’t. The AI-powered group achieved a 22% increase in ARPU through higher plan upgrades and add-on subscriptions, while timely, relevant recommendations helped reduce churn by 9%.
+Improving engineering velocity with Codex
+Beyond its customer-facing AI products, Circles also uses Codex internally to improve engineering velocity across engineering, infosec, and incident management teams. Teams use Codex to accelerate design, coding assistance and testing, while keeping specialists responsible for validation and final review.
+Codex has delivered a 29% increase in development efficiency by involving design, coding assistance, and unit testing, allowing engineers to spend their time focusing on higher-value product innovation.
+Keeping governance central
+Building AI for telcos requires safeguards for both customers and operators. Circles applies automated controls before customer information reaches the model layer, including identifying and encrypting personally identifiable information before it is passed to LLMs. Specialist agents are given scoped access to the information needed for a specific resolution task, rather than unrestricted access to a full customer profile.
+Circles also uses human escalation paths, phased rollouts, rate limits, rollback mechanisms, and commercial safeguards to help maintain operational control as AI-powered experiences scale across telco environments.
+What’s next
+Circles is expanding its AI-native telco stack with OpenAI by enhancing CareX’s observability and introducing real-time voice support, which makes customer interactions more natural and accessible. Longer term, the company envisions a conversational, context-aware telco experience that moves beyond traditional app navigation, helping operators deliver more proactive, personalized customer engagement.
+Join the new era of work
+More than 1 million businesses around the world are achieving meaningful results with OpenAI.
+Contact sales
+Keep reading
+Third-party cyber evaluations involving OpenAI models
+Security
+Aug 4, 2026
+New ways to learn and teach with ChatGPT Work and Codex
+Product
+Aug 4, 2026
+Apple is getting this wrong
+Company
+Aug 3, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Apple is getting this wrong</title><link>https://openai.com/index/apple-is-getting-this-wrong</link><guid isPermaLink="true">https://openai.com/index/apple-is-getting-this-wrong</guid><category>openai-news</category><pubDate>2026-08-03</pubDate><description>OpenAI回应苹果诉讼，指出苹果指控基于错误信息且未事先沟通。苹果承认联系错人、误称讨论，且前员工是被苹果员工请求帮助找文件。OpenAI强调不想要也不拥有苹果商业秘密，愿合作解决，但对苹果的误导性叙述表示遗憾。
+
+## Full Text
+
+Apple is getting this wrong | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 3, 2026
+Company
+Apple is getting this wrong
+Loading…
+Share
+Apple is one of the greatest companies of all time, and built a reputation for obsessing over the smallest details. This careless, aggressive and oddly personal lawsuit sadly doesn’t live up to that reputation.
+Apple had claimed that they contacted OpenAI in February and that we didn’t respond. They now admit that their outside lawyers emailed the wrong person after confusing two Asian last names—only after we brought this to their attention. Apple also claimed they had a discussion with our General Counsel, which they now concede never happened. But they again hide the fact that they never raised the specific allegations in this lawsuit at that time, and that they in fact told us that they were “resolving any issues”. We then heard nothing for five months until they sued. In their latest filing, Apple tries hard to spin this sequence of events, but you can just read the emails for yourself
+here
+⁠
+.
+Apple accuses Chang Liu of accessing Apple confidential information after leaving the company, but only now admits that Apple employees reached out to him and asked for his help to locate this information (you can read the messages
+here
+⁠
+). Apple now tries to shift the blame to “residual access”, but they also don’t disclose that this is a common issue with Apple which is caused by them failing to properly manage system access when people leave. What that means in practice is that former employees who are trying to do the right thing when they leave still have access to Apple files—despite not wanting them or even being aware of them.
+Apple also accuses Tang Tan of trying to get and use their trade secrets. However, Tang has always been clear with the team that we do not want, and must not use, any confidential information from other companies. Tang served Apple for more than 24 years and was widely known as one of the most innovative leaders at the company.
+We wish Apple had raised these issues with us before they filed their lawsuit and would have been happy to clarify all of this with them. We have taken the allegations in the lawsuit seriously and offered to work with Apple to resolve this. Instead, they’re trying to change their narrative, including by making vague accusations about other former employees, and will likely keep repeating this tactic.
+Apple’s request for a preliminary injunction is both based on false information and completely unnecessary because we do not have, nor want, any of their trade secrets. We’re much more interested in building innovative products and technologies that push the frontier.
+Messages
+iMessages between Chang Liu (in blue) and Apple employees, where Chang—whose last day with Apple was January 22, 2026—is being asked by his former colleagues to help them locate files and information to assist them with their Apple work (all times UTC). Note: other individual names and Apple confidential information have been redacted.
+1/22/2026 4:43:19 PM
+Hey [Apple Employee #1], i had something we need to discuss when you get to office.
+1/22/2026 4:43:41 PM
+OK. I can talk on the phone now if you like.
+1/22/2026 5:48:02 PM
+I am here at the office.
+1/22/2026 9:39:14 PM
+Around your desk
+1/22/2026 9:39:34 PM
+Be there in 4.
+1/22/2026 9:44:34 PM
+Do you wanna meet me at the coffee machine?
+1/22/2026 11:25:45 PM
+I found a 64GB drive. Do you think that will work&gt;
+1/22/2026 11:26:59 PM
+I think 200 ish. We start from 64. Better than nothing
+1/23/2026 12:41:56 AM
+Still copying
+1/23/2026 5:13:02 PM
+Good morning. I hope you slept well. Maybe you are still sleeping 😊
+I’m back in the office and restarting the airdrop as it didn’t work.
+My plan is to complete the airdrop and then click the sad button in workday.
+1/23/2026 5:38:25 PM
+Liked “Good morning. I hope you slept well. Maybe you are still sleeping 😊
+I’m back in the office and restarting the airdrop as it didn’t work.
+My plan is to complete the airdrop and then click the sad button in workday.”
+1/23/2026 5:39:51 PM
+Thanks a lot [Apple Employee #1]. Was a very hard night last night. I really appreciate all the help and work together with you.
+1/23/2026 5:41:09 PM
+If you have time you can also try to airdrop all other file in my apple iCloud folder.
+1/23/2026 5:42:22 PM
+Those are mainly shared files from other people. I found important detail notes from time to time.
+1/23/2026 5:42:59 PM
+All the file folders [Redacted - Apple Information] are the file I generated as my personal note.
+1/23/2026 7:32:19 PM
+Your file transfer is a challenge.
+1/23/2026 7:33:24 PM
+Carlos Org Travel Summary
+Chang joined the spreadsheet.
+I think I’m going to have to hit the workday button before I’m complete.  I just got a weird message that is making me nervous (see below), so I am going to go hit the workday button now.
+1/23/2026 7:34:53 PM
+I don’t even think I have that file
+1/23/2026 7:35:03 PM
+Maybe the new Chang
+1/23/2026 7:35:20 PM
+Yeah. . . it could be. No need for you to worry. 😊
+1/23/2026 7:35:37 PM
+That new Chang has big shoes to fill.
+1/23/2026 7:36:18 PM
+😟 for the transfer. I think the archive and [Redacted - Apple Information] has most of file for you to dig. Otherwise team can always start from something brand new
+1/27/2026 1:45:26 AM
+Hey [Apple Employee #1] hope everything is fine for copy pasting. You can keep my icloud connected if you still need more time. But might want to sign off my iMessage. As there might be my new company stuff showing up in that laptop.
+1/27/2026 3:06:56 AM
+Oh shoot. Sorry. Let me finish up tomorrow and log everything out. I won’t look at anything else.
+1/27/2026 3:08:26 AM
+Hey [Apple Employee #1], that’s totally ok. I am fine with you keep my icloud signed in for files. Just imessages might get you in trouble.
+1/27/2026 4:35:30 AM
+Do you recall any discussions on shipping [Redacted - Apple Information]? I thought the plan was to go for [Redacted - Apple Information] because [Redacted - Apple Information] is still not proven, but I don’t remember specific details. Of course, I could ask several folks, but you are the best. Even if you don’t work here anymore 😟
+1/27/2026 4:35:46 AM
+. . . of course [Redacted - Apple Information] is the plan for [Redacted - Apple Information]
+1/27/2026 4:39:27 AM
+Hahahah no prob
+1/27/2026 4:39:47 AM
+The decision is for all the product shipped in [Redacted - Apple Information] from a schedule standpoint.
+1/27/2026 4:39:59 AM
+Hence [Redacted - Apple Information]. And [Redacted - Apple Information] for [Redacted - Apple Information]
+1/27/2026 4:40:30 AM
+[Redacted - Apple Information] make a [Redacted - Apple Information] because of that [Redacted - Apple Information] ramp time.
+1/27/2026 4:41:06 AM
+[Redacted - Apple Information] (es in March) will [Redacted - Apple Information] prototype build but too late for [Redacted - Apple Information].
+1/27/2026 4:42:29 AM
+Awesome: I was thinking [Redacted - Apple Information] for [Redacted - Apple Information] and [Redacted - Apple Information] for [Redacted - Apple Information]. But since [Redacted - Apple Information] was pushed back then it should get [Redacted - Apple Information] also.
+1/27/2026 4:42:41 AM
+I think we are aligned 😊
+1/27/2026 4:46:06 AM
+Actually yes also [Redacted - Apple Information]
+1/27/2026 4:46:27 AM
+Sorry I missed that. [Apple Employee #8 name] from Austin team is already working on that
+1/27/2026 4:47:07 AM
+Liked “Actually yes also [Redacted - Apple Information]”
+1/27/2026 4:47:10 AM
+Liked “Sorry I missed that. [Apple Employee #8 name] from Austin team is already working on that ”
+1/30/2026 5:54:31 PM
+Hey [Apple Employee #1]! Hope you got all the material you need. Otherwise you might need to reach out to IST for some backup if they ever has
+1/30/2026 5:54:41 PM
+I rrealize the folder is gone from my iCloud
+1/31/2026 1:34:07 AM
+I just signed out of your iCloud account. When it asked me if I wanted to keep a copy of your stuff, I said NO.
+1/31/2026 2:28:08 AM
+Loved “I just signed out of your iCloud account. When it asked me if I wanted to keep a copy of your stuff, I said NO.”
+1/31/2026 2:28:18 AM
+Thank you sir!
+1/31/2026 2:29:23 AM
+This startup style company is a funny and will be very hard in a couple months😁😁
+2/14/2026 1:38:13 AM
+How is it going over there? Did they let you off work early on a Friday so you can go bowling and drink beer?
+2/14/2026 1:38:25 AM
+. . . . or are they going to work you until 10pm?
+2/14/2026 1:39:47 AM
+Just in case you don’t have enough work, I need some help. I have a vague recollection of you talking about a [Redacted - Apple Information]. Can you give me a brief refresh of this and point me to an EE who may have some knowledge?
+2/14/2026 1:41:25 AM
+大笑「Just in case you don’t have enough work, I need some help. I have a vague recollection of you talking about a [Redacted - Apple Information]. Can you give me a brief refresh of this and point me to an EE who may have some knowledge?」
+2/14/2026 1:41:51 AM
+This place is crazy… hahahah we use Ai all over the place
+2/14/2026 1:42:21 AM
+I can always give you some fun side projects
+2/14/2026 1:44:17 AM
+I think what you referred to is [Redacted - Apple Information]. And the small [Redacted - Apple Information].
+2/14/2026 1:44:41 AM
+The problem is the people is also in my court now 😁😁
+2/14/2026 1:45:00 AM
+Plus if [Apple Employee #9] might still remember anything
+2/14/2026 1:47:39 AM
+Liked “I can always give you some fun side projects”
+2/14/2026 1:52:30 AM
+[Redacted - Apple schematic]
+Bummer. . . you should have filed a [Redacted - Apple Information] with the details and put that next to the [Redacted - Apple Information] on the schematic.  Now you owe me a beer.
+2/14/2026 1:53:43 AM
+oops now it can only become a [Redacted - Apple Information] saying now we never know why 😁😁
+2/14/2026 3:12:57 AM
+Now when I think about it. The other smart people also just left that team. The one that might still in apple is [Apple Employee #10]
+2/14/2026 3:13:12 AM
+Or if you have a more specific question
+3/5/2026 9:23:11 PM
+chang:  if I understood correctly, you said that the [REDACTED - Apple Information] powers a downstream [REDACTED - Apple Information]
+that then powers [REDACTED - Apple Information]. Is that right?
+
+Who should I contact about that [REDACTED - Apple Information]?
+3/5/2026 9:35:19 PM
+A few things you can look for. In our team box folder/[REDACTED - Apple Information]/. There should be a [REDACTED - Apple Information].
+And there is a power block diagram to show the [REDACTED - Apple Information]. Or find [Apple Employee #5] to get the [REDACTED -
+Apple Information].
+Contact is [Apple Employee #6]and [Apple Employee #7]. [REDACTED - Apple Information] need more sensitive for [REDACTED - Apple
+Information] than current design. Hence they need to rise [REDACTED - Apple Information]
+3/5/2026 9:35:59 PM
+Hi [Apple Employee #1 Name], [Apple Employee #3 Name], I can help get the conversation with [Apple Employee #6] and [Apple
+Employee #7] started
+3/5/2026 9:37:28 PM
+Hi, this is highly irregular, please remove me from this thread
+3/5/2026 9:44:21 PM
+Thanks Chang. [Apple Employee #2 Name] and [Apple Employee #3 Name] I put you on this thread for awareness. Let’s continue our
+discussion internally.
+3/5/2026 9:50:48 PM
+Liked “Thanks Chang. [Apple Employee #2 Name] and [Apple Employee #3 Name] I put you on this thread for awareness. Let’s continue
+our discussion internally.”
+Email correspondence
+The following emails are between Apple’s outside counsel, Gabriel Gross; OpenAI’s General Counsel Che Chang; and Apple’s in-house legal counsel. They show that Gross emailed Che by mistake and inaccurately claimed the two had spoken. Both Gross and Apple’s in-house legal counsel subsequently confirmed that this was an error, with Gross noting they were “resolving any issues.” The specific claims in Apple’s lawsuit were never raised, and there was no further follow up prior to the lawsuit being filed five months later.
+From:
+Gabriel Gross
+Date:
+Monday, February 23, 2026 5:53 PM
+Subject:
+Former Apple Employees at OpenAI Retaining Non-public, Confidential, and Proprietary Information
+To:
+&lt;redacted&gt; &lt;redacted&gt;
+Dear Mr. Chang:
+Please see the attached letter and let me know when you are free to discuss it.
+Yours,
+Gabriel Gross
+Partner
+Weil, Gotshal &amp; Manges LLP
+&lt;redacted&gt;
+&lt;redacted&gt;
+&lt;redacted&gt; Direct
+&lt;redacted&gt; Mobile
+The information contained in this email message is intended only for use of the individual or entity named above. If the reader of this message is not the intended recipient, or the employee or agent responsible to deliver it to the intended recipient, you are hereby notified that any dissemination, distribution or copying of this communication is strictly prohibited. If you have received this communication in error, please immediately notify us by email, &lt;redacted&gt; and destroy the original message. Thank you.
+Attachments:
+image001.jpg (6K)
+2026.02.23 G. Gross letter to &lt;redacted&gt; Wang(101156327.1).pdf (225K)
+Ex. A.pdf (491K)
+Ex. B.pdf (91K)
+Ex. C.pdf (1646K)
+From:
+Gabriel Gross &lt;redacted&gt;
+Date:
+Mon, Feb 23, 2026 at 6:06 PM
+Subject:
+RE: Former Apple Employees at OpenAI Retaining Non-public, Confidential, and Proprietary Information
+To:
+&lt;redacted&gt; &lt;redacted&gt;
+Dear Mr. Chang:
+Thank you for your phone call just now and for offering your cooperation so quickly. I will be back in touch after speaking with Apple. I realize I neglected to include the three attachments when I sent you my letter, so I am re-sending it with the attachments for your records.
+Yours,
+Gabe
+From:
+Che Chang &lt;redacted&gt;
+Date:
+Feb 23, 2026, at 8:04 PM
+Subject:
+Re: Former Apple Employees at OpenAI Retaining Non-public, Confidential, and Proprietary Information
+To:
+&lt;redacted&gt;
+Hi [Apple in-house legal counsel] and [Apple in-house legal counsel],
+This guy from Weil claims to be representing you. For some reason, he is lying about speaking with me on the phone. I don't know who he is and we have never spoken.
+I don't know what the point of his lie is, but could you please confirm if he is actually representing you, and if so, whether you have other counsel you can use. I don’t think interacting through him is appropriate given this behavior.
+If this isn’t the right Apple team, could you let me know who might be? Thank you.
+Che
+From:
+Gabriel Gross &lt;redacted&gt;
+Date:
+Tue, Feb 24, 2026 at 11:22 AM
+Subject:
+RE: Former Apple Employees at OpenAI Retaining Non-public, Confidential, and Proprietary Information
+To:
+&lt;redacted&gt; &lt;redacted&gt;
+Dear Mr. Chang:
+I write to follow up on my email and letter from yesterday. After I emailed you around 5:53 p.m. yesterday, I inadvertently also sent you another email around 6:07 p.m. that was intended for &lt;redacted&gt; Wang, one of the former Apple employees at issue. After we had emailed Mr. Wang yesterday about retaining Apple information, he promptly called me and offered to cooperate with Apple in resolving any issues. I then intended to email him again, but accidentally replied to my email chain with you instead. I apologize for the confusion that likely caused.
+Yours,
+Gabriel Gross
+Partner
+Weil, Gotshal &amp; Manges LLP
+&lt;redacted&gt;
+&lt;redacted&gt;
+&lt;redacted&gt; Direct
+&lt;redacted&gt; Mobile
+Gabe
+From:
+[Apple in-house legal counsel] &lt;redacted&gt;
+Date:
+Wed, Feb 25, 2026 at 8:45 PM
+Subject:
+Re: Former Apple Employees at OpenAI Retaining Non-public, Confidential, and Proprietary Information
+To:
+Che Chang &lt;redacted&gt;; Cc: &lt;redacted&gt; &lt;redacted&gt;, &lt;redacted&gt; &lt;redacted&gt;, &lt;redacted&gt; &lt;redacted&gt;
+Hi Che,
+Wanted to make sure to get back to you. Weil is our counsel on this matter, and I believe they should have contacted you explaining the miscommunication. Please feel free to direct any additional questions their way.
+Thanks,
+[Apple in-house legal counsel]
+2026
+Author
+OpenAI
+Keep reading
+View all
+Continuous voice interaction with GPT Live
+Engineering
+Aug 3, 2026
+Building abundant intelligence
+Company
+Jul 31, 2026
+Accelerating scientific discovery with ChatGPT for Academic Researchers
+Company
+Jul 29, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Inside our 353,000-person vibe coding course</title><link>https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026</guid><category>google-gemini</category><pubDate>2026-08-03</pubDate><description>Google与Kaggle联合举办5天AI代理vibe coding密集课程，超35.3万人参与，教授用自然语言从原型到生产级代理的开发全流程，提交6000多个capstone项目，课程材料仍可访问。
+
+## Full Text
+
+Inside Kaggle’s AI Agents Intensive Course with Google
+Skip to main content
+Inside our 353,000-person vibe coding course
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Inside our 353,000-person vibe coding course
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Technology
+Developer tools
+Inside our 353,000-person vibe coding course
+Aug 03, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Google and Kaggle’s “AI Agents: Intensive Vibe Coding” course had expert-led sessions, technical whitepapers and notebooks, and capstone projects.
+Anant Nawalgaria
+Group AI Product Manager, Founder of GenAI intensive
+Brenda Flynn
+Partnerships Lead, Kaggle
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Over 353,000 developers recently joined our five-day intensive course to master building and deploying AI agents using natural language. Participants collaborated on Discord to debug code and submitted over 6,000 impressive capstone projects, ranging from historical transcription tools to space-weather research systems. You can still access all course materials on the Kaggle Learn website to sharpen your skills at your own pace.
+Summaries were generated by Google AI. Generative AI is experimental.
+"Inside our 353,000-person vibe coding course" explores how we teach modern AI development.
+Over 353,000 people joined our intensive course to learn about building AI agents.
+Participants used natural language to program and move prototypes from vibe to live.
+A massive community collaborated on Discord to debug code and share new ideas.
+You can still access all course materials online to learn at your own pace.
+Summaries were generated by Google AI. Generative AI is experimental.
+Google and Kaggle hosted a massive online course to teach people how to build AI agents using simple language. Over 350,000 people joined to learn how to turn their ideas into real, working projects. Participants collaborated on Discord to solve problems and create impressive tools together. You can still check out the lessons online if you want to learn these skills yourself.
+Summaries were generated by Google AI. Generative AI is experimental.
+Explore other styles:
+General summary
+Bullet points
+Basic explainer
+AI is moving faster than traditional methods of learning and teaching can keep up with it. With new concepts, skills, ideas, and tools arriving almost daily, we needed a new way to teach and learn these new technologies.
+Since Google and Kaggle’s first “5 Day Intensive” course in 2024 more than 2 million learners and developers have participated in the multimodal, no cost courses. Our latest collaboration, the 5-Day AI Agents: Intensive Vibe Coding Course with Google, had over 353,000 registered participants. Together, we explored the frontier of vibe coding, where people program through natural language. Our courses navigated the entire lifecycle of designing, securing, and deploying production-grade AI agents in the cloud. The response proved that developers are ready to graduate their prototypes "from vibe to live”.
+Hundreds of thousands of learners gathered across codelabs and technical whitepapers to collaborate in real time. The heart of this collaboration was on
+Kaggle's Discord
+, where over 392,000 active participants swapped code, debugged together, and formed study groups.
+The capstone projects brought the week’s learning into action. We received over 6,000 project submissions from more than 12,000 active capstone participants.
+The projects demonstrated the immense creativity, technical skill, and imagination of the global AI developer community. From advanced digital humanities tools like the historical manuscript transcription pipeline
+Palimpsest
+, to sophisticated space-weather research systems like
+Project ARIES
+, the caliber of submissions made it incredibly difficult to narrow down the top entries. You can explore all the winning teams and their
+capstone projects
+on our website.
+We look forward to continuing our partnership and exploring future learning opportunities. If you’re interested in learning more, you can continue honing your skills through ongoing
+Kaggle competitions
+and stay connected with fellow learners on the
+Kaggle Discord
+. For those who missed the live event in June but still want to learn, all course content remains available as a self-paced
+Kaggle Learn guide
+.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+Developer tools
+Google Cloud
+AI
+Gemini models
+Related stories
+AI
+The latest AI news we announced in July 2026
+By
+          
+            
+            News from Google Team
+Gemini models
+Simplify your morning with this vibe-coded schedule app.
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Gemini models
+How Gemini Flash agents are helping a Michigan dairy farmer
+Developer tools
+Gemini API Managed Agents: 3.6 Flash, hooks, and more
+By
+          
+            
+            Philipp Schmid
+          
+            &amp; 
+            Mariano Cocirio
+Search
+5 ways to host the ultimate dinner party with Google Search
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>Inside our 353,000-person vibe coding course</title><link>https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026</guid><category>google-models-research</category><pubDate>2026-08-03</pubDate><description>Google与Kaggle联合举办5天AI Agents密集课程，吸引超35.3万开发者参与，教授用自然语言进行vibe coding构建AI代理。学员通过Discord协作调试，提交6000多个毕业设计。课程材料已公开于Kaggle Learn，可免费自学。
+
+## Full Text
+
+Inside Kaggle’s AI Agents Intensive Course with Google
+Skip to main content
+Inside our 353,000-person vibe coding course
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+Inside our 353,000-person vibe coding course
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Technology
+Developer tools
+Inside our 353,000-person vibe coding course
+Aug 03, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Google and Kaggle’s “AI Agents: Intensive Vibe Coding” course had expert-led sessions, technical whitepapers and notebooks, and capstone projects.
+Anant Nawalgaria
+Group AI Product Manager, Founder of GenAI intensive
+Brenda Flynn
+Partnerships Lead, Kaggle
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Over 353,000 developers recently joined our five-day intensive course to master building and deploying AI agents using natural language. Participants collaborated on Discord to debug code and submitted over 6,000 impressive capstone projects, ranging from historical transcription tools to space-weather research systems. You can still access all course materials on the Kaggle Learn website to sharpen your skills at your own pace.
+Summaries were generated by Google AI. Generative AI is experimental.
+"Inside our 353,000-person vibe coding course" explores how we teach modern AI development.
+Over 353,000 people joined our intensive course to learn about building AI agents.
+Participants used natural language to program and move prototypes from vibe to live.
+A massive community collaborated on Discord to debug code and share new ideas.
+You can still access all course materials online to learn at your own pace.
+Summaries were generated by Google AI. Generative AI is experimental.
+Google and Kaggle hosted a massive online course to teach people how to build AI agents using simple language. Over 350,000 people joined to learn how to turn their ideas into real, working projects. Participants collaborated on Discord to solve problems and create impressive tools together. You can still check out the lessons online if you want to learn these skills yourself.
+Summaries were generated by Google AI. Generative AI is experimental.
+Explore other styles:
+General summary
+Bullet points
+Basic explainer
+AI is moving faster than traditional methods of learning and teaching can keep up with it. With new concepts, skills, ideas, and tools arriving almost daily, we needed a new way to teach and learn these new technologies.
+Since Google and Kaggle’s first “5 Day Intensive” course in 2024 more than 2 million learners and developers have participated in the multimodal, no cost courses. Our latest collaboration, the 5-Day AI Agents: Intensive Vibe Coding Course with Google, had over 353,000 registered participants. Together, we explored the frontier of vibe coding, where people program through natural language. Our courses navigated the entire lifecycle of designing, securing, and deploying production-grade AI agents in the cloud. The response proved that developers are ready to graduate their prototypes "from vibe to live”.
+Hundreds of thousands of learners gathered across codelabs and technical whitepapers to collaborate in real time. The heart of this collaboration was on
+Kaggle's Discord
+, where over 392,000 active participants swapped code, debugged together, and formed study groups.
+The capstone projects brought the week’s learning into action. We received over 6,000 project submissions from more than 12,000 active capstone participants.
+The projects demonstrated the immense creativity, technical skill, and imagination of the global AI developer community. From advanced digital humanities tools like the historical manuscript transcription pipeline
+Palimpsest
+, to sophisticated space-weather research systems like
+Project ARIES
+, the caliber of submissions made it incredibly difficult to narrow down the top entries. You can explore all the winning teams and their
+capstone projects
+on our website.
+We look forward to continuing our partnership and exploring future learning opportunities. If you’re interested in learning more, you can continue honing your skills through ongoing
+Kaggle competitions
+and stay connected with fellow learners on the
+Kaggle Discord
+. For those who missed the live event in June but still want to learn, all course content remains available as a self-paced
+Kaggle Learn guide
+.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+Developer tools
+Google Cloud
+AI
+Gemini models
+Related stories
+AI
+The latest AI news we announced in July 2026
+By
+          
+            
+            News from Google Team
+Gemini models
+Simplify your morning with this vibe-coded schedule app.
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Gemini models
+How Gemini Flash agents are helping a Michigan dairy farmer
+Developer tools
+Gemini API Managed Agents: 3.6 Flash, hooks, and more
+By
+          
+            
+            Philipp Schmid
+          
+            &amp; 
+            Mariano Cocirio
+Search
+5 ways to host the ultimate dinner party with Google Search
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>How we built a realtime system for responsive voice AI in six months</title><link>https://openai.com/index/continuous-voice-interaction-with-gpt-live</link><guid isPermaLink="true">https://openai.com/index/continuous-voice-interaction-with-gpt-live</guid><category>openai-news</category><pubDate>2026-08-03</pubDate><description>OpenAI工程团队分享六个月内构建实时语音AI系统GPT-Live的经验。系统采用全双工流式架构，移除转向检测器，实现连续推理与低延迟媒体传输，并通过异步委派保持对话流畅，为语音AI的实时响应提供了新范式。
 
 ## Full Text
 
@@ -49660,7 +52870,148 @@ Responsible disclosure policy
 Terms of service: Commercial
 Terms of service: Consumer
 Usage policy
-© 2026 Anthropic PBC</description></item><item><title>5 ways Google parents are using Gemini</title><link>https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents</link><guid isPermaLink="true">https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents</guid><category>google-gemini</category><pubDate>2026-06-25</pubDate><description>Google 官方 The Keyword 博客分享多位 Google 员工父母如何用 Gemini 减轻育儿心智负担：包括生成含午睡时间和亲子友好餐厅的旅行行程、导入学校课程表生成测验帮孩子备考、用 Gemini 逐步追问引导解题等五种家庭场景。</description></item><item><title>Try these 3 Google AI tools to help find your next job.</title><link>https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools</link><guid isPermaLink="true">https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools</guid><category>google-gemini</category><pubDate>2026-06-25</pubDate><description>谷歌推荐三款 AI 工具辅助求职：Career Dreamer 基于兴趣与经历头脑风暴目标岗位，NotebookLM 打磨简历与求职信、把过往经历串成连贯叙事，Gemini Live 进行面试模拟并提供实时反馈。整体覆盖找岗位、备材料、练面试的全流程。</description></item><item><title>5 ways to learn with study notebooks in the Gemini app</title><link>https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks</guid><category>google-gemini</category><pubDate>2026-06-25</pubDate><description>Google 在 Gemini app 推出 study notebooks 学习笔记本功能，将 Gemini 打造为交互式自适应学习平台。学生上传课程资料后，Gemini 生成诊断测验评估知识盲点，建立学业基线，再据实时强弱项生成定制化短课程与练习测验，并通过仪表盘追踪进度。学习中可随时提问，今夏将加入图表等视觉元素。</description></item><item><title>Building effective human-agent teams</title><link>https://claude.com/blog/building-effective-human-agent-teams</link><guid isPermaLink="true">https://claude.com/blog/building-effective-human-agent-teams</guid><category>claude-blog</category><pubDate>2026-06-24</pubDate><description>Anthropic 总结其内部数月实践,探讨从'单人单 Agent'向'人机协作团队'(multiplayer agents)的转变。这类 Agent 拥有独立 memory、skills 和不绑定人类的 credentials,常驻 Slack 等协作工具中。核心经验:公开透明地工作,以工作区级别的清晰安全边界取代逐条文档的软共享,让 context 自由流向所有人类与 AI 队友。</description></item><item><title>Introducing computer use in Gemini 3.5 Flash</title><link>https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash</link><guid isPermaLink="true">https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash</guid><category>deepmind-blog</category><pubDate>2026-06-24</pubDate><description>Google 将 computer use 能力原生内置进 Gemini 3.5 Flash，不再依赖独立的 2.5 computer use 模型。开发者可借此构建跨浏览器、移动、桌面环境的自定义 Agent，实现长程任务与企业级自动化（如持续软件测试、知识工作）。同时推出针对性对抗训练及两套企业安全防护：敏感操作需用户确认、检测到 prompt injection 自动中止，并倡导沙箱、人工复核等纵深防御。</description></item><item><title>Introducing computer use in Gemini 3.5 Flash</title><link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</guid><category>google-gemini</category><pubDate>2026-06-24</pubDate><description>Google 将 computer use 能力内置到 Gemini 3.5 Flash 主模型，取代独立的 2.5 computer use 模型。开发者可经 Gemini API 与企业平台构建跨浏览器、移动、桌面的智能体，胜任软件测试、企业自动化等长程任务。针对 prompt injection 风险，提供对抗训练及敏感操作确认、注入检测自动停止两套企业安全防护。</description></item><item><title>Introducing computer use in Gemini 3.5 Flash</title><link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</guid><category>google-models-research</category><pubDate>2026-06-24</pubDate><description>Google 在 Gemini 3.5 Flash 中将 computer use 升级为内置工具，不再依赖独立的 2.5 模型。开发者可借此构建跨浏览器、移动、桌面的自定义 Agent，实现长程任务与企业自动化（如持续软件测试、知识工作）。同时针对 prompt injection 做对抗训练，并提供敏感操作确认、注入即停两套企业级防护。已通过 Gemini API 与企业 Agent 平台开放。</description></item><item><title>OpenAI and Broadcom unveil LLM-optimized inference chip</title><link>https://openai.com/index/openai-broadcom-jalapeno-inference-chip</link><guid isPermaLink="true">https://openai.com/index/openai-broadcom-jalapeno-inference-chip</guid><category>openai-news</category><pubDate>2026-06-24</pubDate><description>OpenAI 携手博通发布首款自研推理芯片 Jalapeño,为 LLM 推理从零设计,而非通用加速器改造。借 OpenAI 模型加速,仅九个月完成流片,早期测试显示每瓦性能大幅超越当前业界顶尖水平。芯片优化 kernel、内存搬运、网络与服务模式,工程样片已跑 GPT-5.3-Codex-Spark,将与微软等伙伴在 2026 年起以吉瓦级数据中心规模部署,标志 OpenAI 全栈战略延伸至硬件层。</description></item><item><title>Agent identity in Claude Tag: a new access model for autonomous, team-wide AI</title><link>https://claude.com/blog/agent-identity-access-model</link><guid isPermaLink="true">https://claude.com/blog/agent-identity-access-model</guid><category>claude-blog</category><pubDate>2026-06-24</pubDate><description>Anthropic 为 Claude Tag(多人协作场景)推出 agent identity 访问模型:Claude 不再借用某个用户的权限,而是以自身独立账号行事——在 Slack 以 Claude app 发言、以 Claude GitHub App 提 PR、用服务账号查数仓。管理员在 workspace 层定义身份(连接、仓库、connector、skills、standing instructions),各 channel 默认继承并可覆盖,权限从 per-user 转为 per-channel,撤销身份即全局断权,也杜绝共享频道成为私人文档的侧门。</description></item><item><title>Introducing Claude Tag</title><link>https://www.anthropic.com/news/introducing-claude-tag</link><guid isPermaLink="true">https://www.anthropic.com/news/introducing-claude-tag</guid><category>anthropic-news</category><pubDate>2026-06-23</pubDate><description>Anthropic 推出 Claude Tag，让 Claude 作为团队成员加入 Slack 频道，被 @Claude 标记即可委派任务。支持多人协作共享上下文、跨频道学习记忆、主动推送（ambient）和异步自主执行。权限按频道严格隔离，管理员可控工具访问与 token 预算。基于 Opus 4.8，面向 Enterprise/Team 客户 beta 开放，被视为 Claude Code 的演进。</description></item><item><title>The full Claude Desktop experience on AWS, Google Cloud, and Microsoft Foundry</title><link>https://claude.com/blog/the-full-claude-desktop-experience-on-aws-google-cloud-and-microsoft-foundry</link><guid isPermaLink="true">https://claude.com/blog/the-full-claude-desktop-experience-on-aws-google-cloud-and-microsoft-foundry</guid><category>claude-blog</category><pubDate>2026-06-22</pubDate><description>Anthropic 宣布通过 AWS、Google Cloud、Microsoft Foundry 部署的 Claude Desktop 现已开放完整体验，整合 chat、Claude Cowork 和 Claude Code 于一体。企业可在自有云环境内运行推理、本地存储对话历史，并支持按用户 SSO、MDM 策略模板、离线安装及可完全本地运行的 M365 连接器；chat/Cowork/Code 各有独立策略密钥，便于按角色分阶段放权。</description></item><item><title>Claude Code now supports artifacts</title><link>https://claude.com/blog/artifacts-in-claude-code</link><guid isPermaLink="true">https://claude.com/blog/artifacts-in-claude-code</guid><category>claude-blog</category><pubDate>2026-06-18</pubDate><description>Anthropic 为 Claude Code 推出 artifacts:可将会话工作进度沉淀为实时、可交互、可共享的网页(如 PR 走查、仪表盘、故障排查时间线、发布清单)。基于完整会话上下文(代码库、connectors、对话)自动构建,无需自行接数据源;每次发布生成同链接新版本并保留历史,默认私有、仅组织内成员可见,管理员可控访问与留存。</description></item><item><title>Centrally manage authorization for MCP connectors</title><link>https://claude.com/blog/enterprise-managed-auth</link><guid isPermaLink="true">https://claude.com/blog/enterprise-managed-auth</guid><category>claude-blog</category><pubDate>2026-06-18</pubDate><description>Anthropic 推出企业级集中管理 MCP connector 授权功能:管理员通过 IdP(首发支持 Okta)为全组织统一配置 connector,用户首次登录即自动按 IdP 群组/角色继承访问权限,实现零接触配置。这是 MCP 的 Enterprise-Managed Authorization 扩展首个实现,基于开放标准,可缩短 token 生命周期、随离职快速回收权限。首发支持 Asana、Atlassian、Canva、Figma、Linear、Supabase 等。</description></item><item><title>Steering Claude Code: CLAUDE.md files, skills, hooks, rules, subagents and more</title><link>https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more</link><guid isPermaLink="true">https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more</guid><category>claude-blog</category><pubDate>2026-06-18</pubDate><description>Anthropic 官方梳理了引导 Claude Code 行为的七种方法:CLAUDE.md 文件、rules、skills、subagents、hooks、output styles 和追加 system prompt。每种方法在加载时机、压缩(compaction)后的存续行为、上下文成本和权威性上各有差异。文章用表格对比并给出选型决策框架,帮助开发者判断每条指令应放在何处。</description></item><item><title>Anthropic opens Seoul office and announces new partnerships across the Korean AI ecosystem</title><link>https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem</link><guid isPermaLink="true">https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem</guid><category>anthropic-news</category><pubDate>2026-06-17</pubDate><description>Anthropic 在首尔设立办公室，并与韩国科技信通部签署 AI 安全合作备忘录。多家韩国企业深度采用 Claude：NAVER 全工程团队部署 Claude Code，Nexon、LG CNS、三星 SDS、韩华等大型集团及 Channel Corp 等创业公司广泛使用。同时与 KAIST 等高校联盟合作支持 AI 安全研究，并推出 Claude for Startups 及黑客松。</description></item><item><title>Claude Design now stays on brand for daily work</title><link>https://claude.com/blog/claude-design-stays-on-brand-for-daily-work</link><guid isPermaLink="true">https://claude.com/blog/claude-design-stays-on-brand-for-daily-work</guid><category>claude-blog</category><pubDate>2026-06-17</pubDate><description>Anthropic 升级 Claude Design：可跨项目锁定品牌设计系统（从 GitHub/设计文件导入组件并自动校验纠错），与 Claude Code 双向同步（/design-sync、/design），新增画布直接编辑、管理员锁定标准系统、共享用量额度，并支持导出 PDF/PPT 及接入 Canva、Figma 类工具与 Replit、Lovable、Vercel 等连接器。首周用户超百万。</description></item><item><title>Meet the winners of our Claude Opus 4.8 Build Day hackathon</title><link>https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon</link><guid isPermaLink="true">https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon</guid><category>claude-blog</category><pubDate>2026-06-17</pubDate><description>Anthropic 举办 Claude Opus 4.8 Build Day 黑客松,300+ 开发者 12 小时内用 Opus 4.8 完成 Demo。冠军 Tekton 用独立验证子 Agent 在隔离上下文窗口逐项打分、自纠错循环重建唐代建筑 3D 模型并溯源每个构件;亚军 Sim Francisco 基于人口普查数据构建旧金山合成人口数字孪生,可秒级民意模拟。</description></item><item><title>Secure access to the Claude Platform with Workload Identity Federation</title><link>https://claude.com/blog/workload-identity-federation</link><guid isPermaLink="true">https://claude.com/blog/workload-identity-federation</guid><category>claude-blog</category><pubDate>2026-06-17</pubDate><description>Anthropic 宣布 Claude Platform 的 Workload Identity Federation (WIF) 正式可用,用短时、限定作用域的临时凭证取代静态 API Key。兼容任意 OIDC 提供方(AWS IAM、GCP/K8s 服务账号、Azure 托管身份、GitHub Actions、Okta 等),覆盖全部 Claude API 端点及一方 SDK 与 Claude Code。同时引入服务账号,使每个 workload 拥有独立身份、角色与审计日志,并支持通过 Admin API 以最小权限、可编程方式管理联邦规则。</description></item><item><title>Agentic coding and persistent returns to expertise</title><link>https://www.anthropic.com/research/claude-code-expertise</link><guid isPermaLink="true">https://www.anthropic.com/research/claude-code-expertise</guid><category>anthropic-research</category><pubDate>2026-06-16</pubDate><description>Anthropic 基于约40万次 Claude Code 会话（2025.10-2026.04）的隐私保护分析：人类负责决策做什么（规划），Claude 负责怎么做（执行）。决定成败的是领域专业知识而非编码能力，各职业成功率接近软件工程师。7个月内调试占比降近半，使用转向部署、数据分析等端到端 agentic 场景，任务价值平均上升约25%。</description></item><item><title>Meet the winners of the Built with Opus 4.7 Claude Code hackathon</title><link>https://claude.com/blog/meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon</link><guid isPermaLink="true">https://claude.com/blog/meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon</guid><category>claude-blog</category><pubDate>2026-06-15</pubDate><description>Anthropic 公布 Built with Opus 4.7 Claude Code 黑客松获奖项目。一等奖 Medkit 用 Claude Managed Agents 构建医学住院医师模拟问诊训练工具,作者跨 4 个 Claude Code 会话并行开发、全程语音操作;二等奖 Wrench Board 借助 Opus 4.7 视觉识图能力辅助电子维修,用 Claude Design 出规格、多 Agent 并行调试。展现 Claude 作为思考伙伴而非单纯代码生成器的价值。</description></item><item><title>Statement on the US government directive to suspend access to Fable 5 and Mythos 5</title><link>https://www.anthropic.com/news/fable-mythos-access</link><guid isPermaLink="true">https://www.anthropic.com/news/fable-mythos-access</guid><category>anthropic-news</category><pubDate>2026-06-12</pubDate><description>美国政府以国家安全为由发布出口管制指令,要求 Anthropic 对所有客户禁用 Fable 5 与 Mythos 5,理由疑似存在越狱方法。Anthropic 声明该漏洞为已知小问题、其他公开模型同样可发现,坚持纵深防御策略,认为以窄域越狱为由召回服务数亿人的商用模型标准过严,正配合执行并争取尽快恢复访问。</description></item><item><title>TCS and Anthropic partner to bring Claude to regulated industries</title><link>https://www.anthropic.com/news/tcs-anthropic-partnership</link><guid isPermaLink="true">https://www.anthropic.com/news/tcs-anthropic-partnership</guid><category>anthropic-news</category><pubDate>2026-06-12</pubDate><description>TCS 与 Anthropic 达成合作：向自身 5 万名员工(覆盖 56 国)提供 Claude，并为金融、医疗、公共部门等受监管行业客户构建 Claude 驱动产品，同时加入 Claude Partner Network。TCS 将 Claude 打包成理赔、信贷顾问等行业方案，团队用 Claude Code 提效并向其生态贡献可复用 skills/plugins。印度为 Anthropic 第二大市场。</description></item><item><title>Results from the first Anthropic Public Record</title><link>https://www.anthropic.com/news/anthropic-public-record</link><guid isPermaLink="true">https://www.anthropic.com/news/anthropic-public-record</guid><category>anthropic-news</category><pubDate>2026-06-12</pubDate><description>Anthropic 首次面向公众的「Public Record」调查覆盖近5.2万美国人:48%最期待AI攻克癌症等疾病;64%最担忧AI致失业,其次是认知依赖(56%)和虚假信息(52%);超70%两党选民支持政府监管AI,仅15%信任AI公司自主决策。民众态度跨党派、地域高度一致,渴望红利又惧怕冲击,并要求企业担责。</description></item><item><title>DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on</title><link>https://www.anthropic.com/news/dxc-anthropic-alliance</link><guid isPermaLink="true">https://www.anthropic.com/news/dxc-anthropic-alliance</guid><category>anthropic-news</category><pubDate>2026-06-11</pubDate><description>Anthropic 与 IT 服务巨头 DXC 达成多年全球联盟，DXC 将培训数万名 Claude 认证的前沿部署工程师（FDE），把 Claude 嵌入银行、航空、保险等受监管行业的核心系统。DXC 已用 Claude 生成其 OASIS 托管平台 95% 以上代码，开发提速 10 倍，并将 Claude 设为默认基座模型，首批落地保险、遗留代码现代化、安全运营和应用服务四大领域。</description></item><item><title>Introducing Claude Corps</title><link>https://www.anthropic.com/news/claude-corps</link><guid isPermaLink="true">https://www.anthropic.com/news/claude-corps</guid><category>anthropic-news</category><pubDate>2026-06-11</pubDate><description>Anthropic 推出 Claude Corps，一项面向职业早期人才的全国性奖学金计划，投入 1.5 亿美元。将培训 1000 名 fellow 用好 Claude，全职派驻全美非营利组织一年，年薪 8.5 万美元并配额 token 预算。由 CodePath 任雇主、Social Finance 负责评估，旨在让 AI 红利普惠社区并缓解技术变革对就业的冲击。</description></item><item><title>The evolution of agentic surfaces: building with Claude Managed Agents</title><link>https://claude.com/blog/building-with-claude-managed-agents</link><guid isPermaLink="true">https://claude.com/blog/building-with-claude-managed-agents</guid><category>claude-blog</category><pubDate>2026-06-10</pubDate><description>Anthropic 推出 Claude Managed Agents——一套可组合的 API,将为 Claude 调优的 agent harness 与生产级基础设施(托管伸缩、会话管理、文件系统、凭证、可观测性)打包,让团队从原型到上线从数月缩短到数天。文章回顾了从 2023 年简单 API 到 Claude Code、Claude Agent SDK 再到 Managed Agents 的演进路径,主打免去自建 loop 与运维负担。</description></item><item><title>Claude Fable 5 and Claude Mythos 5</title><link>https://www.anthropic.com/news/claude-fable-5-mythos-5</link><guid isPermaLink="true">https://www.anthropic.com/news/claude-fable-5-mythos-5</guid><category>anthropic-news</category><pubDate>2026-06-09</pubDate><description>Anthropic 发布 Mythos 级模型 Claude Fable 5，能力全面领先，在软件工程、知识工作、视觉、长上下文等基准达 SOTA，含保守安全护栏（&lt;5% 会话回退至 Opus 4.8）；同步推出无护栏的 Mythos 5 供网络安全防御者通过 Project Glasswing 使用。定价 $10/$50 每百万 token。（注：6/12 已暂停访问）</description></item><item><title>New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults</title><link>https://claude.com/blog/whats-new-in-claude-managed-agents</link><guid isPermaLink="true">https://claude.com/blog/whats-new-in-claude-managed-agents</guid><category>claude-blog</category><pubDate>2026-06-09</pubDate><description>Anthropic 为 Claude Managed Agents 推出两项公测能力:一是定时部署(scheduled deployment),为 agent 配置 cron 计划,每次触发自动开新 session 完成任务,无需自建调度器,适用于夜间数据同步、每周合规扫描等周期任务;二是 vault 扩展支持环境变量,密钥仅在网络边界注入且限定可达域名,模型永远看不到真实 key,让 CLI(Browserbase、KERNEL、Notion 等)安全发起鉴权请求。</description></item><item><title>Paving the way for agents in biology</title><link>https://www.anthropic.com/research/agents-in-biology</link><guid isPermaLink="true">https://www.anthropic.com/research/agents-in-biology</guid><category>anthropic-research</category><pubDate>2026-06-08</pubDate><description>Anthropic 研究指出生物数据基础设施对 AI agent 不友好，如同为马车设计的古城难走汽车。实验让 Claude、Biomni、GPT 等科研 agent 从 NCBI Virus 检索序列数据，准确率均不达标；引入 gget virus 确定性检索层后准确率升至近 100%。结论：确定性检索工具是当前 agent 工作流可靠性的关键，生物数据库需面向 agent 重新设计。</description></item><item><title>Measuring LLMs’ impact on N-day exploits</title><link>https://www.anthropic.com/research/n-days</link><guid isPermaLink="true">https://www.anthropic.com/research/n-days</guid><category>anthropic-research</category><pubDate>2026-06-08</pubDate><description>Anthropic 红队评估 LLM 对 N-day 漏洞利用的加速作用。N-day 指已公开补丁但部分设备未修复的漏洞,攻击者可通过 patch diffing 逆向定位漏洞。最强模型 Mythos Preview 在 18 个 Firefox 补丁中自主构建 8 个可执行漏洞利用,在 21 个 Windows 内核补丁中产出 8 条完整提权链(从低权限到 SYSTEM)。从 Opus 4.5 到 4.8,可生成 PoC 的补丁数从 2 增至 11。结论:patch gap 期内的威胁已大幅升级,防御方应加快补丁部署。</description></item><item><title>Observability for developers building connectors</title><link>https://claude.com/blog/observability-for-developers-building-connectors</link><guid isPermaLink="true">https://claude.com/blog/observability-for-developers-building-connectors</guid><category>claude-blog</category><pubDate>2026-06-08</pubDate><description>Anthropic 为 Claude 连接器（基于 MCP 构建）开发者上线可观测性看板：可追踪活跃用户、工具调用量、目录排名，查看健康分、错误率与延迟（含按工具的错误拆解），并按 Claude、Claude Code、Cowork 等产品维度分解使用情况。当前为公测，需 Team/Enterprise 的 Admin 权限。同时支持在 Claude 应用内直接向目录提交 MCP server，目录现有超 300 个第三方连接器。</description></item><item><title>Building intelligent apps for Apple platforms with Claude in the Foundation Models framework</title><link>https://claude.com/blog/claude-for-foundation-models</link><guid isPermaLink="true">https://claude.com/blog/claude-for-foundation-models</guid><category>claude-blog</category><pubDate>2026-06-08</pubDate><description>Anthropic 发布 Swift 包，让 Apple 开发者通过其 Foundation Models 框架调用 Claude。本地端模型负责摘要、提取等快速任务，并借 @Generable 输出类型化 Swift 值作为干净输入，需多步推理、代码生成、联网搜索或代码执行时无缝交接给 Claude，支持流式响应与工具调用回流至同一 SwiftUI 视图。覆盖 iOS/iPadOS/macOS/visionOS/watchOS 27。</description></item><item><title>Making Claude a chemist</title><link>https://www.anthropic.com/research/making-claude-a-chemist</link><guid isPermaLink="true">https://www.anthropic.com/research/making-claude-a-chemist</guid><category>anthropic-research</category><pubDate>2026-06-05</pubDate><description>Anthropic 启动让 Claude 成为化学家的项目，首篇白皮书聚焦 NMR 谱图分析。借助多模态与显式推理能力，前沿模型可直接读取期刊图中的化学结构、解析实验方法段落，并展示可审计的推理步骤。团队用三款 Claude 模型（Opus 4.7/4.6、Sonnet 4.6）对比 ChemDraw 与 MestReNova，在训练截止后的 20 个新化合物上测试 NMR 正向预测，并尝试更难的逆向结构解析任务。</description></item><item><title>How one Anthropic seller rebuilt his team's workflows with Claude Code</title><link>https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering</link><guid isPermaLink="true">https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering</guid><category>claude-blog</category><pubDate>2026-06-05</pubDate><description>Anthropic 销售经理 Jared Sires 入职前从未写过代码,借助 Claude Code 打造了 CLAFTS——一个嵌入 Gmail、调用 Claude API 按本人语气起草客户回复邮件的工具,每天省 2-3 小时,4300 行代码几乎全由 Claude Code 生成。他还做了账户增长排名简报、通话前背调、会议纪要生成跟进邮件等工具,并打包成 Claude Cowork 插件供整个销售团队使用,从 AE 转岗为 GTM 产品经理。</description></item><item><title>The Claude Cowork product guide</title><link>https://claude.com/blog/the-claude-cowork-product-guide</link><guid isPermaLink="true">https://claude.com/blog/the-claude-cowork-product-guide</guid><category>claude-blog</category><pubDate>2026-06-05</pubDate><description>Anthropic 发布 Claude Cowork 产品指南。Cowork 是运行在桌面端的知识工作 Agent,可读写本地文件、跨 Slack/Google Drive 等应用协作,并把多步任务执行到交付物(附带文件与消息引用)。指南给出产品矩阵(chat 对话草拟、Claude Code 编码、Cowork 跨应用知识工作)、权限模型、7 个常见工作流及插件用法。</description></item><item><title>Introducing the Services Track and Partner Hub of the Claude Partner Network</title><link>https://www.anthropic.com/news/services-track-partner-hub</link><guid isPermaLink="true">https://www.anthropic.com/news/services-track-partner-hub</guid><category>anthropic-news</category><pubDate>2026-06-03</pubDate><description>Anthropic 宣布 Claude 合作伙伴网络新增「服务等级」(Services Track) 与「合作伙伴中心」(Partner Hub)。服务等级按已认证人数、生产部署客户数、公开案例分为 Select/Preferred/Global Premier 三档。3 月推出该网络以来，超 4 万家公司申请、1 万多名顾问获认证，埃森哲、德勤、PwC 等巨头大规模培训员工落地 Claude。Partner Hub 提供每日刷新的资质看板及公开目录，并支持 MCP connector 直接在 Claude 内查询合作进展。</description></item><item><title>What we learned mapping a year’s worth of AI-enabled cyber threats</title><link>https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack</link><guid isPermaLink="true">https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack</guid><category>anthropic-news</category><pubDate>2026-06-03</pubDate><description>Anthropic 分析了 2025.3-2026.3 间因恶意网络活动被封的 832 个账户,映射到 MITRE ATT&amp;CK 框架。三大发现:攻击者将 AI 用于横向移动、账户发现等攻击后期复杂阶段,使低技能者也能实施高危操作;中高危攻击者占比从 33% 升至 56%;靠技术数量评估威胁已失效,真正区分高危的是能让模型自主串联攻击链的脚手架架构,而 MITRE ATT&amp;CK 尚未涵盖这类自主智能体行为。</description></item><item><title>Mapping AI-enabled cyber threats: Insights from the LLM ATT&amp;CK Navigator</title><link>https://www.anthropic.com/research/attack-navigator</link><guid isPermaLink="true">https://www.anthropic.com/research/attack-navigator</guid><category>anthropic-research</category><pubDate>2026-06-03</pubDate><description>Anthropic 联合 Verizon 发布报告，将一年内 832 个被封禁的恶意账号映射到 MITRE ATT&amp;CK 框架。这些账号覆盖全部 14 类战术、482 个子技术。中高风险攻击者占比半年内从 33% 升至 56%，AI 正让低技能攻击者也能完成完整 killchain。最大差异不再是技术水平，而是 agentic scaffolding 带来的自主编排能力，而现有 ATT&amp;CK 框架尚未覆盖这类自主行为。</description></item><item><title>How Anthropic enables self-service data analytics with Claude</title><link>https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude</link><guid isPermaLink="true">https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude</guid><category>claude-blog</category><pubDate>2026-06-03</pubDate><description>Anthropic 分享内部用 Claude 实现自助式商业数据分析的实践:95% 的分析查询已自动化,聚合准确率约 95%,让数据团队转向因果建模、预测等战略工作。核心观点是分析准确性是上下文与验证问题,而非代码生成问题——与编程不同,分析往往只有唯一正确答案且无确定性验证方式。三大失败模式:概念与实体映射歧义、数据陈旧、检索失败。文中介绍了应对这些问题的 agentic 分析技术栈及 skills 模板。</description></item><item><title>ChatGPT Sites</title><link>https://openai.com/academy/chatgpt-sites</link><guid isPermaLink="true">https://openai.com/academy/chatgpt-sites</guid><category>openai-news</category><pubDate>2026-06-02</pubDate><description>ChatGPT Sites 允许用户通过自然语言描述，利用 Codex 创建并部署内部网站或轻应用，适用于团队协作场景，无需编程。
+© 2026 Anthropic PBC</description></item><item><title>5 ways Google parents are using Gemini</title><link>https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents</link><guid isPermaLink="true">https://blog.google/products-and-platforms/products/gemini/gemini-tips-for-parents</guid><category>google-gemini</category><pubDate>2026-06-25</pubDate><description>Google 官方 The Keyword 博客分享多位 Google 员工父母如何用 Gemini 减轻育儿心智负担：包括生成含午睡时间和亲子友好餐厅的旅行行程、导入学校课程表生成测验帮孩子备考、用 Gemini 逐步追问引导解题等五种家庭场景。</description></item><item><title>Try these 3 Google AI tools to help find your next job.</title><link>https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools</link><guid isPermaLink="true">https://blog.google/products-and-platforms/products/gemini/find-job-with-google-ai-tools</guid><category>google-gemini</category><pubDate>2026-06-25</pubDate><description>谷歌推荐三款 AI 工具辅助求职：Career Dreamer 基于兴趣与经历头脑风暴目标岗位，NotebookLM 打磨简历与求职信、把过往经历串成连贯叙事，Gemini Live 进行面试模拟并提供实时反馈。整体覆盖找岗位、备材料、练面试的全流程。</description></item><item><title>5 ways to learn with study notebooks in the Gemini app</title><link>https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks</guid><category>google-gemini</category><pubDate>2026-06-25</pubDate><description>Google 在 Gemini app 推出 study notebooks 学习笔记本功能，将 Gemini 打造为交互式自适应学习平台。学生上传课程资料后，Gemini 生成诊断测验评估知识盲点，建立学业基线，再据实时强弱项生成定制化短课程与练习测验，并通过仪表盘追踪进度。学习中可随时提问，今夏将加入图表等视觉元素。</description></item><item><title>Building effective human-agent teams</title><link>https://claude.com/blog/building-effective-human-agent-teams</link><guid isPermaLink="true">https://claude.com/blog/building-effective-human-agent-teams</guid><category>claude-blog</category><pubDate>2026-06-24</pubDate><description>Anthropic 总结其内部数月实践,探讨从'单人单 Agent'向'人机协作团队'(multiplayer agents)的转变。这类 Agent 拥有独立 memory、skills 和不绑定人类的 credentials,常驻 Slack 等协作工具中。核心经验:公开透明地工作,以工作区级别的清晰安全边界取代逐条文档的软共享,让 context 自由流向所有人类与 AI 队友。</description></item><item><title>Introducing computer use in Gemini 3.5 Flash</title><link>https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash</link><guid isPermaLink="true">https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash</guid><category>deepmind-blog</category><pubDate>2026-06-24</pubDate><description>Google 将 computer use 能力原生内置进 Gemini 3.5 Flash，不再依赖独立的 2.5 computer use 模型。开发者可借此构建跨浏览器、移动、桌面环境的自定义 Agent，实现长程任务与企业级自动化（如持续软件测试、知识工作）。同时推出针对性对抗训练及两套企业安全防护：敏感操作需用户确认、检测到 prompt injection 自动中止，并倡导沙箱、人工复核等纵深防御。</description></item><item><title>Introducing computer use in Gemini 3.5 Flash</title><link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</guid><category>google-gemini</category><pubDate>2026-06-24</pubDate><description>Google 将 computer use 能力内置到 Gemini 3.5 Flash 主模型，取代独立的 2.5 computer use 模型。开发者可经 Gemini API 与企业平台构建跨浏览器、移动、桌面的智能体，胜任软件测试、企业自动化等长程任务。针对 prompt injection 风险，提供对抗训练及敏感操作确认、注入检测自动停止两套企业安全防护。</description></item><item><title>Introducing computer use in Gemini 3.5 Flash</title><link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash</guid><category>google-models-research</category><pubDate>2026-06-24</pubDate><description>Google 在 Gemini 3.5 Flash 中将 computer use 升级为内置工具，不再依赖独立的 2.5 模型。开发者可借此构建跨浏览器、移动、桌面的自定义 Agent，实现长程任务与企业自动化（如持续软件测试、知识工作）。同时针对 prompt injection 做对抗训练，并提供敏感操作确认、注入即停两套企业级防护。已通过 Gemini API 与企业 Agent 平台开放。</description></item><item><title>OpenAI and Broadcom unveil LLM-optimized inference chip</title><link>https://openai.com/index/openai-broadcom-jalapeno-inference-chip</link><guid isPermaLink="true">https://openai.com/index/openai-broadcom-jalapeno-inference-chip</guid><category>openai-news</category><pubDate>2026-06-24</pubDate><description>OpenAI 携手博通发布首款自研推理芯片 Jalapeño,为 LLM 推理从零设计,而非通用加速器改造。借 OpenAI 模型加速,仅九个月完成流片,早期测试显示每瓦性能大幅超越当前业界顶尖水平。芯片优化 kernel、内存搬运、网络与服务模式,工程样片已跑 GPT-5.3-Codex-Spark,将与微软等伙伴在 2026 年起以吉瓦级数据中心规模部署,标志 OpenAI 全栈战略延伸至硬件层。</description></item><item><title>Agent identity in Claude Tag: a new access model for autonomous, team-wide AI</title><link>https://claude.com/blog/agent-identity-access-model</link><guid isPermaLink="true">https://claude.com/blog/agent-identity-access-model</guid><category>claude-blog</category><pubDate>2026-06-24</pubDate><description>Anthropic 为 Claude Tag(多人协作场景)推出 agent identity 访问模型:Claude 不再借用某个用户的权限,而是以自身独立账号行事——在 Slack 以 Claude app 发言、以 Claude GitHub App 提 PR、用服务账号查数仓。管理员在 workspace 层定义身份(连接、仓库、connector、skills、standing instructions),各 channel 默认继承并可覆盖,权限从 per-user 转为 per-channel,撤销身份即全局断权,也杜绝共享频道成为私人文档的侧门。</description></item><item><title>Introducing Claude Tag</title><link>https://www.anthropic.com/news/introducing-claude-tag</link><guid isPermaLink="true">https://www.anthropic.com/news/introducing-claude-tag</guid><category>anthropic-news</category><pubDate>2026-06-23</pubDate><description>Anthropic 推出 Claude Tag，让 Claude 作为团队成员加入 Slack 频道，被 @Claude 标记即可委派任务。支持多人协作共享上下文、跨频道学习记忆、主动推送（ambient）和异步自主执行。权限按频道严格隔离，管理员可控工具访问与 token 预算。基于 Opus 4.8，面向 Enterprise/Team 客户 beta 开放，被视为 Claude Code 的演进。</description></item><item><title>The full Claude Desktop experience on AWS, Google Cloud, and Microsoft Foundry</title><link>https://claude.com/blog/the-full-claude-desktop-experience-on-aws-google-cloud-and-microsoft-foundry</link><guid isPermaLink="true">https://claude.com/blog/the-full-claude-desktop-experience-on-aws-google-cloud-and-microsoft-foundry</guid><category>claude-blog</category><pubDate>2026-06-22</pubDate><description>Anthropic 宣布通过 AWS、Google Cloud、Microsoft Foundry 部署的 Claude Desktop 现已开放完整体验，整合 chat、Claude Cowork 和 Claude Code 于一体。企业可在自有云环境内运行推理、本地存储对话历史，并支持按用户 SSO、MDM 策略模板、离线安装及可完全本地运行的 M365 连接器；chat/Cowork/Code 各有独立策略密钥，便于按角色分阶段放权。</description></item><item><title>Claude Code now supports artifacts</title><link>https://claude.com/blog/artifacts-in-claude-code</link><guid isPermaLink="true">https://claude.com/blog/artifacts-in-claude-code</guid><category>claude-blog</category><pubDate>2026-06-18</pubDate><description>Anthropic 为 Claude Code 推出 artifacts:可将会话工作进度沉淀为实时、可交互、可共享的网页(如 PR 走查、仪表盘、故障排查时间线、发布清单)。基于完整会话上下文(代码库、connectors、对话)自动构建,无需自行接数据源;每次发布生成同链接新版本并保留历史,默认私有、仅组织内成员可见,管理员可控访问与留存。</description></item><item><title>Centrally manage authorization for MCP connectors</title><link>https://claude.com/blog/enterprise-managed-auth</link><guid isPermaLink="true">https://claude.com/blog/enterprise-managed-auth</guid><category>claude-blog</category><pubDate>2026-06-18</pubDate><description>Anthropic 推出企业级集中管理 MCP connector 授权功能:管理员通过 IdP(首发支持 Okta)为全组织统一配置 connector,用户首次登录即自动按 IdP 群组/角色继承访问权限,实现零接触配置。这是 MCP 的 Enterprise-Managed Authorization 扩展首个实现,基于开放标准,可缩短 token 生命周期、随离职快速回收权限。首发支持 Asana、Atlassian、Canva、Figma、Linear、Supabase 等。</description></item><item><title>Steering Claude Code: CLAUDE.md files, skills, hooks, rules, subagents and more</title><link>https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more</link><guid isPermaLink="true">https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more</guid><category>claude-blog</category><pubDate>2026-06-18</pubDate><description>Anthropic 官方梳理了引导 Claude Code 行为的七种方法:CLAUDE.md 文件、rules、skills、subagents、hooks、output styles 和追加 system prompt。每种方法在加载时机、压缩(compaction)后的存续行为、上下文成本和权威性上各有差异。文章用表格对比并给出选型决策框架,帮助开发者判断每条指令应放在何处。</description></item><item><title>Anthropic opens Seoul office and announces new partnerships across the Korean AI ecosystem</title><link>https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem</link><guid isPermaLink="true">https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem</guid><category>anthropic-news</category><pubDate>2026-06-17</pubDate><description>Anthropic 在首尔设立办公室，并与韩国科技信通部签署 AI 安全合作备忘录。多家韩国企业深度采用 Claude：NAVER 全工程团队部署 Claude Code，Nexon、LG CNS、三星 SDS、韩华等大型集团及 Channel Corp 等创业公司广泛使用。同时与 KAIST 等高校联盟合作支持 AI 安全研究，并推出 Claude for Startups 及黑客松。</description></item><item><title>Claude Design now stays on brand for daily work</title><link>https://claude.com/blog/claude-design-stays-on-brand-for-daily-work</link><guid isPermaLink="true">https://claude.com/blog/claude-design-stays-on-brand-for-daily-work</guid><category>claude-blog</category><pubDate>2026-06-17</pubDate><description>Anthropic 升级 Claude Design：可跨项目锁定品牌设计系统（从 GitHub/设计文件导入组件并自动校验纠错），与 Claude Code 双向同步（/design-sync、/design），新增画布直接编辑、管理员锁定标准系统、共享用量额度，并支持导出 PDF/PPT 及接入 Canva、Figma 类工具与 Replit、Lovable、Vercel 等连接器。首周用户超百万。</description></item><item><title>Meet the winners of our Claude Opus 4.8 Build Day hackathon</title><link>https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon</link><guid isPermaLink="true">https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon</guid><category>claude-blog</category><pubDate>2026-06-17</pubDate><description>Anthropic 举办 Claude Opus 4.8 Build Day 黑客松,300+ 开发者 12 小时内用 Opus 4.8 完成 Demo。冠军 Tekton 用独立验证子 Agent 在隔离上下文窗口逐项打分、自纠错循环重建唐代建筑 3D 模型并溯源每个构件;亚军 Sim Francisco 基于人口普查数据构建旧金山合成人口数字孪生,可秒级民意模拟。</description></item><item><title>Secure access to the Claude Platform with Workload Identity Federation</title><link>https://claude.com/blog/workload-identity-federation</link><guid isPermaLink="true">https://claude.com/blog/workload-identity-federation</guid><category>claude-blog</category><pubDate>2026-06-17</pubDate><description>Anthropic 宣布 Claude Platform 的 Workload Identity Federation (WIF) 正式可用,用短时、限定作用域的临时凭证取代静态 API Key。兼容任意 OIDC 提供方(AWS IAM、GCP/K8s 服务账号、Azure 托管身份、GitHub Actions、Okta 等),覆盖全部 Claude API 端点及一方 SDK 与 Claude Code。同时引入服务账号,使每个 workload 拥有独立身份、角色与审计日志,并支持通过 Admin API 以最小权限、可编程方式管理联邦规则。</description></item><item><title>Agentic coding and persistent returns to expertise</title><link>https://www.anthropic.com/research/claude-code-expertise</link><guid isPermaLink="true">https://www.anthropic.com/research/claude-code-expertise</guid><category>anthropic-research</category><pubDate>2026-06-16</pubDate><description>Anthropic 基于约40万次 Claude Code 会话（2025.10-2026.04）的隐私保护分析：人类负责决策做什么（规划），Claude 负责怎么做（执行）。决定成败的是领域专业知识而非编码能力，各职业成功率接近软件工程师。7个月内调试占比降近半，使用转向部署、数据分析等端到端 agentic 场景，任务价值平均上升约25%。</description></item><item><title>Meet the winners of the Built with Opus 4.7 Claude Code hackathon</title><link>https://claude.com/blog/meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon</link><guid isPermaLink="true">https://claude.com/blog/meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon</guid><category>claude-blog</category><pubDate>2026-06-15</pubDate><description>Anthropic 公布 Built with Opus 4.7 Claude Code 黑客松获奖项目。一等奖 Medkit 用 Claude Managed Agents 构建医学住院医师模拟问诊训练工具,作者跨 4 个 Claude Code 会话并行开发、全程语音操作;二等奖 Wrench Board 借助 Opus 4.7 视觉识图能力辅助电子维修,用 Claude Design 出规格、多 Agent 并行调试。展现 Claude 作为思考伙伴而非单纯代码生成器的价值。</description></item><item><title>Statement on the US government directive to suspend access to Fable 5 and Mythos 5</title><link>https://www.anthropic.com/news/fable-mythos-access</link><guid isPermaLink="true">https://www.anthropic.com/news/fable-mythos-access</guid><category>anthropic-news</category><pubDate>2026-06-12</pubDate><description>美国政府以国家安全为由发布出口管制指令,要求 Anthropic 对所有客户禁用 Fable 5 与 Mythos 5,理由疑似存在越狱方法。Anthropic 声明该漏洞为已知小问题、其他公开模型同样可发现,坚持纵深防御策略,认为以窄域越狱为由召回服务数亿人的商用模型标准过严,正配合执行并争取尽快恢复访问。</description></item><item><title>TCS and Anthropic partner to bring Claude to regulated industries</title><link>https://www.anthropic.com/news/tcs-anthropic-partnership</link><guid isPermaLink="true">https://www.anthropic.com/news/tcs-anthropic-partnership</guid><category>anthropic-news</category><pubDate>2026-06-12</pubDate><description>TCS 与 Anthropic 达成合作：向自身 5 万名员工(覆盖 56 国)提供 Claude，并为金融、医疗、公共部门等受监管行业客户构建 Claude 驱动产品，同时加入 Claude Partner Network。TCS 将 Claude 打包成理赔、信贷顾问等行业方案，团队用 Claude Code 提效并向其生态贡献可复用 skills/plugins。印度为 Anthropic 第二大市场。</description></item><item><title>Results from the first Anthropic Public Record</title><link>https://www.anthropic.com/news/anthropic-public-record</link><guid isPermaLink="true">https://www.anthropic.com/news/anthropic-public-record</guid><category>anthropic-news</category><pubDate>2026-06-12</pubDate><description>Anthropic 首次面向公众的「Public Record」调查覆盖近5.2万美国人:48%最期待AI攻克癌症等疾病;64%最担忧AI致失业,其次是认知依赖(56%)和虚假信息(52%);超70%两党选民支持政府监管AI,仅15%信任AI公司自主决策。民众态度跨党派、地域高度一致,渴望红利又惧怕冲击,并要求企业担责。</description></item><item><title>DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on</title><link>https://www.anthropic.com/news/dxc-anthropic-alliance</link><guid isPermaLink="true">https://www.anthropic.com/news/dxc-anthropic-alliance</guid><category>anthropic-news</category><pubDate>2026-06-11</pubDate><description>Anthropic 与 IT 服务巨头 DXC 达成多年全球联盟，DXC 将培训数万名 Claude 认证的前沿部署工程师（FDE），把 Claude 嵌入银行、航空、保险等受监管行业的核心系统。DXC 已用 Claude 生成其 OASIS 托管平台 95% 以上代码，开发提速 10 倍，并将 Claude 设为默认基座模型，首批落地保险、遗留代码现代化、安全运营和应用服务四大领域。</description></item><item><title>Introducing Claude Corps</title><link>https://www.anthropic.com/news/claude-corps</link><guid isPermaLink="true">https://www.anthropic.com/news/claude-corps</guid><category>anthropic-news</category><pubDate>2026-06-11</pubDate><description>Anthropic 推出 Claude Corps，一项面向职业早期人才的全国性奖学金计划，投入 1.5 亿美元。将培训 1000 名 fellow 用好 Claude，全职派驻全美非营利组织一年，年薪 8.5 万美元并配额 token 预算。由 CodePath 任雇主、Social Finance 负责评估，旨在让 AI 红利普惠社区并缓解技术变革对就业的冲击。</description></item><item><title>The evolution of agentic surfaces: building with Claude Managed Agents</title><link>https://claude.com/blog/building-with-claude-managed-agents</link><guid isPermaLink="true">https://claude.com/blog/building-with-claude-managed-agents</guid><category>claude-blog</category><pubDate>2026-06-10</pubDate><description>Anthropic 推出 Claude Managed Agents——一套可组合的 API,将为 Claude 调优的 agent harness 与生产级基础设施(托管伸缩、会话管理、文件系统、凭证、可观测性)打包,让团队从原型到上线从数月缩短到数天。文章回顾了从 2023 年简单 API 到 Claude Code、Claude Agent SDK 再到 Managed Agents 的演进路径,主打免去自建 loop 与运维负担。</description></item><item><title>Claude Fable 5 and Claude Mythos 5</title><link>https://www.anthropic.com/news/claude-fable-5-mythos-5</link><guid isPermaLink="true">https://www.anthropic.com/news/claude-fable-5-mythos-5</guid><category>anthropic-news</category><pubDate>2026-06-09</pubDate><description>Anthropic 发布 Mythos 级模型 Claude Fable 5，能力全面领先，在软件工程、知识工作、视觉、长上下文等基准达 SOTA，含保守安全护栏（&lt;5% 会话回退至 Opus 4.8）；同步推出无护栏的 Mythos 5 供网络安全防御者通过 Project Glasswing 使用。定价 $10/$50 每百万 token。（注：6/12 已暂停访问）</description></item><item><title>New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults</title><link>https://claude.com/blog/whats-new-in-claude-managed-agents</link><guid isPermaLink="true">https://claude.com/blog/whats-new-in-claude-managed-agents</guid><category>claude-blog</category><pubDate>2026-06-09</pubDate><description>Anthropic 为 Claude Managed Agents 推出两项公测能力:一是定时部署(scheduled deployment),为 agent 配置 cron 计划,每次触发自动开新 session 完成任务,无需自建调度器,适用于夜间数据同步、每周合规扫描等周期任务;二是 vault 扩展支持环境变量,密钥仅在网络边界注入且限定可达域名,模型永远看不到真实 key,让 CLI(Browserbase、KERNEL、Notion 等)安全发起鉴权请求。</description></item><item><title>Introducing the OpenAI Economic Research Exchange</title><link>https://openai.com/index/introducing-the-openai-economic-research-exchange</link><guid isPermaLink="true">https://openai.com/index/introducing-the-openai-economic-research-exchange</guid><category>openai-news</category><pubDate>2026-06-08</pubDate><description>OpenAI推出经济研究交换平台，资助外部学者开展严谨的AI经济影响实证研究，项目需利用OpenAI工具并保障隐私，涵盖劳动、生产力、 inequality 等领域，申请截止2026年7月5日。
+
+## Full Text
+
+Introducing the OpenAI Economic Research Exchange | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+June 8, 2026
+Company
+Introducing the OpenAI Economic Research Exchange
+A new program to support rigorous external research on the economic impacts of AI.
+Request for proposals
+Submit a proposal
+Loading…
+Share
+AI is reshaping how people work, how businesses operate, and how ideas are created and shared. Understanding those changes will require more than anecdotes. It will require rigorous empirical research, grounded in real-world evidence and pursued by a broad community of researchers.
+Today, OpenAI is launching the OpenAI Economic Research Exchange, a new platform to support high-impact external research on the economic effects of AI. Through the Exchange, selected researchers will conduct research through structured, project-based collaborations with OpenAI Economic Research, with the goal of producing credible, independent evidence on how AI is affecting workers, firms, institutions, and the broader economy.
+We are seeking projects that address important questions regarding the economic impacts of AI. Proposals should explain how carefully governed, privacy-protected use of OpenAI tools can help answer these questions. The goal is to enable rigorous and credible research that would extend beyond traditional datasets alone, by utilizing OpenAI Tools and datasets. And this while maintaining clear safeguards for user privacy and responsible data use.
+Selected researchers will undertake carefully scoped projects with defined milestones, data governance, and review processes. We welcome proposals from researchers with strong empirical skills and relevant expertise in applied causal inference, measurement, labor economics, productivity, firms, education, entrepreneurship, public finance, regional economics, development, inequality, or related fields.
+The Exchange builds on OpenAI’s broader efforts to improve measurement of AI’s economic effects, including OpenAI Signals. By supporting a portfolio of external research collaborations, we hope to expand the evidence base available to researchers, policymakers, businesses, and the public as they navigate a period of rapid technological change.
+Proposals will be evaluated based on methodological rigor, feasibility, fit with Exchange priorities, clear milestones, and the potential to contribute credible external evidence on AI's economic impacts.
+For more information about the application process, see the Request for Proposals
+here
+or contact
+econresearch@openai.com
+⁠
+. Applications are now open
+here
+and will close July 5, 2026. We will review submissions and notify selected researchers by July 31, 2026.
+Economic Research
+2026
+Author
+OpenAI
+Keep reading
+View all
+Apple is getting this wrong
+Company
+Aug 3, 2026
+Continuous voice interaction with GPT Live
+Engineering
+Aug 3, 2026
+Building abundant intelligence
+Company
+Jul 31, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Paving the way for agents in biology</title><link>https://www.anthropic.com/research/agents-in-biology</link><guid isPermaLink="true">https://www.anthropic.com/research/agents-in-biology</guid><category>anthropic-research</category><pubDate>2026-06-08</pubDate><description>Anthropic 研究指出生物数据基础设施对 AI agent 不友好，如同为马车设计的古城难走汽车。实验让 Claude、Biomni、GPT 等科研 agent 从 NCBI Virus 检索序列数据，准确率均不达标；引入 gget virus 确定性检索层后准确率升至近 100%。结论：确定性检索工具是当前 agent 工作流可靠性的关键，生物数据库需面向 agent 重新设计。</description></item><item><title>Measuring LLMs’ impact on N-day exploits</title><link>https://www.anthropic.com/research/n-days</link><guid isPermaLink="true">https://www.anthropic.com/research/n-days</guid><category>anthropic-research</category><pubDate>2026-06-08</pubDate><description>Anthropic 红队评估 LLM 对 N-day 漏洞利用的加速作用。N-day 指已公开补丁但部分设备未修复的漏洞,攻击者可通过 patch diffing 逆向定位漏洞。最强模型 Mythos Preview 在 18 个 Firefox 补丁中自主构建 8 个可执行漏洞利用,在 21 个 Windows 内核补丁中产出 8 条完整提权链(从低权限到 SYSTEM)。从 Opus 4.5 到 4.8,可生成 PoC 的补丁数从 2 增至 11。结论:patch gap 期内的威胁已大幅升级,防御方应加快补丁部署。</description></item><item><title>Observability for developers building connectors</title><link>https://claude.com/blog/observability-for-developers-building-connectors</link><guid isPermaLink="true">https://claude.com/blog/observability-for-developers-building-connectors</guid><category>claude-blog</category><pubDate>2026-06-08</pubDate><description>Anthropic 为 Claude 连接器（基于 MCP 构建）开发者上线可观测性看板：可追踪活跃用户、工具调用量、目录排名，查看健康分、错误率与延迟（含按工具的错误拆解），并按 Claude、Claude Code、Cowork 等产品维度分解使用情况。当前为公测，需 Team/Enterprise 的 Admin 权限。同时支持在 Claude 应用内直接向目录提交 MCP server，目录现有超 300 个第三方连接器。</description></item><item><title>Building intelligent apps for Apple platforms with Claude in the Foundation Models framework</title><link>https://claude.com/blog/claude-for-foundation-models</link><guid isPermaLink="true">https://claude.com/blog/claude-for-foundation-models</guid><category>claude-blog</category><pubDate>2026-06-08</pubDate><description>Anthropic 发布 Swift 包，让 Apple 开发者通过其 Foundation Models 框架调用 Claude。本地端模型负责摘要、提取等快速任务，并借 @Generable 输出类型化 Swift 值作为干净输入，需多步推理、代码生成、联网搜索或代码执行时无缝交接给 Claude，支持流式响应与工具调用回流至同一 SwiftUI 视图。覆盖 iOS/iPadOS/macOS/visionOS/watchOS 27。</description></item><item><title>Making Claude a chemist</title><link>https://www.anthropic.com/research/making-claude-a-chemist</link><guid isPermaLink="true">https://www.anthropic.com/research/making-claude-a-chemist</guid><category>anthropic-research</category><pubDate>2026-06-05</pubDate><description>Anthropic 启动让 Claude 成为化学家的项目，首篇白皮书聚焦 NMR 谱图分析。借助多模态与显式推理能力，前沿模型可直接读取期刊图中的化学结构、解析实验方法段落，并展示可审计的推理步骤。团队用三款 Claude 模型（Opus 4.7/4.6、Sonnet 4.6）对比 ChemDraw 与 MestReNova，在训练截止后的 20 个新化合物上测试 NMR 正向预测，并尝试更难的逆向结构解析任务。</description></item><item><title>How one Anthropic seller rebuilt his team's workflows with Claude Code</title><link>https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering</link><guid isPermaLink="true">https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering</guid><category>claude-blog</category><pubDate>2026-06-05</pubDate><description>Anthropic 销售经理 Jared Sires 入职前从未写过代码,借助 Claude Code 打造了 CLAFTS——一个嵌入 Gmail、调用 Claude API 按本人语气起草客户回复邮件的工具,每天省 2-3 小时,4300 行代码几乎全由 Claude Code 生成。他还做了账户增长排名简报、通话前背调、会议纪要生成跟进邮件等工具,并打包成 Claude Cowork 插件供整个销售团队使用,从 AE 转岗为 GTM 产品经理。</description></item><item><title>The Claude Cowork product guide</title><link>https://claude.com/blog/the-claude-cowork-product-guide</link><guid isPermaLink="true">https://claude.com/blog/the-claude-cowork-product-guide</guid><category>claude-blog</category><pubDate>2026-06-05</pubDate><description>Anthropic 发布 Claude Cowork 产品指南。Cowork 是运行在桌面端的知识工作 Agent,可读写本地文件、跨 Slack/Google Drive 等应用协作,并把多步任务执行到交付物(附带文件与消息引用)。指南给出产品矩阵(chat 对话草拟、Claude Code 编码、Cowork 跨应用知识工作)、权限模型、7 个常见工作流及插件用法。</description></item><item><title>Introducing the Services Track and Partner Hub of the Claude Partner Network</title><link>https://www.anthropic.com/news/services-track-partner-hub</link><guid isPermaLink="true">https://www.anthropic.com/news/services-track-partner-hub</guid><category>anthropic-news</category><pubDate>2026-06-03</pubDate><description>Anthropic 宣布 Claude 合作伙伴网络新增「服务等级」(Services Track) 与「合作伙伴中心」(Partner Hub)。服务等级按已认证人数、生产部署客户数、公开案例分为 Select/Preferred/Global Premier 三档。3 月推出该网络以来，超 4 万家公司申请、1 万多名顾问获认证，埃森哲、德勤、PwC 等巨头大规模培训员工落地 Claude。Partner Hub 提供每日刷新的资质看板及公开目录，并支持 MCP connector 直接在 Claude 内查询合作进展。</description></item><item><title>What we learned mapping a year’s worth of AI-enabled cyber threats</title><link>https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack</link><guid isPermaLink="true">https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack</guid><category>anthropic-news</category><pubDate>2026-06-03</pubDate><description>Anthropic 分析了 2025.3-2026.3 间因恶意网络活动被封的 832 个账户,映射到 MITRE ATT&amp;CK 框架。三大发现:攻击者将 AI 用于横向移动、账户发现等攻击后期复杂阶段,使低技能者也能实施高危操作;中高危攻击者占比从 33% 升至 56%;靠技术数量评估威胁已失效,真正区分高危的是能让模型自主串联攻击链的脚手架架构,而 MITRE ATT&amp;CK 尚未涵盖这类自主智能体行为。</description></item><item><title>Mapping AI-enabled cyber threats: Insights from the LLM ATT&amp;CK Navigator</title><link>https://www.anthropic.com/research/attack-navigator</link><guid isPermaLink="true">https://www.anthropic.com/research/attack-navigator</guid><category>anthropic-research</category><pubDate>2026-06-03</pubDate><description>Anthropic 联合 Verizon 发布报告，将一年内 832 个被封禁的恶意账号映射到 MITRE ATT&amp;CK 框架。这些账号覆盖全部 14 类战术、482 个子技术。中高风险攻击者占比半年内从 33% 升至 56%，AI 正让低技能攻击者也能完成完整 killchain。最大差异不再是技术水平，而是 agentic scaffolding 带来的自主编排能力，而现有 ATT&amp;CK 框架尚未覆盖这类自主行为。</description></item><item><title>How Anthropic enables self-service data analytics with Claude</title><link>https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude</link><guid isPermaLink="true">https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude</guid><category>claude-blog</category><pubDate>2026-06-03</pubDate><description>Anthropic 分享内部用 Claude 实现自助式商业数据分析的实践:95% 的分析查询已自动化,聚合准确率约 95%,让数据团队转向因果建模、预测等战略工作。核心观点是分析准确性是上下文与验证问题,而非代码生成问题——与编程不同,分析往往只有唯一正确答案且无确定性验证方式。三大失败模式:概念与实体映射歧义、数据陈旧、检索失败。文中介绍了应对这些问题的 agentic 分析技术栈及 skills 模板。</description></item><item><title>ChatGPT Sites</title><link>https://openai.com/academy/chatgpt-sites</link><guid isPermaLink="true">https://openai.com/academy/chatgpt-sites</guid><category>openai-news</category><pubDate>2026-06-02</pubDate><description>ChatGPT Sites 允许用户通过自然语言描述，利用 Codex 创建并部署内部网站或轻应用，适用于团队协作场景，无需编程。
 
 ## Full Text
 

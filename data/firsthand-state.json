@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 107,
+    "known_urls_count": 109,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -50,9 +50,11 @@
       "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
       "https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case",
       "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
-      "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude"
+      "https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude",
+      "https://claude.com/blog/claude-enterprise-inference-hooks",
+      "https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude"
     ],
-    "last_new_article": "2026-08-05T08:17:48+08:00"
+    "last_new_article": "2026-08-06T21:35:42+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -141,7 +143,7 @@
       "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
       "https://www.anthropic.com/news/tino-cuellar"
     ],
-    "known_urls_count": 63,
+    "known_urls_count": 65,
     "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "transformer-circuits": {
@@ -1323,7 +1325,7 @@
       "https://openai.com/index/learn-teach-chatgpt-work-codex"
     ],
     "initialized": true,
-    "known_urls_count": 1209,
+    "known_urls_count": 1219,
     "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "deepmind-blog": {
@@ -1439,11 +1441,12 @@
       "https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber",
       "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots",
       "https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control",
-      "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration"
+      "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration",
+      "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones"
     ],
     "initialized": true,
     "known_urls_count": 124,
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "last_new_article": "2026-08-06T21:35:42+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1480,11 +1483,12 @@
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana",
       "https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026",
-      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026"
+      "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026",
+      "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2-cyclones"
     ],
     "initialized": true,
-    "known_urls_count": 46,
-    "last_new_article": "2026-08-05T08:17:48+08:00"
+    "known_urls_count": 50,
+    "last_new_article": "2026-08-06T21:35:42+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1536,7 +1540,7 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026"
     ],
     "initialized": true,
-    "known_urls_count": 68,
+    "known_urls_count": 72,
     "last_new_article": "2026-08-05T08:17:48+08:00"
   },
   "qwen-blog": {
