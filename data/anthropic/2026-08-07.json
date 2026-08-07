@@ -1,0 +1,18 @@
+{
+  "vendor": "anthropic",
+  "date": "2026-08-07",
+  "cnDate": "8月7日 周五",
+  "edition": "VOL.219",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "开发者",
+      "title": "Claude Code发布2.1.224：持续滚动更新",
+      "summary": "Anthropic旗下Claude Code发布2.1.224，这是8月7日的最新官方版本。此次动态本身未公布大功能摘要，使用者可直接查看Release notes并升级验证，持续滚动交付仍是其开发者工具的主要节奏。",
+      "source": "https://github.com/anthropics/claude-code/releases/tag/v2.1.224"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

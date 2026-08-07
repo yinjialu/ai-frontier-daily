@@ -1,0 +1,24 @@
+{
+  "vendor": "gemini",
+  "date": "2026-08-07",
+  "cnDate": "8月7日 周五",
+  "edition": "VOL.219",
+  "brand": "AI 前哨 · 每日 Gemini",
+  "updates": [
+    {
+      "tag": "生态",
+      "title": "Google展示5位开发者如何用Gemini Omni做产品",
+      "summary": "Google公布5位开发者使用Gemini Omni构建的项目案例，展示模型从多模态理解到实际产品原型的落地路径。对开发者而言，这批案例比单纯能力宣传更有参考价值，可作为设计新应用和验证工作流的灵感样本。",
+      "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders/"
+    },
+    {
+      "tag": "研究",
+      "title": "Google DeepMind发布WeatherNext气旋预测进展",
+      "summary": "Google DeepMind介绍WeatherNext在气旋预测上的最新进展，目标是用AI提升对极端天气路径和强度的预报能力。此类模型把生成式预测推向气象业务场景，重点价值在于更快地产出可用预报信息。",
+      "source": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

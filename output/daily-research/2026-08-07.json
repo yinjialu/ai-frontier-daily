@@ -1,0 +1,116 @@
+{
+  "coverage_version": 1,
+  "date": "2026-08-07",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [
+        {
+          "queries": ["Anthropic official news August 5-7 2026", "Claude Code releases August 5-7 2026"],
+          "sources": ["https://www.anthropic.com/news", "https://github.com/anthropics/claude-code/releases.atom"]
+        }
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 2
+      }
+    },
+    "openai": {
+      "official_search": [
+        {
+          "queries": ["OpenAI official news August 5-7 2026", "OpenAI RSS August 6 2026"],
+          "sources": ["https://openai.com/news/rss.xml", "https://developers.openai.com/api/docs/changelog"]
+        }
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 5
+      }
+    },
+    "gemini": {
+      "official_search": [
+        {
+          "queries": ["Google Gemini official news August 5-7 2026", "Google DeepMind official news August 5-7 2026"],
+          "sources": ["https://blog.google/products/gemini/rss/", "https://deepmind.google/blog/rss.xml"]
+        }
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 2
+      }
+    },
+    "nvidia": {
+      "official_search": [
+        {
+          "queries": ["NVIDIA official AI news August 5-7 2026", "NVIDIA technical blog August 5-7 2026"],
+          "sources": ["https://blogs.nvidia.com/feed/", "https://developer.nvidia.com/blog/feed"]
+        }
+      ],
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    },
+    "cn": {
+      "official_search": {
+          "DeepSeek": {
+          "queries": ["DeepSeek 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "通义千问": {
+          "queries": ["通义千问 Qwen 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "智谱": {
+          "queries": ["智谱 GLM 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "Kimi": {
+          "queries": ["Kimi 月之暗面 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "豆包": {
+          "queries": ["豆包 火山方舟 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "文心": {
+          "queries": ["文心 千帆 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "混元": {
+          "queries": ["腾讯混元 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "MiniMax": {
+          "queries": ["MiniMax 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "阶跃星辰": {
+          "queries": ["阶跃星辰 StepFun 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "百川": {
+          "queries": ["百川智能 Baichuan 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "零一万物": {
+          "queries": ["零一万物 01.AI 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        },
+          "百灵": {
+          "queries": ["蚂蚁百灵 inclusionAI 官方 2026-08-05 2026-08-06 2026-08-07 发布 更新"],
+          "sources": ["none-found"]
+        }
+      },
+      "firsthand_query": {
+        "command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs",
+        "status": "completed",
+        "candidate_count": 0
+      }
+    }
+  }
+}
