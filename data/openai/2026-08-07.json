@@ -1,0 +1,24 @@
+{
+  "vendor": "openai",
+  "date": "2026-08-07",
+  "cnDate": "8月7日 周五",
+  "edition": "VOL.219",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "模型发布",
+      "title": "GPT-5.6 Sol更新，Luna向免费用户扩大开放",
+      "summary": "OpenAI更新ChatGPT中的GPT-5.6 Sol，强调更聚焦的回答、更可靠的事实处理，并新增思考强度滑块；免费用户默认模型逐步切换到GPT-5.6 Luna，并获得无限文本对话和Think按钮，模型能力继续向更广人群下沉。",
+      "source": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt"
+    },
+    {
+      "tag": "安全",
+      "title": "OpenAI与APA合作推进青少年AI心理健康安全",
+      "summary": "OpenAI宣布与美国心理学会合作，把发展心理学和临床经验引入青少年AI使用研究，计划为家长、临床医生和学校心理人员提供资源，并听取青少年意见，帮助产品建立更符合年龄特点的安全边界。",
+      "source": "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

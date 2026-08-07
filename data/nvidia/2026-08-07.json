@@ -1,0 +1,24 @@
+{
+  "vendor": "nvidia",
+  "date": "2026-08-07",
+  "cnDate": "8月7日 周五",
+  "edition": "VOL.219",
+  "brand": "AI 前哨 · 每日 NVIDIA",
+  "updates": [
+    {
+      "tag": "研究",
+      "title": "NVIDIA解析开放世界模型如何推进Physical AI",
+      "summary": "NVIDIA介绍开放世界模型在Physical AI中的作用：让系统从更丰富的视觉与环境数据中学习，并为机器人和仿真提供可扩展的世界建模能力。文章把模型、数据和交互闭环放在一起，呈现下一阶段具身智能的工程方向。",
+      "source": "https://blogs.nvidia.com/blog/open-world-models-physical-ai/"
+    },
+    {
+      "tag": "模型发布",
+      "title": "Alpamayo 2 Super开放模型正式商用",
+      "summary": "NVIDIA宣布面向自动驾驶出租车的开放模型Alpamayo 2 Super可用于商业场景，并同步介绍其在机器人驾驶数据、推理轨迹和自动标注上的用途。对开发者而言，重点是从研究模型走向可部署的车辆研发流程。",
+      "source": "https://blogs.nvidia.com/blog/alpamayo-2-super-open-model-now-available/"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
