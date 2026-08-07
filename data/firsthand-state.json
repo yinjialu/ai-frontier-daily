@@ -141,10 +141,11 @@
       "https://www.anthropic.com/news/position-open-weights-models",
       "https://www.anthropic.com/news/cognizant-anthropic",
       "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
-      "https://www.anthropic.com/news/tino-cuellar"
+      "https://www.anthropic.com/news/tino-cuellar",
+      "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards"
     ],
     "known_urls_count": 65,
-    "last_new_article": "2026-08-05T08:17:48+08:00"
+    "last_new_article": "2026-08-07T11:13:04+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1328,7 +1329,7 @@
       "https://openai.com/index/how-the-world-is-putting-chatgpt-to-work"
     ],
     "initialized": true,
-    "known_urls_count": 1219,
+    "known_urls_count": 1222,
     "last_new_article": "2026-08-07T07:57:42+08:00"
   },
   "deepmind-blog": {
@@ -1544,7 +1545,7 @@
       "https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips"
     ],
     "initialized": true,
-    "known_urls_count": 72,
+    "known_urls_count": 73,
     "last_new_article": "2026-08-07T07:57:42+08:00"
   },
   "qwen-blog": {
