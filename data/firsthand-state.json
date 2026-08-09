@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 113,
+    "known_urls_count": 116,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -1334,7 +1334,7 @@
       "https://openai.com/index/hsp-gruppe"
     ],
     "initialized": true,
-    "known_urls_count": 1225,
+    "known_urls_count": 1227,
     "last_new_article": "2026-08-09T11:12:08+08:00"
   },
   "deepmind-blog": {
@@ -1497,7 +1497,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders"
     ],
     "initialized": true,
-    "known_urls_count": 52,
+    "known_urls_count": 53,
     "last_new_article": "2026-08-09T11:12:08+08:00"
   },
   "google-gemini": {
@@ -1552,7 +1552,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders"
     ],
     "initialized": true,
-    "known_urls_count": 74,
+    "known_urls_count": 75,
     "last_new_article": "2026-08-09T11:12:08+08:00"
   },
   "qwen-blog": {
