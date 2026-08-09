@@ -1,0 +1,55 @@
+{
+  "coverage_version": 1,
+  "date": "2026-08-09",
+  "timezone": "Asia/Shanghai",
+  "vendors": {
+    "anthropic": {
+      "official_search": [
+        {"queries": ["site:anthropic.com/news OR site:claude.com/blog Anthropic August 8 2026 OR August 9 2026"], "sources": ["https://www.anthropic.com/news", "https://claude.com/blog-category/announcements"]},
+        {"queries": ["Claude Code self-hosted environments August 6 2026"], "sources": ["https://claude.com/blog/run-claude-code-sessions-on-your-own-compute"]},
+        {"queries": ["Claude Code auto mode default August 7 2026"], "sources": ["https://claude.com/blog/auto-mode-default-in-claude-code"]},
+        {"queries": ["Anthropic Fable 5 biology safeguards August 7 2026"], "sources": ["https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards"]}
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor anthropic --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 4}
+    },
+    "openai": {
+      "official_search": [
+        {"queries": ["site:openai.com/index OR site:openai.com/news OpenAI August 8 2026 OR August 9 2026"], "sources": ["https://openai.com/news/rss.xml"]},
+        {"queries": ["OpenAI critical cyber capabilities August 7 2026"], "sources": ["https://openai.com/index/responding-next-frontier-critical-cyber-capabilities"]},
+        {"queries": ["OpenAI GPT-5.6 Sol August 6 2026", "OpenAI APA youth mental health August 6 2026"], "sources": ["https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt", "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai"]}
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor openai --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 5}
+    },
+    "gemini": {
+      "official_search": [
+        {"queries": ["site:blog.google OR site:deepmind.google Gemini Google AI August 8 2026 OR August 9 2026"], "sources": ["https://blog.google/products/gemini/rss/"]},
+        {"queries": ["Gemini Omni builders August 7 2026"], "sources": ["https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders"]},
+        {"queries": ["Gemini vacation itineraries August 6 2026"], "sources": ["https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips"]}
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor gemini --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 2}
+    },
+    "nvidia": {
+      "official_search": [
+        {"queries": ["site:nvidianews.nvidia.com OR site:blogs.nvidia.com OR site:developer.nvidia.com NVIDIA AI August 8 2026 OR August 9 2026"], "sources": ["https://nvidianews.nvidia.com/releases.xml", "https://blogs.nvidia.com/feed/", "https://developer.nvidia.com/blog/feed"]}
+      ],
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor nvidia --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 0}
+    },
+    "cn": {
+      "official_search": {
+        "DeepSeek": {"queries": ["DeepSeek 2026年8月9日 OR 2026年8月8日 官方 动态 模型 发布"], "sources": ["https://www.deepseek.com/transparency/"]},
+        "通义千问": {"queries": ["通义千问 2026年8月9日 OR 2026年8月8日 官方 动态 模型 发布"], "sources": ["https://platform.qianwenai.com/docs/changelog/models"]},
+        "智谱": {"queries": ["智谱 GLM 2026年8月9日 OR 2026年8月8日 官方 动态 模型 发布"], "sources": ["https://docs.bigmodel.cn/cn/update/new-releases"]},
+        "Kimi": {"queries": ["Kimi 月之暗面 2026年8月9日 OR 2026年8月8日 官方 动态 模型 发布"], "sources": ["https://www.kimi.com/zh-tw/ai-models/kimi-k2-5"]},
+        "豆包": {"queries": ["豆包 2026年8月9日 OR 2026年8月8日 官方 动态 AI"], "sources": ["none-found"]},
+        "文心": {"queries": ["文心 2026年8月9日 OR 2026年8月8日 官方 动态 AI"], "sources": ["none-found"]},
+        "混元": {"queries": ["混元 2026年8月9日 OR 2026年8月8日 官方 动态 AI"], "sources": ["https://cloud.tencent.cn/document/product/1729/97765"]},
+        "MiniMax": {"queries": ["MiniMax 2026年8月9日 OR 2026年8月8日 官方 动态 模型"], "sources": ["https://platform.minimaxi.com/docs/release-notes/models"]},
+        "阶跃星辰": {"queries": ["阶跃星辰 2026年8月9日 OR 2026年8月8日 官方 动态 AI 模型"], "sources": ["none-found"]},
+        "百川": {"queries": ["百川智能 2026年8月9日 OR 2026年8月8日 官方 动态 AI 模型"], "sources": ["none-found"]},
+        "零一万物": {"queries": ["零一万物 2026年8月9日 OR 2026年8月8日 官方 动态 AI 模型"], "sources": ["none-found"]},
+        "百灵": {"queries": ["蚂蚁百灵 2026年8月9日 OR 2026年8月8日 官方 动态 AI 模型"], "sources": ["https://developer.ant-ling.com/zh-CN/docs/getting-started/changelog/"]}
+      },
+      "firsthand_query": {"command": "python3 -m scripts.firsthand.query --vendor cn --days 2 --json --include-open-prs", "status": "completed", "candidate_count": 0}
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "vendor": "anthropic",
+  "date": "2026-08-09",
+  "cnDate": "8月9日 周日",
+  "edition": "VOL.221",
+  "brand": "AI 前哨 · 每日 Anthropic",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "Claude Code开放自托管运行环境公测",
+      "summary": "Anthropic开放Claude Code自托管环境公测，Team和Enterprise用户可把会话运行在自有基础设施内，接入内网服务、定制工具链并保留源码与构建产物。对企业来说，合规和网络控制更灵活，但需要自行维护runner与调度系统。",
+      "source": "https://claude.com/blog/run-claude-code-sessions-on-your-own-compute",
+      "candidate_ref": "firsthand/2026-08-09"
+    },
+    {
+      "tag": "开发者",
+      "title": "Claude Code将在多档套餐默认启用Auto mode",
+      "summary": "Claude Code宣布从8月14日起在Pro、Max和Team套餐默认启用Auto mode，由安全分类器拦截高风险命令、减少逐条审批。Enterprise与API暂保持主动开启，开发团队需要重新评估自动执行带来的权限与审计边界。",
+      "source": "https://claude.com/blog/auto-mode-default-in-claude-code",
+      "candidate_ref": "firsthand/2026-08-09"
+    },
+    {
+      "tag": "安全",
+      "title": "Anthropic更新Fable 5生物安全防护",
+      "summary": "Anthropic称更新后的生物安全分类器让Fable 5在各产品中的生物学相关回退减少约85%，日常健康与教育问题可获得更强模型支持；病毒学、毒理学和药物设计等双用研究仍会回退到Opus 5，安全边界并未全面放开。",
+      "source": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+      "candidate_ref": "firsthand/2026-08-09"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}

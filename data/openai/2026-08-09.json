@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026-08-09",
+  "cnDate": "8月9日 周日",
+  "edition": "VOL.221",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "安全",
+      "title": "OpenAI回应下一代关键网络能力安全挑战",
+      "summary": "OpenAI发布对下一代关键网络能力的安全响应，强调将通过能力评估、滥用监测与防护措施应对模型在网络安全领域的双重用途风险。对开发者而言，前沿网络能力的开放速度会继续与访问控制、红队测试和事件响应绑定。",
+      "source": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities",
+      "candidate_ref": "firsthand/2026-08-09"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注模型、产品与开发者生态的真实变化",
+  "outroCta": "关注 · 不错过任何更新"
+}
