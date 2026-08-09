@@ -1,5 +1,2898 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-08-05T08:17:48+08:00</lastBuildDate><item><title>A guide to cost visibility and control in Claude</title><link>https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude</link><guid isPermaLink="true">https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude</guid><category>claude-blog</category><pubDate>2026-08-04</pubDate><description>介绍Claude企业版成本可见性与控制指南，强调以“成本/结果”而非Token衡量价值，通过模型选择、访问门控、模型控制、硬性消费上限及用量分析等工具优化AI支出，并提供分步实施建议。
+<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-08-07T11:13:04+08:00</lastBuildDate><item><title>Improving Fable 5's biology safeguards</title><link>https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</link><guid isPermaLink="true">https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</guid><category>anthropic-news</category><pubDate>2026-08-07</pubDate><description>Anthropic更新Claude Fable 5的生物安全防护，显著减少约85%的生物学相关回退，扩大日常健康与教育场景的可用性，但涉及病毒学、毒理学等双用领域仍回退至Opus 5。文章强调平衡生物医学收益与滥用风险，并持续完善分类器与可信访问路径。
+
+## Full Text
+
+Improving Fable 5 Safeguards \ Anthropic
+Skip to main content
+Skip to footer
+Research
+Policy
+Commitments
+Learn
+News
+Try Claude
+Product
+Announcements
+Improving Fable 5's biology safeguards
+Aug 7, 2026
+We’re making updates to Claude Fable 5’s biology safeguards in a way that substantially reduces false positives. Fable 5 users will now experience many fewer “fallbacks”—where the system switches to a less capable model after they make a biology-related query. In our testing, this update reduced
+biology-related
+fallbacks by about 85% across our product surfaces.
+1
+Fable 5 will thus be able to assist with a wider range of biology tasks.
+In practice, users should see far fewer fallbacks on everyday health and educational questions—for example, interpreting lab results, understanding symptoms, and learning about biology in an educational context. Healthcare professionals will be able to receive more support from Fable 5 on clinical tasks.
+We believe the greatest opportunity for AI to positively affect the world is in biology and medicine, and we're investing significantly in building a responsible way to give biologists frontier access. Today, Fable still falls back to Opus 5 for requests we consider dual-use—including virology, toxicology, and molecular design—so it isn't yet usable for professional biology research and drug development. We're committed to closing that gap through trusted access pathways for frontier biology capabilities.
+Why we built strong biology safeguards
+Our objective is to get Fable 5’s frontier capabilities into the hands of as many of our users as possible, as quickly as possible. However, to do so, we need to manage the increasing risks that come with models this capable. One such risk is in the field of biology: Fable 5 can now outperform experts on some highly complex biological tasks and provide operational support on others. That means that it can provide genuine assistance to a researcher developing a new medical treatment (which is the reason we’re so keen to widen access to the model via both classifier improvements and trusted access programs). But in the wrong hands, those same capabilities could be used by a malicious actor, for example in developing a biological weapon. Our
+capability assessments
+show that Fable 5 could provide significant
+uplift
+to such an actor—that is, it could provide them with capabilities they could not find anywhere else.
+It’s often difficult to tell apart beneficial and harmful uses of AI in biology. For example, in some cases researching a treatment for a disease requires scientists to produce the dangerous compounds that
+cause
+that disease in the first place. This is most obvious for live vaccines, which require scientists to grow the same pathogen they’re aiming to prevent. It’s also the case for some medicines. To develop the drug captopril, which treats hypertension, scientists isolated toxic components of snake venom that crash blood pressure in humans. As new biological capabilities develop on the frontier of AI, we need to be cautious to ensure that the new risks they pose do not materialize ahead of their potential scientific benefits.
+Sophisticated actors who wish to use our models to do harm know how to exploit this ambiguity to obscure their intent, making dangerous tasks look like ordinary research pursuits. The US Intelligence Community’s
+2026 Annual Threat Assessment
+makes clear that such actors exist, and that advances in biotechnology including synthetic biology and genomic editing
+“could lead to novel biological threats.”
+It notes that several state actors likely maintain active offensive biological and chemical weapons programs—programs that could be accelerated by access to the raw capabilities of frontier AI models.
+Because of our concerns about these “dual-use” capabilities (those that could be used for beneficial or harmful purposes, and where the line between them is not always easy to draw), we intentionally launched Fable 5 with almost all biology queries blocked. This enabled us to make the model available for users in other domains. We knew this would be frustrating for legitimate biology users: it would result in a high number of false positives in the near term, where users asking biology-related questions would have their requests blocked and sent to a less capable model. Nevertheless, we chose to make this tradeoff because the cost of Fable being misused in a dual-use domain like biology could potentially be
+catastrophic
+.
+How our biology safeguards work
+One of the core ways we protect against misuse in biology is via safety
+classifiers:
+smaller, automated AI systems that detect when Fable 5 is asked to perform a safeguarded biology task, or produce a harmful output (we've
+previously written
+about our similar classifiers in the domain of cybersecurity).
+In the case of Fable 5, when a classifier fires, the model re-routes the user’s request to Opus 5, a capable model that does not have the same level of biological capability as Fable 5 and which cannot provide as much assistance to a malicious user. This is the fallback that users see when their requests are blocked.
+Developing precise, robust classifiers is not a straightforward task. For a classifier to work rapidly and consistently, it has to learn the difference between what we consider “in scope” and “out of scope” for the topics and queries we consider to be potentially harmful. It takes time and iteration to tune the classifiers, avoiding both false positives (where classifiers fire on out-of-scope content) and false negatives (where in-scope content is missed). We also require our classifiers to be robust to attempts to bypass them (known as jailbreaks), which requires even further research and testing.
+Starting with a very broad biology classifier meant that we could give our users access to Fable 5 while we continued our research aimed at refining it. The alternative—holding back the model until much more safeguards progress was made—would have delayed the model’s general access, and its potential benefits to our users, by weeks or months.
+Over the past several weeks, we've carefully rewritten the classifier’s constitution (which consists of a collection of rules to help the model discern between safeguarded and allowed content), taking care to carve out benign uses in detail. We solicited feedback on the changes from a diverse range of experts (both internal and external to Anthropic). We then developed updated training data for the classifier based on that constitution, and retrained it, and verified the new classifier would still generally trigger for harmful and dual-use research biology content but would now enable a wider range of benign and beneficial uses.
+As is illustrated in the diagram below, these updates meant that—compared to at the time of Fable 5’s launch—the classifier will trigger for many fewer benign biology-related requests.
+Illustration of our biology classifiers. Content that falls on the left-hand side of the classifier boundary is allowed; content that falls on the right-hand side is safeguarded (and is therefore blocked and sent instead to a less capable model);. Clearly harmful content (red), and content that is dual-use (orange), triggers the classifier and is blocked. We include a safety margin that includes content that is very likely benign but which is still blocked out of an abundance of caution (light green). Clearly benign content is in darker green.
+Upon its launch, Fable 5 had very broad classifiers (A) that triggered on a wide range of requests—even ones that were almost certainly benign (those in the safety margin). The classifier boundary is thus very far to the left-hand side of the diagram. The update we are announcing today (B) means that many more benign requests are allowed by the classifier, which has become better at discerning subtle differences between benign and dual-use queries. The classifier boundary in the diagram has therefore moved further to the right-hand side.
+Conclusions
+There’s still much more to be done to refine our safeguards. There will inevitably remain false positives—requests that fall within the classifier’s safety margin where the request is very low-risk but where the classifier still fires. As we noted above, Fable will continue to block dual-use professional biology and drug development queries because of potential dual-use risk. We are fully committed to developing a safe, scalable path for researchers to use our most capable models via trusted access pathways.
+We hope you’ll continue to share your feedback with us so we can improve our safeguards even further.
+Footnotes
+1
+As a result, we expect the total number of fallbacks—for biology–related or any other reasons—will also be reduced: by roughly 67% on
+Claude.ai
+, 55% on Cowork, 17% on Claude Code, and 7% on the Claude Platform.
+Related content
+Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer
+Mariano-Florentino (Tino) Cuéllar will join Anthropic as its first Chief Global Affairs Officer.
+Read more
+Investigating three real-world incidents in our cybersecurity evaluations
+Read more
+Our position on open-weights models
+Read more
+Products
+Claude
+Claude Code
+Claude Code Enterprise
+Claude Cowork
+@Claude
+Claude Design
+Claude Science
+Claude Security
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Download app
+Pricing
+Log in to Claude
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Solutions
+AI agents
+Code modernization
+Coding
+Customer support
+Cybersecurity
+Enterprise
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Legal
+Life sciences
+Nonprofits
+Small business
+Claude Platform
+Overview
+Developer docs
+Pricing
+Ecosystem
+Marketplace
+Regional compliance
+Claude on AWS
+Google Cloud
+Microsoft Foundry
+Console login
+Resources
+Blog
+Claude partner network
+Community
+Connectors
+Courses
+Customer stories
+Engineering at Anthropic
+Events
+Plugins
+Powered by Claude
+Service partners
+Tutorials
+Use cases
+Programs
+Startups
+Research Labs
+Help and security
+Availability
+Status
+Support center
+Company
+Anthropic
+Careers
+Policy
+Economic Futures
+Research
+News
+Claude’s Constitution
+Claude Corps
+Keep thinking
+Policy on the AI Exponential
+Responsible Scaling Policy
+Security and compliance
+Transparency
+Terms and policies
+Privacy policy
+Consumer health data privacy policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+© 2026 Anthropic PBC</description></item><item><title>From asking to doing: How the world is putting ChatGPT to work</title><link>https://openai.com/index/how-the-world-is-putting-chatgpt-to-work</link><guid isPermaLink="true">https://openai.com/index/how-the-world-is-putting-chatgpt-to-work</guid><category>openai-news</category><pubDate>2026-08-06</pubDate><description>OpenAI发布各国ChatGPT使用数据，显示AI正从问答转向实际应用。工作场景中用户更倾向于用其完成任务，全球采用差距缩小，多媒体成为增长最快用例，拉美地区尤为突出，35岁以上用户占比显著上升。
+
+## Full Text
+
+From asking to doing: How the world is putting ChatGPT to work | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 6, 2026
+Company
+From asking to doing: How the world is putting ChatGPT to work
+New country-by-country data reveals how AI adoption is spreading and changing.
+Loading…
+Share
+At work, “doing” dominates
+At work, “doing” dominates
+The adoption gap is closing
+Multimedia use is the fastest growing use case for ChatGPT
+Latin American countries stand out in using ChatGPT to make &amp; analyze media
+ChatGPT adoption grew worldwide among people over 35
+More about OpenAI Signals
+At work, “doing” dominates
+The adoption gap is closing
+Multimedia use is the fastest growing use case for ChatGPT
+Latin American countries stand out in using ChatGPT to make &amp; analyze media
+ChatGPT adoption grew worldwide among people over 35
+More about OpenAI Signals
+AI is moving from something people ask to something they put to work.
+For the first time, OpenAI is publishing country-by-country data showing how people around the world use ChatGPT. The findings reveal a technology that is moving beyond answers and into action, spreading beyond early adopters, and becoming useful to more people in more ways:
+From asking to doing:
+At work, people are more than twice as likely to use ChatGPT to complete a task or create something, from writing and coding to analysis, than they are outside work.
+AI adoption is becoming more global:
+Countries across Latin America, Africa, and Oceania are catching up to early adopters, narrowing the global adoption gap.
+AI is moving beyond text:
+Multimedia is the fastest-growing use case globally, accounting for 7.8% of messages and more than one in ten in countries including Brazil and Colombia.
+AI is reaching beyond early adopters:
+Usage among people over 35 is rising in nearly every country. In France and Czechia, their share of messages increased by more than 10 percentage points in the past year.
+Taken together, the data points to a clear shift: AI is no longer just helping people find answers. It is helping more people, in more places, get things done.
+This new data is available to view or download on
+OpenAI Signals
+, our hub for data, research, and analysis, from the OpenAI Economic Research Team. These country-level statistics will help people, including policymakers and researchers around the world, better understand how more than 1 billion people are putting ChatGPT to work.
+The Signals dataset specifically reflects messages sent within ChatGPT Free, Go, Plus, and Pro accounts—the group of accounts generally managed by individuals rather than organizations.
+At work, “doing” dominates
+The data reflect a trend that has appeared in recent headlines, especially since the rollout of ChatGPT Work: people are increasingly using the technology, particularly for professional pursuits. In these settings, users are more frequently “doing”—using ChatGPT to produce an output or perform a task.
+This type of work includes applications such as editing, coding, or conducting an analysis. Our data shows that, across the globe, people are more than twice as likely to use ChatGPT this way at work than outside of work. Outside of work, use is more exploratory: “asking,” or seeking information and clarification, remains the largest category.
+The adoption gap is closing
+Continuing the steadily climbing trend worldwide documented in
+June
+, the countries and regions that began their AI journeys with lower ChatGPT per-capita adoption rates are gradually catching up to the established early adopters.
+For Q2 2026, our team updated our usage rankings across countries (see previous quarterly rankings
+here
+). The chart below shows how the per-capita leaderboard changed since the first quarter of 2026.
+Notably, in the second quarter, usage in parts of Latin America, Oceania, and Africa increased faster than usage in other parts of the world, with Peru, Uruguay, and Costa Rica rising the most among countries in global rankings. Adoption continues to rise in North America and Europe, but parts of the Southern Hemisphere are catching up in per-capita adoption rates.
+Change in country messages-per-capita rank, Q1 2026 to Q2 2026 (positive = improved)
+Note: For 144 countries, blue indicates an improvement in rank, brown a decline, and gray no change. Hatching identifies excluded or ineligible countries.
+Multimedia use is the fastest growing use case for ChatGPT
+As new capabilities emerge, specific use cases command people’s attention and drive adoption. Take multimedia generation, analysis, and retrieval, for example. Since the release of
+ChatGPT Images 2.0
+in April 2026, the share of messages across the world focused on multimedia use increased to 7.8%. While it still lags behind the leading use cases of practical guidance, writing, and information-seeking, multimedia use has been on a consistent upswing year-to-date.
+Latin American countries stand out in using ChatGPT to make &amp; analyze media
+Drilling deeper into the category of multimedia messages, the data shows distinctive differences among countries and regions. The graphic below demonstrates the uptick in Latin America where, in countries like Brazil and Colombia, more than one in ten messages to ChatGPT is categorized as multimedia.
+Note: Share of classified individual ChatGPT messages categorized as multimedia, by country, in Q2 2026. The refreshed release includes 126 countries with an eligible Q2 multimedia estimate; striped countries are outside the release or have no eligible data.
+ChatGPT adoption grew worldwide among people over 35
+The quarter-over-quarter changes in per-capita adoption are not limited to use cases and regions alone. The data also demonstrate differences in adoption by age cohort.
+The trend line over the last year shows that the percentage of messages sent by people over 35 increased in almost every country. Year over year, these users now account for a 5% higher share of messages than they did 12 months earlier.
+This is an analysis of only users who self-reported their age on the ChatGPT platform.
+Looking at the data country-by-country, adoption among people aged 35 and older is growing particularly quickly in several countries. The chart below, for example, shows how the share of ChatGPT messages sent by users 35 and above shifted significantly in several European countries. In France and Czechia, the share of messages sent by users 35 or older increased by more than 10 percentage points in the last year.
+Almost three-quarters of European countries saw larger-than-average increases in their share of messages sent by these users, while the opposite pattern emerged in some Southeast Asian countries, such as Singapore. Overall, the share of messages sent by these users increased in six of the eight countries in the region, albeit by only a small margin.
+Three-month trailing share of age-classified messages from users aged 35+, relative to each country’s Q2 2025 average (percentage points)
+Note: Three-month trailing share of self-reported, age-classified individual messages from users aged 35 and older; changes are relative to each country’s own Q2 2025 average. Gray lines show all 111 countries with complete estimates; dashed gray shows the equal-country median. June 2026 endpoints compare the latest quarter with Q2 2025. Source: OpenAI Signals refreshed public-release CSVs.
+More about OpenAI Signals
+OpenAI Signals is the OpenAI Economic Research team’s platform for sharing our data and research with the world. In addition to our
+research
+, we publish regular updates on how
+individuals
+and
+businesses
+⁠
+use ChatGPT. We encourage you to download the data
+here
+and explore our methodology
+here
+⁠
+(opens in a new window)
+.
+2026
+Economic Research
+ChatGPT
+Author
+OpenAI
+Keep reading
+View all
+OpenAI and APA advance responsible AI for youth
+Company
+Aug 6, 2026
+Apple is getting this wrong
+Company
+Aug 3, 2026
+Continuous voice interaction with GPT Live
+Engineering
+Aug 3, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users</title><link>https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt</link><guid isPermaLink="true">https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt</guid><category>openai-news</category><pubDate>2026-08-06</pubDate><description>OpenAI更新GPT-5.6 Sol，提升回答聚焦度和事实可靠性，新增思考强度滑块；免费用户默认模型升级为GPT-5.6 Luna，支持无限文本对话和Think按钮访问高级推理，扩大智能普及。
+
+## Full Text
+
+Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 6, 2026
+Product
+Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT‑5.6 Luna for free users
+Loading…
+Share
+GPT-5.6 Sol, tuned for how you use ChatGPT
+GPT-5.6 Sol, tuned for how you use ChatGPT
+More focused answers
+More reliable facts
+More consistent, from quick answers to deeper thinking
+Expanding access for free users
+Safety and availability
+More intelligence for more people
+GPT-5.6 Sol, tuned for how you use ChatGPT
+More focused answers
+More reliable facts
+More consistent, from quick answers to deeper thinking
+Expanding access for free users
+Safety and availability
+More intelligence for more people
+Our mission is to ensure that artificial general intelligence benefits all of humanity. We’re introducing updates to ChatGPT that improve everyday conversations while expanding access for Free users.
+For Plus and Pro users, we’re updating GPT‑5.6 Sol in Chat to be more reliable with facts and provide more focused answers. A new slider lets you choose how much thought ChatGPT puts into each response.
+For Free users, we're updating the default model to GPT‑5.6 Luna and expanding access with unlimited text chats. For questions that need more thought, a new Think button lets you access higher reasoning for harder questions.
+GPT‑5.6 Sol, tuned for how you use ChatGPT
+Every week, 1 billion people turn to ChatGPT for everything from quick questions and web searches to planning, research, advice, and complex decisions. We’ve updated GPT‑5.6 Sol to better support that full range. It delivers more focused answers, adapts its level of detail to the question, avoids unnecessary formatting, and offers a helpful correction when simply agreeing wouldn’t be useful. For Plus and Pro users, the same model now powers both Instant responses and deeper reasoning, creating one consistent experience.
+More focused answers
+The updates to GPT‑5.6 Sol in ChatGPT are designed to give you more direct responses, use tighter formatting, and avoid extra detail when it does not help.
+For a quick question, that means a direct answer with the context you need. For more involved work like multi-step planning, research or writing, it means a fuller response that keeps the main recommendation clear.
+Can I bike from the Mission to Ocean Beach after work today without getting soaked?
+GPT-5.5 Instant
+Probably yes. Based on today's forecast, I'd expect you to stay dry on a Mission → Ocean Beach ride after work. Here's what I'd plan for:
+Rain:
+No meaningful rain is forecast this evening.
+Wind:
+You'll likely have a
+moderate west/northwest headwind
+for the last stretch toward the beach, with gusts around 20–25 mph. That's more likely to slow you down than get you wet.
+Temperature:
+Expect a noticeable drop—from the upper 60s in the Mission to around the low 60s (or cooler if the marine layer moves in early) at Ocean Beach.
+The one caveat is
+coastal mist
+. Even without rain, Ocean Beach can feel damp from fog or sea spray late in the day. You probably won't get "soaked," but if you're wearing a cotton shirt, you might end the ride feeling a bit clammy near the beach. A light windbreaker is the one thing I'd bring. Also, if you're planning to hang out on the beach afterward, be aware there's a
+Beach Hazards Statement
+in effect because of elevated surf and rip current risk.
+Assume I'm leaving around 5:30.
+If you're rolling out around
+5:30 PM
+, I'd go for it.
+Here's what I'd expect:
+Rain:
+Still no indication of rain during the evening commute.
+Temperature:
+Around
+67°F
+when you leave the Mission, dropping to the low 60s by the time you reach Ocean Beach.
+Wind:
+This is the bigger factor. Expect a
+15–20 mph westerly wind
+, with gusts up to around
+25 mph
+, so the final miles westbound will likely feel noticeably harder.
+Fog:
+There's a chance you'll ride into the edge of the marine layer near the Great Highway. Even if it's foggy, it looks more like cool mist than actual rain.
+So my prediction is:
+Mission → Golden Gate Park:
+Comfortable.
+Golden Gate Park → Ocean Beach:
+Cooler, windier, and maybe a little damp from fog—but
+not soaked
+.
+I'd wear a light wind shell if you have one, mostly for the wind rather than precipitation. If you're planning to head back later in the evening, it'll feel significantly cooler once the sun gets lower.
+GPT-5.6 Sol
+Yes — you should stay dry. There’s essentially
+no rain expected after work today
+. The bigger factor is the ride west: expect a
+noticeable headwind
+, with west winds around 10–20 mph and potentially stronger gusts.
+So:
+no rain shell needed for precipitation, but bring a light wind layer
+for Ocean Beach.
+I can also keep an eye on the evening forecast and alert you if rain suddenly appears. Want me to?
+Assume I'm leaving around 5:30.
+At
+5:30 PM
+, you’re in good shape: the forecast has
+0% precipitation through the evening
+, so getting soaked shouldn’t be a concern.
+I’d still bring a
+light windbreaker
+. As you get closer to Ocean Beach, the wind and cooler coastal air will be much more noticeable than in the Mission.
+GPT‑5.6 Sol is the stronger answer because it answers the real question first, identifies wind rather than rain as the main issue, and keeps only the details the rider needs. After the 5:30 follow-up, it updates the recommendation without repeating the full forecast.
+More reliable facts
+A useful answer needs to get the facts right. The new GPT‑5.6 Sol is designed to make fewer mistakes—especially when answers depend on dates, numbers, sources, rules, or assumptions—by better using the sources it finds to answer your question.
+In an internal evaluation of financial, medical, and legal prompts requiring factual detail, responses containing at least one factual error were about 62% less common with GPT‑5.6 Luna and 68% less common with GPT‑5.6 Sol than with GPT‑5.5 Instant.
+More consistent, from quick answers to deeper thinking
+With this update, we’re also bringing ChatGPT’s Instant and Thinking experiences closer together, creating a more consistent tone and behavior across different kinds of conversations. When you move from Instant to higher effort, it should feel like the model is taking extra time for a more comprehensive answer—not like you’re switching to a different model with its own tone or style.
+Plus and Pro users can use the new slider in ChatGPT on web, mobile, and desktop to choose how much thought ChatGPT puts into an answer. Keep it quick for everyday questions, or move the slider up for planning, research, writing, coding, or decisions that need more thought.
+Expanding access for free users
+We’re expanding access to our latest models for free users with unlimited text chats using GPT‑5.6 Luna, plus a new Think button for harder questions.
+For questions that require deeper reasoning, Free users can tap the new Think button to give GPT‑5.6 Luna more time to work through the answer.
+Safety and availability
+Plus and Pro users can access the updated version of GPT‑5.6 Sol and the new slider in ChatGPT starting today.
+GPT‑5.6 Luna will become the default model for Free and Go users this week. Starting next week, they’ll also have unlimited text chats and access to a new Think button for harder questions (subject to abuse guardrails). Limits will still apply for file uploads, images and other tools.
+Because this version of GPT‑5.6 Sol is optimized for everyday chats, it will only be available in the Chat experience in ChatGPT. The version of GPT‑5.6 Sol that powers Work and Codex is not changing as part of this release.
+You can find more detail on safety training and evaluations in our
+system card
+⁠
+(opens in a new window)
+, which outlines additional measures we’ve introduced to support users we believe are under 18. For these users, we trained the model to avoid romantic roleplay, age-restricted challenges, and presenting itself as a substitute for real-world relationships. In addition, we applied age-appropriate boundaries around sexual content, eating disorders and body-image risks, age-restricted goods, dangerous activities, and graphic violence. Finally, the model encourages connection with trusted people when a teen may need support. We reinforced this training with system-level protections and have added new evaluations for how our models perform for users under 18, and are continuing to improve model responses in this area.
+M
+ore intelligence for more people
+This is a concrete step toward more abundant intelligence: making our latest models more widely available, improving the usefulness and reliability of the answers people get, and letting free users keep text chats going without a rate limit. Access shapes opportunity, and this update gives more people the ability to keep asking, develop an idea, and get help when they need it.
+ChatGPT
+2026
+Author
+OpenAI
+Keep reading
+View all
+New ways to learn and teach with ChatGPT Work and Codex
+Product
+Aug 4, 2026
+Advancing the price-performance frontier with GPT 5.6
+Product
+Jul 30, 2026
+Launching Health in ChatGPT
+Product
+Jul 23, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Working with the American Psychological Association on youth mental health and AI</title><link>https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai</link><guid isPermaLink="true">https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai</guid><category>openai-news</category><pubDate>2026-08-06</pubDate><description>OpenAI与美国心理学会合作，聚焦青少年使用AI的心理健康影响，计划为家长、临床医生提供资源，聆听青少年声音，并加强安全措施，确保AI设计符合年龄特点并支持青少年福祉。
+
+## Full Text
+
+Working with the American Psychological Association on youth mental health and AI | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 6, 2026
+Company
+Working with the American Psychological Association on youth mental health and AI
+Loading…
+Share
+Areas of focus
+Areas of focus
+Supporting parents and caregivers
+Supporting practitioners and the broader field
+Listening to youth and understanding system gaps
+Our broader safety work
+Our long-term commitment
+Areas of focus
+Supporting parents and caregivers
+Supporting practitioners and the broader field
+Listening to youth and understanding system gaps
+Our broader safety work
+Our long-term commitment
+Young people already use AI to learn, create, ask questions, and seek advice. As that use grows, families, schools, clinicians, and communities need clearer evidence, better resources, and stronger safeguards. That’s why we’re working with the American Psychological Association (APA) to bring psychological science into how we think about responsible AI development and use among young people. APA is the leading scientific and professional organization for psychology in the United States, whose evidence-grounded work will help clarify what is known, what is uncertain, and what responsible AI should look like as the technology evolves.
+“
+Young people are engaging with AI during some of the most consequential years of their development. APA brings both the developmental science and clinical expertise to say what responsible design looks like and what matters most for protecting and promoting young people’s well-being. This work is about making sure that knowledge reaches the people building these systems.
+”
+—Arthur C. Evans, Jr., PhD, Chief Executive Officer, American Psychological Association
+“Technology is part of teens’ lives, and our responsibility is to meet that reality with experiences that are safe, age-appropriate, and designed with families in mind. AI should strengthen—not replace—the real-world relationships and care young people rely on,” said Dr. Sara Johansen, head of mental health and well-being product policy at OpenAI. “This work builds on our ongoing efforts with experts. By working with the APA and other leading experts, we’re continuing to ground our approach in evidence and develop practical safeguards that put teens’ well-being first.”
+Areas of focus
+Earlier this year, we co-hosted a productive convening with the APA that brought together leaders from mental health organizations, researchers, clinicians, educators, and youth representatives to discuss where young people face gaps in support today, and where AI may responsibly help people find information and connect to real-world support.
+Building on these conversations, we expect this work to span several areas—including how AI can support young people in moments of distress, how it can be designed to be more developmentally appropriate and useful, and how parents, caregivers, and clinicians can be better equipped to guide young people’s AI use. Throughout, this work will be grounded in the science of human behavior and the voices and lived experiences of parents, caregivers, teachers, and young people themselves. Over time, that work can help inform stronger safeguards and evidence-informed approaches to how AI should show up in young people’s lives.
+Supporting parents and caregivers
+One early focus is giving parents and caregivers practical tools for navigating AI use at home, especially as teens start using these tools. Working with APA, we plan to develop family-facing resources to help parents and caregivers support healthy use, recognize when adult intervention may be appropriate, and reinforce AI as a tool, not a replacement for people or care. We intend to make this guidance broadly accessible across school communities as well.
+Supporting practitioners and the broader field
+We are also working with APA to support practitioners who are increasingly fielding questions about AI. Planned work includes resources for clinicians and school psychologists focused on promoting healthy AI usage, recognizing overreliance, and intervening in unhealthy use patterns. We will also continue convening leaders across healthcare, education, research, policy, technology, and youth advocacy to translate emerging lessons into practical guidance for the broader field.
+Listening to youth and understanding system gaps
+It is essential that these efforts are grounded in and shaped by those with lived experience, not based on assumptions. We will work with APA to convene teens, families, clinicians, school psychologists, and others to help us better understand how young people are using AI, how AI-related questions are showing up in schools, therapy, and family settings, where current systems are falling short, and where AI may responsibly help with access, education, or navigation.
+Our broader safety work
+This work builds on OpenAI’s efforts to improve how ChatGPT responds in sensitive moments and supports younger users. We work with more than 260 mental health experts to help ChatGPT better recognize signs of distress, respond with care, and guide people toward real-world support. We have also expanded access to localized crisis resources and one-click hotlines, added reminders to take a break, and introduced additional protections for younger users, including parental controls, notifying parents of safety concerns, etc., under-18 principles in our Model Spec, and an age-prediction model that helps apply the right experience and safeguards.
+Our long-term commitment
+AI may help people find information and navigate systems earlier, but young people’s well-being depends on strong human relationships and trustworthy support. We’re glad to be working with the APA, alongside the many researchers, clinicians, and educators we continue to learn from, as we work to make sure AI truly supports young people and those who care for, support, and guide them.
+User Safety &amp; Control
+2026
+Author
+OpenAI
+Keep reading
+View all
+How the world is putting ChatGPT to work
+Company
+Aug 6, 2026
+Apple is getting this wrong
+Company
+Aug 3, 2026
+Continuous voice interaction with GPT Live
+Engineering
+Aug 3, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>How Gemini plans such detailed vacation itineraries for you</title><link>https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips</link><guid isPermaLink="true">https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips</guid><category>google-gemini</category><pubDate>2026-08-06</pubDate><description>Gemini通过整合Google Maps、Flights、Hotels等实时数据，并结合Gmail、Photos和YouTube用户偏好，自动生成个性化旅行计划。它还能处理打包清单、填写预订表格等琐碎任务，简化旅行规划流程。
+
+## Full Text
+
+How Gemini plans custom trips with detailed itineraries
+Skip to main content
+How Gemini plans such detailed vacation itineraries for you
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+How Gemini plans such detailed vacation itineraries for you
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Products &amp; Platforms
+Products
+Gemini
+How Gemini plans such detailed vacation itineraries for you
+Aug 06, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Planning a trip? Gemini handles the details — juggling existing plans, personal preferences and more to craft custom travel itineraries.
+Sarah Armstrong
+Contributor
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Gemini simplifies travel planning by pulling real-time data from Google Maps, Flights, and Hotels to build personalized itineraries. By connecting to your Gmail, Photos, and YouTube, the tool tailors suggestions to your specific tastes and automatically organizes your bookings into a master plan. Use Gemini to handle research, draft packing lists, and even pre-fill booking forms so you can finalize your trip with ease.
+Summaries were generated by Google AI. Generative AI is experimental.
+Planning a vacation is usually a lot of work, but Gemini makes it much easier. It pulls real-time info from Google Maps, Flights, and your own emails to build a custom travel plan just for you. It can even handle boring tasks like making packing lists or filling out booking forms. You just tell it what you want, and it does the heavy lifting.
+Summaries were generated by Google AI. Generative AI is experimental.
+Explore other styles:
+General summary
+Basic explainer
+Planning a trip can feel like a second job. Between hunting down flight confirmations, mapping distances between destinations, and scrolling through countless restaurant reviews, the logistics quickly stack up. Gemini can take some of that work off your plate, helping you organize custom vacations with less stress. All you need to do is ask.
+Gemini doesn’t just browse the web — it connects directly to Google Maps, Hotels, and Flights to build highly personalized itineraries based on real-world data and your specific preferences. Here’s what happens behind the scenes when you ask it for help planning a trip, whether you’re brainstorming options or finalizing bookings.
+Gathering real-time data
+Let’s say you’re taking a trip to Kyoto later this year. You need flights, hotels, and restaurant reservations — plus stuff to do while you’re there. Gemini first tackles this challenge by tapping into Google’s ecosystem for accurate, real-world data.
+Gemini gets real-time information — think locations, reviews, prices, and more — from Google Maps, Flights, and Hotels. It also pulls visual inspiration and recommendations from YouTube creators. And if you call on the Viator app while you’re in Gemini, it can even help you explore and book expertly curated travel tours, activities, and excursions.
+Finding the best recommendations
+Gemini then pairs that Google Search data with advanced AI to give you custom travel recommendations.
+Gemini uses the context you’ve provided in your prompt — including basics, like your destination and travel dates, or specifics, like that you’re looking for hidden-gem brunch spots near the train station. And if you toggle on
+Personal Intelligence
+in Google apps — like Gmail, Photos, Search, and YouTube — Gemini can proactively factor in your interests, preferences, and constraints.
+With Personal Intelligence, Gemini securely connects the dots across your Google apps, past chats, and custom instructions. It can make personalized suggestions, like restaurants to try based on food pictures you’ve saved to Google Photos or travel videos you’ve searched on YouTube. It can also reference plans you’ve already booked using flight details, hotel confirmations, and restaurant reservations in your Gmail.
+If you ask Gemini to remember your interests and past picks, it can help you find new favorites fine-tuned to your tastes. It can even identify patterns across your Google apps to recommend your next perfect travel destination.
+Building your itinerary
+Gemini understands how different trip requirements — like locations, travel times, existing plans, and personal preferences — intersect. So when you ask it to build an itinerary, it creates a cohesive plan that accounts for all your constraints.
+Gemini can create custom routes and group things to do by neighborhood. And with Personal Intelligence, it can build your itinerary around your existing plans and preferences — cross-referencing times and locations before weaving things into your schedule.
+Gemini Spark
+, your 24/7 personal AI agent, can also make sense of your inbox — turning messy trip-planning email chains into a clear master plan. Ask it to monitor your Gmail, and as items related to your trip (like booked tours, flights, and hotels) pop up, it works in the background — automatically building out a Google Doc with your travel itinerary.
+Finalizing the details
+Gemini doesn’t stop at building itineraries. It can handle the heavy lifting and help you finalize the details of your trip.
+Gemini Spark, for example, can help with mundane tasks, like comparing rental cars or drafting a packing list. It handles the research, saving you the tedium of juggling multiple tabs or obsessively checking the weather. When it’s done, it suggests the best choices and lets you make the final decision.
+Gemini Spark can also even use Chrome to navigate to your favorite airline’s site, search for flights, and start filling in your booking information — handing the task back over to you, so all you have to do is press “book.” It can also help you find and book travel accommodations and manage dining reservations. And if you give it access, it can email your finalized itinerary to your travel crew so everyone knows the plan.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+Gemini
+Related stories
+Gemini
+Here’s how to ask Gemini Live for help with anything you see.
+By
+          
+            
+            Lindsey Lanquist
+Learning &amp; Education
+13 Google tips for a fun, productive summer off from college
+By
+          
+            
+            Lindsey Lanquist
+Gemini
+5 ways to build a side hustle with Gemini
+By
+          
+            
+            Sarah Armstrong
+Gemini
+3 ways this coffee shop is growing with Gemini
+By
+          
+            
+            Sarah Armstrong
+Google Workspace
+Gemini can now take notes in Google Meet for Google AI Pro and Ultra subscribers.
+Gemini
+Here's how Gemini can help you avoid jetlag.
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>Millennium and Anthropic are building a digital risk analyst with Claude</title><link>https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude</link><guid isPermaLink="true">https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude</guid><category>claude-blog</category><pubDate>2026-08-06</pubDate><description>Anthropic与Millennium合作开发数字风险分析师，基于Claude和Claude Code，协助风险经理分析风险头寸、解释每日变动，并保留记忆；通过沙箱测试和人工审批保障安全可信。
+
+## Full Text
+
+Millennium and Anthropic are building a digital risk analyst with Claude  | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+Millennium and Anthropic are building a digital risk analyst with Claude
+Explore here
+Ask questions about this page
+Copy as markdown
+Millennium and Anthropic are building a digital risk analyst with Claude
+Category
+Enterprise AI
+Agents
+Claude Code
+Product
+Claude Enterprise
+Date
+August 6, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude
+Anthropic is working with Millennium, one of the world's largest alternative investment management firms, to co-develop a digital risk analyst: an AI teammate to work alongside and under the supervision of the firm's risk managers to surface new risk insights and form opinions on risk exposure across asset classes.
+Claude and
+Claude Code
+are already used broadly across Millennium today - from trading desks and engineering to core business functions. Millennium’s digital risk analyst extends their use of Claude by helping risk managers expedite and enrich analysis of risk positions.
+Evaluating financial risk with Claude
+Investment firms have spent decades using technology to improve risk measurement, moving from traditional assessments to more complex real-time scenario analysis. Millennium’s digital risk analyst is designed to tackle critical workflows, powered by Millennium’s proprietary data and Claude’s frontier intelligence.
+The digital risk analyst retains and recalls information over time, applying new reasoning capabilities to help explain daily risk changes. These findings are then validated and enriched by Millennium’s human risk managers.
+“At Millennium, we believe AI can help set a new bar for what our people can achieve,” said Vlad Torgovnik, Chief Information Officer, at Millennium.  “Our work with Anthropic is a great example of this and shows how AI is driving innovation in core parts of our business while keeping human judgment at the center of decision making. We are excited to continue our work with an industry leader finding new ways AI can add value to our business.”
+How Millennium employees use Claude
+Millennium was an early adopter of Claude and Claude Code. Employees use Claude Code to write software, build products, and improve workflows, including across many of Millennium's 340+ investment teams.
+The digital risk analyst provides secure, auditable analysis by logging its reasoning, testing its actions in sandboxed environments, and requiring human experts to evaluate and approve its decisions. Millennium's risk experts are building it with Anthropic's research and applied AI teams working alongside them in Millennium’s AI lab.
+Millennium is using its internal AI lab to continue pushing the frontier, pressure testing Anthropic's latest Claude models against ambitious use cases, and putting Claude to work innovating in a fast-paced environment.
+"Financial services requires AI that people can trust in complex, demanding environments,” said Belinda Neal, Managing Director, Financial Services, at Anthropic. “Millennium has been an early adopter of Claude and Claude Code, and our work with its risk teams will show how AI can inform the analysis that risk managers at Millennium make every day.”
+"Claude can reason through risk positions, explain daily changes, and carry what it learned into the next question,” said Peter Nolan, Head of Asset and Wealth Management, at Anthropic. “Millennium’s risk managers will use frontier intelligence to deliver automated recommendations with the goal of saving valuable time.”
+Learn more:
+Learn more about
+Claude for financial services
+, or
+contact our team
+to talk about what Claude can do inside your firm.
+No items found.
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+Aug 5, 2026
+Inference hooks: inline data loss prevention for Claude Enterprise
+Enterprise AI
+Inference hooks: inline data loss prevention for Claude Enterprise
+Inference hooks: inline data loss prevention for Claude Enterprise
+Inference hooks: inline data loss prevention for Claude Enterprise
+Inference hooks: inline data loss prevention for Claude Enterprise
+Aug 4, 2026
+A guide to cost visibility and control in Claude
+Enterprise AI
+A guide to cost visibility and control in Claude
+A guide to cost visibility and control in Claude
+A guide to cost visibility and control in Claude
+A guide to cost visibility and control in Claude
+Jul 24, 2026
+How the product designer who built Claude Design uses it to explore ideas before building them
+Enterprise AI
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+Jul 24, 2026
+Claude models explained: choosing the best model for your use case
+Enterprise AI
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude Enterprise
+Financial services</description></item><item><title>WeatherNext: AI model achieves breakthrough in forecasting cyclones</title><link>https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones</link><guid isPermaLink="true">https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones</guid><category>deepmind-blog</category><pubDate>2026-08-06</pubDate><description>Google DeepMind的WeatherNext模型在Nature发表，实现气旋路径、强度和风结构的高精度预测，平均提前一天预警，相当于气象学十年进展，并已在实际飓风季应用，现开源模型。
+
+## Full Text
+
+AI model achieves breakthrough in forecasting cyclones â Google DeepMind
+Skip to main content
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models &amp; physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+Weâre looking for people who want to make a real, positive impact on the world
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Models
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models &amp; physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Research
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Science
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+About
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+Weâre looking for people who want to make a real, positive impact on the world
+Build with Gemini
+Try Gemini
+Google DeepMind
+Google AI
+Learn about all our AI
+Google DeepMind
+Explore the frontier of AI
+Google Labs
+Try our AI experiments
+Google Research
+Explore our research
+Products and apps
+Gemini app
+Chat with Gemini
+Google AI Studio
+Build with our next-gen AI models
+Google Antigravity
+Our agentic development platform
+Models
+Research
+Science
+About
+Build with Gemini
+Try Gemini
+August 6, 2026
+Science
+WeatherNext: AI model achieves breakthrough in forecasting cyclones
+WeatherNext team
+Share
+Copied
+WeatherNext enables accurate cyclone forecasts that can give an extra day of warning. Now we are open sourcing the model.
+Predicting how dangerous cyclones develop is a longstanding challenge where every hour counts. Tropical cyclones â also known as hurricanes or typhoons â are among the most destructive weather phenomena on Earth, responsible for more than 700,000 deaths and $1.4 trillion in economic losses globally over the past 50 years. For forecasters, issuing timely, accurate warnings is a constant race against time.
+Today, in a paper published in
+Nature
+, we show that our WeatherNext AI model achieved state-of-the-art accuracy in predicting a cyclone's track, intensity, and wind structure. On average, our model gives forecasters an extra dayâs worth of predictive accuracy: our three-day forecasts are as good as what prior models were able to provide for only the next two days. This scale of improvement corresponds roughly to a decadeâs worth of meteorological progress.
+This collaborative work brought together AI researchers and engineers at Google DeepMind and Google Research, with expert forecasters at the
+National Hurricane Center
+(NHC), the
+Cooperative Institute for Research in the Atmosphere
+(CIRA), the
+UK Met Office
+, and weather agencies around the world.
+Our research has already had real-world impact. During the 2025 hurricane season, our model helped the NHC to make a
+historic forecast for Hurricane Melissa
+by predicting the stormâs rapid intensification and landfall in Jamaica. This enabled the NHC to issue an advance warning, giving teams on the ground critical time to prepare. This year, we continue to work together and are now predicting 1,000 possible scenarios for each cyclone to help support forecasters in their decision-making.
+Weather affects everyone. Given this broad impact, we are now
+open sourcing
+our WeatherNext 2 and WeatherNext Cyclones models used during the hurricane season. By making this technology openly available, we hope to empower the research community and amplify AI's impact in building more resilient communities â whether that be providing local forecasters with the tools they need to
+prepare for natural disasters
+, supporting the growth of renewable energy, or anticipating extreme weather.
+How WeatherNext predicts weather and cyclones
+Starting from global atmospheric conditions during Hurricane Milton (October 2024), WeatherNext Cyclones iteratively predicts both global weather patterns and fine-scale cyclone tracks up to 15 days in advance. Running a 1,000-member ensemble generates localised probability maps of tropical storm to hurricane-force winds.
+Predicting cyclones has typically forced a trade-off requiring two distinct modeling techniques. A cyclone's track (where it goes) is steered by massive, global atmospheric currents, which before now have been best modeled by coarser global models. However, a cycloneâs intensity (how strong it gets) is driven by highly localized, fine-scale thermodynamic physical processes around its core, which are best modeled by specialized, higher resolution, local models.
+Our WeatherNext model bridges this gap by improving forecasting for global weather overall as well as cyclones. It is a single AI model that predicts a tropical cycloneâs track, intensity, and wind structure with state-of-the-art accuracy. It achieves this breakthrough through a unique combination of its training, architecture and approach to low resolution inputs.
+We evaluated WeatherNext Cyclones on historical cyclones from 2023 to 2024, benchmarking its deterministic and probabilistic performance against other top weather models. On average, WeatherNext Cyclones gains more than a full day (24 hours) of lead time advantage for predicting cyclone tracks, intensity, and wind structure.
+The model was co-trained on two distinct data modalities: global weather dynamics and expert-curated historical cyclone observations. By training end-to-end on nearly 20 terabytes of global atmospheric data and the historical IBTrACS database spanning nearly 5,000 historical storms, the model learns complex atmospheric patterns and how to model extreme weather.
+Cyclone forecast accuracy has been steadily advancing over recent decades. The plots show the 3-day accuracy of ECMWF-ENS track forecasts (a) and HWRF intensity forecasts (b) over the years, and how WeatherNext Cyclones contributes a step change in accuracy for both track and intensity. This improvement is the equivalent to a one-decade progress according to trends over the last 20 years.
+Our model uses
+Functional Generative Networks (FGNs)
+to efficiently produce ensembles of different predictions, which captures the inherent uncertainty of the weather. We can now generate a single 15-day forecast in less than a minute on a TPU, empowering forecasters to quickly evaluate the probability distribution of potentially devastating tail-risks. Last year, our system produced 50 predictions at a time, matching global physics models. This year we scaled our ensemble size to 1,000 members, capturing rare but consequential scenarios like rapid intensification events, as occurred during Hurricane Melissa in 2025.
+Up until now, operating at very high spatial resolution has been considered the main driver for making accurate intensity forecasts. However, WeatherNext Cyclones only needs data with a resolution of 28x28km, 100x coarser than traditional models. A smaller version of the model, WeatherNext 2-mini, which operates at a coarser 111x111km resolution, also shows great performance. This has surprised scientists, and it remains an open research question to fully understand how our models produce such accurate predictions at this resolution. We hope that, together with the research community, we can find out.
+Opening up WeatherNext to the research community
+Alongside our
+Nature
+paper, we are
+open sourcing
+the code and model weights, making them freely available for anyone to build on. This includes academic research, operational forecasting, or developing more specialized, localized models. We hope to accelerate progress across the global weather community and empower meteorological agencies, researchers, and nonprofits to better predict weather events of all kinds and make key decisions to protect lives and infrastructure.
+We are also releasing two sets of similar models: WeatherNext Cyclones, which ran during the hurricane season (results can be seen in the paper); and WeatherNext 2, a later update that we operationalized in October. Additionally, we are releasing WeatherNext 2-mini, a compact version of the model that can run on a single TPU in a free public
+Colab notebook
+.
+You can explore our latest cyclone forecasts on
+Weather Lab
+, which we recently refreshed with a new interface and expanded to include global weather forecasts alongside cyclone tracks. Weather Lab now lets you visualize WeatherNext predictions for temperature, precipitation, wind speed, and more, all in a single view. Both Weather Lab and WeatherNext models are a part of
+Google Earth AI
+.
+Pushing the frontiers of AI for weather forecasting
+We have achieved a historic breakthrough by gaining more than a full day of lead time for predicting cyclones â delivering an advance equivalent to a decade of meteorological progress. As we prepare for future storm seasons, we invite researchers, meteorological agencies, and experts to partner with us, build on our open source models, and explore our forecasts on Weather Lab. By combining advanced machine learning with the indispensable real-world expertise of human forecasters, we aim to create a collaborative weather forecasting ecosystem that can save lives and help communities adapt to a changing climate.
+Note: For official weather forecasts and warnings, refer to your local meteorological agency or national weather service.
+Read our Nature paper
+Download the code
+Explore Weather Lab
+Read the NHCâs 2025 Verification Report
+Acknowledgements
+This research was co-developed by Google DeepMind and Google Research teams.
+Weâd like to thank our collaborators NOAA/NWS/NCEP National Hurricane Center, Cooperative Institute for Research in the Atmosphere (CIRA) and the UK Met Office for their partnership and contributions to the paper.
+This work reflects the contributions of the paperâs co-authors: Ferran Alet, Tom Andersson, Ilan Price, Stratis Markou, Andrew El-Kadi, Dominic Masters, Amy Li, Samier Merchant, Natalie Williams,Gregory Thornton, Ken MacKay, Olivia Graham, Akib Uddin, Ben Gaiarin, Devaja Shah, Elinor Kruse, Wallace Hogsett, David Zelinsky, John Cangialosi, Jonathan Martinez, James Franklin, Mark DeMaria, Kate Musgrave, Caroline L. Bain, Helen Titley, Jacklynn Stott, Remi Lam, Aaron Bell, Paul Komarek, Matthew Willson, Alvaro Sanchez-Gonzalez, and Peter Battaglia.
+Related posts
+WeatherNext 2
+Learn more
+How WeatherNext helped the National Hurricane Center better predict Hurricane Melissaâs historic landfall in Jamaica
+May 2026
+Science
+Learn more
+GenCast predicts weather and the risks of extreme conditions with state-of-the-art accuracy
+December 2024
+Science
+Learn more
+GraphCast: AI model for faster and more accurate global weather forecasting
+November 2023
+Science
+Learn more
+Follow us
+Sign up for updates on our latest innovations
+I accept Google's Terms and Conditions and acknowledge that my information will be used in accordance with
+Google's Privacy Policy
+.
+Sign up
+Build AI responsibly to benefit humanity
+Models
+Gemini
+Gemini Omni
+Nano Banana
+Gemini Audio
+Gemma
+Genie
+Lyria
+Veo
+Research
+Gemini Robotics
+Breakthroughs
+Evals
+Publications
+Frontier safety
+Responsibility
+Science
+AlphaFold
+AlphaGenome
+WeatherNext
+AlphaEarth
+AlphaEvolve
+Products
+Gemini app
+Google AI Studio
+Google Antigravity
+Learn more
+About
+News
+Careers
+National Partnerships for AI
+Accelerator programs
+The Podcast
+About Google
+Google products
+Privacy
+Terms
+Cookies management controls</description></item><item><title>Our WeatherNext 2 AI model demonstrated a massive leap forward in predicting cyclones.</title><link>https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2-cyclones</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2-cyclones</guid><category>google-models-research</category><pubDate>2026-08-06</pubDate><description>谷歌WeatherNext 2 AI模型在预测热带气旋的路径、强度和风结构上实现SOTA，相当于气象学十年进步，并开源以增强气候韧性。
+
+## Full Text
+
+WeatherNext 2: AI model predictions for tropical cyclones
+Skip to main content
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Models &amp; research
+Google DeepMind
+Our WeatherNext 2 AI model demonstrated a massive leap forward in predicting cyclones.
+Aug 06, 2026
+Predicting how hurricanes and cyclones develop is a longstanding challenge, and every hour of warning counts. Tropical cyclones are among the most destructive weather events on Earth, and for meteorologists, issuing accurate, timely warnings is a constant race against time.
+Today, in a paper published in
+Nature
+, Google researchers show that our WeatherNext AI model achieved state-of-the-art accuracy in predicting a cyclone's track, intensity, and wind structure. This represents a massive leap forward — roughly a decade of meteorological progress in one model.
+To help build climate resilience worldwide, we are now open-sourcing the WeatherNext 2 model to the global research community. For more information, check the
+Google DeepMind blog
+.
+Google DeepMind blog
+An AI breakthrough in forecasting cyclones
+WeatherNext enables accurate cyclone forecasts that can give an extra day of warning. Now we are open sourcing the model.
+See more
+POSTED IN:
+Google DeepMind
+Google Research
+Related stories
+AI
+The latest AI news we announced in July 2026
+By
+          
+            
+            News from Google Team
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Google Labs
+We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control.
+Google Research
+Understanding the AI economy
+By
+          
+            
+            Zanna Iscenko
+          
+            &amp; 
+            Scott Strand
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>Inference hooks: inline data loss prevention for Claude Enterprise</title><link>https://claude.com/blog/claude-enterprise-inference-hooks</link><guid isPermaLink="true">https://claude.com/blog/claude-enterprise-inference-hooks</guid><category>claude-blog</category><pubDate>2026-08-05</pubDate><description>Claude Enterprise推出Inference hooks，通过WebSocket将每次推理请求路由至企业DLP服务器，在模型生成前及工具调用返回时实时执行允许/拒绝策略，覆盖Chat、Claude Code、Cowork等全部企业面，支持shadow mode与灰度发布，已开放beta。
+
+## Full Text
+
+Inference hooks: inline data loss prevention for Claude Enterprise | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+Inference hooks: inline data loss prevention for Claude Enterprise
+Explore here
+Ask questions about this page
+Copy as markdown
+Inference hooks: inline data loss prevention for Claude Enterprise
+Category
+Enterprise AI
+Product announcements
+Product
+Claude Enterprise
+Claude apps
+Claude Cowork
+Claude Code
+Date
+August 5, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/claude-enterprise-inference-hooks
+Inference hooks lets your compliance team inspect and enforce policy on every prompt and tool call response before they reach Claude — across Claude Enterprise surfaces including chat, Claude Code, Claude Cowork, and more. Your DLP server makes the call to block or allow, and Claude enforces that decision in real time, blocking unapproved content before it reaches Claude.
+Security teams require every channel where employees can move sensitive data to pass through an inspection point their team controls. Until today, native inline enforcement was limited to Claude Code's client-side hooks. Inference hooks closes the gap with a single enforcement layer that covers every Claude Enterprise surface without separate integration work or agent per product.
+How inference hooks works
+When an organization turns on inference hooks, every inference request routes through a signed WebSocket connection to a security server. Before the model starts generating, Claude sends the prompt and its surrounding context to your server. Your server returns a verdict — allow or deny — and Claude only proceeds once it has one.  The same check runs on tool calls: when Claude calls a tool — including tools connected through MCP, skills, and plugins — the tool's response is checked before it's sent back to the model.
+Ways to use inference hooks
+Extend your existing DLP program to Claude. Inference hooks uses an open, webhook-based protocol with a published schema. That makes deployment easy — just point it at the same server your other tools already report to including Netskope, Palo Alto Networks, Proofpoint, Zscaler or an AI security server you built in-house.
+Cover chat, Claude Code, Cowork, and additional Claude Enterprise products with one configuration. Turn on inference hooks once at the organization level and it applies to Claude Enterprise surfaces, including tool calls made through MCP connectors, skills, and plugins.
+Simplify rollout with shadow mode (always allow), role-based exclusions, and percentage-based rollouts. Customize failure-policy tolerance, timeouts, and other settings to match your organization's risk tolerance.
+Getting started
+Inference hooks is available today in beta for Claude Enterprise customers. Read the
+documentation
+to configure your organization's DLP server and start enforcing policy across Claude Enterprise surfaces.
+For security vendors, inference hooks is built on a webhook-based protocol with a documented schema, so you can build an integration, and Claude Enterprise customers can point their organization at your platform.
+No items found.
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+Aug 6, 2026
+Millennium and Anthropic are building a digital risk analyst with Claude
+Enterprise AI
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Aug 4, 2026
+A guide to cost visibility and control in Claude
+Enterprise AI
+A guide to cost visibility and control in Claude
+A guide to cost visibility and control in Claude
+A guide to cost visibility and control in Claude
+A guide to cost visibility and control in Claude
+Jul 28, 2026
+Bringing MCP 2026-07-28 to Claude
+Product announcements
+Bringing MCP 2026-07-28 to Claude
+Bringing MCP 2026-07-28 to Claude
+Bringing MCP 2026-07-28 to Claude
+Bringing MCP 2026-07-28 to Claude
+Jul 24, 2026
+How the product designer who built Claude Design uses it to explore ideas before building them
+Enterprise AI
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+How the product designer who built Claude Design uses it to explore ideas before building them
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude Enterprise
+Claude apps
+Claude Cowork
+Claude Code</description></item><item><title>A guide to cost visibility and control in Claude</title><link>https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude</link><guid isPermaLink="true">https://claude.com/blog/a-guide-to-cost-visibility-and-control-in-claude</guid><category>claude-blog</category><pubDate>2026-08-04</pubDate><description>介绍Claude企业版成本可见性与控制指南，强调以“成本/结果”而非Token衡量价值，通过模型选择、访问门控、模型控制、硬性消费上限及用量分析等工具优化AI支出，并提供分步实施建议。
 
 ## Full Text
 
