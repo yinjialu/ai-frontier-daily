@@ -55,9 +55,10 @@
       "https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude",
       "https://claude.com/blog/run-claude-code-sessions-on-your-own-compute",
       "https://claude.com/blog/auto-mode-default-in-claude-code",
-      "https://claude.com/blog/auto-mode-in-production"
+      "https://claude.com/blog/auto-mode-in-production",
+      "https://claude.com/blog/how-anthropics-business-development-team-uses-claude-to-run-inbound-and-outbound-at-scale"
     ],
-    "last_new_article": "2026-08-09T11:12:08+08:00"
+    "last_new_article": "2026-08-11T07:51:41+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -116,11 +117,12 @@
       "https://www.anthropic.com/research/claude-plays-robotics",
       "https://www.anthropic.com/research/claude-values-models-languages",
       "https://www.anthropic.com/research/project-pilot",
-      "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
+      "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
+      "https://www.anthropic.com/research/riemann-zeta"
     ],
     "initialized": true,
     "known_urls_count": 41,
-    "last_new_article": "2026-08-02T17:00:22+08:00"
+    "last_new_article": "2026-08-11T07:51:41+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -1331,11 +1333,19 @@
       "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai",
       "https://openai.com/index/how-the-world-is-putting-chatgpt-to-work",
       "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities",
-      "https://openai.com/index/hsp-gruppe"
+      "https://openai.com/index/hsp-gruppe",
+      "https://openai.com/index/responsible-ai-infrastructure-texas",
+      "https://openai.com/index/model-ml",
+      "https://openai.com/index/building-an-ai-native-finance-function",
+      "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows",
+      "https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands",
+      "https://openai.com/index/premium-seats-chatgpt-business",
+      "https://openai.com/index/zapier",
+      "https://openai.com/index/virgin-atlantic/chatgpt-work"
     ],
     "initialized": true,
     "known_urls_count": 1229,
-    "last_new_article": "2026-08-09T11:12:08+08:00"
+    "last_new_article": "2026-08-11T07:51:41+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1549,11 +1559,12 @@
       "https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026",
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026",
       "https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders",
+      "https://blog.google/products-and-platforms/products/gemini/state-fair-tips"
     ],
     "initialized": true,
     "known_urls_count": 76,
-    "last_new_article": "2026-08-09T11:12:08+08:00"
+    "last_new_article": "2026-08-11T07:51:41+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
