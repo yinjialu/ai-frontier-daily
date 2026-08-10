@@ -1,0 +1,19 @@
+{
+  "vendor": "openai",
+  "date": "2026-08-11",
+  "cnDate": "8月11日 周二",
+  "edition": "VOL.223",
+  "brand": "AI 前哨 · 每日 OpenAI",
+  "updates": [
+    {
+      "tag": "企业",
+      "title": "HSP GRUPPE 用 ChatGPT 重做税务咨询工作流",
+      "summary": "德国税务咨询网络 HSP GRUPPE 将 ChatGPT Enterprise 嵌入税务、法律研究与客户沟通，并把高频实践沉淀为共享 Agent。官方披露，98.6% 受访员工感到生产力提升，团队也已开始试点 ChatGPT Work。",
+      "source": "https://openai.com/index/hsp-gruppe",
+      "candidate_ref": "firsthand/2026-08-10"
+    }
+  ],
+  "outroTitle": "每天一条\n看懂 AI 大厂动向",
+  "outroDesc": "关注真实发布与产品变化，少一点噪音，多一点判断。",
+  "outroCta": "关注 · 不错过任何更新"
+}
