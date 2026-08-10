@@ -1,5 +1,2455 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-08-07T11:13:04+08:00</lastBuildDate><item><title>Improving Fable 5's biology safeguards</title><link>https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</link><guid isPermaLink="true">https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</guid><category>anthropic-news</category><pubDate>2026-08-07</pubDate><description>Anthropic更新Claude Fable 5的生物安全防护，显著减少约85%的生物学相关回退，扩大日常健康与教育场景的可用性，但涉及病毒学、毒理学等双用领域仍回退至Opus 5。文章强调平衡生物医学收益与滥用风险，并持续完善分类器与可信访问路径。
+<rss version="2.0"><channel><title>一手信源内参</title><link>https://github.com/yinjialu/ai-frontier-daily</link><description>AI 大厂官方一手动态内参（OKF 库导出）</description><lastBuildDate>2026-08-09T11:12:08+08:00</lastBuildDate><item><title>Auto mode is now the default in Claude Code for Pro, Max, and Team plans</title><link>https://claude.com/blog/auto-mode-default-in-claude-code</link><guid isPermaLink="true">https://claude.com/blog/auto-mode-default-in-claude-code</guid><category>claude-blog</category><pubDate>2026-08-07</pubDate><description>Claude Code 将于8月14日起在 Pro、Max 和 Team 套餐中默认启用 auto mode，通过分类器拦截危险命令，减少手动审批。测试表明其安全性不低于人工审查，且能提升约25%的PR产出。Enterprise 和 API 等暂保持 opt-in，后续也将默认。
+
+## Full Text
+
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Explore here
+Ask questions about this page
+Copy as markdown
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Claude Code will soon run auto mode by default for Pro, Max, and Team plans, enabling longer-running autonomous work, and catching more dangerous commands than manual review in our testing.
+Category
+Claude Code
+Product
+Claude Code
+Date
+August 7, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/auto-mode-default-in-claude-code
+We're making
+auto mode
+the default in Claude Code. Starting on August 14, new sessions on Pro, Max, and Team plans will run in auto mode. If you've already set a different default yourself, you may get a one-time prompt asking whether you want to switch to auto mode. If you have a pinned default, nothing changes for you. The auto mode classifier uses a small number of extra tokens per tool call, and we're no longer charging Claude Code users on Pro, Max, and Team plans for that classifier overhead, effective today.
+Auto mode remains opt-in for now on Claude Enterprise, the Claude API, Claude Platform on AWS, Amazon Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry, giving admins time to review the change. In the coming month, working with our cloud partners, we plan to make it the default across all of these and no longer charge for classifier overhead. In the meantime, Enterprise admins can make Claude Code's auto mode the default through managed settings.
+Auto mode is designed to balance users’ desire not to be interrupted with a system that helps avoid harmful actions: instead of prompts, it routes each tool call through a classifier targeted at blocking actions that are irreversible, destructive, or aimed outside your environment. When the classifier blocks something, Claude usually finds a safer way to proceed on its own or asks you directly for the go-ahead; if it can't make progress—three blocks in a row, or twenty across a session—Claude Code falls back to manual approvals.
+We spent the last several months testing whether auto mode is as safe or safer than an average user clicking through prompts. We ran internal red-teaming, third-party red-teaming and prompt-injection evaluations, a controlled study with 1,053 paid testers, and analysis of real production sessions. On every measure we tested, auto mode matched or outperformed manual review.
+Auto mode also lets Claude work autonomously for longer stretches. This makes models built for long-running work, like Claude Opus 5, more practical to leave running for hours on large tasks. Reducing overhead for users also increases output. Among Teams &amp; Enterprise adopters, auto mode users ship about 25% more PRs. Unblocking Claude allows tasks to run longer uninterrupted and get more work done. Teams at Adobe, Nuro, Gusto, and Garner Health already
+run auto mode
+as their production default.
+Below, we share the safety data and customer results motivating the change, and how to set a different default if you prefer.
+Comparing manual review to auto mode
+Data suggests that manual review can become habitual: users approve 97% of permission prompts in Claude Code. While most prompts are likely for safe, routine commands, an approval rate that high suggests many users are clicking through reflexively rather than reviewing each command. These prompts ask developers to make dozens or hundreds of important security decisions every day, often in the middle of projects, which places the review burden on users and increases the chance that something important slips through the cracks. Data also suggests that users more frequently scrutinize and push back on other types of dialogues: for example, when Claude presents a plan for approval, users reject 39% of them. But for individual permissions requests, the rejection rate is only 3%.
+The same pattern shows up in settings files. As of June 2026, 49.5% of active CLI users have manually created a Bash allow-rule—5% allow any shell command outright, and another 43% have interpreter rules like
+Bash(python:*)
+or
+Bash(node:*)
+that are essentially equivalent in practice—and that share is growing roughly 5 percentage points every 5 weeks. Beyond allow-rules, 62% of users have used
+bypassPermissions
+or clicked “don't ask again” on Bash, and 25% of interactive sessions start in bypass permissions mode.
+Permission rules still fire before the classifier in auto mode, except for allow rules broad enough to grant arbitrary code execution (e.g. python:*). These arbitrary rules are set aside while in auto mode, since they would let commands skip the classifier entirely. Settings files aren't modified, and the rules apply again the moment you switch to another mode.
+Improving safety with auto mode
+Research conducted internally and through several third parties suggests that auto mode is safer than how a typical user engages with permission prompts today. We tested auto mode against what developers actually approve when they're clicking through permission prompts. Across each of these measures—internal red-teaming, third-party penetration testing, and analysis of real-world sessions—auto mode matched or outperformed human approval.
+Auto mode outperforms manual permissions on safety
+In a controlled experiment with 1,053 paid professional testers, human review caught just 13.6% of dangerous commands, while auto mode caught 89%.
+We hired 1,053 paid testers through a research vendor for a coding study. These participants worked in a test environment set up specifically for the study, not in their own codebases or on real projects. Participants knew they were being evaluated, but—following standard blind-study design—weren't told which behavior was being measured. Partway through each session, a single permission prompt was swapped for a clearly dangerous command, and the vendor recorded whether the tester approved it (Note: approving the prompt never resulted in anything dangerous being run; only the text of the prompt testers saw was changed).
+The testers caught the dangerous command just 13.6% of the time (143 of 1,053), while auto mode blocked 89% of the same commands (937 of 1,053). Head to head, auto mode blocked 800 commands that a human approved, while humans blocked only 6 that auto mode allowed. As sessions got longer, humans did worse: they blocked about 17% of dangerous commands early in a session, dropping to about 5% after 50 or more prior prompts, while auto mode's block rate stayed flat regardless of session length.
+Auto mode prevents more harmful actions
+Our research also suggests that auto mode leads to fewer harmful actions than manual permissions mode.
+We examined how auto mode performs in real usage. From May to June 2026, we examined sessions our safety pipeline had flagged for review, drawn only from accounts that have opted in to data use for training and analysis. We re-graded each one with a model on two 0–10 scales. The first was harm severity with 10 being company-wide, irreversible harm, such as leaking a company's entire source code, 7 representing production-level severity such as deleting rows from a production database, and 0 a fully reversible action confined to the local workspace, like overwriting a scratch file. The second was how explicitly the user had asked for the action, so we could separate harmful actions the user directly requested from harmful actions the agent took with less explicit direction.
+Among the flagged sessions, those that went through manual approval contained serious unintended harm more than twice as often as auto mode sessions. At production-level severity (7+), 6.3% of manually approved sessions contained a harmful action the user hadn't explicitly asked for, compared to 2.4% of auto mode sessions, and the gap held at every severity level we tested.
+Adversarial red-teaming made auto mode stronger
+We worked with Apollo Research, a UK-based AI safety startup, on a two-week pilot injecting synthetic attacks into real coding trajectories, across three datasets covering broad failures, data exfiltration, and safety-related threats.
+The engagement followed a standard find-fix-verify loop. Apollo shared a set of successful attacks along with recommendations to strengthen auto mode. We hardened the classifier against them primarily by giving it more context about the environment it's protecting (repository visibility, git state, and the data-handling rules described below).
+After hardening, Apollo re-tested on a separate held-out attack set that we never had access to. Auto mode caught about half of the attacks it previously missed, at a cost of missing about 2% of attacks it previously caught. Since we couldn't tune against the held-out set, this suggests the hardening generalizes to new attacks rather than patching the specific ones Apollo shared. Across both the shared and held-out sets, the classifier's miss rate fell from 12% to 7%.
+These attacks are synthetic and adversarial by design, built to find where the classifier fails, and more malicious than anything Claude would do unprompted. The 7% miss rate is measured against this set and should not be taken as the miss rate on real traffic.
+Auto mode reduces prompt injection risk
+With auto mode enabled, no attack in an independent evaluation was successful against any of our models. GPT-5.6 Sol running in Codex v0.144.5 Auto-review permission mode had a 5.83% attack success rate. GPT-5.6 Sol was run on “max” reasoning effort to test performance with its highest level of reasoning, and all Claude models were run on high effort.
+The auto mode classifier adds an additional layer of defense against
+prompt injection attacks
+that try to force the agent to deviate from the user’s instructions. When running with auto mode, tool results are scanned by probes for potentially malicious instructions, and auto mode checks that actions are aligned with user intent. We tested auto mode compared to an unguarded model to illustrate the power of this defense-in-depth approach.
+We commissioned an evaluation from a third party, Trajectory Labs, who tested different models within the latest publicly available versions of Claude Code and Codex as of July 17th 2026.
+1
+They tested 72 indirect prompt injection scenarios held out from Anthropic. Each scenario was tested 10 times. Successful attacks would, in a non-testing environment, result in irreversible actions that could harm the user such as sensitive-data exfiltration, financial fraud, or credential phishing. The attacks were optimized against Claude Opus 4.7, which is not in the reported set, so every model in the evaluation faced them as unseen attacks. In addition to auto mode, the evaluations looked at Claude Code’s
+bypassPermissions
+mode and Codex’s
+Full Access
+mode.
+Both Codex and Claude Code were evaluated using an identical browser integration produced by Trajectory Labs, PBC. This integration provides a set of MCP tools which are a thin wrapper around common Chrome APIs such as `navigate`. Safeguards built into first-party browser integrations such as the Chrome extensions provided by OpenAI and Anthropic were not tested. As such, these results should be viewed as a measurement of the underlying model, rather than the complete set of safeguards which might exist in a given deployment.
+In this evaluation, none of the 720 attack attempts succeeded against Claude Fable 5, Opus 5, or Sonnet 5 running auto mode.
+On the other hand, 5.83% of the attacks succeeded against GPT-5.6 Sol running Codex's
+Auto-review
+mode. Notably, this is greater than the 0.09% average attack success rate against our latest models running in
+bypassPermissions
+mode without additional safeguards. The tests showed a 19.03% attack success rate against GPT-5.6 Sol when running in
+Full Access
+mode. Attack success rates differ between tasks where tools return results as text and tasks that require interacting with a browser through screenshots, as shown below.
+Auto mode protects against prompt injections both in tool calling and browser GUI use. OpenAI models showed higher attack success rates on browser tasks in a third-party evaluation.
+Three incidents auto mode prevented inside Anthropic
+Auto mode is also the default for all Claude Code internal usage at Anthropic. Here are three actions the classifier prevented internally:
+An off-network data leak:
+When an upload to an internal drive failed, Claude's fallback was to publish the same report to a public code-sharing site. Auto mode denied the fallback and prompted the user for next steps.
+A destructive mass operation:
+In a long-running session, Claude attempted a mass process kill across roughly two thousand pods and queued deletions that would have torn down hundreds of GPUs of in-flight training jobs. Auto mode flagged the destructive commands before execution.
+Over-broad privilege escalation:
+Asked to provision read-only billing access, Claude reached for a cloud role that grants full administrative control at the account root. Auto mode caught the mismatch between what was requested and what roles would have been granted.
+In each case, Claude either found a safer path on its own or checked in with the user before proceeding.
+Making auto mode even safer
+We’re continuously investing in new auto mode features that make it safer and easier to ship production code. Recent examples include:
+Hard denies
+: Data exfiltration, like sending your code or secrets somewhere external, sits in a category the classifier is designed to never approve. To run an action like that, you have to switch out of auto mode or run the command yourself. Hard deny rules are customizable via settings so you can add more rules that you never want allowed even when requested by users in your organization.
+Rules for data access and sharing:
+The classifier now carries explicit rules distinguishing secrets and potentially sensitive/confidential information—and where each can be accessed and shared. To make those rules enforceable, it also checks whether the destination of a git push or pull request is public, private, or trusted before the action runs. The same push can be routine or an exfiltration depending on where it lands: code that belongs in your team's private repository shouldn't end up in a public one, and the classifier is now designed to flag when this might happen.
+Checking git status before destructive git actions
+: Before a command that could discard uncommitted work, like git reset --hard, the classifier sees the repository's current git status, letting auto mode know what is being reset.
+Prompt injection screening
+: When Claude pulls content from external sources, like web pages, file contents, or tool outputs, an API-side probe checks that content for attempts to hijack Claude's behavior. When something looks like an injection attempt, a warning is added to Claude's context before the result is shared with the user.
+Auto mode in production
+Teams are already running auto mode as their production default:
+Adobe's
+merchandising platform team is responsible for keeping pricing and promotional pages accurate and current across 90+ countries and 30+ languages on Adobe.com. They built an agentic loop to build and verify those pages, running it in auto mode so engineers receive finished PRs for review.
+Nuro
+runs auto mode across its research and engineering orgs, using it to power overnight research agents that hill-climb evaluation metrics and return finished PRs for review by morning.
+Gusto
+adopted auto mode to end the permission fatigue that was pushing engineers toward bypassing permissions checks entirely. About 10% of sessions since mid-May include a classifier denial—evidence it's doing real work without slowing legitimate tasks.
+Garner Health
+pushed auto mode as the default to all 550 employees via managed settings, standardizing a company-wide software development lifecycle (SDLC) that no longer depends on hand-curated command allowlists.
+“At Adobe, we want to move fast without compromising the quality of the customer experience we deliver on Adobe.com. With Claude Code auto mode, we built an agentic loop that rapidly accelerated our work. Claude builds the user interface and then loops back to verify that it matches the intended design, automatically fixing any issues before we ever look at it. This shortened our development cycle while delivering pixel-perfect results.”
+Tomislav Reil, Director of Engineering
+"The other day, I kicked off an agent at 10 p.m. and it kept running until 5 a.m.—and it gave me three PRs in the morning. I think it's pretty impressive. Only auto mode enables this kind of workload."
+Kai Zhou, Staff Software Engineer
+"Auto mode gave us a safer balance between speed and control. We were able to remove the repeated prompts and increase productivity without compromising safety. We can see that auto mode blocks at the right time, which gives us the confidence to move quickly."
+Martin Emde, Software Engineer
+"We built a standardized SDLC for the entire engineering org that's only possible because of auto mode. Employees view it as a weight off their shoulders. They don’t have to monitor their agents for hours on end anymore."
+Evan Magnussen, Platform Engineering Manager
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+Learn how these customers are
+running auto mode in production
+.
+Getting started
+For Pro, Max, and Team users: if you haven’t set a default permission mode, you’ll receive an in-product notice and new sessions will start in auto mode automatically. If you've set a different default, you may see a one-time prompt asking if you’d like to switch your default to auto mode. If your Team admin has set a default in managed settings, nothing changes for you.
+For Enterprise users and users who access Claude Code via the Claude API, auto mode remains opt-in for now. We plan to make auto mode the default in the coming month, and we’ll notify Enterprise admins before we do.
+To switch modes, press Shift+Tab in the CLI or use the mode dropdown on the desktop app. Admins can pin an org-wide default with `defaultMode` in
+managed settings
+, or turn auto mode off entirely with `disableAutoMode`.
+Finally, while we believe auto mode reduces risk for most users, it relies on classification systems and therefore does not eliminate risk. For high-stakes changes to production infrastructure, we still recommend reviewing Claude's actions yourself.
+See the auto mode docs
+for full configuration instructions.
+‍
+This article was written by Conner Phillippi, with contributions by Nicholas Carlini, Isaac Fung, John Hughes, Alex Isken, Shawn Moore, Javier Rando, and Molly Vorwerck. The authors would also like to thank Yacine Azmi, Chandler Bair, Kefan Chen, Boris Cherny, Ian Grunert, Lydia Hallie, Alex Kleiman, Lauren Polansky, Deon Poncini, Robert Schonberger, Marie Vachovsky
+,
+Qing Wang, Cat Wu, Daniel Xu, and Alice Zhao.
+‍
+1
+We evaluated Claude Code v2.1.205 and Codex v0.144.5. OpenAI released a new version of Auto-review last week that could change the results.
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+Aug 7, 2026
+Running auto mode in production
+Claude Code
+Running auto mode in production
+Running auto mode in production
+Running auto mode in production
+Running auto mode in production
+Aug 6, 2026
+Millennium and Anthropic are building a digital risk analyst with Claude
+Enterprise AI
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Jul 24, 2026
+Claude models explained: choosing the best model for your use case
+Enterprise AI
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Jul 22, 2026
+Building verification loops in Claude Code with skills
+Claude Code
+Building verification loops in Claude Code with skills
+Building verification loops in Claude Code with skills
+Building verification loops in Claude Code with skills
+Building verification loops in Claude Code with skills
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude Code</description></item><item><title>Running auto mode in production</title><link>https://claude.com/blog/auto-mode-in-production</link><guid isPermaLink="true">https://claude.com/blog/auto-mode-in-production</guid><category>claude-blog</category><pubDate>2026-08-07</pubDate><description>Claude Code 现已默认启用自动模式，通过分类器评估命令风险，在保障安全的同时减少人工批准，提升效率。Nuro 等公司已将其用于生产环境，支持长时间自主运行任务，并用技能和设置约束危险操作。
+
+## Full Text
+
+Running auto mode in production | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+Running auto mode in production
+Explore here
+Ask questions about this page
+Copy as markdown
+Running auto mode in production
+How the teams at Nuro, Gusto, and Garner Health use auto mode to balance speed and safety at production scale.
+Category
+Claude Code
+Product
+Claude Code
+Date
+August 7, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/auto-mode-in-production
+Author(s)
+Molly Vorwerck
+Auto mode is now the default
+setting in Claude Code. Instead of asking you to approve every command an agent wants to run, a classifier evaluates each action and blocks ones that look potentially harmful.
+Auto mode’s design resolves a common agentic coding tradeoff: speed vs. safety. Reviewing every command keeps a human in the loop, but once sessions stretch to hours or multiply in parallel, that oversight becomes the bottleneck. Skipping permission checks entirely is faster—and it’s also how prompt injection, scope drift, and the occasional deleted production resource get through.
+Auto mode closes most of that gap. In internal evaluations, the classifier caught more dangerous actions than developers did when clicking through permission prompts by hand, and its performance held up under third-party red-teaming.  And because sessions pause less often, Claude works 9x longer between interruptions than under the previous default—across all Claude Code usage.
+To see how auto mode holds up in production, we spoke with teams at Nuro, Gusto, and Garner Health about how and why they use auto mode as their daily driver to balance speed with safety in their production environments.
+Powering longer running autonomous agents at Nuro
+Nuro, the physical AI company developing universal Level 4 autonomous driving technology, adopted Claude Code in late 2025, and by March it was the most popular agentic coding tool at the company.
+Before auto mode shipped, staff software engineer Kai Zhou had already started prototyping an internal stand-in: a hook that sent each pending action to a small model, auto-approved the routine 90 percent of the time, and routed anything sensitive to Slack for a human to review. The prototype answered a real tension: engineers hated babysitting approval prompts, but from a company security and legal standpoint, skipping permissions outright was too dangerous to sanction. When auto mode shipped, Kai shelved the side project.
+Today, Kai runs auto mode for everything he writes.
+"I don't want to sit there and click approve all the time," said Kai. "I use auto mode for 100 percent of my coding work. Most of the time, I open three or four sessions running auto mode in parallel and just check in when I need to.”
+The exception is work that touches other teams. For instance, when Claude Code reviews a Pull Request on his behalf, Kai switches back to interactive mode and reviews each one before it goes out.
+Auto mode doesn’t run unconstrained, either. Nuro leans heavily on
+skills
+, and engineers deny the most dangerous commands, like recursive deletes, outright in their settings. The classifier makes its judgment calls inside those guardrails.
+The bigger auto mode unlock, however, has been the ability to kick off work that keeps running after engineers are done for the day. Specifically, Kai’s team uses auto mode to power long-running research agents that hill-climb the evaluation metrics behind its autonomous-driving stack: tasks with a clear, measurable signal an agent can iterate against on its own.
+Overnight, an agent can study false negatives flagged by the evaluation suite, draft a proposal, run experiments, and keep iterating on the results. The approach extends to any task with a clear evaluation method—another team at Nuro uses it to shrink the memory footprint of a specific binary—because the metric itself tells the agent whether it’s improving or regressing.
+"The other day, I kicked off an agent at 10 p.m. and it kept running until 5 a.m.—and it gave me three PRs in the morning," Kai said. "I think it's pretty impressive. Only auto mode enables this kind of workload."
+Shipping PRs faster and safer at Gusto
+At Gusto, a leading SMB technology company, the move to auto mode started as a proactive security upgrade.
+Martin Emde, who works on the company's AI Dev Tools team, had watched permission fatigue slow the team down. Auto mode gave them the same velocity without sacrificing control or security, and since adoption took hold across engineering, the overall permissions burden has noticeably declined.
+Martin has kicked off 2,425 Claude Code sessions since December, with auto mode as his daily driver. Cross-repo work that used to stall on folder-access approvals now runs uninterrupted, and unattended jobs, like compiling daily notes from GitHub, Slack, and Jira, run on their own. In his team’s own analysis, roughly 10% of session transcripts since mid-May 2026 included an auto mode denial, evidence the classifier is doing real work without dragging on legitimate tasks.
+“Auto mode gave us a safer balance between speed and control," Martin said. "We were able to remove the repeated prompts and increase productivity without compromising safety. We can see that auto mode blocks at the right time, which gives us the confidence to move quickly."
+Chad Kunsman, a member of Gusto’s AIT Cloud Engineering team, came to the same conclusion from the other direction. His work—endpoint investigations, log audits, connector management, doc ingestion across a stack of MCP servers—runs in short, twenty-minute bursts rather than overnight marathons. He wasn't looking for longer runs; he wanted the hands-off pace of bypass permissions without the exposure of a bad prompt, or a prompt injection, slipping through.
+"Given the protection against prompt injection, and the way it checks that what you're doing actually lines up with what you asked for, it's the better choice than bypass permissions and far faster than permission prompts," said Chad.
+On the rare occasions the classifier does step in, Chad says it's on the mark. "When it stopped me, it made sense and explained why. It was drifting from what I'd originally asked, and it checked in. It wasn't off base at all."
+Chad still steps out of auto mode for his most sensitive work. When a session has its teeth into production infrastructure—Terraform, AWS, direct POST calls against live APIs—he switches to accept edits and verifies each tool call by hand. “You have to weigh the amount of time you’re saving against what it could reasonably make a mistake on, and how catastrophic that would be,” he said. “Ultimately, you’re still responsible for what happens.”
+That judgment operates inside a broader defense-in-depth setup: Gusto routes its MCP traffic through a governed proxy layer with tool guards and prompt inspection, so agents work with tightly scoped permissions before auto mode ever weighs in.
+Accelerating the software development lifecycle (SDLC) at Garner Health
+Garner Health, the healthcare technology company, rolled out Claude Code in February to all 550 employees across every function. The tool is wired into all the core systems including Salesforce, Zendesk, and Snowflake, and employees are encouraged to spend about two hours a week automating the most repeatable  parts of their job.
+Before auto mode, that scale came with overhead. Evan Magnussen, Garner's platform engineering manager, describes permission management as a tedious cycle of hand-curating approved command lists and watching piped commands get rejected.
+Today, Evan and most of his colleagues use auto mode in every session, from researching the codebase to managing external integrations through MCP.
+“We've built out a standardized software development lifecycle for the entire engineering organization that is really only possible because of auto mode,” Evan said. “Employees view it as a weight off their shoulders. They don’t have to monitor their agents for hours on end anymore."
+That lifecycle runs as a plugin of standardized skills. An agent picks up a task, explores the context it has access to, commits context files to the repository, runs what Evan calls “antagonistic research” to pressure-test its own assumptions, and then moves on to implementation—pausing for a human only when it needs context it can’t find on its own. The research-heavy stages, Evan notes, weren’t possible before auto mode.
+Out of the box, the classifier has needed little tuning. Evan’s one adjustment mirrors Kai’s at Nuro: he configured auto mode not to approve actions that communicate with other people, like sending Slack messages or emails.
+“I personally don’t like Claude to just act on my behalf when I’m communicating with another person,” he said. Teams working on core intellectual property—the most skeptical of skipping permissions before auto mode—learned to tune the classifier’s injected prompts to be more or less permissive for their work.
+His advice for other enterprises rolling it out? Lean in and build the right controls so that you can empower engineers while ensuring safe deployment. “If we were to say, everyone go build your own workflows, and we have no telemetry, that would be very dangerous,” Evan said. “Because we have the telemetry, because we’ve built out workflows that are relatively standard, we have much more confidence.”
+Get started with
+auto mode
+in Claude Code.
+No items found.
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+Aug 7, 2026
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Claude Code
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Aug 6, 2026
+Millennium and Anthropic are building a digital risk analyst with Claude
+Enterprise AI
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Millennium and Anthropic are building a digital risk analyst with Claude
+Jul 24, 2026
+Claude models explained: choosing the best model for your use case
+Enterprise AI
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Claude models explained: choosing the best model for your use case
+Jul 22, 2026
+Building verification loops in Claude Code with skills
+Claude Code
+Building verification loops in Claude Code with skills
+Building verification loops in Claude Code with skills
+Building verification loops in Claude Code with skills
+Building verification loops in Claude Code with skills
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude Code
+Coding</description></item><item><title>How HSP GRUPPE builds AI capabilities for tax advisory</title><link>https://openai.com/index/hsp-gruppe</link><guid isPermaLink="true">https://openai.com/index/hsp-gruppe</guid><category>openai-news</category><pubDate>2026-08-07</pubDate><description>HSP GRUPPE将ChatGPT Enterprise嵌入税务咨询等流程，通过AI论坛与共享Agent推动组织转型，提升效率并释放时间用于客户咨询，98.6%员工报告生产力提升，并正试点ChatGPT Work。
+
+## Full Text
+
+How HSP GRUPPE builds AI capabilities for tax advisory | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 7, 2026
+How HSP GRUPPE builds AI capabilities for tax advisory
+Tax professionals use ChatGPT Enterprise to process information faster, improve work quality, and create more capacity for advisory work and client service.
+Contact sales
+Company size:
+Mid-market
+Region:
+Europe &amp; UK
+Industry:
+Services
+Products:
+ChatGPT
+98.6%
+of employees report higher productivity
+84%
+Weekly active usage
+500,000+
+ChatGPT conversations in six months (Feb 1 to Jul 14, 2026)
+40,000+
+Estimated annual hours of additional capacity across the firm network
+Loading…
+Share
+Reinventing professional work
+Reinventing professional work
+Inside the rollout
+Preparing for the next wave with ChatGPT Work
+Results at a glance
+Leadership lessons
+Tips
+What’s next
+Reinventing professional work
+Inside the rollout
+Preparing for the next wave with ChatGPT Work
+Results at a glance
+Leadership lessons
+Tips
+What’s next
+The usage figures in this story refer to the shared ChatGPT Enterprise workspace used by HSP GRUPPE and Kanzleipakt, covering 81 organizational groups. HSP GRUPPE itself is a network of legally independent tax advisory, auditing, and law firms.
+Reinventing professional work
+For more than two decades,
+HSP GRUPPE
+⁠
+(opens in a new window)
+has consistently invested in digitizing and standardizing professional firm processes. Long before generative AI, the firm network standardized processes, embedded quality management, and fostered a culture of continuous improvement across the network.
+When ChatGPT emerged, HSP saw more than another productivity tool. It saw an opportunity to rethink how professional work itself could evolve.
+Rather than asking how AI could help employees write faster emails or summarize documents, leadership asked a broader question: What happens when AI becomes part of the operating model of a professional services firm?
+That vision led HSP to embed ChatGPT Enterprise into tax advisory, legal research, client communication, financial analysis, and knowledge sharing across the firm network.
+“Technology is moving faster than organizations can transform. Our challenge wasn’t introducing AI—it was helping the organization absorb it.”
+—Carsten Schulz, CEO, HSP GRUPPE
+Inside the rollout
+HSP approached AI as an organizational transformation rather than a software rollout.
+The organization introduced ChatGPT Enterprise with a strong focus on adoption, governance, and continuous learning. Monthly AI forums gave employees a place to share practical use cases and learn from one another. ChatGPT Enterprise’s security features provide an important technical foundation, while the use of client-related information is governed by HSP’s internal data protection, confidentiality, and governance requirements. Professional review and final responsibility always remain with the relevant tax, legal, or accounting professional.
+The goal wasn’t simply to encourage experimentation. It was to build an organizational capability that could scale.
+As Carsten Schulz puts it: “People ask me what my favorite AI feature is. I never answer that question. Individual features don’t matter. Once you understand how everything fits together, AI opens the door to a completely new world.”
+Across the firm network, professionals quickly found new ways to apply AI to their daily work, while the organization also began standardizing successful use cases into custom Agents. One example is
+AI Client Communication
+, a shared Agent that supports first drafts, structure, clarity, and a more consistent, client-oriented tone. Professional review and final responsibility remain with the relevant tax, legal or accounting specialist. Another is the
+Booking Assistant SKR03 &amp; SKR04
+, which supports the preparation and classification of specific booking questions. The final professional decision remains with the employee. Together, these kinds of shared Agents reduce repetitive work while making best practices available to every employee—not just AI experts.
+Professionals then build on those foundations in their own work. Managing Partner Frank Heibel uses ChatGPT as a technical sparring partner to work through complex tax questions and refine client communications. “ChatGPT has become a genuine sparring partner. It completely changes the level at which you can work.” he says.
+Partner Magdalene Posnak reduced the time required to evaluate multiple real estate investments from nine hours to around two, allowing her to spend more time advising clients. Managing Director Marco Sell uses AI-powered dashboards to help clients explore financial scenarios together during meetings, while lawyer and tax advisor Jan-Henrik Leifelt uses ChatGPT to strengthen—not replace—his professional judgment.
+The common thread is simple: less time spent preparing information, and more time spent applying expertise.
+“An analysis of several real estate investments used to take me around nine hours. With ChatGPT, I can prepare it in about two—and use the time saved for client advisory.”
+—Magdalene Posnak, Partner, HSP GRUPPE
+Preparing for the next wave with ChatGPT Work
+HSP is already preparing for the next phase of its AI journey with ChatGPT Work.
+Just weeks after gaining access, the organization began piloting the platform with a small group of developers and administrators before expanding across the wider workspace. The goal is to understand how agentic AI can safely automate complex workflows while balancing governance, quality, and cost before broader rollout.
+For HSP, the economic benefit is not about reducing headcount. The firms in the network are already operating at capacity and managing substantial backlogs. Time saved with ChatGPT can therefore be redirected toward additional client work, shorter turnaround times, more advisory capacity, and stronger client service.
+For Schulz, the opportunity isn’t simply helping people complete existing tasks more quickly. It’s redesigning the workflow itself.
+He points to year-end accounting as an example. Today, accountants often discover missing information only when they begin preparing annual accounts months after bookkeeping has been completed. HSP is exploring how ChatGPT Work could continuously review bookkeeping, identify missing information throughout the year, and proactively request documents from clients—so that much of the preparation has already happened before an accountant even opens the file.
+That shift—from AI assisting people to AI orchestrating work across entire processes—represents the next stage of HSP’s transformation.
+“We identified 88 opportunities for automation. But I think that’s already thinking too small. The real question isn’t how we automate today’s processes. It’s how we redesign them. That’s what opens the door to a completely new world.”
+—Carsten Schulz, CEO, HSP GRUPPE
+Results at a glance
+Achieved 84% weekly active usage, with 755 weekly active users and 913 unique users over six months (February 1 to July 14, 2026).
+During the evaluated period from February 1 to July 14, 2026, users exchanged more than 500,000 messages with ChatGPT.
+98.6% of surveyed employees reported higher productivity, while 84.6% reported improved quality of work.
+95.9% of respondents reported weekly time savings; 63.5% saved at least two hours per week, and 25.7% saved at least five hours. HSP is already seeing an operational leading indicator in its annual capacity planning, with professionals planning significantly more work than in previous years because employees recognize additional capacity created through AI-supported work. The organization expects to assess the full financial impact later this year.
+79.7% reported better client service and 78.1% reported higher job satisfaction.
+A deliberately conservative internal scenario estimates approximately 40,000 hours of additional annual capacity. Around 28,000 hours could support productive, generally billable specialist work, while roughly 12,000 hours could support administration, client service, and support. Based on conservative hourly rates, HSP estimates a theoretical annual revenue potential of approximately €3.8 million. This is a capacity scenario—not realized or guaranteed revenue.
+Leadership lessons
+Treat AI as an organizational capability, not an individual tool.
+Scale successful experiments into repeatable workflows that everyone can benefit from.
+Invest in operational foundations first.
+Strong processes, governance, and quality systems accelerate AI adoption.
+Create a culture of continuous learning.
+Regular AI forums helped successful ideas spread quickly across the organization.
+Redesign workflows—not just tasks.
+The greatest value comes from rethinking end-to-end processes rather than automating isolated activities.
+Build AI around professional judgement.
+The greatest value comes when AI enhances expertise rather than replacing it.
+Tips
+Start with business problems—not AI features.
+Create regular forums where employees can share successful use cases across teams.
+Pair AI specialists with domain experts to turn successful experiments into scalable workflows.
+Pilot new capabilities with small groups before expanding organization-wide.
+Measure adoption and business impact—not just deployment—to understand where AI is creating real value.
+What’s next
+HSP believes its biggest AI gains still lie ahead.
+Together with Kanzleipakt, HSP GRUPPE plans to establish a joint DATEV-centric AI, firm process, and development team to evaluate successful decentralized experiments and translate them into documented, scalable reference workflows. As ChatGPT Work and agentic capabilities mature, HSP plans to move beyond assisting individual professionals toward automating entire workflows that proactively support employees and clients alike.
+For Schulz, the long-term opportunity extends beyond HSP itself. He believes AI can strengthen—not diminish—the role of trusted professionals by enabling them to spend more time exercising judgment, solving complex problems, and building client relationships.
+“Everyone talks about AI replacing tax advisors. I think that’s the wrong conversation. The real opportunity is helping qualified professionals become dramatically more effective.”
+—Carsten Schulz, CEO, HSP GRUPPE
+Join the new era of work
+More than 1 million businesses around the world are achieving meaningful results with OpenAI.
+Contact sales
+Keep reading
+Responding to the next frontier of critical cyber capabilities
+Security
+Aug 7, 2026
+Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users
+Product
+Aug 6, 2026
+OpenAI and APA advance responsible AI for youth
+Company
+Aug 6, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>Responding to the next frontier of critical cyber capabilities</title><link>https://openai.com/index/responding-next-frontier-critical-cyber-capabilities</link><guid isPermaLink="true">https://openai.com/index/responding-next-frontier-critical-cyber-capabilities</guid><category>openai-news</category><pubDate>2026-08-07</pubDate><description>OpenAI公布其新模型Astra在网络安全评估中可能达到“关键”水平，虽未最终确认，但已加强安全控制、暂停部分内部活动并引入监控，同时将与政府及安全机构合作测试，以应对日益增强的AI网络攻防能力。
+
+## Full Text
+
+Responding to the next frontier of critical cyber capabilities | OpenAI
+Skip to main content
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Log in
+Try ChatGPT
+(opens in a new window)
+Research
+Products
+Business
+Developers
+Company
+Foundation
+(opens in a new window)
+Try ChatGPT
+(opens in a new window)
+Login
+OpenAI
+August 7, 2026
+Security
+Responding to the next frontier of critical cyber capabilities
+Loading…
+Share
+Measuring critical cybersecurity capabilities
+Measuring critical cybersecurity capabilities
+Steps we are taking
+Measuring critical cybersecurity capabilities
+Steps we are taking
+Cybersecurity is rapidly changing as models become more capable in ways that can both strengthen cyberdefenses and enable attacks at unprecedented speed and scale.
+Our latest internal evaluations of Astra, one of our upcoming models, over the past few days indicate significant advancements in agentic coding and cybersecurity. These results, in addition to expert assessments, have led us to conclude last night that we cannot rule out critical cyber capabilities under our
+Preparedness Framework
+⁠
+(opens in a new window)
+.
+We are sharing this because we believe it’s important to be transparent with the public and the safety and security communities about this potential shift in capabilities.
+We first published our Preparedness Framework in December 2023, well before models approached biological, chemical, cybersecurity, and AI self-improvement capabilities at this level. We created it to give us a guide for identifying progress in capability and then planning what our company would do as those capabilities emerge. Previous models, including GPT‑5.6‑Sol, have been evaluated for frontier cyber capabilities and assessed at the High (rather than Critical) threshold.
+Measuring critical cybersecurity capabilities
+Under our Preparedness Framework, a model reaches the Critical cybersecurity threshold if it can identify and develop functional zero-day exploits of all severity levels in many hardened real-world critical systems without human intervention, or can devise and execute end-to-end novel strategies for cyberattacks against hardened targets given only a high level desired goal.
+While we continue to benchmark and assess this model, our preliminary evaluations indicate strong enough performance that we cannot rule out Critical capability level at this time. Astra is an upcoming model, and was not involved in exploiting Hugging Face.
+Steps we are taking
+Accordingly, we have scaled up robustness testing of our safeguards and security controls so that they are appropriate for a deployment of these capabilities. Internally, we have also taken the following steps so that further development of this model happens safely and securely:
+We are implementing stricter security controls for higher-capability models and associated activities, including isolated testing environments, restricted network and tool access, enhanced model weight protections and encryption, additional monitoring and detection capabilities, and sandboxed execution.
+We are pausing internal activities involving Astra that do not yet meet these strengthened security control requirements.
+We have implemented universal monitoring
+for risky actions and misalignment
+across all agentic applications of Astra, including training and evaluation. Monitors evaluate the model's Chain of Thought and trigger a security response to review and interrupt high risk activity.
+We will work with relevant government agencies and select AI safety organizations to test the capabilities for this model.
+We will be providing recommended security controls to third-party testing partners for running higher risk evaluations and workloads safely.
+The framework has already guided us through other capability transitions. In June 2025, as our models approached the high capability threshold for biology under the Preparedness Framework, we
+outlined the steps we were taking
+to strengthen safeguards, expand testing, work with external experts, and deploy additional security controls. We are applying the same principle here.
+We believe advanced cyber-capable models should help
+defenders
+identify and address vulnerabilities before attackers do. We’re committed to working alongside governments, safety institutes, and civil society to ensure that the frontier capabilities of models like Astra, and those that follow, are deployed responsibly and broadly for the benefit of all humanity.
+2026
+Author
+OpenAI
+Keep reading
+View all
+Third-party cyber evaluations involving OpenAI models
+Security
+Aug 4, 2026
+OpenAI and Hugging Face address security incident
+Security
+Jul 21, 2026
+Patch the Planet: a Daybreak initiative to support open source maintainers
+Security
+Jun 22, 2026
+Research
+Research Index
+Research Overview
+Economic Research
+Latest Advancements
+GPT-5.6
+GPT-5.5
+GPT-5.4
+Safety
+Safety Approach
+Deployment Safety
+(opens in a new window)
+Security &amp; Privacy
+Trust &amp; Transparency
+Products
+ChatGPT
+(opens in a new window)
+ChatGPT Business
+(opens in a new window)
+ChatGPT Enterprise
+(opens in a new window)
+ChatGPT for Education
+(opens in a new window)
+Codex
+Release Notes
+API Platform
+Overview
+API Log In
+(opens in a new window)
+Docs
+(opens in a new window)
+Business
+Overview
+Solutions
+Resources
+Customer Stories
+Partner Network
+Contact Sales
+Developers
+Apps SDK
+(opens in a new window)
+Open Models
+Docs
+(opens in a new window)
+Resources
+(opens in a new window)
+Developer Forum
+(opens in a new window)
+Company
+About Us
+Our Charter
+Careers
+News
+Support
+Help Center
+(opens in a new window)
+More
+Stories
+Academy
+Supply Co.
+Livestreams
+Podcast
+RSS
+Terms &amp; Policies
+Terms of Use
+Privacy Policy
+Other Policies
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+(opens in a new window)
+OpenAI © 2015–2026
+Your privacy choices
+English
+United States</description></item><item><title>See what 5 builders are making with Gemini Omni</title><link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders</guid><category>google-gemini</category><pubDate>2026-08-07</pubDate><description>Google 推出 Gemini Omni 系列模型，支持通过对话式交互生成和编辑视频，可切换角度、改变环境、替换物体，甚至将草图转化为动画。文章展示了五位开发者利用该模型实现的多种创意应用，体现了其在视频创作与物理模拟方面的强大能力。
+
+## Full Text
+
+How 5 builders are using Gemini Omni
+Skip to main content
+See what 5 builders are making with Gemini Omni
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+See what 5 builders are making with Gemini Omni
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Models &amp; research
+Gemini Models
+See what 5 builders are making with Gemini Omni
+Aug 07, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Gemini Omni makes creating videos as easy as having a conversation. Here are some of the coolest things people and companies are building with it.
+Lindsey Lanquist
+Contributor
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Google’s new AI model, Gemini Omni, makes editing and creating videos as easy as having a conversation. You can change camera angles, swap out objects or even turn simple sketches into realistic animations. It understands how the world works, so your videos look natural and smooth. It’s a powerful tool that lets you bring your wildest ideas to life.
+Summaries were generated by Google AI. Generative AI is experimental.
+At this year’s I/O, we introduced
+Gemini Omni Flash
+, our first model in the new Omni family. Omni makes creating and editing videos
+as easy as having a conversation
+. You can generate high-quality videos from text, image, video, or audio references, and even edit your own videos. And since Omni combines an intuitive understanding of physics with Gemini’s real-world knowledge, it creates more realistic outputs.
+We recently
+gave developers access
+to Omni, and builders have already used it for a range of projects. Here are some of the demos that caught our eye.
+Switch angles and perspectives.
+Omni
+makes editing videos incredibly easy. You can change camera angles, switch environments, and apply cinematic zooms — all without losing the thread of your original scene.
+Builder
+Leon Lin (@LexnLin on X)
+took full advantage of this capability, capturing a woman standing in the middle of a city from about 20 different perspectives. You see her from every angle imaginable: up close and far away, head on and in profile, from above, and from below. Some shots zoom in, while others hold still. And the background shifts: She stands on sidewalks, crosswalks, and city streets, surrounded by pedestrians, cars, trams, and a range of different buildings.
+Transform the world around you.
+Omni lets you change what’s happening in a video and create something you never could have filmed yourself. You can edit the action or swap in different objects, and Omni will still maintain a coherent, cohesive scene.
+Take this video from builder
+Carlos Santana (@DotCSV on X)
+, for example. He changes an outdoor scene using only his voice, switching the lighting from day to night, adding cloudy skies and rainy sounds, turning the leaves orange, and covering the ground in snow.
+Animate everyday objects.
+With Omni in
+Google Flow
+, you can turn sketches into realistic videos, using doodles to guide how individual elements move. And you can decide whether these hand-drawn elements become part of your final product.
+Builder
+Pan (@sebatheepan on X)
+, for instance, uses doodles to playfully transform everyday objects. A lemon becomes a submarine bobbing in the ocean. A cup of espresso is now a hot air balloon transporting someone through the sky. A pair of hot peppers form a sleeping dragon that breathes fire when startled. A match is recast as a rocket ship. And scissors turn into a scary shark looking for a snack.
+Play with different styles or visual effects.
+Curious what your video would look like with a completely different aesthetic? With Omni, you can change styles and apply effects to create something that matches your vision. Define the look you want by inputting references, or just describe what you’re looking for in natural language. Omni blends that together to create a cohesive clip.
+Builder
+Jerrod Lew (@jerrod_lew on X)
+put this to the test with Omni in Google Flow, rendering a video of a woman walking down the street in four different animation styles. The original clip fluidly shifts from live-action to anime to claymation and more, never interrupting the woman’s natural forward progression.
+Bring ideas to life.
+The team at
+Hyperagent (@hyperagentapp on X)
+used Omni to visualize three different concepts with video. They layered landscaping into a video of an empty park to create a before-and-after design proposal. They personified data with an animated professor who explains business dashboards. And they gamified a to-do list with a video showing a character clearing tasks.
+Omni blends knowledge with creativity, letting you create scenes that follow real-world logic. Try it in the
+Gemini app
+,
+Google Flow
+,
+Google AI Studio
+, the
+Gemini API
+, or the Gemini Enterprise Agent Platform.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+Gemini models
+Google DeepMind
+Related stories
+Google DeepMind
+Our WeatherNext 2 AI model demonstrated a massive leap forward in predicting cyclones.
+AI
+The latest AI news we announced in July 2026
+By
+          
+            
+            News from Google Team
+Developer tools
+Inside our 353,000-person vibe coding course
+By
+          
+            
+            Anant Nawalgaria
+          
+            &amp; 
+            Brenda Flynn
+Gemini models
+Simplify your morning with this vibe-coded schedule app.
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Google Labs
+We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control.
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>See what 5 builders are making with Gemini Omni</title><link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders</link><guid isPermaLink="true">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders</guid><category>google-models-research</category><pubDate>2026-08-07</pubDate><description>Gemini Omni是Google新推出的一体化视频生成与编辑模型，支持文本、图像、视频、音频参考，自然语言控制视角切换、场景变换、物体替代及涂鸦动画化，具有物理理解能力，已向开发者开放并展示多个创意demo。
+
+## Full Text
+
+How 5 builders are using Gemini Omni
+Skip to main content
+See what 5 builders are making with Gemini Omni
+Innovation &amp; AI
+Products &amp; platforms
+Company news
+Feed
+Subscribe
+Back
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Back
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Back
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Innovation &amp; AI
+Innovation &amp; AI
+See all in Innovation &amp; AI
+Models &amp; Research
+Google DeepMind
+Google Research
+Google Labs
+Gemini models
+Quantum computing
+See all
+Products
+Developer tools
+Gemini app
+Gemini Notebook
+See all
+Infrastructure &amp; cloud
+Global network
+Google Cloud
+See all
+Technology
+Safety &amp; Security
+Health
+See all
+Learn more:
+Google DeepMind blog
+Google Research blog
+Google Developers blog
+Google Cloud blog
+Products &amp; platforms
+Products &amp; platforms
+See all in Products &amp; platforms
+Products
+Search
+Maps
+Chrome
+Google Health
+Google Workspace
+Learning &amp; Education
+Shopping
+See all
+Platforms
+Android
+Google Play
+Wear OS
+See all
+Devices
+Pixel
+Google Nest
+Fitbit
+Chromebooks
+See all
+Learn more:
+Google Ads &amp; Commerce blog
+Waze blog
+Company news
+Company news
+See all in Company news
+Outreach &amp; initiatives
+Creating opportunity
+Safety &amp; security
+Google.org
+Public policy
+Sustainability
+Health
+See all
+Leadership
+Sundar Pichai, CEO
+More authors
+See all
+Inside Google
+Around the globe
+Life at Google
+See all
+Learn more:
+Google Security blog
+Feed
+See what 5 builders are making with Gemini Omni
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+[]
+Preferences
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+Links
+Images
+RSS feed
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Subscribe
+Breadcrumb
+Home
+Innovation &amp; AI
+Models &amp; research
+Gemini Models
+See what 5 builders are making with Gemini Omni
+Aug 07, 2026
+|
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Gemini Omni makes creating videos as easy as having a conversation. Here are some of the coolest things people and companies are building with it.
+Lindsey Lanquist
+Contributor
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Your browser does not support the audio element.
+Listen to article
+[[duration]] minutes
+This content is generated by Google AI. Generative AI is experimental
+Voice
+Speed
+Voice
+Speed
+0.75X
+1X
+1.5X
+2X
+Read AI-generated summary
+Google’s new AI model, Gemini Omni, makes editing and creating videos as easy as having a conversation. You can change camera angles, swap out objects or even turn simple sketches into realistic animations. It understands how the world works, so your videos look natural and smooth. It’s a powerful tool that lets you bring your wildest ideas to life.
+Summaries were generated by Google AI. Generative AI is experimental.
+At this year’s I/O, we introduced
+Gemini Omni Flash
+, our first model in the new Omni family. Omni makes creating and editing videos
+as easy as having a conversation
+. You can generate high-quality videos from text, image, video, or audio references, and even edit your own videos. And since Omni combines an intuitive understanding of physics with Gemini’s real-world knowledge, it creates more realistic outputs.
+We recently
+gave developers access
+to Omni, and builders have already used it for a range of projects. Here are some of the demos that caught our eye.
+Switch angles and perspectives.
+Omni
+makes editing videos incredibly easy. You can change camera angles, switch environments, and apply cinematic zooms — all without losing the thread of your original scene.
+Builder
+Leon Lin (@LexnLin on X)
+took full advantage of this capability, capturing a woman standing in the middle of a city from about 20 different perspectives. You see her from every angle imaginable: up close and far away, head on and in profile, from above, and from below. Some shots zoom in, while others hold still. And the background shifts: She stands on sidewalks, crosswalks, and city streets, surrounded by pedestrians, cars, trams, and a range of different buildings.
+Transform the world around you.
+Omni lets you change what’s happening in a video and create something you never could have filmed yourself. You can edit the action or swap in different objects, and Omni will still maintain a coherent, cohesive scene.
+Take this video from builder
+Carlos Santana (@DotCSV on X)
+, for example. He changes an outdoor scene using only his voice, switching the lighting from day to night, adding cloudy skies and rainy sounds, turning the leaves orange, and covering the ground in snow.
+Animate everyday objects.
+With Omni in
+Google Flow
+, you can turn sketches into realistic videos, using doodles to guide how individual elements move. And you can decide whether these hand-drawn elements become part of your final product.
+Builder
+Pan (@sebatheepan on X)
+, for instance, uses doodles to playfully transform everyday objects. A lemon becomes a submarine bobbing in the ocean. A cup of espresso is now a hot air balloon transporting someone through the sky. A pair of hot peppers form a sleeping dragon that breathes fire when startled. A match is recast as a rocket ship. And scissors turn into a scary shark looking for a snack.
+Play with different styles or visual effects.
+Curious what your video would look like with a completely different aesthetic? With Omni, you can change styles and apply effects to create something that matches your vision. Define the look you want by inputting references, or just describe what you’re looking for in natural language. Omni blends that together to create a cohesive clip.
+Builder
+Jerrod Lew (@jerrod_lew on X)
+put this to the test with Omni in Google Flow, rendering a video of a woman walking down the street in four different animation styles. The original clip fluidly shifts from live-action to anime to claymation and more, never interrupting the woman’s natural forward progression.
+Bring ideas to life.
+The team at
+Hyperagent (@hyperagentapp on X)
+used Omni to visualize three different concepts with video. They layered landscaping into a video of an empty park to create a before-and-after design proposal. They personified data with an animated professor who explains business dashboards. And they gamified a to-do list with a video showing a character clearing tasks.
+Omni blends knowledge with creativity, letting you create scenes that follow real-world logic. Try it in the
+Gemini app
+,
+Google Flow
+,
+Google AI Studio
+, the
+Gemini API
+, or the Gemini Enterprise Agent Platform.
+Get the latest news from Google in your inbox
+Sign up for our newsletters with product updates, event information, special offers, and more.
+Done. Just one step more.
+Check your inbox to confirm your subscription.
+You can also subscribe with a
+different email address
+.
+Your information will be used in accordance with
+Google's privacy policy.
+You may opt out at any time.
+POSTED IN:
+Gemini models
+Google DeepMind
+Related stories
+Google DeepMind
+Our WeatherNext 2 AI model demonstrated a massive leap forward in predicting cyclones.
+AI
+The latest AI news we announced in July 2026
+By
+          
+            
+            News from Google Team
+Developer tools
+Inside our 353,000-person vibe coding course
+By
+          
+            
+            Anant Nawalgaria
+          
+            &amp; 
+            Brenda Flynn
+Gemini models
+Simplify your morning with this vibe-coded schedule app.
+Google DeepMind
+Introducing Gemini Robotics ER 2
+By
+          
+            
+            Steven Hansen
+          
+            &amp; 
+            Peng Xu
+Google Labs
+We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control.
+Privacy
+Terms
+Help
+More of Google
+Google Products
+About the Blog
+Global (English)
+Africa (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Canada (Français)
+Česko (Čeština)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+Greece (Ελληνικά)
+India (English)
+Indonesia (Bahasa Indonesia)
+Ireland (English)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+الشرق الأوسط وشمال أفريقيا (اللغة العربية)
+MENA (English)
+Nederlands (Nederland)
+New Zealand (English)
+Polska (Polski)
+Portugal (Português)
+România (Română)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)</description></item><item><title>Improving Fable 5's biology safeguards</title><link>https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</link><guid isPermaLink="true">https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</guid><category>anthropic-news</category><pubDate>2026-08-07</pubDate><description>Anthropic更新Claude Fable 5的生物安全防护，显著减少约85%的生物学相关回退，扩大日常健康与教育场景的可用性，但涉及病毒学、毒理学等双用领域仍回退至Opus 5。文章强调平衡生物医学收益与滥用风险，并持续完善分类器与可信访问路径。
 
 ## Full Text
 
@@ -161,7 +2611,637 @@ Terms of service: Consumer
 Terms of Service: US K-12
 Data Processing Agreement: US K-12
 Usage policy
-© 2026 Anthropic PBC</description></item><item><title>From asking to doing: How the world is putting ChatGPT to work</title><link>https://openai.com/index/how-the-world-is-putting-chatgpt-to-work</link><guid isPermaLink="true">https://openai.com/index/how-the-world-is-putting-chatgpt-to-work</guid><category>openai-news</category><pubDate>2026-08-06</pubDate><description>OpenAI发布各国ChatGPT使用数据，显示AI正从问答转向实际应用。工作场景中用户更倾向于用其完成任务，全球采用差距缩小，多媒体成为增长最快用例，拉美地区尤为突出，35岁以上用户占比显著上升。
+© 2026 Anthropic PBC</description></item><item><title>Run Claude Code sessions on your own compute</title><link>https://claude.com/blog/run-claude-code-sessions-on-your-own-compute</link><guid isPermaLink="true">https://claude.com/blog/run-claude-code-sessions-on-your-own-compute</guid><category>claude-blog</category><pubDate>2026-08-06</pubDate><description>Anthropic推出Claude Code自托管环境公开测试版，允许在自有基础设施上运行会话，满足网络访问、定制化与合规需求。源码和构建产物保留在用户侧，对话发送至Anthropic推理。支持固定和按需两种运行模式，面向Team和Enterprise计划。
+
+## Full Text
+
+Self-hosted environments for Claude Code | Claude by Anthropic
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Meet Claude
+Products
+Claude
+Claude Code
+Claude Cowork
+@Claude
+Features
+Claude for Chrome
+Claude for Microsoft 365
+Skills
+Claude apps built for
+Design
+Science
+Security
+Models
+Mythos
+Fable
+Opus
+Sonnet
+Haiku
+Platform
+Build on Claude
+Overview
+Pricing
+Developer docs
+Console login
+Works with Claude
+Ecosystem
+Marketplace
+Connectors
+Plugins
+Solutions
+Use cases
+AI agents
+Coding
+Company size
+Enterprise
+Startups
+Departments
+Cybersecurity
+Legal
+Industries
+Customer support
+Financial services
+Government
+Healthcare
+Higher education
+K-12 teachers
+Life sciences
+Nonprofits
+Pricing
+Overview
+API
+Resources
+Insights
+Blog
+Customer stories
+Anthropic news
+Learn
+Anthropic Academy
+Courses
+Tutorials
+Use cases
+Connect
+Events
+Community
+Login
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Contact sales
+Contact sales
+Contact sales
+Try Claude
+Try Claude
+Try Claude
+Blog
+Blog
+/
+Run Claude Code sessions on your own compute
+Explore here
+Ask questions about this page
+Copy as markdown
+Run Claude Code sessions on your own compute
+Category
+Product announcements
+Product
+Claude Code
+Date
+August 6, 2026
+Reading time
+5
+min
+Share
+Copy link
+https://claude.com/blog/run-claude-code-sessions-on-your-own-compute
+Now in public beta, self-hosted environments let you run Claude Code sessions on your own infrastructure. Start a session from the web, mobile, desktop, or a routine, and it runs inside your network, next to your internal services, toolchains, and security controls, rather than on Anthropic-hosted infrastructure.
+For most enterprises, we strongly recommend our hosted offering for operational simplicity with no infrastructure to run or maintain. Self-hosted environments are for teams whose network, tooling, or compliance requirements call for keeping agent execution on infrastructure they control. If you go this route, plan to staff engineering to own setup and ongoing maintenance.
+Why self-host
+We saw organizations in our preview program adopt self-hosted environments for a few key reasons:
+Network access:
+sessions run inside your network and can reach internal services, databases, and registries without exposing them to the public internet
+Customizability:
+pre-install compilers, SDKs, and internal CLIs in your environment so every session starts ready to build
+Compliance:
+source code and build artifacts stay on infrastructure you control
+“Self-hosted environments let us integrate Claude Code into our existing development workflows while maintaining our security and operational controls. This setup means Claude can generate PRs, help fix CI issues, and respond to developer workflow events, with compute that can scale based on demand. Claude understands our codebase, making it a strong fit for how our engineering teams build.”
+George Jacob, Senior Engineering Manager
+Prev
+Prev
+0
+/
+5
+Next
+Next
+eBook
+Data stays on your infrastructure
+Repository checkouts, build artifacts, secrets, and any files a session creates or modifies all stay on infrastructure you provision.
+The conversation itself, including prompts, responses, and tool results (which can include code that Claude reads), is sent to Anthropic for inference, and the session transcript is stored so a session can be picked up from any surface.
+How it works
+When using self-hosted environments, you deploy a set of
+runners
+. These long-lived processes pick up sessions and start a Claude Code process for each
+session
+. Runners come in two modes.
+Fixed:
+you keep a set number running and sessions are distributed across them.
+On-demand:
+an orchestrator watches for queued sessions, starts a runner as sessions arrive, and stops them when work finishes so capacity tracks demand.
+Runners can serve more than one session, but each session runs in its own checkout, so work stays isolated between developers and accounts. Sessions from every supported surface route to the same environment, so you set it up once and it works wherever your team starts a session.
+Note
+: Self-hosted environments differ from
+Remote Control
+, which lets developers continue sessions running on their own machines from a phone or browser. Sessions using Remote Control end when that machine stops running the session and are tied to the user who ran
+claude
+, whereas self-hosted environments run sessions on shared infrastructure your platform team operates and can be used by any user.
+Getting started
+Self-hosted environments are available in public beta to organizations on Claude Team and Enterprise plans. They are off by default and not available for organizations using ZDR.
+Plan on a platform, developer experience, or developer productivity team owning setup and ongoing operation, including building and maintaining the runner image, updating runners, and running the orchestrator if you use on-demand mode.
+See the
+documentation
+to learn more. Share feedback via
+GitHub
+or through your Anthropic account team.
+FAQ
+No items found.
+Related posts
+Explore more product news and best practices for teams building with Claude.
+Aug 5, 2026
+Inference hooks: inline data loss prevention for Claude Enterprise
+Enterprise AI
+Inference hooks: inline data loss prevention for Claude Enterprise
+Inference hooks: inline data loss prevention for Claude Enterprise
+Inference hooks: inline data loss prevention for Claude Enterprise
+Inference hooks: inline data loss prevention for Claude Enterprise
+Jul 28, 2026
+Bringing MCP 2026-07-28 to Claude
+Product announcements
+Bringing MCP 2026-07-28 to Claude
+Bringing MCP 2026-07-28 to Claude
+Bringing MCP 2026-07-28 to Claude
+Bringing MCP 2026-07-28 to Claude
+Jul 2, 2026
+Giving admins more visibility and control over Claude spend
+Product announcements
+Giving admins more visibility and control over Claude spend
+Giving admins more visibility and control over Claude spend
+Giving admins more visibility and control over Claude spend
+Giving admins more visibility and control over Claude spend
+Jun 18, 2026
+Centrally manage authorization for MCP connectors
+Enterprise AI
+Centrally manage authorization for MCP connectors
+Centrally manage authorization for MCP connectors
+Centrally manage authorization for MCP connectors
+Centrally manage authorization for MCP connectors
+Transform how your organization operates with Claude
+See pricing
+See pricing
+See pricing
+Contact sales
+Contact sales
+Contact sales
+Get the developer newsletter
+Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.
+Subscribe
+Subscribe
+Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.
+Thank you! You’re subscribed.
+Sorry, there was a problem with your submission, please try again later.
+Homepage
+Homepage
+Next
+Next
+Thank you! Your submission has been received!
+Oops! Something went wrong while submitting the form.
+Write
+Button Text
+Button Text
+Learn
+Button Text
+Button Text
+Code
+Button Text
+Button Text
+Write
+Help me develop a unique voice for an audience
+Hi Claude! Could you help me develop a unique voice for an audience? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Improve my writing style
+Hi Claude! Could you improve my writing style? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Brainstorm creative ideas
+Hi Claude! Could you brainstorm creative ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Learn
+Explain a complex topic simply
+Hi Claude! Could you explain a complex topic simply? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Help me make sense of these ideas
+Hi Claude! Could you help me make sense of these ideas? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Prepare for an exam or interview
+Hi Claude! Could you prepare for an exam or interview? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Code
+Explain a programming concept
+Hi Claude! Could you explain a programming concept? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Look over my code and give me tips
+Hi Claude! Could you look over my code and give me tips? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Vibe code with me
+Hi Claude! Could you vibe code with me? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to— like Google Drive, web search, etc.—if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can—an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+More
+Write case studies
+This is another test
+Write grant proposals
+Hi Claude! Could you write grant proposals? If you need more information from me, ask me 1-2 key questions right away. If you think I should upload any documents that would help you do a better job, let me know. You can use the tools you have access to — like Google Drive, web search, etc. — if they’ll help you better accomplish this task. Do not use analysis tool. Please keep your responses friendly, brief and conversational.
+Please execute the task as soon as you can - an artifact would be great if it makes sense. If using an artifact, consider what kind of artifact (interactive, visual, checklist, etc.) might be most helpful for this specific task. Thanks for your help!
+Write video scripts
+this is a test
+Anthropic
+Anthropic
+©
+[year]
+Anthropic PBC
+Products
+Claude
+Claude
+Claude
+Claude Code
+Claude Code
+Claude Code
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Code for Enterprise
+Claude Cowork
+Claude Cowork
+Claude Cowork
+@Claude
+@Claude
+@Claude
+Claude Design
+Claude Design
+Claude Design
+Claude Science
+Claude Science
+Claude Science
+Claude Security
+Claude Security
+Claude Security
+Download app
+Download app
+Download app
+Pricing
+Pricing
+Pricing
+Log in
+Log in
+Log in
+Features
+Claude for Chrome
+Claude for Chrome
+Claude for Chrome
+Claude for Microsoft 365
+Claude for Microsoft 365
+Claude for Microsoft 365
+Skills
+Skills
+Skills
+Models
+Mythos
+Mythos
+Mythos
+Fable
+Fable
+Fable
+Opus
+Opus
+Opus
+Sonnet
+Sonnet
+Sonnet
+Haiku
+Haiku
+Haiku
+Solutions
+AI agents
+AI agents
+AI agents
+Code modernization
+Code modernization
+Code modernization
+Coding
+Coding
+Coding
+Customer support
+Customer support
+Customer support
+Cybersecurity
+Cybersecurity
+Cybersecurity
+Enterprise
+Enterprise
+Enterprise
+Financial services
+Financial services
+Financial services
+Government
+Government
+Government
+Healthcare
+Healthcare
+Healthcare
+Higher education
+Higher education
+Higher education
+K-12 teachers
+K-12 teachers
+K-12 teachers
+Legal
+Legal
+Legal
+Life sciences
+Life sciences
+Life sciences
+Nonprofits
+Nonprofits
+Nonprofits
+Small business
+Small business
+Small business
+Claude Platform
+Overview
+Overview
+Overview
+Developer docs
+Developer docs
+Developer docs
+Pricing
+Pricing
+Pricing
+Ecosystem
+Ecosystem
+Ecosystem
+Marketplace
+Marketplace
+Marketplace
+Claude on AWS
+Claude on AWS
+Claude on AWS
+Google Cloud
+Google Cloud
+Google Cloud
+Microsoft Foundry
+Microsoft Foundry
+Microsoft Foundry
+Regional compliance
+Regional compliance
+Regional compliance
+Console login
+Console login
+Console login
+Resources
+Blog
+Blog
+Blog
+Claude partner network
+Claude partner network
+Claude partner network
+Community
+Community
+Community
+Connectors
+Connectors
+Connectors
+Courses
+Courses
+Courses
+Customer stories
+Customer stories
+Customer stories
+Engineering at Anthropic
+Engineering at Anthropic
+Engineering at Anthropic
+Events
+Events
+Events
+Plugins
+Plugins
+Plugins
+Powered by Claude
+Powered by Claude
+Powered by Claude
+Service partners
+Service partners
+Service partners
+Tutorials
+Tutorials
+Tutorials
+Use cases
+Use cases
+Use cases
+Company
+Anthropic
+Anthropic
+Anthropic
+Careers
+Careers
+Careers
+Policy
+Policy
+Policy
+Economic Futures
+Economic Futures
+Economic Futures
+Research
+Research
+Research
+News
+News
+News
+Policy on the AI Exponential
+Policy on the AI Exponential
+Policy on the AI Exponential
+Responsible Scaling Policy
+Responsible Scaling Policy
+Responsible Scaling Policy
+Security and compliance
+Security and compliance
+Security and compliance
+Transparency
+Transparency
+Transparency
+Programs
+Startups
+Startups
+Startups
+Research Labs
+Research Labs
+Research Labs
+Help and security
+Availability
+Availability
+Availability
+Status
+Status
+Status
+Support center
+Support center
+Support center
+Terms and policies
+Privacy choices
+Cookie settings
+We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+here
+.
+Customize
+cookie settings
+Reject
+all cookies
+Accept
+all cookies
+Necessary
+Enables security and basic functionality.
+Required
+Analytics
+Enables tracking of site performance.
+Off
+Marketing
+Enables ads personalization and tracking.
+Off
+Save preferences
+Privacy policy
+Privacy policy
+Privacy policy
+Responsible disclosure policy
+Responsible disclosure policy
+Responsible disclosure policy
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Commercial
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of service: Consumer
+Terms of Service: US K-12
+Terms of Service: US K-12
+Terms of Service: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Data Processing Agreement: US K-12
+Usage policy
+Usage policy
+Usage policy
+x.com
+x.com
+LinkedIn
+LinkedIn
+YouTube
+YouTube
+Instagram
+Instagram
+English (US)
+English (US)
+日本語 (Japan)
+Deutsch (Germany)
+Français (France)
+한국어 (South Korea)
+Italian (Italy)
+Claude Code</description></item><item><title>From asking to doing: How the world is putting ChatGPT to work</title><link>https://openai.com/index/how-the-world-is-putting-chatgpt-to-work</link><guid isPermaLink="true">https://openai.com/index/how-the-world-is-putting-chatgpt-to-work</guid><category>openai-news</category><pubDate>2026-08-06</pubDate><description>OpenAI发布各国ChatGPT使用数据，显示AI正从问答转向实际应用。工作场景中用户更倾向于用其完成任务，全球采用差距缩小，多媒体成为增长最快用例，拉美地区尤为突出，35岁以上用户占比显著上升。
 
 ## Full Text
 
