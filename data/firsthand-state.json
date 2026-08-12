@@ -2,7 +2,7 @@
   "claude-blog": {
     "initialized": true,
     "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='claude.com', port=443): Max retries exceeded with url: /blog (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10ec07c20>, 'Connection to claude.com timed out. (connect timeout=20)'))",
+    "last_fetch_error": "HTTPSConnectionPool(host='claude.com', port=443): Max retries exceeded with url: /blog (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10f74bb60>, 'Connection to claude.com timed out. (connect timeout=20)'))",
     "known_urls_count": 119,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
@@ -1345,7 +1345,7 @@
       "https://openai.com/index/daybreak-models-are-now-available-on-aws"
     ],
     "initialized": true,
-    "known_urls_count": 1245,
+    "known_urls_count": 1246,
     "last_new_article": "2026-08-12T09:06:17+08:00"
   },
   "deepmind-blog": {
@@ -1509,7 +1509,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations"
     ],
     "initialized": true,
-    "known_urls_count": 54,
+    "known_urls_count": 55,
     "last_new_article": "2026-08-12T09:06:17+08:00"
   },
   "google-gemini": {
@@ -1566,7 +1566,7 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users"
     ],
     "initialized": true,
-    "known_urls_count": 78,
+    "known_urls_count": 79,
     "last_new_article": "2026-08-12T09:06:17+08:00"
   },
   "qwen-blog": {
