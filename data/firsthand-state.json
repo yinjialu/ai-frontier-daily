@@ -1,8 +1,8 @@
 {
   "claude-blog": {
     "initialized": true,
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='claude.com', port=443): Max retries exceeded with url: /blog (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10ec07c20>, 'Connection to claude.com timed out. (connect timeout=20)'))",
     "known_urls_count": 119,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
@@ -121,7 +121,7 @@
       "https://www.anthropic.com/research/riemann-zeta"
     ],
     "initialized": true,
-    "known_urls_count": 41,
+    "known_urls_count": 43,
     "last_new_article": "2026-08-11T07:51:41+08:00"
   },
   "anthropic-news": {
@@ -1341,11 +1341,12 @@
       "https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands",
       "https://openai.com/index/premium-seats-chatgpt-business",
       "https://openai.com/index/zapier",
-      "https://openai.com/index/virgin-atlantic/chatgpt-work"
+      "https://openai.com/index/virgin-atlantic/chatgpt-work",
+      "https://openai.com/index/daybreak-models-are-now-available-on-aws"
     ],
     "initialized": true,
-    "known_urls_count": 1229,
-    "last_new_article": "2026-08-11T07:51:41+08:00"
+    "known_urls_count": 1245,
+    "last_new_article": "2026-08-12T09:06:17+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1504,11 +1505,12 @@
       "https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026",
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2-cyclones",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders",
+      "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations"
     ],
     "initialized": true,
     "known_urls_count": 54,
-    "last_new_article": "2026-08-09T11:12:08+08:00"
+    "last_new_article": "2026-08-12T09:06:17+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1560,15 +1562,16 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026",
       "https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders",
-      "https://blog.google/products-and-platforms/products/gemini/state-fair-tips"
+      "https://blog.google/products-and-platforms/products/gemini/state-fair-tips",
+      "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users"
     ],
     "initialized": true,
-    "known_urls_count": 76,
-    "last_new_article": "2026-08-11T07:51:41+08:00"
+    "known_urls_count": 78,
+    "last_new_article": "2026-08-12T09:06:17+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='qwenlm.github.io', port=443): Max retries exceeded with url: /blog/index.xml (Caused by ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))",
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
@@ -1619,8 +1622,8 @@
     "known_urls_count": 44
   },
   "inclusionai-ling": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='inclusionai.github.io', port=443): Max retries exceeded with url: /blog/atom.xml (Caused by ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))",
     "open_pr_urls": [
       "https://www.inclusion-ai.org/blog/agentic-ai-202606",
       "https://www.inclusion-ai.org/blog/agentic-landscape-in-2026-Q1",
