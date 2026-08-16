@@ -1,9 +1,9 @@
 {
   "claude-blog": {
     "initialized": true,
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='claude.com', port=443): Max retries exceeded with url: /blog (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10f74bb60>, 'Connection to claude.com timed out. (connect timeout=20)'))",
-    "known_urls_count": 119,
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
+    "known_urls_count": 121,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -56,9 +56,15 @@
       "https://claude.com/blog/run-claude-code-sessions-on-your-own-compute",
       "https://claude.com/blog/auto-mode-default-in-claude-code",
       "https://claude.com/blog/auto-mode-in-production",
-      "https://claude.com/blog/how-anthropics-business-development-team-uses-claude-to-run-inbound-and-outbound-at-scale"
+      "https://claude.com/blog/how-anthropics-business-development-team-uses-claude-to-run-inbound-and-outbound-at-scale",
+      "https://claude.com/blog/compliance-api-cowork-and-claude-code",
+      "https://claude.com/blog/cowork-chrome-side-panel",
+      "https://claude.com/blog/self-service-data-analytics-in-slack-how-anthropic-deploys-claude-tag-for-ad-hoc-questions",
+      "https://claude.com/blog/claude-tag-now-reads-even-more-of-the-room",
+      "https://claude.com/blog/how-jetbrains-evaluates-and-deploys-claude-fable-5",
+      "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions"
     ],
-    "last_new_article": "2026-08-11T07:51:41+08:00"
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -118,11 +124,13 @@
       "https://www.anthropic.com/research/claude-values-models-languages",
       "https://www.anthropic.com/research/project-pilot",
       "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
-      "https://www.anthropic.com/research/riemann-zeta"
+      "https://www.anthropic.com/research/riemann-zeta",
+      "https://www.anthropic.com/research/reviewing-the-evidence-on-worker-retraining-programs",
+      "https://www.anthropic.com/research/multiagent-systems"
     ],
     "initialized": true,
     "known_urls_count": 43,
-    "last_new_article": "2026-08-11T07:51:41+08:00"
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -147,10 +155,11 @@
       "https://www.anthropic.com/news/cognizant-anthropic",
       "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
       "https://www.anthropic.com/news/tino-cuellar",
-      "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards"
+      "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+      "https://www.anthropic.com/news/claude-text-watermark"
     ],
     "known_urls_count": 67,
-    "last_new_article": "2026-08-07T11:13:04+08:00"
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "transformer-circuits": {
     "last_fetch_ok": true,
@@ -1342,11 +1351,19 @@
       "https://openai.com/index/premium-seats-chatgpt-business",
       "https://openai.com/index/zapier",
       "https://openai.com/index/virgin-atlantic/chatgpt-work",
-      "https://openai.com/index/daybreak-models-are-now-available-on-aws"
+      "https://openai.com/index/daybreak-models-are-now-available-on-aws",
+      "https://openai.com/academy/chatgpt-work/how-business-operations-teams-use-codex",
+      "https://openai.com/academy/chatgpt-work/how-data-science-teams-use-codex",
+      "https://openai.com/academy/chatgpt-work/how-sales-teams-use-codex",
+      "https://openai.com/index/how-enterprises-put-ai-to-work",
+      "https://openai.com/index/ringcentral",
+      "https://openai.com/index/builders-guide-to-gpt-5-6",
+      "https://openai.com/index/previewing-ultrafast",
+      "https://openai.com/index/dali-rajic-chief-revenue-officer"
     ],
     "initialized": true,
-    "known_urls_count": 1246,
-    "last_new_article": "2026-08-12T09:06:17+08:00"
+    "known_urls_count": 1247,
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1462,11 +1479,13 @@
       "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots",
       "https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control",
       "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration",
-      "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones"
+      "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones",
+      "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands",
+      "https://deepmind.google/blog/introducing-gemini-3-7-flash"
     ],
     "initialized": true,
     "known_urls_count": 126,
-    "last_new_article": "2026-08-06T21:35:42+08:00"
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1506,11 +1525,13 @@
       "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026",
       "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2-cyclones",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders",
-      "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations"
+      "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
     ],
     "initialized": true,
-    "known_urls_count": 55,
-    "last_new_article": "2026-08-12T09:06:17+08:00"
+    "known_urls_count": 56,
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1563,15 +1584,18 @@
       "https://blog.google/products-and-platforms/products/gemini/how-gemini-plans-trips",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders",
       "https://blog.google/products-and-platforms/products/gemini/state-fair-tips",
-      "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users"
+      "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users",
+      "https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-services-gemini-august-2026",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
     ],
     "initialized": true,
-    "known_urls_count": 79,
-    "last_new_article": "2026-08-12T09:06:17+08:00"
+    "known_urls_count": 80,
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "qwen-blog": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='qwenlm.github.io', port=443): Max retries exceeded with url: /blog/index.xml (Caused by ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://qwenlm.github.io/blog/qwen3guard",
       "https://qwenlm.github.io/blog/qwen-image-edit",
@@ -1622,8 +1646,8 @@
     "known_urls_count": 44
   },
   "inclusionai-ling": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='inclusionai.github.io', port=443): Max retries exceeded with url: /blog/atom.xml (Caused by ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://www.inclusion-ai.org/blog/agentic-ai-202606",
       "https://www.inclusion-ai.org/blog/agentic-landscape-in-2026-Q1",
@@ -1687,9 +1711,11 @@
       "https://github.com/deepseek-ai/DeepSeek-LLM",
       "https://github.com/deepseek-ai/awesome-deepseek-coder",
       "https://github.com/deepseek-ai/DreamCraft3D",
-      "https://github.com/deepseek-ai/DeepSeek-Coder"
+      "https://github.com/deepseek-ai/DeepSeek-Coder",
+      "https://github.com/deepseek-ai/deepseek-harness"
     ],
     "initialized": true,
-    "known_urls_count": 35
+    "known_urls_count": 35,
+    "last_new_article": "2026-08-17T07:39:55+08:00"
   }
 }
