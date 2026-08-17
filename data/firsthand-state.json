@@ -1359,11 +1359,14 @@
       "https://openai.com/index/ringcentral",
       "https://openai.com/index/builders-guide-to-gpt-5-6",
       "https://openai.com/index/previewing-ultrafast",
-      "https://openai.com/index/dali-rajic-chief-revenue-officer"
+      "https://openai.com/index/dali-rajic-chief-revenue-officer",
+      "https://openai.com/index/the-defenders-window",
+      "https://openai.com/index/openai-joins-ports-pike-project",
+      "https://openai.com/index/new-policy-ideas-for-the-intelligence-age"
     ],
     "initialized": true,
     "known_urls_count": 1255,
-    "last_new_article": "2026-08-17T07:39:55+08:00"
+    "last_new_article": "2026-08-17T21:56:38+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1587,11 +1590,12 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users",
       "https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-services-gemini-august-2026",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable",
+      "https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships"
     ],
     "initialized": true,
     "known_urls_count": 83,
-    "last_new_article": "2026-08-17T07:39:55+08:00"
+    "last_new_article": "2026-08-17T21:56:38+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
