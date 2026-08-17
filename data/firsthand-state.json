@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 127,
+    "known_urls_count": 133,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -129,7 +129,7 @@
       "https://www.anthropic.com/research/multiagent-systems"
     ],
     "initialized": true,
-    "known_urls_count": 45,
+    "known_urls_count": 47,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "anthropic-news": {
@@ -158,7 +158,7 @@
       "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
       "https://www.anthropic.com/news/claude-text-watermark"
     ],
-    "known_urls_count": 68,
+    "known_urls_count": 69,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "transformer-circuits": {
@@ -1365,7 +1365,7 @@
       "https://openai.com/index/new-policy-ideas-for-the-intelligence-age"
     ],
     "initialized": true,
-    "known_urls_count": 1255,
+    "known_urls_count": 1269,
     "last_new_article": "2026-08-17T21:56:38+08:00"
   },
   "deepmind-blog": {
@@ -1487,7 +1487,7 @@
       "https://deepmind.google/blog/introducing-gemini-3-7-flash"
     ],
     "initialized": true,
-    "known_urls_count": 128,
+    "known_urls_count": 130,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "google-models-research": {
@@ -1533,7 +1533,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
     ],
     "initialized": true,
-    "known_urls_count": 58,
+    "known_urls_count": 60,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "google-gemini": {
@@ -1594,7 +1594,7 @@
       "https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships"
     ],
     "initialized": true,
-    "known_urls_count": 83,
+    "known_urls_count": 88,
     "last_new_article": "2026-08-17T21:56:38+08:00"
   },
   "qwen-blog": {
@@ -1678,8 +1678,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": true,
-    "last_fetch_error": null,
+    "last_fetch_ok": false,
+    "last_fetch_error": "HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /orgs/deepseek-ai/repos?sort=created&direction=desc&per_page=50 (Caused by ResponseError('too many 504 error responses'))",
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
