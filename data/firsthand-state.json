@@ -3,7 +3,7 @@
     "initialized": true,
     "last_fetch_ok": true,
     "last_fetch_error": null,
-    "known_urls_count": 121,
+    "known_urls_count": 127,
     "open_pr_urls": [
       "https://claude.com/blog/artifacts-in-claude-code",
       "https://claude.com/blog/claude-for-foundation-models",
@@ -129,7 +129,7 @@
       "https://www.anthropic.com/research/multiagent-systems"
     ],
     "initialized": true,
-    "known_urls_count": 43,
+    "known_urls_count": 45,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "anthropic-news": {
@@ -158,7 +158,7 @@
       "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
       "https://www.anthropic.com/news/claude-text-watermark"
     ],
-    "known_urls_count": 67,
+    "known_urls_count": 68,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "transformer-circuits": {
@@ -1362,7 +1362,7 @@
       "https://openai.com/index/dali-rajic-chief-revenue-officer"
     ],
     "initialized": true,
-    "known_urls_count": 1247,
+    "known_urls_count": 1255,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "deepmind-blog": {
@@ -1484,7 +1484,7 @@
       "https://deepmind.google/blog/introducing-gemini-3-7-flash"
     ],
     "initialized": true,
-    "known_urls_count": 126,
+    "known_urls_count": 128,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "google-models-research": {
@@ -1530,7 +1530,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
     ],
     "initialized": true,
-    "known_urls_count": 56,
+    "known_urls_count": 58,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "google-gemini": {
@@ -1590,7 +1590,7 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
     ],
     "initialized": true,
-    "known_urls_count": 80,
+    "known_urls_count": 83,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   },
   "qwen-blog": {
@@ -1715,7 +1715,7 @@
       "https://github.com/deepseek-ai/deepseek-harness"
     ],
     "initialized": true,
-    "known_urls_count": 35,
+    "known_urls_count": 36,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   }
 }
