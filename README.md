@@ -1,3 +1,5 @@
+
+
 # AI 前哨 · 每日 AI 大厂动态
 
 抓取 AI 大厂官方动态（**Anthropic + OpenAI**，可继续扩展）→ 中文策展 →
@@ -57,7 +59,7 @@ gh secret set ANTHROPIC_API_KEY --body "sk-ant-你的key"
 ```bash
 pip install -r skills/ai-daily-digest/requirements.txt
 npm i playwright && npx playwright install chromium
-python skills/ai-daily-digest/run.py                 # mock，无需联网/密钥
+python3 skills/ai-daily-digest/run.py                 # mock，无需联网/密钥
 python -m http.server 8000                            # 打开 http://localhost:8000/index.html
 ```
 `data/` 与 `output/` 默认写到当前目录（可用环境变量 `DIGEST_OUT` 指定）。
