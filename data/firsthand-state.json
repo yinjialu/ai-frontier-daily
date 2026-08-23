@@ -62,9 +62,18 @@
       "https://claude.com/blog/self-service-data-analytics-in-slack-how-anthropic-deploys-claude-tag-for-ad-hoc-questions",
       "https://claude.com/blog/claude-tag-now-reads-even-more-of-the-room",
       "https://claude.com/blog/how-jetbrains-evaluates-and-deploys-claude-fable-5",
-      "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions"
+      "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions",
+      "https://claude.com/blog/how-abc-legal-turned-every-employee-into-a-builder-with-claude-managed-agents",
+      "https://claude.com/blog/ai-ci-cd-on-call",
+      "https://claude.com/blog/turning-conversation-into-knowledge-how-slack-builds-human-agent-teams",
+      "https://claude.com/blog/anthropics-approach-to-teaching-and-learning-ai",
+      "https://claude.com/blog/how-monday-com-transformed-its-platform-into-an-agent-first-product-where-humans-and-agents-collaborate",
+      "https://claude.com/blog/claude-code-guide-for-startups",
+      "https://claude.com/blog/computer-use-skills-api-files-api",
+      "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders",
+      "https://claude.com/blog/the-ai-native-sdlc-playbook"
     ],
-    "last_new_article": "2026-08-17T07:39:55+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "anthropic-engineering": {
     "last_fetch_ok": true,
@@ -126,11 +135,12 @@
       "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
       "https://www.anthropic.com/research/riemann-zeta",
       "https://www.anthropic.com/research/reviewing-the-evidence-on-worker-retraining-programs",
-      "https://www.anthropic.com/research/multiagent-systems"
+      "https://www.anthropic.com/research/multiagent-systems",
+      "https://www.anthropic.com/research/Claude-accelerates-protein-design"
     ],
     "initialized": true,
     "known_urls_count": 47,
-    "last_new_article": "2026-08-17T07:39:55+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "anthropic-news": {
     "initialized": true,
@@ -219,11 +229,12 @@
       "https://transformer-circuits.pub/2021/garcon/index.html",
       "https://distill.pub/2020/circuits",
       "https://transformer-circuits.pub/2026/june-update/index.html",
-      "https://transformer-circuits.pub/2026/workspace/index.html"
+      "https://transformer-circuits.pub/2026/workspace/index.html",
+      "https://transformer-circuits.pub/2026/interference_effectiveness_helpfulness/index.html"
     ],
     "initialized": true,
     "known_urls_count": 56,
-    "last_new_article": "2026-07-07T03:58:07+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "openai-news": {
     "last_fetch_ok": true,
@@ -1362,11 +1373,22 @@
       "https://openai.com/index/dali-rajic-chief-revenue-officer",
       "https://openai.com/index/the-defenders-window",
       "https://openai.com/index/openai-joins-ports-pike-project",
-      "https://openai.com/index/new-policy-ideas-for-the-intelligence-age"
+      "https://openai.com/index/new-policy-ideas-for-the-intelligence-age",
+      "https://openai.com/index/chatgpt-ads-expands-across-europe",
+      "https://openai.com/index/strengthening-democratic-oversight-in-national-security",
+      "https://openai.com/index/partnering-with-codeai",
+      "https://openai.com/index/pacing-model-development-cyber-capabilities",
+      "https://openai.com/index/chatgpt-for-teens",
+      "https://openai.com/index/nvidia/chatgpt-work",
+      "https://openai.com/index/asana",
+      "https://openai.com/index/offering-zero-data-retention-for-frontier-models",
+      "https://openai.com/index/replit",
+      "https://openai.com/index/introducing-ai-futures",
+      "https://openai.com/index/stampli"
     ],
     "initialized": true,
     "known_urls_count": 1269,
-    "last_new_article": "2026-08-17T21:56:38+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "deepmind-blog": {
     "last_fetch_ok": true,
@@ -1484,11 +1506,12 @@
       "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration",
       "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones",
       "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands",
-      "https://deepmind.google/blog/introducing-gemini-3-7-flash"
+      "https://deepmind.google/blog/introducing-gemini-3-7-flash",
+      "https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games"
     ],
     "initialized": true,
     "known_urls_count": 130,
-    "last_new_article": "2026-08-17T07:39:55+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "google-models-research": {
     "last_fetch_ok": true,
@@ -1530,11 +1553,14 @@
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders",
       "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash",
-      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable"
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable",
+      "https://blog.google/innovation-and-ai/technology/research/flood-prediction-ai",
+      "https://blog.google/innovation-and-ai/models-and-research/google-research/blue-skies",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/what-full-stack-development-means"
     ],
     "initialized": true,
     "known_urls_count": 60,
-    "last_new_article": "2026-08-17T07:39:55+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "google-gemini": {
     "last_fetch_ok": true,
@@ -1591,11 +1617,16 @@
       "https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-services-gemini-august-2026",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash",
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-experts-roundtable",
-      "https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships"
+      "https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships",
+      "https://blog.google/innovation-and-ai/products/gemini-app/four-new-interactive-bts-experiences",
+      "https://blog.google/innovation-and-ai/products/gemini-app/how-to-take-practice-sat",
+      "https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai",
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-waymo",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/what-full-stack-development-means"
     ],
     "initialized": true,
     "known_urls_count": 88,
-    "last_new_article": "2026-08-17T21:56:38+08:00"
+    "last_new_article": "2026-08-23T17:00:52+08:00"
   },
   "qwen-blog": {
     "last_fetch_ok": true,
@@ -1678,8 +1709,8 @@
     "known_urls_count": 20
   },
   "deepseek-github": {
-    "last_fetch_ok": false,
-    "last_fetch_error": "HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /orgs/deepseek-ai/repos?sort=created&direction=desc&per_page=50 (Caused by ResponseError('too many 504 error responses'))",
+    "last_fetch_ok": true,
+    "last_fetch_error": null,
     "open_pr_urls": [
       "https://github.com/deepseek-ai/DeepSpec",
       "https://github.com/deepseek-ai/awesome-deepseek-agent",
@@ -1719,7 +1750,7 @@
       "https://github.com/deepseek-ai/deepseek-harness"
     ],
     "initialized": true,
-    "known_urls_count": 36,
+    "known_urls_count": 37,
     "last_new_article": "2026-08-17T07:39:55+08:00"
   }
 }
