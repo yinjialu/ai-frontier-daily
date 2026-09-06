@@ -158,3 +158,22 @@ def test_zai_dated_release_timeline():
     value = sources.parse_changelog(raw, SOURCE)[0]
     assert value["published"] == "2026-08-26"
     assert "GLM new release details" in value["text"]
+
+
+def test_feishu_uses_profile_when_cron_removes_environment(tmp_path, monkeypatch):
+    from scripts.server.feishu import Feishu
+    monkeypatch.setenv("HERMES_HOME", str(tmp_path))
+    monkeypatch.delenv("FEISHU_APP_ID", raising=False)
+    monkeypatch.delenv("FEISHU_APP_SECRET", raising=False)
+    (tmp_path / ".env").write_text("FEISHU_APP_ID=test-app\nFEISHU_APP_SECRET=test-only-value\n")
+    captured = {}
+    class Response:
+        ok = True
+        def json(self):
+            return {"code": 0, "tenant_access_token": "test-token"}
+    def post(url, **kwargs):
+        captured.update(kwargs["json"])
+        return Response()
+    monkeypatch.setattr("scripts.server.feishu.requests.post", post)
+    Feishu("test-chat")
+    assert captured == {"app_id": "test-app", "app_secret": "test-only-value"}

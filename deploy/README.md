@@ -49,6 +49,8 @@ hermes cron status
 
 安装器不改全局时区。当前 UTC 容器的 `0 0 * * *` 对应北京时间 08:00；Asia/Shanghai 容器使用 `0 8 * * *`。其他时区直接拒绝安装。后续修改 Hermes 时区必须重新检查 cron 表达式。安装器保留已存在同名任务，避免重复；改时间须显式 `hermes cron edit`。
 
+安装器会按现有 Hermes 数据目录的属主设置本项目权限：Docker 手动安装常用 root，但定时器以 Hermes 用户执行。Cron 会过滤机器人环境变量，飞书客户端因此读取当前 Hermes profile 已有的 `.env`，不复制凭据。
+
 Python/Node 包和浏览器均在持久卷内，普通重启不需要重新安装；替换 Hermes 镜像时重新运行依赖与渲染 smoke test，系统浏览器库属于容器镜像。不要为部署本项目重启或替换现有飞书机器人配置。
 
 ## 验证与发布边界
