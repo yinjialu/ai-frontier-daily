@@ -22,11 +22,18 @@ if offset not in (0, 28800):
     raise SystemExit("Installer supports Hermes UTC or Asia/Shanghai; verify timezone mapping before proceeding")
 hour = 0 if offset == 0 else 8
 home = Path(os.environ.get("HERMES_HOME", "/opt/data"))
+owner = home.stat()
+# docker exec defaults to root; the long-running gateway executes as the Hermes
+# data owner. Give only this project's files to that existing identity.
+if os.geteuid() == 0:
+    subprocess.run(["chown", "-R", f"{owner.st_uid}:{owner.st_gid}", str(ROOT)], check=True)
 script_dir = home / "scripts"
 script_dir.mkdir(parents=True, exist_ok=True)
 config = home / "frontier-server.json"
 config.write_text(json.dumps({"chat_id": chat, "root": str(ROOT)}, indent=2))
 config.chmod(0o600)
+if os.geteuid() == 0:
+    os.chown(config, owner.st_uid, owner.st_gid)
 jobs = [("poll", "*/30 * * * *", "AI 前哨 · 半小时巡检"),
         ("scout", f"30 {(hour-1)%24} * * *", "AI 前哨 · 官方信源补充搜索"),
         ("daily", f"0 {hour} * * *", "AI 前哨 · 08点早报卡片"),
@@ -58,6 +65,8 @@ if not done:
     else:
         body += f"run({kind!r}, send={kind != 'scout'!r})\n"
     path.write_text(body)
+    if os.geteuid() == 0:
+        os.chown(path, owner.st_uid, owner.st_gid)
     if name in existing:
         print("Existing job preserved:", name, existing[name]["id"])
         continue
