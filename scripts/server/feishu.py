@@ -1,6 +1,7 @@
 import json
 import os
 import uuid
+from pathlib import Path
 
 import requests
 
@@ -9,8 +10,18 @@ class Feishu:
     def __init__(self, chat_id):
         self.chat_id = chat_id
         self.base = "https://open.feishu.cn/open-apis"
+        # Hermes strips platform secrets from cron subprocess environments.
+        # Read only this bot's existing profile .env; never copy credentials to
+        # project files or depend on a docker-exec-only environment.
+        from dotenv import dotenv_values
+        profile = Path(os.getenv("HERMES_HOME", "/opt/data"))
+        values = dotenv_values(profile / ".env")
+        app_id = os.getenv("FEISHU_APP_ID") or values.get("FEISHU_APP_ID")
+        app_secret = os.getenv("FEISHU_APP_SECRET") or values.get("FEISHU_APP_SECRET")
+        if not app_id or not app_secret:
+            raise RuntimeError("Feishu credentials absent in the current Hermes profile")
         r = requests.post(self.base + "/auth/v3/tenant_access_token/internal", timeout=20,
-            json={"app_id": os.environ["FEISHU_APP_ID"], "app_secret": os.environ["FEISHU_APP_SECRET"]})
+            json={"app_id": app_id, "app_secret": app_secret})
         self.token = self.check(r)["tenant_access_token"]
 
     @staticmethod
