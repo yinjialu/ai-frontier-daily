@@ -12,7 +12,7 @@ const parseISO = date => new Date(`${date}T00:00:00Z`);
 const storeGet = key => {try{return localStorage.getItem(key);}catch{return null;}};
 const storeSet = (key,value) => {try{localStorage.setItem(key,value);}catch{}};
 let ALL=[], DAYS=[], byDate={}, present=[], curVendor=DAILY, curDate=null, curTag='全部', viewMode='feed', curStyle=storeGet('card_style')==='glass'?'glass':'', car=null, loadId=0, currentData=[], failedVendors=[];
-let period=7, feedPage=0, pageSize=4, pageItems=[], filteredCount=0;
+let period=7, feedPage=0, pageSize=4, pageItems=[], filteredCount=0, isLoading=false;
 const dataCache=new Map();
 async function fetchJSON(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();}
 async function dayData(vendor,date){const key=`${vendor}|${date}`;if(!dataCache.has(key)){const request=fetchJSON(`data/${encodeURIComponent(vendor)}/${date}.json`).then(data=>{if(!Array.isArray(data.updates))throw new Error('Invalid updates');return data;}).catch(error=>{dataCache.delete(key);throw error;});dataCache.set(key,request);}return dataCache.get(key);}
@@ -50,7 +50,7 @@ async function applyVendor(vendor){
 }
 async function selectDay(date){
  if(!byDate[date])return;
- curDate=date;curTag='全部';car=null;feedPage=0;
+ curDate=date;curTag='全部';car=null;feedPage=0;isLoading=true;currentData=[];
  const token=++loadId;
  $('#dateSelect').value=date;
  const index=DAYS.findIndex(d=>d.date===date);$('#prevDay').disabled=index===0;$('#nextDay').disabled=index===DAYS.length-1;
@@ -63,6 +63,7 @@ async function selectDay(date){
  const records=ALL.filter(d=>d.date>=start&&d.date<=date).sort((a,b)=>b.date.localeCompare(a.date));
  const results=await Promise.allSettled(records.map(async r=>({vendor:r.vendor,date:r.date,dd:await dayData(r.vendor,r.date)})));
  if(token!==loadId)return;
+ isLoading=false;
  currentData=results.filter(r=>r.status==='fulfilled').map(r=>r.value);
  failedVendors=[...new Set(results.flatMap((r,i)=>r.status==='rejected'?[records[i].vendor]:[]))];
  updateDashboard();renderContent();$('#app').setAttribute('aria-busy','false');
@@ -77,6 +78,7 @@ function fitLayout(){
  pageSize=cols*rows;
 }
 function renderContent(){
+ if(isLoading)return;
  car=null;
  const relevantFailures=failedVendors.filter(v=>curVendor===DAILY||v===curVendor);
  const items=itemsForSelection();
