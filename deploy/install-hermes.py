@@ -62,6 +62,9 @@ if not done:
         print("Existing job preserved:", name, existing[name]["id"])
         continue
     subprocess.run(["hermes", "cron", "create", schedule, "--name", name,
-        "--script", str(path), "--no-agent", "--deliver", "local",
+        "--script", path.name, "--no-agent", "--deliver", "local",
         "--failure-deliver", "feishu:" + chat], check=True)
+    # Some Hermes CLI versions print a create error but exit zero.
+    if not any(j.get("name") == name for j in load_jobs()):
+        raise SystemExit("Hermes did not persist the requested job: " + name)
 print("Hermes timezone:", str(now().tzinfo), "08:00 Shanghai maps to cron hour:", hour)
