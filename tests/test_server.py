@@ -147,6 +147,9 @@ def test_next_edition_does_not_repeat_previous_days_cards(tmp_path):
     assert len(worker.edition_items(db)) == 1
     with db:
         db.execute("INSERT INTO editions VALUES (?,?)", ("2026-09-05", json.dumps([curated])))
+    # A failed frozen edition must not consume tomorrow's candidates.
+    assert len(worker.edition_items(db)) == 1
+    store.record_delivery(db, "daily:2026-09-05", "receipt")
     assert worker.edition_items(db) == []
 
 

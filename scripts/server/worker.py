@@ -102,7 +102,7 @@ def markdown(items):
 
 def edition_items(db):
     previous_ids, previous_events = set(), set()
-    for row in db.execute("SELECT payload FROM editions"):
+    for row in db.execute("SELECT e.payload FROM editions e JOIN deliveries d ON d.id='daily:' || e.date"):
         for i in json.loads(row[0]):
             previous_ids.add(i["id"])
             previous_events.add((i["company"], i["editorial"]["event_key"]))
