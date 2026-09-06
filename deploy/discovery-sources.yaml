@@ -1,0 +1,265 @@
+{
+  "sources": [
+    {
+      "id": "discovery-openai",
+      "name": "OpenAI",
+      "company": "OpenAI",
+      "vendor": "openai",
+      "type": "web-search",
+      "url": "https://openai.com",
+      "domains": [
+        "openai.com",
+        "developers.openai.com"
+      ],
+      "query": "OpenAI model release official (site:openai.com OR site:developers.openai.com)"
+    },
+    {
+      "id": "discovery-anthropic",
+      "name": "Anthropic",
+      "company": "Anthropic",
+      "vendor": "anthropic",
+      "type": "web-search",
+      "url": "https://anthropic.com",
+      "domains": [
+        "anthropic.com",
+        "www.anthropic.com",
+        "claude.com"
+      ],
+      "query": "Anthropic Claude model release official (site:anthropic.com OR site:www.anthropic.com OR site:claude.com)"
+    },
+    {
+      "id": "discovery-google",
+      "name": "Google",
+      "company": "Google",
+      "vendor": "gemini",
+      "type": "web-search",
+      "url": "https://blog.google",
+      "domains": [
+        "blog.google",
+        "deepmind.google",
+        "ai.google.dev"
+      ],
+      "query": "Google Gemini model release official (site:blog.google OR site:deepmind.google OR site:ai.google.dev)"
+    },
+    {
+      "id": "discovery-nvidia",
+      "name": "NVIDIA",
+      "company": "NVIDIA",
+      "vendor": "nvidia",
+      "type": "web-search",
+      "url": "https://blogs.nvidia.com",
+      "domains": [
+        "blogs.nvidia.com",
+        "nvidianews.nvidia.com",
+        "developer.nvidia.com"
+      ],
+      "query": "NVIDIA AI model release official (site:blogs.nvidia.com OR site:nvidianews.nvidia.com OR site:developer.nvidia.com)"
+    },
+    {
+      "id": "discovery-deepseek",
+      "name": "DeepSeek",
+      "company": "DeepSeek",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://api-docs.deepseek.com",
+      "domains": [
+        "api-docs.deepseek.com",
+        "www.deepseek.com"
+      ],
+      "query": "DeepSeek 官方 新模型 发布 (site:api-docs.deepseek.com OR site:www.deepseek.com)"
+    },
+    {
+      "id": "discovery-qwen",
+      "name": "通义千问",
+      "company": "通义千问",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://qwen.ai",
+      "domains": [
+        "qwen.ai",
+        "qwenlm.github.io"
+      ],
+      "query": "通义千问 Qwen 官方 新模型 发布 (site:qwen.ai OR site:qwenlm.github.io)"
+    },
+    {
+      "id": "discovery-zai",
+      "name": "智谱",
+      "company": "智谱",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://z.ai",
+      "domains": [
+        "z.ai",
+        "docs.z.ai",
+        "bigmodel.cn",
+        "docs.bigmodel.cn"
+      ],
+      "query": "智谱 GLM 官方 新模型 发布 (site:z.ai OR site:docs.z.ai OR site:bigmodel.cn OR site:docs.bigmodel.cn)"
+    },
+    {
+      "id": "discovery-kimi",
+      "name": "Kimi",
+      "company": "Kimi",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://www.kimi.com",
+      "domains": [
+        "www.kimi.com",
+        "kimi.com",
+        "platform.moonshot.ai",
+        "moonshot.ai",
+        "www.kimi.ai",
+        "kimi.ai",
+        "platform.kimi.ai"
+      ],
+      "query": "Kimi 月之暗面 官方 新模型 发布 (site:www.kimi.com OR site:kimi.com OR site:platform.moonshot.ai OR site:moonshot.ai)"
+    },
+    {
+      "id": "discovery-seed",
+      "name": "豆包",
+      "company": "豆包",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://seed.bytedance.com",
+      "domains": [
+        "seed.bytedance.com",
+        "www.volcengine.com"
+      ],
+      "query": "豆包 Seed 官方 新模型 发布 (site:seed.bytedance.com OR site:www.volcengine.com)"
+    },
+    {
+      "id": "discovery-ernie",
+      "name": "文心",
+      "company": "文心",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://yiyan.baidu.com",
+      "domains": [
+        "yiyan.baidu.com",
+        "cloud.baidu.com",
+        "wenxin.baidu.com",
+        "ernie.baidu.com"
+      ],
+      "query": "百度 文心 ERNIE 官方 模型 发布 (site:yiyan.baidu.com OR site:cloud.baidu.com OR site:wenxin.baidu.com OR site:ernie.baidu.com)"
+    },
+    {
+      "id": "discovery-hunyuan",
+      "name": "混元",
+      "company": "混元",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://hunyuan.tencent.com",
+      "domains": [
+        "hunyuan.tencent.com",
+        "cloud.tencent.com"
+      ],
+      "query": "腾讯 混元 官方 新模型 发布 (site:hunyuan.tencent.com OR site:cloud.tencent.com)"
+    },
+    {
+      "id": "discovery-minimax",
+      "name": "MiniMax",
+      "company": "MiniMax",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://www.minimax.io",
+      "domains": [
+        "www.minimax.io",
+        "www.minimax.cn",
+        "minimax.io"
+      ],
+      "query": "MiniMax 官方 新模型 发布 (site:www.minimax.io OR site:www.minimax.cn OR site:minimax.io)"
+    },
+    {
+      "id": "discovery-stepfun",
+      "name": "阶跃星辰",
+      "company": "阶跃星辰",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://www.stepfun.com",
+      "domains": [
+        "www.stepfun.com",
+        "stepfun.com",
+        "platform.stepfun.com"
+      ],
+      "query": "阶跃星辰 官方 新模型 发布 (site:www.stepfun.com OR site:stepfun.com OR site:platform.stepfun.com)"
+    },
+    {
+      "id": "discovery-baichuan",
+      "name": "百川",
+      "company": "百川",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://www.baichuan-ai.com",
+      "domains": [
+        "www.baichuan-ai.com",
+        "baichuan-ai.com"
+      ],
+      "query": "百川智能 官方 新模型 发布 (site:www.baichuan-ai.com OR site:baichuan-ai.com)"
+    },
+    {
+      "id": "discovery-yi",
+      "name": "零一万物",
+      "company": "零一万物",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://www.01.ai",
+      "domains": [
+        "www.01.ai",
+        "01.ai"
+      ],
+      "query": "零一万物 Yi 官方 新模型 发布 (site:www.01.ai OR site:01.ai)"
+    },
+    {
+      "id": "discovery-ling",
+      "name": "百灵",
+      "company": "百灵",
+      "vendor": "cn",
+      "type": "web-search",
+      "url": "https://www.inclusion-ai.org",
+      "domains": [
+        "www.inclusion-ai.org",
+        "inclusion-ai.org",
+        "inclusionai.github.io"
+      ],
+      "query": "蚂蚁 百灵 Ling 官方 模型 发布 (site:www.inclusion-ai.org OR site:inclusion-ai.org OR site:inclusionai.github.io)"
+    },
+    {
+      "id": "discovery-xai",
+      "name": "xAI Grok",
+      "company": "xAI Grok",
+      "vendor": "frontier",
+      "type": "web-search",
+      "url": "https://x.ai",
+      "domains": [
+        "x.ai"
+      ],
+      "query": "xAI Grok official model release (site:x.ai)"
+    },
+    {
+      "id": "discovery-mistral",
+      "name": "Mistral",
+      "company": "Mistral",
+      "vendor": "frontier",
+      "type": "web-search",
+      "url": "https://mistral.ai",
+      "domains": [
+        "mistral.ai"
+      ],
+      "query": "Mistral official model release (site:mistral.ai)"
+    },
+    {
+      "id": "discovery-meta",
+      "name": "Meta AI",
+      "company": "Meta AI",
+      "vendor": "frontier",
+      "type": "web-search",
+      "url": "https://ai.meta.com",
+      "domains": [
+        "ai.meta.com",
+        "about.fb.com",
+        "www.llama.com"
+      ],
+      "query": "Meta Llama official model release (site:ai.meta.com OR site:about.fb.com OR site:www.llama.com)"
+    }
+  ]
+}

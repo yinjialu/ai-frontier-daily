@@ -34,6 +34,7 @@
     gemini:    {id:"gemini",    name:"Gemini",    daily:"Gemini Daily",    label:"GEMINI DAILY"},
     nvidia:    {id:"nvidia",    name:"NVIDIA",    daily:"NVIDIA Daily",    label:"NVIDIA DAILY"},
     cn:        {id:"cn",        name:"国产大模型", daily:"China LLM Daily", label:"国产大模型 · 每日"},
+    frontier:  {id:"frontier",  name:"全球模型", daily:"AI Frontier Daily", label:"全球模型 · 每日"},
   };
   function vendorOf(DATA){ return VENDORS[(DATA && DATA.vendor) || "anthropic"] || VENDORS.anthropic; }
 

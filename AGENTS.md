@@ -5,7 +5,16 @@
 抓取 AI 大厂官方动态 → 中文策展 → 渲染卡片 → GitHub Pages 展示 → 公众号/小红书半自动发布。
 完整流水线指令(信源、策展规范、渲染、发布)见 `skills/ai-daily-digest/SKILL.md`——执行每日任务前先读它。
 
-日报抓取覆盖必须落盘：开始前运行 `python3 scripts/validate_daily_coverage.py --init --date YYYY-MM-DD`，
+## 服务器主流程（2026-09 迁移）
+
+- 常驻主流程由服务器 Hermes Cron 执行 `scripts/server/worker.py`：每 30 分钟巡检，07:30 逐家官方站点补充搜索，08:00 生成中文早报与发布卡片，08:15 幂等补偿。业务时间统一 Asia/Shanghai，安装器显式换算服务器时区。
+- 自动订阅清单是 `deploy/server-sources.yaml`；搜索矩阵是 `deploy/discovery-sources.yaml`（包含全部 12 家国内公司）。官方原文才进入卡片；搜索摘要只作线索。RSSHub 仅为转换层，不能提高来源权威性。
+- 服务器所有状态、私有草稿、投递回执在 `.server-state/`（持久卷、gitignore），SQLite 原子写入。新增/修改来源首轮静默基线，历史文章不会作为突发新闻推送。
+- 服务器覆盖台账是 `.server-state/health.json`、`research/<date>.json` 和 `editions/<date>/coverage.json`；必须区分成功、失败、未搜索和无可靠新内容。下面 `validate_daily_coverage.py` 是旧 GitHub 日报工作流的覆盖契约，继续适用于该流程，不能伪造 WebSearch 或 firsthand.query 执行记录来满足校验。
+- 通过当前 Hermes 飞书机器人发送通知卡片及 ZIP 发布包（小红书竖图、公众号封面/长图、中文文案/原文链接）。公众号/小红书正式发布仍由用户审核后手动执行。服务器不向公开仓库提交私人运行状态，也不自动更新 Pages。
+- 迁移部署与回滚见 `deploy/README.md`。原本机 launchd / Codex Automation 为旧链路参考，不再作为服务器的运行依赖。代码变更仍单独开 `Codex/*` 分支提 PR。
+
+旧 GitHub 日报抓取覆盖必须落盘：开始前运行 `python3 scripts/validate_daily_coverage.py --init --date YYYY-MM-DD`，
 结束后运行 `--check`。`cn` 轨按 `skills/ai-daily-digest/daily-search-matrix.json` 逐家公司记录搜索，
 无结果也写 `none-found`；`scripts/guard-daily-content-commit.sh` 会拒绝缺少或不完整覆盖台账的日报提交。
 
