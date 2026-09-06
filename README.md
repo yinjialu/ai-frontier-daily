@@ -1,5 +1,9 @@
 # AI 前哨 · 每日 AI 大厂动态
 
+服务器主流程：Hermes 定时巡检 → 官方原文核验与中文策展 → 飞书通知 → 小红书/公众号卡片 ZIP。见 [服务器部署](deploy/README.md) 与 [官方信源校准](docs/official-sources-2026-09.md)。
+
+以下保留原 GitHub Pages / 本机流程作为兼容参考。
+
 抓取 AI 大厂官方动态（**Anthropic + OpenAI**，可继续扩展）→ 中文策展 →
 渲染小红书 / 公众号卡片 → GitHub Pages 可视化展示页 → Codex Automation 每天自动更新。
 

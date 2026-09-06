@@ -1,0 +1,23 @@
+services:
+  rsshub:
+    image: ${RSSHUB_IMAGE:-diygod/rsshub@sha256:3722bffc7413e3a60bf11d7ea5f4d78ecb863d680a1a69213e8e88e27f009182}
+    container_name: ai-frontier-rsshub
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:1200:1200"
+    mem_limit: 512m
+    cpus: 0.5
+    environment:
+      NODE_ENV: production
+      CACHE_TYPE: memory
+      CACHE_EXPIRE: 1800
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:1200/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '2'
