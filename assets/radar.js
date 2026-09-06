@@ -61,13 +61,13 @@ async function selectDay(date){
  renderHeatmap();
  const start=iso(new Date(parseISO(date).getTime()-(period-1)*DAY_MS));
  const records=ALL.filter(d=>d.date>=start&&d.date<=date).sort((a,b)=>b.date.localeCompare(a.date));
- const results=await Promise.allSettled(records.map(async r=>({vendor:r.vendor,dd:await dayData(r.vendor,r.date)})));
+ const results=await Promise.allSettled(records.map(async r=>({vendor:r.vendor,date:r.date,dd:await dayData(r.vendor,r.date)})));
  if(token!==loadId)return;
  currentData=results.filter(r=>r.status==='fulfilled').map(r=>r.value);
  failedVendors=[...new Set(results.flatMap((r,i)=>r.status==='rejected'?[records[i].vendor]:[]))];
  updateDashboard();renderContent();$('#app').setAttribute('aria-busy','false');
 }
-function itemsForSelection(){return currentData.filter(d=>curVendor===DAILY||d.vendor===curVendor).flatMap(({vendor,dd})=>dd.updates.map(u=>({...u,vendor,archiveDate:dd.date})));}
+function itemsForSelection(){return currentData.filter(d=>curVendor===DAILY||d.vendor===curVendor).flatMap(({vendor,date,dd})=>dd.updates.map(u=>({...u,vendor,archiveDate:date})));}
 function fitLayout(){
  const area=$('#app');const width=area.clientWidth||800,height=area.clientHeight||440;
  const cols=width>=1150?3:width>=650?2:1;

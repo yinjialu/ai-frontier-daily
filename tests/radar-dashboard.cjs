@@ -43,6 +43,9 @@ element('#app').clientWidth=390;element('#app').clientHeight=440;
 vm.runInContext('renderContent()',ctx);
 assert.equal(vm.runInContext('pageSize',ctx),2);
 vm.runInContext('period=1',ctx);
+// Legacy content uses dotted dates; the public manifest owns archive dates.
+await vm.runInContext("selectDay('2026-06-03')",ctx);
+assert.equal(vm.runInContext("itemsForSelection().every(u=>u.archiveDate==='2026-06-03')",ctx),true);
 // A delayed response from the previous date must not overwrite the new selection.
 ctx.fetch=async url=>{if(url.includes('2026-08-07'))await new Promise(r=>setTimeout(r,25));return{ok:true,json:async()=>url==='output/index.json'?index:JSON.parse(fs.readFileSync(path.join(root,url),'utf8'))};};
 vm.runInContext('dataCache.clear()',ctx);
