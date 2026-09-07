@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="skills/ai-daily-digest/cards.css"><link rel="stylesheet" href="assets/radar.css">
-<script src="skills/ai-daily-digest/cards.js" defer></script><script src="assets/radar.js" defer></script>
+<script src="skills/ai-daily-digest/cards.js" defer></script><script src="assets/feedback.js" defer></script><script src="assets/radar.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#app">跳到内容</a>
@@ -25,7 +25,7 @@
   <div id="meta" class="feed-meta" role="status" hidden></div>
   <div id="styles" class="styles" hidden><span>卡片质感</span><button class="stab on" data-s="">经典</button><button class="stab" data-s="glass">液态玻璃</button></div>
   <div id="app" aria-busy="true"><div class="empty">正在读取内容…</div></div>
-  <footer class="feed-end"><span id="pageRange" aria-live="polite"></span><div class="pagination"><button id="prevPage" aria-label="上一页动态">←</button><span id="pageLabel">—</span><button id="nextPage" aria-label="下一页动态">→</button></div></footer>
+  <div id="feedbackNotice" class="feedback-notice" role="status" aria-live="polite" hidden></div><footer class="feed-end"><span id="pageRange" aria-live="polite"></span><div class="pagination"><button id="prevPage" aria-label="上一页动态">←</button><span id="pageLabel">—</span><button id="nextPage" aria-label="下一页动态">→</button></div></footer>
 </main>
 <dialog id="filterDialog" class="utility-dialog" aria-labelledby="filterTitle">
   <div class="dialog-heading"><h2 id="filterTitle">筛选内容</h2><button id="closeFilters" class="close-button" aria-label="关闭筛选">×</button></div>
@@ -48,6 +48,7 @@
 <section class="panel radar-panel"><div class="panel-heading"><div><span class="section-index">02 /</span><h2>信号雷达</h2></div><button id="motionToggle" class="motion-toggle" aria-label="暂停雷达动画" aria-pressed="false">Ⅱ</button></div><div class="radar-area"><div class="radar-axis-label north">N</div><div class="radar-axis-label east">E</div><div class="radar-axis-label south">S</div><div class="radar-axis-label west">W</div><div class="radar"><div class="radar-sweep" aria-hidden="true"></div><div class="radar-cross" aria-hidden="true"></div><div id="radarBlips"></div><div class="radar-center" aria-hidden="true"></div></div><span class="radar-coordinate">AI / SIGNAL MAP</span></div><div class="radar-caption"><span class="status-dot"></span><span>当期频道分布</span><span class="subtle">非实时扫描</span></div><div id="distribution" class="distribution"></div></section>
 <section class="panel activity-panel"><div class="panel-heading"><div><span class="section-index">03 /</span><h2>活动轨迹</h2></div><span class="mono subtle">12 WKS</span></div><div class="activity-caption" id="heatHint">近 12 周公开归档</div><div class="cal-wrap"><div id="cal" class="cal" aria-label="近十二周归档热力图"></div></div><div class="heat-legend"><span>点击回看当日</span><div>少 <i></i><i></i><i></i><i></i> 多</div></div></section>
 </div>
+  <p id="feedbackSummary" class="feedback-summary">正在连接偏好记录…</p>
   <a class="project-link" href="https://github.com/yinjialu/ai-frontier-daily" target="_blank" rel="noopener noreferrer">项目与信源 ↗</a>
 </dialog>
 <dialog id="box" aria-label="发布卡片预览"><button id="closeBox" class="close-button" aria-label="关闭卡片预览">×</button><div id="boxStage"></div></dialog>

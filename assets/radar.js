@@ -11,6 +11,7 @@ const iso = date => date.toISOString().slice(0,10);
 const parseISO = date => new Date(`${date}T00:00:00Z`);
 const storeGet = key => {try{return localStorage.getItem(key);}catch{return null;}};
 const storeSet = (key,value) => {try{localStorage.setItem(key,value);}catch{}};
+let privateMode=false;
 let ALL=[], DAYS=[], byDate={}, present=[], curVendor=DAILY, curDate=null, curTag='全部', viewMode='feed', curStyle=storeGet('card_style')==='glass'?'glass':'', car=null, loadId=0, currentData=[], failedVendors=[];
 let period=7, feedPage=0, pageSize=4, pageItems=[], filteredCount=0, isLoading=false, detailItem=null;
 const dataCache=new Map();
@@ -19,6 +20,7 @@ async function dayData(vendor,date){const key=`${vendor}|${date}`;if(!dataCache.
 async function init(){
  try{
  const idx=await fetchJSON('output/index.json');
+ privateMode=idx.mode==='private';
  ALL=(idx.days||[]).map(d=>({...d,vendor:d.vendor||'anthropic'})).filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d.date)&&/^[a-z0-9_-]+$/.test(d.vendor));
  ALL.sort((a,b)=>a.date.localeCompare(b.date));
  if(!ALL.length){$('#archiveNotice').textContent='公开归档暂无内容';$('#app').innerHTML='<div class="empty">第一道信号即将到来。公开日报发布后会出现在这里。</div>';$('#app').setAttribute('aria-busy','false');return;}
@@ -26,7 +28,7 @@ async function init(){
  $('#channelCount').textContent=String(present.length).padStart(2,'0');
  $('#vendors').innerHTML=[DAILY,...present].map(v=>`<button class="vtab" data-v="${esc(v)}" style="--vc:${VC[v]||'#b5f76b'}" aria-pressed="false"><span class="dotv"></span>${v===DAILY?'全部信号':esc(NAMES[v]||v)}</button>`).join('');
  const latest=ALL.at(-1).date;
- $('#archiveNotice').textContent=`公开归档更新至 ${latest} · 此看板展示已发布内容，服务器巡检状态尚未接入。`;
+ $('#archiveNotice').textContent=privateMode?`私有工作台 · 动态更新至 ${latest}。包含待审核候选与已发布归档；反馈参与下一轮候选排序。`:`公开归档更新至 ${latest} · 此看板展示已发布内容，服务器巡检状态尚未接入。`;
  $('#archiveCount').textContent=new Set(ALL.map(d=>d.date)).size;
  $('#archiveRange').textContent=`${ALL[0].date.slice(5).replace('-','.')} — ${latest.slice(5).replace('-','.')}`;
  await applyVendor(DAILY);
@@ -51,10 +53,11 @@ async function applyVendor(vendor, preferredDate=null){
 async function selectDay(date){
  if(!byDate[date])return;
  curDate=date;curTag='全部';car=null;feedPage=0;isLoading=true;currentData=[];
+ if(privateMode)dataCache.clear();
  const token=++loadId;
  $('#dateSelect').value=date;
  const rangeStart=iso(new Date(parseISO(date).getTime()-(period-1)*DAY_MS));
- $('#readingRange').textContent=`公开归档 · ${period===7?rangeStart.replaceAll('-','.')+' — '+date.slice(5).replace('-','.'):date.replaceAll('-','.')}`;
+ $('#readingRange').textContent=`${privateMode?'私有工作台':'公开归档'} · ${period===7?rangeStart.replaceAll('-','.')+' — '+date.slice(5).replace('-','.'):date.replaceAll('-','.')}`;
  const index=DAYS.findIndex(d=>d.date===date);$('#prevDay').disabled=index===0;$('#nextDay').disabled=index===DAYS.length-1;
  $('#app').setAttribute('aria-busy','true');$('#app').innerHTML='<div class="empty">正在读取这一天的信号…</div>';
  $('#meta').textContent='';$('#categories').innerHTML='';
@@ -75,7 +78,7 @@ function fitLayout(){
  const area=$('#app');const width=area.clientWidth||800,height=area.clientHeight||440;
  const cols=width>=680?2:1;
  const rows=Math.max(1,Math.min(3,Math.floor(height/215)));
- const lines=Math.max(1,Math.min(9,Math.floor((height/rows-142)/30)));
+ const lines=Math.max(1,Math.min(9,Math.floor((height/rows-155)/30)));
  area.style.setProperty('--feed-cols',cols);area.style.setProperty('--feed-rows',rows);area.style.setProperty('--summary-lines',lines);
  pageSize=cols*rows;
 }
@@ -99,12 +102,12 @@ function renderContent(){
  const tags=['全部',...TAG_ORDER.filter(t=>items.some(u=>u.tag===t)),...[...new Set(items.map(u=>u.tag||'其他'))].filter(t=>!TAG_ORDER.includes(t))];
  $('#categories').innerHTML=tags.map(t=>`<button data-tag="${esc(t)}" class="${curTag===t?'on':''}" aria-pressed="${curTag===t}">${esc(t)}<span>${t==='全部'?items.length:items.filter(u=>(u.tag||'其他')===t).length}</span></button>`).join('');
  if(focusedTag)Array.from(document.querySelectorAll('#categories [data-tag]')).find(b=>b.dataset.tag===focusedTag)?.focus();
- const filtered=items.filter(u=>curTag==='全部'||(u.tag||'其他')===curTag).sort((a,b)=>{const dateOrder=b.archiveDate.localeCompare(a.archiveDate);if(dateOrder)return dateOrder;const rank=t=>TAG_ORDER.includes(t)?TAG_ORDER.indexOf(t):99;return rank(a.tag)-rank(b.tag);});
+ const filtered=items.filter(u=>curTag==='全部'||(u.tag||'其他')===curTag).sort((a,b)=>{if(privateMode){const ar=Number.isFinite(a.feed_rank)?a.feed_rank:Infinity,br=Number.isFinite(b.feed_rank)?b.feed_rank:Infinity;if(ar!==br)return ar-br;}const dateOrder=b.archiveDate.localeCompare(a.archiveDate);if(dateOrder)return dateOrder;const rank=t=>TAG_ORDER.includes(t)?TAG_ORDER.indexOf(t):99;return rank(a.tag)-rank(b.tag);});
  $('#feedCount').textContent=filtered.length;
  fitLayout();filteredCount=filtered.length;feedPage=Math.min(feedPage,Math.max(0,Math.ceil(filteredCount/pageSize)-1));pageItems=filtered.slice(feedPage*pageSize,(feedPage+1)*pageSize);
  $('#app').innerHTML='<div class="digest">'+pageItems.map((u,i)=>{
  const url=safeURL(u.url)||safeURL(u.source)||safeURL(window.Cards.srcHref(u));const domain=url?new URL(url).hostname.replace(/^www\./,''):'';
- return `<article class="ditem"><div class="dbd"><h2 class="story-title"><button class="story-open" data-detail="${i}" aria-haspopup="dialog">${esc(u.title)}</button></h2><p>${esc(u.summary)}</p><div class="story-meta"><span>${esc(u.company||NAMES[u.vendor]||u.vendor)}</span><span class="meta-separator">·</span><time datetime="${esc(u.archiveDate)}">${esc(u.archiveDate.slice(5).replace('-','.'))}</time>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="${esc(domain)}">原文 ↗<span class="sr-only">：${esc(u.title)}</span></a>`:''}</div></div></article>`;
+ return `<article class="ditem"><div class="dbd"><h2 class="story-title"><button class="story-open" data-detail="${i}" aria-haspopup="dialog">${esc(u.title)}</button></h2><p>${esc(u.summary)}</p><div class="story-meta"><span>${esc(u.company||NAMES[u.vendor]||u.vendor)}</span><span class="meta-separator">·</span><time datetime="${esc(u.archiveDate)}">${esc(u.archiveDate.slice(5).replace('-','.'))}</time>${window.RadarFeedback?.controls(u,i)||''}${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="${esc(domain)}">原文 ↗<span class="sr-only">：${esc(u.title)}</span></a>`:''}</div></div></article>`;
  }).join('')+'</div>';
  updatePagination();
 }
@@ -259,7 +262,7 @@ $('#resetFilters').onclick=()=>{if(!ALL.length)return;period=7;applyVendor(DAILY
 $('#statusToggle').onclick=()=>{$('#statusDialog').showModal();document.body.classList.toggle('status-visible',true);$('#statusToggle').setAttribute('aria-expanded','true');};
 $('#closeStatus').onclick=()=>$('#statusDialog').close();
 $('#statusDialog').addEventListener('close',()=>{document.body.classList.toggle('status-visible',false);$('#statusToggle').setAttribute('aria-expanded','false');});
-$('#app').onclick=e=>{const button=e.target.closest('[data-detail]');if(!button)return;const u=pageItems[+button.dataset.detail];if(!u)return;detailItem=u;$('#detailMeta').textContent=`${u.company||NAMES[u.vendor]||u.vendor} · ${u.tag||'其他'} · 归档 ${u.archiveDate}`;$('#detailTitle').textContent=u.title;$('#detailSummary').textContent=u.summary;const url=safeURL(u.url)||safeURL(u.source)||safeURL(window.Cards.srcHref(u));$('#detailSource').hidden=!url;if(url)$('#detailSource').href=url;$('#detailDialog').showModal();};
+$('#app').onclick=e=>{const feedback=e.target.closest('[data-feedback]');if(feedback){const item=pageItems[+feedback.dataset.item];if(item)window.RadarFeedback?.submit(item,feedback.dataset.feedback);return;}const button=e.target.closest('[data-detail]');if(!button)return;const u=pageItems[+button.dataset.detail];if(!u)return;detailItem=u;$('#detailMeta').textContent=`${u.company||NAMES[u.vendor]||u.vendor} · ${u.tag||'其他'} · 归档 ${u.archiveDate}`;$('#detailTitle').textContent=u.title;$('#detailSummary').textContent=u.summary;const url=safeURL(u.url)||safeURL(u.source)||safeURL(window.Cards.srcHref(u));$('#detailSource').hidden=!url;if(url)$('#detailSource').href=url;$('#detailDialog').showModal();};
 async function openEditionForItem(item){
  if(!item)return;
  $('#detailDialog').close();period=1;
@@ -277,4 +280,5 @@ function syncStyle(){document.querySelectorAll('.stab').forEach(el=>{el.classLis
 let motionPaused=storeGet('radar_motion')==='paused'||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function syncMotion(){document.body.classList.toggle('motion-paused',motionPaused);$('#motionToggle').setAttribute('aria-pressed',String(motionPaused));$('#motionToggle').setAttribute('aria-label',motionPaused?'播放雷达动画':'暂停雷达动画');$('#motionToggle').textContent=motionPaused?'▷':'Ⅱ';}syncMotion();
 $('#motionToggle').onclick=()=>{motionPaused=!motionPaused;storeSet('radar_motion',motionPaused?'paused':'playing');syncMotion();};
+window.RadarFeedback?.init(()=>{if(currentData.length&&!isLoading&&viewMode==='feed')renderContent();});
 init();
