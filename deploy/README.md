@@ -70,3 +70,16 @@ Python/Node 包和浏览器均在持久卷内，普通重启不需要重新安�
 暂停本项目四个任务：`hermes cron pause <id>`（先 `list` 核对名称）。仅停止 RSSHub 用 `docker stop ai-frontier-rsshub`，其他 Hermes/投资机器人保持运行。恢复用 `hermes cron resume <id>` 与 `docker start ai-frontier-rsshub`。
 
 备份 SQLite 时使用 SQLite backup API 或停本项目任务后复制，不单独拷贝正在写入的 DB 文件而遗漏 WAL。迁移备份整个 `.server-state`、私有群配置与项目代码；不要提交到公共仓库。已废弃的 Mac launchd/Codex 日报任务若仍存在，应核对后停用，防止两套同时出刊。
+
+## 私有阅读与反馈
+
+正式阅读面由 `scripts.server.feedback_api` 与同一 `.server-state/frontier.db` 提供：
+`http://hermes-agent.tail804ea0.ts.net:8787/`。连接 Tailscale 后访问，只接受已配置的 owner；服务本身只绑定宿主环回 `127.0.0.1:8791`。Tailscale Serve 传递身份，校验 Host/Origin 和身份后才允许写入；没有公网或跨域写入接口。身份边界遵循 [Tailscale Serve 官方说明](https://tailscale.com/docs/features/tailscale-serve)。
+
+首页的「有价值 / 少看类似」发送明确反馈，再次点击撤销。SQLite 保存审计事件和每条内容最新动作；重复请求幂等。客户端只提交原文 URL 和归档定位，标签和公司由服务器从可信条目中读取。URL 去除跟踪参数，但保留内容查询参数和 changelog 锚点。预览站点没有反馈 API 时明确提示去私有工作台，不伪装本机保存为同步成功。
+
+`news()` 与生成新一期日报前的 `edition_items()` 使用同一偏好表。公司/分类信号轻量加权，30 天半衰期，单条内容不会屏蔽整个厂商；不放宽事实、日期和去重门槛，重大快讯使用未个性化排序。已经冻结的日报重试保持原内容，反馈用于下一次新筛选。点击不等于批准发布，原文打开/阅读时长不作为偏好。
+
+上传已测试代码后在现有 VM 上运行 `sudo bash deploy/install-feedback.sh`。脚本从当前 Tailscale 身份取得 owner，配置 `ai-frontier-feedback.service` 开机运行，并新增私有端口 8787；既有 Hermes Dashboard 9119 保持原入口。环境文件只保存于 `/etc/ai-frontier-feedback.env`，不进入 Git。
+
+验证：`python -m pytest tests/test_preferences.py tests/test_feedback_api.py tests/test_server.py -q`；`node tests/feedback.cjs`。生产验证使用 GET 和拒绝路径，写入/撤销在隔离数据库验收，避免人为测试污染真实偏好。回滚先停止 `ai-frontier-feedback.service` 并移除仅 8787 的 Serve 配置；保留 SQLite 反馈数据。不要执行 `tailscale serve reset`，它可能删除其他私有服务。

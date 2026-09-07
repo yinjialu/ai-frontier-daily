@@ -19,6 +19,8 @@ def connect(path):
     """)
     if "fingerprint" not in {r[1] for r in db.execute("PRAGMA table_info(sources)")}:
         db.execute("ALTER TABLE sources ADD COLUMN fingerprint TEXT")
+    from .preferences import init_schema
+    init_schema(db)
     return db
 
 
