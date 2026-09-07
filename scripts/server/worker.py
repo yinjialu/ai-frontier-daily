@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import sources, store, curation
+from . import sources, store, curation, preferences
 from .feishu import Feishu
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -81,7 +81,7 @@ def curate_pending(db):
                     db.execute("UPDATE items SET curated=?,error=NULL WHERE id=?", (json.dumps(item, ensure_ascii=False), item["id"]))
 
 
-def news(db, hours=36):
+def news(db, hours=36, *, personalized=True):
     result, seen = [], set()
     for row in db.execute("SELECT curated,detected FROM items WHERE baseline=0 AND curated IS NOT NULL ORDER BY detected DESC"):
         item = json.loads(row[0])
@@ -93,6 +93,8 @@ def news(db, hours=36):
             continue
         seen.add(key)
         result.append(item)
+    if personalized:
+        return preferences.rank_items(db, result)
     return sorted(result, key=lambda item: not item["editorial"]["important"])
 
 
@@ -175,7 +177,7 @@ def run(mode, send=False):
             return
         client = Feishu(os.environ["FRONTIER_FEISHU_CHAT_ID"]) if send else None
         if mode == "poll" and client:
-            for item in news(db, 72):
+            for item in news(db, 72, personalized=False):
                 if item["editorial"]["important"]:
                     # Across-source event suppression, plus API UUID on uncertain sends.
                     key = "alert:" + item["company"] + ":" + item["editorial"]["event_key"]
