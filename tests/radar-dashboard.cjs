@@ -5,7 +5,7 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 process.chdir(root);
 const elements=new Map();
-function element(selector){if(!elements.has(selector))elements.set(selector,{innerHTML:'',textContent:'',dataset:{},style:{setProperty(){}},classList:{toggle(){}},setAttribute(){},addEventListener(){},querySelectorAll(){return[];}});return elements.get(selector);}
+function element(selector){if(!elements.has(selector))elements.set(selector,{innerHTML:'',textContent:'',dataset:{},style:{setProperty(){}},classList:{toggle(){}},setAttribute(){},addEventListener(){},querySelectorAll(){return[];},showModal(){this.open=true;},close(){this.open=false;}});return elements.get(selector);}
 // Freeze the historical fixture window so future daily publications do not alter expectations.
 const index=JSON.parse(fs.readFileSync('output/index.json'));
 index.days=index.days.filter(d=>d.date<='2026-08-11');
@@ -34,11 +34,11 @@ vm.runInContext("period=7",ctx);
 await vm.runInContext("selectDay('2026-08-11')",ctx);
 element('#app').clientWidth=1400;element('#app').clientHeight=480;
 vm.runInContext('renderContent()',ctx);
-assert.equal(vm.runInContext('pageSize',ctx),6);
+assert.equal(vm.runInContext('pageSize',ctx),4);
 const firstPage=element('#app').innerHTML;
 vm.runInContext('feedPage=1;renderContent()',ctx);
 assert.notEqual(element('#app').innerHTML,firstPage);
-assert.match(element('#pageRange').textContent,/第 7/);
+assert.match(element('#pageRange').textContent,/第 5/);
 element('#app').clientWidth=390;element('#app').clientHeight=440;
 vm.runInContext('renderContent()',ctx);
 assert.equal(vm.runInContext('pageSize',ctx),2);
@@ -52,6 +52,15 @@ vm.runInContext('dataCache.clear()',ctx);
 await vm.runInContext("Promise.all([selectDay('2026-08-07'),selectDay('2026-08-11')])",ctx);
 assert.equal(element('#signalCount').textContent,1);
 assert.match(element('#app').innerHTML,/HSP/);
+// The contextual card action must select the article edition, not the range endpoint.
+const originalRender=vm.runInContext('renderCards',ctx);
+ctx.captureCards=()=>{};vm.runInContext('renderCards=captureCards',ctx);
+await vm.runInContext("openEditionForItem({vendor:'anthropic',archiveDate:'2026-08-06'})",ctx);
+assert.equal(vm.runInContext('curDate',ctx),'2026-08-06');
+assert.equal(vm.runInContext('curVendor',ctx),'anthropic');
+assert.equal(vm.runInContext('period',ctx),1);
+assert.equal(vm.runInContext('viewMode',ctx),'cards');
+ctx.restoreCards=originalRender;vm.runInContext("renderCards=restoreCards;viewMode='feed';",ctx);
 // Partial outage stays visible, and failed fetches are retryable.
 ctx.fetch=async url=>({ok:!url.includes('anthropic'),status:503,json:async()=>url==='output/index.json'?index:JSON.parse(fs.readFileSync(path.join(root,url),'utf8'))});
 vm.runInContext('dataCache.clear()',ctx);

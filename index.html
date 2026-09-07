@@ -11,48 +11,46 @@
 <script src="skills/ai-daily-digest/cards.js" defer></script><script src="assets/radar.js" defer></script>
 </head>
 <body>
-<a class="skip-link" href="#signals">跳到动态</a>
-<aside class="sidebar" aria-label="主导航">
-<a class="brand" href="./" aria-label="AI 前哨首页"><span class="brand-mark" aria-hidden="true">⌖</span><span>AI 前哨<small>FRONTIER RADAR</small></span></a>
-<div class="nav-label">工作空间 <span>01</span></div>
-<a class="side-link active" href="./" aria-current="page"><span aria-hidden="true">◉</span> 信号雷达 <i>↗</i></a>
-<a class="side-link" href="publish.html"><span aria-hidden="true">▤</span> 发布助手 <i>↗</i></a>
-<div class="nav-label sources-label">观察频道 <span id="channelCount">—</span></div>
-<nav id="vendors" aria-label="厂商频道"></nav>
-<div class="sidebar-bottom"><span class="tiny-cross">+</span><p>从一手信息<br>看见下一步。</p><a href="https://github.com/yinjialu/ai-frontier-daily" target="_blank" rel="noopener noreferrer">项目与信源 <span>↗</span></a><small>AI FRONTIER / EST. 2026</small></div>
-</aside>
-<main>
-<header class="topbar"><div class="breadcrumb">工作空间 <span>/</span> <strong>信号雷达</strong></div><div class="top-status"><span class="status-dot"></span>公开归档 <span class="top-divider"></span><time id="clock">北京时间</time><button id="statusToggle" aria-expanded="false" aria-controls="statusPanel">◎ 信源与雷达 <span>展开 ↗</span></button></div></header>
-<div class="workspace">
-<section class="page-heading"><div><div class="eyebrow">INTELLIGENCE OBSERVATORY <span>/ 001</span></div><h1>AI 信号观测台<span class="heading-dot">.</span></h1></div><a class="publish-link" href="publish.html">打开发布助手 <span>↗</span></a></section>
-<div class="archive-notice"><span class="notice-icon" aria-hidden="true">◷</span><span id="archiveNotice" role="status">正在读取公开归档…</span><span class="notice-badge">ARCHIVE</span></div>
+<a class="skip-link" href="#app">跳到内容</a>
+<header class="reader-header">
+  <div class="reader-identity"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>AI 前哨</a><h1 id="feedTitle">最新动态</h1><span id="readingRange" class="reading-range">正在读取归档…</span></div>
+  <nav class="reader-actions" aria-label="阅读工具">
+    <div class="view-switch" id="viewSwitch" hidden><button data-view="feed" aria-pressed="false">← 返回动态</button><button data-view="cards" class="on" aria-pressed="true">卡片</button></div>
+    <button id="filterToggle" aria-haspopup="dialog">筛选<span id="filterCount" hidden></span></button>
+    <button id="statusToggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="statusDialog">状态</button>
+    <a href="publish.html">发布助手 ↗</a>
+  </nav>
+</header>
+<main class="reader-main" id="signals">
+  <div id="meta" class="feed-meta" role="status" hidden></div>
+  <div id="styles" class="styles" hidden><span>卡片质感</span><button class="stab on" data-s="">经典</button><button class="stab" data-s="glass">液态玻璃</button></div>
+  <div id="app" aria-busy="true"><div class="empty">正在读取内容…</div></div>
+  <footer class="feed-end"><span id="pageRange" aria-live="polite"></span><div class="pagination"><button id="prevPage" aria-label="上一页动态">←</button><span id="pageLabel">—</span><button id="nextPage" aria-label="下一页动态">→</button></div></footer>
+</main>
+<dialog id="filterDialog" class="utility-dialog" aria-labelledby="filterTitle">
+  <div class="dialog-heading"><h2 id="filterTitle">筛选内容</h2><button id="closeFilters" class="close-button" aria-label="关闭筛选">×</button></div>
+  <section class="filter-section"><h3>厂商 <span id="channelCount"></span></h3><div id="vendors" class="filter-options" aria-label="厂商"></div></section>
+  <section class="filter-section"><h3>分类</h3><div id="categories" class="filter-options" aria-label="动态分类"></div></section>
+  <section class="filter-section"><h3>归档日期</h3><div class="filter-dates"><div class="date-control"><button id="prevDay" aria-label="上一期">←</button><label class="sr-only" for="dateSelect">归档日期</label><select id="dateSelect"><option>读取日期…</option></select><button id="nextDay" aria-label="下一期">→</button></div><div id="periodSwitch" class="view-switch" aria-label="时间范围"><button data-period="7" class="on" aria-pressed="true">近 7 天</button><button data-period="1" aria-pressed="false">单日</button></div></div></section>
+  <div class="filter-footer"><button id="resetFilters">重置</button><button id="applyFilters" class="primary-button">查看 <span id="feedCount">—</span> 条内容</button></div>
+</dialog>
+<dialog id="statusDialog" class="utility-dialog status-dialog" aria-labelledby="statusTitle">
+  <div class="dialog-heading"><h2 id="statusTitle">信源与运行状态</h2><button id="closeStatus" class="close-button" aria-label="关闭状态">×</button></div>
+  <p id="archiveNotice" class="archive-notice">正在读取公开归档…</p>
 <section class="metrics" aria-label="归档概览">
 <div class="metric"><span class="metric-label">当前信号 <span>↗</span></span><strong id="signalCount">—</strong><small id="signalDate">所选归档日期</small><div class="mini-bars" id="activityBars" aria-hidden="true"></div></div>
 <div class="metric"><span class="metric-label">模型发布 <span>✧</span></span><strong id="modelCount">—</strong><small>当期模型发布类动态</small></div>
 <div class="metric"><span class="metric-label">活跃频道 <span>◎</span></span><strong id="activeCount">—</strong><small id="activeCaption">按当期归档统计</small></div>
 <div class="metric"><span class="metric-label">归档天数 <span>▦</span></span><strong id="archiveCount">—</strong><small id="archiveRange">公开内容持续积累</small></div>
 </section>
-<div class="dashboard-grid">
-<section class="signal-panel panel" id="signals" aria-labelledby="feedTitle">
-<div class="panel-heading"><div><span class="section-index">01 /</span><h2 id="feedTitle">信号流</h2><span class="count-chip" id="feedCount">—</span></div><span class="mono subtle">SIGNAL FEED</span></div>
-<div class="feed-toolbar"><div class="date-controls"><div class="date-control"><button id="prevDay" aria-label="上一期">←</button><label class="sr-only" for="dateSelect">选择归档日期</label><select id="dateSelect"><option>读取日期…</option></select><button id="nextDay" aria-label="下一期">→</button></div><div id="periodSwitch" class="view-switch" aria-label="时间范围"><button data-period="7" class="on" aria-pressed="true">近 7 天</button><button data-period="1" aria-pressed="false">单日</button></div></div><div class="view-switch" id="viewSwitch" hidden><button class="on" data-view="feed" aria-pressed="true">动态</button><button data-view="cards" aria-pressed="false">卡片</button></div></div>
-<div class="category-tabs" id="categories" aria-label="动态分类"></div>
-<div id="styles" class="styles" hidden><span>卡片质感</span><button class="stab on" data-s="">经典</button><button class="stab" data-s="glass">液态玻璃</button></div>
-<div id="meta" class="feed-meta" aria-live="polite"></div>
-<div id="app" aria-busy="true"><div class="empty">正在接收归档信号…</div></div>
-<div class="feed-end"><span id="pageRange" aria-live="polite">每条信号，都有出处</span><div class="pagination"><button id="prevPage" aria-label="上一页动态">←</button><span id="pageLabel">—</span><button id="nextPage" aria-label="下一页动态">→</button></div></div>
-</section>
-<aside class="right-column" id="statusPanel" aria-label="信号分布与归档" hidden>
+<div class="status-content" id="statusPanel">
 <section class="panel source-status"><div class="panel-heading"><div><h2>信源状态</h2></div><span class="mono subtle">SOURCES</span></div><div class="source-state-row"><span>公开归档</span><strong id="archiveState">读取中</strong></div><div class="source-state-row"><span>服务器巡检</span><span>尚未接入看板</span></div><div class="source-state-row"><span>飞书投递</span><span>尚未接入看板</span></div></section>
 <section class="panel radar-panel"><div class="panel-heading"><div><span class="section-index">02 /</span><h2>信号雷达</h2></div><button id="motionToggle" class="motion-toggle" aria-label="暂停雷达动画" aria-pressed="false">Ⅱ</button></div><div class="radar-area"><div class="radar-axis-label north">N</div><div class="radar-axis-label east">E</div><div class="radar-axis-label south">S</div><div class="radar-axis-label west">W</div><div class="radar"><div class="radar-sweep" aria-hidden="true"></div><div class="radar-cross" aria-hidden="true"></div><div id="radarBlips"></div><div class="radar-center" aria-hidden="true"></div></div><span class="radar-coordinate">AI / SIGNAL MAP</span></div><div class="radar-caption"><span class="status-dot"></span><span>当期频道分布</span><span class="subtle">非实时扫描</span></div><div id="distribution" class="distribution"></div></section>
 <section class="panel activity-panel"><div class="panel-heading"><div><span class="section-index">03 /</span><h2>活动轨迹</h2></div><span class="mono subtle">12 WKS</span></div><div class="activity-caption" id="heatHint">近 12 周公开归档</div><div class="cal-wrap"><div id="cal" class="cal" aria-label="近十二周归档热力图"></div></div><div class="heat-legend"><span>点击回看当日</span><div>少 <i></i><i></i><i></i><i></i> 多</div></div></section>
-<section class="workflow-panel"><div class="eyebrow">FROM SIGNAL TO STORY</div><h3>发现之后，让信息变成作品。</h3><p>阅读原文 · 查看卡片 · 准备发布</p><a href="publish.html">进入发布工作台 <span>↗</span></a></section>
-</aside>
 </div>
-<footer><span><span class="footer-mark">⌖</span> AI FRONTIER RADAR</span><span>一手来源 · 中文策展 · 保留原文</span><a href="https://github.com/yinjialu/ai-frontier-daily" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
-</div>
-</main>
-<dialog id="box" aria-label="发布卡片预览"><button id="closeBox" aria-label="关闭卡片预览">×</button><div id="boxStage"></div></dialog>
-<dialog id="detailDialog" aria-labelledby="detailTitle"><div class="detail-heading"><span id="detailMeta"></span><button id="closeDetail" aria-label="关闭动态详情">×</button></div><h2 id="detailTitle"></h2><p id="detailSummary"></p><a id="detailSource" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></dialog>
+  <a class="project-link" href="https://github.com/yinjialu/ai-frontier-daily" target="_blank" rel="noopener noreferrer">项目与信源 ↗</a>
+</dialog>
+<dialog id="box" aria-label="发布卡片预览"><button id="closeBox" class="close-button" aria-label="关闭卡片预览">×</button><div id="boxStage"></div></dialog>
+<dialog id="detailDialog" class="utility-dialog detail-dialog" aria-labelledby="detailTitle"><div class="detail-heading"><span id="detailMeta"></span><button id="closeDetail" class="close-button" aria-label="关闭动态详情">×</button></div><h2 id="detailTitle"></h2><p id="detailSummary"></p><div class="detail-actions"><a id="detailSource" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a><button id="detailCards">查看本期卡片 →</button></div></dialog>
 </body>
 </html>

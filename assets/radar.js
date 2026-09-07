@@ -12,7 +12,7 @@ const parseISO = date => new Date(`${date}T00:00:00Z`);
 const storeGet = key => {try{return localStorage.getItem(key);}catch{return null;}};
 const storeSet = (key,value) => {try{localStorage.setItem(key,value);}catch{}};
 let ALL=[], DAYS=[], byDate={}, present=[], curVendor=DAILY, curDate=null, curTag='全部', viewMode='feed', curStyle=storeGet('card_style')==='glass'?'glass':'', car=null, loadId=0, currentData=[], failedVendors=[];
-let period=7, feedPage=0, pageSize=4, pageItems=[], filteredCount=0, isLoading=false;
+let period=7, feedPage=0, pageSize=4, pageItems=[], filteredCount=0, isLoading=false, detailItem=null;
 const dataCache=new Map();
 async function fetchJSON(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();}
 async function dayData(vendor,date){const key=`${vendor}|${date}`;if(!dataCache.has(key)){const request=fetchJSON(`data/${encodeURIComponent(vendor)}/${date}.json`).then(data=>{if(!Array.isArray(data.updates))throw new Error('Invalid updates');return data;}).catch(error=>{dataCache.delete(key);throw error;});dataCache.set(key,request);}return dataCache.get(key);}
@@ -36,7 +36,7 @@ async function init(){
  $('#app').setAttribute('aria-busy','false');$('#retryInit').onclick=init;
  }
 }
-async function applyVendor(vendor){
+async function applyVendor(vendor, preferredDate=null){
  if(vendor!==DAILY&&!present.includes(vendor))return;
  curVendor=vendor;curTag='全部';viewMode='feed';feedPage=0;
  document.querySelectorAll('.vtab').forEach(el=>{const on=el.dataset.v===vendor;el.classList.toggle('on',on);el.setAttribute('aria-pressed',String(on));});
@@ -44,15 +44,17 @@ async function applyVendor(vendor){
  DAYS=[...new Set(records.map(d=>d.date))].sort().map(date=>({date,count:records.filter(d=>d.date===date).reduce((n,d)=>n+(Number(d.count)||0),0)}));
  byDate=Object.fromEntries(DAYS.map(d=>[d.date,d]));
  $('#dateSelect').innerHTML=DAYS.slice().reverse().map(d=>`<option value="${d.date}">${d.date} ${d.date===DAYS.at(-1).date?'· 最新归档':''}</option>`).join('');
- $('#feedTitle').textContent=vendor===DAILY?'信号流':`${NAMES[vendor]||vendor} 动态`;
- $('#viewSwitch').hidden=vendor===DAILY;
- await selectDay(byDate[curDate]?curDate:DAYS.at(-1).date);
+ $('#feedTitle').textContent=vendor===DAILY?'最新动态':`${NAMES[vendor]||vendor} 动态`;
+ $('#viewSwitch').hidden=true;
+ await selectDay(byDate[preferredDate]?preferredDate:byDate[curDate]?curDate:DAYS.at(-1).date);
 }
 async function selectDay(date){
  if(!byDate[date])return;
  curDate=date;curTag='全部';car=null;feedPage=0;isLoading=true;currentData=[];
  const token=++loadId;
  $('#dateSelect').value=date;
+ const rangeStart=iso(new Date(parseISO(date).getTime()-(period-1)*DAY_MS));
+ $('#readingRange').textContent=`公开归档 · ${period===7?rangeStart.replaceAll('-','.')+' — '+date.slice(5).replace('-','.'):date.replaceAll('-','.')}`;
  const index=DAYS.findIndex(d=>d.date===date);$('#prevDay').disabled=index===0;$('#nextDay').disabled=index===DAYS.length-1;
  $('#app').setAttribute('aria-busy','true');$('#app').innerHTML='<div class="empty">正在读取这一天的信号…</div>';
  $('#meta').textContent='';$('#categories').innerHTML='';
@@ -71,9 +73,9 @@ async function selectDay(date){
 function itemsForSelection(){return currentData.filter(d=>curVendor===DAILY||d.vendor===curVendor).flatMap(({vendor,date,dd})=>dd.updates.map(u=>({...u,vendor,archiveDate:date})));}
 function fitLayout(){
  const area=$('#app');const width=area.clientWidth||800,height=area.clientHeight||440;
- const cols=width>=1150?3:width>=650?2:1;
- const rows=Math.max(1,Math.min(3,Math.floor(height/205)));
- const lines=Math.max(1,Math.min(9,Math.floor((height/rows-130)/25)));
+ const cols=width>=680?2:1;
+ const rows=Math.max(1,Math.min(3,Math.floor(height/215)));
+ const lines=Math.max(1,Math.min(9,Math.floor((height/rows-142)/30)));
  area.style.setProperty('--feed-cols',cols);area.style.setProperty('--feed-rows',rows);area.style.setProperty('--summary-lines',lines);
  pageSize=cols*rows;
 }
@@ -82,21 +84,27 @@ function renderContent(){
  car=null;
  const relevantFailures=failedVendors.filter(v=>curVendor===DAILY||v===curVendor);
  const items=itemsForSelection();
+ $('#viewSwitch').hidden=viewMode!=='cards';
  $('#styles').hidden=viewMode!=='cards';$('#categories').hidden=viewMode==='cards';
  document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('on',b.dataset.view===viewMode);b.setAttribute('aria-pressed',String(b.dataset.view===viewMode));});
  document.querySelectorAll('[data-period]').forEach(b=>{b.classList.toggle('on',+b.dataset.period===period);b.setAttribute('aria-pressed',String(+b.dataset.period===period));});
  const start=iso(new Date(parseISO(curDate).getTime()-(period-1)*DAY_MS));
+ $('#meta').hidden=!relevantFailures.length;
  $('#meta').textContent=relevantFailures.length?`${relevantFailures.map(v=>NAMES[v]||v).join('、')} 读取失败 · 当前内容不完整`:`${period===7?start+' — ':''}${curDate} · ${curVendor===DAILY?'跨厂商归档':NAMES[curVendor]||curVendor}`;
+ const activeFilters=Number(curVendor!==DAILY)+Number(curTag!=='全部')+Number(period!==7);
+ $('#filterCount').hidden=!activeFilters;$('#filterCount').textContent=activeFilters;
  if(!items.length){$('#app').innerHTML=`<div class="empty">${relevantFailures.length?'本期内容未能加载。<button id="retryDay">重新读取</button>':'所选范围没有已发布的动态。'}</div>`;if($('#retryDay'))$('#retryDay').onclick=()=>selectDay(curDate);$('#feedCount').textContent='0';filteredCount=0;updatePagination();return;}
  if(viewMode==='cards')return renderCards();
+ const focusedTag=document.activeElement?.dataset?.tag;
  const tags=['全部',...TAG_ORDER.filter(t=>items.some(u=>u.tag===t)),...[...new Set(items.map(u=>u.tag||'其他'))].filter(t=>!TAG_ORDER.includes(t))];
  $('#categories').innerHTML=tags.map(t=>`<button data-tag="${esc(t)}" class="${curTag===t?'on':''}" aria-pressed="${curTag===t}">${esc(t)}<span>${t==='全部'?items.length:items.filter(u=>(u.tag||'其他')===t).length}</span></button>`).join('');
+ if(focusedTag)Array.from(document.querySelectorAll('#categories [data-tag]')).find(b=>b.dataset.tag===focusedTag)?.focus();
  const filtered=items.filter(u=>curTag==='全部'||(u.tag||'其他')===curTag).sort((a,b)=>{const dateOrder=b.archiveDate.localeCompare(a.archiveDate);if(dateOrder)return dateOrder;const rank=t=>TAG_ORDER.includes(t)?TAG_ORDER.indexOf(t):99;return rank(a.tag)-rank(b.tag);});
  $('#feedCount').textContent=filtered.length;
  fitLayout();filteredCount=filtered.length;feedPage=Math.min(feedPage,Math.max(0,Math.ceil(filteredCount/pageSize)-1));pageItems=filtered.slice(feedPage*pageSize,(feedPage+1)*pageSize);
  $('#app').innerHTML='<div class="digest">'+pageItems.map((u,i)=>{
  const url=safeURL(u.url)||safeURL(u.source)||safeURL(window.Cards.srcHref(u));const domain=url?new URL(url).hostname.replace(/^www\./,''):'';
- return `<article class="ditem"><div class="dbd"><div class="item-kicker"><span class="vbadge" style="--vc:${VC[u.vendor]||'#b5f76b'}"><span class="vdot"></span>${esc(u.company||NAMES[u.vendor]||u.vendor)}</span><span class="tag-badge ${u.tag==='模型发布'?'release':''}">${esc(u.tag||'其他')}</span><time class="item-date" datetime="${esc(u.archiveDate)}">${esc(u.archiveDate.slice(5).replace('-','.'))}</time></div><h3>${esc(u.title)}</h3><p>${esc(u.summary)}</p><div class="dsrc">${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="${esc(domain)}">原文 ↗<span class="sr-only">：${esc(u.title)}</span></a>`:'<span>暂无原文</span>'}<button class="detail-button" data-detail="${i}">展开详情 ↗<span class="sr-only">：${esc(u.title)}</span></button></div></div></article>`;
+ return `<article class="ditem"><div class="dbd"><h2 class="story-title"><button class="story-open" data-detail="${i}" aria-haspopup="dialog">${esc(u.title)}</button></h2><p>${esc(u.summary)}</p><div class="story-meta"><span>${esc(u.company||NAMES[u.vendor]||u.vendor)}</span><span class="meta-separator">·</span><time datetime="${esc(u.archiveDate)}">${esc(u.archiveDate.slice(5).replace('-','.'))}</time>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="${esc(domain)}">原文 ↗<span class="sr-only">：${esc(u.title)}</span></a>`:''}</div></div></article>`;
  }).join('')+'</div>';
  updatePagination();
 }
@@ -234,7 +242,7 @@ function openCard(index){if(!car?.deck[index])return;const c=car.deck[index];con
 function closeBox(){box.close();boxStage.innerHTML='';}
 $('#closeBox').onclick=closeBox;box.onclick=e=>{if(e.target===box)closeBox();};
 window.addEventListener('resize',()=>{layoutCarousel();if(box.open&&car)openCard(car.active);});
-document.addEventListener('keydown',e=>{if(box.open||/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName))return;if(car&&e.key==='ArrowLeft')goCar(car.active-1);if(car&&e.key==='ArrowRight')goCar(car.active+1);});
+document.addEventListener('keydown',e=>{if(box.open||$('#detailDialog').open||$('#filterDialog').open||$('#statusDialog').open||/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName))return;if(car&&e.key==='ArrowLeft')goCar(car.active-1);if(car&&e.key==='ArrowRight')goCar(car.active+1);});
 $('#vendors').onclick=e=>{const el=e.target.closest('[data-v]');if(el)applyVendor(el.dataset.v);};
 $('#distribution').onclick=$('#radarBlips').onclick=e=>{const el=e.target.closest('[data-v]');if(el){const date=curDate;applyVendor(el.dataset.v).then(()=>{if(curDate!==date)$('#meta').textContent+=' · 所选日无该频道归档，已显示最近一期';});}};
 $('#dateSelect').onchange=e=>selectDay(e.target.value);
@@ -245,8 +253,21 @@ $('#viewSwitch').onclick=e=>{const el=e.target.closest('[data-view]');if(el){vie
 $('#periodSwitch').onclick=e=>{const el=e.target.closest('[data-period]');if(el){period=+el.dataset.period;if(period===7)viewMode='feed';selectDay(curDate);}};
 $('#prevPage').onclick=()=>{if(feedPage>0){feedPage--;renderContent();}};
 $('#nextPage').onclick=()=>{if((feedPage+1)*pageSize<filteredCount){feedPage++;renderContent();}};
-$('#statusToggle').onclick=()=>{const open=$('#statusPanel').hidden;$('#statusPanel').hidden=!open;document.body.classList.toggle('status-open',open);$('#statusToggle').setAttribute('aria-expanded',String(open));$('#statusToggle').innerHTML=`◎ 信源与雷达 <span>${open?'收起 ↙':'展开 ↗'}</span>`;requestAnimationFrame(()=>{if(viewMode==='feed')renderContent();else layoutCarousel();});};
-$('#app').onclick=e=>{const button=e.target.closest('[data-detail]');if(!button)return;const u=pageItems[+button.dataset.detail];if(!u)return;$('#detailMeta').textContent=`${u.company||NAMES[u.vendor]||u.vendor} / ${u.tag||'其他'} / 归档 ${u.archiveDate}`;$('#detailTitle').textContent=u.title;$('#detailSummary').textContent=u.summary;const url=safeURL(u.url)||safeURL(u.source)||safeURL(window.Cards.srcHref(u));$('#detailSource').hidden=!url;if(url)$('#detailSource').href=url;$('#detailDialog').showModal();};
+$('#filterToggle').onclick=()=>{if(viewMode==='cards'){viewMode='feed';renderContent();}$('#filterDialog').showModal();};
+$('#closeFilters').onclick=$('#applyFilters').onclick=()=>$('#filterDialog').close();
+$('#resetFilters').onclick=()=>{if(!ALL.length)return;period=7;applyVendor(DAILY,ALL.at(-1).date);};
+$('#statusToggle').onclick=()=>{$('#statusDialog').showModal();document.body.classList.toggle('status-visible',true);$('#statusToggle').setAttribute('aria-expanded','true');};
+$('#closeStatus').onclick=()=>$('#statusDialog').close();
+$('#statusDialog').addEventListener('close',()=>{document.body.classList.toggle('status-visible',false);$('#statusToggle').setAttribute('aria-expanded','false');});
+$('#app').onclick=e=>{const button=e.target.closest('[data-detail]');if(!button)return;const u=pageItems[+button.dataset.detail];if(!u)return;detailItem=u;$('#detailMeta').textContent=`${u.company||NAMES[u.vendor]||u.vendor} · ${u.tag||'其他'} · 归档 ${u.archiveDate}`;$('#detailTitle').textContent=u.title;$('#detailSummary').textContent=u.summary;const url=safeURL(u.url)||safeURL(u.source)||safeURL(window.Cards.srcHref(u));$('#detailSource').hidden=!url;if(url)$('#detailSource').href=url;$('#detailDialog').showModal();};
+async function openEditionForItem(item){
+ if(!item)return;
+ $('#detailDialog').close();period=1;
+ await applyVendor(item.vendor,item.archiveDate);
+ // A later user selection must win over the requested card edition.
+ if(curVendor===item.vendor&&curDate===item.archiveDate){viewMode='cards';renderContent();}
+}
+$('#detailCards').onclick=()=>openEditionForItem(detailItem);
 $('#closeDetail').onclick=()=>$('#detailDialog').close();
 $('#detailDialog').onclick=e=>{if(e.target===$('#detailDialog'))$('#detailDialog').close();};
 if(typeof ResizeObserver!=='undefined'){new ResizeObserver(()=>{if(currentData.length&&viewMode==='feed')renderContent();}).observe($('#app'));}
@@ -256,5 +277,4 @@ function syncStyle(){document.querySelectorAll('.stab').forEach(el=>{el.classLis
 let motionPaused=storeGet('radar_motion')==='paused'||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function syncMotion(){document.body.classList.toggle('motion-paused',motionPaused);$('#motionToggle').setAttribute('aria-pressed',String(motionPaused));$('#motionToggle').setAttribute('aria-label',motionPaused?'播放雷达动画':'暂停雷达动画');$('#motionToggle').textContent=motionPaused?'▷':'Ⅱ';}syncMotion();
 $('#motionToggle').onclick=()=>{motionPaused=!motionPaused;storeSet('radar_motion',motionPaused?'paused':'playing');syncMotion();};
-function updateClock(){$('#clock').textContent='UTC+8 '+new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit'}).format(new Date());}updateClock();setInterval(updateClock,30000);
 init();
